@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class bookingController extends Controller
 {
-    
+
 
     function upcomming_booking(){
 

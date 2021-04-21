@@ -5,7 +5,7 @@
 @section('topbar')@include('practitioner.includes.topbar')@endsection
 
 @section('content')
-     
+
     <div class="dashboard-wrapper">
       <div class="box-type4">
         <div class="page-title">
