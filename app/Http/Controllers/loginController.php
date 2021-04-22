@@ -17,11 +17,21 @@ class loginController extends Controller
     	$data = $request->all();
 
     	if(Auth::attempt(['email' => $data['email'], 'password' => $data['password']])){
-
-    		return redirect(route('practitioner.dashboard'));
+            if(Auth::user()->user_type == '1'){
+                return redirect(route('practitioner.dashboard'));    
+            }else if(Auth::user()->user_type == '2'){
+                return redirect(route('booker.index'));
+            }
+    		
     	}else{
 
     		return redirect()->back()->with('error', 'Authentication Error.');
     	}
+    }
+
+    function logout(){
+        Auth::logout();
+
+        return redirect('/');
     }
 }

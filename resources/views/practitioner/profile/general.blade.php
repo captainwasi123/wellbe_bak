@@ -10,16 +10,6 @@
    <form action="{{route('practitioner.profile.save')}}" method="post" enctype='multipart/form-data'>
    @csrf
    <input type="hidden" name="user_id" value="{{$user_data->id}}">
-   @if(Session::has('success'))
-   <div class="row">
-      <div class="alert alert-success alert-dismissible fade show col-lg-4" role="alert">
-      {{Session::get('success')}}
-         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-         </button>
-      </div>
-   </div>   
-   @endif
    <div class="box-type4">
       <div class="page-title">
          <h3 class="col-white"> General </h3>

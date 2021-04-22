@@ -13,10 +13,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//Website
+	Route::get('/', 'webController@index')->name('home');
+	Route::get('/professionals', 'webController@professionals')->name('professionals');
+	Route::get('/treatments', 'webController@treatments')->name('treatments');
+
+
+
+
+
+
+
 // Authentication
 	Route::get('/login', 'loginController@index');
 	Route::post('/login', 'loginController@loginAttempt');
 
+	Route::get('/logout', 'loginController@logout');
 
 
 // Practitioner
@@ -69,14 +81,17 @@ use Illuminate\Support\Facades\Route;
 		});
 	});
 
-	Route::prefix('booker')->group(function(){
-		Route::get('/', 'booker\bookingscontroller@index')->name('booker.index');
-		Route::get('/upcomming', 'booker\bookingscontroller@upcomming_booking')->name('booker.upcomming_booking');
-		Route::get('/inprogress', 'booker\bookingscontroller@inprogress_booking')->name('booker.inprogress_booking');
-		Route::get('/completed', 'booker\bookingscontroller@completed_booking')->name('booker.completed_booking');
-		Route::get('/cancelled', 'booker\bookingscontroller@cancelled_booking')->name('booker.cancelled_booking');
+
+//Booker
+
+	Route::prefix('booker')->namespace('booker')->middleware('bookerAuth')->group(function(){
+		Route::get('/', 'bookingscontroller@index')->name('booker.index');
+		Route::get('/upcomming', 'bookingscontroller@upcomming_booking')->name('booker.upcomming_booking');
+		Route::get('/inprogress', 'bookingscontroller@inprogress_booking')->name('booker.inprogress_booking');
+		Route::get('/completed', 'bookingscontroller@completed_booking')->name('booker.completed_booking');
+		Route::get('/cancelled', 'bookingscontroller@cancelled_booking')->name('booker.cancelled_booking');
 	
-		Route::get('/profile', 'booker\profilecontroller@index')->name('booker.profile');
+		Route::get('/profile', 'profilecontroller@index')->name('booker.profile');
 	
-		Route::get('/share', 'booker\sharecontroller@index')->name('booker.share');
+		Route::get('/share', 'sharecontroller@index')->name('booker.share');
 	});
