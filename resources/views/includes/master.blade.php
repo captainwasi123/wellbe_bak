@@ -18,6 +18,14 @@
   <section class="all-dashboard">
       @yield('topbar')
 
+      @if(session()->has('success'))
+        <div class="custom-alert">
+          <div class="alert alert-success">
+              {{ session()->get('success') }}
+          </div>
+        </div>
+      @endif
+
       @yield('content')
 
   </section>

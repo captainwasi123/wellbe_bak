@@ -30,6 +30,20 @@ use Illuminate\Support\Facades\Route;
 		Route::prefix('service')->group(function(){
 
 			Route::get('/', 'servicesController@index')->name('practitioner.services');
+			Route::get('/load/{id}', 'servicesController@loadService');
+			Route::get('/detail/{id}', 'servicesController@loadServiceDetail');
+			Route::get('/delete/{id}', 'servicesController@deleteService');
+			Route::get('/edit/{id}', 'servicesController@editService');
+
+			//Add Service
+			Route::post('/add', 'servicesController@addService')->name('practitioner.services.add');
+			Route::post('/update', 'servicesController@updateService')->name('practitioner.services.update');
+
+			//Addons
+			Route::prefix('addons')->group(function(){
+
+				Route::post('/add', 'servicesController@addAddons')->name('practitioner.services.addons.add');
+			});
 		});
 
 		//Schedule
