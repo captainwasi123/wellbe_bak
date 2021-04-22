@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 // Practitioner
 
 	Route::prefix('practitioner')->middleware('practAuth')->namespace('practitioner')->group(function(){
-		
+
 		//Dashboard
 		Route::get('/', 'practitionerController@index')->name('practitioner.dashboard');
 
@@ -56,6 +56,7 @@ use Illuminate\Support\Facades\Route;
 		Route::prefix('profile')->group(function(){
 
 			Route::get('/', 'profileController@index')->name('practitioner.profile');
+			Route::post('/profile-save', 'profileController@profile_save')->name('practitioner.profile.save');
 		});
 
 		// Booking
@@ -66,4 +67,16 @@ use Illuminate\Support\Facades\Route;
 			Route::get('/completed', 'bookingController@completed_booking')->name('practitioner.booking.completed');
 			Route::get('/cancelled', 'bookingController@cancelled_booking')->name('practitioner.booking.cancelled');
 		});
+	});
+
+	Route::prefix('booker')->group(function(){
+		Route::get('/', 'booker\bookingscontroller@index')->name('booker.index');
+		Route::get('/upcomming', 'booker\bookingscontroller@upcomming_booking')->name('booker.upcomming_booking');
+		Route::get('/inprogress', 'booker\bookingscontroller@inprogress_booking')->name('booker.inprogress_booking');
+		Route::get('/completed', 'booker\bookingscontroller@completed_booking')->name('booker.completed_booking');
+		Route::get('/cancelled', 'booker\bookingscontroller@cancelled_booking')->name('booker.cancelled_booking');
+	
+		Route::get('/profile', 'booker\profilecontroller@index')->name('booker.profile');
+	
+		Route::get('/share', 'booker\sharecontroller@index')->name('booker.share');
 	});
