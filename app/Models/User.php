@@ -47,4 +47,14 @@ class User extends Authenticatable
     {
     	return $this->belongsTo('App\Models\UserAddress','id','user_id');
     }
+
+    public function user_store()
+    {
+        return $this->belongsTo('App\Models\Store','id','user_id');
+    }
+
+    public function users_payout_details()
+    {
+        return $this->belongsTo('App\Models\PayoutDetail','id','user_id');
+    }
 }

@@ -62,6 +62,7 @@ use Illuminate\Support\Facades\Route;
 		Route::prefix('schedule')->group(function(){
 
 			Route::get('/my_availability', 'scheduleController@index')->name('practitioner.schedule');
+			Route::post('/my_availability/save', 'scheduleController@save')->name('practitioner.schedule.save');
 		});
 
 		//Profile

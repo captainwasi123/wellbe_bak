@@ -11,4 +11,9 @@ class scheduleController extends Controller
 
     	return view('practitioner.schedule.availability');
     }
+
+    public function save(Request $request)
+    {
+        dd($request);
+    }
 }

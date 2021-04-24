@@ -49,9 +49,9 @@
                   <div class="form-field3">
                      <p> Gender </p>
                      <select name="gender">
-                        <option value="male"> Male </option>
-                        <option value="female"> Female </option>
-                        <option value="other"> Other </option>
+                        <option value="male" {{ isset($user_data) && 'male' == @$user_data->gender ? 'selected' : ''}}> Male </option>
+                        <option value="female" {{ isset($user_data) && 'female' == @$user_data->gender ? 'selected' : ''}}> Female </option>
+                        <option value="other" {{ isset($user_data) && 'other' == @$user_data->gender ? 'selected' : ''}}> Other </option>
                      </select>
                   </div>
                </div>   
@@ -105,7 +105,12 @@
                <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
                   <div class="form-field3">
                      <p> Country </p>
-                     <input type="text" name="country" value="{{$user_data->user_address->country_id}}">
+                     <select name="country" id="">
+                        <option value="">select...</option>
+                        @foreach($country_data as $country_data)
+                         <option value="{{$country_data->id}}" {{ isset($user_data) && $country_data->id == @$user_data->user_address->country_id ? 'selected' : ''}}>{{$country_data->country}}</option>
+                        @endforeach
+                     </select>
                   </div>
                </div>   
             </div>
@@ -120,9 +125,9 @@
             <div class="form-field3">
                <p> Where do you offer services? </p>
                <div class="drop-options">
-                  <span> <input type="radio" name=""> Mobile </span>
-                  <span> <input type="radio" name=""> My Address </span>
-                  <span> <input type="radio" name=""> Both  </span>
+                  <span> <input type="radio" name="offer_services" value="mobile" {{ isset($user_data) && 'mobile' == @$user_data->user_store->offer_services ? 'checked' : ''}}> Mobile </span>
+                  <span> <input type="radio" name="offer_services" value="my_address" {{ isset($user_data) && 'my_address' == @$user_data->user_store->offer_services ? 'checked' : ''}}> My Address </span>
+                  <span> <input type="radio" name="offer_services" value="both" {{ isset($user_data) && 'both' == @$user_data->user_store->offer_services ? 'checked' : ''}}> Both  </span>
                </div>
             </div>
             <div class="form-field3">
@@ -130,23 +135,23 @@
             </div>
             <div class="form-field3">
                <p> Minimum Booking Amount </p>
-               <input type="text" name="" style="padding-left: 25px;">
+               <input type="text" name="minimum_booking_amount" value="{{$user_data->user_store->minimum_booking_amount}}" style="padding-left: 25px;">
                <b class="info-tag1 col-blue" style="display: inline-block; width: 20px; margin-top: -28px; vertical-align: top; margin-left: 8px;"> $ </b>
             </div>
             <div class="form-field3">
                <p> buffer Between Appointments </p>
-               <input type="text" name="">
+               <input type="text" name="buffer_between_appointments" value="{{$user_data->user_store->buffer_between_appointments}}">
             </div>
             <div class="block-element m-t-15 m-b-10">
                <h4 class="col-blue"> Payout Details </h4>
             </div>
             <div class="form-field3">
                <p>  Bank Account Name  </p>
-               <input type="text" name="">
+               <input type="text" name="bank_name" value="{{$user_data->users_payout_details->bank_account_name}}">
             </div>
             <div class="form-field3">
                <p> Bank Account Number </p>
-               <input type="text" name="">
+               <input type="text" name="account_number" value="{{$user_data->users_payout_details->bank_account_number}}">
             </div>
             <div class="bg-silver block-element m-t-20 m-b-20" style="padding:20px">
                <div class="form-field3">
