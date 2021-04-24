@@ -70,4 +70,21 @@ $(document).ready(function(){
 	});
 
 
+	//Schedule Spilt
+
+	$(document).on('click', '.splitShift', function(){
+		var parent_tr = $(this).parent().parent();
+		let i = parseInt($(this).attr("data-id"));
+		$(this).attr('data-id', i+1);
+		var day = $(this).data('day');
+		$(parent_tr).after('<tr><td></td><td></td><td> First Booking </td><td><input type="text" name="days['+day+']['+i+'][first_booking]" class="timepicker"></td><td> Last Booking </td><td><input type="text" name="days['+day+']['+i+'][last_booking]" class="timepicker"></td><td> <a href="javascript:void(0)" class="col-red removeShift"> - Remove </a> </td>  </tr>');
+		$('.timepicker').mdtimepicker();
+	});
+
+
+	$(document).on('click', '.removeShift', function(){
+		$(this).parent().parent().remove();
+	});
+
+
 });

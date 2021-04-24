@@ -6,3 +6,9 @@
     margin-bottom: -20px;
     padding: 0px 2%;
 }
+.col-red{
+	color: red !important;
+}
+.availability-table tbody {
+    border: 1px solid #e6e6e6;
+}
