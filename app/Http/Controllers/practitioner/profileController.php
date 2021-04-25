@@ -18,7 +18,7 @@ class profileController extends Controller
         $data = array(
             'user_data' => User::with(['user_address','user_store','users_payout_details'])->where('id',auth()->user()->id)->first(), 
             'country_data' => Country::latest()->get(),
-            'user_data' => auth()->user(),
+            // 'user_data' => auth()->user(),
 
         );
     	return view('practitioner.profile.general')->with($data);

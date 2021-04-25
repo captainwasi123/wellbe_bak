@@ -80,6 +80,13 @@ use Illuminate\Support\Facades\Route;
 			Route::get('/completed', 'bookingController@completed_booking')->name('practitioner.booking.completed');
 			Route::get('/cancelled', 'bookingController@cancelled_booking')->name('practitioner.booking.cancelled');
 		});
+
+		//plan
+		Route::prefix('plan')->group(function(){
+
+			Route::get('/', 'PlanController@index')->name('practitioner.plan');
+			Route::get('/plan-buy/{id}','PlanController@plan_buy')->name('practitioner.plan.buy');
+		});
 	});
 
 
@@ -91,8 +98,30 @@ use Illuminate\Support\Facades\Route;
 		Route::get('/inprogress', 'bookingscontroller@inprogress_booking')->name('booker.inprogress_booking');
 		Route::get('/completed', 'bookingscontroller@completed_booking')->name('booker.completed_booking');
 		Route::get('/cancelled', 'bookingscontroller@cancelled_booking')->name('booker.cancelled_booking');
-	
+
 		Route::get('/profile', 'profilecontroller@index')->name('booker.profile');
-	
+		Route::post('/profile-save', 'profilecontroller@profile_save')->name('booker.profile.save');
+
 		Route::get('/share', 'sharecontroller@index')->name('booker.share');
 	});
+
+//auth routes for admin
+Route::get('/admin/login', 'AdminLoginController@index')->name('admin.login');
+Route::post('/admin/login', 'AdminLoginController@loginAttempt');
+
+Route::get('/admin/logout', 'AdminLoginController@logout');
+
+Route::prefix('admin')->namespace('admin')->group(function () {
+    Route::get('/dashboard', 'DashboardController@index')->name('admin.dashboard');
+    Route::get('/upcomming', 'DashboardController@upcomming')->name('admin.upcomming');
+    Route::get('/inprogress', 'DashboardController@inprogress')->name('admin.inprogress');
+    Route::get('/completed', 'DashboardController@completed')->name('admin.completed');
+    Route::get('/cancelled', 'DashboardController@cancelled')->name('admin.cancelled');
+
+    Route::get('/customers', 'DashboardController@customers')->name('admin.customers');
+    Route::get('/practitioners', 'DashboardController@practitioners')->name('admin.practitioners');
+    Route::get('/custom_services', 'DashboardController@custom_services')->name('admin.custom_services');
+    Route::get('/marketplace_catalogue', 'DashboardController@marketplace_catalogue')->name('admin.marketplace_catalogue');
+    Route::get('/edit_profile', 'DashboardController@edit_profile')->name('admin.edit_profile');
+
+});

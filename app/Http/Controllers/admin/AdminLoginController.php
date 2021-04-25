@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controller\admin;
 
 use Illuminate\Http\Request;
 use Auth;
 
-class loginController extends Controller
+class AdminLoginController extends Controller
 {
     
     function index(){

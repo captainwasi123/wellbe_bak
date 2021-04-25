@@ -75,31 +75,31 @@
                <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                   <div class="form-field3">
                      <p> Street </p>
-                     <textarea name="street">{{$user_data->user_address->street}}</textarea>
+                     <textarea name="street">{{@$user_data->user_address->street}}</textarea>
                   </div>
                </div>   
                <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
                   <div class="form-field3">
                      <p> Suburb </p>
-                     <input type="text" name="suburb" value="{{$user_data->user_address->suburb}}">
+                     <input type="text" name="suburb" value="{{@$user_data->user_address->suburb}}">
                   </div>
                </div>   
                <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
                   <div class="form-field3">
                      <p> City </p>
-                     <input type="text" name="city" value="{{$user_data->user_address->city}}">
+                     <input type="text" name="city" value="{{@$user_data->user_address->city}}">
                   </div>
                </div>   
                <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
                   <div class="form-field3">
                      <p> Post code </p>
-                     <input type="text" name="postcode" value="{{$user_data->user_address->postcode}}">
+                     <input type="text" name="postcode" value="{{@$user_data->user_address->postcode}}">
                   </div>
                </div>   
                <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
                   <div class="form-field3">
                      <p> State </p>
-                     <input type="text" name="state" value="{{$user_data->user_address->state}}">
+                     <input type="text" name="state" value="{{@$user_data->user_address->state}}">
                   </div>
                </div>      
                <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
@@ -135,23 +135,23 @@
             </div>
             <div class="form-field3">
                <p> Minimum Booking Amount </p>
-               <input type="text" name="minimum_booking_amount" value="{{$user_data->user_store->minimum_booking_amount}}" style="padding-left: 25px;">
+               <input type="text" name="minimum_booking_amount" value="{{@$user_data->user_store->minimum_booking_amount}}" style="padding-left: 25px;">
                <b class="info-tag1 col-blue" style="display: inline-block; width: 20px; margin-top: -28px; vertical-align: top; margin-left: 8px;"> $ </b>
             </div>
             <div class="form-field3">
                <p> buffer Between Appointments </p>
-               <input type="text" name="buffer_between_appointments" value="{{$user_data->user_store->buffer_between_appointments}}">
+               <input type="text" name="buffer_between_appointments" value="{{@$user_data->user_store->buffer_between_appointments}}">
             </div>
             <div class="block-element m-t-15 m-b-10">
                <h4 class="col-blue"> Payout Details </h4>
             </div>
             <div class="form-field3">
                <p>  Bank Account Name  </p>
-               <input type="text" name="bank_name" value="{{$user_data->users_payout_details->bank_account_name}}">
+               <input type="text" name="bank_name" value="{{@$user_data->users_payout_details->bank_account_name}}">
             </div>
             <div class="form-field3">
                <p> Bank Account Number </p>
-               <input type="text" name="account_number" value="{{$user_data->users_payout_details->bank_account_number}}">
+               <input type="text" name="account_number" value="{{@$user_data->users_payout_details->bank_account_number}}">
             </div>
             <div class="bg-silver block-element m-t-20 m-b-20" style="padding:20px">
                <div class="form-field3">
