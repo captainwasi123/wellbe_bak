@@ -3,7 +3,9 @@
 
 @section('sidebar')@include('practitioner.includes.sidebar')@endsection
 @section('topbar')@include('practitioner.includes.topbar')@endsection
-
+@section('additionalCSS')
+   <link href="{{URL::to('/')}}/public/assets/css/timepicker.css" rel="stylesheet">
+@endsection
 @section('content')
      
 <div class="dashboard-wrapper">
@@ -19,198 +21,146 @@
          <form action="{{route('practitioner.schedule.save')}}" method="post">
          @csrf
             <div class="table-overlay">
-               <table>
-                  <tbody>
-                     <tr>
-                        <td> <input type="checkbox" name="days[sunday][0][name]" value="sunday"> </td>
-                        <td> Sunday </td>
-                        <td> First Booking </td>
-                        <td>
-                           <select name="days[sunday][0]['first_booking']">
-                              <option value="8:00 AM"> 8:00 AM </option>
-                              <option value="8:00 AM"> 8:00 AM </option>
-                              <option value="8:00 AM"> 8:00 AM </option>
-                           </select>
-                        </td>
-                        <td> Last Booking </td>
-                        <td>
-                           <select name="days[sunday][0]['last_booking']">
-                              <option value="5:00 PM"> 5:00 PM </option>
-                              <option value="5:00 PM"> 5:00 PM </option>
-                              <option value="5:00 PM"> 5:00 PM </option>
-                           </select>
-                        </td>
-                        <td> <a href="" class="col-blue"> + Split Shift </a> </td>  
-                     </tr>
-                     <tr>
-                        <td class="visib1"> Empty  </td>
-                        <td class="visib1"> Empty  </td>
-                        <td> First Booking </td>
-                        <td>
-                           <select name="days[sunday][1]['first_booking']">
-                              <option value="7:00 PM"> 7:00 PM </option>
-                              <option value="7:00 PM"> 7:00 PM </option>
-                              <option value="7:00 PM"> 7:00 PM </option>
-                           </select>
-                        </td>
-                        <td> Last Booking </td>
-                        <td>
-                           <select name="days[sunday][1]['first_booking']">
-                              <option value="9:30 PM"> 9:30 PM </option>
-                              <option value="9:30 PM"> 9:30 PM </option>
-                              <option value="9:30 PM"> 9:30 PM </option>
-                           </select>
-                        </td>
-                        <td class="visib1"> Empty </td>
-                     </tr>
-                     <tr>
-                        <td> <input type="checkbox" name="days[monday][0][name]" value="monday"> </td>
-                        <td> Monday </td>
-                        <td> First Booking </td>
-                        <td>
-                           <select name="days[monday][0]['first_booking']">
-                              <option value="8:00 AM"> 8:00 AM </option>
-                              <option value="8:00 AM"> 8:00 AM </option>
-                              <option value="8:00 AM"> 8:00 AM </option>
-                           </select>
-                        </td>
-                        <td> Last Booking </td>
-                        <td>
-                           <select name="days[monday][0]['last_booking']">
-                              <option value="5:00 PM"> 5:00 PM </option>
-                              <option value="5:00 PM"> 5:00 PM </option>
-                              <option value="5:00 PM"> 5:00 PM </option>
-                           </select>
-                        </td>
-                        <td> <a href="" class="col-blue"> + Split Shift </a> </td>  
-                     </tr>
-                     <tr>
-                        <td> <input type="checkbox" name=""> </td>
-                        <td> Monday </td>
-                        <td> First Booking </td>
-                        <td>
-                           <select>
-                              <option> 8:00 AM </option>
-                              <option> 8:00 AM </option>
-                              <option> 8:00 AM </option>
-                           </select>
-                        </td>
-                        <td> Last Booking </td>
-                        <td>
-                           <select>
-                              <option> 5:00 PM </option>
-                              <option> 5:00 PM </option>
-                              <option> 5:00 PM </option>
-                           </select>
-                        </td>
-                        <td> <a href="" class="col-blue"> + Split Shift </a> </td>
-                     </tr>
-                     <tr>
-                        <td> <input type="checkbox" name=""> </td>
-                        <td> Tuesday </td>
-                        <td> First Booking </td>
-                        <td>
-                           <select>
-                              <option> 8:00 AM </option>
-                              <option> 8:00 AM </option>
-                              <option> 8:00 AM </option>
-                           </select>
-                        </td>
-                        <td> Last Booking </td>
-                        <td>
-                           <select>
-                              <option> 5:00 PM </option>
-                              <option> 5:00 PM </option>
-                              <option> 5:00 PM </option>
-                           </select>
-                        </td>
-                        <td> <a href="" class="col-blue"> + Split Shift </a> </td>
-                     </tr>
-                     <tr>
-                        <td> <input type="checkbox" name=""> </td>
-                        <td> Wednesday </td>
-                        <td> First Booking </td>
-                        <td>
-                           <select>
-                              <option> 8:00 AM </option>
-                              <option> 8:00 AM </option>
-                              <option> 8:00 AM </option>
-                           </select>
-                        </td>
-                        <td> Last Booking </td>
-                        <td>
-                           <select>
-                              <option> 5:00 PM </option>
-                              <option> 5:00 PM </option>
-                              <option> 5:00 PM </option>
-                           </select>
-                        </td>
-                        <td> <a href="" class="col-blue"> + Split Shift </a> </td>
-                     </tr>
-                     <tr>
-                        <td> <input type="checkbox" name=""> </td>
-                        <td> Thursday </td>
-                        <td> First Booking </td>
-                        <td>
-                           <select>
-                              <option> 8:00 AM </option>
-                              <option> 8:00 AM </option>
-                              <option> 8:00 AM </option>
-                           </select>
-                        </td>
-                        <td> Last Booking </td>
-                        <td>
-                           <select>
-                              <option> 5:00 PM </option>
-                              <option> 5:00 PM </option>
-                              <option> 5:00 PM </option>
-                           </select>
-                        </td>
-                        <td> <a href="" class="col-blue"> + Split Shift </a> </td>
-                     </tr>
-                     <tr>
-                        <td> <input type="checkbox" name=""> </td>
-                        <td> Friday </td>
-                        <td> First Booking </td>
-                        <td>
-                           <select>
-                              <option> 8:00 AM </option>
-                              <option> 8:00 AM </option>
-                              <option> 8:00 AM </option>
-                           </select>
-                        </td>
-                        <td> Last Booking </td>
-                        <td>
-                           <select>
-                              <option> 5:00 PM </option>
-                              <option> 5:00 PM </option>
-                              <option> 5:00 PM </option>
-                           </select>
-                        </td>
-                        <td> <a href="" class="col-blue"> + Split Shift </a> </td>
-                     </tr>
-                     <tr>
-                        <td> <input type="checkbox" name=""> </td>
-                        <td> Saturday </td>
-                        <td> First Booking </td>
-                        <td>
-                           <select>
-                              <option> 8:00 AM </option>
-                              <option> 8:00 AM </option>
-                              <option> 8:00 AM </option>
-                           </select>
-                        </td>
-                        <td> Last Booking </td>
-                        <td>
-                           <select>
-                              <option> 5:00 PM </option>
-                              <option> 5:00 PM </option>
-                              <option> 5:00 PM </option>
-                           </select>
-                        </td>
-                        <td> <a href="" class="col-blue"> + Split Shift </a> </td>
-                     </tr>
-                  </tbody>
+               <table class="availability-table">
+                     <tbody>
+                        <tr>
+                           <td> <input type="checkbox" name="is_active[]" value="sunday"> </td>
+                           <td> Sunday </td>
+                           <td> First Booking </td>
+                           <td>
+                              <input type="text" name="days[sunday][0]['first_booking']" class="timepicker">
+                           </td>
+                           <td> Last Booking </td>
+                           <td>
+                              <input type="text" name="days[sunday][0]['last_booking']" class="timepicker">
+                           </td>
+                           <td> 
+                              <a href="javascript:void(0)" class="col-blue splitShift"  data-id="1" data-day="sunday"> 
+                                 + Split Shift 
+                              </a> 
+                           </td>  
+                        </tr>
+                     </tbody>
+
+                     <tbody>      
+                        <tr>
+                           <td> <input type="checkbox" name="is_active[]" value="monday"> </td>
+                           <td> Monday </td>
+                           <td> First Booking </td>
+                           <td>
+                              <input type="text" name="days[monday][0]['first_booking']" class="timepicker">
+                           </td>
+                           <td> Last Booking </td>
+                           <td>
+                              <input type="text" name="days[monday][0]['last_booking']" class="timepicker">
+                           </td>
+                           <td> 
+                              <a href="javascript:void(0)" class="col-blue splitShift"  data-id="1" data-day="monday"> 
+                                 + Split Shift 
+                              </a> 
+                           </td>  
+                        </tr>
+                     </tbody>
+
+                     <tbody>
+                        <tr>
+                           <td> <input type="checkbox" name="is_active[]" value="tuesday"> </td>
+                           <td> Tuesday </td>
+                           <td> First Booking </td>
+                           <td>
+                              <input type="text" name="days[tuesday][0]['first_booking']" class="timepicker">
+                           </td>
+                           <td> Last Booking </td>
+                           <td>
+                              <input type="text" name="days[tuesday][0]['last_booking']" class="timepicker">
+                           </td>
+                           <td> 
+                              <a href="javascript:void(0)" class="col-blue splitShift"  data-id="1" data-day="tuesday"> 
+                                 + Split Shift 
+                              </a> 
+                           </td>  
+                        </tr>
+                     </tbody>
+
+                     <tbody>
+                        <tr>
+                           <td> <input type="checkbox" name="is_active[]" value="wednesday"> </td>
+                           <td> Wednesday </td>
+                           <td> First Booking </td>
+                           <td>
+                              <input type="text" name="days[wednesday][0]['first_booking']" class="timepicker">
+                           </td>
+                           <td> Last Booking </td>
+                           <td>
+                              <input type="text" name="days[wednesday][0]['last_booking']" class="timepicker">
+                           </td>
+                           <td> 
+                              <a href="javascript:void(0)" class="col-blue splitShift"  data-id="1" data-day="wednesday"> 
+                                 + Split Shift 
+                              </a> 
+                           </td>  
+                        </tr>
+                     </tbody>
+
+                     <tbody>
+                        <tr>
+                           <td> <input type="checkbox" name="is_active[]" value="thursday"> </td>
+                           <td> Thursday </td>
+                           <td> First Booking </td>
+                           <td>
+                              <input type="text" name="days[thursday][0]['first_booking']" class="timepicker">
+                           </td>
+                           <td> Last Booking </td>
+                           <td>
+                              <input type="text" name="days[thursday][0]['last_booking']" class="timepicker">
+                           </td>
+                           <td> 
+                              <a href="javascript:void(0)" class="col-blue splitShift"  data-id="1" data-day="thursday"> 
+                                 + Split Shift 
+                              </a> 
+                           </td>  
+                        </tr>
+                     </tbody>
+
+                     <tbody>
+                        <tr>
+                           <td> <input type="checkbox" name="is_active[]" value="friday"> </td>
+                           <td> Friday </td>
+                           <td> First Booking </td>
+                           <td>
+                              <input type="text" name="days[friday][0]['first_booking']" class="timepicker">
+                           </td>
+                           <td> Last Booking </td>
+                           <td>
+                              <input type="text" name="days[friday][0]['last_booking']" class="timepicker">
+                           </td>
+                           <td> 
+                              <a href="javascript:void(0)" class="col-blue splitShift"  data-id="1" data-day="friday"> 
+                                 + Split Shift 
+                              </a> 
+                           </td>  
+                        </tr>
+                     </tbody>
+
+                     <tbody>
+                        <tr>
+                           <td> <input type="checkbox" name="is_active[]" value="saturday"> </td>
+                           <td> Saturday </td>
+                           <td> First Booking </td>
+                           <td>
+                              <input type="text" name="days[saturday][0]['first_booking']" class="timepicker">
+                           </td>
+                           <td> Last Booking </td>
+                           <td>
+                              <input type="text" name="days[saturday][0]['last_booking']" class="timepicker">
+                           </td>
+                           <td> 
+                              <a href="javascript:void(0)" class="col-blue splitShift"  data-id="1" data-day="saturday"> 
+                                 + Split Shift 
+                              </a> 
+                           </td>  
+                        </tr>
+                     </tbody>
                </table>
             </div>
                
@@ -232,4 +182,13 @@
    </div>
 </div>
 
+@endsection
+@section('additionalJS')
+   <script src="{{URL::to('/')}}/public/assets/js/dev/practitioner.js"> </script>
+   <script src="{{URL::to('/')}}/public/assets/js/timepicker.js"> </script>
+   <script type="text/javascript">
+      $(document).ready(function(){
+       $('.timepicker').mdtimepicker(); //Initializes the time picker
+     });
+   </script>
 @endsection

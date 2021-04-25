@@ -14,6 +14,7 @@ class scheduleController extends Controller
 
     public function save(Request $request)
     {
-        dd($request);
+    	$data = $request->all();
+        dd($data);
     }
 }
