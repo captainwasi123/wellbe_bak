@@ -41,7 +41,7 @@
          @foreach($categories as $val)
             <div>
                <a href=""> 
-                  <img src="{{URL::to('/')}}/public/assets/web/images/treatment-icon2.jpg"> 
+                  <img src="{{URL::to('/')}}/{{$val->image}}"> 
                   {{$val->category}} 
                </a>
             </div>

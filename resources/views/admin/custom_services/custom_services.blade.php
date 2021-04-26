@@ -50,27 +50,17 @@
                 </tr>
              </thead>
              <tbody>
+               @foreach($all_services as $all_services)
                 <tr>
-                   <td class="col-blue"> Relaxing Message </td>
-                   <td> $80 </td>
-                   <td> A soothing message using gentle...  </td>
-                   <td class="col-blue"> Paige </td>
-                   <td> Jan 24, 2021 - 12:00 AM </td>
+                   <td class="col-blue"> {{$all_services->name}} </td>
+                   <td> ${{$all_services->price}} </td>
+                   <td> {{$all_services->duration}}  </td>
+                   <td class="col-blue"> {{$all_services->practitioner->first_name}} {{$all_services->practitioner->last_name}} </td>
+                   <td>  {{date('d, M Y - h:i a', strtotime($all_services->created_at))}}</td>
                    <td> Pending </td>
                    <td class="actions-box3"> <a class="bg-green col-white"> <i class="fa fa-check"> </i> </a>  <a class="bg-red col-white"> <i class="fa fa-times"> </i> </a> </td>
                 </tr>
-
-                <tr>
-                   <td class="col-blue"> Deep Tissue Massage </td>
-                   <td> $80 </td>
-                   <td> A soothing message using gentle...  </td>
-                   <td class="col-blue"> Paige </td>
-                   <td> Jan 24, 2021 - 12:00 AM </td>
-                   <td> Pending </td>
-                   <td class="actions-box3"> <a class="bg-green col-white"> <i class="fa fa-check"> </i> </a>  <a class="bg-red col-white"> <i class="fa fa-times"> </i> </a> </td>
-                </tr>
-
-
+              @endforeach
              </tbody>
           </table>
        </div>
@@ -90,46 +80,17 @@
                 </tr>
              </thead>
              <tbody>
+             @foreach($pending_services as $pending_services)
                 <tr>
-                   <td class="col-blue"> Relaxing Message </td>
-                   <td> $80 </td>
-                   <td> A soothing message using gentle...  </td>
-                   <td class="col-blue"> Paige </td>
-                   <td> Jan 24, 2021 - 12:00 AM </td>
+                   <td class="col-blue"> {{$pending_services->name}} </td>
+                   <td> ${{$pending_services->price}} </td>
+                   <td> {{$pending_services->duration}}  </td>
+                   <td class="col-blue"> {{$pending_services->practitioner->first_name}} {{$pending_services->practitioner->last_name}} </td>
+                   <td>  {{date('d, M Y - h:i a', strtotime($pending_services->created_at))}}</td>
                    <td> Pending </td>
                    <td class="actions-box3"> <a class="bg-green col-white"> <i class="fa fa-check"> </i> </a>  <a class="bg-red col-white"> <i class="fa fa-times"> </i> </a> </td>
                 </tr>
-
-                <tr>
-                   <td class="col-blue"> Deep Tissue Massage </td>
-                   <td> $80 </td>
-                   <td> A soothing message using gentle...  </td>
-                   <td class="col-blue"> Paige </td>
-                   <td> Jan 24, 2021 - 12:00 AM </td>
-                   <td> Pending </td>
-                   <td class="actions-box3"> <a class="bg-green col-white"> <i class="fa fa-check"> </i> </a>  <a class="bg-red col-white"> <i class="fa fa-times"> </i> </a> </td>
-                </tr>
-                   <tr>
-                   <td class="col-blue"> Relaxing Message </td>
-                   <td> $80 </td>
-                   <td> A soothing message using gentle...  </td>
-                   <td class="col-blue"> Paige </td>
-                   <td> Jan 24, 2021 - 12:00 AM </td>
-                   <td> Pending </td>
-                   <td class="actions-box3"> <a class="bg-green col-white"> <i class="fa fa-check"> </i> </a>  <a class="bg-red col-white"> <i class="fa fa-times"> </i> </a> </td>
-                </tr>
-
-                <tr>
-                   <td class="col-blue"> Deep Tissue Massage </td>
-                   <td> $80 </td>
-                   <td> A soothing message using gentle...  </td>
-                   <td class="col-blue"> Paige </td>
-                   <td> Jan 24, 2021 - 12:00 AM </td>
-                   <td> Pending </td>
-                   <td class="actions-box3"> <a class="bg-green col-white"> <i class="fa fa-check"> </i> </a>  <a class="bg-red col-white"> <i class="fa fa-times"> </i> </a> </td>
-                </tr>
-
-
+              @endforeach  
              </tbody>
           </table>
        </div>
@@ -149,37 +110,17 @@
                 </tr>
              </thead>
              <tbody>
+             @foreach($approved_services as $approved_services)
                 <tr>
-                   <td class="col-blue"> Relaxing Message </td>
-                   <td> $80 </td>
-                   <td> A soothing message using gentle...  </td>
-                   <td class="col-blue"> Paige </td>
-                   <td> Jan 24, 2021 - 12:00 AM </td>
+                   <td class="col-blue"> {{$approved_services->name}} </td>
+                   <td> ${{$approved_services->price}} </td>
+                   <td> {{$approved_services->duration}}  </td>
+                   <td class="col-blue"> {{$approved_services->practitioner->first_name}} {{$approved_services->practitioner->last_name}} </td>
+                   <td>  {{date('d, M Y - h:i a', strtotime($approved_services->created_at))}}</td>
                    <td> Pending </td>
                    <td class="actions-box3"> <a class="bg-green col-white"> <i class="fa fa-check"> </i> </a>  <a class="bg-red col-white"> <i class="fa fa-times"> </i> </a> </td>
                 </tr>
-
-                <tr>
-                   <td class="col-blue"> Deep Tissue Massage </td>
-                   <td> $80 </td>
-                   <td> A soothing message using gentle...  </td>
-                   <td class="col-blue"> Paige </td>
-                   <td> Jan 24, 2021 - 12:00 AM </td>
-                   <td> Pending </td>
-                   <td class="actions-box3"> <a class="bg-green col-white"> <i class="fa fa-check"> </i> </a>  <a class="bg-red col-white"> <i class="fa fa-times"> </i> </a> </td>
-                </tr>
-
-                <tr>
-                   <td class="col-blue"> Relaxing Message </td>
-                   <td> $80 </td>
-                   <td> A soothing message using gentle...  </td>
-                   <td class="col-blue"> Paige </td>
-                   <td> Jan 24, 2021 - 12:00 AM </td>
-                   <td> Pending </td>
-                   <td class="actions-box3"> <a class="bg-green col-white"> <i class="fa fa-check"> </i> </a>  <a class="bg-red col-white"> <i class="fa fa-times"> </i> </a> </td>
-                </tr>
-
-
+              @endforeach  
              </tbody>
           </table>
        </div>
@@ -199,70 +140,17 @@
                 </tr>
              </thead>
              <tbody>
+               @foreach($rejected_services as $rejected_services)
                 <tr>
-                   <td class="col-blue"> Relaxing Message </td>
-                   <td> $80 </td>
-                   <td> A soothing message using gentle...  </td>
-                   <td class="col-blue"> Paige </td>
-                   <td> Jan 24, 2021 - 12:00 AM </td>
+                   <td class="col-blue"> {{$rejected_services->name}} </td>
+                   <td> ${{$rejected_services->price}} </td>
+                   <td> {{$rejected_services->duration}}  </td>
+                   <td class="col-blue"> {{$rejected_services->practitioner->first_name}} {{$rejected_services->practitioner->last_name}} </td>
+                   <td>  {{date('d, M Y - h:i a', strtotime($rejected_services->created_at))}}</td>
                    <td> Pending </td>
                    <td class="actions-box3"> <a class="bg-green col-white"> <i class="fa fa-check"> </i> </a>  <a class="bg-red col-white"> <i class="fa fa-times"> </i> </a> </td>
                 </tr>
-
-                <tr>
-                   <td class="col-blue"> Deep Tissue Massage </td>
-                   <td> $80 </td>
-                   <td> A soothing message using gentle...  </td>
-                   <td class="col-blue"> Paige </td>
-                   <td> Jan 24, 2021 - 12:00 AM </td>
-                   <td> Pending </td>
-                   <td class="actions-box3"> <a class="bg-green col-white"> <i class="fa fa-check"> </i> </a>  <a class="bg-red col-white"> <i class="fa fa-times"> </i> </a> </td>
-                </tr>
-
-
-                 <tr>
-                   <td class="col-blue"> Relaxing Message </td>
-                   <td> $80 </td>
-                   <td> A soothing message using gentle...  </td>
-                   <td class="col-blue"> Paige </td>
-                   <td> Jan 24, 2021 - 12:00 AM </td>
-                   <td> Pending </td>
-                   <td class="actions-box3"> <a class="bg-green col-white"> <i class="fa fa-check"> </i> </a>  <a class="bg-red col-white"> <i class="fa fa-times"> </i> </a> </td>
-                </tr>
-
-                <tr>
-                   <td class="col-blue"> Deep Tissue Massage </td>
-                   <td> $80 </td>
-                   <td> A soothing message using gentle...  </td>
-                   <td class="col-blue"> Paige </td>
-                   <td> Jan 24, 2021 - 12:00 AM </td>
-                   <td> Pending </td>
-                   <td class="actions-box3"> <a class="bg-green col-white"> <i class="fa fa-check"> </i> </a>  <a class="bg-red col-white"> <i class="fa fa-times"> </i> </a> </td>
-                </tr>
-
-
-
-                 <tr>
-                   <td class="col-blue"> Relaxing Message </td>
-                   <td> $80 </td>
-                   <td> A soothing message using gentle...  </td>
-                   <td class="col-blue"> Paige </td>
-                   <td> Jan 24, 2021 - 12:00 AM </td>
-                   <td> Pending </td>
-                   <td class="actions-box3"> <a class="bg-green col-white"> <i class="fa fa-check"> </i> </a>  <a class="bg-red col-white"> <i class="fa fa-times"> </i> </a> </td>
-                </tr>
-
-                <tr>
-                   <td class="col-blue"> Deep Tissue Massage </td>
-                   <td> $80 </td>
-                   <td> A soothing message using gentle...  </td>
-                   <td class="col-blue"> Paige </td>
-                   <td> Jan 24, 2021 - 12:00 AM </td>
-                   <td> Pending </td>
-                   <td class="actions-box3"> <a class="bg-green col-white"> <i class="fa fa-check"> </i> </a>  <a class="bg-red col-white"> <i class="fa fa-times"> </i> </a> </td>
-                </tr>
-
-
+              @endforeach
              </tbody>
           </table>
        </div>

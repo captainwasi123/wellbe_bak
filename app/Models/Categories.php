@@ -5,8 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Country extends Model
+class Categories extends Model
 {
     use HasFactory;
-    protected $table = 'tbl_countries_info';
+    protected $table = 'tbl_service_category';
 }

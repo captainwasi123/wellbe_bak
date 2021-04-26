@@ -13,10 +13,10 @@ use App\Models\PayoutDetail;
 
 class profileController extends Controller
 {
-    
+
     function index(){
         $data = array(
-            'user_data' => User::with(['user_address','user_store','users_payout_details'])->where('id',auth()->user()->id)->first(), 
+            'user_data' => User::with(['user_address','user_store','users_payout_details'])->where('id',auth()->user()->id)->first(),
             'country_data' => Country::latest()->get(),
             // 'user_data' => auth()->user(),
 
@@ -24,7 +24,7 @@ class profileController extends Controller
     	return view('practitioner.profile.general')->with($data);
     }
     public function profile_save(Request $request)
-    { 
+    {
         $user = User::where('id',$request->user_id)->first();
         $user->first_name = $request->first_name;
         $user->last_name = $request->last_name;
@@ -38,11 +38,11 @@ class profileController extends Controller
         }
         $user->save();
         $check_address = UserAddress::where('user_id',$request->user_id)->first();
-        
+
         if(!empty($check_address)){
             $address = $check_address;
-        }else{ 
-            $address = new UserAddress(); 
+        }else{
+            $address = new UserAddress();
         }
         $address->user_id = $request->user_id;
         $address->street = $request->street;
@@ -64,7 +64,7 @@ class profileController extends Controller
         $store->minimum_booking_amount = $request->minimum_booking_amount;
         $store->buffer_between_appointments = $request->buffer_between_appointments;
         $store->save();
-        
+
         $check_PayoutDetail = PayoutDetail::where('user_id',$request->user_id)->first();
         if(!empty($check_PayoutDetail)){
             $PayoutDetail = $check_PayoutDetail;

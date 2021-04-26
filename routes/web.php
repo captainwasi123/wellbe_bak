@@ -127,9 +127,21 @@ use Illuminate\Support\Facades\Route;
 
 		    Route::get('/customers', 'DashboardController@customers')->name('admin.customers');
 		    Route::get('/practitioners', 'DashboardController@practitioners')->name('admin.practitioners');
-		    Route::get('/custom_services', 'DashboardController@custom_services')->name('admin.custom_services');
+		    
+			//services
+			Route::get('/custom_services', 'ServicesController@custom_services')->name('admin.custom_services');	
+           
+			// categories
+            Route::get('/categories', 'CategoryController@index')->name('admin.categories');
+            Route::POST('/add_categories', 'CategoryController@add_categories')->name('admin.add_categories');
+            Route::get('/edit_category/{id}', 'CategoryController@edit_category')->name('admin.edit_category');
+			Route::get('/delete_category/{id}', 'CategoryController@delete_category')->name('admin.delete_category');
+            
+			// End categories
 		    Route::get('/marketplace_catalogue', 'DashboardController@marketplace_catalogue')->name('admin.marketplace_catalogue');
-		    Route::get('/edit_profile', 'DashboardController@edit_profile')->name('admin.edit_profile');
+		    
+			//profile
+			Route::get('/edit_profile', 'DashboardController@edit_profile')->name('admin.edit_profile');
 
 	});
 
