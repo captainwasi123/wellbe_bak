@@ -123,5 +123,6 @@ Route::prefix('admin')->namespace('admin')->group(function () {
     Route::get('/custom_services', 'DashboardController@custom_services')->name('admin.custom_services');
     Route::get('/marketplace_catalogue', 'DashboardController@marketplace_catalogue')->name('admin.marketplace_catalogue');
     Route::get('/edit_profile', 'DashboardController@edit_profile')->name('admin.edit_profile');
-
+    
+    Route::get('/categories', 'CategoryController@index')->name('admin.categories');
 });
