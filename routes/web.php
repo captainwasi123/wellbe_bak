@@ -105,6 +105,7 @@ use Illuminate\Support\Facades\Route;
 		Route::get('/share', 'sharecontroller@index')->name('booker.share');
 	});
 
+<<<<<<< HEAD
 //auth routes for admin
 Route::get('/admin/login', 'AdminLoginController@index')->name('admin.login');
 Route::post('/admin/login', 'AdminLoginController@loginAttempt');
@@ -126,3 +127,32 @@ Route::prefix('admin')->namespace('admin')->group(function () {
     
     Route::get('/categories', 'CategoryController@index')->name('admin.categories');
 });
+=======
+
+
+
+//Admin
+
+	//Authentication
+	Route::prefix('admin')->group(function () {
+		Route::get('login', 'AdminLoginController@index')->name('admin.login');
+		Route::post('login', 'AdminLoginController@loginAttempt');
+		Route::get('logout', 'AdminLoginController@logout')->name('admin.logout');
+	});
+
+	Route::prefix('admin')->middleware('adminAuth')->namespace('admin')->group(function () {
+
+		    Route::get('/', 'DashboardController@index')->name('admin.dashboard');
+		    Route::get('/upcomming', 'DashboardController@upcomming')->name('admin.upcomming');
+		    Route::get('/inprogress', 'DashboardController@inprogress')->name('admin.inprogress');
+		    Route::get('/completed', 'DashboardController@completed')->name('admin.completed');
+		    Route::get('/cancelled', 'DashboardController@cancelled')->name('admin.cancelled');
+
+		    Route::get('/customers', 'DashboardController@customers')->name('admin.customers');
+		    Route::get('/practitioners', 'DashboardController@practitioners')->name('admin.practitioners');
+		    Route::get('/custom_services', 'DashboardController@custom_services')->name('admin.custom_services');
+		    Route::get('/marketplace_catalogue', 'DashboardController@marketplace_catalogue')->name('admin.marketplace_catalogue');
+		    Route::get('/edit_profile', 'DashboardController@edit_profile')->name('admin.edit_profile');
+		    
+	});
+>>>>>>> ae36292eb9e2ccd8a2466b7d7a7956897f5a927d

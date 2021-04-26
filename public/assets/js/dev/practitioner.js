@@ -73,11 +73,11 @@ $(document).ready(function(){
 	//Schedule Spilt
 
 	$(document).on('click', '.splitShift', function(){
-		var parent_tr = $(this).parent().parent();
+		var parent_tr = $(this).parent().parent().parent();
 		let i = parseInt($(this).attr("data-id"));
 		$(this).attr('data-id', i+1);
 		var day = $(this).data('day');
-		$(parent_tr).after('<tr><td></td><td></td><td> First Booking </td><td><input type="text" name="days['+day+']['+i+'][first_booking]" class="timepicker"></td><td> Last Booking </td><td><input type="text" name="days['+day+']['+i+'][last_booking]" class="timepicker"></td><td> <a href="javascript:void(0)" class="col-red removeShift"> - Remove </a> </td>  </tr>');
+		$(parent_tr).append('<tr><td></td><td></td><td> First Booking </td><td><input type="text" name="days['+day+']['+i+'][first_booking]" class="timepicker"></td><td> Last Booking </td><td><input type="text" name="days['+day+']['+i+'][last_booking]" class="timepicker"></td><td> <a href="javascript:void(0)" class="col-red removeShift"> - Remove </a> </td>  </tr>');
 		$('.timepicker').mdtimepicker();
 	});
 
@@ -86,5 +86,21 @@ $(document).ready(function(){
 		$(this).parent().parent().remove();
 	});
 
+	
+	$(document).on('click', '.addClosed', function(){
+		var val = $('#close_date').val();
+		if(val == ''){
+			alert('Please select date first.');
+		}else{
+			$('#close_date_block').append('<h5 class="col-black"><input type="date" value="'+val+'" name="closed[]" readonly> <a href="javascript:void(0)" class="col-blue removeHoliday"> Remove </a> </h5>');
+			$('#close_date').val('');
+		}
+	});
+
+	$(document).on('click', '.removeHoliday', function(){
+		$(this).parent().remove();
+	});
+
+	
 
 });

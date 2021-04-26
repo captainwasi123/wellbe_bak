@@ -43,18 +43,4 @@ class Admin extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function user_address()
-    {
-    	return $this->belongsTo('App\Models\UserAddress','id','user_id');
-    }
-
-    public function user_store()
-    {
-        return $this->belongsTo('App\Models\Store','id','user_id');
-    }
-
-    public function users_payout_details()
-    {
-        return $this->belongsTo('App\Models\PayoutDetail','id','user_id');
-    }
 }
