@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 	Route::get('/', 'webController@index')->name('home');
 	Route::get('/professionals', 'webController@professionals')->name('professionals');
 	Route::get('/treatments', 'webController@treatments')->name('treatments');
+	Route::get('/treatments/professional/profile/{id}', 'webController@professionalProfile');
 
 
 
@@ -130,5 +131,5 @@ use Illuminate\Support\Facades\Route;
 		    Route::get('/custom_services', 'DashboardController@custom_services')->name('admin.custom_services');
 		    Route::get('/marketplace_catalogue', 'DashboardController@marketplace_catalogue')->name('admin.marketplace_catalogue');
 		    Route::get('/edit_profile', 'DashboardController@edit_profile')->name('admin.edit_profile');
-		    
+
 	});
