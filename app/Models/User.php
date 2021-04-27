@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Models\orders\order;
 
 class User extends Authenticatable
 {
@@ -56,5 +57,15 @@ class User extends Authenticatable
     public function users_payout_details()
     {
         return $this->belongsTo('App\Models\PayoutDetail','id','user_id');
+    }
+
+
+    public function pract_orders()
+    {
+        return $this->hasMany(order::class,'pract_id','id');
+    }
+    public function booker_orders()
+    {
+        return $this->hasMany(order::class,'booker_id','id');
     }
 }
