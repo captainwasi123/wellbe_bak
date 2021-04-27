@@ -47,9 +47,9 @@
                </div>
                <div class="sidenav-menu-items">
                   <ul>
-                     @foreach($categories as $val)
-                        <li> 
-                           <a href=""> {{$val->category}} </a> 
+                     @foreach($categories as $key => $val)
+                        <li  class="{{ $key == 0 ? 'active' : '' }}" id="{{$val->id}}"> 
+                           <a href="javascript:void(0)" class="category" data-id="{{$val->id}}" data-userid="{{$data->id}}"> {{$val->category}}  </a> 
                         </li>
                      @endforeach
                   </ul>
@@ -58,30 +58,21 @@
          </div>
          <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
             <div class="pract-services">
+            @if(count($services) == 0)
                <div>
-                  <h4 class="col-black"> Relaxing Massage </h4>
-                  <p class="col-grey"> A soothing massage using gentle strokes and relaxing oils to help relieve tired muscles. <br/> Service Time: 60 Minutes </p>
-                  <h5 class="col-grey"> NZ$120.00 </h5>
-                  <span class="service-actions"> <a href=""> Add <i class="fa fa-plus"> </i> </a></span>
+                  <h4 class="col-black"> No Services Found </h4>
                </div>
+            @endif
+            @foreach($services as $services)
                <div>
-                  <h4 class="col-black"> Deep Tissue Massage </h4>
-                  <p class="col-grey"> A soothing massage using gentle strokes and relaxing oils to help relieve tired muscles. <br/> Service Time: 60 Minutes </p>
-                  <h5 class="col-grey"> NZ$120.00 </h5>
-                  <span class="service-actions"> <a href=""> Add <i class="fa fa-plus"> </i> </a></span>
+                  <h4 class="col-black"> {{$services->name}} </h4>
+                  <p class="col-grey">  {{$services->description}}
+                     <br/> Service Time: {{$services->duration}} Minutes 
+                   </p>
+                  <h5 class="col-grey"> NZ${{number_format($services->duration,2)}} </h5>
+                  <span class="service-actions"> <a href="javascript:void(0)"> Add <i class="fa fa-plus"> </i> </a></span>
                </div>
-               <div>
-                  <h4 class="col-black"> Sports Massage </h4>
-                  <p class="col-grey"> A soothing massage using gentle strokes and relaxing oils to help relieve tired muscles. <br/> Service Time: 60 Minutes </p>
-                  <h5 class="col-grey"> NZ$120.00 </h5>
-                  <span class="service-actions"> <a href=""> Add <i class="fa fa-plus"> </i> </a></span>
-               </div>
-               <div>
-                  <h4 class="col-black"> Relaxing Massage </h4>
-                  <p class="col-grey"> A soothing massage using gentle strokes and relaxing oils to help relieve tired muscles. <br/> Service Time: 60 Minutes </p>
-                  <h5 class="col-grey"> NZ$120.00 </h5>
-                  <span class="service-actions"> <a href=""> Add <i class="fa fa-plus"> </i> </a></span>
-               </div>
+            @endforeach   
             </div>
          </div>
          <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12">
@@ -98,5 +89,16 @@
       </div>
    </div>
 </section>
-
+<script>
+   $('.category').click(function(){ 
+      var userid = $(this).data('userid');
+      var cat_id = $(this).data('id');
+      $("li").removeClass("active");
+      $("#"+cat_id).addClass("active");
+      $('.pract-services').html('<img src="{{URL::to('/')}}/public/assets/images/loader.gif">');
+      $.get( "{{URL::to('/')}}/user/services/"+userid+"/"+cat_id, function( data ) {
+		  $('.pract-services').html( data );
+		});
+   })
+</script>
 @endsection
