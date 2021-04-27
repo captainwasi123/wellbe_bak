@@ -46,7 +46,7 @@
                    <th> Practitioner </th>
                    <th> Added On </th>
                    <th> Status </th>
-                   <th> Actions </th>
+                   <!-- <th> Actions </th> -->
                 </tr>
              </thead>
              <tbody>
@@ -57,8 +57,12 @@
                    <td> {{$all_services->duration}}  </td>
                    <td class="col-blue"> {{$all_services->practitioner->first_name}} {{$all_services->practitioner->last_name}} </td>
                    <td>  {{date('d, M Y - h:i a', strtotime($all_services->created_at))}}</td>
-                   <td> Pending </td>
-                   <td class="actions-box3"> <a class="bg-green col-white"> <i class="fa fa-check"> </i> </a>  <a class="bg-red col-white"> <i class="fa fa-times"> </i> </a> </td>
+                   <td>
+                     {{$all_services->status == 1 ? 'Pending' : ''}}
+                     {{$all_services->status == 2 ? 'Approved' : ''}} 
+                     {{$all_services->status == 3 ? 'Rejected' : ''}}
+                   </td>
+                   <!-- <td class="actions-box3"> <a class="bg-green col-white"> <i class="fa fa-check"> </i> </a>  <a class="bg-red col-white"> <i class="fa fa-times"> </i> </a> </td> -->
                 </tr>
               @endforeach
              </tbody>
@@ -88,7 +92,10 @@
                    <td class="col-blue"> {{$pending_services->practitioner->first_name}} {{$pending_services->practitioner->last_name}} </td>
                    <td>  {{date('d, M Y - h:i a', strtotime($pending_services->created_at))}}</td>
                    <td> Pending </td>
-                   <td class="actions-box3"> <a class="bg-green col-white"> <i class="fa fa-check"> </i> </a>  <a class="bg-red col-white"> <i class="fa fa-times"> </i> </a> </td>
+                   <td class="actions-box3"> 
+                     <a class="bg-green col-white" href="{{route('admin.custom_services.update',['status' => 'approve', 'id' => base64_encode($pending_services->id)])}}"> <i class="fa fa-check"> </i> </a>
+                     <a class="bg-red col-white" href="{{route('admin.custom_services.update',['status' => 'rejected', 'id' => base64_encode($pending_services->id)])}}"> <i class="fa fa-times"> </i> </a>
+                   </td>
                 </tr>
               @endforeach  
              </tbody>
@@ -106,7 +113,7 @@
                    <th> Practitioner </th>
                    <th> Added On </th>
                    <th> Status </th>
-                   <th> Actions </th>
+                   <!-- <th> Actions </th> -->
                 </tr>
              </thead>
              <tbody>
@@ -117,8 +124,8 @@
                    <td> {{$approved_services->duration}}  </td>
                    <td class="col-blue"> {{$approved_services->practitioner->first_name}} {{$approved_services->practitioner->last_name}} </td>
                    <td>  {{date('d, M Y - h:i a', strtotime($approved_services->created_at))}}</td>
-                   <td> Pending </td>
-                   <td class="actions-box3"> <a class="bg-green col-white"> <i class="fa fa-check"> </i> </a>  <a class="bg-red col-white"> <i class="fa fa-times"> </i> </a> </td>
+                   <td> Approved </td>
+                   <!-- <td class="actions-box3"> <a class="bg-green col-white"> <i class="fa fa-check"> </i> </a>  <a class="bg-red col-white"> <i class="fa fa-times"> </i> </a> </td> -->
                 </tr>
               @endforeach  
              </tbody>
@@ -136,7 +143,7 @@
                    <th> Practitioner </th>
                    <th> Added On </th>
                    <th> Status </th>
-                   <th> Actions </th>
+                   <!-- <th> Actions </th> -->
                 </tr>
              </thead>
              <tbody>
@@ -147,8 +154,8 @@
                    <td> {{$rejected_services->duration}}  </td>
                    <td class="col-blue"> {{$rejected_services->practitioner->first_name}} {{$rejected_services->practitioner->last_name}} </td>
                    <td>  {{date('d, M Y - h:i a', strtotime($rejected_services->created_at))}}</td>
-                   <td> Pending </td>
-                   <td class="actions-box3"> <a class="bg-green col-white"> <i class="fa fa-check"> </i> </a>  <a class="bg-red col-white"> <i class="fa fa-times"> </i> </a> </td>
+                   <td> Rejected </td>
+                   <!-- <td class="actions-box3"> <a class="bg-green col-white"> <i class="fa fa-check"> </i> </a>  <a class="bg-red col-white"> <i class="fa fa-times"> </i> </a> </td> -->
                 </tr>
               @endforeach
              </tbody>

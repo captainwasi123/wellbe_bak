@@ -130,7 +130,8 @@ use Illuminate\Support\Facades\Route;
 		    
 			//services
 			Route::get('/custom_services', 'ServicesController@custom_services')->name('admin.custom_services');	
-           
+			Route::get('/custom_services/update', 'ServicesController@custom_services_update')->name('admin.custom_services.update');
+
 			// categories
             Route::get('/categories', 'CategoryController@index')->name('admin.categories');
             Route::POST('/add_categories', 'CategoryController@add_categories')->name('admin.add_categories');
