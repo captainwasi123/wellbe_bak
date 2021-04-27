@@ -25,4 +25,12 @@ class webController extends Controller
 
     	return view('web.treatments', ['categories' => $categories, 'users' => $users]);
     }
+
+    function professionalProfile($id){
+    	$id = base64_decode($id);
+    	$data = User::find($id);
+    	$categories = category::where('status', '1')->get();
+
+    	return view('web.practitionerProfile', ['data' => $data, 'categories' => $categories]);
+    }
 }
