@@ -18,4 +18,21 @@ class ServicesController extends Controller
     	);
        return view("admin.custom_services.custom_services")->with($data);
     }
+	public function custom_services_update(Request $request)
+	{
+		$id = base64_decode($request->id);
+		if($request->status == 'approve'){
+			\DB::table('tbl_user_services_info')
+                ->where('id', $id)
+                ->update(['status' => 2]);
+		    $msg = "Services Approved Successfully";	
+		}else{
+			\DB::table('tbl_user_services_info')
+                ->where('id', $id)
+                ->update(['status' => 3]);
+		    $msg = "Services Rejected Successfully";
+		}
+		
+		return redirect()->route('admin.custom_services')->with('success',$msg);
+	}
 }
