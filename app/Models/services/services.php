@@ -42,4 +42,8 @@ class services extends Model
     public function addons_list(){
         return $this->hasMany(addons::class, 'service_id', 'id');
     }
+
+    public function practitioner(){
+        return $this->belongsTo('App\Models\User','user_id');
+    }
 }

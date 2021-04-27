@@ -34,17 +34,17 @@ class DashboardController extends Controller
     function practitioners(){
         return view("admin.practitioners.practitioners");
     }
-
-    function custom_services(){
-        return view("admin.custom_services.custom_services");
-    }
-
     function marketplace_catalogue(){
         return view("admin.marketplace_catalogue.marketplace_catalogue");
     }
 
     function edit_profile(){
-        return view("admin.profile.edit_profile");
+      dd(auth()->user());
+        // $data = array(
+        //     'title' => 'Edit Profile',
+        //     'user_data' =>
+        // );
+    //    return view("admin.profile.edit_profile");
     }
 
 
