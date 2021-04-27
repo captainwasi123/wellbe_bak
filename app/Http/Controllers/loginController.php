@@ -16,7 +16,7 @@ class loginController extends Controller
     function loginAttempt(Request $request){
         $data = $request->all();
 
-        if(Auth::attempt(['email' => $data['email'], 'password' => $data['password']])){
+        if(Auth::attempt(['email' => $data['email'], 'password' => $data['password'], 'status' => '1'])){
             if(Auth::user()->user_type == '1'){
                 return redirect(route('practitioner.dashboard'));    
             }else if(Auth::user()->user_type == '2'){
