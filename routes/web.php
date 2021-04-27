@@ -143,6 +143,10 @@ use Illuminate\Support\Facades\Route;
 		    
 			//profile
 			Route::get('/edit_profile', 'DashboardController@edit_profile')->name('admin.edit_profile');
+			Route::post('/update_profile', 'DashboardController@update_profile')->name('admin.update_profile');
+
+			//comission
+			Route::post('/update/comission', 'DashboardController@update_comission')->name('admin.update.comission');
 
 			Route::get('/categories', 'CategoryController@index')->name('admin.categories');
 
