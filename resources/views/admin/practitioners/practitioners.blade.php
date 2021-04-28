@@ -26,48 +26,28 @@
                 </tr>
              </thead>
              <tbody>
-                <tr>
-                   <td class="col-blue"> Paige Williams </td>
-                   <td> 5 </td>
-                   <td> 5 </td>
-                   <td> 5  </td>
-                   <td> $ 1000 </td>
-                   <td> $ 230.00 </td>
-                   <td>   <label class="switch">
-<input type="checkbox" class="switch-input" checked>
-<span class="switch-label" data-on="On" data-off="Off"></span>
-<span class="switch-handle"></span>
-</label>  </td>
-                </tr>
-
-                <tr>
-                   <td class="col-blue"> Paige Williams </td>
-                   <td> 5 </td>
-                   <td> 5 </td>
-                   <td> 5  </td>
-                   <td> $ 1000 </td>
-                   <td> $ 230.00 </td>
-                   <td>   <label class="switch">
-<input type="checkbox" class="switch-input" checked>
-<span class="switch-label" data-on="On" data-off="Off"></span>
-<span class="switch-handle"></span>
-</label>  </td>
-                </tr>
-
-
-                <tr>
-                   <td class="col-blue"> Paige Williams </td>
-                   <td> 5 </td>
-                   <td> 5 </td>
-                   <td> 5  </td>
-                   <td> $ 1000 </td>
-                   <td> $ 230.00 </td>
-                   <td>   <label class="switch">
-<input type="checkbox" class="switch-input" checked>
-<span class="switch-label" data-on="On" data-off="Off"></span>
-<span class="switch-handle"></span>
-</label>  </td>
-                </tr>
+                @foreach($data as $val)
+                  <tr>
+                     <td class="col-blue"> {{$val->first_name.' '.$val->last_name}} </td>
+                     <td> {{count($val->p_upcoming)}} </td>
+                     <td> {{count($val->p_completed)}} </td>
+                     <td> {{count($val->p_cancelled)}} </td>
+                     <td> {{empty($val->p_revenue) ? '0' : '$'.number_format($val->p_revenue[0]->totalRevenue, 2)}} </td>
+                     <td> - </td>
+                     <td>   
+                      <label class="switch">
+                        <input type="checkbox" class="switch-input" checked>
+                        <span class="switch-label" data-on="On" data-off="Off"></span>
+                        <span class="switch-handle"></span>
+                      </label>  
+                    </td>
+                  </tr>
+                @endforeach
+                @if(count($data) == '0')
+                  <tr>
+                    <td colspan="7">No Practitioners Found.</td>
+                  </tr>
+                @endif
              </tbody>
           </table>
        </div>

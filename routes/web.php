@@ -84,6 +84,9 @@ use Illuminate\Support\Facades\Route;
 			Route::get('/inprogress', 'bookingController@inprogress_booking')->name('practitioner.booking.inprogress');
 			Route::get('/completed', 'bookingController@completed_booking')->name('practitioner.booking.completed');
 			Route::get('/cancelled', 'bookingController@cancelled_booking')->name('practitioner.booking.cancelled');
+
+			//Response
+			Route::get('/view1/{id}', 'bookingController@bookingView1');
 		});
 
 		//plan
@@ -104,6 +107,9 @@ use Illuminate\Support\Facades\Route;
 		Route::get('/completed', 'bookingscontroller@completed_booking')->name('booker.completed_booking');
 		Route::get('/cancelled', 'bookingscontroller@cancelled_booking')->name('booker.cancelled_booking');
 
+		//Response
+		Route::get('/view/{id}', 'bookingscontroller@bookingView1');
+
 		Route::get('/profile', 'profilecontroller@index')->name('booker.profile');
 		Route::post('/profile-save', 'profilecontroller@profile_save')->name('booker.profile.save');
 
@@ -123,36 +129,39 @@ use Illuminate\Support\Facades\Route;
 
 	Route::prefix('admin')->middleware('adminAuth')->namespace('admin')->group(function () {
 
-		    Route::get('/', 'DashboardController@index')->name('admin.dashboard');
-		    Route::get('/upcomming', 'DashboardController@upcomming')->name('admin.upcomming');
-		    Route::get('/inprogress', 'DashboardController@inprogress')->name('admin.inprogress');
-		    Route::get('/completed', 'DashboardController@completed')->name('admin.completed');
-		    Route::get('/cancelled', 'DashboardController@cancelled')->name('admin.cancelled');
+	    Route::get('/', 'DashboardController@index')->name('admin.dashboard');
+	    Route::get('/upcomming', 'DashboardController@upcomming')->name('admin.upcomming');
+	    Route::get('/inprogress', 'DashboardController@inprogress')->name('admin.inprogress');
+	    Route::get('/completed', 'DashboardController@completed')->name('admin.completed');
+	    Route::get('/cancelled', 'DashboardController@cancelled')->name('admin.cancelled');
+	    
+		//Response
+		Route::get('/view/{id}', 'DashboardController@bookingView1');
 
-		    Route::get('/customers', 'DashboardController@customers')->name('admin.customers');
-		    Route::get('/practitioners', 'DashboardController@practitioners')->name('admin.practitioners');
-		    
-			//services
-			Route::get('/custom_services', 'ServicesController@custom_services')->name('admin.custom_services');	
-			Route::get('/custom_services/update', 'ServicesController@custom_services_update')->name('admin.custom_services.update');
+	    Route::get('/customers', 'DashboardController@customers')->name('admin.customers');
+	    Route::get('/practitioners', 'DashboardController@practitioners')->name('admin.practitioners');
+	    
+		//services
+		Route::get('/custom_services', 'ServicesController@custom_services')->name('admin.custom_services');	
+		Route::get('/custom_services/update', 'ServicesController@custom_services_update')->name('admin.custom_services.update');
 
-			// categories
-            Route::get('/categories', 'CategoryController@index')->name('admin.categories');
-            Route::POST('/add_categories', 'CategoryController@add_categories')->name('admin.add_categories');
-            Route::get('/edit_category/{id}', 'CategoryController@edit_category')->name('admin.edit_category');
-			Route::get('/delete_category/{id}', 'CategoryController@delete_category')->name('admin.delete_category');
-            
-			// End categories
-		    Route::get('/marketplace_catalogue', 'DashboardController@marketplace_catalogue')->name('admin.marketplace_catalogue');
-		    
-			//profile
-			Route::get('/edit_profile', 'DashboardController@edit_profile')->name('admin.edit_profile');
-			Route::post('/update_profile', 'DashboardController@update_profile')->name('admin.update_profile');
+		// categories
+        Route::get('/categories', 'CategoryController@index')->name('admin.categories');
+        Route::POST('/add_categories', 'CategoryController@add_categories')->name('admin.add_categories');
+        Route::get('/edit_category/{id}', 'CategoryController@edit_category')->name('admin.edit_category');
+		Route::get('/delete_category/{id}', 'CategoryController@delete_category')->name('admin.delete_category');
+        
+		// End categories
+	    Route::get('/marketplace_catalogue', 'DashboardController@marketplace_catalogue')->name('admin.marketplace_catalogue');
+	    
+		//profile
+		Route::get('/edit_profile', 'DashboardController@edit_profile')->name('admin.edit_profile');
+		Route::post('/update_profile', 'DashboardController@update_profile')->name('admin.update_profile');
 
-			//comission
-			Route::post('/update/comission', 'DashboardController@update_comission')->name('admin.update.comission');
+		//comission
+		Route::post('/update/comission', 'DashboardController@update_comission')->name('admin.update.comission');
 
-			Route::get('/categories', 'CategoryController@index')->name('admin.categories');
+		Route::get('/categories', 'CategoryController@index')->name('admin.categories');
 
 	});
 

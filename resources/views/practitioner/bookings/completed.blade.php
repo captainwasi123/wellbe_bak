@@ -25,54 +25,23 @@
                     </tr>
                  </thead>
                  <tbody>
-                    <tr>
-                       <td> Mon 15 Feb 2020 - 08:30 AM </td>
-                       <td> #905848 </td>
-                       <td class="col-blue"> Paige Williams <i class="fa fa-comments col-black"> </i> </td>
-                       <td> IN ESCROW </td>
-                       <td> NZ $48.00 </td>
-                       <td> <a href="" class="custom-btn1"> View  </a> </td>
-                    </tr>
-                    <tr>
-                       <td> Mon 15 Feb 2020 - 08:30 AM </td>
-                       <td> #905848 </td>
-                       <td class="col-blue"> Paige Williams <i class="fa fa-comments col-black"> </i> </td>
-                       <td> IN ESCROW </td>
-                       <td> NZ $48.00 </td>
-                       <td> <a href="" class="custom-btn1"> View  </a> </td>
-                    </tr>
-                    <tr>
-                       <td> Mon 15 Feb 2020 - 08:30 AM </td>
-                       <td> #905848 </td>
-                       <td class="col-blue"> Paige Williams <i class="fa fa-comments col-black"> </i> </td>
-                       <td> IN ESCROW </td>
-                       <td> NZ $48.00 </td>
-                       <td> <a href="" class="custom-btn1"> View  </a> </td>
-                    </tr>
-                    <tr>
-                       <td> Mon 15 Feb 2020 - 08:30 AM </td>
-                       <td> #905848 </td>
-                       <td class="col-blue"> Paige Williams <i class="fa fa-comments col-black"> </i> </td>
-                       <td> IN ESCROW </td>
-                       <td> NZ $48.00 </td>
-                       <td> <a href="" class="custom-btn1"> View  </a> </td>
-                    </tr>
-                    <tr>
-                       <td> Mon 15 Feb 2020 - 08:30 AM </td>
-                       <td> #905848 </td>
-                       <td class="col-blue"> Paige Williams <i class="fa fa-comments col-black"> </i> </td>
-                       <td> Paid </td>
-                       <td> NZ $48.00 </td>
-                       <td> <a href="" class="custom-btn1"> View  </a> </td>
-                    </tr>
-                    <tr>
-                       <td> Mon 15 Feb 2020 - 08:30 AM </td>
-                       <td> #905848 </td>
-                       <td class="col-blue"> Paige Williams <i class="fa fa-comments col-black"> </i> </td>
-                       <td> Paid </td>
-                       <td> NZ $48.00 </td>
-                       <td> <a href="" class="custom-btn1"> View  </a> </td>
-                    </tr>
+                    @foreach($data as $val)
+                      <tr>
+                         <td> {{date('l, d M Y - h:i A', strtotime($val->start_at))}}</td>
+                         <td> #{{$val->id}} </td>
+                         <td class="col-blue"> {{empty($val->booker) ? 'Deleted User' : $val->booker->first_name.' '.$val->booker->last_name}} <i class="fa fa-comments col-black"> </i> </td>
+                         <td>-</td>
+                         <td> NZ ${{number_format($val->pract_earning, 2)}} </td>
+                         <td> <a href="javascript:void(0)" class="custom-btn1 orderModal" data-id="{{base64_encode($val->id)}}"> View  </a> </td>
+                      </tr>
+                    @endforeach
+                    @if(count($data) == '0')
+                      <tr>
+                        <td colspan="6">
+                          No Bookings Found.
+                        </td>
+                      </tr>
+                    @endif
                  </tbody>
               </table>
            </div>
@@ -80,4 +49,19 @@
      </div>
    </div>
 
+    <!-- Modal -->
+     <div class="modal fade modal-size2 orderView" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+         <div class="modal-dialog" role="document" style="max-width: 850px;">
+            <div class="modal-content">
+               <button type="button" class="close1" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+               <div class="booking-modal-popup" id="orderViewContent">
+                  
+               </div>
+            </div>
+         </div>
+      </div>
+
+@endsection
+@section('additionalJS')
+   <script src="{{URL::to('/')}}/public/assets/js/dev/practitioner.js"> </script>
 @endsection
