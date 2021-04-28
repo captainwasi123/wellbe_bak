@@ -10,6 +10,8 @@
          <br/> Service Time: {{$services->duration}} Minutes 
        </p>
       <h5 class="col-grey"> NZ${{number_format($services->duration,2)}} </h5>
-      <span class="service-actions"> <a href="javascript:void(0)"> Add <i class="fa fa-plus"> </i> </a></span>
+      <span class="service-actions"> 
+                     <a href="javascript:void(0)" class="add_cart" data-id="{{$services->id}}" data-name="{{$services->name}}" data-minutes="{{$services->duration}}" data-price="{{$services->price}}"> Add <i class="fa fa-plus"> </i> </a>
+                  </span>
    </div>
 @endforeach   

@@ -132,7 +132,6 @@
       </div>
    </div>
 </section>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
    $('.category').click(function(){ 
       var userid = $(this).data('userid');
