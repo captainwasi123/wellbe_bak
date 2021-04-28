@@ -12,3 +12,17 @@
 .availability-table tbody {
     border: 1px solid #e6e6e6;
 }
+.booking-detail-table {
+    border: 1px solid #e6e6e6;
+    padding: 0px 10px;
+    margin-bottom: 10px;
+}
+.booking-detail-table tr{
+	border-bottom: 1px solid #e6e6e6;
+}
+.wd-40{
+	width: 40%;
+}
+.wd-60{
+	width: 60%;
+}

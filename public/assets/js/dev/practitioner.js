@@ -101,6 +101,19 @@ $(document).ready(function(){
 		$(this).parent().remove();
 	});
 
+
+	//Order View
+
+	$(document).on('click', '.orderModal', function(){
+		var id = $(this).data('id');
+
+		$('.orderView').modal('show');
+		$('#orderViewContent').html('<img src="../../public/assets/images/loader.gif">');
+
+		$.get( "view1/"+id, function( data ) {
+		  $('#orderViewContent').html( data );
+		});
+	});
 	
 
 });

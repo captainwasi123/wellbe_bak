@@ -26,54 +26,17 @@
                 </tr>
              </thead>
              <tbody>
-                <tr>
-                   <td class="col-blue"> Paige Williams  </td>
-                   <td> 5 </td>
-                   <td> 5 </td>
-                   <td> 5 </td>
-                   <td> $1000 </td>
-                   <td> Yes </td>
-                   <td> Auckland </td>
-                </tr>
-                 <tr>
-                   <td class="col-blue"> Paige Williams  </td>
-                   <td> 5 </td>
-                   <td> 5 </td>
-                   <td> 5 </td>
-                   <td> $1000 </td>
-                   <td> Yes </td>
-                   <td> Auckland </td>
-                </tr>
-                 <tr>
-                   <td class="col-blue"> Paige Williams  </td>
-                   <td> 5 </td>
-                   <td> 5 </td>
-                   <td> 5 </td>
-                   <td> $1000 </td>
-                   <td> Yes </td>
-                   <td> Auckland </td>
-                </tr>
-                 <tr>
-                   <td class="col-blue"> Paige Williams  </td>
-                   <td> 5 </td>
-                   <td> 5 </td>
-                   <td> 5 </td>
-                   <td> $1000 </td>
-                   <td> Yes </td>
-                   <td> Auckland </td>
-                </tr>
-                 <tr>
-                   <td class="col-blue"> Paige Williams  </td>
-                   <td> 5 </td>
-                   <td> 5 </td>
-                   <td> 5 </td>
-                   <td> $1000 </td>
-                   <td> Yes </td>
-                   <td> Auckland </td>
-                </tr>
-
-
-
+                @foreach($data as $val)
+                  <tr>
+                     <td class="col-blue"> {{$val->first_name.' '.$val->last_name}} </td>
+                     <td> {{count($val->b_upcoming)}} </td>
+                     <td> {{count($val->b_completed)}} </td>
+                     <td> {{count($val->b_cancelled)}} </td>
+                     <td> {{empty($val->b_revenue) ? '0' : '$'.number_format($val->b_revenue[0]->totalRevenue, 2)}} </td>
+                     <td> {{$val->newsletter == '0' ? 'NO' : 'YES'}} </td>
+                     <td> {{empty($val->user_address) ? '' : $val->user_address->city}}</td>
+                  </tr>
+                @endforeach
              </tbody>
           </table>
        </div>

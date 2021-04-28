@@ -82,14 +82,14 @@
  <div class="row">
   <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
  <div class="form-field3 m-t-30">
- <p> Default Marketplace Comission </p>
- <input type="number"  name="comission" value="{{@$marketplace_data->comission}}">
+ <p> Default Marketplace Comission (%) </p>
+ <input type="number"  name="comission" value="{{empty($marketplace_data->comission) ? '0' : $marketplace_data->comission}}">
  </div>
  </div>
  <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
  <div class="form-field3 m-t-30">
- <p> Default Marketplace GST </p>
- <input type="number"  name="gst" value="{{@$marketplace_data->gst}}">
+ <p> Default Marketplace GST (%)</p>
+ <input type="number"  name="gst" value="{{empty($marketplace_data->gst) ? '0' : $marketplace_data->gst}}">
  </div>
  </div>
  </div>

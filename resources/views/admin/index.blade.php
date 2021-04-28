@@ -25,56 +25,24 @@
                    </tr>
                 </thead>
                 <tbody>
-                   <tr>
-                      <td> Mon 15 Feb 2020 - 08:30 AM </td>
-                      <td> #905848 </td>
-                      <td class="col-blue"> Paige </td>
-                      <td class="col-blue"> Paige Williams </td>
-                      <td> 116 William Street, Petone, Lo... </td>
-                      <td> NZ$ - 48.00 </td>
-                      <td> <a href="" class="custom-btn1"> View </a> </td>
-                   </tr>
-
-                   <tr>
-                      <td> Mon 15 Feb 2020 - 08:30 AM </td>
-                      <td> #905848 </td>
-                      <td class="col-blue"> Paige </td>
-                      <td class="col-blue"> Paige Williams </td>
-                      <td> 116 William Street, Petone, Lo... </td>
-                      <td> NZ$ - 48.00 </td>
-                      <td> <a href="" class="custom-btn1"> View </a> </td>
-                   </tr>
-
-                   <tr>
-                      <td> Mon 15 Feb 2020 - 08:30 AM </td>
-                      <td> #905848 </td>
-                      <td class="col-blue"> Paige </td>
-                      <td class="col-blue"> Paige Williams </td>
-                      <td> 116 William Street, Petone, Lo... </td>
-                      <td> NZ$ - 48.00 </td>
-                      <td> <a href="" class="custom-btn1"> View </a> </td>
-                   </tr>
-
-                   <tr>
-                      <td> Mon 15 Feb 2020 - 08:30 AM </td>
-                      <td> #905848 </td>
-                      <td class="col-blue"> Paige </td>
-                      <td class="col-blue"> Paige Williams </td>
-                      <td> 116 William Street, Petone, Lo... </td>
-                      <td> NZ$ - 48.00 </td>
-                      <td> <a href="" class="custom-btn1"> View </a> </td>
-                   </tr>
-
-                   <tr>
-                      <td> Mon 15 Feb 2020 - 08:30 AM </td>
-                      <td> #905848 </td>
-                      <td class="col-blue"> Paige </td>
-                      <td class="col-blue"> Paige Williams </td>
-                      <td> 116 William Street, Petone, Lo... </td>
-                      <td> NZ$ - 48.00 </td>
-                      <td> <a href="" class="custom-btn1"> View </a> </td>
-                   </tr>
-
+                   @foreach($upcomming as $val)
+                     <tr>
+                        <td> {{date('l, d M Y - h:i A', strtotime($val->start_at))}}</td>
+                        <td> #{{$val->id}} </td>
+                        <td class="col-blue"> {{empty($val->practitioner) ? 'Deleted User' : $val->practitioner->first_name.' '.$val->practitioner->last_name}} <i class="fa fa-comments col-black"> </i> </td>
+                        <td class="col-blue"> {{empty($val->booker) ? 'Deleted User' : $val->booker->first_name.' '.$val->booker->last_name}} <i class="fa fa-comments col-black"> </i> </td>
+                        <td> {{empty($val->booker->user_address) ? '' : $val->booker->user_address->city}}{{empty($val->booker->user_address->country) ? '' : ', '.$val->booker->user_address->country->country}} </td>
+                        <td> NZ ${{number_format($val->total_amount, 2)}} </td>
+                        <td> <a href="javascript:void(0)" class="custom-btn1 orderModal" data-id="{{base64_encode($val->id)}}"> View  </a> </td>
+                     </tr>
+                   @endforeach
+                   @if(count($upcomming) == '0')
+                     <tr>
+                       <td colspan="6">
+                         No Bookings Found.
+                       </td>
+                     </tr>
+                   @endif
                 </tbody>
              </table>
           </div>
@@ -91,19 +59,19 @@
                 </div>
                 <div class="stats-records">
                    <div>
-                      <h4> 1 </h4>
+                      <h4> {{$data_count['practitioners']}} </h4>
                       <h6> Practitioners </h6>
                    </div>
                    <div>
-                      <h4> 1 </h4>
+                      <h4> {{$data_count['upcomming']}} </h4>
                       <h6> Upcoming Bookings </h6>
                    </div>
                    <div>
-                      <h4> 1 </h4>
+                      <h4> {{$data_count['completed']}} </h4>
                       <h6> Completed Bookings </h6>
                    </div>
                    <div>
-                      <h4> 1 </h4>
+                      <h4> {{$data_count['cancelled']}} </h4>
                       <h6> Cancelled Bookings </h6>
                    </div>
                 </div>

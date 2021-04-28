@@ -68,4 +68,38 @@ class User extends Authenticatable
     {
         return $this->hasMany(order::class,'booker_id','id');
     }
+
+
+    //Booker Orders
+    public function b_upcoming(){
+        return $this->hasMany(order::class, 'booker_id', 'id')->where('status', '1');
+    }
+    public function b_completed(){
+        return $this->hasMany(order::class, 'booker_id', 'id')->where('status', '3');
+    }
+    public function b_cancelled(){
+        return $this->hasMany(order::class, 'booker_id', 'id')->where('status', '4');
+    }
+    public function b_revenue(){
+        return $this->hasMany(order::class, 'booker_id', 'id')
+                    ->where('status', '3')
+                    ->selectRaw('SUM(total_amount) as totalRevenue');
+    }
+
+
+    //Practitioner Orders
+    public function p_upcoming(){
+        return $this->hasMany(order::class, 'pract_id', 'id')->where('status', '1');
+    }
+    public function p_completed(){
+        return $this->hasMany(order::class, 'pract_id', 'id')->where('status', '3');
+    }
+    public function p_cancelled(){
+        return $this->hasMany(order::class, 'pract_id', 'id')->where('status', '4');
+    }
+    public function p_revenue(){
+        return $this->hasMany(order::class, 'pract_id', 'id')
+                    ->where('status', '3')
+                    ->selectRaw('SUM(total_amount) as totalRevenue');
+    }
 }
