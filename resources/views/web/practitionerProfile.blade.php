@@ -69,8 +69,10 @@
                   <p class="col-grey">  {{$services->description}}
                      <br/> Service Time: {{$services->duration}} Minutes 
                    </p>
-                  <h5 class="col-grey"> NZ${{number_format($services->duration,2)}} </h5>
-                  <span class="service-actions"> <a href="javascript:void(0)"> Add <i class="fa fa-plus"> </i> </a></span>
+                  <h5 class="col-grey"> NZ${{number_format($services->price,2)}} </h5>
+                  <span class="service-actions"> 
+                     <a href="javascript:void(0)" class="add_cart" data-id="{{$services->id}}" data-name="{{$services->name}}" data-minutes="{{$services->duration}}" data-price="{{$services->price}}"> Add <i class="fa fa-plus"> </i> </a>
+                  </span>
                </div>
             @endforeach   
             </div>
@@ -80,15 +82,57 @@
                <div class="booking-cart-head">
                   <h4> Booking </h4>
                </div>
-               <div class="booking-empty text-center">
-                  <img src="{{URL::to('/')}}/public/assets/web/images/empty-cart.png">
-                  <p> Your cart is empty <br/> Add an item to begin. </p>
+               <div id="cart_data">
+                  @if(!empty(\Cart::content()))
+                  <div class="booking-cart-items">
+                     @foreach(\Cart::content() as $row)
+                     <div class="booking-cart-item1">
+                        <h5> {{$row->name}} </h5>
+                        <div class="quantity">
+                           <button data-decrease>-</button>
+                           <input data-value type="text" value="{{$row->qty}}" disabled />
+                           <button data-increase>+</button>
+                           <b class="price-cart"> {{number_format($row->price,2)}} </b>
+                        </div>
+                     </div>
+                     @endforeach
+                  </div>
+                  @else
+                  <div class="booking-empty text-center">
+                     <img src="{{URL::to('/')}}/public/assets/web/images/empty-cart.png">
+                     <p> Your cart is empty <br/> Add an item to begin. </p>
+                  </div>
+                  @endif
+               </div>
+            </div>
+            <div class="booking-cart" style="margin-top: 40px;">
+               <div class="booking-cart-head">
+                  <h5> Choose Date/Time   </h5>
+               </div>
+               <div class="booking-cart-items" style="padding-top: 20px;">
+                  <div class="row">
+                     <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                        <div class="form-field4">
+                           <p> Choose Date </p>
+                           <input type="date" name="">
+                        </div>
+                     </div>
+                     <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                        <div class="form-field4">
+                           <p> Choose Time </p>
+                           <select>
+                              <option value="">select</option>
+                           </select>
+                        </div>
+                     </div>
+                  </div>
                </div>
             </div>
          </div>
       </div>
    </div>
 </section>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
    $('.category').click(function(){ 
       var userid = $(this).data('userid');
@@ -99,6 +143,25 @@
       $.get( "{{URL::to('/')}}/user/services/"+userid+"/"+cat_id, function( data ) {
 		  $('.pract-services').html( data );
 		});
+   });
+   $('.add_cart').click(function() { 
+      var p_id = $(this).data('id');
+      var name = $(this).data('name');
+      var minutes = $(this).data('minutes');
+      var price = $(this).data('price');
+      $.ajax({
+         url: "{{ route('add_cart') }}",
+         method: 'post',
+         data: {'p_id':p_id,'name':name,'minutes':minutes,'price':price, "_token": "{{ csrf_token() }}",},
+         success: function (result) { 
+            $('#cart_data').html(result);
+          
+         },
+         error: function (msg) {
+
+         },
+                     
+     });
    })
 </script>
 @endsection

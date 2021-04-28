@@ -11,7 +11,7 @@ class webController extends Controller
 {
     
     function index(){
-
+       
     	return view('web.index');
     }
 
@@ -41,4 +41,11 @@ class webController extends Controller
 		return view('web.load_practitioner_service', ['services' => $services]);
 		
 	}
+
+    public function add_cart(Request $request)
+    { 
+        \Cart::add(['id' => $request->p_id, 'name' => $request->name, 'qty' => 1, 'price' => $request->price, 'weight' => 0, 'options' => ['minutes' => $request->minutes]]);
+        $cart_data = \Cart::content(); 
+        return view('web.load_cart_data', ['cart_data' => $cart_data]);
+    }
 }
