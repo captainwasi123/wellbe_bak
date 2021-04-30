@@ -78,6 +78,6 @@ class webController extends Controller
     }
 	public function get_slots(Request $request)
 	{
-		$availabeSlots = availabeSlots::where(user_id)  dd($request->date);
+		// $availabeSlots = availabeSlots::where(user_id);  dd($request->date);
 	}
 }

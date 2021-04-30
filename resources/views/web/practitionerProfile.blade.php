@@ -209,7 +209,7 @@ $(document).ready(function() {
       date = $('#iDate').val();
       var userid = $(this).data('userid');
       $.get( "{{URL::to('/')}}/user/slots/"+date+"/"+userid, function( data ) {
-		  $('.pract-services').html( data );
+		//  $('.pract-services').html( data );
 		});
    });
 </script>
