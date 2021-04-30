@@ -1,7 +1,7 @@
 @extends('web.includes.master')
 @section('title', 'Practitioner Profile')
 @section('content')
-
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <section class="all-content bg-pink pad-top-40 pad-bot-40">
    <div class="container">
       <div class="row">
@@ -83,7 +83,7 @@
                   <h4> Booking </h4>
                </div>
                <div id="cart_data">
-                  @if(!empty(\Cart::content()))
+                  @if(\Cart::count() != 0)
                   <div class="booking-cart-items">
                      @foreach(\Cart::content() as $row)
                      <div class="booking-cart-item1">
@@ -114,7 +114,7 @@
                      <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                         <div class="form-field4">
                            <p> Choose Date </p>
-                           <input type="date" name="">
+                           <input type="text" id="iDate" name="">
                         </div>
                      </div>
                      <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
@@ -132,6 +132,9 @@
       </div>
    </div>
 </section>
+<input type="hidden" name="" id="day" value='{{$availability["availability"]}}'>
+@endsection
+@section('additionalJS')
 <script>
    $('.category').click(function(){ 
       var userid = $(this).data('userid');
@@ -143,7 +146,7 @@
 		  $('.pract-services').html( data );
 		});
    });
-   $('.add_cart').click(function() { 
+   $('body').on('click','.add_cart',function() {
       var p_id = $(this).data('id');
       var name = $(this).data('name');
       var minutes = $(this).data('minutes');
@@ -162,5 +165,28 @@
                      
      });
    })
+</script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+$(document).ready(function() {
+   var unavailableDates = '{{$availability["holidays"]}}';
+    days = $('#day').val(); 
+   function unavailable(date) {
+      dmy = date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear();
+      if ($.inArray(dmy, unavailableDates) == -1) {
+         return [date.getDay() == 1 || date.getDay() == 2 || date.getDay() == 3 || date.getDay() == 4 || date.getDay() == 5 || date.getDay() == 6]
+      } else {
+         return [false, "", "Unavailable"];
+      }
+   }
+  
+   $(function() { console.log(day);
+        $("#iDate").datepicker({
+            dateFormat: 'dd MM yy',
+            beforeShowDay: unavailable
+        });
+
+    });
+})    
 </script>
 @endsection

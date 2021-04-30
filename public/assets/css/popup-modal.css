@@ -1,0 +1,93 @@
+.form-field6 {
+    float: left;
+    width: 100%;
+    margin-bottom: 15px;
+}
+.form-field6 p {
+    color: black;
+    font-size: 14px;
+    letter-spacing: 0.3px;
+    margin-bottom: 7px;
+}
+.form-field6 input {
+    width: 100%;
+    height: 42px;
+    border: 1px solid #a0a0a0;
+    border-radius: 3px;
+    padding: 0px 5px;
+}
+.custom-modal-triggers {
+    float: left;
+    width: 100%;
+    text-align: center;
+}
+.custom-modal-triggers ul {
+    float: left;
+    width: 100%;
+    display: block;
+}
+.custom-modal-triggers ul li {
+    float: left;
+    width: 50%;
+    margin: 0px !important;
+    border: none !important;
+}
+.nav-tabs .nav-link {
+    border: 1px solid transparent;
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
+    color: black;
+    font-size: 18px;
+    letter-spacing: 1px;
+    font-weight: 500;
+    padding: 14px 0px;
+}
+.custom-modal-data .tab-content h5 {
+    color: #404780;
+    font-size: 17px;
+    letter-spacing: 0.3px;
+    font-weight: 500;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.custom-modal-triggers .nav-tabs .nav-item.show .nav-link, .custom-modal-triggers .nav-tabs .nav-link.active {
+    color: white;
+    background-color: #404780;
+    border-color: transparent;
+    border-radius: 0px;
+}
+.forgot-password {
+    float: left;
+    width: 100%;
+    text-align: right;
+    margin-top: -8px;
+}
+.forgot-password a {
+    color: #8185ab;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+    font-size: 13px;
+}
+.custom-modal-data {
+    float: left;
+    width: 100%;
+    padding: 10px 20px 40px 20px;
+}
+.form-field7 button {
+    width: 160px;
+    height: 46px;
+    text-transform: uppercase;
+    font-size: 16px;
+    letter-spacing: 0.7px;
+}
+.form-field7 {
+    float: left;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.custom-modal-data .tab-content form {
+    max-width: 400px !important;
+    margin: auto;
+}
