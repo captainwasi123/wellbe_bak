@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Route;
 	//Services
 	Route::get('/user/services/{userid}/{cat_id}', 'webController@user_services');
 	Route::post('/add_cart','webController@add_cart')->name('add_cart');
+	Route::get('/user/slots/{date}/{user_id}', 'webController@get_slots');
 
 
 

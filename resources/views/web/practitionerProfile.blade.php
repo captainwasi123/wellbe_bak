@@ -132,7 +132,6 @@
       </div>
    </div>
 </section>
-<input type="hidden" name="" id="day" value='{{$availability["availability"]}}'>
 @endsection
 @section('additionalJS')
 <script>
@@ -169,24 +168,49 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
 $(document).ready(function() {
-   var unavailableDates = '{{$availability["holidays"]}}';
-    days = $('#day').val(); 
+   var unavailableDates = @json($holiday);
    function unavailable(date) {
-      dmy = date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear();
-      if ($.inArray(dmy, unavailableDates) == -1) {
-         return [date.getDay() == 1 || date.getDay() == 2 || date.getDay() == 3 || date.getDay() == 4 || date.getDay() == 5 || date.getDay() == 6]
-      } else {
-         return [false, "", "Unavailable"];
-      }
+         dmy = date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear();
+         if ($.inArray(dmy, unavailableDates) == -1) {
+            return [true, ""];
+         } else {
+            return [false, "", "Unavailable"];
+         }
    }
-  
-   $(function() { console.log(day);
-        $("#iDate").datepicker({
-            dateFormat: 'dd MM yy',
-            beforeShowDay: unavailable
-        });
+    function nonWorkingDates(date){
+        var day = date.getDay(), sunday = 0, monday = 1, tuesday = 2, wednesday = 3, thursday = 4, friday = 5, saturday = 6;
+        var closedDates = unavailableDates;
+        var closedDays = @json($availability); 
+        for (var i = 0; i < closedDays.length; i++) {
+            if (day == closedDays[i][0]) {
+                return [false];
+            }
 
-    });
+        }
+        for (i = 0; i < closedDates.length; i++) {
+            if (date.getMonth() == closedDates[i][0] - 1 &&
+            date.getDate() == closedDates[i][1] &&
+            date.getFullYear() == closedDates[i][2]) {
+                return [false];
+            }
+        }
+
+        return [true];
+    }
+    $( "#iDate" ).datepicker({
+          beforeShowDay: nonWorkingDates,
+          firstDay: 1,
+          dateFormat: 'dd-mm-yy'
+        });
 })    
+</script>
+<script>
+   $('#iDate').change(function(){
+      date = $('#iDate').val();
+      var userid = $(this).data('userid');
+      $.get( "{{URL::to('/')}}/user/slots/"+date+"/"+userid, function( data ) {
+		  $('.pract-services').html( data );
+		});
+   });
 </script>
 @endsection

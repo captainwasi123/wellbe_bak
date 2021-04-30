@@ -30,18 +30,35 @@ class webController extends Controller
     }
 
     function professionalProfile($id){
+		$holiday = array();
+        $holiarr = array();
+		$availability = [];
 		$id = base64_decode($id);
 		$user_availability = availability::where('user_id',$id)->get();
-		$user_holidays = holidays::where('user_id',$id)->get('closed_date');
+		$user_holidays = holidays::where('user_id',$id)->get('closed_date'); 
+		foreach ($user_holidays as $key => $value) {
+			$day = array();
+			array_push($day, date('n', strtotime($value->closed_date)));
+			array_push($day, date('j', strtotime($value->closed_date)));
+			array_push($day, date('Y', strtotime($value->closed_date)));
+			
+			array_push($holiday, $day);
+			
+			array_push($holiarr, $value->holiday);
+			
+		}
+		foreach($user_availability as $key => $v){
+			$availability[][] = $v->week_day;
+		} 
 		$categories = category::where('status', '1')->get();
 	    $cat = collect($categories); $cat = $cat->first();
-		$availability =  \App\Helpers\CommonHelpers::get_user_availability($user_availability,$user_holidays);
 		
 		$data = array(
 			'data' => User::find($id),
 			'categories' => $categories,
 			'services' => services::where('category_id',$cat->id)->where('user_id',$id)->get(),
 			'availability' => $availability,
+			'holiday' => $holiday
 		);
 		//dd($data);
 		return view('web.practitionerProfile')->with($data);
@@ -59,4 +76,8 @@ class webController extends Controller
         $cart_data = \Cart::content(); 
         return view('web.load_cart_data', ['cart_data' => $cart_data]);
     }
+	public function get_slots(Request $request)
+	{
+		$availabeSlots = availabeSlots::where(user_id)  dd($request->date);
+	}
 }
