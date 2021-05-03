@@ -80,6 +80,13 @@ class webController extends Controller
     }
 	public function get_slots(Request $request)
 	{
-		// $availabeSlots = availabeSlots::where(user_id);  dd($request->date);
+		$day = date('l',strtotime($request->date));
+		$slots = availability::with(['slots'])->where('user_id',$request->user_id)->where('week_day',strtolower($day))->first();
+		$html = '';
+		$html.="<option value=''>select</option>";
+		foreach($slots->slots as $val){
+			$html.="<option value='".$val->id."'>".$val->start_booking." TO ".$val->end_booking."</option>";
+		}
+		echo $html;  
 	}
 }
