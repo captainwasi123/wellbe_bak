@@ -1,7 +1,7 @@
 @extends('web.includes.master')
 @section('title', 'Practitioner Profile')
 @section('content')
-
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <section class="all-content bg-pink pad-top-40 pad-bot-40">
    <div class="container">
       <div class="row">
@@ -83,7 +83,7 @@
                   <h4> Booking </h4>
                </div>
                <div id="cart_data">
-                  @if(!empty(\Cart::content()))
+                  @if(\Cart::count() != 0)
                   <div class="booking-cart-items">
                      @foreach(\Cart::content() as $row)
                      <div class="booking-cart-item1">
@@ -114,7 +114,7 @@
                      <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                         <div class="form-field4">
                            <p> Choose Date </p>
-                           <input type="date" name="">
+                           <input type="text" id="iDate" name="">
                         </div>
                      </div>
                      <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
@@ -132,6 +132,8 @@
       </div>
    </div>
 </section>
+@endsection
+@section('additionalJS')
 <script>
    $('.category').click(function(){ 
       var userid = $(this).data('userid');
@@ -143,7 +145,7 @@
 		  $('.pract-services').html( data );
 		});
    });
-   $('.add_cart').click(function() { 
+   $('body').on('click','.add_cart',function() {
       var p_id = $(this).data('id');
       var name = $(this).data('name');
       var minutes = $(this).data('minutes');
@@ -162,5 +164,53 @@
                      
      });
    })
+</script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+$(document).ready(function() {
+   var unavailableDates = @json($holiday);
+   function unavailable(date) {
+         dmy = date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear();
+         if ($.inArray(dmy, unavailableDates) == -1) {
+            return [true, ""];
+         } else {
+            return [false, "", "Unavailable"];
+         }
+   }
+    function nonWorkingDates(date){
+        var day = date.getDay(), sunday = 0, monday = 1, tuesday = 2, wednesday = 3, thursday = 4, friday = 5, saturday = 6;
+        var closedDates = unavailableDates;
+        var closedDays = @json($availability); 
+        for (var i = 0; i < closedDays.length; i++) {
+            if (day == closedDays[i][0]) {
+                return [false];
+            }
+
+        }
+        for (i = 0; i < closedDates.length; i++) {
+            if (date.getMonth() == closedDates[i][0] - 1 &&
+            date.getDate() == closedDates[i][1] &&
+            date.getFullYear() == closedDates[i][2]) {
+                return [false];
+            }
+        }
+
+        return [true];
+    }
+    $( "#iDate" ).datepicker({
+          beforeShowDay: nonWorkingDates,
+          firstDay: 1,
+          dateFormat: 'dd-mm-yy'
+        });
+})    
+</script>
+<script>
+   $('#iDate').change(function(){
+      date = $('#iDate').val();
+      var userid = $(this).data('userid');
+      $.get( "{{URL::to('/')}}/user/slots/"+date+"/"+userid, function( data ) {
+		//  $('.pract-services').html( data );
+		});
+   });
 </script>
 @endsection

@@ -8,3 +8,4 @@
 <link rel="stylesheet" href="{{URL::to('/')}}/public/assets/web/web-fonts-with-css/css/fontawesome-all.min.css">
 <!-- Jquery Library -->
 <script type="text/javascript" src="{{URL::to('/')}}/public/assets/web/js/jquery-3.2.1.min.js"></script>
+<link href="{{URL::to('/')}}/public/assets/css/popup-modal.css" rel="stylesheet">

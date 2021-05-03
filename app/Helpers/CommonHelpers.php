@@ -28,4 +28,39 @@ class CommonHelpers
         }
     }
 
+    public static function get_user_availability($user_availability,$user_holidays)
+    {
+        $day = array(
+            'sunday' => 0,
+            'monday' => 1,
+            'tuesday' => 2,
+            'wednesday' => 3,
+            'thursday' => 4,
+            'friday' => 5,
+            'saturday' => 6,
+        );
+        $availability = ''; $i = 1;
+        foreach($day as $key => $val){ 
+            foreach($user_availability as $v){ 
+                if($key == $v->week_day){
+                    $availability .= 'date.getDay() == '.$val;
+                    if($i <= count($user_availability)){
+                        $availability .= ' || ';    
+                    }
+                }
+            }
+            $i++;
+        }  
+
+
+        // holidays code
+        $holidays = [];
+        foreach($user_holidays as $val){
+            $holidays[] = $val->closed_date;
+        } 
+        $holidays = json_encode($holidays);
+
+        return array('availability' => $availability, 'holidays' => $holidays);
+    }
+
 }
