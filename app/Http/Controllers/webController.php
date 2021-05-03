@@ -32,7 +32,7 @@ class webController extends Controller
     function professionalProfile($id){
 		$holiday = array();
         $holiarr = array();
-		$availability = [];
+		$availability = array('sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday');
 		$id = base64_decode($id);
 		$user_availability = availability::where('user_id',$id)->get();
 		$user_holidays = holidays::where('user_id',$id)->get('closed_date'); 
@@ -48,8 +48,10 @@ class webController extends Controller
 			
 		}
 		foreach($user_availability as $key => $v){
-			$availability[][] = $v->week_day;
+			$availability = array_merge(array_diff($availability, array($v->week_day)));
+
 		} 
+		//dd($availability);
 		$categories = category::where('status', '1')->get();
 	    $cat = collect($categories); $cat = $cat->first();
 		

@@ -182,10 +182,10 @@ $(document).ready(function() {
         var closedDates = unavailableDates;
         var closedDays = @json($availability); 
         for (var i = 0; i < closedDays.length; i++) {
-            if (day == closedDays[i][0]) {
+            let val = convertDayIntoInt(closedDays[i]);
+            if (day == val) {
                 return [false];
             }
-
         }
         for (i = 0; i < closedDates.length; i++) {
             if (date.getMonth() == closedDates[i][0] - 1 &&
@@ -199,9 +199,42 @@ $(document).ready(function() {
     }
     $( "#iDate" ).datepicker({
           beforeShowDay: nonWorkingDates,
-          firstDay: 1,
+          firstDay: 0,
           dateFormat: 'dd-mm-yy'
         });
+
+    function convertDayIntoInt(str){
+      
+      switch(str){
+        case "sunday":
+          return 0;
+          break;
+
+        case "monday":
+          return 1;
+          break;
+
+        case "tuesday":
+          return 2;
+          break;
+
+        case "wednesday":
+          return 3;
+          break;
+
+        case "thursday":
+          return 4;
+          break;
+
+        case "friday":
+          return 5;
+          break;
+
+        case "saturday":
+          return 6;
+          break;
+      }
+    }
 })    
 </script>
 <script>
