@@ -120,7 +120,7 @@
                      <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                         <div class="form-field4">
                            <p> Choose Time </p>
-                           <select>
+                           <select id="slots">
                               <option value="">select</option>
                            </select>
                         </div>
@@ -207,9 +207,9 @@ $(document).ready(function() {
 <script>
    $('#iDate').change(function(){
       date = $('#iDate').val();
-      var userid = $(this).data('userid');
-      $.get( "{{URL::to('/')}}/user/slots/"+date+"/"+userid, function( data ) {
-		//  $('.pract-services').html( data );
+       userid = $(this).data('userid'); 
+      $.get( "{{URL::to('/')}}/user/slots/"+date+"/"+'{{$data->id}}', function( data ) {
+		 $('#slots').html( data );
 		});
    });
 </script>
