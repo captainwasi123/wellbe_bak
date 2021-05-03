@@ -114,13 +114,13 @@
                      <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                         <div class="form-field4">
                            <p> Choose Date </p>
-                           <input type="text" id="iDate" name="">
+                           <input type="text" class="form-control" id="iDate" name="">
                         </div>
                      </div>
                      <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                         <div class="form-field4">
                            <p> Choose Time </p>
-                           <select id="slots">
+                           <select class="form-control" id="slots">
                               <option value="">select</option>
                            </select>
                         </div>
