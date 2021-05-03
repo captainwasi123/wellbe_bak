@@ -114,6 +114,14 @@ $(document).ready(function(){
 		  $('#orderViewContent').html( data );
 		});
 	});
+
+	$(document).on('click', '.orderCancel', function(){
+		var id = $(this).data('ref');
+		$('.orderView').modal('hide');
+		$('.orderModalCancel').modal('show');
+
+		$('#oid').val(id);
+	});
 	
 
 });

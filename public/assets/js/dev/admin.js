@@ -14,6 +14,30 @@ $(document).ready(function(){
 		  $('#orderViewContent').html( data );
 		});
 	});
+
+	
+	$(document).on('click', '.orderCancel', function(){
+		var id = $(this).data('ref');
+		$('.orderView').modal('hide');
+		$('.orderModalCancel').modal('show');
+
+		$('#oid').val(id);
+	});
+
+
+
+	//Practitioner
+
+	$(document).on('change', '.disableUser', function(){
+		var id = $(this).data('ref');
+		if(this.checked){
+			$('.assumeUserModal').modal('show');
+			$('#apid').val(id);
+		}else{
+			$('.disableUserModal').modal('show');
+			$('#dpid').val(id);
+		}
+	});
 	
 
 });
