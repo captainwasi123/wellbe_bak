@@ -37,6 +37,11 @@
                      <td> {{empty($val->user_address) ? '' : $val->user_address->city}}</td>
                   </tr>
                 @endforeach
+                @if(count($data) == '0')
+                  <tr>
+                    <td colspan="7">No Customers Found.</td>
+                  </tr>
+                @endif
              </tbody>
           </table>
        </div>

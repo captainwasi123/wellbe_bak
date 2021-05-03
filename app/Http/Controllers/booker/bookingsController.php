@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Auth;
 use App\Models\orders\order;
+use App\Models\orders\cancel;
 use App\Models\MarketplaceSetting;
 
 
@@ -64,5 +65,19 @@ class bookingsController extends Controller
         $gst = MarketplaceSetting::latest()->first();
 
         return view('booker.booking.response.view', ['data' => $data, 'gst' => $gst->gst]);
+    }
+
+
+
+    //Cancel
+
+    function bookingCancel(Request $request){
+        $data = $request->all();
+        $id = base64_decode(base64_decode($data['oid']));
+        $des = $data['description'];
+
+        cancel::cancellation($id, $des, '1');
+
+        return redirect()->back()->with('success', 'Order Cancelled.');
     }
 }
