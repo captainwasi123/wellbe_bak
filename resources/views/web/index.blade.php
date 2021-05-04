@@ -8,8 +8,8 @@
         <div class="row">
            <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
               <div class="banner-text">
-                 <h3> Wellness And Beauty 
-                    Straight To Your Door 
+                 <h3> Wellness And Beauty
+                    Straight To Your Door
                  </h3>
                  <p> Book wellness and beauty services directly to your door. Sit back, relax, and let our verified professionals take care of the rest. All professionals are all independent contractors, so you pay no salon markups, period.  </p>
                  <form>
@@ -141,9 +141,9 @@
               <a >Who are the Wellbe professionals? <i class="fa fa-plus"></i>
               </a>
               <div class="content">
-                 <p> We carefully screen and certify each professional. They are all professionally trained and incredibly talented. Every professional 
+                 <p> We carefully screen and certify each professional. They are all professionally trained and incredibly talented. Every professional
                     that works with us is fully qualified for the services they offer. We collect regular feedback to ensure you consistently
-                    receive a five star experience. 
+                    receive a five star experience.
                  </p>
               </div>
            </div>
@@ -151,9 +151,9 @@
               <a > Can I choose my professional? <i class="fa fa-plus"></i>
               </a>
               <div class="content">
-                 <p> We carefully screen and certify each professional. They are all professionally trained and incredibly talented. Every professional 
+                 <p> We carefully screen and certify each professional. They are all professionally trained and incredibly talented. Every professional
                     that works with us is fully qualified for the services they offer. We collect regular feedback to ensure you consistently
-                    receive a five star experience. 
+                    receive a five star experience.
                  </p>
               </div>
            </div>
@@ -161,9 +161,9 @@
               <a > How are prices set? <i class="fa fa-plus"></i>
               </a>
               <div class="content">
-                 <p> We carefully screen and certify each professional. They are all professionally trained and incredibly talented. Every professional 
+                 <p> We carefully screen and certify each professional. They are all professionally trained and incredibly talented. Every professional
                     that works with us is fully qualified for the services they offer. We collect regular feedback to ensure you consistently
-                    receive a five star experience. 
+                    receive a five star experience.
                  </p>
               </div>
            </div>
@@ -171,9 +171,9 @@
               <a > How do I get ready for my appointment? <i class="fa fa-plus"></i>
               </a>
               <div class="content">
-                 <p> We carefully screen and certify each professional. They are all professionally trained and incredibly talented. Every professional 
+                 <p> We carefully screen and certify each professional. They are all professionally trained and incredibly talented. Every professional
                     that works with us is fully qualified for the services they offer. We collect regular feedback to ensure you consistently
-                    receive a five star experience. 
+                    receive a five star experience.
                  </p>
               </div>
            </div>
@@ -181,9 +181,9 @@
               <a > What can you expect from your service?<i class="fa fa-plus"></i>
               </a>
               <div class="content">
-                 <p> We carefully screen and certify each professional. They are all professionally trained and incredibly talented. Every professional 
+                 <p> We carefully screen and certify each professional. They are all professionally trained and incredibly talented. Every professional
                     that works with us is fully qualified for the services they offer. We collect regular feedback to ensure you consistently
-                    receive a five star experience. 
+                    receive a five star experience.
                  </p>
               </div>
            </div>
@@ -192,9 +192,9 @@
               <i class="fa fa-plus"></i>
               </a>
               <div class="content">
-                 <p> We carefully screen and certify each professional. They are all professionally trained and incredibly talented. Every professional 
+                 <p> We carefully screen and certify each professional. They are all professionally trained and incredibly talented. Every professional
                     that works with us is fully qualified for the services they offer. We collect regular feedback to ensure you consistently
-                    receive a five star experience. 
+                    receive a five star experience.
                  </p>
               </div>
            </div>
@@ -206,8 +206,8 @@
   <section class="pad-top-80 pad-bot-80">
      <div class="container">
         <div class="sec-head4 text-center">
-           <h4> Throught the years we  <br/> 
-              cooperate a lot of companies 
+           <h4> Throught the years we  <br/>
+              cooperate a lot of companies
            </h4>
         </div>
         <div class="brand-logos">
@@ -221,4 +221,72 @@
   </section>
   <!-- Brand Logos Section Ends Here -->
 
+@endsection
+@section('additionalJS')
+<script>
+$("#login").click(function (e) {
+    e.preventDefault();
+    // var formData = {
+    //     email : $("#email").val(),
+    //     password : $("#password").val(),
+    // }
+    var email = $("#email").val();
+    var password = $("#password").val();
+    $.ajax({
+        type: "post",
+        url: "./loginAttempt",
+        data: {
+            'email':email,
+            'password':password,
+            _token:'{{ csrf_token() }}',
+            },
+        dataType: "json",
+        success: function (data) {
+            if(data.status == 200){
+                if(data.user_type == 2){
+                    $(".modal").hide();
+                    swal({
+                        title: 'Logged In',
+                        text: 'Successfully Logged In As A Booker',
+                        icon: 'success',
+                        showConfirmButton: false
+                    }).then(function(value) {
+                        if (value) {
+                            window.location.href = data.route;
+                        }
+                    });
+                }else if (data.user_type == 1) {
+                    $(".modal").hide();
+                    swal({
+                        title: 'Logged In',
+                        text: 'Successfully Logged In As A Practitioner',
+                        icon: 'success',
+                        showConfirmButton: false
+                    }).then(function(value) {
+                        if (value) {
+                            window.location.href = data.route;
+                        }
+                    });
+                }
+            }else if(data.status == 500){
+                $(".modal").hide();
+                swal({
+                    title: 'Logged In Faild',
+                    text: 'Email Or Password Does Not Match Try Again!',
+                    type: "error",
+                    showCancelButton: true,
+                    dangerMode: true,
+                    cancelButtonClass: '#DD6B55',
+                    confirmButtonColor: '#dc3545',
+                    confirmButtonText: 'Cancel!',
+                }).then(function(value) {
+                    if (value) {
+                        window.location.href = "{{ route('home') }}";
+                    }
+                });
+            }
+        }
+    });
+});
+</script>
 @endsection

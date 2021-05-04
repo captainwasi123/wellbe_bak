@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers\practitioner;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Illuminate\Support\Arr;
-use App\Models\Country;
 use App\Models\User;
-use App\Models\UserAddress;
 use App\Models\Store;
+use App\Models\Country;
+use App\Models\UserAddress;
+use Illuminate\Support\Arr;
 use App\Models\PayoutDetail;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 
 class profileController extends Controller
 {
@@ -78,5 +79,24 @@ class profileController extends Controller
         $PayoutDetail->save();
 
         return redirect()->route('practitioner.profile')->with('success',"Profile Updated Successfully");
+    }
+
+    public function change_password (Request $request){
+        $user = User::find($request->id);
+        $hashedPassword = Hash::check($request->current_password, $user->password);
+
+        if(!Hash::check($request->new_password, $user->password)){
+            if ($hashedPassword) {
+                $user->password = Hash::make($request->new_password);
+                $user->save();
+                return redirect()->back()->with('success','Password Update Successfully');
+            }else{
+                echo "old password doesnt matched";
+                return redirect()->back()->with('error','old password doesnt matched');
+            }
+        }else{
+            echo "new password can not be the old password!";
+            return redirect()->back()->with('error','new password can not be the old password!');
+        }
     }
 }

@@ -6,7 +6,7 @@ use Auth;
 
 class AdminLoginController extends Controller
 {
-    
+
     function index(){
 
         return view('admin_login');

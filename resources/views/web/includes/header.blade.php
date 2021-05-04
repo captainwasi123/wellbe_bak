@@ -42,39 +42,40 @@
                   	<li class="nav-item">
                   		<a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab">Register</a>
                   	</li>
-                  </ul> 
+                  </ul>
                </div>
                <div class="custom-modal-head">
-                  
+
                </div>
                <div class="custom-modal-data">
                	<div class="tab-content">
                 	<div class="tab-pane active" id="tabs-1" role="tabpanel">
-                				
-                				<h5> Please login to the dashboard with your credentials. </h5>	
-                                   <form action="{{URL::to('/login')}}" method="">
+
+                				<h5> Please login to the dashboard with your credentials. </h5>
+                                   <form>
+                                    {{csrf_field()}}
                                   <div class="form-field6">
                                   <p> Email Address </p>
-                                  <input type="email" name="">
+                                  <input type="email" name="email" id="email" required>
                                   </div>
 
                                   <div class="form-field6">
                                   <p> Password </p>
-                                  <input type="password" name="">
+                                  <input type="password" name="password" id="password" required>
                                   </div>
 
                                   <div class="forgot-password">
                                   <a href=""> Forgot Password? </a>
                                   </div>
-                 
+
 
                                  	<div class="form-field7 text-center">
-                                     <button class="bg-blue col-white normal-btn rounded"> Submit </button>
+                                     <button id="login" class="bg-blue col-white normal-btn rounded"> Submit </button>
                                  </div>
                                   </form>
                 	</div>
                 	<div class="tab-pane" id="tabs-2" role="tabpanel">
-                	      <h5> Please Register with us and get ammazing opportunities. </h5>	
+                	      <h5> Please Register with us and get ammazing opportunities. </h5>
                                    <form >
                                   <div class="form-field6">
                                   <p> First Name </p>
@@ -100,14 +101,14 @@
                                   <p> Password </p>
                                   <input type="password" name="">
                                   </div>
-                 
+
 
                                  	<div class="form-field7 text-center">
                                      <button class="bg-blue col-white normal-btn rounded"> REGISTER </button>
                                  </div>
                                   </form>
                 	</div>
- 
+
                 </div>
 
 

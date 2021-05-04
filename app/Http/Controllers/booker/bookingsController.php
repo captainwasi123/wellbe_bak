@@ -6,8 +6,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Auth;
 use App\Models\orders\order;
+<<<<<<< HEAD
 use App\Models\orders\cancel;
 use App\Models\orders\reviews;
+=======
+>>>>>>> 4ac3b4598944b8fb2ec91383b4b08ee1f5da5dfb
 use App\Models\MarketplaceSetting;
 
 
@@ -82,6 +85,7 @@ class bookingsController extends Controller
 
         return view('booker.booking.response.view', ['data' => $data, 'gst' => $gst->gst]);
     }
+<<<<<<< HEAD
 
 
 
@@ -109,4 +113,6 @@ class bookingsController extends Controller
         return redirect()->back()->with('success', 'Review Added.');
 
     }
+=======
+>>>>>>> 4ac3b4598944b8fb2ec91383b4b08ee1f5da5dfb
 }

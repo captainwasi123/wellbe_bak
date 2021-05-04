@@ -5,7 +5,13 @@
 @section('topbar')@include('admin.includes.topbar')@endsection
 
 @section("content")
+
 <div class="dashboard-wrapper">
+    @if (count($errors))
+@foreach ($errors->all() as $error)
+  <p class="alert alert-danger">{{$error}}</p>
+@endforeach
+@endif
     <div class="box-type4">
  <div class="page-title">
     <h3 class="col-white"> General </h3>
@@ -37,7 +43,7 @@
  </div>
 
  </div>
- 
+
 
  <div class="row">
 
@@ -114,25 +120,45 @@
  <div class="row">
  <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
 
- <div class="row">
-
- <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
- <div class="form-field4 m-b-30 m-t-30">
- <button class="normal-btn bg-blue col-white rounded"> Request Password Reset </button>
- </div>
- </div>
 
 
- <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-   <div class="form-field4 m-b-30 text-right mob-text-left">
-      <button class="normal-btn bg-blue col-white rounded"> Save </button>
-   </div>
- </div>
+    <form action="{{ route('admin.change_password') }}" method="post">
+        @csrf
+
+        <div class="row">
+            <div class="col-md-8 col-lg-8 col-sm-12 col-xs-12">
+                <div class="form-field3 m-t-10">
+                    <p>Current Password </p>
+                    <input type="password" name="current_password" value="{{ empty($old_password) ? "" : $old_password }}">
+                </div>
+            </div>
+            <div class="col-md-8 col-lg-8 col-sm-12 col-xs-12">
+                <div class="form-field3 m-t-10">
+                    <p> New Password </p>
+                    <input type="password" name="new_password" id="password" value="{{ empty($new_password) ? "" : $new_password }}">
+                </div>
+            </div>
+            <div class="col-md-8 col-lg-8 col-sm-12 col-xs-12">
+                <div class="form-field3 m-t-10">
+                    <p> Conform Password </p>
+                    <input type="password" name="confirm_password" id="conform_password" value="{{ empty($confirm_password) ? "" : $confirm_password }}">
+                    <span id="error"></span>
+                </div>
+            </div>
+            <input type="hidden" name="id" value="{{empty(\Auth::guard('admin')->user()->id) ? '' : ' '.\Auth::guard('admin')->user()->id}}">
+            <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                <div class="form-field4 m-b-30 text-right mob-text-left">
+                   <input id="register" type="Submit" class="normal-btn bg-blue col-white rounded" value="submit">
+                </div>
+              </div>
+        </div>
+    </form>
 
 
 
- </div>
- </div>
+
+
+
  </div>
  </div>
 </div>
@@ -142,4 +168,23 @@
 
 </div>
 
+@endsection
+@section('additionalJS')
+<script type="text/javascript">
+
+
+    $("#conform_password").keyup(function () {
+        var conform_password = $("#conform_password").val()
+        var password = $("#password").val()
+        if (password != conform_password) {
+            $('#error').html('Please enter the same password as above');
+            $('#register').prop('disabled', true);
+
+        }else{
+            $('#error').html('');
+            $('#register').prop('disabled', false);
+        }
+    });
+
+</script>
 @endsection

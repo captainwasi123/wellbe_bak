@@ -89,7 +89,7 @@
          <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
          <div class="form-field3">
          <p> Post code </p>
-         <input type="text" name="postcode" value="{{@$user_data->user_address->postcode}}"> 
+         <input type="text" name="postcode" value="{{@$user_data->user_address->postcode}}">
          </div>
          </div>
 
@@ -121,7 +121,7 @@
 
 
          </div>
-     
+
          </div>
       </div>
 
@@ -155,6 +155,14 @@
          </div>
       </div>
 
+      <div class="row">
+        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+            <div class="form-field4 m-b-30 text-right mob-text-left">
+               <input type="submit" class="normal-btn bg-blue col-white rounded" value="Update Profile">
+            </div>
+          </div>
+      </div>
+    </form>
 
 
 
@@ -164,31 +172,40 @@
             <h3 class="col-white"> Security </h3>
          </div>
          <div class="block-element pad-1">
-         <div class="row">
-         <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-         <div class="block-element m-t-15 m-b-10">
-         <h4 class="col-blue"> Reset Password </h4>
-         </div>
-         <div class="row">
+            <form action="{{ route('booker.profile.update_password') }}" method="post">
+                @csrf
 
-         <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-         <div class="form-field4 m-b-30">
-         <button class="normal-btn bg-blue col-white rounded"> Request Password Reset </button>
-         </div>
-         </div>
-
-
-         <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-         <div class="form-field4 m-b-30 text-right mob-text-left">
-         <button class="normal-btn bg-blue col-white rounded" type="submit"> Save </button>
-         </div>
-         </div>
-
-         </form>
-
-         </div>
-         </div>
-         </div>
+                <div class="row">
+                    <div class="col-md-8 col-lg-8 col-sm-12 col-xs-12">
+                        <div class="form-field3 m-t-10">
+                            <p>Current Password </p>
+                            <input type="password" name="current_password" id="old_password" value="{{ empty($old_password) ? "" : $old_password }}" minlength="8" required>
+                            <span id="old"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-8 col-lg-8 col-sm-12 col-xs-12">
+                        <div class="form-field3 m-t-10">
+                            <p> New Password </p>
+                            <input type="password" name="new_password" id="password" value="{{ empty($new_password) ? "" : $new_password }}" minlength="8" required>
+                            <span id="old1"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-8 col-lg-8 col-sm-12 col-xs-12">
+                        <div class="form-field3 m-t-10">
+                            <p> Conform Password </p>
+                            <input type="password" name="confirm_password" id="conform_password" value="{{ empty($confirm_password) ? "" : $confirm_password }}" minlength="8" required>
+                            <span id="error"></span><br>
+                            <span id="old2"></span>
+                        </div>
+                    </div>
+                    <input type="hidden" name="id" value="{{\Auth::user()->id}}">
+                    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                        <div class="form-field4 m-b-30 text-right mob-text-left">
+                           <input id="register" type="submit" class="normal-btn bg-blue col-white rounded" value="Submit">
+                        </div>
+                      </div>
+                </div>
+            </form>
          </div>
       </div>
 
@@ -198,4 +215,67 @@
       </section>
       <!-- All Dashboard Content Ends Here -->
       <!-- Bootstrap Javascript -->
+      @endsection
+      @section('additionalJS')
+      <script type="text/javascript">
+
+            $("#old_password").keyup(function(){
+                var old = $("#old_password").val();
+                if(old.length >= 8){
+                    $('#old').html('');
+                    $("#old_password").removeAttr("style");
+                    $('#register').prop('disabled', false);
+                }else{
+                    $('#old').html('Please enter the password more then 8 characters');
+                    $('#old').css('color', 'red');
+                    $("#old_password").css('border-color','red');
+                    $('#register').prop('disabled', true);
+                }
+            })
+
+            $("#password").keyup(function(){
+                var old = $("#password").val();
+                if(old.length >= 8){
+                    $('#old1').html('');
+                    $("#password").removeAttr("style");
+                    $('#register').prop('disabled', false);
+                }else{
+                    $('#old1').html('Please enter the password more then 8 characters');
+                    $('#old1').css('color', 'red');
+                    $("#password").css('border-color','red');
+                    $('#register').prop('disabled', true);
+                }
+            })
+
+            $("#conform_password").keyup(function(){
+                var old = $("#conform_password").val();
+                if(old.length >= 8){
+                    $('#old2').html('');
+                    $("#conform_password").removeAttr("style");
+                    $('#register').prop('disabled', false);
+                }else{
+                    $('#old2').html('Please enter the password more then 8 characters');
+                    $('#old2').css('color', 'red');
+                    $("#conform_password").css('border-color','red');
+                    $('#register').prop('disabled', true);
+                }
+            })
+
+
+            $("#conform_password").keyup(function () {
+                var old = $("#old_password").val();
+                var conform_password = $("#conform_password").val()
+                var password = $("#password").val()
+                if (password != conform_password) {
+
+                    $('#error').html('Please enter the same password as above');
+                    $('#error').css('color', 'red');
+                    $('#register').prop('disabled', true);
+
+                }else{
+                    $('#error').html('');
+                    $('#register').prop('disabled', false);
+                }
+            });
+      </script>
       @endsection

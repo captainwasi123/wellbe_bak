@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\Admin;
 use Auth;
 use App\Models\User;
+use App\Models\Admin;
 use App\Models\orders\order;
-use App\Models\orders\cancel;
+use Illuminate\Http\Request;
+use App\Rules\MatchOldPassword;
 use App\Models\MarketplaceSetting;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class DashboardController extends Controller
 {
@@ -24,7 +26,7 @@ class DashboardController extends Controller
                         'practitioners' => User::where('user_type', '1')->count(),
                         'upcomming' => order::where('status', '1')->count(),
                         'completed' => order::where('status', '3')->count(),
-                        'cancelled' => order::where('status', '4')->count(), 
+                        'cancelled' => order::where('status', '4')->count(),
                     );
         /*$accounts = array(
                     ''
@@ -54,7 +56,7 @@ class DashboardController extends Controller
         $data = order::where('status', '3')
                         ->orderBy('start_at')
                         ->get();
-                        
+
         return view('admin.bookings.completed', ['data' => $data]);
     }
 
@@ -62,7 +64,7 @@ class DashboardController extends Controller
         $data = order::where('status', '4')
                         ->orderBy('start_at')
                         ->get();
-                        
+
         return view('admin.bookings.cancelled', ['data' => $data]);
     }
 
@@ -72,34 +74,11 @@ class DashboardController extends Controller
         return view("admin.customers.customers", ['data' => $data]);
     }
 
-
-    //Practitioner
     function practitioners(){
         $data = User::where('user_type', '1')->get();
 
         return view("admin.practitioners.practitioners", ['data' => $data]);
     }
-    function disablePractitioners(Request $request){
-        $id = base64_decode($request->get('pid'));
-        $data = User::find($id);
-        $data->status = '2';
-        $data->save();
-
-        return redirect()->back()->with('success', 'Practitioner Disabled.');    
-    }
-
-    function assumePractitioners(Request $request){
-        $id = base64_decode($request->get('pid'));
-        $data = User::find($id);
-        $data->status = '1';
-        $data->save();
-
-        return redirect()->back()->with('success', 'Practitioner Assumed.');    
-    }
-
-
-
-
     function marketplace_catalogue(){
         return view("admin.marketplace_catalogue.marketplace_catalogue");
     }
@@ -130,7 +109,37 @@ class DashboardController extends Controller
         return redirect()->route('admin.edit_profile')->with('success','Marketplace Settings Updated Successfully');
     }
 
+    public function change_password(Request $request){
+        //dd($request) . die;
+        $request->validate([
+            'current_password' => ['required','string', 'min:8'],
+            'new_password' => ['required','string', 'min:8'],
+        ]);
+        $admin = Admin::find($request->id);
+        $hashedPassword = Hash::check($request->current_password, $admin->password);
 
+        if(!Hash::check($request->new_password, $admin->password)){
+            if ($hashedPassword) {
+                $admin->password = Hash::make($request->new_password);
+                $admin->save();
+                return redirect()->back()->with('success','Password Update Successfully');
+            }else{
+                $data = array(
+                    'old_password' => $request->current_password,
+                    'new_password' => $request->new_password,
+                    'confirm_password' => $request->confirm_password,
+                    'error' => 'old password doesnt matched'
+                );
+                return redirect()->back()->with($data);
+            }
+        }else{
+            $data = array(
+                'old_password' => $request->current_password,
+                'error' => 'new password can not be the old password!'
+            );
+            return redirect()->back()->with($data);
+        }
+    }
 
     //Response
 
@@ -141,18 +150,5 @@ class DashboardController extends Controller
         $gst = MarketplaceSetting::latest()->first();
 
         return view('admin.bookings.response.view', ['data' => $data, 'gst' => $gst->gst]);
-    }
-
-
-    //Cancel
-
-    function bookingCancel(Request $request){
-        $data = $request->all();
-        $id = base64_decode(base64_decode($data['oid']));
-        $des = $data['description'];
-
-        cancel::cancellation($id, $des, '0');
-
-        return redirect()->back()->with('success', 'Order Cancelled.');
     }
 }

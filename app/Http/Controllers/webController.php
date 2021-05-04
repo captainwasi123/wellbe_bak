@@ -12,9 +12,9 @@ use App\Models\schedule\holidays;
 
 class webController extends Controller
 {
-    
+
     function index(){
-       
+
     	return view('web.index');
     }
 
@@ -32,29 +32,27 @@ class webController extends Controller
     function professionalProfile($id){
 		$holiday = array();
         $holiarr = array();
-		$availability = array('sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday');
+		$availability = [];
 		$id = base64_decode($id);
 		$user_availability = availability::where('user_id',$id)->get();
-		$user_holidays = holidays::where('user_id',$id)->get('closed_date'); 
+		$user_holidays = holidays::where('user_id',$id)->get('closed_date');
 		foreach ($user_holidays as $key => $value) {
 			$day = array();
 			array_push($day, date('n', strtotime($value->closed_date)));
 			array_push($day, date('j', strtotime($value->closed_date)));
 			array_push($day, date('Y', strtotime($value->closed_date)));
-			
+
 			array_push($holiday, $day);
-			
+
 			array_push($holiarr, $value->holiday);
-			
+
 		}
 		foreach($user_availability as $key => $v){
-			$availability = array_merge(array_diff($availability, array($v->week_day)));
-
-		} 
-		//dd($availability);
+			$availability[][] = $v->week_day;
+		}
 		$categories = category::where('status', '1')->get();
 	    $cat = collect($categories); $cat = $cat->first();
-		
+
 		$data = array(
 			'data' => User::find($id),
 			'categories' => $categories,
@@ -69,13 +67,13 @@ class webController extends Controller
 	function user_services(Request $request){
 		$services = services::where('category_id',$request->cat_id)->where('user_id',$request->userid)->get();
 		return view('web.load_practitioner_service', ['services' => $services]);
-		
+
 	}
 
     public function add_cart(Request $request)
-    { 
+    {
         \Cart::add(['id' => $request->p_id, 'name' => $request->name, 'qty' => 1, 'price' => $request->price, 'weight' => 0, 'options' => ['minutes' => $request->minutes]]);
-        $cart_data = \Cart::content(); 
+        $cart_data = \Cart::content();
         return view('web.load_cart_data', ['cart_data' => $cart_data]);
     }
 	public function get_slots(Request $request)
@@ -87,6 +85,6 @@ class webController extends Controller
 		foreach($slots->slots as $val){
 			$html.="<option value='".$val->id."'>".$val->start_booking." TO ".$val->end_booking."</option>";
 		}
-		echo $html;  
+		echo $html;
 	}
 }

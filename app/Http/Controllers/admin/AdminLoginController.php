@@ -7,7 +7,7 @@ use Auth;
 
 class AdminLoginController extends Controller
 {
-    
+
     function index(){
 
         return view('login');
@@ -18,11 +18,11 @@ class AdminLoginController extends Controller
 
         if(Auth::attempt(['email' => $data['email'], 'password' => $data['password']])){
             if(Auth::user()->user_type == '1'){
-                return redirect(route('practitioner.dashboard'));    
+                return redirect(route('practitioner.dashboard'));
             }else if(Auth::user()->user_type == '2'){
                 return redirect(route('booker.index'));
             }
-            
+
         }else{
 
             return redirect()->back()->with('error', 'Authentication Error.');
