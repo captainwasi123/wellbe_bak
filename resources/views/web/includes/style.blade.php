@@ -4,6 +4,7 @@
 <link rel="stylesheet" href="{{URL::to('/')}}/public/assets/web/css/bootstrap.min.css">
 <!-- Custom Stylings -->
 <link rel="stylesheet" href="{{URL::to('/')}}/public/assets/web/css/custom.css">
+<link rel="stylesheet" href="{{URL::to('/')}}/public/assets/web/css/dev.css">
 <!-- Font Awesome Icons -->
 <link rel="stylesheet" href="{{URL::to('/')}}/public/assets/web/web-fonts-with-css/css/fontawesome-all.min.css">
 <!-- Jquery Library -->

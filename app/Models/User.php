@@ -14,6 +14,17 @@ class User extends Authenticatable
 
     protected $table = 'tbl_users_info';
 
+    public static function newUser(array $data){
+        $u = new User;
+        $u->first_name = $data['first_name'];
+        $u->last_name = $data['last_name'];
+        $u->email = $data['email'];
+        $u->phone = $data['phone'];
+        $u->user_type = $data['userType'];
+        $u->password = bcrypt($data['password']);
+        $u->status = '1';
+        $u->save();
+    }
     /**
      * The attributes that are mass assignable.
      *

@@ -136,7 +136,7 @@ class DashboardController extends Controller
     public function change_password(Request $request){
         //dd($request) . die;
         $request->validate([
-            'current_password' => ['required','string', 'min:8'],
+            'current_password' => ['required','string'],
             'new_password' => ['required','string', 'min:8'],
         ]);
         $admin = Admin::find($request->id);

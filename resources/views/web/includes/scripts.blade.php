@@ -5,3 +5,4 @@
 
 <script src="{{URL::to('/')}}/public/assets/web/js/bootstrap.min.js"> </script>
 <script src="{{URL::to('/')}}/public/assets/web/js/functions.js"> </script>
+<script src="{{URL::to('/')}}/public/assets/web/js/log.js"> </script>

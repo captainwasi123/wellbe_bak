@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use Facade\FlareClient\Http\Response;
+use App\Models\User;
 
 class loginController extends Controller
 {
@@ -60,6 +61,34 @@ class loginController extends Controller
             return $data;
             //return redirect()->back()->with('error', 'Authentication Error.');
         }
+    }
+
+    public function userRegister(Request $request){
+        $data = $request->all();
+        if($data['password'] == $data['confirmation_password']){
+            $u = User::where('email', $data['email'])->count();
+            if($u == '0'){
+                User::newUser($data);
+                $data = array(
+                    'status' => 200,
+                    'message' => 'You are successfully registered..'
+                );
+                return $data;
+            }else{
+                $data = array(
+                    'status' => 500,
+                    'message' => 'This email is already Registered.'
+                );
+                return $data;
+            }
+        }else{
+            $data = array(
+                'status' => 500,
+                'message' => 'Password does not matched.'
+            );
+            return $data;
+        }
+
     }
 
     function logout(){

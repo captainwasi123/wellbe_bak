@@ -25,16 +25,13 @@ use Illuminate\Support\Facades\Route;
 	Route::get('/user/slots/{date}/{user_id}', 'webController@get_slots');
 
 
+	// Authentication
+		Route::get('/login', 'loginController@index');
+		Route::post('/login/', 'loginController@loginAttempt');
+	    Route::post('/loginAttempt', 'loginController@ajaxloginAttempt');
+		Route::get('/logout', 'loginController@logout');
 
-
-
-
-
-// Authentication
-	Route::get('/login', 'loginController@index');
-	Route::post('/login/', 'loginController@loginAttempt');
-    Route::post('/loginAttempt', 'loginController@ajaxloginAttempt');
-	Route::get('/logout', 'loginController@logout');
+		Route::post('/register', 'loginController@userRegister');
 
 
 // Practitioner
@@ -181,6 +178,5 @@ use Illuminate\Support\Facades\Route;
 		Route::post('/update/comission', 'DashboardController@update_comission')->name('admin.update.comission');
 
 		Route::get('/categories', 'CategoryController@index')->name('admin.categories');
-
 	});
 
