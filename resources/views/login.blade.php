@@ -74,7 +74,7 @@
 		}
 		.form__input:focus{
 			border-bottom-color: #008080;
-			box-shadow: 0 0 5px rgba(0,80,80,.4); 
+			box-shadow: 0 0 5px rgba(0,80,80,.4);
 			border-radius: 4px;
 		}
 		.btn{
@@ -120,7 +120,7 @@
 							<div class="row">
 								<input type="checkbox" name="remember_me" id="remember_me" class="">
 								<label for="remember_me">Remember Me!</label>
-								
+
 								@if(session()->has('error'))
 								    <div class="alert alert-danger">
 								        {{ session()->get('error') }}
@@ -141,3 +141,4 @@
 	</div>
 </body>
 </html>
+

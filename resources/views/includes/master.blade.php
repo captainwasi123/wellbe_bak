@@ -4,35 +4,41 @@
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <title> @yield('title') | {{env('APP_NAME')}} </title>
-      
+
       @include('includes.style')
       @yield('additionalCSS')
 
    </head>
    <body>
-      
+
       <!-- Sidebar Section Starts Here -->
       @yield('sidebar')
       <!-- Sidebar Section Ends Here -->
 
-  <section class="all-dashboard">
-      @yield('topbar')
+    <section class="all-dashboard">
+        @yield('topbar')
 
-      @if(session()->has('success'))
-        <div class="custom-alert">
-          <div class="alert alert-success">
-              {{ session()->get('success') }}
-          </div>
-        </div>
-      @endif
+        @if(session()->has('success'))
+            <div class="custom-alert">
+            <div class="alert alert-success">
+                {{ session()->get('success') }}
+            </div>
+            </div>
+        @elseif(session()->has('error'))
+            <div class="custom-alert">
+            <div class="alert alert-danger">
+                {{ session()->get('error') }}
+            </div>
+            </div>
+        @endif
 
       @yield('content')
 
-  </section>
+    </section>
   <!-- All Dashboard Content Ends Here -->
 
       @include('includes.script')
       @yield('additionalJS')
-      
+
    </body>
 </html>

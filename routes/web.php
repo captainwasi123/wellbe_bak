@@ -32,8 +32,8 @@ use Illuminate\Support\Facades\Route;
 
 // Authentication
 	Route::get('/login', 'loginController@index');
-	Route::post('/login', 'loginController@loginAttempt');
-
+	Route::post('/login/', 'loginController@loginAttempt');
+    Route::post('/loginAttempt', 'loginController@ajaxloginAttempt');
 	Route::get('/logout', 'loginController@logout');
 
 
@@ -76,6 +76,7 @@ use Illuminate\Support\Facades\Route;
 
 			Route::get('/', 'profileController@index')->name('practitioner.profile');
 			Route::post('/profile-save', 'profileController@profile_save')->name('practitioner.profile.save');
+            Route::post('/change-password', 'profileController@change_password')->name('practitioner.profile.change_password');
 		});
 
 		// Booking
@@ -85,8 +86,6 @@ use Illuminate\Support\Facades\Route;
 			Route::get('/inprogress', 'bookingController@inprogress_booking')->name('practitioner.booking.inprogress');
 			Route::get('/completed', 'bookingController@completed_booking')->name('practitioner.booking.completed');
 			Route::get('/cancelled', 'bookingController@cancelled_booking')->name('practitioner.booking.cancelled');
-
-			Route::post('/cancel', 'bookingController@bookingCancel')->name('practitioner.booking.cancel');
 
 			//Response
 			Route::get('/view1/{id}', 'bookingController@bookingView1');
@@ -110,13 +109,12 @@ use Illuminate\Support\Facades\Route;
 		Route::get('/completed', 'bookingscontroller@completed_booking')->name('booker.completed_booking');
 		Route::get('/cancelled', 'bookingscontroller@cancelled_booking')->name('booker.cancelled_booking');
 
-		Route::post('/booking/cancel', 'bookingscontroller@bookingCancel')->name('booker.booking.cancel');
-
 		//Response
 		Route::get('/view/{id}', 'bookingscontroller@bookingView1');
 
 		Route::get('/profile', 'profilecontroller@index')->name('booker.profile');
 		Route::post('/profile-save', 'profilecontroller@profile_save')->name('booker.profile.save');
+        Route::post('/change_password', 'profilecontroller@change_password')->name('booker.profile.update_password');
 
 		Route::get('/share', 'sharecontroller@index')->name('booker.share');
 	});
@@ -139,24 +137,15 @@ use Illuminate\Support\Facades\Route;
 	    Route::get('/inprogress', 'DashboardController@inprogress')->name('admin.inprogress');
 	    Route::get('/completed', 'DashboardController@completed')->name('admin.completed');
 	    Route::get('/cancelled', 'DashboardController@cancelled')->name('admin.cancelled');
-	    
-		Route::post('/booking/cancel', 'DashboardController@bookingCancel')->name('admin.booking.cancel');
 
 		//Response
 		Route::get('/view/{id}', 'DashboardController@bookingView1');
 
 	    Route::get('/customers', 'DashboardController@customers')->name('admin.customers');
+	    Route::get('/practitioners', 'DashboardController@practitioners')->name('admin.practitioners');
 
-	    //Practitioner
-	    Route::prefix('practitioners')->group(function(){
-
-	    	Route::get('/', 'DashboardController@practitioners')->name('admin.practitioners');
-	    	Route::post('/disable', 'DashboardController@disablePractitioners')->name('admin.practitioners.disable');
-	    	Route::post('/assume', 'DashboardController@assumePractitioners')->name('admin.practitioners.assume');
-	    });
-	    
 		//services
-		Route::get('/custom_services', 'ServicesController@custom_services')->name('admin.custom_services');	
+		Route::get('/custom_services', 'ServicesController@custom_services')->name('admin.custom_services');
 		Route::get('/custom_services/update', 'ServicesController@custom_services_update')->name('admin.custom_services.update');
 
 		// categories
@@ -164,13 +153,14 @@ use Illuminate\Support\Facades\Route;
         Route::POST('/add_categories', 'CategoryController@add_categories')->name('admin.add_categories');
         Route::get('/edit_category/{id}', 'CategoryController@edit_category')->name('admin.edit_category');
 		Route::get('/delete_category/{id}', 'CategoryController@delete_category')->name('admin.delete_category');
-        
+
 		// End categories
 	    Route::get('/marketplace_catalogue', 'DashboardController@marketplace_catalogue')->name('admin.marketplace_catalogue');
-	    
+
 		//profile
 		Route::get('/edit_profile', 'DashboardController@edit_profile')->name('admin.edit_profile');
 		Route::post('/update_profile', 'DashboardController@update_profile')->name('admin.update_profile');
+        Route::post('/change_password', 'DashboardController@change_password')->name('admin.change_password');
 
 		//comission
 		Route::post('/update/comission', 'DashboardController@update_comission')->name('admin.update.comission');

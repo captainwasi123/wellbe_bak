@@ -17,7 +17,7 @@
        <div class="dropdown">
           <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
           <img alt="user-pic" src="{{URL::to('/')}}/{{Auth::user()->profile_img}}" onerror="this.onerror=null;this.src='{{URL::to('/')}}/public/assets/images/user-placeholder.png';">
-          {{empty(Auth::user()->first_name) ? 'New User' : ' '.Auth::user()->first_name}} 
+          {{empty(Auth::user()->first_name) ? 'New User' : ' '.Auth::user()->first_name}}
           <span> Practitioner&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
           <i class="fa fa-caret-down"> </i>
           </button>
