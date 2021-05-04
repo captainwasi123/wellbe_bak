@@ -65,4 +65,16 @@ class bookingController extends Controller
 
         return view('practitioner.bookings.response.view1', ['data' => $data, 'gst' => $gst->gst]);
     }
+
+    //Cancel
+
+    function bookingCancel(Request $request){
+        $data = $request->all();
+        $id = base64_decode(base64_decode($data['oid']));
+        $des = $data['description'];
+
+        cancel::cancellation($id, $des, '1');
+
+        return redirect()->back()->with('success', 'Order Cancelled.');
+    }
 }

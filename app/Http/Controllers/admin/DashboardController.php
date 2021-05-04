@@ -6,6 +6,7 @@ use Auth;
 use App\Models\User;
 use App\Models\Admin;
 use App\Models\orders\order;
+use App\Models\orders\cancel;
 use Illuminate\Http\Request;
 use App\Rules\MatchOldPassword;
 use App\Models\MarketplaceSetting;
@@ -74,11 +75,34 @@ class DashboardController extends Controller
         return view("admin.customers.customers", ['data' => $data]);
     }
 
+    
+    //Practitioner
     function practitioners(){
         $data = User::where('user_type', '1')->get();
 
         return view("admin.practitioners.practitioners", ['data' => $data]);
     }
+    function disablePractitioners(Request $request){
+        $id = base64_decode($request->get('pid'));
+        $data = User::find($id);
+        $data->status = '2';
+        $data->save();
+
+        return redirect()->back()->with('success', 'Practitioner Disabled.');    
+    }
+
+    function assumePractitioners(Request $request){
+        $id = base64_decode($request->get('pid'));
+        $data = User::find($id);
+        $data->status = '1';
+        $data->save();
+
+        return redirect()->back()->with('success', 'Practitioner Assumed.');    
+    }
+
+
+
+
     function marketplace_catalogue(){
         return view("admin.marketplace_catalogue.marketplace_catalogue");
     }
@@ -150,5 +174,18 @@ class DashboardController extends Controller
         $gst = MarketplaceSetting::latest()->first();
 
         return view('admin.bookings.response.view', ['data' => $data, 'gst' => $gst->gst]);
+    }
+
+
+    //Cancel
+
+    function bookingCancel(Request $request){
+        $data = $request->all();
+        $id = base64_decode(base64_decode($data['oid']));
+        $des = $data['description'];
+
+        cancel::cancellation($id, $des, '0');
+
+        return redirect()->back()->with('success', 'Order Cancelled.');
     }
 }

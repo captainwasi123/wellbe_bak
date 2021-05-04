@@ -87,6 +87,8 @@ use Illuminate\Support\Facades\Route;
 			Route::get('/completed', 'bookingController@completed_booking')->name('practitioner.booking.completed');
 			Route::get('/cancelled', 'bookingController@cancelled_booking')->name('practitioner.booking.cancelled');
 
+			Route::post('/cancel', 'bookingController@bookingCancel')->name('practitioner.booking.cancel');
+
 			//Response
 			Route::get('/view1/{id}', 'bookingController@bookingView1');
 		});
@@ -142,11 +144,20 @@ use Illuminate\Support\Facades\Route;
 	    Route::get('/completed', 'DashboardController@completed')->name('admin.completed');
 	    Route::get('/cancelled', 'DashboardController@cancelled')->name('admin.cancelled');
 
+	    Route::post('/booking/cancel', 'DashboardController@bookingCancel')->name('admin.booking.cancel');
+
 		//Response
 		Route::get('/view/{id}', 'DashboardController@bookingView1');
 
 	    Route::get('/customers', 'DashboardController@customers')->name('admin.customers');
-	    Route::get('/practitioners', 'DashboardController@practitioners')->name('admin.practitioners');
+	    
+	    //Practitioner
+	    Route::prefix('practitioners')->group(function(){
+
+	    	Route::get('/', 'DashboardController@practitioners')->name('admin.practitioners');
+	    	Route::post('/disable', 'DashboardController@disablePractitioners')->name('admin.practitioners.disable');
+	    	Route::post('/assume', 'DashboardController@assumePractitioners')->name('admin.practitioners.assume');
+	    });
 
 		//services
 		Route::get('/custom_services', 'ServicesController@custom_services')->name('admin.custom_services');

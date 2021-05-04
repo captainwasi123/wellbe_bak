@@ -45,7 +45,7 @@
 
        </div>
        <div class="sidebar-btn-fixed">
-          <a href="index.php"> <i class="fa fa-globe"> </i> View Website Page </a>
+          <a href="{{URL::to('/')}}" target="_blank"> <i class="fa fa-globe"> </i> View Website Page </a>
        </div>
     </div>
  </section>

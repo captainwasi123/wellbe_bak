@@ -117,6 +117,8 @@
       </div>
    @endforeach
 </div>
-<!-- <div class="block-element text-right">
-   <a href="" class="normal-btn bg-blue col-white rounded"> Cancel Booking </a>
-</div> -->
+@if($data->status == '1' || $data->status == '2')
+   <div class="block-element text-right">
+      <a href="javascript:void(0)" class="normal-btn bg-blue col-white rounded orderCancel" data-ref="{{base64_encode(base64_encode($data->id))}}"> Cancel Booking </a>
+   </div>
+@endif
