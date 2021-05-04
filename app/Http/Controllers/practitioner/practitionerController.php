@@ -12,7 +12,8 @@ class practitionerController extends Controller
 {
     
     function index(){
-
+        $from = date('Y-m-d 00:00:01');
+        $to = date('Y-m-d 23:59:59');
         $curr = date('Y-m-d H:i:s');
         $upcomming = order::where('pract_id', Auth::id())
                         ->where('start_at', '>=', $curr)
@@ -21,6 +22,19 @@ class practitionerController extends Controller
                         ->limit(12)
                         ->get();
 
-    	return view('practitioner.index', ['upcomming' => $upcomming]);
+        $job_stats = array(
+                        'pending' => order::where('pract_id', Auth::id())->where('status','1')->count(),
+                        'completed' => order::where('pract_id', Auth::id())->where('status','3')->count(),
+                        'cancelled' => order::where('pract_id', Auth::id())->where('status','4')->count()
+                    );
+
+        $revenue = array(
+                    'today' => order::where('pract_id', Auth::id())->where('status', '3')
+                                        ->whereBetween('start_at', array($from, $to))
+                                        ->sum('pract_earning'),
+                    'total' => order::where('pract_id', Auth::id())->where('status', '3')
+                                        ->sum('pract_earning')
+                );
+    	return view('practitioner.index', ['upcomming' => $upcomming, 'job_stats' => $job_stats, 'revenue' => $revenue]);
     }
 }

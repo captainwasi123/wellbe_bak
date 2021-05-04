@@ -26,6 +26,9 @@ class DashboardController extends Controller
                         'completed' => order::where('status', '3')->count(),
                         'cancelled' => order::where('status', '4')->count(), 
                     );
+        /*$accounts = array(
+                    ''
+                );*/
         return view('admin.index', ['upcomming' => $upcomming, 'data_count' => $data_count]);
     }
 

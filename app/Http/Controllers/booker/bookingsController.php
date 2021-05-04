@@ -7,13 +7,29 @@ use Illuminate\Http\Request;
 use Auth;
 use App\Models\orders\order;
 use App\Models\orders\cancel;
+use App\Models\orders\reviews;
 use App\Models\MarketplaceSetting;
 
 
 class bookingsController extends Controller
 {
     function index(){
-        return view('booker.index');
+        $curr = date('Y-m-d H:i:s');
+        $upcomming = order::where('booker_id', Auth::id())
+                        ->where('start_at', '>=', $curr)
+                        ->where('status', '1')
+                        ->orderBy('start_at')
+                        ->limit(12)
+                        ->get();
+
+        $rating = order::where('booker_id', Auth::id())
+                        ->where('status', '3')
+                        ->orderBy('start_at', 'desc')
+                        ->doesnthave('reviews')
+                        ->limit(7)
+                        ->get();
+
+        return view('booker.index', ['upcomming' => $upcomming, 'rating' => $rating]);
     }
 
     function upcomming_booking(){
@@ -79,5 +95,18 @@ class bookingsController extends Controller
         cancel::cancellation($id, $des, '1');
 
         return redirect()->back()->with('success', 'Order Cancelled.');
+    }
+
+
+    //Rating
+
+    function bookingRating(Request $request){
+        $data = $request->all();
+        $id = base64_decode($data['ref_id']);
+        $prac = order::where('id', $id)->select('pract_id')->first();
+        reviews::addReview($prac->pract_id, $data);
+        
+        return redirect()->back()->with('success', 'Review Added.');
+
     }
 }

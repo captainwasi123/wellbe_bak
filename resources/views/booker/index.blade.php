@@ -5,155 +5,173 @@
 @section('topbar')@include('booker.includes.topbar')@endsection
 
 @section('content')
-         <div class="dashboard-wrapper">
-            <div class="box-type4">
-            <div class="page-title">
-               <h3 class="col-white"> Upcoming Bookings </h3>
+   <div class="dashboard-wrapper">
+      <div class="box-type4">
+      <div class="page-title">
+         <h3 class="col-white"> Upcoming Bookings </h3>
+      </div>
+      <div class="box-type1">
+         <div class="table-overlay table-type1">
+            <table>
+               <thead>
+                  <tr>
+                     <th> Date / Time </th>
+                     <th> Booking ID </th>
+                     <th> Practitioner </th>
+                     <th> Location </th>
+                     <th> Charge </th>
+                     <th> Actions </th>
+                  </tr>
+               </thead>
+               <tbody>
+                  @foreach($upcomming as $val)
+                     <tr>
+                        <td> {{date('l, d M Y - h:i A', strtotime($val->start_at))}}</td>
+                        <td> #{{$val->id}} </td>
+                        <td class="col-blue"> {{empty($val->practitioner) ? 'Deleted User' : $val->practitioner->first_name.' '.$val->practitioner->last_name}} <i class="fa fa-comments col-black"> </i> </td>
+                        <td> {{empty($val->booker->user_address) ? '' : $val->booker->user_address->city}}{{empty($val->booker->user_address->country) ? '' : ', '.$val->booker->user_address->country->country}} </td>
+                        <td> NZ - ${{number_format($val->total_amount, 2)}} </td>
+                        <td> <a href="javascript:void(0)" class="custom-btn1 orderModal" data-id="{{base64_encode($val->id)}}" data-host="{{URL::to('/')}}"> View  </a> </td>
+                     </tr>
+                  @endforeach
+                  @if(count($upcomming) == '0')
+                     <tr>
+                        <td colspan="6">
+                          No Bookings Found.
+                        </td>
+                     </tr>
+                  @endif 
+               </tbody>
+            </table>
+         </div>
+      </div>
+   </div>
+
+
+     <div class="block-element">
+         <div class="row">
+            <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+               <div class="box-type2">
+                  <div class="page-title2">
+                     <h3> Rate Your Bookings </h3>
+                  </div>
+                     @if(count($rating) == '0')
+                        <div class="block-element pad-1">
+                           <h5 class="col-grey"> You have no bookings to rate </h5>
+                        </div>
+                     @else
+                        <table class="table">
+                           <thead>
+                              <tr>
+                                 <th> Booking ID </th>
+                                 <th> Practitioner </th>
+                                 <th> Rating </th>
+                                 <th> Charge </th>
+                              </tr>
+                           </thead>
+                           <tbody>
+                             @foreach($rating as $val)
+                               <tr>
+                                  <td> #{{$val->id}} </td>
+                                  <td class="col-blue"> {{empty($val->practitioner) ? 'Deleted User' : $val->practitioner->first_name.' '.$val->practitioner->last_name}} <i class="fa fa-comments col-black"> </i> </td>
+                                  <td>
+                                      <a href="javascript:void(0)" class="openRatingModal" data-ref="{{base64_encode($val->id)}}">Add Rating</a>
+                                  </td>
+                                  <td> NZ ${{number_format($val->total_amount, 2)}} </td>
+                               </tr>
+                             @endforeach
+                           </tbody>
+                        </table>
+                     @endif
+               </div>
             </div>
-            <div class="box-type1">
-               <div class="table-overlay table-type1">
-                  <table>
-                     <thead>
-                        <tr>
-                           <th> Date / Time </th>
-                           <th> Booking ID </th>
-                           <th> Practitioner </th>
-                           <th> Location </th>
-                           <th> Charge </th>
-                           <th> Actions </th>
-                        </tr>
-                     </thead>
-                     <tbody>
-                        <tr>
-                           <td> Mon 15 Feb 2020 - 08:30 AM </td>
-                           <td> #905848 </td>
-                           <td class="col-blue"> Paige Williams <i class="fa fa-comments col-black"> </i> </td>
-                           <td> 116 William Street, Petone, Lo... </td>
-                           <td> NZ$ - 48.00 </td>
-                           <td> <a href="" class="custom-btn1"> View  </a> </td>
-                        </tr>
-                        <tr>
-                           <td> Mon 15 Feb 2020 - 08:30 AM </td>
-                           <td> #905848 </td>
-                           <td class="col-blue"> Paige Williams <i class="fa fa-comments col-black"> </i> </td>
-                           <td> 116 William Street, Petone, Lo... </td>
-                           <td> NZ$ - 48.00 </td>
-                           <td> <a href="" class="custom-btn1"> View  </a> </td>
-                        </tr>
-                        <tr>
-                           <td> Mon 15 Feb 2020 - 08:30 AM </td>
-                           <td> #905848 </td>
-                           <td class="col-blue"> Paige Williams <i class="fa fa-comments col-black"> </i> </td>
-                           <td> 116 William Street, Petone, Lo... </td>
-                           <td> NZ$ - 48.00 </td>
-                           <td> <a href="" class="custom-btn1"> View  </a> </td>
-                        </tr>
-                        <tr>
-                           <td> Mon 15 Feb 2020 - 08:30 AM </td>
-                           <td> #905848 </td>
-                           <td class="col-blue"> Paige Williams <i class="fa fa-comments col-black"> </i> </td>
-                           <td> 116 William Street, Petone, Lo... </td>
-                           <td> NZ$ - 48.00 </td>
-                           <td> <a href="" class="custom-btn1"> View  </a> </td>
-                        </tr>
-                        <tr>
-                           <td> Mon 15 Feb 2020 - 08:30 AM </td>
-                           <td> #905848 </td>
-                           <td class="col-blue"> Paige Williams <i class="fa fa-comments col-black"> </i> </td>
-                           <td> 116 William Street, Petone, Lo... </td>
-                           <td> NZ$ - 48.00 </td>
-                           <td> <a href="" class="custom-btn1"> View  </a> </td>
-                        </tr>
-                        <tr>
-                           <td> Mon 15 Feb 2020 - 08:30 AM </td>
-                           <td> #905848 </td>
-                           <td class="col-blue"> Paige Williams <i class="fa fa-comments col-black"> </i> </td>
-                           <td> 116 William Street, Petone, Lo... </td>
-                           <td> NZ$ - 48.00 </td>
-                           <td> <a href="" class="custom-btn1"> View  </a> </td>
-                        </tr>
-                     </tbody>
-                  </table>
+            <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+               <div class="box-type2">
+                  <div class="page-title2">
+                     <h3> Recent Messages </h3>
+                  </div>
+                   <div class="block-element pad-1">
+                   <h5 class="col-grey"> You have no messages </h5>
+                   </div>
                </div>
             </div>
          </div>
+      </div>
+   </div>
+
+  <!-- Modal -->
+   <div class="modal fade modal-size2 orderView" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+       <div class="modal-dialog" role="document" style="max-width: 850px;">
+          <div class="modal-content">
+             <button type="button" class="close1" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+             <div class="booking-modal-popup" id="orderViewContent">
+                
+             </div>
+          </div>
+       </div>
+    </div>
+   
+    <div class="modal fade modal-size2 orderModalCancel" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+       <div class="modal-dialog" role="document" style="max-width: 600px;">
+          <div class="modal-content">
+             <button type="button" class="close1" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span> </button>
+             <div class="custom-modal-head">
+                <h3> Cancel Booking </h3>
+             </div>
+             <div class="custom-modal-data">
+               
+                <p class="col-grey"> Why are you cancelling this booking? This information won't be shared with the booker. </p>
+
+                <form class="text-right" method="post" action="{{route('booker.booking.cancel')}}">
+                    {{csrf_field()}}
+                    <input type="hidden" name="oid" id="oid">
+                    <textarea name="description" required>  </textarea>
+                    <p class="col-grey text-left"> Are you sure you would like to cancel this booking? A notification will be sent to the booker to let them know </p>
+                    <button class="bg-blue col-white normal-btn rounded"> Cancel Booking </button>
+                </form>
+
+             </div>
+          </div>
+       </div>
+    </div>
 
 
-           <div class="block-element">
-               <div class="row">
-                  <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
-                     <div class="box-type2">
-                        <div class="page-title2">
-                           <h3> Rate Your Bookings </h3>
-                        </div>
-                         <div class="block-element pad-1">
-                         <h5 class="col-grey"> You have no bookings to rate </h5>
-                         </div>
-                     </div>
-                  </div>
-                  <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
-                     <div class="box-type2">
-                        <div class="page-title2">
-                           <h3> Recent Messages </h3>
-                        </div>
-                         <div class="block-element pad-1">
-                         <h5 class="col-grey"> You have no messages </h5>
-                         </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-        <!--
-            <div class="block-element">
-               <div class="row">
-                  <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
-                     <div class="box-type2">
-                        <div class="page-title2">
-                           <h3> Statistics </h3>
-                        </div>
-                        <div class="sales-set1">
-                           <h5> Sales (In NZ$) </h5>
-                        </div>
-                        <div class="sales-set2">
-                           <div class="row">
-                              <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
-                                 <span class="line-1" style="background:#b5dfff;"> . </span>
-                                 <h6> Today </h6>
-                                 <h4 class="col-blue"> NZ$0.00  </h4>
-                              </div>
-                              <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
-                                 <span class="line-1" style="background:#f9cac3;"> . </span>
-                                 <h6> Total </h6>
-                                 <h4 class="col-blue"> NZ$0.00  </h4>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
-                     <div class="box-type2">
-                        <div class="page-title2">
-                           <h3> Statistics </h3>
-                        </div>
-                        <div class="stats-records">
-                           <div>
-                              <h4> 1 </h4>
-                              <h6> Pending Jobs </h6>
-                           </div>
-                           <div>
-                              <h4> 0 </h4>
-                              <h6> Completed Jobs </h6>
-                           </div>
-                           <div>
-                              <h4> 0 </h4>
-                              <h6> Cancelled Jobs </h6>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div> -->
-         </div>
-      </section>
-      <!-- All Dashboard Content Ends Here -->
-      @endsection
+   <div class="modal fade modal-size2 addRating" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+     <div class="modal-dialog" role="document" style="max-width: 600px;">
+        <div class="modal-content">
+           <button type="button" class="close1" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span> </button>
+           <div class="custom-modal-head">
+              <h3> Rate Your Practitioner </h3>
+           </div>
+           <div class="custom-modal-data">
+              <form method="post" action="{{route('booker.booking.rating')}}">
+                @csrf
+                <input type="hidden" name="ref_id" id="roid">
+                <div class="rating_block">
+                  <input type="number" name="rating" id="rating1" value="1" class="rating text-warning" required />
+                </div>
+                <textarea placeholder="Enter description" name="description" class="form-control" required></textarea>
+                <button class="bg-blue col-white normal-btn rounded"> Save </button>
+              </form>
+           </div>
+        </div>
+     </div>
+  </div>
+@endsection
+@section('additionalJS')
+    <script src="https://use.fontawesome.com/5ac93d4ca8.js"></script>
+    <script src="{{URL::to('/')}}/public/assets/js/dev/booker.js"> </script>
+    <script src="{{URL::to('/')}}/public/assets/js/dev/bootstrap4-rating-input.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+
+        'use strict'
+        
+        $(document).on('click', '.openRatingModal', function(){
+          var refid = $(this).data('ref');
+          $('#roid').val(refid);
+          $('.addRating').modal('show');
+        });
+      });
+    </script>
+@endsection

@@ -26,3 +26,15 @@
 .wd-60{
 	width: 60%;
 }
+.rating_block {
+    margin-bottom: 10px;
+}
+.rating-input i{
+    font-size: 24px !important;
+}
+.star-onn{
+    color: #ffc107!important
+}
+span > i.fa-star{
+    font-size: 14px !important;
+}

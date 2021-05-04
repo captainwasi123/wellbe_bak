@@ -31,7 +31,7 @@
                          <td class="col-blue"> {{empty($val->practitioner) ? 'Deleted User' : $val->practitioner->first_name.' '.$val->practitioner->last_name}} <i class="fa fa-comments col-black"> </i> </td>
                          <td> {{empty($val->practitioner->user_address) ? '' : $val->practitioner->user_address->city}}{{empty($val->practitioner->user_address->country) ? '' : ', '.$val->practitioner->user_address->country->country}} </td>
                          <td> NZ ${{number_format($val->total_amount, 2)}} </td>
-                         <td> <a href="javascript:void(0)" class="custom-btn1 orderModal" data-id="{{base64_encode($val->id)}}"> View  </a> </td>
+                         <td> <a href="javascript:void(0)" class="custom-btn1 orderModal" data-id="{{base64_encode($val->id)}}" data-host="{{URL::to('/')}}"> View  </a> </td>
                       </tr>
                     @endforeach
                     @if(count($data) == '0')

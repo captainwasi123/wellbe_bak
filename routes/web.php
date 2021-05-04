@@ -112,6 +112,8 @@ use Illuminate\Support\Facades\Route;
 
 		Route::post('/booking/cancel', 'bookingscontroller@bookingCancel')->name('booker.booking.cancel');
 
+		Route::post('/booking/rating', 'bookingscontroller@bookingRating')->name('booker.booking.rating');
+
 		//Response
 		Route::get('/view/{id}', 'bookingscontroller@bookingView1');
 

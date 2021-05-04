@@ -62,12 +62,12 @@
                      <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
 
                         <h6> Today </h6>
-                        <h4 class="col-blue"> NZ$0.00  </h4>
+                        <h4 class="col-blue"> NZ$ {{number_format($revenue['today'], 2)}}  </h4>
                      </div>
                      <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
 
                         <h6> Total </h6>
-                        <h4 class="col-blue"> NZ$0.00  </h4>
+                        <h4 class="col-blue"> NZ$ {{number_format($revenue['total'], 2)}}  </h4>
                      </div>
                   </div>
                </div>
@@ -80,15 +80,15 @@
                </div>
                <div class="stats-records">
                   <div>
-                     <h4> 1 </h4>
+                     <h4> {{$job_stats['pending']}} </h4>
                      <h6> Pending Jobs </h6>
                   </div>
                   <div>
-                     <h4> 0 </h4>
+                     <h4> {{$job_stats['completed']}} </h4>
                      <h6> Completed Jobs </h6>
                   </div>
                   <div>
-                     <h4> 0 </h4>
+                     <h4> {{$job_stats['cancelled']}} </h4>
                      <h6> Cancelled Jobs </h6>
                   </div>
                </div>
