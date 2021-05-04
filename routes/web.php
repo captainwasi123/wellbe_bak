@@ -109,13 +109,10 @@ use Illuminate\Support\Facades\Route;
 		Route::get('/completed', 'bookingscontroller@completed_booking')->name('booker.completed_booking');
 		Route::get('/cancelled', 'bookingscontroller@cancelled_booking')->name('booker.cancelled_booking');
 
-<<<<<<< HEAD
 		Route::post('/booking/cancel', 'bookingscontroller@bookingCancel')->name('booker.booking.cancel');
 
 		Route::post('/booking/rating', 'bookingscontroller@bookingRating')->name('booker.booking.rating');
 
-=======
->>>>>>> 4ac3b4598944b8fb2ec91383b4b08ee1f5da5dfb
 		//Response
 		Route::get('/view/{id}', 'bookingscontroller@bookingView1');
 
