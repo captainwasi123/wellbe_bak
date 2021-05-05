@@ -59,6 +59,25 @@ function valueChange() {
  $(document).ready(function() {
   
 
+  //item Qunatity
+
+  $(document).on('click', '.qtyCounter', function(){
+      var type = $(this).data('type');
+      if(type == 'plus'){
+        var value = $(this).parent().find('[data-value]').val();
+        if(value < 100) {
+          value++;
+          $(this).parent().find('[data-value]').val(value);
+        }
+      }else if(type == 'minus'){
+        var value = $(this).parent().find('[data-value]').val();
+        if(value > 1) {
+          value--;
+          $(this).parent().find('[data-value]').val(value);
+        }
+      }
+  });  
+
   $(".set > a").on("click", function() {
     if ($(this).hasClass("active")) {
       $(this).removeClass("active");
