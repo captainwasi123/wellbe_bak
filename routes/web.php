@@ -120,6 +120,9 @@ use Illuminate\Support\Facades\Route;
         Route::post('/change_password', 'profilecontroller@change_password')->name('booker.profile.update_password');
 
 		Route::get('/share', 'sharecontroller@index')->name('booker.share');
+
+		//Book an order
+		Route::post('/order/book', 'bookingsController@bookOrder')->name('booker.order');
 	});
 
 

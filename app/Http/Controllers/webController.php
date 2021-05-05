@@ -9,6 +9,8 @@ use App\Models\services\services;
 use App\Models\Models\schedule\availabeSlots;
 use App\Models\schedule\availability;
 use App\Models\schedule\holidays;
+use App\Models\orders\orderDetail;
+use App\Models\orders\order;
 
 class webController extends Controller
 {
@@ -32,7 +34,7 @@ class webController extends Controller
     function professionalProfile($id){
 		$holiday = array();
         $holiarr = array();
-		$availability = [];
+		$availability = array('sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday');
 		$id = base64_decode($id);
 		$user_availability = availability::where('user_id',$id)->get();
 		$user_holidays = holidays::where('user_id',$id)->get('closed_date');
@@ -48,7 +50,7 @@ class webController extends Controller
 
 		}
 		foreach($user_availability as $key => $v){
-			$availability[][] = $v->week_day;
+			$availability = array_merge(array_diff($availability, array($v->week_day)));
 		}
 		$categories = category::where('status', '1')->get();
 	    $cat = collect($categories); $cat = $cat->first();
@@ -78,12 +80,28 @@ class webController extends Controller
     }
 	public function get_slots(Request $request)
 	{
+		$buffer = User::getBuffer($request->user_id);
+		$slot_no = 1;
+		$booking_date = date('Y-m-d', strtotime($request->date));
 		$day = date('l',strtotime($request->date));
 		$slots = availability::with(['slots'])->where('user_id',$request->user_id)->where('week_day',strtolower($day))->first();
 		$html = '';
 		$html.="<option value=''>select</option>";
 		foreach($slots->slots as $val){
-			$html.="<option value='".$val->id."'>".$val->start_booking." TO ".$val->end_booking."</option>";
+			$start_time = $val->start_booking;
+			$pre_book = orderDetail::where('serve_date', $booking_date)
+							->where('start_time', '>=', $val->start_booking)
+							->where('start_time', '<=', $val->end_booking)
+							->whereHas('order', function($q) use ($request){
+							    $q->where('pract_id', $request->user_id);
+							})->get();
+			foreach ($pre_book as $key => $value) {
+				$dur = ($value->qty*$value->service->duration);
+				$start_time = date('H:i:s',strtotime('+'.$dur.' minutes',strtotime($start_time)));
+				$start_time = date('H:i:s',strtotime('+'.$buffer.' minutes',strtotime($start_time)));
+			}
+			$html.="<option value='".$start_time."'>Slot# ".$slot_no.": ----- ".date('h:i A', strtotime($start_time))."</option>";
+			$slot_no++;
 		}
 		echo $html;
 	}

@@ -78,56 +78,66 @@
             </div>
          </div>
          <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12">
-            <div class="booking-cart">
-               <div class="booking-cart-head">
-                  <h4> Booking </h4>
-               </div>
-               <div id="cart_data">
-                  @if(\Cart::count() != 0)
-                  <div class="booking-cart-items">
-                     @foreach(\Cart::content() as $row)
-                     <div class="booking-cart-item1">
-                        <h5> {{$row->name}} </h5>
-                        <div class="quantity">
-                           <button data-decrease>-</button>
-                           <input data-value type="text" value="{{$row->qty}}" disabled />
-                           <button data-increase>+</button>
-                           <b class="price-cart"> {{number_format($row->price,2)}} </b>
-                        </div>
-                     </div>
-                     @endforeach
-                  </div>
-                  @else
-                  <div class="booking-empty text-center">
-                     <img src="{{URL::to('/')}}/public/assets/web/images/empty-cart.png">
-                     <p> Your cart is empty <br/> Add an item to begin. </p>
-                  </div>
-                  @endif
-               </div>
-            </div>
-            <div class="booking-cart" style="margin-top: 40px;">
-               <div class="booking-cart-head">
-                  <h5> Choose Date/Time   </h5>
-               </div>
-               <div class="booking-cart-items" style="padding-top: 20px;">
-                  <div class="row">
-                     <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-                        <div class="form-field4">
-                           <p> Choose Date </p>
-                           <input type="text" class="form-control" id="iDate" name="">
-                        </div>
-                     </div>
-                     <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-                        <div class="form-field4">
-                           <p> Choose Time </p>
-                           <select class="form-control" id="slots">
-                              <option value="">select</option>
-                           </select>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
+            <form method="post" action="{{route('booker.order')}}">
+              @csrf
+              <input type="hidden" name="refid" value="{{base64_encode($data->id)}}">
+              <div class="booking-cart">
+                 <div class="booking-cart-head">
+                    <h4> Booking </h4>
+                 </div>
+                 <div id="cart_data">
+                    @if(\Cart::count() != 0)
+                    <div class="booking-cart-items">
+                       @foreach(\Cart::content() as $row)
+                       <div class="booking-cart-item1">
+                          <h5> {{$row->name}} </h5>
+                          <input type="hidden" name="service[]" value="{{$row->id}}">
+                          <div class="quantity">
+                             <button data-decrease>-</button>
+                             <input data-value type="text" name="qty[]" value="{{$row->qty}}" readonly />
+                             <button data-increase>+</button>
+                             <b class="price-cart"> {{number_format($row->price,2)}} </b>
+                          </div>
+                       </div>
+                       @endforeach
+                    </div>
+                    @else
+                    <div class="booking-empty text-center">
+                       <img src="{{URL::to('/')}}/public/assets/web/images/empty-cart.png">
+                       <p> Your cart is empty <br/> Add an item to begin. </p>
+                    </div>
+                    @endif
+                 </div>
+              </div>
+              <div class="booking-cart" style="margin-top: 40px;">
+                 <div class="booking-cart-head">
+                    <h5> Choose Date/Time   </h5>
+                 </div>
+                 <div class="booking-cart-items" style="padding-top: 20px;">
+                    <div class="row">
+                       <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                          <div class="form-field4">
+                             <p> Choose Date </p>
+                             <input type="text" class="form-control" id="iDate" name="booking_date" required>
+                          </div>
+                       </div>
+                       <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                          <div class="form-field4">
+                             <p> Choose Time </p>
+                             <select class="form-control" id="slots" name="start_time" required>
+                                <option value="">select</option>
+                             </select>
+                          </div>
+                       </div>
+                    </div>
+                 </div>
+              </div>
+              @if(Auth::check() && Auth::user()->user_type)
+                <button type="submit" id="orderSubmit">Proceed</button>
+              @else
+                <a id="orderSubmit" data-toggle="modal" data-target=".bs-example-modal-lg"> Sign In as Booker </a>
+              @endif
+            </form>
          </div>
       </div>
    </div>
@@ -150,6 +160,7 @@
       var name = $(this).data('name');
       var minutes = $(this).data('minutes');
       var price = $(this).data('price');
+
       $.ajax({
          url: "{{ route('add_cart') }}",
          method: 'post',

@@ -65,7 +65,7 @@ function valueChange() {
       var type = $(this).data('type');
       if(type == 'plus'){
         var value = $(this).parent().find('[data-value]').val();
-        if(value < 100) {
+        if(value < 5) {
           value++;
           $(this).parent().find('[data-value]').val(value);
         }

@@ -27,7 +27,7 @@ $("#login").click(function (e) {
                         timer: 1500,
                         showConfirmButton: false
                     }).then(function(value) {
-                        window.location.href = data.route;
+                        window.location.href = window.location.href;
                     });
                 }else if (data.user_type == 1) {
                     $(".modal").hide();

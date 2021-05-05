@@ -25,6 +25,13 @@ class User extends Authenticatable
         $u->status = '1';
         $u->save();
     }
+
+
+    public static function getBuffer($id){
+        $u = User::find($id);
+
+        return empty($u->user_store) ? '30' : $u->user_store->buffer_between_appointments;
+    }
     /**
      * The attributes that are mass assignable.
      *

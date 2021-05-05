@@ -4,8 +4,21 @@
          <a href="{{route('home')}}"> <img alt="logo" src="{{URL::to('/')}}/public/assets/web/images/logo.png"> </a>
       </div>
       <div class="header-right">
-         <a  class="login-btn" data-toggle="modal" data-target=".bs-example-modal-lg"> Log in </a>
-         <a href="" class="pro-btn"> Become a Pro </a>
+        @if(Auth::check())
+          <div class="dropdown loggedIn">
+            <a class="dropdown-toggle" type="button" data-toggle="dropdown">
+              <img alt="user-pic" src="{{URL::to('/')}}/{{Auth::user()->profile_img}}" onerror="this.onerror=null;this.src='{{URL::to('/')}}/public/assets/images/user-placeholder.png';">
+              {{Auth::user()->first_name}}&nbsp;&nbsp;&nbsp;&#9660;
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="{{Auth::user()->user_type == '1' ? route('practitioner.profile') : route('booker.profile')}}">Dashboard</a></li>
+              <li><a href="{{URL::to('/logout')}}">Logout</a></li>
+            </ul>
+          </div>
+        @else
+          <a  class="login-btn" data-toggle="modal" data-target=".bs-example-modal-lg"> Log in </a>
+          <a href="" class="pro-btn"> Become a Pro </a>
+        @endif
       </div>
       <div class="navbar-handler">
          <img src="{{URL::to('/')}}/public/assets/web/images/hamburger.png">

@@ -32,6 +32,13 @@ class bookingsController extends Controller
         return view('booker.index', ['upcomming' => $upcomming, 'rating' => $rating]);
     }
 
+    function bookOrder(Request $request){
+        $data = $request->all();
+        order::makeOrder($data);
+        session()->forget('cart');
+        return redirect()->back()->with('success', 'Order Confirmed.');
+    }
+
     function upcomming_booking(){
         $curr = date('Y-m-d H:i:s');
         $data = order::where('booker_id', Auth::id())
