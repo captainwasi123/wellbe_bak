@@ -34,9 +34,9 @@ class bookingsController extends Controller
 
     function bookOrder(Request $request){
         $data = $request->all();
-        order::makeOrder($data);
+        $id = order::makeOrder($data);
         session()->forget('cart');
-        return redirect()->back()->with('success', 'Order Confirmed.');
+        return redirect()->back()->with('success', $id);
     }
 
     function upcomming_booking(){

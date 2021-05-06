@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Auth;
 use App\Models\orders\order;
+use App\Models\orders\cancel;
 use App\Models\MarketplaceSetting;
 
 class bookingController extends Controller
@@ -76,5 +77,30 @@ class bookingController extends Controller
         cancel::cancellation($id, $des, '1');
 
         return redirect()->back()->with('success', 'Order Cancelled.');
+    }
+
+
+    //Start Booking
+    function bookingStart($id){
+        $id = base64_decode(base64_decode($id));
+
+        $o = order::find($id);
+        $o->status = '2';
+        $o->save();
+
+        return redirect()->back()->with('success', 'Order Service Started.');
+
+    }
+
+    //Complete Booking
+    function bookingComplete($id){
+        $id = base64_decode(base64_decode($id));
+
+        $o = order::find($id);
+        $o->status = '3';
+        $o->save();
+
+        return redirect()->back()->with('success', 'Order Completed.');
+
     }
 }

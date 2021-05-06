@@ -19,7 +19,7 @@
                        <th> Date / Time </th>
                        <th> Booking ID </th>
                        <th> Booker </th>
-                       <th> Address </th>
+                       <th> Payment Status </th>
                        <th> My Earnings </th>
                        <th> Actions </th>
                     </tr>
@@ -27,10 +27,10 @@
                  <tbody>
                     @foreach($data as $val)
                       <tr>
-                         <td> {{date('l, d M Y - h:i A', strtotime($val->start_at))}}</td>
+                         <td> {{date('l, d M Y - h:i A', strtotime($val->start_at.' '.$val->details[0]->start_time))}}</td>
                          <td> #{{$val->id}} </td>
                          <td class="col-blue"> {{empty($val->booker) ? 'Deleted User' : $val->booker->first_name.' '.$val->booker->last_name}} <i class="fa fa-comments col-black"> </i> </td>
-                         <td> {{empty($val->booker->user_address) ? '' : $val->booker->user_address->city}}{{empty($val->booker->user_address->country) ? '' : ', '.$val->booker->user_address->country->country}} </td>
+                         <td> {{$val->payment_status == '1' ? 'Paid' : 'In-Escrow'}} </td>
                          <td> NZ ${{number_format($val->pract_earning, 2)}} </td>
                          <td> <a href="javascript:void(0)" class="custom-btn1 orderModal" data-id="{{base64_encode($val->id)}}"> View  </a> </td>
                       </tr>

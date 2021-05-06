@@ -26,6 +26,7 @@
                {{empty($data->practitioner->user_address) ? '' : $data->practitioner->user_address->state.', '}}
                {{empty($data->practitioner->user_address->country) ? '' : $data->practitioner->user_address->country->country}}
             </h5>
+
          </div>
       </div>
       <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
@@ -85,7 +86,7 @@
          <h3><br></h3>
          <p>Booking Date:
             <strong>
-               {{date('d-M-Y')}}
+               {{date('d-M-Y', strtotime($data->start_at))}}
             </strong>
          </p>
       </div>
@@ -98,6 +99,10 @@
                   <tr>
                      <td class="wd-40"> Product Name </td>
                      <td class="wd-60"> {{$val->service->name}}<br>{{$val->service->duration}} Mins </td>
+                  </tr>
+                  <tr>
+                     <td class="wd-40"> Quantity: </td>
+                     <td class="wd-60"> {{$val->qty}} </td>
                   </tr>
                   <tr>
                      <td class="wd-40"> Price: </td>

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\orders\order;
+use App\Models\orders\reviews;
 
 class User extends Authenticatable
 {
@@ -85,6 +86,16 @@ class User extends Authenticatable
     public function booker_orders()
     {
         return $this->hasMany(order::class,'booker_id','id');
+    }
+
+    //Rating
+    public function reviews()
+    {
+        return $this->hasMany(reviews::class,'review_to','id');
+    }
+    public function rating()
+    {
+        return $this->reviews()->avg('rating');
     }
 
 

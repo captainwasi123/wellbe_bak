@@ -43,7 +43,7 @@
                         @endif 
                       </td>
                       <td> NZ ${{number_format($val->total_amount, 2)}} </td>
-                      <td> <a href="javascript:void(0)" class="custom-btn1 orderModal" data-id="{{base64_encode($val->id)}}" data-host="{{URL::to('/')}}"> View  </a> </td>
+                      <td> <a href="javascript:void(0)" class="custom-btn1 orderModal" data-id="{{base64_encode($val->id)}}"> View  </a> </td>
                    </tr>
                  @endforeach
                  @if(count($data) == '0')

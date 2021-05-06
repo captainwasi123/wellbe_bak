@@ -13,7 +13,7 @@
                <div>
                   <h4> {{empty($data->first_name) ? '' : $data->first_name.' '.$data->last_name}} </h4>
                   <p> <img src="{{URL::to('/')}}/public/assets/web/images/map-marker.png"> {{empty($data->user_address) ? '' : $data->user_address->city}}{{empty($data->user_address->country) ? '' : ', '.$data->user_address->country->country}} </p>
-                  <p> <a href="" class="col-black"> <img src="{{URL::to('/')}}/public/assets/web/images/rating-star.png"> Rate Now </a> </p>
+                  <p> <a href="javascript:void(0)" class="col-black ratingAvg"> {{empty($data->reviews()) ? '0.0' : number_format($data->reviews()->avg('rating'), 1)}} <img src="{{URL::to('/')}}/public/assets/web/images/rating-star.png"> </a></p>
                </div>
                <div>
                   <p>
@@ -96,7 +96,7 @@
                              <button data-decrease>-</button>
                              <input data-value type="text" name="qty[]" value="{{$row->qty}}" readonly />
                              <button data-increase>+</button>
-                             <b class="price-cart"> {{number_format($row->price,2)}} </b>
+                             <b class="price-cart"> $ {{number_format($row->price,2)}} </b>
                           </div>
                        </div>
                        @endforeach
@@ -144,6 +144,19 @@
 </section>
 @endsection
 @section('additionalJS')
+@if(session()->has('success'))
+  <script type="text/javascript">
+    swal({
+        title: "Order#: {{ session()->get('success') }}",
+        text: 'Thank you for your Order.',
+        icon: 'success',
+        timer: 1500,
+        showConfirmButton: false
+    }).then(function(value) {
+        window.location.href = window.location.href;
+    });    
+  </script>
+@endif
 <script>
    $('.category').click(function(){ 
       var userid = $(this).data('userid');

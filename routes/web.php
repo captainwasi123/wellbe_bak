@@ -88,6 +88,12 @@ use Illuminate\Support\Facades\Route;
 
 			//Response
 			Route::get('/view1/{id}', 'bookingController@bookingView1');
+
+			//Start Service
+			Route::get('/start/{id}', 'bookingController@bookingStart');
+
+			//Booking Complete
+			Route::get('/complete/{id}', 'bookingController@bookingComplete');
 		});
 
 		//plan

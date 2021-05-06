@@ -26,6 +26,30 @@
                {{empty($data->booker->user_address) ? '' : $data->booker->user_address->state.', '}}
                {{empty($data->booker->user_address->country) ? '' : $data->booker->user_address->country->country}}
             </h5>
+            @if($data->status == '3')
+               <h6 class="col-grey"> Guest Rating  </h6>
+               <h5 class="col-blue"> 
+                  @if(empty($data->reviews))
+                    N/A
+                  @else
+                    @php $rat = $data->reviews->rating; @endphp
+                    <span>
+                      @for($i=1; $i<=5; $i++) 
+                        <i class="fa fa-star {{$i > $rat ? 'star-off' : 'star-onn'}}"> </i>
+                      @endfor  
+                    </span>
+                  @endif
+               </h5>
+
+               <h6 class="col-grey"> Guest Review  </h6>
+               <h5 class="col-blue">
+                  @if(empty($data->reviews))
+                    N/A
+                  @else
+                    {{$data->reviews->review}}
+                  @endif
+               </h5>
+            @endif
          </div>
       </div>
       <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
@@ -85,7 +109,7 @@
          <h3><br></h3>
          <p>Booking Date:
             <strong>
-               {{date('d-M-Y')}}
+               {{date('d-M-Y', strtotime($data->start_at))}}
             </strong>
          </p>
       </div>
@@ -98,6 +122,10 @@
                   <tr>
                      <td class="wd-40"> Product Name </td>
                      <td class="wd-60"> {{$val->service->name}}<br>{{$val->service->duration}} Mins </td>
+                  </tr>
+                  <tr>
+                     <td class="wd-40"> Quantity: </td>
+                     <td class="wd-60"> {{$val->qty}} </td>
                   </tr>
                   <tr>
                      <td class="wd-40"> Price: </td>
@@ -117,8 +145,14 @@
       </div>
    @endforeach
 </div>
+<div class="block-element text-right">
 @if($data->status == '1' || $data->status == '2')
-   <div class="block-element text-right">
-      <a href="javascript:void(0)" class="normal-btn bg-blue col-white rounded orderCancel" data-ref="{{base64_encode(base64_encode($data->id))}}"> Cancel Booking </a>
-   </div>
+   <a href="javascript:void(0)" class="normal-btn bg-blue col-white rounded orderCancel" data-ref="{{base64_encode(base64_encode($data->id))}}"> Cancel Booking </a>
 @endif
+@if($data->status == '1')
+   <a href="javascript:void(0)" class="normal-btn bg-green col-white rounded orderStart" data-ref="{{base64_encode(base64_encode($data->id))}}"> Service time Start </a>
+@endif
+@if($data->status == '2')
+   <a href="javascript:void(0)" class="normal-btn bg-green col-white rounded orderComplete" data-ref="{{base64_encode(base64_encode($data->id))}}"> Booking Completed </a>
+@endif
+</div>

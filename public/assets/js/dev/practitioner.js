@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
 	"use strict";
-
+	var ref = $('meta[name=host]').attr('content');
 	//Add Service
 
 	$(document).on('click', '.addService', function(){
@@ -14,18 +14,18 @@ $(document).ready(function(){
 
 	$(document).on('click', '.viewService', function(){
 		var id = $(this).data('id');
-		$('#service_block').html('<img src="../public/assets/images/loader.gif">');
+		$('#service_block').html('<img src="'+ref+'/public/assets/images/loader.gif">');
 
-		$.get( "service/load/"+id, function( data ) {
+		$.get( ref+"/practitioner/service/load/"+id, function( data ) {
 		  $('#service_block').html( data );
 		});
 	});
 
 	$(document).on('click', '.serviceDetail', function(){
 		var id = $(this).data('id');
-		$('#service_detail_block').html('<img src="../public/assets/images/loader.gif">');
+		$('#service_detail_block').html('<img src="'+ref+'/public/assets/images/loader.gif">');
 
-		$.get( "service/detail/"+id, function( data ) {
+		$.get( ref+"/practitioner/service/detail/"+id, function( data ) {
 		  $('#service_detail_block').html( data );
 		});
 	});
@@ -46,9 +46,9 @@ $(document).ready(function(){
 		var id = $(this).data('id');
 
 		$('.editServiceModal').modal('show');
-		$('#editServiceModalBody').html('<img src="../public/assets/images/loader.gif">');
+		$('#editServiceModalBody').html('<img src="'+ref+'/public/assets/images/loader.gif">');
 
-		$.get( "service/edit/"+id, function( data ) {
+		$.get( ref+"/practitioner/service/edit/"+id, function( data ) {
 		  $('#editServiceModalBody').html( data );
 		});
 	});
@@ -62,7 +62,7 @@ $(document).ready(function(){
 	});
 
 	$(document).on('click', '.addItemAddons', function(){
-		$('#addon_item_add').append('<div class="row"><div class="col-md-4 col-lg-4 col-sm-6 col-xs-12"> <div class="form-field2"><input type="text" placeholder="Enter type" name="duration[]" required></div></div> <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12"> <div class="form-field2"><input type="text" placeholder="Enter price" name="price[]" style="padding-left: 50px;" required><span class="static-tag1 col-black"> NZ$  </span></div></div> <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12"> <div class="form-field2"><input type="radio" name="default" value="0"><a href="javascript:void(0)" class="pull-right col-black removeItemAddon" style="margin-top: 12px;"> <i class="fa fa-trash"> </i> </a></div></div>   </div>');
+		$('#addon_item_add').append('<div class="row"><div class="col-md-4 col-lg-4 col-sm-6 col-xs-12"> <div class="form-field2"><input type="text" placeholder="Enter type" name="duration[]" required></div></div> <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12"> <div class="form-field2"><input type="text" placeholder="Enter price" name="price[]" style="padding-left: 50px;" required><span class="static-tag1 col-black"> NZ$  </span></div></div> <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12"> <div class="form-field2"><a href="javascript:void(0)" class="pull-right col-black removeItemAddon" style="margin-top: 12px;"> <i class="fa fa-trash"> </i> </a></div></div>   </div>');
 	});
 
 	$(document).on('click', '.removeItemAddon', function(){
@@ -108,9 +108,9 @@ $(document).ready(function(){
 		var id = $(this).data('id');
 
 		$('.orderView').modal('show');
-		$('#orderViewContent').html('<img src="../../public/assets/images/loader.gif">');
+		$('#orderViewContent').html('<img src="'+ref+'/public/assets/images/loader.gif">');
 
-		$.get( "view1/"+id, function( data ) {
+		$.get( ref+"/practitioner/booking/view1/"+id, function( data ) {
 		  $('#orderViewContent').html( data );
 		});
 	});
@@ -122,6 +122,26 @@ $(document).ready(function(){
 
 		$('#oid').val(id);
 	});
-	
+
+
+	//Start Service
+	$(document).on('click', '.orderStart', function(){
+		var id = $(this).data('ref');
+
+		$('.orderView').modal('hide');
+		if(confirm('Are sure want to start service?')){
+			window.location.href = ref+"/practitioner/booking/start/"+id;
+		}
+	});
+
+	//Booking Completed
+	$(document).on('click', '.orderComplete', function(){
+		var id = $(this).data('ref');
+
+		$('.orderView').modal('hide');
+		if(confirm('Are sure want to Complete this booking?')){
+			window.location.href = ref+"/practitioner/booking/complete/"+id;
+		}
+	});
 
 });

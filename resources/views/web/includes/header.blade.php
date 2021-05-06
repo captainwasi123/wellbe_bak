@@ -11,7 +11,8 @@
               {{Auth::user()->first_name}}&nbsp;&nbsp;&nbsp;&#9660;
             </a>
             <ul class="dropdown-menu">
-              <li><a href="{{Auth::user()->user_type == '1' ? route('practitioner.profile') : route('booker.profile')}}">Dashboard</a></li>
+              <li><a href="{{Auth::user()->user_type == '1' ? route('practitioner.dashboard') : route('booker.index')}}">Dashboard</a></li>
+              <li><a href="{{Auth::user()->user_type == '1' ? route('practitioner.profile') : route('booker.profile')}}">Profile</a></li>
               <li><a href="{{URL::to('/logout')}}">Logout</a></li>
             </ul>
           </div>

@@ -42,3 +42,11 @@
     background-color: #fbece7;
     padding: 2px 5px;
 }
+.ratingAvg{
+    font-size: 20px !important;
+    font-weight: bold;
+}
+.ratingAvg img{
+    margin-top: -3px;
+    margin-left: 5px;
+}

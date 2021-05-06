@@ -1,12 +1,12 @@
 $(document).ready(function(){
 
 	"use strict";
+	var ref = $('meta[name=host]').attr('content');
 
 	//Order View
 
 	$(document).on('click', '.orderModal', function(){
 		var id = $(this).data('id');
-		var ref = $(this).data('host');
 		$('.orderView').modal('show');
 		$('#orderViewContent').html('<img src="'+ref+'/public/assets/images/loader.gif">');
 

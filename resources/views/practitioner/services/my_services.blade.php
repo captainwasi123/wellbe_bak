@@ -11,12 +11,13 @@
       <div class="page-title">
          <h3 class="col-white"> Your Services </h3>
       </div>
-      <div class="block-element cat-buttons mob-text-left m-t-20 pad-1">
+      <!-- <div class="block-element cat-buttons mob-text-left m-t-20 pad-1">
          <button class="normal-btn2 bg-blue col-white"> Approved </button>
          <button class="normal-btn2 bg-white col-black"> Pending </button>
          <button class="normal-btn2 bg-white col-black"> Rejected </button>
-      </div>
-      <div class="block-element pad-1">
+      </div> -->
+      <div class=""></div>
+      <div class="block-element pad-1 m-t-20">
          <div class="row">
             <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
                <div class="box-type3 height-custom1" style="overflow:visible;" style="position: relative;">
@@ -97,10 +98,6 @@
                      <span class="static-tag1 col-black"> NZ$  </span>
                   </div>
                   <div class="form-field2">
-                     <p> YOUR PAYOUT (AFTER GST/SERVICE FEES) <sup class="col-red">*</sup> </p>
-                     <input type="number" step="any" placeholder="" name="final_price" readonly>
-                  </div>
-                  <div class="form-field2">
                      <p> DESCRIPTION </p>
                      <textarea placeholder="Please enter description" rows="2" name="description"></textarea>
                   </div>
@@ -165,12 +162,6 @@
                               <input type="text" placeholder="Enter price" name="price[]" style="padding-left: 50px;" required>
                               <span class="static-tag1 col-black"> NZ$  </span>
                            </div>
-                        </div> 
-                        <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12"> 
-                           <div class="form-field2">
-                              <p class="col-black"> Default  </p>
-                              <input type="radio" name="default" value="1" checked>
-                           </div>
                         </div>   
                      </div>
                   </div>
@@ -181,7 +172,7 @@
 
 
                   <div class="block-element submit-buttons mob-text-left text-right">
-                     <button class="bg-silver  col-black normal-btn rounded"> Cancel  </button>
+                     <button type="button" class="bg-silver  col-black normal-btn rounded" data-dismiss="modal" aria-label="Close"> Cancel  </button>
                      <button class="bg-blue col-white normal-btn rounded"> Add </button>
                   </div>
                </form>
