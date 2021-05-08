@@ -50,3 +50,74 @@
     margin-top: -3px;
     margin-left: 5px;
 }
+
+
+/* Profile New Look */
+.practitioner-box-image {
+    float: left;
+    width: 100%;
+    text-align: center;
+}
+.practitioner-box-image img {
+    width: 200px;
+    border-radius: 100%;
+}
+.practitioner-box {
+    background:none;
+}
+
+.practitioner-box-text {
+    float: left;
+    width: 100%;
+    padding-left: 0px;
+    text-align: center;
+    padding-top: 20px;
+}
+.practitioner-box-text h5 {
+    color: #6d6d6d;
+    font-weight: 400;
+    border-bottom: none;
+    padding-bottom: 4px;
+    margin-bottom: 10px;
+    letter-spacing: 0.4px;
+    font-size: 16px;
+}
+.practitioner-box-text p.pract-price {
+    color: #ec8f9f;
+    font-weight: 500;
+    font-size: 17px;
+}
+.practitioner-box-text h4 {
+    color: black;
+    margin: 0px 0px 10px 0px;
+    font-weight: 500;
+    letter-spacing: 0.6px;
+}
+.practitioner-box-text p {
+    color: black;
+    font-weight: 400;
+    letter-spacing: 0.4px;
+    margin-bottom: 10px;
+}
+.fa-star {
+    color: silver;
+}
+
+.star-onn {
+    color: #eacf46 !important;
+}
+.practitioner-box-text p.pract-review {
+    color: grey;
+    letter-spacing: 0px;
+}
+
+.empty_users{
+    text-align: center;
+    padding: 100px;
+}
+.empty_users h3{
+    color: #777;
+}
+.empty_users img{
+    opacity: 0.6;
+}

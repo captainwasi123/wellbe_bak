@@ -16,7 +16,10 @@ use Illuminate\Support\Facades\Route;
 //Website
 	Route::get('/', 'webController@index')->name('home');
 	Route::get('/professionals', 'webController@professionals')->name('professionals');
+
+	//Treatments
 	Route::get('/treatments', 'webController@treatments')->name('treatments');
+	Route::get('/treatments/{category}', 'webController@treatmentsCategory');
 	Route::get('/treatments/professional/profile/{id}', 'webController@professionalProfile');
 
 	//Services

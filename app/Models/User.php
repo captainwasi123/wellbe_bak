@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\orders\order;
 use App\Models\orders\reviews;
+use App\Models\services\services;
 
 class User extends Authenticatable
 {
@@ -78,7 +79,15 @@ class User extends Authenticatable
         return $this->belongsTo('App\Models\PayoutDetail','id','user_id');
     }
 
+    //Services
+    
+    public function services()
+    {
+        return $this->hasMany(services::class,'user_id','id');
+    }    
 
+
+    //orders
     public function pract_orders()
     {
         return $this->hasMany(order::class,'pract_id','id');
