@@ -35,6 +35,14 @@
 
       @yield('content')
 
+
+          <!-- Chat Widget Starts Here -->
+
+          <div class="chat-window" style="margin-right:20px;">
+            
+          </div>
+
+              <!-- Chat Widget Ends Here -->
     </section>
   <!-- All Dashboard Content Ends Here -->
 

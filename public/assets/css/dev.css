@@ -44,3 +44,6 @@ span > i.fa-star{
 .border_bottom{
     border-bottom: 1px solid;
 }
+.chat{
+    cursor: pointer;
+}
