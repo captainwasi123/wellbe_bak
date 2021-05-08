@@ -20,7 +20,7 @@
                      <th> Booking ID </th>
                      <th> Practitioner </th>
                      <th> Booker </th>
-                     <th> Marked as Complete </th>
+                     <th> Marked as Paid </th>
                      <th> Payment Due </th>
                      <th> Charge </th>
                      <th> Actions </th>
@@ -28,16 +28,16 @@
                </thead>
                <tbody>
                    @foreach($data as $val)
-                     <tr>
-                        <td> {{date('l, d M Y - h:i A', strtotime($val->start_at))}}</td>
+                      <tr>
+                        <td> {{date('l, d M Y - h:i A', strtotime($val->start_at.' '.$val->details[0]->start_time))}}</td>
                         <td> #{{$val->id}} </td>
-                        <td class="col-blue"> {{empty($val->practitioner) ? 'Deleted User' : $val->practitioner->first_name.' '.$val->practitioner->last_name}} <i class="fa fa-comments col-black"> </i> </td>
-                        <td class="col-blue"> {{empty($val->booker) ? 'Deleted User' : $val->booker->first_name.' '.$val->booker->last_name}} <i class="fa fa-comments col-black"> </i> </td>
-                        <td> --- </td>
-                        <td> --- </td>
+                        <td class="col-blue"> {{empty($val->practitioner) ? 'Deleted User' : $val->practitioner->first_name.' '.$val->practitioner->last_name}}</td>
+                        <td class="col-blue"> {{empty($val->booker) ? 'Deleted User' : $val->booker->first_name.' '.$val->booker->last_name}}</td>
+                        <td> {{$val->payment_status == '0' ? 'No' : 'Yes'}} </td>
+                        <td> {{$val->payment_status == '0' ? '$'.number_format($val->pract_earning, 2) : '$0.0'}} </td>
                         <td> NZ ${{number_format($val->total_amount, 2)}} </td>
                         <td> <a href="javascript:void(0)" class="custom-btn1 orderModal" data-id="{{base64_encode($val->id)}}"> View  </a> </td>
-                     </tr>
+                      </tr>
                    @endforeach
                    @if(count($data) == '0')
                      <tr>

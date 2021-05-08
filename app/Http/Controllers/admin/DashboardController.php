@@ -188,4 +188,22 @@ class DashboardController extends Controller
 
         return redirect()->back()->with('success', 'Order Cancelled.');
     }
+
+    //Mark as Paid
+    function bookingMarkasPaid($id){
+        $id = base64_decode(base64_decode($id));
+        $o = order::find($id);
+        $o->payment_status = '1';
+        $o->save();
+
+        return redirect()->back()->with('success', 'Order marked as paid.');
+    }
+    function bookingUnmarkasPaid($id){
+        $id = base64_decode(base64_decode($id));
+        $o = order::find($id);
+        $o->payment_status = '0';
+        $o->save();
+
+        return redirect()->back()->with('success', 'Order unmarked as paid.');
+    }
 }

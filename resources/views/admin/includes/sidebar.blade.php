@@ -31,9 +31,9 @@
              <a href="{{route("admin.custom_services")}}"> <i class="fas fa-align-center"></i> Custom Services </a>
            </div>
 
-           <div class="menu-item">
+           <!-- <div class="menu-item">
              <a href="{{route("admin.marketplace_catalogue")}}"> <i class="fas fa-file-pdf"></i> Marketplace Catalogue </a>
-          </div>
+          </div> -->
           <div class="menu-item">
              <a class="menu-onn"> <i class="fa fa-user-plus"> </i>  My Profile <i class="fa fa-caret-right  menu-icon"> </i> </a>
              <ol class="sub-menu" style="display: none;">

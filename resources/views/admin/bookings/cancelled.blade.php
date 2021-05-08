@@ -9,7 +9,7 @@
 <div class="dashboard-wrapper">
     <div class="box-type4">
     <div class="page-title">
-       <h3 class="col-white"> Completed Bookings </h3>
+       <h3 class="col-white"> Cancelled Bookings </h3>
     </div>
     <div class="box-type1">
        <div class="table-overlay table-type1">
@@ -28,11 +28,11 @@
              <tbody>
                @foreach($data as $val)
                  <tr>
-                    <td> {{date('l, d M Y - h:i A', strtotime($val->start_at))}}</td>
+                    <td> {{date('l, d M Y - h:i A', strtotime($val->start_at.' '.$val->details[0]->start_time))}}</td>
                     <td> #{{$val->id}} </td>
-                    <td class="col-blue"> {{empty($val->practitioner) ? 'Deleted User' : $val->practitioner->first_name.' '.$val->practitioner->last_name}} <i class="fa fa-comments col-black"> </i> </td>
-                    <td class="col-blue"> {{empty($val->booker) ? 'Deleted User' : $val->booker->first_name.' '.$val->booker->last_name}} <i class="fa fa-comments col-black"> </i> </td>
-                    <td> --- </td>
+                    <td class="col-blue"> {{empty($val->practitioner) ? 'Deleted User' : $val->practitioner->first_name.' '.$val->practitioner->last_name}}</td>
+                    <td class="col-blue"> {{empty($val->booker) ? 'Deleted User' : $val->booker->first_name.' '.$val->booker->last_name}}</td>
+                    <td> {{$val->payment_status == '0' ? 'Yes' : 'No'}}  </td>
                     <td> --- </td>
                     <td> <a href="javascript:void(0)" class="custom-btn1 orderModal" data-id="{{base64_encode($val->id)}}"> View  </a> </td>
                  </tr>

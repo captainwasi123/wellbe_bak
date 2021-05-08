@@ -38,3 +38,9 @@
 span > i.fa-star{
     font-size: 14px !important;
 }
+.stats-records div {
+    width: 49% !important;
+}
+.border_bottom{
+    border-bottom: 1px solid;
+}

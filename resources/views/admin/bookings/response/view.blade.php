@@ -26,18 +26,30 @@
                {{empty($data->booker->user_address) ? '' : $data->booker->user_address->state.', '}}
                {{empty($data->booker->user_address->country) ? '' : $data->booker->user_address->country->country}}
             </h5>
+            @if($data->status == '3')
+               <h6 class="col-grey"> Guest Rating  </h6>
+               <h5 class="col-blue"> - </h5>
+               <h6 class="col-grey"> Guest Review  </h6>
+               <h5 class="col-blue"> - </h5>
 
-            <h6 class="col-grey"> Guest Rating  </h6>
-            <h5 class="col-blue"> - </h5>
-            <h6 class="col-grey"> Guest Review  </h6>
-            <h5 class="col-blue"> - </h5>
-
-            <h6 class="col-grey"> Practitioner Earning  </h6>
-            <h5 class="col-blue"> NZ ${{number_format($data->pract_earning, 2)}} </h5>
+               <h6 class="col-grey"> Practitioner Earning  </h6>
+               <h5 class="col-blue"> NZ ${{number_format($data->pract_earning, 2)}} </h5>
+            @endif
+            @if($data->status == '4')
+               <h5 class="border_bottom">Practitioner</h5>
+               <h6 class="col-grey"> Payment Due: <strong class="col-blue">{{empty($data->paid_status) ? '$'.number_format($data->pract_earning, 2) : '$0.0'}}</strong></h6>
+               <h6 class="col-grey"> Payout Bank: <strong class="col-blue">{{empty($data->practitioner->users_payout_details) ? 'NA' : $data->practitioner->users_payout_details->bank_account_name}}</strong></h6>
+               <h6 class="col-grey"> Account Number:  </h6>
+               <h5 class="col-blue"> {{empty($data->practitioner->users_payout_details) ? 'NA' : $data->practitioner->users_payout_details->bank_account_number}}</h5>
+               <br>
+               <div class="block-element text-right">
+                  <a href="javascript:void(0)" class="normal-btn bg-blue col-white rounded" data-ref="{{base64_encode(base64_encode($data->id))}}"> Mark as Paid </a>
+               </div>
+            @endif
          </div>
       </div>
       <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
-         <div class="booking-modal-set2">
+         <div class="booking-modal-set2" style="margin-bottom: 20px;">
             <table>
                <tbody>
                   <tr>
@@ -57,6 +69,29 @@
                </tfoot>
             </table>
          </div>
+
+         @if($data->status == '3')
+            <h6 class="col-grey"> <br><br>Payment Due: <strong class="col-blue">{{empty($data->paid_status) ? '$'.number_format($data->pract_earning, 2) : '$0.0'}}</strong></h6>
+            <h6 class="col-grey"> Payout Bank: <strong class="col-blue">{{empty($data->practitioner->users_payout_details) ? 'NA' : $data->practitioner->users_payout_details->bank_account_name}}</strong></h6>
+            <h6 class="col-grey"> Account Number:  </h6>
+            <h5 class="col-blue"> {{empty($data->practitioner->users_payout_details) ? 'NA' : $data->practitioner->users_payout_details->bank_account_number}}</h5>
+            @if($data->payment_status == '0')
+               <div class="block-element text-right">
+                  <a href="javascript:void(0)" class="normal-btn bg-blue col-white rounded markasPaid" data-ref="{{base64_encode(base64_encode($data->id))}}"> Mark as Paid </a>
+               </div>
+            @else
+               <div class="block-element text-right">
+                  <a href="javascript:void(0)" class="normal-btn bg-red col-white rounded unmarkasPaid" data-ref="{{base64_encode(base64_encode($data->id))}}"> Unmark as Paid </a>
+               </div>
+            @endif
+         @elseif($data->status == '4')
+            <h5 class="border_bottom">Customer</h5>
+            <h6 class="col-grey"> <br><br>Refund Payment Due: <strong class="col-blue">{{empty($data->paid_status) ? '$'.number_format($data->pract_earning, 2) : '$0.0'}}</strong></h6>
+            <br>
+            <div class="block-element text-right">
+               <a href="javascript:void(0)" class="normal-btn bg-blue col-white rounded" data-ref="{{base64_encode(base64_encode($data->id))}}"> Mark as Paid </a>
+            </div>
+         @endif
       </div>
    </div>
 </div>
@@ -93,7 +128,7 @@
          <h3><br></h3>
          <p>Booking Date:
             <strong>
-               {{date('d-M-Y')}}
+               {{date('d-M-Y', strtotime($data->start_at))}}
             </strong>
          </p>
       </div>

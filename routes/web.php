@@ -150,6 +150,8 @@ use Illuminate\Support\Facades\Route;
 	    Route::get('/completed', 'DashboardController@completed')->name('admin.completed');
 	    Route::get('/cancelled', 'DashboardController@cancelled')->name('admin.cancelled');
 
+	    Route::get('/booking/markaspaid/{id}', 'DashboardController@bookingMarkasPaid');
+	    Route::get('/booking/unmarkaspaid/{id}', 'DashboardController@bookingUnmarkasPaid');
 	    Route::post('/booking/cancel', 'DashboardController@bookingCancel')->name('admin.booking.cancel');
 
 		//Response
