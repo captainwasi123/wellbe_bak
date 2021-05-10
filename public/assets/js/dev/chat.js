@@ -61,7 +61,7 @@ function messageSend(){
 
 //Chat Binding
 function getMessage(id, key){
-	Pusher.logToConsole = true;
+	Pusher.logToConsole = false;
   	var pusher = new Pusher(key, {
     	cluster: 'ap2'
   	});

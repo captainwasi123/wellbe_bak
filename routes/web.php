@@ -104,6 +104,7 @@ use Illuminate\Support\Facades\Route;
 
 			Route::get('/', 'PlanController@index')->name('practitioner.plan');
 			Route::get('/plan-buy/{id}','PlanController@plan_buy')->name('practitioner.plan.buy');
+			Route::get('/confirm/{id}','PlanController@plan_confirm');
 		});
 	});
 
@@ -132,6 +133,8 @@ use Illuminate\Support\Facades\Route;
 
 		//Book an order
 		Route::post('/order/book', 'bookingsController@bookOrder')->name('booker.order');
+		Route::get('/order/confirmation/{id}', 'bookingsController@confirmOrder');
+
 	});
 
 //Chat
@@ -141,6 +144,15 @@ use Illuminate\Support\Facades\Route;
 		Route::get('conversation/{order}', 'chatController@conversation');
 
 		Route::post('send', 'chatController@sendChat')->name('chat.send');
+	});
+
+
+//Payments
+
+	Route::prefix('payments')->namespace('payments')->group(function(){
+
+		//Stripe
+			Route::post('stripe', 'stripeController@paymentCharge')->name('payment.stripe.charge');
 	});
 
 

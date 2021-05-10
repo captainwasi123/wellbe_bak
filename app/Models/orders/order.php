@@ -25,7 +25,7 @@ class order extends Model
         $o->pract_id = base64_decode($data['refid']);
         $o->booker_id = Auth::id();
         $o->start_at = date('Y-m-d', strtotime($data['booking_date']));
-        $o->status = '1';
+        $o->status = '9';
         $o->save(); 
         $id = $o->id;
         $c = count($data['service']);
@@ -59,7 +59,7 @@ class order extends Model
         $o->pract_earning = $accounts['pract_earning'];
         $o->save();
 
-        return $id;
+        return $id.'|'.$accounts['total_amount'];
 
     }
 

@@ -36,7 +36,17 @@ class bookingsController extends Controller
         $data = $request->all();
         $id = order::makeOrder($data);
         session()->forget('cart');
-        return redirect()->back()->with('success', $id);
+        $ret_data = explode('|', $id);
+
+        return view('web.payments.stripe', ['id' => $ret_data[0], 'amount' => $ret_data[1]]);
+    }
+
+    function confirmOrder($id){
+        $o = order::find($id);
+        $o->status = '1';
+        $o->save();
+
+        return 'order';
     }
 
     function upcomming_booking(){
