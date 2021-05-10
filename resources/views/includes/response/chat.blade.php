@@ -24,14 +24,14 @@
           <div class="messaging">
               <div class="inbox_msg">
                   <div class="mesgs">
-                      <div class="msg_history inbox_chat" id="inbox_chat">
+                      <div class="msg_history inbox_chat chat{{$data->id}}" id="inbox_chat">
 
                           @foreach($conversation as $chat)
                             @if(Auth::id() == $chat->user_id)
                               <div class="outgoing_msg">
                                   <div class="sent_msg">
                                       <p>{{$chat->message}}</p>
-                                      <span class="time_date">{{date('h:i A | d-M-Y', strtotime($chat->created_at))}}</span>
+                                      <span class="time_date">{{$chat->created_at->diffForHumans()}}</span>
                                   </div>
                               </div>
                             @else  
@@ -40,13 +40,14 @@
                                   <div class="received_msg">
                                       <div class="received_withd_msg">
                                           <p>{{$chat->message}}</p>
-                                          <span class="time_date"> {{date('h:i A | d-M-Y', strtotime($chat->created_at))}}</span>
+                                          <span class="time_date"> {{$chat->created_at->diffForHumans()}}</span>
                                       </div>
                                   </div>
                               </div>
                             @endif
                           @endforeach
                           @if(count($conversation) == '0')
+                            <input type="hidden" id="empty" value="1">
                             <div class="empty_chat">
                               <img src="{{URL::to('/public/assets/images/no-message.png')}}">
                               <h4>No Converstaion Found.</h4>

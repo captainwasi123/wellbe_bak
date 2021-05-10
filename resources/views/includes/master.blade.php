@@ -47,7 +47,16 @@
   <!-- All Dashboard Content Ends Here -->
 
       @include('includes.script')
+      @if(Auth::check())
+        <script type="text/javascript">
+          $(document).ready(function(){
+            getMessage('{{base64_encode(Auth::id())}}', '{{env("PUSHER_APP_KEY")}}');
+          });
+        </script>
+      @endif
       @yield('additionalJS')
+
+
 
    </body>
 </html>

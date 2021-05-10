@@ -20,7 +20,7 @@ class chat extends Model
     	$c->message = $data['message'];
     	$c->save();
 
-    	return date('h:i A | d-M-Y', strtotime($c->created_at));
+    	return $c->created_at;
     }
 
     public function user(){

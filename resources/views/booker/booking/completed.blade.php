@@ -29,7 +29,7 @@
                    <tr>
                       <td> {{date('l, d M Y - h:i A', strtotime($val->start_at.' '.$val->details[0]->start_time))}}</td>
                       <td> #{{$val->id}} </td>
-                      <td class="col-blue"> {{empty($val->practitioner) ? 'Deleted User' : $val->practitioner->first_name.' '.$val->practitioner->last_name}} <i class="fa fa-comments col-black"> </i> </td>
+                      <td class="col-blue chat" data-ref="{{base64_encode(base64_encode($val->id))}}"> {{empty($val->practitioner) ? 'Deleted User' : $val->practitioner->first_name.' '.$val->practitioner->last_name}} <i class="fa fa-comments col-black"> </i> </td>
                       <td>
                         @if(empty($val->reviews))
                           <a href="javascript:void(0)" class="openRatingModal" data-ref="{{base64_encode($val->id)}}">Add Rating</a>
