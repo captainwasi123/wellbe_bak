@@ -84,7 +84,7 @@
          	</div>
          	<div class="tab-pane" id="tabs-2" role="tabpanel">
      	      <h5> Please Register with us and get ammazing opportunities. </h5>
-            <form id="userRegister" action="{{URL::to('/register')}}">
+            <form method="post" action="{{URL::to('/register')}}">
               @csrf
               <div class="row">
                 <div class="col-md-6">

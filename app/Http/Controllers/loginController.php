@@ -69,24 +69,15 @@ class loginController extends Controller
             $u = User::where('email', $data['email'])->count();
             if($u == '0'){
                 User::newUser($data);
-                $data = array(
-                    'status' => 200,
-                    'message' => 'You are successfully registered..'
-                );
-                return $data;
+
+                return redirect()->back()->with('success', 'You are successfully registered..');
             }else{
-                $data = array(
-                    'status' => 500,
-                    'message' => 'This email is already Registered.'
-                );
-                return $data;
+
+                return redirect()->back()->with('error', 'This email is already Registered.');
             }
         }else{
-            $data = array(
-                'status' => 500,
-                'message' => 'Password does not matched.'
-            );
-            return $data;
+            
+            return redirect()->back()->with('error', 'Password does not matched.');
         }
 
     }
