@@ -88,6 +88,6 @@
 }
 
 .custom-modal-data .tab-content form {
-    max-width: 400px !important;
+    max-width: 100% !important;
     margin: auto;
 }

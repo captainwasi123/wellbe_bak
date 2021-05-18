@@ -133,7 +133,6 @@
 
 
 
-
       </style>
 @section('content')
 
@@ -384,4 +383,42 @@
          </div>
       </section>
       <!-- Brand Logos Section Ends Here -->
+
+
+
+@if(session()->has('success'))
+    <script type="text/javascript">
+      $(document).ready(function(){
+        swal({
+            title: 'Success!',
+            text: '{{ session()->get("success") }}',
+            icon: 'success',
+            timer: 3000,
+            showConfirmButton: false
+        }).then(function(value) {                            
+            window.location.href = data.route;
+        });
+      });
+    </script>
+  @endif
+
+  @if(session()->has('error'))
+    <script type="text/javascript">
+      $(document).ready(function(){
+        swal({
+            title: 'Error!',
+            text: '{{ session()->get("error") }}',
+            type: "error",
+            timer: 3000,
+            showCancelButton: true,
+            dangerMode: true,
+            cancelButtonClass: '#DD6B55',
+            confirmButtonColor: '#dc3545',
+            confirmButtonText: 'Cancel!',
+        }).then(function(value) {
+                window.location.href = window.location.href;
+        });
+      });
+    </script>
+  @endif
 @endsection
