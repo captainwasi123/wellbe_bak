@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\orders\orderDetail;
 use App\Models\services\services;
 use App\Models\orders\reviews;
+use App\Models\orders\cancel;
 use App\Models\User;
 use App\Models\MarketplaceSetting;
 use Auth;
@@ -75,5 +76,8 @@ class order extends Model
     }
     public function reviews(){
         return $this->belongsTo(reviews::class, 'id', 'order_id');
+    }
+    public function cancel(){
+        return $this->belongsTo(cancel::class, 'id', 'order_id');
     }
 }

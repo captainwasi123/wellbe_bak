@@ -177,6 +177,19 @@ use Illuminate\Support\Facades\Route;
 	    Route::get('/booking/unmarkaspaid/{id}', 'DashboardController@bookingUnmarkasPaid');
 	    Route::post('/booking/cancel', 'DashboardController@bookingCancel')->name('admin.booking.cancel');
 
+	    //Cancel Marking
+	    Route::prefix('bookingCancel')->group(function(){
+
+	    	//Customer
+	    	Route::get('customer/mark/{id}', 'DashboardController@cancelMarkCust');
+	    	Route::get('customer/unmark/{id}', 'DashboardController@cancelunMarkCust');
+
+	    	//Practitioner
+	    	Route::get('practitioner/mark/{id}', 'DashboardController@cancelMarkPract');
+	    	Route::get('practitioner/unmark/{id}', 'DashboardController@cancelunMarkPract');
+	    });
+
+
 		//Response
 		Route::get('/view/{id}', 'DashboardController@bookingView1');
 

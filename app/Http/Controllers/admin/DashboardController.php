@@ -206,4 +206,44 @@ class DashboardController extends Controller
 
         return redirect()->back()->with('success', 'Order unmarked as paid.');
     }
+
+
+
+    //Mark as Paid ----- Customer
+    function cancelMarkCust($id){
+        $id = base64_decode($id);
+        $o = cancel::find($id);
+        $o->cust_due = '1';
+        $o->save();
+
+        return redirect()->back()->with('success', 'Marked as paid.');
+    }
+    function cancelunMarkCust($id){
+        $id = base64_decode($id);
+        $o = cancel::find($id);
+        $o->cust_due = null;
+        $o->save();
+
+        return redirect()->back()->with('success', 'Unmarked as paid.');
+    }
+
+
+
+    //Mark as Paid ----- Practitioner
+    function cancelMarkPract($id){
+        $id = base64_decode($id);
+        $o = cancel::find($id);
+        $o->pract_due = '1';
+        $o->save();
+
+        return redirect()->back()->with('success', 'Marked as paid.');
+    }
+    function cancelunMarkPract($id){
+        $id = base64_decode($id);
+        $o = cancel::find($id);
+        $o->pract_due = null;
+        $o->save();
+
+        return redirect()->back()->with('success', 'Unmarked as paid.');
+    }
 }
