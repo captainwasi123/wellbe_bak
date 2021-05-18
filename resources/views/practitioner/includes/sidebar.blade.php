@@ -24,6 +24,9 @@
             <a href="{{route('practitioner.schedule')}}"> <i class="fa fa-user-plus"> </i> My Schedule</a>
          </div>
          <div class="menu-item">
+            <a href="{{route('practitioner.geofences')}}"> <i class="fa fa-user"> </i> Geofences </a>
+         </div>
+         <div class="menu-item">
             <a href="{{route('practitioner.profile')}}"> <i class="fa fa-user"> </i> My Profile </a>
          </div>
          <div class="menu-item">

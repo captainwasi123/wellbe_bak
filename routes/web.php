@@ -76,6 +76,7 @@ use Illuminate\Support\Facades\Route;
 
 			Route::get('/', 'profileController@index')->name('practitioner.profile');
 			Route::post('/profile-save', 'profileController@profile_save')->name('practitioner.profile.save');
+            Route::get('/geofences', 'profileController@geofences')->name('practitioner.geofences');
             Route::post('/change-password', 'profileController@change_password')->name('practitioner.profile.change_password');
 		});
 
@@ -181,7 +182,7 @@ use Illuminate\Support\Facades\Route;
 		Route::get('/view/{id}', 'DashboardController@bookingView1');
 
 	    Route::get('/customers', 'DashboardController@customers')->name('admin.customers');
-	    
+
 	    //Practitioner
 	    Route::prefix('practitioners')->group(function(){
 

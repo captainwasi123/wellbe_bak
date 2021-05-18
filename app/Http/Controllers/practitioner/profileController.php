@@ -99,4 +99,12 @@ class profileController extends Controller
             return redirect()->back()->with('error','new password can not be the old password!');
         }
     }
+
+    public function geofences()
+    {
+        $data = array(
+            'title' => "Geofences"
+        );
+        return view('practitioner.profile.geofences')->with($data);
+    }
 }
