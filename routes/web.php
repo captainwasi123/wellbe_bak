@@ -76,8 +76,11 @@ use Illuminate\Support\Facades\Route;
 
 			Route::get('/', 'profileController@index')->name('practitioner.profile');
 			Route::post('/profile-save', 'profileController@profile_save')->name('practitioner.profile.save');
-            Route::get('/geofences', 'profileController@geofences')->name('practitioner.geofences');
+            
             Route::post('/change-password', 'profileController@change_password')->name('practitioner.profile.change_password');
+
+            Route::get('/geofences', 'profileController@geofences')->name('practitioner.geofences');
+            Route::post('/geofences/save', 'profileController@geofences_save')->name('practitioner.geofences.save');
 		});
 
 		// Booking

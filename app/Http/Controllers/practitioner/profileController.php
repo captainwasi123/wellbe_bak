@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Store;
 use App\Models\Country;
 use App\Models\UserAddress;
+use App\Models\UserGeofence;
 use Illuminate\Support\Arr;
 use App\Models\PayoutDetail;
 use Illuminate\Http\Request;
@@ -103,8 +104,26 @@ class profileController extends Controller
     public function geofences()
     {
         $data = array(
-            'title' => "Geofences"
+            'title' => "Geofences",
+            'geofences_data' => UserGeofence::where('user_id',auth()->user()->id)->first(),
         );
         return view('practitioner.profile.geofences')->with($data);
+    }
+    public function geofences_save(request $request)
+    { 
+        $geofences = UserGeofence::where('user_id',auth()->user()->id)->first(); 
+        if ($geofences == null) {
+            $geofences_data = new UserGeofence();
+        }else{ $geofences_data = $geofences; }
+        
+        $geofences_data->user_id = auth()->user()->id;
+        $geofences_data->lat = $request->lat;
+        $geofences_data->lng = $request->long;
+        $geofences_data->radious = $request->radious;
+        $geofences_data->name = $request->name;
+        $geofences_data->description = $request->description;
+        $geofences_data->save();
+
+        return redirect()->back()->with('success','Geofences Added Successfully');
     }
 }
