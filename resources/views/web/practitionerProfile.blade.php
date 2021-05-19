@@ -93,9 +93,9 @@
                           <h5> {{$row->name}} </h5>
                           <input type="hidden" name="service[]" value="{{$row->id}}">
                           <div class="quantity">
-                             <button data-decrease>-</button>
+                             <button type="button" data-decrease>-</button>
                              <input data-value type="text" name="qty[]" value="{{$row->qty}}" readonly />
-                             <button data-increase>+</button>
+                             <button type="button" data-increase>+</button>
                              <b class="price-cart"> $ {{number_format($row->price,2)}} </b>
                           </div>
                        </div>
