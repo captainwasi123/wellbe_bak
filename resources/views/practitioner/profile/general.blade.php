@@ -131,7 +131,7 @@
                </div>
             </div>
             <div class="form-field3">
-               <p> Service Radius <button class="bg-blue normal-btn pad-1 col-white rounded"> Set Service Radius </button>  </p>
+               <p> Service Radius <a href="{{route('practitioner.geofences')}}" class="bg-blue normal-btn pad-1 col-white rounded"> Set Service Radius </a>  </p>
             </div>
             <div class="form-field3">
                <p> Minimum Booking Amount </p>

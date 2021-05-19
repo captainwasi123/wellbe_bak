@@ -23,22 +23,22 @@
              <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
                  <form action="{{route('practitioner.geofences.save')}}" method="post" enctype='multipart/form-data'>
                   @csrf
-                    <input type="hidden" name="lat" id="lat">
-                    <input type="hidden" name="long" id="long">
+                    <input type="hidden" name="lat" id="lat" value="{{empty(Auth::user()->ugeofence) ? '' : Auth::user()->ugeofence->lat}}">
+                    <input type="hidden" name="long" id="long" value="{{empty(Auth::user()->ugeofence) ? '' : Auth::user()->ugeofence->lng}}">
                     <div class="form-field3">
                    <p> REGION NAME <sup>*</sup> </p>
-                   <input type="text" placeholder="Auckland" name="name" id="pac-input">
+                   <input type="text" placeholder="Auckland" name="name" id="pac-input" value="{{empty(Auth::user()->ugeofence) ? '' : Auth::user()->ugeofence->name}}" required>
                     <div class="form-field3 pt-4">
-                        <p> Service Radious <sup>*</sup> </p>
-                        <input type="text" placeholder="service radious" name="radious" >
+                        <p> Service Radius (km) <sup>*</sup> </p>
+                        <input type="text" placeholder="service radius" name="radious" value="{{empty(Auth::user()->ugeofence) ? '' : Auth::user()->ugeofence->radious}}" required>
                     </div>
                     </div>
                      <div class="form-field3">
                    <p> REGION DESCRIPTION <sup>*</sup> </p>
-                   <textarea placeholder="Auckland" name="description"></textarea>
+                   <textarea placeholder="Auckland" name="description" required>{{empty(Auth::user()->ugeofence) ? '' : Auth::user()->ugeofence->description}}</textarea>
                     </div>
                 <div class="block-element submit-buttons text-right">
-                  <button class="normal-btn rounded bg-silver col-black pad-1"> Cancel  </button>
+                  <button type="reset" class="normal-btn rounded bg-silver col-black pad-1"> Cancel  </button>
                 <button class="normal-btn rounded bg-blue col-white pad-1"> Save  </button>
                 </div>
                 </form>
@@ -52,6 +52,29 @@
        </div>
     </div>
  </div>
+@endsection
+@section('additionalCSS')
+  <style type="text/css">
+    .create_Circle {
+        background: url(buffer.png) no-repeat;
+        width: 41px;
+        margin: 0px 8px 0 0px;
+        float: left;
+        cursor: pointer;
+        z-index: 2;
+        height: 41px;
+    }
+
+    .remove_Circle {
+        background: url(close.png) no-repeat;
+        width: 41px;
+        margin: 0px 8px 0 0px;
+        float: left;
+        cursor: pointer;
+        z-index: 2;
+        height: 41px;
+    }
+  </style>
 @endsection
 @section('additionalJS')
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
@@ -69,21 +92,49 @@
     });
   }
 </script>
-<script type="text/javascript">
-  var map = new google.maps.Map(document.getElementById("map"));
-// Create marker 
-var marker = new google.maps.Marker({
-  map: map,
-  position: new google.maps.LatLng(53, -2.5),
-  title: 'Some location'
-});
+@if(!empty(Auth::user()->ugeofence))
+    <script type="text/javascript">
+      window.onload = function(e){ 
+        var lat = '{{Auth::user()->ugeofence->lat}}';
+        var lng = '{{Auth::user()->ugeofence->lng}}';
+        var rad = '{{Auth::user()->ugeofence->radious}}';
 
-// Add circle overlay and bind to marker
-var circle = new google.maps.Circle({
-  map: map,
-  radius: 16093,    // 10 miles in metres
-  fillColor: '#AA0000'
-});
-circle.bindTo('center', marker, 'position');
+        initialize(lat, lng); 
+        createCircle(lat, lng, rad);
+      }
+
+      var circleClusterremove = [];
+      var buffer_circle = null;
+      // To load google map
+      function initialize(lat, lng) {
+          var mapOptions = {
+              center: new google.maps.LatLng(lat, lng),
+              zoom: 11,
+              mapTypeId: google.maps.MapTypeId.ROADMAP
+          };
+          map = new google.maps.Map(document.getElementById('map'), mapOptions);
+          map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
+      }
+
+      // Draw circle with in radius
+      function createCircle(lat, lng, rad) {
+          var rad = rad; // can input dynamically
+          rad *= 1000; // convert to meters if in miles
+          if (buffer_circle != null) {
+              buffer_circle.setMap(null);
+          }
+          buffer_circle = new google.maps.Circle({
+              center: new google.maps.LatLng(lat, lng),
+              radius: rad,
+              strokeColor: "#404780",
+              strokeOpacity: 0.8,
+              strokeWeight: 1,
+              fillColor: "#FFD700",
+              fillOpacity: 0.5,
+              map: map
+          });
+          circleClusterremove.push(buffer_circle);
+      }
     </script>
+  @endif
 @endsection

@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use App\Models\orders\order;
 use App\Models\orders\reviews;
 use App\Models\services\services;
+use App\Models\UserGeofence;
 
 class User extends Authenticatable
 {
@@ -139,5 +140,12 @@ class User extends Authenticatable
         return $this->hasMany(order::class, 'pract_id', 'id')
                     ->where('status', '3')
                     ->selectRaw('SUM(total_amount) as totalRevenue');
+    }
+
+
+
+    //GeoFence
+    public function ugeofence(){
+        return $this->belongsTo(UserGeofence::class, 'id', 'user_id');
     }
 }
