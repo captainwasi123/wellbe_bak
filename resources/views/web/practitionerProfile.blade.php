@@ -142,6 +142,12 @@
       </div>
    </div>
 </section>
+<input type="" name="" id="lat" value="{{\Session::get('booker_lat')}}">
+<input type="" name="" id="lng" value="{{\Session::get('booker_lng')}}">
+
+<input type="" name="" value="{{@$user_data->ugeofence->lat}}" id="p_lat">
+<input type="" name="" value="{{@$user_data->ugeofence->lng}}" id="p_lng">
+<input type="" name="" value="{{@$user_data->ugeofence->radious}}" id="radious">
 @endsection
 @section('additionalJS')
 @if(session()->has('success'))
@@ -174,17 +180,36 @@
       var minutes = $(this).data('minutes');
       var price = $(this).data('price');
 
+      var user_lat = $('#lat').val();
+      var user_lng = $('#lng').val();
+
+      var p_lat = $('#p_lat').val();
+      var p_lng = $('#p_lng').val();
+      var radious = $('#radious').val();
+
+      if (user_lat == '') {
+        alert('Open your location');
+        return false;
+      }
+
       $.ajax({
          url: "{{ route('add_cart') }}",
          method: 'post',
-         data: {'p_id':p_id,'name':name,'minutes':minutes,'price':price, "_token": "{{ csrf_token() }}",},
+         data: {'p_id':p_id,'name':name,'minutes':minutes,'price':price,'user_lat':user_lat,'user_lng':user_lng,'p_lat':p_lat,'p_lng':p_lng ,'radious':radious, "_token": "{{ csrf_token() }}",},
+         dataType: 'json',
          success: function (result) { 
-            $('#cart_data').html(result);
+          if (result.status) {
+            $('#cart_data').html(result.html);
+          }else{
+            alert('This Practitioners Services Not Available');
+          }
+            
           
          },
          error: function (msg) {
 
          },
+          
                      
      });
    })
@@ -269,5 +294,27 @@ $(document).ready(function() {
 		 $('#slots').html( data );
 		});
    });
+</script>
+<script>
+  $(document ).ready(function() {
+    var lat = $('lat').val();
+    if (lat != '') {
+      getLocation();  
+    }
+  });
+
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else { 
+    alert("Geolocation is not supported by this browser.");
+  }
+}
+
+function showPosition(position) {
+  $('#lat').val(position.coords.latitude);
+  $('#lng').val(position.coords.longitude);
+}
 </script>
 @endsection

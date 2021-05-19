@@ -65,12 +65,13 @@ class webController extends Controller
 		$categories = category::where('status', '1')->get();
 	    $cat = collect($categories); $cat = $cat->first();
 
-		$data = array(
+	 	$data = array(
 			'data' => User::find($id),
 			'categories' => $categories,
 			'services' => services::where('category_id',$cat->id)->where('user_id',$id)->get(),
 			'availability' => $availability,
-			'holiday' => $holiday
+			'holiday' => $holiday,
+			'user_data' => User::with(['ugeofence'])->where('id',$id)->first(),
 		);
 		//dd($data);
 		return view('web.practitionerProfile')->with($data);
@@ -83,10 +84,41 @@ class webController extends Controller
 	}
 
     public function add_cart(Request $request)
-    {
-        \Cart::add(['id' => $request->p_id, 'name' => $request->name, 'qty' => 1, 'price' => $request->price, 'weight' => 0, 'options' => ['minutes' => $request->minutes]]);
-        $cart_data = \Cart::content();
-        return view('web.load_cart_data', ['cart_data' => $cart_data]);
+    { 
+        $lat1 = $request->user_lat; 
+		$lon1 = $request->user_lng;
+		$lat2 = $request->p_lat; 
+		$lon2 = $request->p_lng;
+
+
+
+
+		$pi80 = M_PI / 180; 
+		$lat1 *= $pi80; 
+		$lon1 *= $pi80; 
+		$lat2 *= $pi80; 
+		$lon2 *= $pi80; 
+		$r = 6372.797; // mean radius of Earth in km 
+		$dlat = $lat2 - $lat1; 
+		$dlon = $lon2 - $lon1; 
+		$a = sin($dlat / 2) * sin($dlat / 2) + cos($lat1) * cos($lat2) * sin($dlon / 2) * sin($dlon / 2); 
+		$c = 2 * atan2(sqrt($a), sqrt(1 - $a)); 
+		$km = $r * $c; 
+		if ($request->radious >= $km) {
+			\Cart::add(['id' => $request->p_id, 'name' => $request->name, 'qty' => 1, 'price' => $request->price, 'weight' => 0, 'options' => ['minutes' => $request->minutes]]);
+		        $cart_data = \Cart::content();
+		        $html = (string)view('web.load_cart_data', ['cart_data' => $cart_data]);
+		        $json['html'] = $html;
+		        $json['status'] = true;
+
+		        return json_encode($json);
+		}else{
+			$json['status'] = false;
+			return json_encode($json);
+		}
+		exit();
+
+        
     }
 	public function get_slots(Request $request)
 	{
