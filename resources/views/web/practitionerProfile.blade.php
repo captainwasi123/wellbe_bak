@@ -142,12 +142,12 @@
       </div>
    </div>
 </section>
-<input type="" name="" id="lat" value="{{\Session::get('booker_lat')}}">
-<input type="" name="" id="lng" value="{{\Session::get('booker_lng')}}">
+<input type="hidden" name="" id="lat" value="{{\Session::get('booker_lat')}}">
+<input type="hidden" name="" id="lng" value="{{\Session::get('booker_lng')}}">
 
-<input type="" name="" value="{{@$user_data->ugeofence->lat}}" id="p_lat">
-<input type="" name="" value="{{@$user_data->ugeofence->lng}}" id="p_lng">
-<input type="" name="" value="{{@$user_data->ugeofence->radious}}" id="radious">
+<input type="hidden" name="" value="{{@$user_data->ugeofence->lat}}" id="p_lat">
+<input type="hidden" name="" value="{{@$user_data->ugeofence->lng}}" id="p_lng">
+<input type="hidden" name="" value="{{@$user_data->ugeofence->radious}}" id="radious">
 @endsection
 @section('additionalJS')
 @if(session()->has('success'))
