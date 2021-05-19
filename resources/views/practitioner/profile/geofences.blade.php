@@ -1,5 +1,5 @@
 @extends('includes.master')
-@section('title', 'General')
+@section('title', 'GeoFence Practitioner')
 
 @section('sidebar')@include('practitioner.includes.sidebar')@endsection
 @section('topbar')@include('practitioner.includes.topbar')@endsection
@@ -114,6 +114,12 @@
           };
           map = new google.maps.Map(document.getElementById('map'), mapOptions);
           map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
+
+          new google.maps.Marker({
+            position: new google.maps.LatLng(lat, lng),
+            map,
+            title: "Practitioner",
+          });
       }
 
       // Draw circle with in radius
@@ -134,6 +140,28 @@
               map: map
           });
           circleClusterremove.push(buffer_circle);
+      }
+    </script>
+  @else
+    <script type="text/javascript">
+      window.onload = function(e){ 
+        var lat = '44.14003';
+        var lng = '-21.39765';
+
+        initialize(lat, lng); 
+      }
+
+      var circleClusterremove = [];
+      var buffer_circle = null;
+      // To load google map
+      function initialize(lat, lng) {
+          var mapOptions = {
+              center: new google.maps.LatLng(lat, lng),
+              zoom: 1,
+              mapTypeId: google.maps.MapTypeId.ROADMAP
+          };
+          map = new google.maps.Map(document.getElementById('map'), mapOptions);
+          map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
       }
     </script>
   @endif
