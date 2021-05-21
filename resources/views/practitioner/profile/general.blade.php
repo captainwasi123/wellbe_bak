@@ -119,7 +119,7 @@
             <div class="block-element m-t-15 m-b-10" style="position: relative;">
                <h4 class="col-blue"> Store </h4>
                <div class="store-status">
-                  <span> Status: <b class="col-red"> Awaiting Approval </b> </span>
+                  <span> Status: <b class="col-blue"> Active </b> </span>
                </div>
             </div>
             <div class="form-field3">

@@ -35,8 +35,9 @@ class scheduleController extends Controller
     	holidays::where('user_id', Auth::id())->delete();
 
     	availability::addAvailability($data);
-        holidays::addHoliday($data['closed']);
-
+        if(count($data['closed']) > 0){
+            holidays::addHoliday($data['closed']);
+        }
         return redirect()->back()->with('success', 'Availability Slots Updated.');
     }
 }
