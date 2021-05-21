@@ -17,10 +17,18 @@ class chatController extends Controller
     function conversation($order){
     	$id = base64_decode(base64_decode($order));
     	$data = order::find($id);
-    	$type = Auth::user()->user_type == '2' ? 'booker' : 'practitioner';
-    	$conversation = chat::where('order_id', $id)->get();
+        //Time gap
+        $timestamp1 = strtotime($data->start_at.' '.$data->details[0]->start_time);
+        $timestamp2 = strtotime("now");
+        $hours_gap = round(($timestamp1 - $timestamp2)/3600, 1);
+        if($hours_gap <= 4){
+    	   $type = Auth::user()->user_type == '2' ? 'booker' : 'practitioner';
+    	   $conversation = chat::where('order_id', $id)->get();
 
-    	return view('includes.response.chat', ['data' => $data, 'conversation' => $conversation, 'type' => $type]);
+    	   return view('includes.response.chat', ['data' => $data, 'conversation' => $conversation, 'type' => $type]);
+        }else{
+            return 'fail';
+        }
     }
 
     function sendChat(Request $request){

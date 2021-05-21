@@ -11,8 +11,12 @@ $(document).ready(function(){
 		var id = $(this).data('ref');
 
 		$.get( ref+"/chat/conversation/"+id, function( data ) {
-		  $('.chat-window').html( data );
-		  chatScrollDown();
+      if(data == 'fail'){
+        alert('Chat will open before 4 hours of service time.!');
+      }else{
+  		  $('.chat-window').html( data );
+  		  chatScrollDown();
+      }
 		});
 	});
 

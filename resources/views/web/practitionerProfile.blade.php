@@ -249,10 +249,11 @@ $(document).ready(function() {
         return [true];
     }
     $( "#iDate" ).datepicker({
-          beforeShowDay: nonWorkingDates,
-          firstDay: 0,
-          dateFormat: 'dd-mm-yy'
-        });
+      minDate: new Date("{{date('d-M-Y')}}"),
+      beforeShowDay: nonWorkingDates,
+      firstDay: 0,
+      dateFormat: 'dd-mm-yy'
+    });
 
     function convertDayIntoInt(str){
       
