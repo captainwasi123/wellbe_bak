@@ -75,40 +75,40 @@
                <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                   <div class="form-field3">
                      <p> Street </p>
-                     <textarea name="street">{{$user_data->user_address->street}}</textarea>
+                     <textarea name="street">{{empty($user_data->user_address) ? '' : $user_data->user_address->street}}</textarea>
                   </div>
                </div>
                <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
                   <div class="form-field3">
                      <p> Suburb </p>
-                     <input type="text" name="suburb" value="{{$user_data->user_address->suburb}}">
+                     <input type="text" name="suburb" value="{{empty($user_data->user_address) ? '' : $user_data->user_address->suburb}}">
                   </div>
                </div>
                <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
                   <div class="form-field3">
                      <p> City </p>
-                     <input type="text" name="city" value="{{$user_data->user_address->city}}">
+                     <input type="text" name="city" value="{{empty($user_data->user_address) ? '' : $user_data->user_address->city}}">
                   </div>
                </div>
                <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
                   <div class="form-field3">
                      <p> Post code </p>
-                     <input type="text" name="postcode" value="{{$user_data->user_address->postcode}}">
+                     <input type="text" name="postcode" value="{{empty($user_data->user_address) ? '' : $user_data->user_address->postcode}}">
                   </div>
                </div>
                <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
                   <div class="form-field3">
                      <p> State </p>
-                     <input type="text" name="state" value="{{$user_data->user_address->state}}">
+                     <input type="text" name="state" value="{{empty($user_data->user_address) ? '' : $user_data->user_address->state}}">
                   </div>
                </div>
                <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
                   <div class="form-field3">
                      <p> Country </p>
-                     <select name="country" id="">
+                     <select name="country" id="" class="form-control">
                         <option value="">select...</option>
                         @foreach($country_data as $country_data)
-                         <option value="{{$country_data->id}}" {{ isset($user_data) && $country_data->id == @$user_data->user_address->country_id ? 'selected' : ''}}>{{$country_data->country}}</option>
+                         <option value="{{$country_data->id}}" {{ !empty($user_data->user_address) && $country_data->id == @$user_data->user_address->country_id ? 'selected' : ''}}>{{$country_data->country}}</option>
                         @endforeach
                      </select>
                   </div>
