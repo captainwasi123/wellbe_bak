@@ -42,6 +42,7 @@ class webController extends Controller
     }
 
     function professionalProfile($id){
+    	\Cart::destroy();
 		$holiday = array();
         $holiarr = array();
 		$availability = array('sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday');
