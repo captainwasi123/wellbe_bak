@@ -18,8 +18,8 @@
          <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
             <div class="appointment-box" style="margin-top: 25px;">
                <h4 style="margin-bottom: 12px;"> Your Address </h4>
-               <form>
-                  <input type="text" placeholder="14 to Puni Grove" name="">
+               <form method="get" action="{{route('treatments.search')}}">
+                  <input type="text" placeholder="14 to Puni Grove" name="value" id="pac-input" value="{{@$value}}"> 
                   <button> <i class="fa fa-search"> </i> </button>
                </form>
             </div>
@@ -102,4 +102,20 @@
    </div>
 </section>
 
-@endsection
+@endsection 
+@section('additionalJS')
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCT7C85ghGBFoX9J9NCTAeSAOGfJR0bGvU&libraries=places"></script>
+<script>
+   google.maps.event.addDomListener(window, 'load', initialize);
+   function initialize() {
+      var input = document.getElementById('pac-input');
+      var autocomplete = new google.maps.places.Autocomplete(input);
+      autocomplete.addListener('place_changed', function () {
+      var place = autocomplete.getPlace();
+      // place variable will have all the information you are looking for.
+   //  $('#lat').val(place.geometry['location'].lat());
+   // $('#long').val(place.geometry['location'].lng());
+   });
+}
+</script>
+@endsection 

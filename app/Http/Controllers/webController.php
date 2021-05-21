@@ -30,6 +30,13 @@ class webController extends Controller
     	$users = User::where('user_type', '1')->limit(6)->get();
 		return view('web.treatments', ['categories' => $categories, 'users' => $users, 'selected' => 'all']);
     }
+	public function treatments_search(Request $request)
+	{
+		$users = User::join('tbl_users_geofences','tbl_users_geofences.user_id','=','tbl_users_info.id')->where('user_type', '1')->where('tbl_users_geofences.name', 'like', '%' . $request->value . '%')->limit(6)->get();
+	    $categories = category::where('status', '1')->get();
+		$value = $request->value;
+    	return view('web.treatments', ['categories' => $categories, 'users' => $users, 'selected' => 'all','value' => $value]);
+	}
     function treatmentsCategory($category){
     	$cat = category::where('category', $category)->first();
     	$categories = category::where('status', '1')->get();
@@ -41,8 +48,13 @@ class webController extends Controller
 		return view('web.treatments', ['categories' => $categories, 'users' => $users, 'selected' => $cat->id]);
     }
 
-    function professionalProfile($id){
-    	\Cart::destroy();
+    function professionalProfile($id){ 
+		$cart_data = \Cart::content();
+		foreach($cart_data as $cart_data){
+			$user_id = $cart_data->options->user_id;
+		}
+		if($user_id != $id){ \Cart::destroy(); }
+    	
 		$holiday = array();
         $holiarr = array();
 		$availability = array('sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday');
@@ -85,7 +97,7 @@ class webController extends Controller
 	}
 
     public function add_cart(Request $request)
-    { 
+    {  
         $lat1 = $request->user_lat; 
 		$lon1 = $request->user_lng;
 		$lat2 = $request->p_lat; 
@@ -106,7 +118,7 @@ class webController extends Controller
 		$c = 2 * atan2(sqrt($a), sqrt(1 - $a)); 
 		$km = $r * $c; 
 		if ($request->radious >= $km) {
-			\Cart::add(['id' => $request->p_id, 'name' => $request->name, 'qty' => 1, 'price' => $request->price, 'weight' => 0, 'options' => ['minutes' => $request->minutes]]);
+			\Cart::add(['id' => $request->p_id, 'name' => $request->name, 'qty' => 1, 'price' => $request->price, 'weight' => 0, 'options' => ['minutes' => $request->minutes,'user_id'=> $request->user_id]]);
 		        $cart_data = \Cart::content();
 		        $html = (string)view('web.load_cart_data', ['cart_data' => $cart_data]);
 		        $json['html'] = $html;
@@ -121,6 +133,36 @@ class webController extends Controller
 
         
     }
+	public function cart_update(Request $request)
+	{
+		\Cart::remove($request->row_id);
+		$cart_data = \Cart::content();
+		$html = '';
+		if(\Cart::count() != 0){
+		$html.='<div class="booking-cart-items">';
+			foreach($cart_data as $row){
+				$html.='<div class="booking-cart-item1">
+				<a class="remove_item" data-id="'.$row->rowId.'">X</a>
+				<h5> '.$row->name.' </h5>
+				<input type="hidden" name="service[]" value="'.$row->id.'">
+				<div class="quantity">
+				<button type="button" class="qtyCounter" data-type="minus">-</button>
+				<input data-value type="number" name="qty[]" value="'.$row->qty.'" readonly />
+				<button type="button" class="qtyCounter" data-type="plus" data-id="{{$row->rowId}">+</button>
+				<b class="price-cart"> $ '.number_format($row->price,2).' </b>
+				</div>
+			</div>';
+			}
+			$html.'</div>';
+		}else{
+			$html.='<div class="booking-empty text-center">
+			<img src="'.\URL::to('/').'/public/assets/web/images/empty-cart.png">
+			<p> Your cart is empty <br/> Add an item to begin. </p>
+		 </div>';
+		}
+		return $html;
+	}
+	
 	public function get_slots(Request $request)
 	{
 		$buffer = User::getBuffer($request->user_id);

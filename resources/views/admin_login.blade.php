@@ -132,9 +132,6 @@
 							</div>
 						</form>
 					</div>
-					<div class="row">
-						<p>Don't have an account? <a href="#">Register Here</a></p>
-					</div>
 				</div>
 			</div>
 		</div>

@@ -19,13 +19,18 @@ use Illuminate\Support\Facades\Route;
 
 	//Treatments
 	Route::get('/treatments', 'webController@treatments')->name('treatments');
+	Route::get('/treatments/search', 'webController@treatments_search')->name('treatments.search');
 	Route::get('/treatments/{category}', 'webController@treatmentsCategory');
 	Route::get('/treatments/professional/profile/{id}', 'webController@professionalProfile');
 
 	//Services
 	Route::get('/user/services/{userid}/{cat_id}', 'webController@user_services');
+	
 	Route::post('/add_cart','webController@add_cart')->name('add_cart');
+	Route::get('/cart_update/{row_id}', 'webController@cart_update');
+
 	Route::get('/user/slots/{date}/{user_id}', 'webController@get_slots');
+
 
 
 	// Authentication

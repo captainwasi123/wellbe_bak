@@ -146,9 +146,9 @@
                         Straight To Your Door 
                      </h3>
                      <p> Book wellness and beauty services directly to your door. Sit back, relax, and let our verified professionals take care of the rest. All professionals are all independent contractors, so you pay no salon markups, period.  </p>
-                     <form>
+                     <form method="get" action="{{route('treatments.search')}}">
                         <i class="fa fa-search"> </i>
-                        <input type="text" placeholder="Enter your address" name="">
+                        <input type="text" placeholder="Enter your address" id="pac-input" name="value">
                         <button> Discover </button>
                      </form>
                   </div>
@@ -421,4 +421,18 @@
       });
     </script>
   @endif
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCT7C85ghGBFoX9J9NCTAeSAOGfJR0bGvU&libraries=places"></script>
+  <script>
+   google.maps.event.addDomListener(window, 'load', initialize);
+   function initialize() {
+      var input = document.getElementById('pac-input');
+      var autocomplete = new google.maps.places.Autocomplete(input);
+      autocomplete.addListener('place_changed', function () {
+      var place = autocomplete.getPlace();
+      // place variable will have all the information you are looking for.
+    //  $('#lat').val(place.geometry['location'].lat());
+     // $('#long').val(place.geometry['location'].lng());
+    });
+  }
+  </script>
 @endsection

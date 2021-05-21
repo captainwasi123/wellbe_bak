@@ -80,7 +80,7 @@
          <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12">
             <form method="post" action="{{route('booker.order')}}">
               @csrf
-              <input type="hidden" name="refid" value="{{base64_encode($data->id)}}">
+              <input type="hidden" name="refid" id="user_id" value="{{base64_encode($data->id)}}">
               <div class="booking-cart">
                  <div class="booking-cart-head">
                     <h4> Booking </h4>
@@ -90,12 +90,13 @@
                     <div class="booking-cart-items">
                        @foreach(\Cart::content() as $row)
                        <div class="booking-cart-item1">
+                       <a class="remove_item" data-id="{{$row->rowId}}">X</a>
                           <h5> {{$row->name}} </h5>
                           <input type="hidden" name="service[]" value="{{$row->id}}">
                           <div class="quantity">
-                             <button type="button" data-decrease>-</button>
+                           <button type="button" class="qtyCounter" data-type="minus" data-id="{{$row->rowId}}">-</button>
                              <input data-value type="text" name="qty[]" value="{{$row->qty}}" readonly />
-                             <button type="button" data-increase>+</button>
+                           <button type="button" class="qtyCounter" data-type="plus" data-id="{{$row->rowId}}">+</button>
                              <b class="price-cart"> $ {{number_format($row->price,2)}} </b>
                           </div>
                        </div>
@@ -187,6 +188,7 @@
       var p_lng = $('#p_lng').val();
       var radious = $('#radious').val();
 
+      var user_id = $('#user_id').val();
       if (user_lat == '') {
         alert('Open your location');
         return false;
@@ -195,7 +197,7 @@
       $.ajax({
          url: "{{ route('add_cart') }}",
          method: 'post',
-         data: {'p_id':p_id,'name':name,'minutes':minutes,'price':price,'user_lat':user_lat,'user_lng':user_lng,'p_lat':p_lat,'p_lng':p_lng ,'radious':radious, "_token": "{{ csrf_token() }}",},
+         data: {'p_id':p_id,'name':name,'minutes':minutes,'price':price,'user_lat':user_lat,'user_lng':user_lng,'p_lat':p_lat,'p_lng':p_lng ,'radious':radious,'user_id':user_id, "_token": "{{ csrf_token() }}",},
          dataType: 'json',
          success: function (result) { 
           if (result.status) {
@@ -316,5 +318,12 @@ function showPosition(position) {
   $('#lat').val(position.coords.latitude);
   $('#lng').val(position.coords.longitude);
 }
+
+$('body').on('click','.remove_item',function(){
+   id = $(this).data('id'); 
+      $.get( "{{URL::to('/')}}/cart_update/"+id, function( data ) {
+		   $('#cart_data').html(data);
+		});
+});
 </script>
 @endsection
