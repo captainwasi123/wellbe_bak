@@ -51,9 +51,9 @@ class webController extends Controller
     function professionalProfile($id){ 
 		$cart_data = \Cart::content();
 		foreach($cart_data as $cart_data){
-			$user_id = $cart_data->options->user_id;
+			@$user_id = $cart_data->options->user_id;
 		}
-		if($user_id != $id){ \Cart::destroy(); }
+		if(@$user_id != $id){ \Cart::destroy(); }
     	
 		$holiday = array();
         $holiarr = array();
