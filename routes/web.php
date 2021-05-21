@@ -116,24 +116,24 @@ use Illuminate\Support\Facades\Route;
 //Booker
 
 	Route::prefix('booker')->namespace('booker')->middleware('bookerAuth')->group(function(){
-		Route::get('/', 'bookingscontroller@index')->name('booker.index');
-		Route::get('/upcomming', 'bookingscontroller@upcomming_booking')->name('booker.upcomming_booking');
-		Route::get('/inprogress', 'bookingscontroller@inprogress_booking')->name('booker.inprogress_booking');
-		Route::get('/completed', 'bookingscontroller@completed_booking')->name('booker.completed_booking');
-		Route::get('/cancelled', 'bookingscontroller@cancelled_booking')->name('booker.cancelled_booking');
+		Route::get('/', 'bookingsController@index')->name('booker.index');
+		Route::get('/upcomming', 'bookingsController@upcomming_booking')->name('booker.upcomming_booking');
+		Route::get('/inprogress', 'bookingsController@inprogress_booking')->name('booker.inprogress_booking');
+		Route::get('/completed', 'bookingsController@completed_booking')->name('booker.completed_booking');
+		Route::get('/cancelled', 'bookingsController@cancelled_booking')->name('booker.cancelled_booking');
 
-		Route::post('/booking/cancel', 'bookingscontroller@bookingCancel')->name('booker.booking.cancel');
+		Route::post('/booking/cancel', 'bookingsController@bookingCancel')->name('booker.booking.cancel');
 
-		Route::post('/booking/rating', 'bookingscontroller@bookingRating')->name('booker.booking.rating');
+		Route::post('/booking/rating', 'bookingsController@bookingRating')->name('booker.booking.rating');
 
 		//Response
-		Route::get('/view/{id}', 'bookingscontroller@bookingView1');
+		Route::get('/view/{id}', 'bookingsController@bookingView1');
 
-		Route::get('/profile', 'profilecontroller@index')->name('booker.profile');
-		Route::post('/profile-save', 'profilecontroller@profile_save')->name('booker.profile.save');
-        Route::post('/change_password', 'profilecontroller@change_password')->name('booker.profile.update_password');
+		Route::get('/profile', 'profileController@index')->name('booker.profile');
+		Route::post('/profile-save', 'profileController@profile_save')->name('booker.profile.save');
+        Route::post('/change_password', 'profileController@change_password')->name('booker.profile.update_password');
 
-		Route::get('/share', 'sharecontroller@index')->name('booker.share');
+		Route::get('/share', 'shareController@index')->name('booker.share');
 
 		//Book an order
 		Route::post('/order/book', 'bookingsController@bookOrder')->name('booker.order');
