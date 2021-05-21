@@ -157,20 +157,20 @@
                <div class="form-field3">
                   <p> Store Page </p>
                   <div class="drop-options">
-                     <span> <input type="radio" name=""> Disabled </span>
-                     <span> <input type="radio" name=""> Enabled </span>
+                     <span> <input type="radio" name="" disabled> Disabled </span>
+                     <span> <input type="radio" name="" checked disabled> Enabled </span>
                   </div>
                </div>
                <div class="form-field3">
                   <p> Marketplace Comission </p>
-                  <input type="text" name="">
+                  <input type="text" name="" readonly value="{{$gst->gst}}">
                </div>
                <div class="form-field3">
                   <p> Account Type  </p>
                   <div class="drop-options">
-                     <span> <input type="radio" name=""> Standard </span>
-                     <span> <input type="radio" name=""> Featured </span>
-                     <span> <input type="radio" name=""> Partner </span>
+                     <span> <input type="radio" name="" checked disabled> Standard </span>
+                     <span> <input type="radio" name="" disabled> Featured </span>
+                     <span> <input type="radio" name="" disabled> Partner </span>
                   </div>
                </div>
             </div>

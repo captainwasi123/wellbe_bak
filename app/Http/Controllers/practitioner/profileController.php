@@ -12,6 +12,7 @@ use App\Models\PayoutDetail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use App\Models\MarketplaceSetting;
 
 class profileController extends Controller
 {
@@ -20,9 +21,11 @@ class profileController extends Controller
         $data = array(
             'user_data' => User::with(['user_address','user_store','users_payout_details'])->where('id',auth()->user()->id)->first(),
             'country_data' => Country::latest()->get(),
+            'gst' => MarketplaceSetting::latest()->first(),
             // 'user_data' => auth()->user(),
 
         );
+
     	return view('practitioner.profile.general')->with($data);
     }
     public function profile_save(Request $request)
