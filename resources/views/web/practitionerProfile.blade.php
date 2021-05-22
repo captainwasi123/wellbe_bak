@@ -8,7 +8,7 @@
          <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
             <div class="profile-long">
                <div>
-                  <img src="{{URL::to('/'.$data->profile_img)}}" onerror="this.onerror=null;this.src='{{URL::to('/')}}/public/assets/images/user-placeholder.png';">
+                  <img src="{{empty($data->profile_img) ? '' : URL::to('/'.$data->profile_img)}}" onerror="this.onerror=null;this.src='{{URL::to('/')}}/public/assets/images/user-placeholder.png';">
                </div>
                <div>
                   <h4> {{empty($data->first_name) ? '' : $data->first_name.' '.$data->last_name}} </h4>
