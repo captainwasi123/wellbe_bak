@@ -11,6 +11,7 @@ use App\Models\schedule\availability;
 use App\Models\schedule\holidays;
 use App\Models\orders\orderDetail;
 use App\Models\orders\order;
+use DB;
 
 class webController extends Controller
 {
@@ -32,7 +33,7 @@ class webController extends Controller
     }
 	public function treatments_search(Request $request)
 	{
-		$users = User::join('tbl_users_geofences','tbl_users_geofences.user_id','=','tbl_users_info.id')->where('user_type', '1')->where('tbl_users_geofences.name', 'like', '%' . $request->value . '%')->limit(6)->get();
+		$users = User::select(DB::raw('tbl_users_info.*'))->join('tbl_users_geofences','tbl_users_geofences.user_id','=','tbl_users_info.id')->where('user_type', '1')->where('tbl_users_geofences.name', 'like', '%' . $request->value . '%')->limit(6)->get();
 	    $categories = category::where('status', '1')->get();
 		$value = $request->value;
     	return view('web.treatments', ['categories' => $categories, 'users' => $users, 'selected' => 'all','value' => $value]);
