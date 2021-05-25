@@ -9,7 +9,7 @@ $(document).ready(function(){
 		var id = $(this).data('id');
 
 		$('.orderView').modal('show');
-		$('#orderViewContent').html('<img src="../public/assets/images/loader.gif">');
+		$('#orderViewContent').html('<img src="'+ref+'/public/assets/images/loader.gif">');
 
 		$.get( ref+"/admin/view/"+id, function( data ) {
 		  $('#orderViewContent').html( data );
