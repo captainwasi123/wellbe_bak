@@ -45,7 +45,11 @@ class bookingsController extends Controller
         $o = order::find($id);
         $o->status = '1';
         $o->save();
-
+        $order = Order::with(['details','practitioner','booker'])->where('id',$id)->first();
+        $data['order'] = $order;
+        $data['mtp'] = MarketplaceSetting::latest()->first();
+         \App\Helpers\CommonHelpers::send_email('NewBookingCustomer', $data, $order->booker->email, 'Booking Confirmation', $from_email = 'info@divsnpixel.com', $from_name = 'Wallbe');
+         \App\Helpers\CommonHelpers::send_email('NewBookingPractitioner', $data, $order->practitioner->email, 'Booking Confirmation', $from_email = 'info@divsnpixel.com', $from_name = 'Wallbe');
         return 'order';
     }
 

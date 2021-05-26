@@ -86,6 +86,7 @@
      	      <h5> Please Register with us and get ammazing opportunities. </h5>
             <form method="post" action="{{URL::to('/register')}}">
               @csrf
+              <input type="hidden" class="form-control" name="status" value="0" required>
               <div class="row">
                 <div class="col-md-6">
                   <label> First Name </label>

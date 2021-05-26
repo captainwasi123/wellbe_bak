@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use Facade\FlareClient\Http\Response;
 use App\Models\User;
+use DB;
 
 class loginController extends Controller
 {
@@ -68,8 +69,9 @@ class loginController extends Controller
         if($data['password'] == $data['confirmation_password']){
             $u = User::where('email', $data['email'])->count();
             if($u == '0'){
-                User::newUser($data);
-
+                $user = User::newUser($data); $email['user'] = $user;
+                if($request->userType == 2 ){ $email_temp = 'CustomerActivation'; }else{$email_temp = 'PractitionerActivation'; } 
+                $a = \App\Helpers\CommonHelpers::send_email($email_temp, $email, $request->email, 'email verification', $from_email = 'info@divsnpixel.com', $from_name = 'Wallbe');
                 return redirect()->back()->with('success', 'You are successfully registered..');
             }else{
 
@@ -81,7 +83,20 @@ class loginController extends Controller
         }
 
     }
-
+    public function user_active(Request $request)
+    {
+        $id = base64_decode($request->id);
+        $user = User::find($id);
+        $user->status = '1';
+        $user->save();
+        $email['user'] = $user;
+        if($user->user_type == 2 ){ $email_temp = 'WelcomeEmailCustomer'; }else{$email_temp = 'WelcomeEmailPractitioner'; } 
+        \App\Helpers\CommonHelpers::send_email($email_temp, $email, $user->email, 'email verification', $from_email = 'info@divsnpixel.com', $from_name = 'Wallbe');
+        // DB::table('tbl_users_info')
+        //         ->where('id', base64_decode($request->id))
+        //         ->update(['status' => 1]);
+        return redirect(route('home'));        
+    }
     function logout(){
         Auth::logout();
 

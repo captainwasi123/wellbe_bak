@@ -25,8 +25,10 @@ class User extends Authenticatable
         $u->phone = $data['phone'];
         $u->user_type = $data['userType'];
         $u->password = bcrypt($data['password']);
-        $u->status = '1';
+        $u->status = '0';
         $u->save();
+
+        return $u;
     }
 
 

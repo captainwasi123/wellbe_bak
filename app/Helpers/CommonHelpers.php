@@ -62,5 +62,28 @@ class CommonHelpers
 
         return array('availability' => $availability, 'holidays' => $holidays);
     }
+    // email function
+    public static function send_email($view, $data, $to, $subject = 'Welcome !', $from_email = null, $from_name = null)
+    {
+        $from_name = $from_name ?? env('FROM_EMAIL', '');
+        $from_email = $from_email ?? env('FROM_NAME', '');
 
+        $data = (array) $data;
+        $data['subject'] = $subject;
+        $data['to'] = $to;
+        $data['from_name'] = $from_name;
+        $data['from_email'] = $from_email;
+
+        $data['email_data'] = $data;
+        try {
+            Mail::send('emails.' . $view, $data, function ($message) use ($data) {
+                $message->from($data['from_email'], $data['from_name']);
+                $message->subject($data['subject']);
+                $message->to($data['to']);
+            });
+            return true;
+        } catch (Exception $ex) {
+            return response()->json($ex);
+        }
+    }
 }

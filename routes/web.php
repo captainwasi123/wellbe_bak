@@ -38,7 +38,7 @@ use Illuminate\Support\Facades\Route;
 		Route::post('/login/', 'loginController@loginAttempt');
 	    Route::post('/loginAttempt', 'loginController@ajaxloginAttempt');
 		Route::get('/logout', 'loginController@logout');
-
+		Route::get('/user-active/{id}','loginController@user_active')->name('user_active');
 		Route::post('/register', 'loginController@userRegister');
 
 
