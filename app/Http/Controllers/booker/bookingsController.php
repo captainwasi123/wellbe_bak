@@ -112,9 +112,14 @@ class bookingsController extends Controller
         $id = base64_decode(base64_decode($data['oid']));
         $des = $data['description'];
 
-        cancel::cancellation($id, $des, '1');
-
-        return redirect()->back()->with('success', 'Order Cancelled.');
+       // cancel::cancellation($id, $des, '1');
+        $order = Order::with(['details','practitioner','booker'])->where('id',$id)->first();
+        $data['order'] = $order; 
+        $data['mtp'] = MarketplaceSetting::latest()->first();
+        return view('emails.BookingCancellationCustomer_customer_cancelled')->with($data);
+       // \App\Helpers\CommonHelpers::send_email('NewBookingCustomer', $data, $order->booker->email, 'Booking Confirmation', $from_email = 'info@divsnpixel.com', $from_name = 'Wallbe');
+         
+       // return redirect()->back()->with('success', 'Order Cancelled.');
     }
 
 
