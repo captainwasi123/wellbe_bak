@@ -85,7 +85,7 @@
             <div class="modal-content">
                <button type="button" class="close1" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span> </button>
                <div class="custom-modal-head">
-                  <h3> <img src="{{URL::to('/')}}/public/assets/images/red-cross.png" alt="red-cross-icon" width="35px"> Assume User </h3>
+                  <h3> <img src="{{URL::to('/')}}/public/assets/images/red-cross.PNG" alt="red-cross-icon" width="35px"> Assume User </h3>
                   <p class="col-grey text-left"> Are you sure you want to assume this user ? </p>
                </div>
                <div class="custom-modal-data text-left">
