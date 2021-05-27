@@ -257,7 +257,7 @@ width: 100% !important;
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 <tr>
 
-<td valign="top" style="padding-top:10px;padding-right:10px;padding-bottom:15px;padding-left:10px;"><div style="font-family:Cabin, sans-serif;font-size:30px;color:#0e4464;line-height:35px;letter-spacing: 0.03em;text-align:left;"><p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial"><span style="font-size:24px;"><strong>Booking Confirmation</strong></span></span></p>
+<td valign="top" style="padding-top:10px;padding-right:10px;padding-bottom:15px;padding-left:10px;"><div style="font-family:Cabin, sans-serif;font-size:30px;color:#0e4464;line-height:35px;letter-spacing: 0.03em;text-align:left;"><p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial"><span style="font-size:24px;"><strong>Booking Reminder</strong></span></span></p>
 </div>
 </td>
 </tr>
@@ -266,15 +266,15 @@ width: 100% !important;
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 <tr>
 
-<td valign="top" style="padding:10px;"><div style="font-family:Cabin, sans-serif;font-size:18px;color:#0e4464;line-height:20px;letter-spacing: 0.03em;text-align:left;"><p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial">Hi {{$order->practitioner->first_name}},</span></p>
+<td valign="top" style="padding:10px;"><div style="font-family:Cabin, sans-serif;font-size:18px;color:#0e4464;line-height:20px;letter-spacing: 0.03em;text-align:left;"><p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial">Hi {{$order->booker->first_name}},</span></p>
 
 <p style="padding: 0; margin: 0;">&nbsp;</p>
 
-<p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial">You've recieved a new booking.</span></p>
+<p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial">This is a reminder that you have an upcoming booking.</span></p>
 
 <p style="padding: 0; margin: 0;">&nbsp;</p>
 
-<p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial">If you need to contact the customer or make changes to the booking you can do so by logging into your account.</span></p>
+<p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial">If you need to contact your practitioner or make changes to the booking&nbsp;you can do so by logging into your account below.</span></p>
 </div>
 </td>
 </tr>
@@ -294,7 +294,7 @@ width: 100% !important;
 <td align="center" style="padding-top:9px;padding-right:20px;padding-bottom:9px;padding-left:20px;">
 <span style="color:#ffffff !important;font-family:Cabin, sans-serif;font-size:17px;mso-line-height:exactly;line-height:25px;mso-text-raise:4px;letter-spacing: normal;">
 <font style="color:#ffffff;" class="button">
-<span><span class="mso-font-fix-arial"><a href="{{route('practitioner.dashboard')}}" target="_blank">Manage My Booking</a></span></span>
+<span><span class="mso-font-fix-arial"><a href="{{route('booker.index')}}" target="_blank">Manage My Booking</a></span></span>
 </font>
 </span>
 </td>
@@ -314,7 +314,7 @@ width: 100% !important;
 
 <span style="color:#ffffff !important;font-family:Cabin, sans-serif;font-size:17px;mso-line-height:exactly;line-height:25px;mso-text-raise:4px;letter-spacing: normal;">
 <font style="color:#ffffff;" class="button">
-<span><span class="mso-font-fix-arial"><a href="{{route('practitioner.dashboard')}}" target="_blank">Manage My Booking</a></span></span>
+<span><span class="mso-font-fix-arial">Manage My Booking</span></span>
 </font>
 </span>
 </a>
@@ -428,9 +428,9 @@ width: 100% !important;
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 <tr>
 
-<td valign="top" style="padding:5px;"><div style="font-family:Cabin, sans-serif;font-size:17px;color:#5d4e6d;line-height:25px;letter-spacing: 0.03em;text-align:left;"><p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial">CUSTOMER NAME:&nbsp;</span></p>
+<td valign="top" style="padding:5px;"><div style="font-family:Cabin, sans-serif;font-size:17px;color:#5d4e6d;line-height:25px;letter-spacing: 0.03em;text-align:left;"><p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial">PRACTITIONER:&nbsp;</span></p>
 
-<p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial"><strong>{{$order->booker->first_name}} {{$order->booker->last_name}}</strong></span></p>
+<p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial"><strong>{{$order->practitioner->first_name}}</strong></span></p>
 </div>
 </td>
 </tr>
@@ -519,6 +519,8 @@ width: 100% !important;
 </td>
 </tr>
 </table>
+
+
 @foreach($order->details as $order_details)
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 <tr>
@@ -649,6 +651,7 @@ width: 100% !important;
 </tr>
 </table>
 @endforeach
+
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 <tr>
 
@@ -710,15 +713,9 @@ width: 100% !important;
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 <tr>
 
-<td valign="top" style="padding-top:5px;padding-right:5px;padding-left:5px;"><div style="font-family:Cabin, sans-serif;font-size:18px;color:#5d4e6d;line-height:34px;text-align:left;">
+<td valign="top" style="padding-top:5px;padding-right:5px;padding-left:5px;"><div style="font-family:Cabin, sans-serif;font-size:18px;color:#5d4e6d;line-height:34px;text-align:left;"><p style="padding: 0; margin: 0;text-align: right;"><span class="mso-font-fix-arial">Includes GST: &#36;{{number_format($order->gst,2)}}</span></p>
 
-	<p style="padding: 0; margin: 0;text-align: right;"><span class="mso-font-fix-arial">Total: &#36;{{number_format($order->total_amount,2)}}</span></p>
-
-	<p style="padding: 0; margin: 0;text-align: right;"><span class="mso-font-fix-arial">Includes GST: &#36;<?php $gst_price = ($mtp->gst  / 100) * $order->total_amount; echo number_format($gst_price,2); ?></span></p>
-
-	<p style="padding: 0; margin: 0;text-align: right;"><span class="mso-font-fix-arial">Service Fees: &#36;<?php $fee = ($mtp->comission / 100) * $order->total_amount; echo number_format($fee,2); ?></span></p>
-
-<p style="padding: 0; margin: 0;text-align: right;"><span class="mso-font-fix-arial"><strong>Your Takehome: &#36;<?php $take_home = $order->total_amount-$gst_price-$fee; echo number_format($take_home,2) ?></strong></span></p>
+<p style="padding: 0; margin: 0;text-align: right;"><span class="mso-font-fix-arial"><strong>Total: &#36;{{number_format($order->total_amount,2)}}</strong></span></p>
 </div>
 </td>
 </tr>

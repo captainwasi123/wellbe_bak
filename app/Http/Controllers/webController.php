@@ -11,6 +11,7 @@ use App\Models\schedule\availability;
 use App\Models\schedule\holidays;
 use App\Models\orders\orderDetail;
 use App\Models\orders\order;
+use App\Models\MarketplaceSetting;
 use DB;
 
 class webController extends Controller
@@ -195,6 +196,30 @@ class webController extends Controller
 	//booking reminder function 
 	public function booking_reminder()
 	{
-	echo	$order = order::with(['booker'])->find(1045);
+		$time = time();
+        $currnet_time = strtotime('-2 hours', $time);
+		$order = Order::with(['details','practitioner','booker'])->where('status',1)->where('reminder_email',0)->where('start_at',date('Y-m-d'))->get();
+		$mtp = MarketplaceSetting::latest()->first();
+		foreach($order as $order_data){ 
+			$date =	strtotime($order_data->start_at.' '.$order_data->details[0]->start_time);
+			if($date >= $currnet_time){
+				$data = array(
+					'order' => $order_data,
+					'mtp' => $mtp,
+				);
+				\App\Helpers\CommonHelpers::send_email('BookingReminderCustomer', $data, $order_data->booker->email, 'Booking Cancellation', $from_email = 'info@divsnpixel.com', $from_name = 'Wallbe');
+                \App\Helpers\CommonHelpers::send_email('BookingReminderPractitioner', $data, $order_data->practitioner->email, 'Booking Cancellation', $from_email = 'info@divsnpixel.com', $from_name = 'Wallbe');   
+				DB::table('tbl_order_info')
+                ->where('id', $order_data->id)
+                ->update(['reminder_email' => 1]);
+			}
+		}
+		
+		
+        $data['order'] = $order;
+        $data['mtp'] = MarketplaceSetting::latest()->first();
+        // \App\Helpers\CommonHelpers::send_email('NewBookingCustomer', $data, $order->booker->email, 'Booking Confirmation', $from_email = 'info@divsnpixel.com', $from_name = 'Wallbe');
+        // \App\Helpers\CommonHelpers::send_email('NewBookingPractitioner', $data, $order->practitioner->email, 'Booking Confirmation', $from_email = 'info@divsnpixel.com', $from_name = 'Wallbe');
+        
 	}
 }
