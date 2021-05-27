@@ -270,7 +270,11 @@ width: 100% !important;
 
 <p style="padding: 0; margin: 0;">&nbsp;</p>
 
-<p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial">One of your bookings has been cancelled.</span></p>
+<p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial">Unfortunately your pracitioner is unable to complete your booking.</span></p>
+
+<p style="padding: 0; margin: 0;">&nbsp;</p>
+
+<p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial">You'll recieve a full refund within the next 48 hours.</span></p>
 </div>
 </td>
 </tr>
@@ -468,6 +472,8 @@ width: 100% !important;
 </td>
 </tr>
 </table>
+
+
 @foreach($order->details as $order_details)
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 <tr>
@@ -598,6 +604,7 @@ width: 100% !important;
 </tr>
 </table>
 @endforeach
+
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 <tr>
 
@@ -696,15 +703,7 @@ width: 100% !important;
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 <tr>
 
-<td valign="top" style="padding-top:25px;padding-right:10px;padding-bottom:15px;padding-left:10px;"><div style="font-family:Cabin, sans-serif;font-size:18px;color:#0e4464;line-height:25px;letter-spacing: 0.03em;text-align:left;"><p style="padding: 0; margin: 0;text-align:center;"><span class="mso-font-fix-arial">If you are due a refund for this booking, it will be paid within the next 48 hours.</span></p>
-
-<p style="padding: 0; margin: 0;text-align:center;">&nbsp;</p>
-
-<p style="padding: 0; margin: 0;text-align:center;"><span class="mso-font-fix-arial">See our </span><span class="mso-font-fix-arial"><a href="https://wellbe.co.nz/cancellation-policy" target="_blank" style="color: #00c0e7 !important; text-decoration: underline !important;"><font style=" color:#00c0e7;">cancellation policy</font></a></span><span class="mso-font-fix-arial"> for more information.</span></p>
-
-<p style="padding: 0; margin: 0;text-align:center;">&nbsp;</p>
-
-<p style="padding: 0; margin: 0;text-align:center;"><span class="mso-font-fix-arial">If you have any questions contact the Wellbe Team and we'll get back to you as soon as possible.</span></p>
+<td valign="top" style="padding-top:25px;padding-right:10px;padding-bottom:15px;padding-left:10px;"><div style="font-family:Cabin, sans-serif;font-size:18px;color:#0e4464;line-height:25px;letter-spacing: 0.03em;text-align:left;"><p style="padding: 0; margin: 0;text-align:center;"><span class="mso-font-fix-arial">If you have any questions contact the Wellbe Team and we'll get back to you as soon as possible.</span></p>
 </div>
 </td>
 </tr>

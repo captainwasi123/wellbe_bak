@@ -266,7 +266,7 @@ width: 100% !important;
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 <tr>
 
-<td valign="top" style="padding:10px;"><div style="font-family:Cabin, sans-serif;font-size:18px;color:#0e4464;line-height:20px;letter-spacing: 0.03em;text-align:left;"><p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial">Hi {{$order->booker->first_name}},</span></p>
+<td valign="top" style="padding:10px;"><div style="font-family:Cabin, sans-serif;font-size:18px;color:#0e4464;line-height:20px;letter-spacing: 0.03em;text-align:left;"><p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial">Hi {{$order->practitioner->first_name}},</span></p>
 
 <p style="padding: 0; margin: 0;">&nbsp;</p>
 
@@ -468,6 +468,8 @@ width: 100% !important;
 </td>
 </tr>
 </table>
+
+
 @foreach($order->details as $order_details)
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 <tr>
@@ -598,6 +600,136 @@ width: 100% !important;
 </tr>
 </table>
 @endforeach
+
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
+
+<td valign="top" style="padding:5px;">
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
+
+<td valign="top" style="padding-right:5px;padding-left:5px;">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" style="border-bottom:10px double #5d4e6d;">
+<tr>
+
+<td valign="top"><table cellpadding="0" cellspacing="0" border="0" width="100%" class="mcol">
+<tr>
+<td valign="top" style="padding:0;mso-cellspacing:0in;">
+<!--[if gte mso 9]><table cellpadding="0" cellspacing="0" border="0" width="100%"><tr><![endif]-->
+<!--[if gte mso 9]><td valign="top" style="padding:0;width:247.509881422925px;"><![endif]-->
+<table cellpadding="0" cellspacing="0" border="0" width="47.59805411979327%" class="col" align="left">
+<tr>
+<td valign="top" width="100%" style="padding:0;">
+
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
+
+<td valign="top">
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
+
+<td valign="top">
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
+
+<td valign="top" style="padding-top:5px;"><div style="font-family:Cabin, sans-serif;font-size:20px;color:#5d4e6d;line-height:27px;text-align:left;"><p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial"><strong>Item Name</strong></span></p>
+</div>
+</td>
+</tr>
+</table>
+
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
+
+<td valign="top" style="padding-top:5px;padding-bottom:10px;"><div style="font-family:Cabin, sans-serif;font-size:15px;color:#5d4e6d;line-height:22px;text-align:left;"><p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial">Duration: X Minutes</span></p>
+</div>
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+<!--[if gte mso 9]></td><![endif]--><!--[if gte mso 9]><td valign="top" style="padding:0;width:15px;"><![endif]-->
+<table cellpadding="0" cellspacing="0" border="0" width="2.8846153846153846%" height="0" class="col hide-on-mobile" style="min-width:15px;height:1px;"  align="left">
+<tr>
+<td valign="top" width="100%" style="line-height:1px;padding:0;font-size:0px;">&nbsp;</td>
+</tr>
+</table>
+<!--[if gte mso 9]></td><![endif]--><!--[if gte mso 9]><td valign="top" style="padding:0;width:257.490118577075px;"><![endif]-->
+<table cellpadding="0" cellspacing="0" border="0" width="49.517330495591345%" class="col" align="left">
+<tr>
+<td valign="top" width="100%" style="padding:0;">
+
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
+
+<td valign="top" style="padding-bottom:5px;"><table cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
+<td valign="top" width="47.963005602885886%">
+
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
+
+<td valign="top" style="padding-top:5px;padding-bottom:10px;"><div style="font-family:Cabin, sans-serif;font-size:17px;color:#5d4e6d;line-height:24px;text-align:left;"><p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial">Quantity:&nbsp;</span></p>
+
+<p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial"><strong>1</strong></span></p>
+</div>
+</td>
+</tr>
+</table>
+
+</td>
+<td valign="top" width="3.883644178371327%">&nbsp;</td>
+<td valign="top" width="47.963005602885886%">
+
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
+
+<td valign="top" style="padding-top:5px;padding-bottom:10px;"><div style="font-family:Cabin, sans-serif;font-size:17px;color:#5d4e6d;line-height:24px;text-align:left;"><p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial">Price:&nbsp;</span></p>
+
+<p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial">&#36;35.00</span></p>
+</div>
+</td>
+</tr>
+</table>
+
+</td>
+<td valign="top" width="0%">&nbsp;</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+<!--[if gte mso 9]></td><![endif]-->
+<!--[if gte mso 9]></tr></table><![endif]-->
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 <tr>
 
@@ -696,15 +828,7 @@ width: 100% !important;
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 <tr>
 
-<td valign="top" style="padding-top:25px;padding-right:10px;padding-bottom:15px;padding-left:10px;"><div style="font-family:Cabin, sans-serif;font-size:18px;color:#0e4464;line-height:25px;letter-spacing: 0.03em;text-align:left;"><p style="padding: 0; margin: 0;text-align:center;"><span class="mso-font-fix-arial">If you are due a refund for this booking, it will be paid within the next 48 hours.</span></p>
-
-<p style="padding: 0; margin: 0;text-align:center;">&nbsp;</p>
-
-<p style="padding: 0; margin: 0;text-align:center;"><span class="mso-font-fix-arial">See our </span><span class="mso-font-fix-arial"><a href="https://wellbe.co.nz/cancellation-policy" target="_blank" style="color: #00c0e7 !important; text-decoration: underline !important;"><font style=" color:#00c0e7;">cancellation policy</font></a></span><span class="mso-font-fix-arial"> for more information.</span></p>
-
-<p style="padding: 0; margin: 0;text-align:center;">&nbsp;</p>
-
-<p style="padding: 0; margin: 0;text-align:center;"><span class="mso-font-fix-arial">If you have any questions contact the Wellbe Team and we'll get back to you as soon as possible.</span></p>
+<td valign="top" style="padding-top:25px;padding-right:10px;padding-bottom:15px;padding-left:10px;"><div style="font-family:Cabin, sans-serif;font-size:18px;color:#0e4464;line-height:25px;letter-spacing: 0.03em;text-align:left;"><p style="padding: 0; margin: 0;text-align:center;"><span class="mso-font-fix-arial">If you have any questions contact the Wellbe Team and we'll get back to you as soon as possible.</span></p>
 </div>
 </td>
 </tr>

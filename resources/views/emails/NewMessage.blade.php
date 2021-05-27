@@ -150,10 +150,7 @@ width: 100% !important;
 width: 600px;
 }
 
-.width540 {
-width: 540px;
-height: auto;
-}
+
 
 .hide-on-desktop {
 display: none;
@@ -239,25 +236,7 @@ width: 100% !important;
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 <tr>
 
-<td valign="top" align="center"><!--[if gte mso 9]><table width="540" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
-
-<table cellpadding="0" cellspacing="0" border="0" style="max-width:100%;" class="fluid-on-mobile img-wrap">
-<tr>
-
-<td valign="top" align="center" style="padding-top:10px;padding-bottom:10px;"><img src="{{URL::to('/')}}/public/email_images/1620487884885_1620487898516_pexels-photo-3757942.jpeg" width="540" height="199" alt="" border="0" style="display:block;font-size:14px;max-width:100%;height:auto;" class="width540" />
-</td>
-</tr>
-</table>
-
-<!--[if gte mso 9]></td></tr></table><![endif]-->
-</td>
-</tr>
-</table>
-
-<table cellpadding="0" cellspacing="0" border="0" width="100%">
-<tr>
-
-<td valign="top" style="padding-top:10px;padding-right:10px;padding-bottom:15px;padding-left:10px;"><div style="font-family:Cabin, sans-serif;font-size:30px;color:#0e4464;line-height:35px;letter-spacing: 0.03em;text-align:left;"><p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial"><span style="font-size:24px;"><strong>Booking Cancellation</strong></span></span></p>
+<td valign="top" style="padding-top:10px;padding-right:10px;padding-bottom:15px;padding-left:10px;"><div style="font-family:Cabin, sans-serif;font-size:30px;color:#0e4464;line-height:35px;letter-spacing: 0.03em;text-align:left;"><p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial"><span style="font-size:24px;"><strong>New Message Recieved</strong></span></span></p>
 </div>
 </td>
 </tr>
@@ -266,11 +245,62 @@ width: 100% !important;
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 <tr>
 
-<td valign="top" style="padding:10px;"><div style="font-family:Cabin, sans-serif;font-size:18px;color:#0e4464;line-height:20px;letter-spacing: 0.03em;text-align:left;"><p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial">Hi {{$order->booker->first_name}},</span></p>
+<td valign="top" style="padding:10px;"><div style="font-family:Cabin, sans-serif;font-size:18px;color:#0e4464;line-height:20px;letter-spacing: 0.03em;text-align:left;"><p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial">Hi {{$user->first_name}},</span></p>
 
 <p style="padding: 0; margin: 0;">&nbsp;</p>
 
-<p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial">One of your bookings has been cancelled.</span></p>
+<p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial">You've received a new message related to one of your bookings. The message details are below.</span></p>
+
+<p style="padding: 0; margin: 0;">&nbsp;</p>
+
+<p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial">If you need to respond to the message you can do so by logging into your account.</span></p>
+</div>
+</td>
+</tr>
+</table>
+
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
+
+<td valign="top" align="center" style="padding-top:20px;padding-right:10px;padding-bottom:20px;padding-left:10px;">
+<!--[if !mso]><!-- -->
+<a href="www.wellbe.co.nz" target="_blank" style="display:inline-block; text-decoration:none;" class="fluid-on-mobile">
+<span>
+
+<table cellpadding="0" cellspacing="0" border="0" bgcolor="#5d4e6d" style="border-radius:2px;border-collapse:separate !important;background-color:#5d4e6d;" class="fluid-on-mobile">
+<tr>
+
+<td align="center" style="padding-top:9px;padding-right:20px;padding-bottom:9px;padding-left:20px;">
+<span style="color:#ffffff !important;font-family:Cabin, sans-serif;font-size:17px;mso-line-height:exactly;line-height:25px;mso-text-raise:4px;letter-spacing: normal;">
+<font style="color:#ffffff;" class="button">
+<span><span class="mso-font-fix-arial">Reply To Message</span></span>
+</font>
+</span>
+</td>
+</tr>
+</table>
+
+</span>
+</a>
+<!--<![endif]-->
+<div style="display:none; mso-hide: none;">
+
+<table cellpadding="0" cellspacing="0" border="0" bgcolor="#5d4e6d" style="border-radius:2px;border-collapse:separate !important;background-color:#5d4e6d;" class="fluid-on-mobile">
+<tr>
+
+<td align="center" style="padding-top:9px;padding-right:20px;padding-bottom:9px;padding-left:20px;">
+<a href="www.wellbe.co.nz" target="_blank" style="color:#ffffff !important;font-family:Cabin, sans-serif;font-size:17px;mso-line-height:exactly;line-height:25px;mso-text-raise:4px;letter-spacing: normal;text-decoration:none;text-align:center;">
+
+<span style="color:#ffffff !important;font-family:Cabin, sans-serif;font-size:17px;mso-line-height:exactly;line-height:25px;mso-text-raise:4px;letter-spacing: normal;">
+<font style="color:#ffffff;" class="button">
+<span><span class="mso-font-fix-arial">Reply To Message</span></span>
+</font>
+</span>
+</a>
+</td>
+</tr>
+</table>
+
 </div>
 </td>
 </tr>
@@ -318,7 +348,16 @@ width: 100% !important;
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 <tr>
 
-<td valign="top" style="padding-top:15px;padding-right:10px;padding-bottom:10px;padding-left:10px;"><div style="font-family:Cabin, sans-serif;font-size:30px;color:#5d4e6d;line-height:35px;letter-spacing: 0.03em;text-align:left;"><p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial"><span style="font-size:24px;"><strong>Booking Details</strong></span></span></p>
+<td valign="top" style="padding-top:15px;padding-right:10px;padding-bottom:10px;padding-left:10px;"><div style="font-family:Cabin, sans-serif;font-size:30px;color:#5d4e6d;line-height:35px;letter-spacing: 0.03em;text-align:left;"><p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial"><span style="font-size:24px;"><strong>Message Details</strong></span></span></p>
+</div>
+</td>
+</tr>
+</table>
+
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
+
+<td valign="top" style="padding:10px;"><div style="font-family:Cabin, sans-serif;font-size:17px;color:#5d4e6d;line-height:25px;letter-spacing: 0.03em;text-align:left;"><p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial">Message Recieved: </span><span class="mso-font-fix-arial"><strong>{{date('l, d M Y - h:i A', strtotime($msg_time))}}</strong></span></p>
 </div>
 </td>
 </tr>
@@ -328,15 +367,6 @@ width: 100% !important;
 <tr>
 
 <td valign="top" style="padding:10px;"><div style="font-family:Cabin, sans-serif;font-size:17px;color:#5d4e6d;line-height:25px;letter-spacing: 0.03em;text-align:left;"><p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial">Order Number: </span><span class="mso-font-fix-arial"><strong>{{$order->id}}</strong></span></p>
-</div>
-</td>
-</tr>
-</table>
-
-<table cellpadding="0" cellspacing="0" border="0" width="100%">
-<tr>
-
-<td valign="top" style="padding:10px;"><div style="font-family:Cabin, sans-serif;font-size:17px;color:#5d4e6d;line-height:25px;letter-spacing: 0.03em;text-align:left;"><p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial">Order Date: </span><span class="mso-font-fix-arial"><strong>{{date('d/m/Y',strtotime($order->start_at))}}</strong></span></p>
 </div>
 </td>
 </tr>
@@ -377,7 +407,7 @@ width: 100% !important;
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 <tr>
 
-<td valign="top" style="padding:5px;"><div style="font-family:Cabin, sans-serif;font-size:17px;color:#5d4e6d;line-height:25px;letter-spacing: 0.03em;text-align:left;"><p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial">CUSTOMER NAME:&nbsp;</span></p>
+<td valign="top" style="padding:5px;"><div style="font-family:Cabin, sans-serif;font-size:17px;color:#5d4e6d;line-height:25px;letter-spacing: 0.03em;text-align:left;"><p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial">FROM:&nbsp;</span></p>
 
 <p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial"><strong>{{$order->booker->first_name}} {{$order->booker->last_name}}</strong></span></p>
 </div>
@@ -406,8 +436,8 @@ width: 100% !important;
 <td valign="top" width="100%" style="line-height:1px;padding:0;font-size:0px;">&nbsp;</td>
 </tr>
 </table>
-<!--[if gte mso 9]></td><![endif]--><!--[if gte mso 9]><td valign="top" style="padding:0;width:330.00000000000006px;"><![endif]-->
-<table cellpadding="0" cellspacing="0" border="0" width="62.26415094339624%" class="col" align="left">
+<!--[if gte mso 9]></td><![endif]--><!--[if gte mso 9]><td valign="top" style="padding:0;width:330px;"><![endif]-->
+<table cellpadding="0" cellspacing="0" border="0" width="62.264150943396224%" class="col" align="left">
 <tr>
 <td valign="top" width="100%" style="padding:0;">
 
@@ -441,7 +471,7 @@ width: 100% !important;
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 <tr>
 
-<td valign="top" style="padding:5px;"><div style="font-family:Cabin, sans-serif;font-size:17px;color:#5d4e6d;line-height:25px;letter-spacing: 0.03em;text-align:left;"><p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial">DATE/TIME:&nbsp;</span></p>
+<td valign="top" style="padding:5px;"><div style="font-family:Cabin, sans-serif;font-size:17px;color:#5d4e6d;line-height:25px;letter-spacing: 0.03em;text-align:left;"><p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial">BOOKING DATE/TIME:&nbsp;</span></p>
 
 <p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial"><strong>{{date('l, d M Y - h:i A', strtotime($order->start_at.' '.$order->details[0]->start_time))}}</strong></span></p>
 </div>
@@ -468,7 +498,7 @@ width: 100% !important;
 </td>
 </tr>
 </table>
-@foreach($order->details as $order_details)
+
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 <tr>
 
@@ -480,15 +510,15 @@ width: 100% !important;
 <table cellpadding="0" cellspacing="0" border="0" width="100%" style="border-bottom:1px solid #5d4e6d;">
 <tr>
 
-<td valign="top"><table cellpadding="0" cellspacing="0" border="0" width="100%" class="mcol">
+<td valign="top">
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
 <tr>
-<td valign="top" style="padding:0;mso-cellspacing:0in;">
-<!--[if gte mso 9]><table cellpadding="0" cellspacing="0" border="0" width="100%"><tr><![endif]-->
-<!--[if gte mso 9]><td valign="top" style="padding:0;width:247.509881422925px;"><![endif]-->
-<table cellpadding="0" cellspacing="0" border="0" width="47.59805411979327%" class="col" align="left">
-<tr>
-<td valign="top" width="100%" style="padding:0;">
 
+<td valign="top">
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
+
+<td valign="top" style="padding-bottom:5px;">
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 <tr>
 
@@ -500,132 +530,26 @@ width: 100% !important;
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 <tr>
 
-<td valign="top" style="padding-top:5px;"><div style="font-family:Cabin, sans-serif;font-size:20px;color:#5d4e6d;line-height:27px;text-align:left;"><p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial"><strong>Item Name</strong></span></p>
+<td valign="top" style="padding-top:5px;padding-bottom:5px;"><div style="font-family:Cabin, sans-serif;font-size:18px;color:#5d4e6d;line-height:25px;letter-spacing: 0.03em;text-align:left;"><p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial">MESSAGE:&nbsp;</span></p>
+
+<p style="padding: 0; margin: 0;">&nbsp;</p>
+
+<p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial"><strong>{{$chat_msg}}&nbsp;</strong></span></p>
+
+<!-- <p style="padding: 0; margin: 0;">&nbsp;</p>
+
+<p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial"><strong>I just wanted to let you know that I'm running 10 minutes late. I won't be too far off. Apologies for the delay.&nbsp;</strong></span></p>
+
+<p style="padding: 0; margin: 0;">&nbsp;</p>
+
+<p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial"><strong>Thanks,&nbsp;</strong></span></p>
+
+<p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial"><strong>Matt</strong></span></p> -->
 </div>
 </td>
 </tr>
 </table>
 
-<table cellpadding="0" cellspacing="0" border="0" width="100%">
-<tr>
-
-<td valign="top" style="padding-top:5px;padding-bottom:10px;"><div style="font-family:Cabin, sans-serif;font-size:15px;color:#5d4e6d;line-height:22px;text-align:left;"><p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial">{{$order_details->service->name}} {{$order_details->service->duration}} Mins</span></p>
-</div>
-</td>
-</tr>
-</table>
-
-</td>
-</tr>
-</table>
-
-</td>
-</tr>
-</table>
-
-</td>
-</tr>
-</table>
-<!--[if gte mso 9]></td><![endif]--><!--[if gte mso 9]><td valign="top" style="padding:0;width:15px;"><![endif]-->
-<table cellpadding="0" cellspacing="0" border="0" width="2.8846153846153846%" height="0" class="col hide-on-mobile" style="min-width:15px;height:1px;"  align="left">
-<tr>
-<td valign="top" width="100%" style="line-height:1px;padding:0;font-size:0px;">&nbsp;</td>
-</tr>
-</table>
-<!--[if gte mso 9]></td><![endif]--><!--[if gte mso 9]><td valign="top" style="padding:0;width:257.490118577075px;"><![endif]-->
-<table cellpadding="0" cellspacing="0" border="0" width="49.517330495591345%" class="col" align="left">
-<tr>
-<td valign="top" width="100%" style="padding:0;">
-
-<table cellpadding="0" cellspacing="0" border="0" width="100%">
-<tr>
-
-<td valign="top" style="padding-bottom:5px;"><table cellpadding="0" cellspacing="0" border="0" width="100%">
-<tr>
-<td valign="top" width="47.963005602885886%">
-
-<table cellpadding="0" cellspacing="0" border="0" width="100%">
-<tr>
-
-<td valign="top" style="padding-top:5px;padding-bottom:10px;"><div style="font-family:Cabin, sans-serif;font-size:17px;color:#5d4e6d;line-height:24px;text-align:left;"><p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial">Quantity:&nbsp;</span></p>
-
-<p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial"><strong>{{$order_details->qty}}</strong></span></p>
-</div>
-</td>
-</tr>
-</table>
-
-</td>
-<td valign="top" width="3.883644178371327%">&nbsp;</td>
-<td valign="top" width="47.963005602885886%">
-
-<table cellpadding="0" cellspacing="0" border="0" width="100%">
-<tr>
-
-<td valign="top" style="padding-top:5px;padding-bottom:10px;"><div style="font-family:Cabin, sans-serif;font-size:17px;color:#5d4e6d;line-height:24px;text-align:left;"><p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial">Price:&nbsp;</span></p>
-
-<p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial">&#36;{{number_format($order_details->price,2)}}</span></p>
-</div>
-</td>
-</tr>
-</table>
-
-</td>
-<td valign="top" width="0%">&nbsp;</td>
-</tr>
-</table>
-</td>
-</tr>
-</table>
-
-</td>
-</tr>
-</table>
-<!--[if gte mso 9]></td><![endif]-->
-<!--[if gte mso 9]></tr></table><![endif]-->
-</td>
-</tr>
-</table>
-</td>
-</tr>
-</table>
-
-</td>
-</tr>
-</table>
-
-</td>
-</tr>
-</table>
-@endforeach
-<table cellpadding="0" cellspacing="0" border="0" width="100%">
-<tr>
-
-<td valign="top" style="padding-top:5px;padding-right:5px;padding-left:5px;">
-<table cellpadding="0" cellspacing="0" border="0" width="100%">
-<tr>
-
-<td valign="top">
-<table cellpadding="0" cellspacing="0" border="0" width="100%">
-<tr>
-
-<td valign="top">
-<table cellpadding="0" cellspacing="0" border="0" width="100%">
-<tr>
-
-<td valign="top">
-<table cellpadding="0" cellspacing="0" border="0" width="100%" class="hide-on-mobile">
-<tr>
-
-<td valign="top">
-<table cellpadding="0" cellspacing="0" border="0" width="100%">
-<tr>
-
-<td style="padding:10px;">
-<table cellpadding="0" cellspacing="0" border="0" width="100%" style="border-top:2px solid transparent;">
-<tr>
-
-<td style="font-size:0px;line-height:0;mso-line-height-rule:exactly;">&nbsp;
 </td>
 </tr>
 </table>
@@ -696,15 +620,7 @@ width: 100% !important;
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 <tr>
 
-<td valign="top" style="padding-top:25px;padding-right:10px;padding-bottom:15px;padding-left:10px;"><div style="font-family:Cabin, sans-serif;font-size:18px;color:#0e4464;line-height:25px;letter-spacing: 0.03em;text-align:left;"><p style="padding: 0; margin: 0;text-align:center;"><span class="mso-font-fix-arial">If you are due a refund for this booking, it will be paid within the next 48 hours.</span></p>
-
-<p style="padding: 0; margin: 0;text-align:center;">&nbsp;</p>
-
-<p style="padding: 0; margin: 0;text-align:center;"><span class="mso-font-fix-arial">See our </span><span class="mso-font-fix-arial"><a href="https://wellbe.co.nz/cancellation-policy" target="_blank" style="color: #00c0e7 !important; text-decoration: underline !important;"><font style=" color:#00c0e7;">cancellation policy</font></a></span><span class="mso-font-fix-arial"> for more information.</span></p>
-
-<p style="padding: 0; margin: 0;text-align:center;">&nbsp;</p>
-
-<p style="padding: 0; margin: 0;text-align:center;"><span class="mso-font-fix-arial">If you have any questions contact the Wellbe Team and we'll get back to you as soon as possible.</span></p>
+<td valign="top" style="padding-top:25px;padding-right:10px;padding-bottom:15px;padding-left:10px;"><div style="font-family:Cabin, sans-serif;font-size:18px;color:#0e4464;line-height:25px;letter-spacing: 0.03em;text-align:left;"><p style="padding: 0; margin: 0;text-align:center;"><span class="mso-font-fix-arial">If you have any questions contact the Wellbe Team and we'll get back to you as soon as possible.</span></p>
 </div>
 </td>
 </tr>
@@ -718,11 +634,11 @@ width: 100% !important;
 <a href="" target="_blank" style="display:inline-block; text-decoration:none;" >
 <span>
 
-<table cellpadding="0" cellspacing="0" border="0" bgcolor="#5d4e6d" style="border-radius:5px;border-collapse:separate !important;background-color:#5d4e6d;">
+<table cellpadding="0" cellspacing="0" border="0" bgcolor="#5d4e6d" style="border-radius:2px;border-collapse:separate !important;background-color:#5d4e6d;">
 <tr>
 
 <td align="center" style="padding-top:9px;padding-right:20px;padding-bottom:9px;padding-left:20px;">
-<span style="color:#ffffff !important;font-family:Cabin, sans-serif;font-size:16px;mso-line-height:exactly;line-height:25px;mso-text-raise:4px;letter-spacing: normal;">
+<span style="color:#ffffff !important;font-family:Cabin, sans-serif;font-size:17px;mso-line-height:exactly;line-height:25px;mso-text-raise:4px;letter-spacing: normal;">
 <font style="color:#ffffff;" class="button">
 <span><span class="mso-font-fix-arial">Contact Us</span></span>
 </font>
@@ -736,13 +652,13 @@ width: 100% !important;
 <!--<![endif]-->
 <div style="display:none; mso-hide: none;">
 
-<table cellpadding="0" cellspacing="0" border="0" bgcolor="#5d4e6d" style="border-radius:5px;border-collapse:separate !important;background-color:#5d4e6d;">
+<table cellpadding="0" cellspacing="0" border="0" bgcolor="#5d4e6d" style="border-radius:2px;border-collapse:separate !important;background-color:#5d4e6d;">
 <tr>
 
 <td align="center" style="padding-top:9px;padding-right:20px;padding-bottom:9px;padding-left:20px;">
-<a href="" target="_blank" style="color:#ffffff !important;font-family:Cabin, sans-serif;font-size:16px;mso-line-height:exactly;line-height:25px;mso-text-raise:4px;letter-spacing: normal;text-decoration:none;text-align:center;">
+<a href="" target="_blank" style="color:#ffffff !important;font-family:Cabin, sans-serif;font-size:17px;mso-line-height:exactly;line-height:25px;mso-text-raise:4px;letter-spacing: normal;text-decoration:none;text-align:center;">
 
-<span style="color:#ffffff !important;font-family:Cabin, sans-serif;font-size:16px;mso-line-height:exactly;line-height:25px;mso-text-raise:4px;letter-spacing: normal;">
+<span style="color:#ffffff !important;font-family:Cabin, sans-serif;font-size:17px;mso-line-height:exactly;line-height:25px;mso-text-raise:4px;letter-spacing: normal;">
 <font style="color:#ffffff;" class="button">
 <span><span class="mso-font-fix-arial">Contact Us</span></span>
 </font>

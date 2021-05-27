@@ -31,7 +31,8 @@ use Illuminate\Support\Facades\Route;
 
 	Route::get('/user/slots/{date}/{user_id}', 'webController@get_slots');
 
-
+//booking reminder route 
+	Route::get('/booking-reminder', 'webController@booking_reminder')->name('booking.reminder');
 
 	// Authentication
 		Route::get('/login', 'loginController@index');

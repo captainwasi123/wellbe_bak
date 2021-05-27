@@ -191,4 +191,10 @@ class webController extends Controller
 		}
 		echo $html;
 	}
+
+	//booking reminder function 
+	public function booking_reminder()
+	{
+	echo	$order = order::with(['booker'])->find(1045);
+	}
 }
