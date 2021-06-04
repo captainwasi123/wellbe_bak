@@ -83,11 +83,11 @@
             <br>
             <form method="post" action="{{URL::to('/register')}}">
               @csrf
-<<<<<<< HEAD
+
               <input type="hidden" name="userType" value="2">
-=======
+
               <input type="hidden" class="form-control" name="status" value="0" required>
->>>>>>> f664c33932aec5d6f8f4a9b06e95db8cac7942d5
+
               <div class="row">
                 <div class="col-md-6">
                   <label> First Name </label>
