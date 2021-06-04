@@ -31,14 +31,15 @@ use Illuminate\Support\Facades\Route;
 
 	Route::get('/user/slots/{date}/{user_id}', 'webController@get_slots');
 
-
+//booking reminder route 
+	Route::get('/booking-reminder', 'webController@booking_reminder')->name('booking.reminder');
 
 	// Authentication
 		Route::get('/login', 'loginController@index');
 		Route::post('/login/', 'loginController@loginAttempt');
 	    Route::post('/loginAttempt', 'loginController@ajaxloginAttempt');
 		Route::get('/logout', 'loginController@logout');
-
+		Route::get('/user-active/{id}','loginController@user_active')->name('user_active');
 		Route::post('/register', 'loginController@userRegister');
 
 
