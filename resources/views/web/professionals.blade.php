@@ -21,8 +21,8 @@
             <div class="appointment-box">
                <h4> Where would you like your appointment? </h4>
                <p> (This will help us match you with practitioners in your area) </p>
-               <form>
-                  <input type="email" placeholder="Enter your address" name="">
+               <form method="get" action="{{route('treatments.search')}}">
+                  <input type="text" placeholder="Enter your address" name="value" id="pac-input" value="{{@$value}}"> 
                   <button> <i class="fa fa-search"> </i> </button>
                </form>
             </div>
@@ -32,3 +32,19 @@
 </section>
 
 @endsection
+@section('additionalJS')
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCT7C85ghGBFoX9J9NCTAeSAOGfJR0bGvU&libraries=places"></script>
+<script>
+   google.maps.event.addDomListener(window, 'load', initialize);
+   function initialize() {
+      var input = document.getElementById('pac-input');
+      var autocomplete = new google.maps.places.Autocomplete(input);
+      autocomplete.addListener('place_changed', function () {
+      var place = autocomplete.getPlace();
+      // place variable will have all the information you are looking for.
+   //  $('#lat').val(place.geometry['location'].lat());
+   // $('#long').val(place.geometry['location'].lng());
+   });
+}
+</script>
+@endsection 

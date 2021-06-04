@@ -13,7 +13,7 @@
                <div>
                   <h4> {{empty($data->first_name) ? '' : $data->first_name.' '.$data->last_name}} </h4>
                   <p> <img src="{{URL::to('/')}}/public/assets/web/images/map-marker.png"> {{empty($data->user_address) ? '' : $data->user_address->city}}{{empty($data->user_address->country) ? '' : ', '.$data->user_address->country->country}} </p>
-                  <p> <a href="javascript:void(0)" class="col-black ratingAvg"> {{empty($data->reviews()) ? '0.0' : number_format($data->reviews()->avg('rating'), 1)}} <img src="{{URL::to('/')}}/public/assets/web/images/rating-star.png"> </a></p>
+                  <p> <a href="javascript:void(0)" class="col-black ratingAvg"> {{empty($data->reviews()) ? '0.0' : number_format($data->reviews()->avg('rating'), 1)}} <span class="fa fa-star" style="color:#ffc126"></span> </a></p>
                </div>
                <div>
                   <p>
@@ -104,8 +104,8 @@
                     </div>
                     @else
                     <div class="booking-empty text-center">
-                       <img src="{{URL::to('/')}}/public/assets/web/images/empty-cart.png">
-                       <p> Your cart is empty <br/> Add an item to begin. </p>
+                       <img src="{{URL::to('/')}}/public/assets/web/images/empty-cartt.png">
+                       <p> Your cart is empty <br/></p>
                     </div>
                     @endif
                  </div>
@@ -126,7 +126,7 @@
                           <div class="form-field4">
                              <p> Choose Time </p>
                              <select class="form-control" id="slots" name="start_time" required>
-                                <option value="">select</option>
+                                <option value=""></option>
                              </select>
                           </div>
                        </div>
@@ -134,9 +134,9 @@
                  </div>
               </div>
               @if(Auth::check() && Auth::user()->user_type)
-                <button type="submit" id="orderSubmit">Proceed</button>
+                <button type="submit" id="orderSubmit">Book Now</button>
               @else
-                <a id="orderSubmit" data-toggle="modal" data-target=".bs-example-modal-lg"> Sign In as Booker </a>
+                <a id="orderSubmit" data-toggle="modal" data-target=".bs-example-modal-lg"> Sign in to Book </a>
               @endif
             </form>
          </div>
@@ -170,7 +170,7 @@
       var cat_id = $(this).data('id');
       $("li").removeClass("active");
       $("#"+cat_id).addClass("active");
-      $('.pract-services').html('<img src="{{URL::to('/')}}/public/assets/images/loader.gif">');
+      $('.pract-services').html('<img src="{{URL::to('/')}}/public/assets/images/loaderr.gif">');
       $.get( "{{URL::to('/')}}/user/services/"+userid+"/"+cat_id, function( data ) {
 		  $('.pract-services').html( data );
 		});

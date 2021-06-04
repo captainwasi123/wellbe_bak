@@ -617,11 +617,11 @@ b.point-1 {
 .booking-empty {
     float: left;
     width: 100%;
-    padding: 20px 0px;
+    padding: 5px 0px;
 }
 
 .booking-empty img {
-    margin-bottom: 10px;
+    margin-bottom: -15px;
 }
 
 .booking-empty p {
@@ -629,6 +629,7 @@ b.point-1 {
     font-size: 16px;
     letter-spacing: 0.2px;
     line-height: 22px;
+    margin-bottom: 25px;
 }
 
 .sidenav-menu-items {

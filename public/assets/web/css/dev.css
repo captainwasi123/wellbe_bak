@@ -122,3 +122,7 @@
 .empty_users img{
     opacity: 0.6;
 }
+.modal-msg {
+    margin-top: 60px;
+    margin-bottom: -25px;
+}

@@ -19,7 +19,7 @@
             <div class="appointment-box" style="margin-top: 25px;">
                <h4 style="margin-bottom: 12px;"> Your Address </h4>
                <form method="get" action="{{route('treatments.search')}}">
-                  <input type="text" placeholder="14 to Puni Grove" name="value" id="pac-input" value="{{@$value}}"> 
+                  <input type="text" placeholder="Enter your address" name="value" id="pac-input" value="{{@$value}}"> 
                   <button> <i class="fa fa-search"> </i> </button>
                </form>
             </div>
@@ -32,17 +32,21 @@
 <section class="all-content pad-top-40 pad-bot-40 bg-blue">
    <div class="container">
       <div class="treatment-triggers">
-         <div class="{{$selected == 'all' ? 'active' : ''}}">
-            <a href="{{route('treatments')}}"> 
-               <img src="{{URL::to('/')}}/public/assets/web/images/treatment-icon1.jpg"> 
-               All Services 
-            </a>
-         </div>
          @foreach($categories as $val)
-            <div class="{{$selected == $val->id ? 'active' : ''}}">
-               <a href="{{route('treatments')}}/{{$val->category}}"> 
+            <div class="
+               @php $default = 0; if($selected == 'all'){ $default = 1;} @endphp
+               @if($selected == $val->id)
+                  active
+               @else
+                  @if($val->category == 'Massage' && $default == 1)
+                     active
+                  @endif
+               @endif
+               {{$selected}}
+            ">
+               <a href="{{route('treatments')}}{{empty($value) ? '/' : '/search?value='.$value.'&cat='}}{{$val->category}}"> 
                   <img src="{{URL::to('/')}}/{{$val->image}}"> 
-                  {{$val->category}} 
+                  {{$val->category}}
                </a>
             </div>
          @endforeach
@@ -50,16 +54,19 @@
       <div class="row">
          <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
             <div class="sec-head2">
-               <h4> Massage </h4>
+               <h4>
+                  {{$selected == 'all' ? 'Massage' : $cat_name}}
+               </h4>
             </div>
          </div>
          <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12 text-right">
             <div class="filters-1">
                <select>
                   <option> Available Today </option>
-                  <option> Available Today </option>
-                  <option> Available Today </option>
-                  <option> Available Today </option>
+                  <option> Available Tomorrow </option>
+                  <option> Available This Week </option>
+                  <option> Available Next Week </option>
+                  <option> All </option>
                </select>
                <button> <i class="fa fa-sort"> </i> Filters </button>
             </div>

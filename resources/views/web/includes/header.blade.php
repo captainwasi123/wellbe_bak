@@ -17,8 +17,8 @@
             </ul>
           </div>
         @else
-          <a  class="login-btn" data-toggle="modal" data-target=".bs-example-modal-lg"> Log in </a>
-          <a href="" class="pro-btn"> Become a Pro </a>
+          <a  class="login-btn" data-toggle="modal" data-target=".login-modal"> Log in </a>
+          <a href="" class="pro-btn" data-toggle="modal" data-target=".pro-modal"> Become a Pro </a>
         @endif
       </div>
       <div class="navbar-handler">
@@ -32,9 +32,6 @@
             <a href="{{route('professionals')}}"> Professionals </a>
          </div>
          <div class="menu-item">
-            <a href=""> Gifts </a>
-         </div>
-         <div class="menu-item">
             <a href=""> About </a>
          </div>
          <div class="menu-item">
@@ -44,7 +41,7 @@
    </div>
 </header>
 
-<div class="modal fade modal-size2 bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+<div class="modal fade modal-size2 login-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
   <div class="modal-dialog" role="document" style="max-width: 550px;">
     <div class="modal-content">
       <button type="button" class="close1" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span> </button>
@@ -54,7 +51,7 @@
          		<a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">Login</a>
          	</li>
          	<li class="nav-item">
-         		<a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab">Register</a>
+         		<a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab">Sign Up</a>
          	</li>
         </ul>
       </div>
@@ -63,7 +60,7 @@
       <div class="custom-modal-data">
        	<div class="tab-content">
          	<div class="tab-pane active" id="tabs-1" role="tabpanel">
-     				<h5> Please login to the dashboard with your credentials. </h5>
+            <br>
             <form id="loginForm" action="{{URL::to('/loginAttempt')}}">
               <input type="hidden" name="_token" id="loginToken" value="{{csrf_token()}}">
               <div class="form-field6">
@@ -78,14 +75,15 @@
                 <a href=""> Forgot Password? </a>
               </div>
              	<div class="form-field7 text-center">
-                <button id="login" class="bg-blue col-white normal-btn rounded"> Submit </button>
+                <button id="login" class="bg-blue col-white normal-btn rounded"> Login </button>
               </div>
             </form>
          	</div>
          	<div class="tab-pane" id="tabs-2" role="tabpanel">
-     	      <h5> Please Register with us and get ammazing opportunities. </h5>
+            <br>
             <form method="post" action="{{URL::to('/register')}}">
               @csrf
+              <input type="hidden" name="userType" value="2">
               <div class="row">
                 <div class="col-md-6">
                   <label> First Name </label>
@@ -98,26 +96,14 @@
               </div>
               <br>
               <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-6">
                   <label> Email Address </label>
                   <input type="email" class="form-control" name="email" required>
                 </div>
-              </div>
-              <br>
-              <div class="row">
+
                 <div class="col-md-6">
                   <label> Phone </label>
                   <input type="number" class="form-control" name="phone">
-                </div>
-                <div class="col-md-6">
-                  <label> User Type </label>
-                  <div class="form-control">
-                    <input type="radio" name="userType" id="labelbooker" value="2" checked>&nbsp;
-                    <label for="labelbooker">Booker</label>
-                    &nbsp;&nbsp;&nbsp;
-                    <input type="radio" name="userType" id="labelpractitioner" value="1">&nbsp;
-                    <label for="labelpractitioner">Practitioner</label>
-                  </div>
                 </div>
               </div>
               <br>
@@ -134,8 +120,80 @@
                 <div class="col-md-12">
                   <br>
                   <div class="form-field7 text-center">
-                     <button class="bg-blue col-white normal-btn rounded"> REGISTER </button>
+                     <button class="bg-blue col-white normal-btn rounded"> SIGN UP </button>
                   </div>
+                  <br>
+                  <p class="modal-msg">Want to work with us? <a href="javascript:void(0)" data-dismiss="modal" data-toggle="modal" data-target=".pro-modal">Register here instead</a>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade modal-size2 pro-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog" role="document" style="max-width: 550px;">
+    <div class="modal-content">
+      <button type="button" class="close1" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span> </button>
+      <div class="custom-modal-triggers">
+        <ul class="nav nav-tabs" role="tablist">
+          <li class="nav-item" style="width:100%;">
+            <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">Become a Pro</a>
+          </li>
+        </ul>
+      </div>
+      <div class="custom-modal-head">
+      </div>
+      <div class="custom-modal-data">
+        <div class="tab-content">
+          <div class="tab-pane active" id="tabs-2" role="tabpanel">
+            <br>
+            <form method="post" action="{{URL::to('/register')}}">
+              @csrf
+              <input type="hidden" name="userType" value="1">
+              <div class="row">
+                <div class="col-md-6">
+                  <label> First Name </label>
+                  <input type="text" class="form-control" name="first_name" required>
+                </div>
+                <div class="col-md-6">
+                  <label> Last Name </label>
+                  <input type="text" class="form-control" name="last_name" required>
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-md-6">
+                  <label> Email Address </label>
+                  <input type="email" class="form-control" name="email" required>
+                </div>
+                
+                <div class="col-md-6">
+                  <label> Phone </label>
+                  <input type="number" class="form-control" name="phone">
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-md-6">
+                  <p> Password </p>
+                  <input type="password" class="form-control" name="password" required>
+                </div>
+                <div class="col-md-6">
+                  <p> Confirm Password </p>
+                  <input type="password" class="form-control" name="confirmation_password" required>
+                </div>
+                <div class="col-md-12" id="register_error"></div>
+                <div class="col-md-12">
+                  <br>
+                  <div class="form-field7 text-center">
+                     <button class="bg-blue col-white normal-btn rounded"> SIGN UP </button>
+                  </div>
+                  <br>
+                  <p class="modal-msg">Want to book our services? <a href="javascript:void(0)" data-dismiss="modal" data-toggle="modal" data-target=".login-modal">Register here instead</a>
                 </div>
               </div>
             </form>

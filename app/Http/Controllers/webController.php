@@ -33,10 +33,24 @@ class webController extends Controller
     }
 	public function treatments_search(Request $request)
 	{
-		$users = User::select(DB::raw('tbl_users_info.*'))->join('tbl_users_geofences','tbl_users_geofences.user_id','=','tbl_users_info.id')->where('user_type', '1')->where('tbl_users_geofences.name', 'like', '%' . $request->value . '%')->limit(6)->get();
+		$category = isset($request->cat) ? $request->cat : '0';
+    	$cat = category::where('category', $category)->first();
+    	$cat_id = empty($cat->id) ? 'all' : $cat->id;
+    	$cat_name = empty($cat->category) ? '' : $cat->category;
+		$users = User::select(DB::raw('tbl_users_info.*'))
+					->when($category != '0', function($qq) use ($cat){
+						$qq->whereHas('services', function($q) use ($cat){
+						    $q->where('category_id', $cat->id);
+						});
+					})
+					->join('tbl_users_geofences','tbl_users_geofences.user_id','=','tbl_users_info.id')
+					->where('user_type', '1')
+					->where('tbl_users_geofences.name', 'like', '%' . $request->value . '%')
+					->limit(6)
+					->get();
 	    $categories = category::where('status', '1')->get();
 		$value = $request->value;
-    	return view('web.treatments', ['categories' => $categories, 'users' => $users, 'selected' => 'all','value' => $value]);
+    	return view('web.treatments', ['categories' => $categories, 'users' => $users, 'selected' => 'all','value' => $value, 'selected' => $cat_id, 'cat_name' => $cat_name]);
 	}
     function treatmentsCategory($category){
     	$cat = category::where('category', $category)->first();
@@ -46,7 +60,7 @@ class webController extends Controller
 				    $q->where('category_id', $cat->id);
 				})
     			->limit(6)->get();
-		return view('web.treatments', ['categories' => $categories, 'users' => $users, 'selected' => $cat->id]);
+		return view('web.treatments', ['categories' => $categories, 'users' => $users, 'selected' => $cat->id, 'cat_name' => $cat->category]);
     }
 
     function professionalProfile($id){ 
@@ -172,7 +186,7 @@ class webController extends Controller
 		$day = date('l',strtotime($request->date));
 		$slots = availability::with(['slots'])->where('user_id',$request->user_id)->where('week_day',strtolower($day))->first();
 		$html = '';
-		$html.="<option value=''>select</option>";
+		$html.="<option value=''></option>";
 		foreach($slots->slots as $val){
 			$start_time = $val->start_booking;
 			$pre_book = orderDetail::where('serve_date', $booking_date)
@@ -186,7 +200,7 @@ class webController extends Controller
 				$start_time = date('H:i:s',strtotime('+'.$dur.' minutes',strtotime($start_time)));
 				$start_time = date('H:i:s',strtotime('+'.$buffer.' minutes',strtotime($start_time)));
 			}
-			$html.="<option value='".$start_time."'>Slot# ".$slot_no.": ----- ".date('h:i A', strtotime($start_time))."</option>";
+			$html.="<option value='".$start_time."'>".date('h:i A', strtotime($start_time))."</option>";
 			$slot_no++;
 		}
 		echo $html;
