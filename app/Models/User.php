@@ -10,6 +10,8 @@ use App\Models\orders\order;
 use App\Models\orders\reviews;
 use App\Models\services\services;
 use App\Models\UserGeofence;
+use App\Models\schedule\availability;
+use App\Models\schedule\holidays;
 
 class User extends Authenticatable
 {
@@ -149,5 +151,17 @@ class User extends Authenticatable
     //GeoFence
     public function ugeofence(){
         return $this->belongsTo(UserGeofence::class, 'id', 'user_id');
+    }
+
+    //availability
+    
+    public function availability()
+    {
+        return $this->hasMany(availability::class,'user_id','id');
+    }
+    //holidays
+    public function holidays()
+    {
+        return $this->hasMany(holidays::class,'user_id','id');
     }
 }

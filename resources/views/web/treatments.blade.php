@@ -21,7 +21,7 @@
                <form method="get" action="{{route('treatments.search')}}">
                   <input type="text" placeholder="Enter your address" name="value" id="pac-input" value="{{@$value}}"> 
                   <button> <i class="fa fa-search"> </i> </button>
-               </form>
+               
             </div>
          </div>
       </div>
@@ -61,19 +61,43 @@
          </div>
          <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12 text-right">
             <div class="filters-1">
-               <select>
-                  <option> Available Today </option>
-                  <option> Available Tomorrow </option>
-                  <option> Available This Week </option>
-                  <option> Available Next Week </option>
-                  <option> All </option>
+             <?php $today = date('Y-m-d');
+               if(date('D')!='Mon')
+               {    
+                //take the last monday
+                 $currentWeekStart = date('Y-m-d',strtotime('last Monday')); 
+               
+               }else{
+                  $currentWeekStart = date('Y-m-d');   
+
+               }
+               
+               //always next saturday
+               
+               if(date('D')!='Sat')
+               {
+                  $currentWeekfinish = date('Y-m-d',strtotime('next Saturday'));
+
+               }else{
+               
+                  $currentWeekfinish = date('Y-m-d');
+               }
+             ?>
+               <select name="filter">
+                  <option value="all"> All </option>
+                  <option value="{{$today}}" {{isset($filter) && $filter == $today ? 'selected' : '' }}> Available Today</option>
+                  <option value='{{date("Y-m-d", strtotime($today. "+1 days"))}}' {{isset($filter) && $filter == date("Y-m-d", strtotime($today. "+1 days")) ? 'selected' : '' }}> Available Tomorrow </option>
+                  <option value="<?php echo $currentWeekStart.','.$currentWeekfinish ?>"> Available This Week</option>
+                  <option value="<?php echo date('Y-m-d',strtotime('+1 week last Monday'))  .','. date('Y-m-d',strtotime('+1 week last Sunday')) ?>"> Available Next Week</option>
                </select>
-               <button> <i class="fa fa-sort"> </i> Filters </button>
+               <button> </i> Search </button>
+            </form>   
             </div>
          </div>
       </div>
       <div class="all-practitioners">
          <div class="row">
+            @if(!empty(@$value))
             @foreach($users as $val)
                <div class="col-md-3 col-lg-3 col-sm-6 col-xs-12">
                   <a href="{{URL::to('/treatments/professional/profile/'.base64_encode($val->id))}}">
@@ -98,10 +122,24 @@
                   </a>
                </div>
             @endforeach
+            @else
+               <div class="col-md-12 empty_users">
+                  <img src="{{URL::to('/public/assets/web/images/nothing-found.png')}}">
+                  <h3>Enter your address above to search for practitioners in your area.</h3>
+               </div>
+            @endif
             @if(count($users) == '0')
                <div class="col-md-12 empty_users">
                   <img src="{{URL::to('/public/assets/web/images/nothing-found.png')}}">
-                  <h3>No Practitioner Found.</h3>
+                  @if(!empty(@$value) && empty(@$value)) 
+                  <h3>Sorry, no practitioners are available in your area.</h3>
+                  @endif
+                  @if(empty(@$value))
+                     <h3>Enter your address above to search for practitioners in your area.</h3>
+                  @endif
+                  @if(!empty(@$filter))
+                     <h3>Sorry, no practitioners are available. Try another date/time.</h3>
+                  @endif
                </div>
             @endif
          </div>

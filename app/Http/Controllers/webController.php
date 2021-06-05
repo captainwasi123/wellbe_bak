@@ -33,7 +33,7 @@ class webController extends Controller
 		return view('web.treatments', ['categories' => $categories, 'users' => $users, 'selected' => 'all']);
     }
 	public function treatments_search(Request $request)
-	{
+	{ 
 		$category = isset($request->cat) ? $request->cat : '0';
     	$cat = category::where('category', $category)->first();
     	$cat_id = empty($cat->id) ? 'all' : $cat->id;
@@ -46,12 +46,32 @@ class webController extends Controller
 					})
 					->join('tbl_users_geofences','tbl_users_geofences.user_id','=','tbl_users_info.id')
 					->where('user_type', '1')
-					->where('tbl_users_geofences.name', 'like', '%' . $request->value . '%')
-					->limit(6)
+					->where('tbl_users_geofences.name', 'like', '%' . $request->value . '%');
+					if(isset($request->filter) && $request->filter != 'all'){  
+						$filter = $request->filter; 
+						if(strpos($filter,',')){
+							$filter_array = explode(',', $request->filter); $days = [];
+							foreach($filter_array as $val){ $days[] = date('l',strtotime($val)); $date[] = $val; }
+							$users = $users->whereHas('availability', function($q) use ($days){
+								$q->whereIn('tbl_user_availability_info.week_day',$days)->where('availability_status',1);
+							})->whereHas('holidays', function($hq) use ($date){
+								$hq->whereNotIn('tbl_user_holidays_info.closed_date', $date);
+							});
+						}else{
+							$users = $users->whereHas('availability', function($q) use ($filter){
+								$q->where('tbl_user_availability_info.week_day', date('l',strtotime($filter)))->where('availability_status',1);
+							})->whereHas('holidays', function($hq) use ($filter){
+								$hq->where('tbl_user_holidays_info.closed_date','!=', $filter);
+							});
+						}
+						
+					}
+					$users = $users->limit(6)
+					->groupBy('id')
 					->get();
 	    $categories = category::where('status', '1')->get();
 		$value = $request->value;
-    	return view('web.treatments', ['categories' => $categories, 'users' => $users, 'selected' => 'all','value' => $value, 'selected' => $cat_id, 'cat_name' => $cat_name]);
+    	return view('web.treatments', ['categories' => $categories, 'users' => $users, 'selected' => 'all','value' => $value, 'selected' => $cat_id, 'cat_name' => $cat_name,'filter' => $request->filter,]);
 	}
     function treatmentsCategory($category){
     	$cat = category::where('category', $category)->first();
