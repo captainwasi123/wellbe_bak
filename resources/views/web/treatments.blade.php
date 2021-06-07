@@ -60,69 +60,132 @@
             </div>
          </div>
       </div>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/css/bootstrap-slider.min.css">
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/bootstrap-slider.min.js"></script>
+<script type="text/javascript">
+(function( $ ){
+   $( document ).ready( function() {
+      $( '.input-range1').each(function(){
+         var value = $(this).attr('data-slider-value');
+         var separator = value.indexOf(',');
+         var range = [$( this ).attr('data-slider-min'), $( this ).attr('data-slider-max')];
+         if( separator !== -1 ){
+            value = value.split(',');
+            value.forEach(function(item, i, arr) {
+               arr[ i ] = parseFloat( item );
+            });
+         } else {
+            value = parseFloat( value );
+         }
+         $( this ).slider({
+            formatter: function(value) {
+               if(value[0] > (range[0]-1) && value[0] < (range[1] + 1)){
+                  $('#min-range1').val(value[0]);
+                  $('#max-range1').val(value[1]);
+               }
+               return value;
+            },
+            min: parseFloat( $( this ).attr('data-slider-min') ),
+            max: parseFloat( $( this ).attr('data-slider-max') ), 
+            range: $( this ).attr('data-slider-range'),
+            value: value,
+            tooltip_split: $( this ).attr('data-slider-tooltip_split'),
+            tooltip: $( this ).attr('data-slider-tooltip')
+         });
+      });
 
+      $( '.input-range2').each(function(){
+         var value = $(this).attr('data-slider-value');
+         var separator = value.indexOf(',');
+         var range = [$( this ).attr('data-slider-min'), $( this ).attr('data-slider-max')];
+         if( separator !== -1 ){
+            value = value.split(',');
+            value.forEach(function(item, i, arr) {
+               arr[ i ] = parseFloat( item );
+            });
+         } else {
+            value = parseFloat( value );
+         }
+         $( this ).slider({
+            formatter: function(value) {
+               if(value[0] > (range[0]-1)){
+                  $('#min-range2').val(value[0]);
+                  $('#max-range2').val(value[1]);
+               }
+               return value;
+            },
+            min: parseFloat( $( this ).attr('data-slider-min') ),
+            max: parseFloat( $( this ).attr('data-slider-max') ), 
+            range: $( this ).attr('data-slider-range'),
+            value: value,
+            tooltip_split: $( this ).attr('data-slider-tooltip_split'),
+            tooltip: $( this ).attr('data-slider-tooltip')
+         });
+      });
+   });
+})( jQuery );
 
+</script>
+<hr>
+<style type="text/css">
+
+#boxes {
+  display: flex;                  /* establish flex container */
+  flex-direction: row;            /* default value; can be omitted */
+  flex-wrap: nowrap;              /* default value; can be omitted */
+  justify-content: space-between; /* switched from default (flex-start, see below) */
+
+}
+#boxes > div {
+    width: 35px;
+}
+#boxess {
+  display: flex;                  /* establish flex container */
+  flex-direction: row;            /* default value; can be omitted */
+  flex-wrap: nowrap;              /* default value; can be omitted */
+  justify-content: space-between; /* switched from default (flex-start, see below) */
+
+}
+#boxess > div {
+    width: 50px;
+}
+</style>
       <div class="row">
-         <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 text-right">
-
-            <script type="text/javascript">
-               $('#multi3').mdbRange({
-  width: '100%',
-  single: {
-    active: true,
-    multi: {
-      active: true,
-      rangeLength: 2
-    },
-  }
-});
-
-$('#multi4').mdbRange({
-  width: '75%',
-  single: {
-    active: true,
-    multi: {
-      active: true,
-      rangeLength: 2
-    },
-  }
-});
-
-$('#multi5').mdbRange({
-  width: '50%',
-  single: {
-    active: true,
-    multi: {
-      active: true,
-      rangeLength: 2
-    },
-  }
-});
-
-$('#multi6').mdbRange({
-  width: '25%',
-  single: {
-    active: true,
-    multi: {
-      active: true,
-      rangeLength: 2
-    },
-  }
-});
-            </script>
-            <form class="multi-range-field my-5 pb-5">
-  <input id="multi3" class="multi-range" type="range" />
-</form>
-<form class="multi-range-field my-5 pb-5">
-  <input id="multi4" class="multi-range" type="range" />
-</form>
-<form class="multi-range-field my-5 pb-5">
-  <input id="multi5" class="multi-range" type="range" />
-</form>
-<form class="multi-range-field my-5 pb-5">
-  <input id="multi6" class="multi-range" type="range" />
-</form>
+         <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12 text-right">
+            <div class="slider-wrapper">
+               <p style="text-align: left;"><b>Rating:</b></p>
+                  <input class="input-range1" data-slider-id='ex12cSlider' type="text" data-slider-step="1" data-slider-value="2, 5" data-slider-min="1" data-slider-max="5" data-slider-range="true" data-slider-tooltip_split="true"  />
+                  <div id="boxes">
+                     <div>
+                        <input type="text" id="min-range1" name="" style="width: 100%;">
+                     </div> 
+                     <div>
+                        <input type="text" id="max-range1" name="" style="width: 100%;">
+                     </div>
+                   
+                  </div>
+            </div>
+         </div>
+            <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12 text-right">
+               <div class="slider-wrapper">
+                  <p style="text-align: left;"><b>Pricing:</b></p>
+                  <input class="input-range2" data-slider-id='ex12cSlider' type="text" data-slider-step="1" data-slider-value="30, 80" data-slider-min="0" data-slider-max="100" data-slider-range="true" data-slider-tooltip_split="true" />
+                   <div id="boxess">
+                     <div>
+                        <input type="text" id="min-range2" name="" style="width: 100%;">
+                     </div>
+                     <div>
+                        <input type="text" id="max-range2" name="" style="width: 100%;">
+                     </div>
+                  </div>                  
+               </div>
+            </div>
+   
+   
+         <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12 text-right">
+          
             <div class="filters-1">
+               <p></p>
              <?php $today = date('Y-m-d');
                if(date('D')!='Mon')
                {    
