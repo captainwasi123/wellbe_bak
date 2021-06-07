@@ -87,8 +87,8 @@
                   <option value="all"> All </option>
                   <option value="{{$today}}" {{isset($filter) && $filter == $today ? 'selected' : '' }}> Available Today</option>
                   <option value='{{date("Y-m-d", strtotime($today. "+1 days"))}}' {{isset($filter) && $filter == date("Y-m-d", strtotime($today. "+1 days")) ? 'selected' : '' }}> Available Tomorrow </option>
-                  <option value="<?php echo $currentWeekStart.','.$currentWeekfinish ?>"> Available This Week</option>
-                  <option value="<?php echo date('Y-m-d',strtotime('+1 week last Monday'))  .','. date('Y-m-d',strtotime('+1 week last Sunday')) ?>"> Available Next Week</option>
+                  <option value="<?php echo $currentWeekStart.','.$currentWeekfinish ?>" {{isset($filter) && $filter == $currentWeekStart.','.$currentWeekfinish ? 'selected' : '' }}> Available This Week</option>
+                  <option value="<?php echo date('Y-m-d',strtotime('+1 week last Monday'))  .','. date('Y-m-d',strtotime('+1 week last Sunday')) ?>" {{isset($filter) && $filter == date('Y-m-d',strtotime('+1 week last Monday'))  .','. date('Y-m-d',strtotime('+1 week last Sunday')) ? 'selected' : '' }}> Available Next Week</option>
                </select>
                <button> </i> Search </button>
             </form>   
