@@ -52,14 +52,76 @@
          @endforeach
       </div>
       <div class="row">
-         <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+         <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
             <div class="sec-head2">
                <h4>
                   {{$selected == 'all' ? 'Massage' : $cat_name}}
                </h4>
             </div>
          </div>
-         <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12 text-right">
+      </div>
+
+
+      <div class="row">
+         <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 text-right">
+
+            <script type="text/javascript">
+               $('#multi3').mdbRange({
+  width: '100%',
+  single: {
+    active: true,
+    multi: {
+      active: true,
+      rangeLength: 2
+    },
+  }
+});
+
+$('#multi4').mdbRange({
+  width: '75%',
+  single: {
+    active: true,
+    multi: {
+      active: true,
+      rangeLength: 2
+    },
+  }
+});
+
+$('#multi5').mdbRange({
+  width: '50%',
+  single: {
+    active: true,
+    multi: {
+      active: true,
+      rangeLength: 2
+    },
+  }
+});
+
+$('#multi6').mdbRange({
+  width: '25%',
+  single: {
+    active: true,
+    multi: {
+      active: true,
+      rangeLength: 2
+    },
+  }
+});
+            </script>
+            <form class="multi-range-field my-5 pb-5">
+  <input id="multi3" class="multi-range" type="range" />
+</form>
+<form class="multi-range-field my-5 pb-5">
+  <input id="multi4" class="multi-range" type="range" />
+</form>
+<form class="multi-range-field my-5 pb-5">
+  <input id="multi5" class="multi-range" type="range" />
+</form>
+<form class="multi-range-field my-5 pb-5">
+  <input id="multi6" class="multi-range" type="range" />
+</form>
             <div class="filters-1">
              <?php $today = date('Y-m-d');
                if(date('D')!='Mon')
@@ -95,6 +157,9 @@
             </div>
          </div>
       </div>
+
+
+
       <div class="all-practitioners">
          <div class="row">
             @if(!empty(@$value))
