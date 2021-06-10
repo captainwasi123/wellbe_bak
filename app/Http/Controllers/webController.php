@@ -33,11 +33,14 @@ class webController extends Controller
 		return view('web.treatments', ['categories' => $categories, 'users' => $users, 'selected' => 'all']);
     }
 	public function treatments_search(Request $request)
-	{ 
+	{  
 		$category = isset($request->cat) ? $request->cat : '0';
     	$cat = category::where('category', $category)->first();
     	$cat_id = empty($cat->id) ? 'all' : $cat->id;
     	$cat_name = empty($cat->category) ? '' : $cat->category;
+    	$price = explode(',', $request->price); 
+    	$rating = explode(',', $request->rating); 
+
 		$users = User::select(DB::raw('tbl_users_info.*'))
 					->when($category != '0', function($qq) use ($cat){
 						$qq->whereHas('services', function($q) use ($cat){
@@ -45,8 +48,16 @@ class webController extends Controller
 						});
 					})
 					->join('tbl_users_geofences','tbl_users_geofences.user_id','=','tbl_users_info.id')
+					->join('tbl_users_store_info','tbl_users_store_info.user_id','=','tbl_users_info.id')
+					->leftJoin('tbl_review_info','tbl_review_info.review_to','=','tbl_users_info.id')
 					->where('user_type', '1')
+					->whereBetween('tbl_users_store_info.minimum_booking_amount',$price)
 					->where('tbl_users_geofences.name', 'like', '%' . $request->value . '%');
+					if ($rating[0] == 0) {
+						$users = $users->orWhere('tbl_review_info.rating',$rating[1]);
+					}else{
+						$users = $users->whereBetween('tbl_review_info.rating',$rating);
+					}
 					if(isset($request->filter) && $request->filter != 'all'){  
 						$filter = $request->filter; 
 						if(strpos($filter,',')){
@@ -71,7 +82,7 @@ class webController extends Controller
 					->get();
 	    $categories = category::where('status', '1')->get();
 		$value = $request->value;
-    	return view('web.treatments', ['categories' => $categories, 'users' => $users, 'selected' => 'all','value' => $value, 'selected' => $cat_id, 'cat_name' => $cat_name,'filter' => $request->filter,]);
+    	return view('web.treatments', ['categories' => $categories, 'users' => $users, 'selected' => 'all','value' => $value, 'selected' => $cat_id, 'cat_name' => $cat_name,'filter' => $request->filter,'price' => $request->price,'rating' => $request->rating]);
 	}
     function treatmentsCategory($category){
     	$cat = category::where('category', $category)->first();
