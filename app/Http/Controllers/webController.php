@@ -51,11 +51,13 @@ class webController extends Controller
 					->join('tbl_users_store_info','tbl_users_store_info.user_id','=','tbl_users_info.id')
 					->leftJoin('tbl_review_info','tbl_review_info.review_to','=','tbl_users_info.id')
 					->where('user_type', '1')
-					->whereBetween('tbl_users_store_info.minimum_booking_amount',$price)
 					->where('tbl_users_geofences.name', 'like', '%' . $request->value . '%');
-					if ($rating[0] == 0) {
+					if (isset($request->price)) {
+						$users = $users->whereBetween('tbl_users_store_info.minimum_booking_amount',$price);
+					}
+					if(isset($request->rating) && $rating[0] == 0) {
 						$users = $users->orWhere('tbl_review_info.rating',$rating[1]);
-					}else{
+					}else if (isset($request->rating)){
 						$users = $users->whereBetween('tbl_review_info.rating',$rating);
 					}
 					if(isset($request->filter) && $request->filter != 'all'){  
