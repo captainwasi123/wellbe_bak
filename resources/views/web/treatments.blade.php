@@ -157,10 +157,10 @@
                   <input class="input-range1" data-slider-id='ex12cSlider' type="text" data-slider-step="1" data-slider-value="{{isset($rating) ? $rating : '0, 5'}}" data-slider-min="0" data-slider-max="5" data-slider-range="true" data-slider-tooltip_split="true" name="rating" />
                   <div id="boxes">
                      <div>
-                        <input type="text" id="min-range1" name="" style="width: 100%;">
+                        <input type="text" id="min-range1" name="" style="width: 100%;" readonly>
                      </div> 
                      <div>
-                        <input type="text" id="max-range1" name="" style="width: 100%;">
+                        <input type="text" id="max-range1" name="" style="width: 100%;" readonly>
                      </div>
                    
                   </div>
@@ -172,10 +172,10 @@
                   <input class="input-range2" data-slider-id='ex12cSlider' type="text" data-slider-step="1" data-slider-value="{{isset($price) ? $price : '1, 1000'}}" data-slider-min="0" data-slider-max="5000" data-slider-range="true" data-slider-tooltip_split="true" name="price" />
                    <div id="boxess">
                      <div>
-                        <input type="text" id="min-range2" name="" style="width: 100%;">
+                        <input type="text" id="min-range2" name="" style="width: 100%;" readonly>
                      </div>
                      <div>
-                        <input type="text" id="max-range2" name="" style="width: 100%;">
+                        <input type="text" id="max-range2" name="" style="width: 100%;" readonly>
                      </div>
                   </div>                  
                </div>
