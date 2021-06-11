@@ -209,6 +209,7 @@
                }
              ?>
                <select name="filter">
+                  <option value="">select...</option>
                   <option value="all"> All </option>
                   <option value="{{$today}}" {{isset($filter) && $filter == $today ? 'selected' : '' }}> Available Today</option>
                   <option value='{{date("Y-m-d", strtotime($today. "+1 days"))}}' {{isset($filter) && $filter == date("Y-m-d", strtotime($today. "+1 days")) ? 'selected' : '' }}> Available Tomorrow </option>
@@ -259,7 +260,7 @@
             @if(count($users) == '0')
                <div class="col-md-12 empty_users">
                   <img src="{{URL::to('/public/assets/web/images/nothing-found.png')}}">
-                  @if(!empty(@$value) && empty(@$value)) 
+                  @if(!empty(@$value) && empty(@$filter)) 
                   <h3>Sorry, no practitioners are available in your area.</h3>
                   @endif
                   @if(empty(@$value))
