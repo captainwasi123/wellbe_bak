@@ -169,7 +169,7 @@
             <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12 text-right">
                <div class="slider-wrapper">
                   <p style="text-align: left;"><b>Pricing:</b></p>
-                  <input class="input-range2" data-slider-id='ex12cSlider' type="text" data-slider-step="1" data-slider-value="{{isset($price) ? $price : '30, 80'}}" data-slider-min="0" data-slider-max="100" data-slider-range="true" data-slider-tooltip_split="true" name="price" />
+                  <input class="input-range2" data-slider-id='ex12cSlider' type="text" data-slider-step="1" data-slider-value="{{isset($price) ? $price : '30, 80'}}" data-slider-min="0" data-slider-max="5000" data-slider-range="true" data-slider-tooltip_split="true" name="price" />
                    <div id="boxess">
                      <div>
                         <input type="text" id="min-range2" name="" style="width: 100%;">
