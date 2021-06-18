@@ -61,11 +61,13 @@
                      <input type="text"  name="bio" value="{{$user_data->bio_description}}">
                   </div>
                </div>
+               @if(empty($user_data->profile_img))
                <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
                   <div class="form-field3 m-t-20">
                      <p> Profile Photo <input type="file" name="profile_img" class="bg-blue normal-btn col-white pad-1 rounded"></p>
                   </div>
                </div>
+               @endif
             </div>
 
             <div class="block-element">
@@ -96,7 +98,7 @@
                      <input type="text" name="postcode" value="{{empty($user_data->user_address) ? '' : $user_data->user_address->postcode}}">
                   </div>
                </div>
-               <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
+               <!-- <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
                   <div class="form-field3">
                      <p> State </p>
                      <input type="text" name="state" value="{{empty($user_data->user_address) ? '' : $user_data->user_address->state}}">
@@ -112,7 +114,7 @@
                         @endforeach
                      </select>
                   </div>
-               </div>
+               </div> -->
             </div>
          </div>
          <div class="col-md-5 col-lg-5 col-sm-12 col-xs-12">
@@ -122,16 +124,16 @@
                   <span> Status: <b class="col-blue"> Active </b> </span>
                </div>
             </div>
-            <div class="form-field3">
+            <!-- <div class="form-field3">
                <p> Where do you offer services? </p>
                <div class="drop-options">
                   <span> <input type="radio" name="offer_services" value="mobile" {{ isset($user_data) && 'mobile' == @$user_data->user_store->offer_services ? 'checked' : ''}} required> Mobile </span>
                   <span> <input type="radio" name="offer_services" value="my_address" {{ isset($user_data) && 'my_address' == @$user_data->user_store->offer_services ? 'checked' : ''}}> My Address </span>
                   <span> <input type="radio" name="offer_services" value="both" {{ isset($user_data) && 'both' == @$user_data->user_store->offer_services ? 'checked' : ''}}> Both  </span>
                </div>
-            </div>
+            </div> -->
             <div class="form-field3">
-               <p> Service Radius <a href="{{route('practitioner.geofences')}}" class="bg-blue normal-btn pad-1 col-white rounded"> Set Service Radius </a>  </p>
+               <p> Service Radius <a href="{{route('practitioner.geofences')}}" class="bg-blue normal-btn pad-1 col-white rounded"> Show Service Radius </a>  </p>
             </div>
             <div class="form-field3">
                <p> Minimum Booking Amount </p>
@@ -139,7 +141,7 @@
                <b class="info-tag1 col-blue" style="display: inline-block; width: 20px; margin-top: -28px; vertical-align: top; margin-left: 8px;"> $ </b>
             </div>
             <div class="form-field3">
-               <p> buffer Between Appointments (Minutes) </p>
+               <p> Buffer Between Appointments (Minutes) </p>
                <input type="text" name="buffer_between_appointments" value="{{empty($user_data->user_store) ? '' : $user_data->user_store->buffer_between_appointments}}" required>
             </div>
             <div class="block-element m-t-15 m-b-10">
@@ -153,7 +155,7 @@
                <p> Bank Account Number </p>
                <input type="text" name="account_number" value="{{empty($user_data->users_payout_details) ? '' : $user_data->users_payout_details->bank_account_number}}" required>
             </div>
-            <div class="bg-silver block-element m-t-20 m-b-20" style="padding:20px">
+            <!-- <div class="bg-silver block-element m-t-20 m-b-20" style="padding:20px">
                <div class="form-field3">
                   <p> Store Page </p>
                   <div class="drop-options">
@@ -173,7 +175,7 @@
                      <span> <input type="radio" name="" disabled> Partner </span>
                   </div>
                </div>
-            </div>
+            </div> -->
          </div>
       </div>
    </div>
@@ -213,7 +215,7 @@
             </div>
             <div class="col-md-8 col-lg-8 col-sm-12 col-xs-12">
                 <div class="form-field3 m-t-10">
-                    <p> Conform Password </p>
+                    <p> Confirm Password </p>
                     <input type="password" name="confirm_password" id="conform_password" value="{{ empty($confirm_password) ? "" : $confirm_password }}" minlength="8" required>
                     <span id="error"></span><br>
                     <span id="old2"></span>
@@ -292,5 +294,23 @@
               $('#register').prop('disabled', false);
           }
       });
+</script>
+<script type="text/javascript">
+  var formSubmitting = false;
+var setFormSubmitting = function() { formSubmitting = true; };
+
+window.onload = function() {
+    window.addEventListener("beforeunload", function (e) {
+        if (formSubmitting) {
+            return undefined;
+        }
+
+        var confirmationMessage = 'It looks like you have been editing something. '
+                                + 'If you leave before saving, your changes will be lost.';
+
+        (e || window.event).returnValue = confirmationMessage; //Gecko + IE
+        return confirmationMessage; //Gecko + Webkit, Safari, Chrome etc.
+    });
+};
 </script>
 @endsection

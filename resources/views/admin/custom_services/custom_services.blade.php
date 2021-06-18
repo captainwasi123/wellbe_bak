@@ -54,7 +54,7 @@
                 <tr>
                    <td class="col-blue"> {{$all_services->name}} </td>
                    <td> ${{$all_services->price}} </td>
-                   <td> {{$all_services->duration}}  </td>
+                   <td> {{$all_services->description}}  </td>
                    <td class="col-blue"> {{$all_services->practitioner->first_name}} {{$all_services->practitioner->last_name}} </td>
                    <td>  {{date('d, M Y - h:i a', strtotime($all_services->created_at))}}</td>
                    <td>

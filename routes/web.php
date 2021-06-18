@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 	Route::get('/treatments', 'webController@treatments')->name('treatments');
 	Route::get('/treatments/search', 'webController@treatments_search')->name('treatments.search');
 	Route::get('/treatments/{category}', 'webController@treatmentsCategory');
-	Route::get('/treatments/professional/profile/{id}', 'webController@professionalProfile');
+	Route::get('/treatments/professional/profile/{id}', 'webController@professionalProfile')->name('professional.profile');
 
 	//Services
 	Route::get('/user/services/{userid}/{cat_id}', 'webController@user_services');

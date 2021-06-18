@@ -4,7 +4,19 @@
          <a href="{{route('home')}}"> <img alt="logo" src="{{URL::to('/')}}/public/assets/web/images/logo.png"> </a>
       </div>
       <div class="header-right">
-        @if(Auth::check())
+        <?php if (Auth::guard('admin')->check()) { ?>
+          <div class="dropdown loggedIn">
+            <a class="dropdown-toggle" type="button" data-toggle="dropdown">
+              <img alt="user-pic" src="" onerror="this.onerror=null;this.src='{{URL::to('/')}}/public/assets/images/user-placeholder.png';">
+              {{empty(Auth::guard('admin')->user()->first_name) ? 'New User' : ' '.Auth::guard('admin')->user()->first_name}}&nbsp;&nbsp;&nbsp;&#9660;
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="{{route('admin.dashboard')}}">Dashboard</a></li>
+              <li><a href="{{route('admin.edit_profile')}}"> My Account </a></li>
+             <li><a href="{{route('admin.logout')}}"> </i> Logout </a></li>
+            </ul>
+          </div>
+        <?php }elseif (Auth::check()) { ?>
           <div class="dropdown loggedIn">
             <a class="dropdown-toggle" type="button" data-toggle="dropdown">
               <img alt="user-pic" src="{{URL::to('/')}}/{{Auth::user()->profile_img}}" onerror="this.onerror=null;this.src='{{URL::to('/')}}/public/assets/images/user-placeholder.png';">
@@ -16,10 +28,10 @@
               <li><a href="{{URL::to('/logout')}}">Logout</a></li>
             </ul>
           </div>
-        @else
-          <a  class="login-btn" data-toggle="modal" data-target=".login-modal"> Log in </a>
-          <a href="" class="pro-btn" data-toggle="modal" data-target=".pro-modal"> Become a Pro </a>
-        @endif
+        <?php }else{ ?>
+            <a  class="login-btn" data-toggle="modal" data-target=".login-modal"> Log in </a>
+            <a href="" class="pro-btn" data-toggle="modal" data-target=".pro-modal"> Become a Pro </a>
+        <?php } ?>
       </div>
       <div class="navbar-handler">
          <img src="{{URL::to('/')}}/public/assets/web/images/hamburger.png">

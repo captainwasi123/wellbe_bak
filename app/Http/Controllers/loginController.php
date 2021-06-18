@@ -70,12 +70,18 @@ class loginController extends Controller
             $u = User::where('email', $data['email'])->count();
             if($u == '0'){
                 $user = User::newUser($data); $email['user'] = $user;
-                if($request->userType == 2 ){ $email_temp = 'CustomerActivation'; }else{$email_temp = 'PractitionerActivation'; } 
-                $a = \App\Helpers\CommonHelpers::send_email($email_temp, $email, $request->email, 'email verification', $from_email = 'info@divsnpixel.com', $from_name = 'Wallbe');
-                return redirect()->back()->with('success', 'You are successfully registered..');
+                if($request->userType == 2 ){ 
+                    $email_temp = 'CustomerActivation'; 
+                    $msg = 'Thanks for joining the Wellbe Community. An activation email has been sent, please click the link in the email to activate your account.';
+                }else{
+                    $email_temp = 'PractitionerActivation'; 
+                    $msg = 'Thanks for joining the Wellbe Community. An activation email has been sent, please click the link in the email to activate your account.';
+                } 
+                $a = \App\Helpers\CommonHelpers::send_email($email_temp, $email, $request->email, 'Activate Your Wellbe Account', $from_email = 'info@divsnpixel.com', $from_name = 'Wallbe');
+                return redirect()->back()->with('success', $msg);
             }else{
 
-                return redirect()->back()->with('error', 'This email is already Registered.');
+                return redirect()->back()->with('error', 'Sorry, we already have an account registered with that email address. Please try resetting your password.');
             }
         }else{
             
@@ -87,15 +93,21 @@ class loginController extends Controller
     {
         $id = base64_decode($request->id);
         $user = User::find($id);
-        $user->status = '1';
-        $user->save();
+        
         $email['user'] = $user;
-        if($user->user_type == 2 ){ $email_temp = 'WelcomeEmailCustomer'; }else{$email_temp = 'WelcomeEmailPractitioner'; } 
-        \App\Helpers\CommonHelpers::send_email($email_temp, $email, $user->email, 'email verification', $from_email = 'info@divsnpixel.com', $from_name = 'Wallbe');
+        if($user->user_type == 2 ){ 
+            $email_temp = 'WelcomeEmailCustomer'; 
+            $user->status = '1';
+        }else{
+            $email_temp = 'WelcomeEmailPractitioner'; 
+            $user->email_verify = '1';
+        } 
+        $user->save();
+        \App\Helpers\CommonHelpers::send_email($email_temp, $email, $user->email, 'Welcome to Wellbe, '.$user->first_name.'!', $from_email = 'info@divsnpixel.com', $from_name = 'Wallbe');
         // DB::table('tbl_users_info')
         //         ->where('id', base64_decode($request->id))
         //         ->update(['status' => 1]);
-        return redirect(route('home'));        
+        return redirect(route('home'))->with('success', 'Your account has been verified');        
     }
     function logout(){
         Auth::logout();

@@ -26,9 +26,9 @@
          <div class="menu-item">
             <a href="{{route('practitioner.profile')}}"> <i class="fa fa-user"> </i> My Profile </a>
          </div>
-         <div class="menu-item">
+         <!-- <div class="menu-item">
             <a href="{{route('practitioner.plan')}}"> <i class="fa fa-share-alt"> </i> My Plan </a>
-         </div>
+         </div> -->
       </div>
       <div class="sidebar-btn-fixed">
          <a href="{{URL::to('/')}}" target="_blank"> <i class="fa fa-globe"> </i> View Website Page </a>

@@ -38,6 +38,17 @@
                         </div>
                      </div>
                      @endforeach
+                     <div class="cat-box1 viewService" data-id="pending_services">
+                        <h5> Pending services  </h5>
+                        <div class="dropdown">
+                           <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                           <i class="fas fa-ellipsis-v"></i>
+                           </button>
+                           <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                              <li></li>
+                           </ul>
+                        </div>
+                     </div>
                   </div>
 
                   <div class="category-message">

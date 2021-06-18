@@ -23,7 +23,6 @@ class profileController extends Controller
             'country_data' => Country::latest()->get(),
             'gst' => MarketplaceSetting::latest()->first(),
             // 'user_data' => auth()->user(),
-
         );
 
     	return view('practitioner.profile.general')->with($data);

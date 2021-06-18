@@ -306,7 +306,7 @@ width: 100% !important;
 <td align="center" style="padding-top:9px;padding-right:20px;padding-bottom:9px;padding-left:20px;">
 <span style="color:#ffffff !important;font-family:Cabin, sans-serif;font-size:17px;mso-line-height:exactly;line-height:25px;mso-text-raise:4px;letter-spacing: normal;">
 <font style="color:#ffffff;" class="button">
-<span><span class="mso-font-fix-arial"><a href="{{route('user_active',base64_encode($user->id))}}">Activate My Account</a></span></span>
+<span><span class="mso-font-fix-arial"><a href="{{route('user_active',base64_encode($user->id))}}" style="color:#fff">Activate My Account</a></span></span>
 </font>
 </span>
 </td>
@@ -326,7 +326,7 @@ width: 100% !important;
 
 <span style="color:#ffffff !important;font-family:Cabin, sans-serif;font-size:17px;mso-line-height:exactly;line-height:25px;mso-text-raise:4px;letter-spacing: normal;">
 <font style="color:#ffffff;" class="button">
-<span><span class="mso-font-fix-arial"><a href="{{route('user_active',base64_encode($user->id))}}">Activate My Account</a></span></span>
+<span><span class="mso-font-fix-arial"><a href="{{route('user_active',base64_encode($user->id))}}" style="color:#fff">Activate My Account</a></span></span>
 </font>
 </span>
 </a>

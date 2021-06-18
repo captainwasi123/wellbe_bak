@@ -28,7 +28,7 @@
              <tbody>
                 @foreach($data as $val)
                   <tr>
-                     <td class="col-blue"> {{$val->first_name.' '.$val->last_name}} </td>
+                     <td class="col-blue"><a href="{{route('professional.profile',base64_encode($val->id))}}">{{$val->first_name.' '.$val->last_name}}</a>  </td>
                      <td> {{count($val->p_upcoming)}} </td>
                      <td> {{count($val->p_completed)}} </td>
                      <td> {{count($val->p_cancelled)}} </td>

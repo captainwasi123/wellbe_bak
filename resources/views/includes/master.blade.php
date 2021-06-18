@@ -32,7 +32,13 @@
             </div>
             </div>
         @endif
-
+        @if(session()->has('practitioner_service_success'))
+        <div class="custom-alert">
+          <div class="alert alert-warning" role="alert">
+            This service is pending approval by the Wellbe Team. This process can take up to 72 hours.
+          </div>
+        </div>
+        @endif
       @yield('content')
 
 

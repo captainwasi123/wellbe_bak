@@ -5,6 +5,11 @@
 @section('topbar')@include('practitioner.includes.topbar')@endsection
 @section('additionalCSS')
    <link href="{{URL::to('/')}}/public/assets/css/timepicker.css" rel="stylesheet">
+   <style type="text/css">
+      .mdtp__wrapper[data-theme='blue'] .mdtp__time_holder { 
+         background-color: #404780;
+      }
+   </style>
 @endsection
 @section('content')
      
@@ -29,11 +34,11 @@
                                  <td> Sunday </td>
                                  <td> First Booking </td>
                                  <td>
-                                    <input type="text" name="days[sunday][0][first_booking]" class="timepicker">
+                                    <input type="text" name="days[sunday][0][first_booking]" class="timepicker" value="9:00 PM">
                                  </td>
                                  <td> Last Booking </td>
                                  <td>
-                                    <input type="text" name="days[sunday][0][last_booking]" class="timepicker">
+                                    <input type="text" name="days[sunday][0][last_booking]" class="timepicker" value="5:00 PM">
                                  </td>
                                  <td> 
                                     <a href="javascript:void(0)" class="col-blue splitShift"  data-id="1" data-day="sunday"> 
@@ -83,11 +88,11 @@
                                  <td> Monday </td>
                                  <td> First Booking </td>
                                  <td>
-                                    <input type="text" name="days[monday][0][first_booking]" class="timepicker">
+                                    <input type="text" name="days[monday][0][first_booking]" class="timepicker" value="9:00 AM">
                                  </td>
                                  <td> Last Booking </td>
                                  <td>
-                                    <input type="text" name="days[monday][0][last_booking]" class="timepicker">
+                                    <input type="text" name="days[monday][0][last_booking]" class="timepicker" value="5:00 PM">
                                  </td>
                                  <td> 
                                     <a href="javascript:void(0)" class="col-blue splitShift"  data-id="1" data-day="monday"> 
@@ -138,11 +143,11 @@
                                  <td> Tuesday </td>
                                  <td> First Booking </td>
                                  <td>
-                                    <input type="text" name="days[tuesday][0][first_booking]" class="timepicker">
+                                    <input type="text" name="days[tuesday][0][first_booking]" class="timepicker" value="9:00 PM">
                                  </td>
                                  <td> Last Booking </td>
                                  <td>
-                                    <input type="text" name="days[tuesday][0][last_booking]" class="timepicker">
+                                    <input type="text" name="days[tuesday][0][last_booking]" class="timepicker" value="5:00 PM">
                                  </td>
                                  <td> 
                                     <a href="javascript:void(0)" class="col-blue splitShift"  data-id="1" data-day="tuesday"> 
@@ -193,11 +198,11 @@
                                  <td> Wednesday </td>
                                  <td> First Booking </td>
                                  <td>
-                                    <input type="text" name="days[wednesday][0][first_booking]" class="timepicker">
+                                    <input type="text" name="days[wednesday][0][first_booking]" class="timepicker" value="9:00 PM">
                                  </td>
                                  <td> Last Booking </td>
                                  <td>
-                                    <input type="text" name="days[wednesday][0][last_booking]" class="timepicker">
+                                    <input type="text" name="days[wednesday][0][last_booking]" class="timepicker" value="5:00 PM">
                                  </td>
                                  <td> 
                                     <a href="javascript:void(0)" class="col-blue splitShift"  data-id="1" data-day="wednesday"> 
@@ -247,11 +252,11 @@
                                  <td> Thursday </td>
                                  <td> First Booking </td>
                                  <td>
-                                    <input type="text" name="days[thursday][0][first_booking]" class="timepicker">
+                                    <input type="text" name="days[thursday][0][first_booking]" class="timepicker" value="9:00 PM">
                                  </td>
                                  <td> Last Booking </td>
                                  <td>
-                                    <input type="text" name="days[thursday][0][last_booking]" class="timepicker">
+                                    <input type="text" name="days[thursday][0][last_booking]" class="timepicker" value="5:00 PM">
                                  </td>
                                  <td> 
                                     <a href="javascript:void(0)" class="col-blue splitShift"  data-id="1" data-day="thursday"> 
@@ -301,11 +306,11 @@
                                  <td> Friday </td>
                                  <td> First Booking </td>
                                  <td>
-                                    <input type="text" name="days[friday][0][first_booking]" class="timepicker">
+                                    <input type="text" name="days[friday][0][first_booking]" class="timepicker" value="9:00 PM">
                                  </td>
                                  <td> Last Booking </td>
                                  <td>
-                                    <input type="text" name="days[friday][0][last_booking]" class="timepicker">
+                                    <input type="text" name="days[friday][0][last_booking]" class="timepicker" value="5:00 PM">
                                  </td>
                                  <td> 
                                     <a href="javascript:void(0)" class="col-blue splitShift"  data-id="1" data-day="friday"> 
@@ -355,11 +360,11 @@
                                  <td> Saturday </td>
                                  <td> First Booking </td>
                                  <td>
-                                    <input type="text" name="days[saturday][0][first_booking]" class="timepicker">
+                                    <input type="text" name="days[saturday][0][first_booking]" class="timepicker" value="9:00 PM">
                                  </td>
                                  <td> Last Booking </td>
                                  <td>
-                                    <input type="text" name="days[saturday][0][last_booking]" class="timepicker">
+                                    <input type="text" name="days[saturday][0][last_booking]" class="timepicker" value="5:00 PM">
                                  </td>
                                  <td> 
                                     <a href="javascript:void(0)" class="col-blue splitShift"  data-id="1" data-day="saturday"> 

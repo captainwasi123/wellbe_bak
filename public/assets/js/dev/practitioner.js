@@ -14,7 +14,7 @@ $(document).ready(function(){
 
 	$(document).on('click', '.viewService', function(){
 		var id = $(this).data('id');
-		$('#service_block').html('<img src="'+ref+'/public/assets/images/loader.gif">');
+		$('#service_block').html('<img src="'+ref+'/public/assets/images/loaderr.gif">');
 
 		$.get( ref+"/practitioner/service/load/"+id, function( data ) {
 		  $('#service_block').html( data );
@@ -23,7 +23,7 @@ $(document).ready(function(){
 
 	$(document).on('click', '.serviceDetail', function(){
 		var id = $(this).data('id');
-		$('#service_detail_block').html('<img src="'+ref+'/public/assets/images/loader.gif">');
+		$('#service_detail_block').html('<img src="'+ref+'/public/assets/images/loaderr.gif">');
 
 		$.get( ref+"/practitioner/service/detail/"+id, function( data ) {
 		  $('#service_detail_block').html( data );
@@ -77,7 +77,7 @@ $(document).ready(function(){
 		let i = parseInt($(this).attr("data-id"));
 		$(this).attr('data-id', i+1);
 		var day = $(this).data('day');
-		$(parent_tr).append('<tr><td></td><td></td><td> First Booking </td><td><input type="text" name="days['+day+']['+i+'][first_booking]" class="timepicker"></td><td> Last Booking </td><td><input type="text" name="days['+day+']['+i+'][last_booking]" class="timepicker"></td><td> <a href="javascript:void(0)" class="col-red removeShift"> - Remove </a> </td>  </tr>');
+		$(parent_tr).append('<tr><td></td><td></td><td> First Booking </td><td><input type="text" name="days['+day+']['+i+'][first_booking]" class="timepicker" value="9:00 PM"></td><td> Last Booking </td><td><input type="text" name="days['+day+']['+i+'][last_booking]" class="timepicker" value="5:00 PM"></td><td> <a href="javascript:void(0)" class="col-red removeShift"> - Remove </a> </td>  </tr>');
 		$('.timepicker').mdtimepicker();
 	});
 

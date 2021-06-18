@@ -24,7 +24,7 @@ class servicesController extends Controller
     	$data = $request->all();
     	services::addService($data);
 
-    	return redirect()->back()->with('success', 'Service Added.');
+    	return redirect()->back()->with('practitioner_service_success', 'Service Added.');
     }
 
     function updateService(Request $request){
@@ -35,11 +35,17 @@ class servicesController extends Controller
     }
 
     function loadService($id){
-    	$id = base64_decode($id);
+        if ($id == 'pending_services') {
+            $data = services::where(['user_id' => Auth::id(), 'status' => '1'])
+                    ->orderBy('name')
+                    ->get();
+        }else{
+            $id = base64_decode($id);
 
-    	$data = services::where(['category_id' => $id, 'user_id' => Auth::id(), 'status' => '2'])
-    			->orderBy('name')
-    			->get();
+        	$data = services::where(['category_id' => $id, 'user_id' => Auth::id(), 'status' => '2'])
+        			->orderBy('name')
+        			->get();
+        }
 
     	return view('practitioner.services.response.load_services', ['data' => $data, 'cat_id' => $id]);
     }
