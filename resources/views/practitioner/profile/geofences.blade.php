@@ -38,8 +38,7 @@
                    <textarea placeholder="Auckland" name="description" required>{{empty(Auth::user()->ugeofence) ? '' : Auth::user()->ugeofence->description}}</textarea>
                     </div>
                 <div class="block-element submit-buttons text-right">
-                  <a href="{{route('practitioner.profile')}}" class="normal-btn rounded bg-silver col-black pad-1">Back</a>
-                  <!-- <button type="reset" > Cancel  </button> -->
+                  <button type="reset" class="normal-btn rounded bg-silver col-black pad-1"> Cancel  </button>
                 <button class="normal-btn rounded bg-blue col-white pad-1"> Save  </button>
                 <div style="height: 250px;"></div>
                 </div>
@@ -198,15 +197,39 @@
               mapTypeId: google.maps.MapTypeId.ROADMAP,
               styles: mapstyle,
           };
-          map = new google.maps.Map(document.getElementById('map'), mapOptions);
-          map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
+          const map = new google.maps.Map(document.getElementById('map'), mapOptions);
+           map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
 
-          new google.maps.Marker({
+          marker =  new google.maps.Marker({
             position: new google.maps.LatLng(lat, lng),
             map,
             title: "Practitioner",
           });
+          map.addListener("click", (e) => { 
+            placeMarkerAndPanTo(e.latLng, map,e.latLng.lat(),e.latLng.lng());   
+        });
       }
+function placeMarkerAndPanTo(latLng, map,lat,lng) { 
+  deletemarker();
+  marker = new google.maps.Marker({
+    position: latLng,
+    map: map,
+  });
+  map.panTo(latLng);
+  $('#lat').val(lat);
+  $('#long').val(lng);
+  var latlngs = lat+ " , "+ lng;
+  var url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + latlngs + "&sensor=false&key=AIzaSyCT7C85ghGBFoX9J9NCTAeSAOGfJR0bGvU&libraries=places";
+  $.getJSON(url, function (data) {  
+      var address = data.results[0].formatted_address
+      $('#pac-input').val(address);
+  });
+}
+function deletemarker() {
+  if (marker && marker.setMap) {
+    marker.setMap(null); marker=null;
+  }
+}
 
       // Draw circle with in radius
       function createCircle(lat, lng, rad) {
