@@ -202,11 +202,7 @@
         var currMarker = new google.maps.Marker({
           position: map.getCenter(),
           draggable: true,
-          icon: {
-            url: "https://maps.gstatic.com/intl/en_us/mapfiles/markers2/measle_blue.png",
-            size: new google.maps.Size(10, 10),
-            anchor: new google.maps.Point(4, 4)
-          },
+         
           map: map
         });
         circle.bindTo('center', currMarker, 'position');
