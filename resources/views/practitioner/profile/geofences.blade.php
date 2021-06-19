@@ -177,78 +177,56 @@
 </script>
 @if(!empty(Auth::user()->ugeofence))
     <script type="text/javascript">
-      
-      window.onload = function(e){ 
-        var lat = '{{Auth::user()->ugeofence->lat}}';
-        var lng = '{{Auth::user()->ugeofence->lng}}';
-        var rad = '{{Auth::user()->ugeofence->radious}}';
+      var lat = '{{Auth::user()->ugeofence->lat}}';
+      var lng = '{{Auth::user()->ugeofence->lng}}';
+      var rad = '{{Auth::user()->ugeofence->radious}}';
+    
+      function initialize(lat, lng, rad) {
+        var mapOptions = {
+          zoom: 11,
+          center: new google.maps.LatLng(lat, lng),
+          styles: mapstyle,
+        };
+        var map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
-        initialize(lat, lng); 
-        createCircle(lat, lng, rad);
-      }
-
-      var circleClusterremove = [];
-      var buffer_circle = null;
-      // To load google map
-      function initialize(lat, lng) {
-          var mapOptions = {
-              center: new google.maps.LatLng(lat, lng),
-              zoom: 11,
-              mapTypeId: google.maps.MapTypeId.ROADMAP,
-              styles: mapstyle,
-          };
-          const map = new google.maps.Map(document.getElementById('map'), mapOptions);
-           map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
-
-          marker =  new google.maps.Marker({
-            position: new google.maps.LatLng(lat, lng),
-            map,
-            title: "Practitioner",
-          });
-          map.addListener("click", (e) => { 
-            placeMarkerAndPanTo(e.latLng, map,e.latLng.lat(),e.latLng.lng());   
+        var circle = new google.maps.Circle({
+          map: map,
+          center: map.getCenter(),
+          radius: rad*1000,
+          strokeColor: "#404780",
+          strokeOpacity: 0.8,
+          strokeWeight: 1,
+          fillColor: "#b4c100",
+          fillOpacity: 0.5,
         });
-      }
-function placeMarkerAndPanTo(latLng, map,lat,lng) { 
-  deletemarker();
-  marker = new google.maps.Marker({
-    position: latLng,
-    map: map,
-  });
-  map.panTo(latLng);
-  $('#lat').val(lat);
-  $('#long').val(lng);
-  var latlngs = lat+ " , "+ lng;
-  var url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + latlngs + "&sensor=false&key=AIzaSyCT7C85ghGBFoX9J9NCTAeSAOGfJR0bGvU&libraries=places";
-  $.getJSON(url, function (data) {  
-      var address = data.results[0].formatted_address
-      $('#pac-input').val(address);
-  });
-}
-function deletemarker() {
-  if (marker && marker.setMap) {
-    marker.setMap(null); marker=null;
-  }
-}
+        var currMarker = new google.maps.Marker({
+          position: map.getCenter(),
+          draggable: true,
+          icon: {
+            url: "https://maps.gstatic.com/intl/en_us/mapfiles/markers2/measle_blue.png",
+            size: new google.maps.Size(10, 10),
+            anchor: new google.maps.Point(4, 4)
+          },
+          map: map
+        });
+        circle.bindTo('center', currMarker, 'position');
 
-      // Draw circle with in radius
-      function createCircle(lat, lng, rad) {
-          var rad = rad; // can input dynamically
-          rad *= 1000; // convert to meters if in miles
-          if (buffer_circle != null) {
-              buffer_circle.setMap(null);
-          }
-          buffer_circle = new google.maps.Circle({
-              center: new google.maps.LatLng(lat, lng),
-              radius: rad,
-              strokeColor: "#404780",
-              strokeOpacity: 0.8,
-              strokeWeight: 1,
-              fillColor: "#b4c100",
-              fillOpacity: 0.5,
-              map: map
-          });
-          circleClusterremove.push(buffer_circle);
+        google.maps.event.addListener(currMarker, 'dragend', function(e){
+            placeMarkerAndPanTo(e.latLng, map,e.latLng.lat(),e.latLng.lng(), rad);
+        });    
+      }
+
+      google.maps.event.addDomListener(window, 'load', initialize(lat, lng, rad));
+
+      function placeMarkerAndPanTo(latLng, map,lat,lng, rad) { 
+        $('#lat').val(lat);
+        $('#long').val(lng);
+        var latlngs = lat+ " , "+ lng;
+        var url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + latlngs + "&sensor=false&key=AIzaSyCT7C85ghGBFoX9J9NCTAeSAOGfJR0bGvU&libraries=places";
+        $.getJSON(url, function (data) {  
+            var address = data.results[0].formatted_address
+            $('#pac-input').val(address);
+        });
       }
     </script>
   @else
