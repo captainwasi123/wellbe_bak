@@ -34,7 +34,7 @@ class webController extends Controller
     }
 	public function treatments_search(Request $request)
 	{   
-		$users_ids =  $this->get_users($request->lat,$request->long); 
+		$users_ids =  $this->get_users($request->lat,$request->long);  
 		$category = isset($request->cat) ? $request->cat : '0';
     	$cat = category::where('category', $category)->first();
     	$cat_id = empty($cat->id) ? 'all' : $cat->id;
@@ -91,10 +91,10 @@ class webController extends Controller
 	public function get_users($lat,$lng)
 	{
 		// get average  query
-		$avg = DB::select('SELECT AVG(tbl_users_geofences.radious) as avg FROM `tbl_users_geofences` WHERE ( 3959 * acos( cos( radians(25.3959687) ) * cos( radians(lat ) ) * cos( radians(lng ) - radians(68.357776) ) + sin( radians(25.3959687) ) * sin( radians(lat ) ) ) ) < 50');
+		$avg = DB::select('SELECT AVG(tbl_users_geofences.radious) as avg, tbl_users_geofences.*, ( 3959 * acos( cos( radians("'.$lat.'") ) * cos( radians(lat ) ) * cos( radians(lng ) - radians("'.$lng.'") ) + sin( radians("'.$lat.'") ) * sin( radians(lat ) ) ) ) AS distance FROM `tbl_users_geofences` WHERE ( 3959 * acos( cos( radians("'.$lat.'") ) * cos( radians(lat ) ) * cos( radians(lng ) - radians("'.$lng.'") ) + sin( radians("'.$lat.'") ) * sin( radians(lat ) ) ) ) < 50');
 
 		// get user ids
-		$users_ids = DB::select('SELECT tbl_users_geofences.*, ( 3959 * acos( cos( radians(25.3959687) ) * cos( radians(lat ) ) * cos( radians(lng ) - radians(68.357776) ) + sin( radians(25.3959687) ) * sin( radians(lat ) ) ) ) AS distance FROM `tbl_users_geofences` WHERE ( 3959 * acos( cos( radians(25.3959687) ) * cos( radians(lat ) ) * cos( radians(lng ) - radians(68.357776) ) + sin( radians(25.3959687) ) * sin( radians(lat ) ) ) ) <= "'.$avg[0]->avg.'"');
+		$users_ids = DB::select('SELECT tbl_users_geofences.*, ( 3959 * acos( cos( radians("'.$lat.'") ) * cos( radians(lat ) ) * cos( radians(lng ) - radians("'.$lng.'") ) + sin( radians("'.$lat.'") ) * sin( radians(lat ) ) ) ) AS distance FROM `tbl_users_geofences` WHERE ( 3959 * acos( cos( radians("'.$lat.'") ) * cos( radians(lat ) ) * cos( radians(lng ) - radians("'.$lng.'") ) + sin( radians("'.$lat.'") ) * sin( radians(lat ) ) ) ) <= "'.$avg[0]->avg.'"');
 
 		return \Arr::pluck($users_ids,'user_id');
 	}
