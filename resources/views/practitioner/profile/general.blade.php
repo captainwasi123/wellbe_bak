@@ -55,19 +55,24 @@
                      </select>
                   </div>
                </div>
-               <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+               <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                   <div class="form-field3">
                      <p> Bio/Your Experience </p>
                      <input type="text"  name="bio" value="{{$user_data->bio_description}}">
                   </div>
                </div>
-               @if(empty($user_data->profile_img))
-               <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+               <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                   <div class="form-field3 m-t-20">
-                     <p> Profile Photo <input type="file" name="profile_img" class="bg-blue normal-btn col-white pad-1 rounded"></p>
+                    <div class="form-group mb-3 profileImageBlock">
+                      @if(empty($user_data->profile_img))
+                        <p>Upload Profile Photo</p>
+                      @endif
+                      <img id="profileImage" class="profile_picture" src="{{URL::to('')}}/{{$user_data->profile_img}}" onerror="this.src = '{{URL::to('/public/')}}/img_placeholder.jpg';" style="width: 110px;">
+                     <!--  <span class="fas fa-pencil-alt" id="profilePicIcon"></span> -->
+                      <input type="file" class="form-control" name="main_img" id="imageUpload" style="display: none;" accept=".jpeg , .jpg">
+                     <!-- <p> Profile Photo <input type="file" name="profile_img" class="bg-blue normal-btn col-white pad-1 rounded"></p> -->
                   </div>
                </div>
-               @endif
             </div>
 
             <div class="block-element">
@@ -306,5 +311,45 @@
         $(window).off('beforeunload');
     });
 }); 
+</script>
+<script type="text/javascript">
+$(document).ready(function(){    
+    $(document).on('click', '#profileImage', function() {
+        $("#imageUpload").click();
+    });
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var fileInput = document.getElementById('imageUpload'); 
+            var filePath = fileInput.value; 
+            var allowedExtensions =  
+                            /(jpeg|jpg)$/i; 
+                       
+                    if (!allowedExtensions.exec(filePath)) { 
+                        $('#file_error').append('File format is not supported, Please upload a file in JPEG or JPG format');
+                        $('#submit').attr('disabled', true);
+                        fileInput.value = ''; 
+                        return false; 
+                    }else{ 
+                        $('#file_error').empty();
+                        $('#submit').attr('disabled', false);
+                    }
+
+
+            var reader = new FileReader();
+            
+            reader.onload = function(e) {
+              $('#profileImage').attr('src', e.target.result);
+            }
+            
+            reader.readAsDataURL(input.files[0]); // convert to base64 string
+        }
+    }
+
+
+    $("#imageUpload").change(function() {
+      readURL(this);
+    });
+
+});
 </script>
 @endsection

@@ -11,7 +11,7 @@
               {{empty(Auth::guard('admin')->user()->first_name) ? 'New User' : ' '.Auth::guard('admin')->user()->first_name}}&nbsp;&nbsp;&nbsp;&#9660;
             </a>
             <ul class="dropdown-menu">
-              <li><a href="{{route('admin.dashboard')}}">Dashboard</a></li>
+              <li><a href="{{route('admin.dashboard')}}">Return to admin account</a></li>
               <li><a href="{{route('admin.edit_profile')}}"> My Account </a></li>
              <li><a href="{{route('admin.logout')}}"> </i> Logout </a></li>
             </ul>
