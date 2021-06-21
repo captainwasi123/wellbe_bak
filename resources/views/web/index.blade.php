@@ -147,6 +147,8 @@
                      </h3>
                      <p> Book wellness and beauty services directly to your door. Sit back, relax, and let our verified professionals take care of the rest. All professionals are all independent contractors, so you pay no salon markups, period.  </p>
                      <form method="get" action="{{route('treatments.search')}}">
+                       <input type="hidden" name="lat" id="lat">
+                       <input type="hidden" name="long" id="long">
                         <i class="fa fa-search"> </i>
                         <input type="text" placeholder="Enter your address" id="pac-input" name="value">
                         <button> Discover </button>
@@ -430,8 +432,8 @@
       autocomplete.addListener('place_changed', function () {
       var place = autocomplete.getPlace();
       // place variable will have all the information you are looking for.
-    //  $('#lat').val(place.geometry['location'].lat());
-     // $('#long').val(place.geometry['location'].lng());
+     $('#lat').val(place.geometry['location'].lat());
+     $('#long').val(place.geometry['location'].lng());
     });
   }
   </script>
