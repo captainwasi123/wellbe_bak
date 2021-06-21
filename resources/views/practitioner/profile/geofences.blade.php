@@ -38,7 +38,7 @@
                    <textarea placeholder="Auckland" name="description" required>{{empty(Auth::user()->ugeofence) ? '' : Auth::user()->ugeofence->description}}</textarea>
                     </div>
                 <div class="block-element submit-buttons text-right">
-                  <button type="reset" class="normal-btn rounded bg-silver col-black pad-1"> Cancel  </button>
+                  <a href="{{route('practitioner.profile')}}" class="normal-btn rounded bg-silver col-black pad-1"> Back  </a>
                 <button class="normal-btn rounded bg-blue col-white pad-1"> Save  </button>
                 <div style="height: 250px;"></div>
                 </div>

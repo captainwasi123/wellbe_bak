@@ -33,7 +33,8 @@ class webController extends Controller
 		return view('web.treatments', ['categories' => $categories, 'users' => $users, 'selected' => 'all']);
     }
 	public function treatments_search(Request $request)
-	{  
+	{   
+		$users_ids =  $this->get_users($request->lat,$request->long); 
 		$category = isset($request->cat) ? $request->cat : '0';
     	$cat = category::where('category', $category)->first();
     	$cat_id = empty($cat->id) ? 'all' : $cat->id;
@@ -47,11 +48,11 @@ class webController extends Controller
 						    $q->where('category_id', $cat->id);
 						});
 					})
-					->join('tbl_users_geofences','tbl_users_geofences.user_id','=','tbl_users_info.id')
+					//->join('tbl_users_geofences','tbl_users_geofences.user_id','=','tbl_users_info.id')
 					->join('tbl_users_store_info','tbl_users_store_info.user_id','=','tbl_users_info.id')
 					->leftJoin('tbl_review_info','tbl_review_info.review_to','=','tbl_users_info.id')
 					->where('user_type', '1')
-					->where('tbl_users_geofences.name', 'like', '%' . $request->value . '%');
+					->whereIn('tbl_users_info.id',$users_ids);
 					if (isset($request->price)) {
 						$users = $users->whereBetween('tbl_users_store_info.minimum_booking_amount',$price);
 					}
@@ -85,6 +86,17 @@ class webController extends Controller
 	    $categories = category::where('status', '1')->get();
 		$value = $request->value;
     	return view('web.treatments', ['categories' => $categories, 'users' => $users, 'selected' => 'all','value' => $value, 'selected' => $cat_id, 'cat_name' => $cat_name,'filter' => $request->filter,'price' => $request->price,'rating' => $request->rating]);
+	}
+
+	public function get_users($lat,$lng)
+	{
+		// get average  query
+		$avg = DB::select('SELECT AVG(tbl_users_geofences.radious) as avg FROM `tbl_users_geofences` WHERE ( 3959 * acos( cos( radians(25.3959687) ) * cos( radians(lat ) ) * cos( radians(lng ) - radians(68.357776) ) + sin( radians(25.3959687) ) * sin( radians(lat ) ) ) ) < 50');
+
+		// get user ids
+		$users_ids = DB::select('SELECT tbl_users_geofences.*, ( 3959 * acos( cos( radians(25.3959687) ) * cos( radians(lat ) ) * cos( radians(lng ) - radians(68.357776) ) + sin( radians(25.3959687) ) * sin( radians(lat ) ) ) ) AS distance FROM `tbl_users_geofences` WHERE ( 3959 * acos( cos( radians(25.3959687) ) * cos( radians(lat ) ) * cos( radians(lng ) - radians(68.357776) ) + sin( radians(25.3959687) ) * sin( radians(lat ) ) ) ) <= "'.$avg[0]->avg.'"');
+
+		return \Arr::pluck($users_ids,'user_id');
 	}
     function treatmentsCategory($category){
     	$cat = category::where('category', $category)->first();

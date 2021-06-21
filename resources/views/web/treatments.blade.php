@@ -19,6 +19,8 @@
             <div class="appointment-box" style="margin-top: 25px;">
                <h4 style="margin-bottom: 12px;"> Your Address </h4>
                <form method="get" action="{{route('treatments.search')}}">
+                  <input type="hidden" name="lat" id="lat">
+                  <input type="hidden" name="long" id="long">
                   <input type="text" placeholder="Enter your address" name="value" id="pac-input" value="{{@$value}}"> 
                   <button> <i class="fa fa-search"> </i> </button>
                
@@ -285,10 +287,10 @@
       var input = document.getElementById('pac-input');
       var autocomplete = new google.maps.places.Autocomplete(input);
       autocomplete.addListener('place_changed', function () {
-      var place = autocomplete.getPlace();
+      var place = autocomplete.getPlace(); console.log(place);
       // place variable will have all the information you are looking for.
-   //  $('#lat').val(place.geometry['location'].lat());
-   // $('#long').val(place.geometry['location'].lng());
+    $('#lat').val(place.geometry['location'].lat());
+   $('#long').val(place.geometry['location'].lng());
    });
 }
 </script>
