@@ -69,7 +69,7 @@
                       @endif
                       <img id="profileImage" class="profile_picture" src="{{URL::to('')}}/{{$user_data->profile_img}}" onerror="this.src = '{{URL::to('/public/')}}/img_placeholder.jpg';" style="width: 110px;">
                      <!--  <span class="fas fa-pencil-alt" id="profilePicIcon"></span> -->
-                      <input type="file" class="form-control" name="main_img" id="imageUpload" style="display: none;" accept=".jpeg , .jpg">
+                      <input type="file" class="form-control" name="profile_img" id="imageUpload" style="display: none;" accept=".jpeg , .jpg">
                      <!-- <p> Profile Photo <input type="file" name="profile_img" class="bg-blue normal-btn col-white pad-1 rounded"></p> -->
                   </div>
                </div>
