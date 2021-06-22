@@ -47,3 +47,17 @@ span > i.fa-star{
 .chat{
     cursor: pointer;
 }
+
+
+.height-custom1::-webkit-scrollbar {
+    width: 2px;
+}
+ 
+.height-custom1::-webkit-scrollbar-track {
+    width: 5px;
+}
+ 
+.height-custom1::-webkit-scrollbar-thumb {
+  background-color: #404780;
+  outline: 1px solid slategrey;
+}

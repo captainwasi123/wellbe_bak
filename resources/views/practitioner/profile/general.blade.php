@@ -21,6 +21,19 @@
                <h4 class="col-blue"> General </h4>
             </div>
             <div class="row">
+               <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                  <div class="form-field3 m-t-20">
+                     <div class="form-group mb-3 profileImageBlock">
+                         @if(empty($user_data->profile_img))
+                           <p>Upload Profile Photo</p>
+                         @endif
+                         <img id="profileImage" class="profile_picture" src="{{URL::to('')}}/{{$user_data->profile_img}}" onerror="this.src = '{{URL::to('/public/')}}/img_placeholder.jpg';" style="width: 110px;">
+                        <!--  <span class="fas fa-pencil-alt" id="profilePicIcon"></span> -->
+                         <input type="file" class="form-control" name="profile_img" id="imageUpload" style="display: none;" accept=".jpeg , .jpg">
+                        <!-- <p> Profile Photo <input type="file" name="profile_img" class="bg-blue normal-btn col-white pad-1 rounded"></p> -->
+                     </div>
+                  </div>
+               </div>
                <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
                   <div class="form-field3">
                      <p> First Name/display name </p>
@@ -45,10 +58,10 @@
                      <input type="text"  name="phone" value="{{$user_data->phone}}">
                   </div>
                </div>
-               <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+               <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
                   <div class="form-field3">
                      <p> Gender </p>
-                     <select name="gender">
+                     <select name="gender" class="form-control">
                         <option value="male" {{ isset($user_data) && 'male' == @$user_data->gender ? 'selected' : ''}}> Male </option>
                         <option value="female" {{ isset($user_data) && 'female' == @$user_data->gender ? 'selected' : ''}}> Female </option>
                         <option value="other" {{ isset($user_data) && 'other' == @$user_data->gender ? 'selected' : ''}}> Other </option>
@@ -61,19 +74,6 @@
                      <input type="text"  name="bio" value="{{$user_data->bio_description}}">
                   </div>
                </div>
-               <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-                  <div class="form-field3 m-t-20">
-                    <div class="form-group mb-3 profileImageBlock">
-                      @if(empty($user_data->profile_img))
-                        <p>Upload Profile Photo</p>
-                      @endif
-                      <img id="profileImage" class="profile_picture" src="{{URL::to('')}}/{{$user_data->profile_img}}" onerror="this.src = '{{URL::to('/public/')}}/img_placeholder.jpg';" style="width: 110px;">
-                     <!--  <span class="fas fa-pencil-alt" id="profilePicIcon"></span> -->
-                      <input type="file" class="form-control" name="profile_img" id="imageUpload" style="display: none;" accept=".jpeg , .jpg">
-                     <!-- <p> Profile Photo <input type="file" name="profile_img" class="bg-blue normal-btn col-white pad-1 rounded"></p> -->
-                  </div>
-               </div>
-            </div>
 
             <div class="block-element">
                <h4 class="col-blue"> Address </h4>
@@ -122,6 +122,7 @@
                </div> -->
             </div>
          </div>
+      </div>
          <div class="col-md-5 col-lg-5 col-sm-12 col-xs-12">
             <div class="block-element m-t-15 m-b-10" style="position: relative;">
                <h4 class="col-blue"> Store </h4>

@@ -46,7 +46,7 @@ $(document).ready(function(){
 		var id = $(this).data('id');
 
 		$('.editServiceModal').modal('show');
-		$('#editServiceModalBody').html('<img src="'+ref+'/public/assets/images/loader.gif">');
+		$('#editServiceModalBody').html('<img src="'+ref+'/public/assets/images/loaderr.gif">');
 
 		$.get( ref+"/practitioner/service/edit/"+id, function( data ) {
 		  $('#editServiceModalBody').html( data );
@@ -108,7 +108,7 @@ $(document).ready(function(){
 		var id = $(this).data('id');
 
 		$('.orderView').modal('show');
-		$('#orderViewContent').html('<img src="'+ref+'/public/assets/images/loader.gif">');
+		$('#orderViewContent').html('<img src="'+ref+'/public/assets/images/loaderr.gif">');
 
 		$.get( ref+"/practitioner/booking/view1/"+id, function( data ) {
 		  $('#orderViewContent').html( data );

@@ -57,7 +57,7 @@
                </div>
             </div>
             <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
-               <div class="box-type3 height-custom1" style="overflow:visible;" id="service_block">
+               <div class="box-type3 height-custom1" style="overflow-x: hidden;overflow-y: scroll;max-height: 600px;" id="service_block">
                   <div class="cat-head">
                      <h5 class="col-black"> Services</h5>
                      <div class="action-buttons"> </div>
@@ -68,7 +68,7 @@
                </div>
             </div>
             <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
-               <div class="box-type3 height-custom1" style="overflow: visible;" id="service_detail_block">
+               <div class="box-type3 height-custom1" style="overflow-x: hidden;overflow-y: scroll;max-height: 600px;" id="service_detail_block">
                   <div class="cat-head">
                      <h5 class="col-black"> Services Details </h5>
                   </div>

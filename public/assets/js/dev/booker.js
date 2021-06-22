@@ -8,7 +8,7 @@ $(document).ready(function(){
 	$(document).on('click', '.orderModal', function(){
 		var id = $(this).data('id');
 		$('.orderView').modal('show');
-		$('#orderViewContent').html('<img src="'+ref+'/public/assets/images/loader.gif">');
+		$('#orderViewContent').html('<img src="'+ref+'/public/assets/images/loaderr.gif">');
 
 		$.get( ref+"/booker/view/"+id, function( data ) {
 		  $('#orderViewContent').html( data );
