@@ -13,8 +13,13 @@
                 <h5> Hello{{empty(Auth::user()->first_name) ? '' : ' '.Auth::user()->first_name}}, </h5>
                 <h6> {{Auth::user()->email}} </h6>
              </div>
+               @if(Session::get('user_type') == 'admin')
+               <li><a href="{{route('admin.dashboard')}}"> <i class="fa fa-user"> </i> Return to admin account</a></li>
+               @endif
+            @if(Session::get('user_type') != 'admin')   
              <li><a href="{{route('practitioner.profile')}}"> <i class="fa fa-user"> </i> My Account </a></li>
              <li><a href="{{URL::to('/logout')}}"> <i class="fa fa-sign-out-alt"> </i> Logout </a></li>
+            @endif 
           </ul>
        </div>
     </div>

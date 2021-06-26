@@ -9,6 +9,15 @@
       .mdtp__wrapper[data-theme='blue'] .mdtp__time_holder { 
          background-color: #404780;
       }
+      .mdtp__wrapper {
+         bottom: 19%!important;
+      }
+      .mdtp__wrapper[data-theme='blue'] .mdtp__clock .mdtp__am.active, .mdtp__wrapper[data-theme='blue'] .mdtp__clock .mdtp__pm.active {
+         background-color: #404780;
+      }
+      .mdtp__wrapper[data-theme='blue'] .mdtp__digit.active span, .mdtp__wrapper[data-theme='blue'] .mdtp__clock .mdtp__digit span:hover {
+         background-color: #404780!important;
+      }
    </style>
 @endsection
 @section('content')

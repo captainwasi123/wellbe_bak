@@ -139,7 +139,7 @@
                </div>
             </div> -->
             <div class="form-field3">
-               <p> Service Radius <a href="{{route('practitioner.geofences')}}" class="bg-blue normal-btn pad-1 col-white rounded"> Show Service Radius </a>  </p>
+               <p> Service Radius <a href="{{route('practitioner.geofences')}}" style="margin-left: 10px;" class="bg-blue normal-btn pad-1 col-white rounded"> Show Service Radius </a>  </p>
             </div>
             <div class="form-field3">
                <p> Minimum Booking Amount </p>
@@ -161,7 +161,7 @@
                <p> Bank Account Number </p>
                <input type="text" name="account_number" value="{{empty($user_data->users_payout_details) ? '' : $user_data->users_payout_details->bank_account_number}}" required>
             </div>
-            <!-- <div class="bg-silver block-element m-t-20 m-b-20" style="padding:20px">
+            <div class="bg-silver block-element m-t-20 m-b-20" style="padding:20px">
                <div class="form-field3">
                   <p> Store Page </p>
                   <div class="drop-options">
@@ -169,7 +169,7 @@
                      <span> <input type="radio" name="" checked disabled> Enabled </span>
                   </div>
                </div>
-               <div class="form-field3">
+               <!-- <div class="form-field3">
                   <p> Marketplace Comission </p>
                   <input type="text" name="" readonly value="{{$gst->gst}}">
                </div>
@@ -180,8 +180,8 @@
                      <span> <input type="radio" name="" disabled> Featured </span>
                      <span> <input type="radio" name="" disabled> Partner </span>
                   </div>
-               </div>
-            </div> -->
+               </div> -->
+            </div>
          </div>
       </div>
    </div>

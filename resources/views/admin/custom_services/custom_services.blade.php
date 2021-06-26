@@ -88,7 +88,7 @@
                 <tr>
                    <td class="col-blue"> {{$pending_services->name}} </td>
                    <td> ${{$pending_services->price}} </td>
-                   <td> {{$pending_services->duration}}  </td>
+                   <td> {{$pending_services->description}}  </td>
                    <td class="col-blue"> {{$pending_services->practitioner->first_name}} {{$pending_services->practitioner->last_name}} </td>
                    <td>  {{date('d, M Y - h:i a', strtotime($pending_services->created_at))}}</td>
                    <td> Pending </td>
@@ -121,7 +121,7 @@
                 <tr>
                    <td class="col-blue"> {{$approved_services->name}} </td>
                    <td> ${{$approved_services->price}} </td>
-                   <td> {{$approved_services->duration}}  </td>
+                   <td> {{$approved_services->description}}  </td>
                    <td class="col-blue"> {{$approved_services->practitioner->first_name}} {{$approved_services->practitioner->last_name}} </td>
                    <td>  {{date('d, M Y - h:i a', strtotime($approved_services->created_at))}}</td>
                    <td> Approved </td>
@@ -151,7 +151,7 @@
                 <tr>
                    <td class="col-blue"> {{$rejected_services->name}} </td>
                    <td> ${{$rejected_services->price}} </td>
-                   <td> {{$rejected_services->duration}}  </td>
+                   <td> {{$rejected_services->description}}  </td>
                    <td class="col-blue"> {{$rejected_services->practitioner->first_name}} {{$rejected_services->practitioner->last_name}} </td>
                    <td>  {{date('d, M Y - h:i a', strtotime($rejected_services->created_at))}}</td>
                    <td> Rejected </td>

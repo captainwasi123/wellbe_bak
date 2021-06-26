@@ -4,8 +4,9 @@
 </div>
 <div class="all-categories">
    @foreach($data as $val)
-      <div class="cat-box1 serviceDetail" data-id="{{base64_encode($val->id)}}">
+      <div class="cat-box1 serviceDetail" data-id="{{base64_encode($val->id)}}" title="This service is pending approval by the Wellbe Team. This process can take up to 72 hours.">
          <h5 data-bs-toggle="tooltip" data-bs-placement="top" title=" {{$val->status == 1 ? 'This service is pending approval by the Wellbe Team. This process can take up to 72 hours.' : ''}} "> {{$val->name}} </h5>
+         @if($val->status != 1)
          <div class="dropdown">
             <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
             <i class="fas fa-ellipsis-v"></i>
@@ -17,6 +18,7 @@
                <li><a href="#">Disable</a></li>
             </ul>
          </div>
+         @endif
       </div>
    @endforeach
    @if(count($data) == '0')

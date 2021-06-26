@@ -85,7 +85,20 @@ class webController extends Controller
 					->get();
 	    $categories = category::where('status', '1')->get();
 		$value = $request->value;
-    	return view('web.treatments', ['categories' => $categories, 'users' => $users, 'selected' => 'all','value' => $value, 'selected' => $cat_id, 'cat_name' => $cat_name,'filter' => $request->filter,'price' => $request->price,'rating' => $request->rating]);
+		$data = array(
+			'categories' => $categories,
+			'users' => $users,
+			'selected' => 'all',
+			'value' => $value,
+			'selected' => $cat_id,
+			'cat_name' => $cat_name,
+			'filter' => $request->filter,
+			'price' => $request->price,
+			'rating' => $request->rating,
+			'lat' => $request->lat,
+			'long' => $request->long
+		);
+    	return view('web.treatments')->with($data);
 	}
 
 	public function get_users($lat,$lng)
@@ -159,37 +172,37 @@ class webController extends Controller
 
     public function add_cart(Request $request)
     {  
-        $lat1 = $request->user_lat; 
-		$lon1 = $request->user_lng;
-		$lat2 = $request->p_lat; 
-		$lon2 = $request->p_lng;
+        // $lat1 = $request->user_lat; 
+		// $lon1 = $request->user_lng;
+		// $lat2 = $request->p_lat; 
+		// $lon2 = $request->p_lng;
 
 
 
 
-		$pi80 = M_PI / 180; 
-		$lat1 *= $pi80; 
-		$lon1 *= $pi80; 
-		$lat2 *= $pi80; 
-		$lon2 *= $pi80; 
-		$r = 6372.797; // mean radius of Earth in km 
-		$dlat = $lat2 - $lat1; 
-		$dlon = $lon2 - $lon1; 
-		$a = sin($dlat / 2) * sin($dlat / 2) + cos($lat1) * cos($lat2) * sin($dlon / 2) * sin($dlon / 2); 
-		$c = 2 * atan2(sqrt($a), sqrt(1 - $a)); 
-		$km = $r * $c; 
-		if ($request->radious >= $km) {
-			\Cart::add(['id' => $request->p_id, 'name' => $request->name, 'qty' => 1, 'price' => $request->price, 'weight' => 0, 'options' => ['minutes' => $request->minutes,'user_id'=> $request->user_id]]);
+		// $pi80 = M_PI / 180; 
+		// $lat1 *= $pi80; 
+		// $lon1 *= $pi80; 
+		// $lat2 *= $pi80; 
+		// $lon2 *= $pi80; 
+		// $r = 6372.797; // mean radius of Earth in km 
+		// $dlat = $lat2 - $lat1; 
+		// $dlon = $lon2 - $lon1; 
+		// $a = sin($dlat / 2) * sin($dlat / 2) + cos($lat1) * cos($lat2) * sin($dlon / 2) * sin($dlon / 2); 
+		// $c = 2 * atan2(sqrt($a), sqrt(1 - $a)); 
+		// $km = $r * $c; 
+		// if ($request->radious >= $km) {
+			\Cart::add(['id' => $request->p_id, 'name' => $request->name, 'qty' => $request->qty, 'price' => $request->price, 'weight' => 0, 'options' => ['minutes' => $request->minutes,'user_id'=> $request->user_id]]);
 		        $cart_data = \Cart::content();
 		        $html = (string)view('web.load_cart_data', ['cart_data' => $cart_data]);
 		        $json['html'] = $html;
 		        $json['status'] = true;
 
 		        return json_encode($json);
-		}else{
-			$json['status'] = false;
-			return json_encode($json);
-		}
+		// }else{
+		// 	$json['status'] = false;
+		// 	return json_encode($json);
+		// }
 		exit();
 
         
@@ -232,7 +245,6 @@ class webController extends Controller
 		$day = date('l',strtotime($request->date));
 		$slots = availability::with(['slots'])->where('user_id',$request->user_id)->where('week_day',strtolower($day))->first();
 		$html = '';
-		$html.="<option value=''></option>";
 		foreach($slots->slots as $val){
 			$start_time = $val->start_booking;
 			$pre_book = orderDetail::where('serve_date', $booking_date)

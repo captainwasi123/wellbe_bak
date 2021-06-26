@@ -46,7 +46,7 @@
                @endif
                {{$selected}}
             ">
-               <a href="{{route('treatments')}}{{empty($value) ? '/' : '/search?value='.$value.'&cat='}}{{$val->category}}"> 
+               <a href="{{route('treatments')}}{{empty($value) ? '/' : '/search?lat='.$lat.'&long='.$long.'&value='.$value.'&cat='}}{{$val->category}}"> 
                   <img src="{{URL::to('/')}}/{{$val->image}}"> 
                   {{$val->category}}
                </a>

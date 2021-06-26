@@ -64,6 +64,39 @@ class loginController extends Controller
         }
     }
 
+
+    public function ajaxloginAttempt2(Request $request)
+    {
+        $data = $request->all();
+
+        if(Auth::attempt(['email' => $data['email'], 'password' => $data['password'], 'status' => '1'])){
+            if(Auth::user()->user_type == '1'){
+                $data = array(
+                    'status' => 200,
+                    'user_type' => 1,
+                    'route' =>  redirect()->back(),
+                );
+                return $data;
+                // return redirect(route('practitioner.dashboard'));
+            }else if(Auth::user()->user_type == '2'){
+                $data = array(
+                    'status' => 200,
+                    'user_type' => 2,
+                    'route' => redirect()->back(),
+                );
+                return $data;
+                //return redirect(route('booker.index'));
+            }
+
+        }else{
+            $data = array(
+                'status' => 500
+            );
+            return $data;
+            //return redirect()->back()->with('error', 'Authentication Error.');
+        }
+    }
+
     public function userRegister(Request $request){
         $data = $request->all();
         if($data['password'] == $data['confirmation_password']){

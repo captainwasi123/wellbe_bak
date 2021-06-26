@@ -38,6 +38,7 @@ use Illuminate\Support\Facades\Route;
 		Route::get('/login', 'loginController@index');
 		Route::post('/login/', 'loginController@loginAttempt');
 	    Route::post('/loginAttempt', 'loginController@ajaxloginAttempt');
+		Route::post('/loginAttempt2', 'loginController@ajaxloginAttempt2');
 		Route::get('/logout', 'loginController@logout');
 		Route::get('/user-active/{id}','loginController@user_active')->name('user_active');
 		Route::post('/register', 'loginController@userRegister');
@@ -211,6 +212,7 @@ use Illuminate\Support\Facades\Route;
 	    	Route::get('/', 'DashboardController@practitioners')->name('admin.practitioners');
 	    	Route::post('/disable', 'DashboardController@disablePractitioners')->name('admin.practitioners.disable');
 	    	Route::post('/assume', 'DashboardController@assumePractitioners')->name('admin.practitioners.assume');
+			Route::get('/portal/{id}', 'DashboardController@practitioners_portal')->name('admin.practitioners.portal');
 	    });
 
 		//services

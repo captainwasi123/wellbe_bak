@@ -13,10 +13,12 @@ use App\Models\MarketplaceSetting;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Session;
 
 class DashboardController extends Controller
 {
     function index(){
+        Auth::guard('web')->logout();
         $curr = date('Y-m-d H:i:s');
         $upcomming = order::where('start_at', '>=', $curr)
                         ->where('status', '1')
@@ -252,4 +254,12 @@ class DashboardController extends Controller
 
         return redirect()->back()->with('success', 'Unmarked as paid.');
     }
+    public function practitioners_portal(Request $request)
+    {
+       $id = base64_decode($request->id);
+       $user = User::find($id); 
+       Auth::login($user); 
+       Session::put('user_type', 'admin');
+       return redirect(route('practitioner.dashboard'));
+    }  
 }
