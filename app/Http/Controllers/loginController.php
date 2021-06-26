@@ -131,16 +131,19 @@ class loginController extends Controller
         if($user->user_type == 2 ){ 
             $email_temp = 'WelcomeEmailCustomer'; 
             $user->status = '1';
+            Auth::login($user); 
+            $url = redirect(route('booker.index'))->with('success', 'Your account has been verified');
         }else{
             $email_temp = 'WelcomeEmailPractitioner'; 
             $user->email_verify = '1';
+            $url = redirect(route('home'))->with('success', 'Your account has been verified');
         } 
         $user->save();
         \App\Helpers\CommonHelpers::send_email($email_temp, $email, $user->email, 'Welcome to Wellbe, '.$user->first_name.'!', $from_email = 'info@divsnpixel.com', $from_name = 'Wallbe');
         // DB::table('tbl_users_info')
         //         ->where('id', base64_decode($request->id))
         //         ->update(['status' => 1]);
-        return redirect(route('home'))->with('success', 'Your account has been verified');        
+        return $url;        
     }
     function logout(){
         Auth::logout();
