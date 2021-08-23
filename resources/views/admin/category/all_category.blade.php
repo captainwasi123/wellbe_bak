@@ -52,7 +52,7 @@
                    <th> # </th>
                    <th> Category Name </th>
                    <th>Image</th>
-                   <th> Actions </th>
+                   <th width='35%'> Actions </th>
                 </tr>
              </thead>
              <tbody>
@@ -64,7 +64,8 @@
                     <td>
                         <a href="{{route('admin.edit_category',base64_encode($item->id))}}" class="custom-btn1"> Edit  </a>
                         <a onclick="return confirm_click();" href="{{route('admin.delete_category',base64_encode($item->id))}}" class="custom-btn1"> Delete  </a>
-                    </td>
+                        <a href="{{route('admin.manage_services',base64_encode($item->id))}}" class="custom-btn1"> Manage Services  </a>
+                     </td>
                     </tr>
                 @endforeach
              </tbody>

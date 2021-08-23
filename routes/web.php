@@ -218,6 +218,8 @@ use Illuminate\Support\Facades\Route;
 		//services
 		Route::get('/custom_services', 'ServicesController@custom_services')->name('admin.custom_services');
 		Route::get('/custom_services/update', 'ServicesController@custom_services_update')->name('admin.custom_services.update');
+		
+		Route::get('/manage_services/{id}', 'ServicesController@manage_services')->name('admin.manage_services');
 
 		// categories
         Route::get('/categories', 'CategoryController@index')->name('admin.categories');

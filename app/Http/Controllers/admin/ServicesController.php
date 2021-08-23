@@ -35,4 +35,13 @@ class ServicesController extends Controller
 		
 		return redirect()->route('admin.custom_services')->with('success',$msg);
 	}
+
+	public function manage_services(Request $request)
+	{
+		$data = array(
+    		'title' => 'Manage Services',
+			'cat_id' => $request->id,
+    		);
+       return view("admin.custom_services.manage_services")->with($data);
+	}
 }
