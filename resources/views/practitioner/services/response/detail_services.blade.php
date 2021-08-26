@@ -6,12 +6,13 @@
    <h6 class="col-blue"> NZ$ {{number_format($data->price, 2)}} </h6>
    <p> {{$data->description}} </p>
    <hr>
-   <h5 class="col-black"> Long Description </h5>
+   <h5 class="col-black"> Preparation </h5>
    <p> {{$data->long_description}} </p>
+   <hr>
 </div>
 
 <div class="manicure-variants">
-   <h4> Variants/Add-ons <a href="javascript:void(0)" class="col-blue addAddons" data-id="{{base64_encode($data->id)}}"> Add </a> </h4>
+   <h4> Variants/Add-ons </h4>
    <table>
       <tbody>
         @foreach($data->addons_list as $val)

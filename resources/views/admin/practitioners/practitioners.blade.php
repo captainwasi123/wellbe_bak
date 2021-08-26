@@ -39,7 +39,10 @@
                         <input type="checkbox" class="switch-input disableUser" data-ref="{{base64_encode($val->id)}}" {{$val->status == '1' ? 'checked' : ''}}>
                         <span class="switch-label" data-on="On" data-off="Off"></span>
                         <span class="switch-handle"></span>
-                      </label>  
+                      </label>
+                      <a href="javascript:void(0)" class="manageCategory" data-id="{{base64_encode($val->id)}}">
+                        <span class="fa fa-ellipsis-v"></span>
+                        </a> 
                     </td>
                   </tr>
                 @endforeach
@@ -102,6 +105,23 @@
             </div>
          </div>
       </div>
+
+
+<!-- Manage Categories -->
+<div class="modal fade modal-size2 manageCategoryModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+   <div class="modal-dialog" role="document" style="max-width: 600px;">
+      <div class="modal-content">
+         <button type="button" class="close1" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span> </button>
+         <div class="custom-modal-head">
+            <h3> Manage Category </h3>
+         </div>
+         <div class="custom-modal-data" id="manageCategoryModalBody">
+            
+         </div>
+      </div>
+   </div>
+</div>
+
 @endsection
 @section('additionalJS')
    <script src="{{URL::to('/')}}/public/assets/js/dev/admin.js"> </script>

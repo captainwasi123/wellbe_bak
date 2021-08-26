@@ -15,7 +15,7 @@ class addons extends Model
 
     public static function addAddon(array $data){
     	$a = new addons;
-    	$a->user_id = Auth::id();
+    	$a->user_id = Auth::guard('admin')->id();
     	$a->service_id = base64_decode($data['service_id']);
     	$a->name = $data['addon_name'];
     	$a->save();

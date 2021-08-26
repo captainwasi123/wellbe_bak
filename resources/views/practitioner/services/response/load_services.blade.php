@@ -1,21 +1,22 @@
 <div class="cat-head">
    <h5 class="col-black"> Services ({{count($data)}}) </h5>
-   <div class="action-buttons"> <a href="javascript:void()" class="fa fa-plus addService" data-id="{{base64_encode($cat_id)}}"></a> </div>
 </div>
 <div class="all-categories">
    @foreach($data as $val)
-      <div class="cat-box1 serviceDetail" data-id="{{base64_encode($val->id)}}" title="This service is pending approval by the Wellbe Team. This process can take up to 72 hours.">
-         <h5 data-bs-toggle="tooltip" data-bs-placement="top" title=" {{$val->status == 1 ? 'This service is pending approval by the Wellbe Team. This process can take up to 72 hours.' : ''}} "> {{$val->name}} </h5>
+      <div class="cat-box1 serviceDetail {{empty($val->userSer->id) ? 'disabledService' : ''}}" data-id="{{base64_encode($val->id)}}">
+         <h5> {{$val->name}} </h5>
          @if($val->status != 1)
          <div class="dropdown">
             <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
             <i class="fas fa-ellipsis-v"></i>
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-               <li><a href="javascript:void(0)" class="deleteService" data-href="{{URL::to('/practitioner/service/delete/'.base64_encode($val->id))}}">Delete</a></li>
                <li><a href="javascript:void(0)" class="editService" data-id="{{base64_encode($val->id)}}">Edit</a></li>
-               <li><a href="javascript:void(0)" class="addAddons" data-id="{{base64_encode($val->id)}}">Cariants/Add-ons</a></li>
-               <li><a href="#">Disable</a></li>
+               @if(empty($val->userSer->id))
+                  <li><a href="javascript:void(0)" class="enableService" data-id="{{base64_encode($val->id)}}">Enable</a></li>
+               @else
+                  <li><a href="javascript:void(0)" class="disableService" data-id="{{base64_encode($val->userSer->id)}}">Disable</a></li>
+               @endif
             </ul>
          </div>
          @endif

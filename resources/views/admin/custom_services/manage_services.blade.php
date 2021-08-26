@@ -10,11 +10,6 @@
       <div class="page-title">
          <h3 class="col-white"> Your Services </h3>
       </div>
-      <!-- <div class="block-element cat-buttons mob-text-left m-t-20 pad-1">
-         <button class="normal-btn2 bg-blue col-white"> Approved </button>
-         <button class="normal-btn2 bg-white col-black"> Pending </button>
-         <button class="normal-btn2 bg-white col-black"> Rejected </button>
-      </div> -->
       <div class=""></div>
       <div class="block-element pad-1 m-t-20">
          <div class="row">
@@ -24,8 +19,29 @@
 			   <div class="action-buttons"> <a href="javascript:void()" class="fa fa-plus addService" data-id="{{$cat_id}}"></a> </div>
 			</div>
 			<div class="all-categories">
-			            <h5>No Services Available.</h5>
-			   </div>
+            @foreach($services as $val)
+               <div class="cat-box1 serviceDetail {{$val->status == '1' ? 'disabled' : ''}}" data-id="{{base64_encode($val->id)}}">
+                  <h5> {{$val->name}} </h5>
+                  <div class="dropdown">
+                     <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                     <i class="fas fa-ellipsis-v"></i>
+                     </button>
+                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li><a href="javascript:void(0)" class="deleteService" data-id="{{base64_encode($val->id)}}">Delete</a></li>
+                        <li><a href="javascript:void(0)" class="editService" data-id="{{base64_encode($val->id)}}">Edit</a></li>
+                        @if($val->status == '2')
+                           <li><a href="javascript:void(0)" data-id="{{base64_encode($val->id)}}" class="disableService">Disable</a></li>
+                        @else
+                           <li><a href="javascript:void(0)" data-id="{{base64_encode($val->id)}}" class="enableService">Enable</a></li>
+                        @endif
+                     </ul>
+                  </div>
+               </div>
+            @endforeach
+            @if(count($services) == '0')
+			      <h5>No Services Available.</h5>
+            @endif
+			</div>
 			</div>
             </div>
             <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
@@ -53,9 +69,9 @@
                <h3> Add Services </h3>
             </div>
             <div class="custom-modal-data">
-               <form method="post" action="{{route('practitioner.services.add')}}">
+               <form method="post" action="{{route('admin.services.add')}}">
                   {{csrf_field()}}
-                  <input type="hidden" name="cat_id" id="cat_id">
+                  <input type="hidden" name="cat_id" value="{{$cat_id}}">
                   <div class="form-field2">
                      <p> SERVICE NAME <sup class="col-red">*</sup> </p>
                      <input type="text" placeholder="Please enter name" name="service_name" required="">
@@ -74,7 +90,7 @@
                      <textarea placeholder="Please enter description" rows="2" name="description"></textarea>
                   </div>
                   <div class="form-field2">
-                     <p>LONG DESCRIPTION </p>
+                     <p>PREPARATION </p>
                      <textarea placeholder="Please enter description" name="long_description"></textarea>
                   </div>
 
@@ -112,7 +128,7 @@
                <h3> Add Variant </h3>
             </div>
             <div class="custom-modal-data">
-               <form method="post" action="{{route('practitioner.services.addons.add')}}">
+               <form method="post" action="{{route('admin.services.addons.add')}}">
                   {{csrf_field()}}
                   <input type="hidden" name="service_id" id="service_id">
                   <div class="form-field2">
@@ -155,5 +171,5 @@
 
 @endsection
 @section('additionalJS')
-   <script src="{{URL::to('/')}}/public/assets/js/dev/practitioner.js"> </script>
+   <script src="{{URL::to('/')}}/public/assets/js/dev/admin.js"> </script>
 @endsection

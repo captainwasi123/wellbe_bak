@@ -32,11 +32,18 @@ $(document).ready(function(){
 
 	// Delete Service
 
-	$(document).on('click', '.deleteService', function(){
-		var href = $(this).data('href');
+	$(document).on('click', '.enableService', function(){
+		var id = $(this).data('id');
 
-		if(confirm('Are you sure want to delete this?')){
-			window.location.href = href;
+		if(confirm('Are you sure want to enable this?')){
+			window.location.href = ref+"/practitioner/service/enable/"+id;
+		}	
+	});
+	$(document).on('click', '.disableService', function(){
+		var id = $(this).data('id');
+
+		if(confirm('Are you sure want to disable this?')){
+			window.location.href = ref+"/practitioner/service/disable/"+id;
 		}	
 	});
 

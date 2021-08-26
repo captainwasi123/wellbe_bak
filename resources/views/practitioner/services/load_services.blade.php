@@ -1,6 +1,6 @@
 <div class="cat-head">
    <h5 class="col-black"> Services ({{count($data)}}) </h5>
-   <div class="action-buttons"> <a href="javascript:void()" class="fa fa-plus addService" data-id="{{base64_encode($cat_id)}}"></a> </div>
+   
 </div>
 <div class="all-categories">
    @foreach($data as $val)

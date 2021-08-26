@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\orders\order;
 use App\Models\orders\reviews;
-use App\Models\services\services;
+use App\Models\userService;
 use App\Models\UserGeofence;
 use App\Models\schedule\availability;
 use App\Models\schedule\holidays;
@@ -88,7 +88,7 @@ class User extends Authenticatable
     
     public function services()
     {
-        return $this->hasMany(services::class,'user_id','id');
+        return $this->hasMany(userService::class,'user_id','id');
     }    
 
 

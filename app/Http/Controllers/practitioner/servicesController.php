@@ -4,16 +4,17 @@ namespace App\Http\Controllers\practitioner;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\services\category;
+use App\Models\Categories;
 use App\Models\services\services;
 use App\Models\services\addons;
+use App\Models\userService;
 use Auth;
 
 class servicesController extends Controller
 {
     function index(){
     	$data = array();
-    	$data['category'] = category::where('status', '1')->get();
+    	$data['category'] = Categories::where('status', '1')->get();
 
     	return view('practitioner.services.my_services', ['data' => $data]);
     }
@@ -35,17 +36,11 @@ class servicesController extends Controller
     }
 
     function loadService($id){
-        if ($id == 'pending_services') {
-            $data = services::where(['user_id' => Auth::id(), 'status' => '1'])
-                    ->orderBy('name')
-                    ->get();
-        }else{
-            $id = base64_decode($id);
+        $id = base64_decode($id);
 
-        	$data = services::where(['category_id' => $id, 'user_id' => Auth::id(), 'status' => '2'])
-        			->orderBy('name')
-        			->get();
-        }
+    	$data = services::where(['category_id' => $id, 'status' => '2'])
+    			->orderBy('name')
+    			->get();
 
     	return view('practitioner.services.response.load_services', ['data' => $data, 'cat_id' => $id]);
     }
@@ -58,15 +53,25 @@ class servicesController extends Controller
         return view('practitioner.services.response.detail_services', ['data' => $data]);
     }
 
-    function deleteService($id){
+    function enableService($id){
     	$id = base64_decode($id);
 
-    	$data = services::find($id);
-    	$data->status = '3';
+    	$data = new userService;
+    	$data->user_id = Auth::id();
+        $data->service_id = $id;
     	$data->save();
 
-    	return redirect()->back()->with('success', 'Service Deleted.');
+    	return redirect()->back()->with('success', 'Service Enabled.');
     }
+
+    function disableService($id){
+        $id = base64_decode($id);
+
+        userService::destroy($id);
+
+        return redirect()->back()->with('success', 'Service Disabled.');
+    }
+
 
     function editService($id){
     	$id = base64_decode($id);

@@ -14,6 +14,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session;
+use App\Models\Categories;
+use App\Models\userCategory;
 
 class DashboardController extends Controller
 {
@@ -101,6 +103,29 @@ class DashboardController extends Controller
 
         return redirect()->back()->with('success', 'Practitioner Assumed.');    
     }
+
+    function manageCategory($id){
+        $id = base64_decode($id);
+
+        $userCat = userCategory::where('user_id', $id)->get();
+        $categories = Categories::all();
+
+        return view('admin.practitioners.response.manageCategory', ['userCat' => $userCat, 'categories' => $categories, 'uid' => $id]);
+    }
+    function manageCategoryUpdate(Request $request){
+        $data = $request->all();
+        userCategory::where('user_id', base64_decode($data['uid']))->delete();
+        foreach($data['cat_id'] as $val){
+            $c = new userCategory;
+            $c->user_id = base64_decode($data['uid']);
+            $c->category_id = base64_decode($val);
+            $c->save();
+        }
+
+        return redirect()->back()->with('success', 'Practitioner`s Categories Updated.');
+    }
+
+
 
 
 

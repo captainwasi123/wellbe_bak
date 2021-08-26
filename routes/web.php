@@ -13,15 +13,56 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+//Website Routes
+
+	Route::namespace('web')->group(function(){
+		Route::get('/', 'webController@index')->name('home');
+		Route::get('/work_with_us', 'webController@workWithUs')->name('work_with_us');
+
+
+		//Authentication
+		Route::get('/login', 'loginController@login');
+	    Route::post('/login', 'loginController@loginAttempt');
+		Route::get('/register', 'loginController@register');
+
+
+
+		//Treatments
+		Route::prefix('treatments')->group(function(){
+			Route::get('/', 'treatmentController@treatments')->name('treatments');
+			Route::get('/search', 'treatmentController@treatments_search')->name('treatments.search');
+			Route::get('/{category}', 'treatmentController@treatmentsCategory');
+			Route::get('/professional/profile/{id}', 'treatmentController@professionalProfile')->name('professional.profile');
+
+			Route::prefix('services')->group(function(){
+
+				Route::get('/{id}', 'treatmentController@serviceDetails');
+
+				Route::post('addToCart', 'treatmentController@addToCartService')->name('treatments.services.addToCart');
+				Route::get('removeItem/{id}', 'treatmentController@removeItemCart');
+			});
+
+			Route::prefix('booking')->group(function(){
+
+				Route::post('step_1', 'bookingController@step1Session')->name('treatments.booking.step1');
+				Route::get('step_1', 'bookingController@step1')->name('treatments.booking.step1');
+
+				//Professional
+				Route::get('profile/{id}', 'bookingController@viewProfile');
+			});
+		});
+
+
+	});
+
+                                           
+
+
+
 //Website
-	Route::get('/', 'webController@index')->name('home');
 	Route::get('/professionals', 'webController@professionals')->name('professionals');
 
-	//Treatments
-	Route::get('/treatments', 'webController@treatments')->name('treatments');
-	Route::get('/treatments/search', 'webController@treatments_search')->name('treatments.search');
-	Route::get('/treatments/{category}', 'webController@treatmentsCategory');
-	Route::get('/treatments/professional/profile/{id}', 'webController@professionalProfile')->name('professional.profile');
 
 	//Services
 	Route::get('/user/services/{userid}/{cat_id}', 'webController@user_services');
@@ -35,9 +76,6 @@ use Illuminate\Support\Facades\Route;
 	Route::get('/booking-reminder', 'webController@booking_reminder')->name('booking.reminder');
 
 	// Authentication
-		Route::get('/login', 'loginController@index');
-		Route::post('/login/', 'loginController@loginAttempt');
-	    Route::post('/loginAttempt', 'loginController@ajaxloginAttempt');
 		Route::post('/loginAttempt2', 'loginController@ajaxloginAttempt2');
 		Route::get('/logout', 'loginController@logout');
 		Route::get('/user-active/{id}','loginController@user_active')->name('user_active');
@@ -60,9 +98,9 @@ use Illuminate\Support\Facades\Route;
 			Route::get('/delete/{id}', 'servicesController@deleteService');
 			Route::get('/edit/{id}', 'servicesController@editService');
 
-			//Add Service
-			Route::post('/add', 'servicesController@addService')->name('practitioner.services.add');
-			Route::post('/update', 'servicesController@updateService')->name('practitioner.services.update');
+			Route::get('/enable/{id}', 'servicesController@enableService');
+			Route::get('/disable/{id}', 'servicesController@disableService');
+			
 
 			//Addons
 			Route::prefix('addons')->group(function(){
@@ -213,13 +251,37 @@ use Illuminate\Support\Facades\Route;
 	    	Route::post('/disable', 'DashboardController@disablePractitioners')->name('admin.practitioners.disable');
 	    	Route::post('/assume', 'DashboardController@assumePractitioners')->name('admin.practitioners.assume');
 			Route::get('/portal/{id}', 'DashboardController@practitioners_portal')->name('admin.practitioners.portal');
+
+
+			Route::get('/manageCategory/{id}', 'DashboardController@manageCategory');
+			Route::post('/manageCategory/update', 'DashboardController@manageCategoryUpdate')->name('admin.practitioners.manageCategory.update');
 	    });
 
 		//services
-		Route::get('/custom_services', 'ServicesController@custom_services')->name('admin.custom_services');
-		Route::get('/custom_services/update', 'ServicesController@custom_services_update')->name('admin.custom_services.update');
-		
-		Route::get('/manage_services/{id}', 'ServicesController@manage_services')->name('admin.manage_services');
+			
+			Route::get('/manage_services/{id}', 'ServicesController@manage_services')->name('admin.manage_services');
+
+			Route::prefix('services')->group(function(){
+				
+				Route::get('/detail/{id}', 'ServicesController@loadServiceDetail');
+				Route::get('/delete/{id}', 'ServicesController@deleteService');
+				Route::get('/edit/{id}', 'ServicesController@editService');
+
+				Route::get('/disable/{id}', 'ServicesController@disableService');
+				Route::get('/enable/{id}', 'ServicesController@enableService');
+				
+				//Add Service
+				Route::post('/add', 'ServicesController@addService')->name('admin.services.add');
+				Route::post('/update', 'ServicesController@updateService')->name('admin.services.update');
+
+				//Addons
+				Route::prefix('addons')->group(function(){
+
+					Route::post('/add', 'ServicesController@addAddons')->name('admin.services.addons.add');
+				});
+			});
+
+
 
 		// categories
         Route::get('/categories', 'CategoryController@index')->name('admin.categories');

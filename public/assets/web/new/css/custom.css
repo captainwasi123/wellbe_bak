@@ -1,0 +1,1536 @@
+/*Font Family Used In Website*/
+/*Roboto (Integrated From Google Fonts Library)*/
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;300;400;500;600;700;800;900&display=swap');
+
+
+ body {
+ 	font-family: 'Roboto', sans-serif;
+ 	font-weight: 400;
+ }
+
+ body .container {
+ 	width: 100%;
+ 	max-width: 1170px;
+ }
+
+ body img {
+ 	max-width: 100%;
+ }
+
+section , header , footer {
+    float: left;
+    width: 100%;
+}
+
+a {
+    transition: all 0.4s ease-in-out;
+    -webkit-transition: all 0.4s ease-in-out;
+    cursor: pointer !important;
+    display: inline-block;
+    text-decoration: none !important;
+}
+
+.pad-top-40 {
+	padding-top: 40px !important;
+}
+
+.pad-top-60 {
+	padding-top: 60px !important;
+}
+
+.pad-top-80 {
+	padding-top: 80px !important;
+}
+.pad-bot-40 {
+	padding-bottom: 40px !important;
+}
+.pad-bot-60 {
+	padding-bottom: 60px !important;
+}
+
+.pad-bot-80 {
+	padding-bottom: 80px !important;
+}
+
+.bg-pink {
+	background:#fbece7 !important;
+}
+.bg-blue {
+	background:#dbefe3 !important;
+}
+
+.col-black {
+    color:black !important;
+}
+.col-pink {
+    color:#efb0bb;
+}
+.col-grey {
+    color:grey !important;
+}
+
+header {
+    padding: 10px 0px;
+    background: #dbefe3;
+}
+
+
+.logo {
+    float: left;
+}
+
+
+.navbar-custom {
+    float: left;
+    margin-left: 40px;
+}
+
+
+.header-right {
+    float: right;
+}
+
+.menu-item {
+    float: left;
+    margin-right: 30px;
+}
+.menu-item a {
+    color: #154767;
+    font-weight: 500;
+    font-size: 15px;
+    letter-spacing: 0.7px;
+    padding: 30px 0px;
+}
+
+
+a.login-btn {
+    color: #154767;
+    border: 1px solid #154767;
+    padding: 8px 26px;
+    font-weight: 500;
+    letter-spacing: 0.8px;
+    border-radius: 30px;
+    font-size: 15px;
+    margin-top: 18px;
+}
+
+
+footer {
+    background: #fbece7;
+    padding: 50px 0px;
+}
+.footer-logo {
+    float: left;
+    width: 100%;
+}
+
+
+.footer-logo a img {
+    margin-left: -8px;
+    margin-bottom: 20px;
+    width: 220px;
+}
+
+.footer-logo p {
+    color: #154767;
+    font-size: 14px;
+    letter-spacing: 0.3px;
+    line-height: 21px;
+    margin-bottom: 25px;
+}
+.footer-logo ul li a {
+    color: #154767;
+    border: 1px solid #154767;
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    border-radius: 100%;
+    padding: 6px 0px 0px 0px;
+    font-size: 15px;
+}
+.footer-logo ul {
+	padding:0px;
+	list-style: none;
+}
+.footer-logo ul li {
+    float: left;
+    margin-right: 12px;
+}
+
+.footer-list h3 {
+    color: #154767;
+    font-family: 'Roboto Slab';
+    font-size: 20px;
+    letter-spacing: 0.7px;
+    margin-bottom: 25px;
+    margin-top: 20px;
+}
+.footer-list h6 a {
+    color: black;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.4px;
+    line-height: 23px;
+    position: relative;
+    padding-left: 25px;
+}
+
+
+
+.footer-list h5 a {
+    color: black;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.4px;
+    line-height: 23px;
+    position: relative;
+}
+
+
+.footer-list h6 a i {
+    position: absolute;
+    left: 0px;
+    top: 4px;
+    color: #154767;
+}
+
+i.fa-phone {
+	transform: rotate(90deg);
+	-webkit-transform: rotate(90deg);
+}
+.footer-list h6 {
+    margin-bottom: 11px;
+}
+
+
+.footer-list h5 {
+    margin-bottom: 11px;
+}
+.footer-list {
+    float: left;
+    width: 100%;
+    padding-left: 30px;
+}
+.navbar-handler {
+	display: none;
+}
+
+.footer-logo ul li a:hover {
+	background:#154767;
+	color:white;
+}
+.footer-list h6 a:hover  , .footer-list h5 a:hover {
+	color:#154767;
+}
+.menu-item a:hover {
+color:black;
+}
+
+a.pro-btn:hover {
+	background:black;
+	border:1px solid black;
+}
+a.login-btn:hover {
+	background:#5d4e6d;
+	border:1px solid #5d4e6d;
+	color:white;
+}
+
+.textual-content1 {
+    float: left;
+    width: 100%;
+}
+
+.textual-content1 h4 {
+    color: #154767;
+    font-size: 34px;
+    letter-spacing: 0.5px;
+    line-height: 45px;
+    margin-bottom: 32px;
+    font-family: 'Roboto Slab';
+    font-weight: 700;
+}
+ul.list-type1 {
+    padding: 0px 0px 0px 20px;
+    list-style: none;
+    margin-bottom: 40px;
+}
+
+ul.list-type1 li {
+    color: #154767;
+    font-size: 16px;
+    letter-spacing: 0.3px;
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 22px;
+    max-width: 72%;
+    line-height: 28px;
+}
+
+ul.list-type1 li i {
+    position: absolute;
+    left: 0px;
+    top: 5px;
+    color: #fec200;
+}
+.textual-content1 h5 {
+    color: #154767;
+    font-size: 20px;
+    letter-spacing: 0.5px;
+    margin-bottom: 15px;
+}
+.textual-content1 p {
+    color: #154767;
+    font-size: 15px;
+    letter-spacing: 0.3px;
+    line-height: 24px;
+}
+
+.appointment-box {
+    float: left;
+    width: 100%;
+    background: white;
+    text-align: center;
+    padding: 45px 30px;
+    border-radius: 10px;
+}
+.appointment-box h4 {
+    color: #1f628e;
+    font-size: 21px;
+    margin-bottom: 10px;
+    letter-spacing: 0.6px;
+    margin: 0px 0px 8px 0px;
+}
+.appointment-box p {
+    color: #afafaf;
+    font-size: 14px;
+    letter-spacing: 0.4px;
+    margin-bottom: 20px;
+}
+
+.appointment-box form {
+    background: #ececec;
+    position: relative;
+    max-width: 85%;
+    margin: auto;
+    border-radius: 4px;
+}
+
+.appointment-box form input {
+    height: 55px;
+    width: 100%;
+    border: none;
+    background: none;
+    padding: 0px 20px;
+    outline: none;
+    font-size: 15px;
+    letter-spacing: 0.3px;
+}
+
+.appointment-box form button {
+    border: none;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    padding: 16px 14px;
+    color: grey;
+}
+
+.logo img {
+    width: 90px;
+}
+.treatment-triggers {
+    float: left;
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.treatment-triggers div {
+    float: left;
+    margin-right: 25px;
+    width: 108px;
+}
+
+ 
+.treatment-triggers div a img {
+    display: block;
+    margin: auto;
+    border-radius: 20px 0px 20px 0px;
+    margin-bottom: 10px;
+    border: 1px solid white;
+    background: white;
+    padding: 8px;
+    width: 108px;
+}
+.treatment-triggers div a {
+    color: #717171;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    font-size: 14px;
+    text-align: center;
+}
+
+
+.treatment-triggers div.active img {
+    border: 2px solid #f7c3cc;
+    box-shadow: 1px 1px 10px silver;
+}
+.treatment-triggers div.active a {
+	color: #efb0bb;
+}
+
+
+.sec-head2 {
+    float: left;
+    width: 100%;
+    border-left: 3px solid #ecb5bf;
+    padding-left: 20px;
+}
+
+
+
+.sec-head2 h4 {
+    margin: 3px 0px;
+    color: black;
+    font-weight: 500;
+    font-size: 25px;
+    letter-spacing: 0.7px;
+}
+
+
+.filters-1 {
+    float: left;
+    width: 100%;
+}
+
+
+.filters-1 select {
+    width: 300px;
+    height: 38px;
+    font-size: 14px;
+    border: 1px solid silver;
+    padding: 0px 6px;
+    letter-spacing: 0.6px;
+    margin-right: 20px;
+}
+
+
+.filters-1 button {
+    background: white;
+    border: 1px solid silver;
+    padding: 7px 12px;
+    letter-spacing: 0.6px;
+    border-radius: 2px;
+}
+
+.filters-1 button i {
+    margin-left: -4px;
+    margin-right: 4px;
+}
+
+
+.all-practitioners {
+    float: left;
+    width: 100%;
+    margin-top: 40px;
+}
+
+.practitioner-box {
+    float: left;
+    width: 100%;
+    background: white;
+    padding: 10px 6px 10px 8px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+.practitioner-box-image {
+    float: left;
+    width: 38%;
+}
+
+.practitioner-box-text {
+    float: left;
+    width: 62%;
+    padding-left: 10px;
+}
+.practitioner-box-text h4 {
+    color: black;
+    margin: 0px 0px 01px 0px;
+    font-weight: 500;
+    letter-spacing: 0.6px;
+}
+
+.practitioner-box-text h5 {
+    color: #6d6d6d;
+    font-weight: 400;
+    border-bottom: 1px solid silver;
+    padding-bottom: 4px;
+    margin-bottom: 10px;
+    letter-spacing: 0.4px;
+}
+.practitioner-box-text p {
+    color: grey;
+    font-weight: 300;
+    letter-spacing: 0.4px;
+    margin-bottom: 4px;
+}
+b.point-1 {
+    font-size: 0px;
+    display: inline-block;
+    vertical-align: middle;
+    width: 6px;
+    height: 6px;
+    background: #a0a0a0;
+    border-radius: 100%;
+    margin-right: 4px;
+}
+
+.profile-long {
+    float: left;
+    width: 100%;
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.profile-long div:nth-child(1) {
+    float: left;
+    width: 22%;
+    padding-right: 20px;
+}
+
+.profile-long div:nth-child(2) {
+    float: left;
+    width: 25%;
+    padding-left: 20px;
+}
+
+
+.profile-long div:nth-child(2) h4 {
+    color: black;
+    font-weight: 700;
+    letter-spacing: 0.7px;
+    font-size: 23px;
+    margin-bottom: 22px;
+    margin-top: 30px;
+}
+
+.profile-long div:nth-child(2) img {
+    width: 20px;
+ 
+    margin-right: 8px;
+}
+
+
+.profile-long div:nth-child(2) p {
+    color: grey;
+    font-size: 15px;
+    letter-spacing: 0.3px;
+}
+
+.profile-long div:nth-child(3) {
+    float: left;
+    width: 55%;
+}
+.profile-long div:nth-child(3) {
+    float: left;
+    width: 53%;
+    margin-top: 25px;
+}
+
+.profile-long div:nth-child(3) p {
+    color: #9c9c9c;
+    font-size: 15px;
+    line-height: 24px;
+    font-weight: 400;
+    letter-spacing: 0.3px;
+}
+
+.search-form3 {
+    float: left;
+ 
+    margin-bottom: 30px;
+    background: white;
+    padding: 0px 10px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 10px #c7c7c7;
+}
+
+.search-form3 form input {
+    width: 360px;
+    height: 40px;
+    border: none;
+    letter-spacing: 0.4px;
+    color: black;
+    outline: none;
+    max-width: 90%;
+}
+
+.search-form3 button {
+    background: none;
+    border: none;
+    height: 40px;
+    width: 30px;
+}
+
+
+.booking-cart , .sidenav-menu {
+    float: left;
+    width: 100%;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 1px 1px 15px #cccccc;
+}
+
+
+
+.booking-cart-head {
+    float: left;
+    width: 100%;
+    padding: 0px 15px;
+    border-bottom: 1px solid #dadada;
+}
+
+.booking-cart-head h4 {
+    color: black;
+    font-weight: 500;
+    font-size: 22px;
+    letter-spacing: 1px;
+    margin: 12px 0px;
+}
+
+.booking-empty {
+    float: left;
+    width: 100%;
+    padding: 20px 0px;
+}
+
+.booking-empty img {
+    margin-bottom: 10px;
+}
+
+.booking-empty p {
+    color: grey;
+    font-size: 16px;
+    letter-spacing: 0.2px;
+    line-height: 22px;
+}
+
+.sidenav-menu-items {
+    float: left;
+    width: 100%;
+    padding: 10px 0px 0px 0px;
+}
+
+.sidenav-menu-items ul {
+    padding: 0px;
+    list-style: none;
+    padding: 0px 0px;
+}
+
+
+.sidenav-menu-items ul li a {
+    color: grey;
+    padding: 10px 20px;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    display: block;
+    border-left: 4px solid white;
+}
+.sidenav-menu-items ul li a:hover {
+    color:#ff9f9f;
+}
+ 
+
+.sidenav-menu-items ul li.active a {
+    border-left: 4px solid #ff9f9f !important;
+    color: #ff9f9f
+}
+
+
+.pract-services {
+    float: left;
+    width: 100%;
+    background: white;
+    border-radius: 10px;
+}
+
+
+.pract-services div {
+    float: left;
+    width: 100%;
+    padding: 10px 15px;
+    border-bottom: 1px solid silver;
+}
+
+
+.pract-services div h4 {
+    letter-spacing: 0.5px;
+    font-size: 20px;
+}
+
+.pract-services div p {
+    font-size: 14px;
+    letter-spacing: 0.3px;
+    line-height: 22px;
+}
+
+.pract-services div h5 {
+    font-size: 16px;
+    letter-spacing: 0.3px;
+    font-weight: 500;
+}
+
+ 
+span.service-actions {
+    display: block;
+    text-align: right;
+    margin-top: -25px;
+    margin-bottom: 5px;
+}
+
+span.service-actions a {
+    color: grey;
+    font-size: 15px;
+    letter-spacing: 1px;
+}
+span.service-actions a i {
+    background: grey;
+    width: 28px;
+    height: 28px;
+    text-align: center;
+    color: white;
+    padding: 9px 0px 0px 0px;
+    border-radius: 4px;
+    margin-left: 10px;
+    font-size: 12px;
+}
+
+span.service-actions a:hover {
+    color:#0056b3;
+}
+
+span.service-actions a:hover  i {
+background:#0056b3;
+}
+
+
+.navbar-handler {
+    display: none;
+}
+
+
+.booking-cart-head h4 span {
+    font-size: 15px;
+    letter-spacing: 0px;
+    margin-top: 5px;
+}
+
+.booking-cart-item1 {
+    float: left;
+    width: 100%;
+    padding: 5px 15px 10px 15px;
+    border-bottom: 1px solid silver;
+}
+
+
+.booking-cart-item1 h5 {
+    color: grey;
+    font-weight: 400;
+    letter-spacing: 0.4px;
+    margin-bottom: 15px;
+}
+
+
+
+.booking-cart-items {
+    float: left;
+    width: 100%;
+    padding: 5px  0px;
+}
+
+.booking-cart-item1 button {
+    text-align: center;
+    color: black;
+    font-size: 15px;
+    font-weight: 600;
+    background: #eee;
+    width: 22px;
+    border-radius: 5px;
+    border: none;
+}
+.booking-cart-item1 button:hover {
+    background:#ff9f9f;
+}
+.booking-cart-item1 input {
+    text-align: center;
+    color: black;
+    font-size: 15px;
+    font-weight: 600;
+    border: 1px solid silver;
+    width: 40px;
+    border-radius: 4px;
+    margin: 0px 2px;
+}
+
+b.price-cart {
+    float: right;
+    color: grey;
+    letter-spacing: 0px;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+
+.form-field4 {
+    float: left;
+    width: 100%;
+    padding: 0px 12px;
+    margin-bottom: 15px;
+}
+
+
+.form-field4 p {
+    color: grey;
+    margin-bottom: 6px;
+    letter-spacing: 0.3px;
+}
+
+
+.form-field4 input {
+    width: 100%;
+    height: 32px;
+    border: 1px solid silver;
+    padding: 0px 4px;
+    color: black;
+}
+
+.header-login {
+    float: right;
+    padding-top: 22px;
+}
+
+.notif-drop {
+    float: left;
+}
+.user-drop {
+    float: left;
+}
+
+.user-drop button i {
+    margin-right: 6px;
+    font-size: 14px;
+}
+
+.sec-head4 {
+    float: left;
+    width: 100%;
+    margin-bottom: 35px;
+}
+
+
+.sec-head4 h4 {
+    color: black;
+    font-size: 34px;
+    letter-spacing: 0.5px;
+    line-height: 44px;
+    font-weight: 700;
+}
+
+
+.brand-logos {
+    float: left;
+    width: 100%;
+    text-align: center;
+}
+
+.brand-logos span {
+    vertical-align: middle;
+    display: inline-block;
+    margin: 0px 10px;
+}
+.set .content {
+    display: none;
+}
+.faqs-all {
+    float: left;
+    width: 100%;
+}
+
+.set a {
+    background: #404780;
+    display: block;
+    width: 100%;
+    padding: 12px 18px;
+    letter-spacing: 0.6px;
+    font-weight: 400;
+    color: white;
+    font-size: 15px;
+    padding-right: 40px;
+    color: white !important;
+    position: relative;
+    border-bottom: 1px solid silver;
+}
+.set a i {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    height: 40px;
+    width: 45px;
+    text-align: center;
+    line-height: 40px;
+}
+
+.faqs-all .content {
+    padding: 12px 15px;
+    border: 1px solid gainsboro;
+}
+
+.faqs-all .content p {
+    color: grey;
+    font-size: 15px;
+    letter-spacing: 0.3px;
+}
+
+.faqs-all .set {
+    max-width: 1000px;
+    margin: auto;
+}
+
+.professional-sec .row {
+    align-items: center;
+}
+
+
+.professional-image {
+    float: left;
+    width: 100%;
+    text-align: center;
+}
+
+.professional-text {
+    float: left;
+    width: 100%;
+    padding-left: 40px;
+    max-width: 90%;
+}
+
+.professional-text h4 {
+    color: black;
+    font-weight: 600;
+    font-size: 35px;
+    letter-spacing: 0.6px;
+    margin-bottom: 15px;
+}
+
+.professional-text p {
+    color: black;
+    font-size: 17px;
+    letter-spacing: 0.6px;
+    line-height: 30px;
+    font-weight: 400;
+    max-width: 85%;
+    margin-bottom: 20px;
+}
+
+a.custom-btn1 {
+    background: #404780;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-size: 15px;
+    letter-spacing: 0.6px;
+}
+a.custom-btn1:hover {
+    background:black;
+}
+
+.sec-head4 p {
+    max-width: 650px;
+    margin: auto;
+    color: black;
+    font-size: 17px;
+    letter-spacing: 0.4px;
+    line-height: 28px;
+    font-weight: 400;
+}
+.work-service-box {
+    float: left;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 50px;
+}
+.work-service-box img {
+    height: 90px;
+    margin-bottom: 5px;
+}
+
+.work-service-box h4 {
+    color: #404780;
+    font-weight: 500;
+    font-size: 22px;
+    letter-spacing: 0.5px;
+}
+
+
+.work-service-box p {
+    color: black;
+    font-size: 15px;
+    letter-spacing: 0.2px;
+    line-height: 23px;
+}
+.banner-image {
+    float: left;
+    width: 100%;
+    margin-top: 50px;
+}
+
+.banner-image img {
+    width: 100%;
+    max-width: 450px;
+}
+
+
+.banner-text {
+    float: left;
+    width: 100%;
+    margin-top: 70px;
+    margin-bottom: 50px;
+}
+.banner-text h3 {
+    color: #404780;
+    font-size: 44px;
+    font-weight: 700;
+    line-height: 57px;
+    letter-spacing: 1px;
+    margin-bottom: 25px;
+}
+
+.banner-text p {
+    color: black;
+    font-size: 16px;
+    max-width: 500px;
+    letter-spacing: 0.3px;
+    line-height: 28px;
+    margin-bottom: 30px;
+}
+
+.banner-text form {
+    max-width: 400px;
+    background: white;
+    border: 1px solid grey;
+    overflow-x: hidden;
+    border-radius: 30px;
+    position: relative;
+    padding-left: 30px;
+}
+
+
+.banner-text form input {
+    border: none;
+    color: black;
+    font-weight: 400;
+    letter-spacing: 0.4px;
+    padding: 0px 10px;
+    width: 80%;
+    height: 50px;
+    font-size: 15px;
+}
+
+.banner-text form i {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    color: grey;
+    font-size: 16px;
+    width: 40px;
+    text-align: center;
+    padding-top: 17px;
+}
+
+
+.banner-text form button {
+    background: #404780;
+    height: 50px;
+    border: none;
+    color: white;
+    padding: 0px 15px;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    letter-spacing: 0.4px;
+}
+
+/*Media Queries Of Website*/
+
+/*Small Laptops*/
+@media screen and (max-width:992px) and (min-width:768px) { 
+
+}
+
+
+/*Tablet Devices*/
+@media screen and (max-width:767px) and (min-width:520px) { 
+.navbar-handler {
+	display:block;
+}
+
+.navbar-handler {
+    display: block;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    background: #5d4e6d;
+    padding: 5px 4px;
+    margin-top: 30px;
+}
+.footer-list {
+    float: left;
+    width: 100%;
+    padding-left: 0px !important;
+    padding-top: 30px !important;
+}
+.header-right a {
+    padding: 6px 15px !important;
+    font-weight: 400 !important;
+}
+a.pro-btn {
+    margin-left: 8px;
+}
+.logo a img {
+    width: 80px;
+}
+.header-right {
+    float: right;
+    margin-right: 30px;
+}
+.navbar-handler {
+    display: block;
+    position: absolute;
+    right: 5px;
+    top: 0px;
+}
+ 
+.navbar-handler img {
+    width: 22px;
+}
+.navbar-custom {
+    float: left;
+    margin-left: 0px;
+    width: 100%;
+    display: none;
+}
+
+.menu-item {
+    float: left;
+    margin-right: 0px;
+    width: 100%;
+}
+.menu-item a {
+    color: #154767;
+    font-weight: 500;
+    font-size: 15px;
+    letter-spacing: 0.7px;
+    padding: 10px 10px;
+}
+.textual-content1 h4 {
+    color: #154767;
+    font-size: 30px;
+    letter-spacing: 0.5px;
+    line-height: 42px;
+    margin-bottom: 32px;
+    font-family: 'Roboto Slab';
+    font-weight: 700;
+}
+.textual-content1 h4 br {
+    display: none;
+}
+ul.list-type1 li {
+    color: #154767;
+    font-size: 16px;
+    letter-spacing: 0.3px;
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 22px;
+    max-width: 90%;
+    line-height: 28px;
+}
+ul.list-type1 {
+    padding: 0px;
+    list-style: none;
+    margin-bottom: 40px;
+}
+.appointment-box {
+    float: left;
+    width: 100%;
+    background: white;
+    text-align: center;
+    padding: 40px 20px;
+    border-radius: 10px;
+    margin-top: 50px;
+}
+.appointment-box form {
+    background: #ececec;
+    position: relative;
+    max-width: 100%;
+    margin: auto;
+    border-radius: 4px;
+}
+.treatment-triggers div {
+    float: left;
+    margin-right: 0px;
+    width: 33%;
+    margin-bottom: 20px;
+    padding-right: 20px;
+}
+.treatment-triggers div a img {
+    width: 100%;
+}
+.filters-1 {
+    float: left;
+    width: 100%;
+    text-align: left;
+    margin-top: 30px;
+}
+.filters-1 select {
+    width: 70%;
+    height: 38px;
+    font-size: 14px;
+    border: 1px solid silver;
+    padding: 0px 6px;
+    letter-spacing: 0.6px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+.sidenav-menu {
+    margin-bottom: 40px;
+}
+.booking-cart {
+    margin-top: 50px;
+}
+ 
+.profile-long div:nth-child(1) img {
+    width: 200px;
+}
+.profile-long div:nth-child(1) {
+    float: left;
+    width: 100%;
+    padding-right: 20px;
+    margin-bottom: 20px;
+}
+.profile-long div:nth-child(2) {
+    float: left;
+    width: 100%;
+    padding-left: 10px;
+}
+
+.profile-long div:nth-child(3) {
+    float: left;
+    width: 100%;
+    margin-top: 25px;
+}
+.sec-head4 h4 {
+    color: black;
+    font-size: 30px;
+    letter-spacing: 0.5px;
+    line-height: 44px;
+    font-weight: 700;
+}
+.work-service-box {
+    float: none;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 50px;
+    padding: 0px 30px;
+    max-width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.professional-text {
+    float: left;
+    width: 100%;
+    padding-left: 0px;
+    max-width: 100%;
+    text-align: center;
+    padding-top: 30px;
+}
+.professional-text h4 {
+    color: black;
+    font-weight: 600;
+    font-size: 30px;
+    letter-spacing: 0.6px;
+    margin-bottom: 15px;
+}
+.professional-text p {
+    color: black;
+    font-size: 17px;
+    letter-spacing: 0.6px;
+    line-height: 30px;
+    font-weight: 400;
+    max-width: 100%;
+    margin-bottom: 20px;
+}
+.brand-logos img {
+    height: 40px;
+    margin-bottom: 10px;
+}
+.professional-image img {
+    max-width: 450px;
+}
+.banner-text {
+    float: left;
+    width: 100%;
+    margin-top: 40px;
+    margin-bottom: 50px;
+}
+.banner-text h3 {
+    color: #404780;
+    font-size: 35px;
+    font-weight: 700;
+    line-height: 48px;
+    letter-spacing: 1px;
+    margin-bottom: 25px;
+}
+.banner-image img {
+    width: 100%;
+    max-width: 450px;
+    margin: auto;
+    display: block;
+}
+}
+
+
+
+
+/*Mobile Devices*/
+@media screen and (max-width:519px) and (min-width:320px) { 
+
+
+.navbar-handler {
+    display: block;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    background: #5d4e6d;
+    padding: 5px 4px;
+    margin-top: 30px;
+}
+.footer-list {
+    float: left;
+    width: 100%;
+    padding-left: 0px !important;
+    padding-top: 30px !important;
+}
+.header-right a {
+    padding: 6px 15px !important;
+    font-weight: 400 !important;
+}
+a.pro-btn {
+    margin-left: 8px;
+}
+.logo a img {
+    width: 80px;
+}
+.header-right {
+    float: right;
+    margin-right: 30px;
+}
+.navbar-handler {
+    display: block;
+    position: absolute;
+    right: 5px;
+    top: 0px;
+}
+ 
+.navbar-handler img {
+    width: 22px;
+}
+.navbar-custom {
+    float: left;
+    margin-left: 0px;
+    width: 100%;
+    display: none;
+}
+
+.menu-item {
+    float: left;
+    margin-right: 0px;
+    width: 100%;
+}
+.menu-item a {
+    color: #154767;
+    font-weight: 500;
+    font-size: 15px;
+    letter-spacing: 0.7px;
+    padding: 10px 10px;
+}
+.textual-content1 h4 {
+    color: #154767;
+    font-size: 30px;
+    letter-spacing: 0.5px;
+    line-height: 42px;
+    margin-bottom: 32px;
+    font-family: 'Roboto Slab';
+    font-weight: 700;
+}
+.textual-content1 h4 br {
+	display: none;
+}
+ul.list-type1 li {
+    color: #154767;
+    font-size: 16px;
+    letter-spacing: 0.3px;
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 22px;
+    max-width: 90%;
+    line-height: 28px;
+}
+ul.list-type1 {
+    padding: 0px;
+    list-style: none;
+    margin-bottom: 40px;
+}
+.appointment-box {
+    float: left;
+    width: 100%;
+    background: white;
+    text-align: center;
+    padding: 40px 20px;
+    border-radius: 10px;
+    margin-top: 50px;
+}
+.appointment-box form {
+    background: #ececec;
+    position: relative;
+    max-width: 100%;
+    margin: auto;
+    border-radius: 4px;
+}
+.treatment-triggers div {
+    float: left;
+    margin-right: 0px;
+    width: 33%;
+    margin-bottom: 20px;
+    padding-right: 20px;
+}
+.treatment-triggers div a img {
+    width: 100%;
+}
+.filters-1 {
+    float: left;
+    width: 100%;
+    text-align: left;
+    margin-top: 30px;
+}
+.filters-1 select {
+    width: 70%;
+    height: 38px;
+    font-size: 14px;
+    border: 1px solid silver;
+    padding: 0px 6px;
+    letter-spacing: 0.6px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+.sidenav-menu {
+    margin-bottom: 40px;
+}
+.booking-cart {
+    margin-top: 50px;
+}
+ 
+.profile-long div:nth-child(1) img {
+    width: 200px;
+}
+.profile-long div:nth-child(1) {
+    float: left;
+    width: 100%;
+    padding-right: 20px;
+    margin-bottom: 20px;
+}
+.profile-long div:nth-child(2) {
+    float: left;
+    width: 100%;
+    padding-left: 10px;
+}
+
+.profile-long div:nth-child(3) {
+    float: left;
+    width: 100%;
+    margin-top: 25px;
+}
+.header-login {
+    float: right;
+    padding-top: 22px;
+    margin-right: 30px;
+}
+.sec-head4 h4 {
+    color: black;
+    font-size: 30px;
+    letter-spacing: 0.5px;
+    line-height: 44px;
+    font-weight: 700;
+}
+.work-service-box {
+    float: none;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 50px;
+    padding: 0px;
+    max-width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.professional-text {
+    float: left;
+    width: 100%;
+    padding-left: 0px;
+    max-width: 100%;
+    text-align: center;
+    padding-top: 30px;
+}
+.professional-text h4 {
+    color: black;
+    font-weight: 600;
+    font-size: 30px;
+    letter-spacing: 0.6px;
+    margin-bottom: 15px;
+}
+.professional-text p {
+    color: black;
+    font-size: 17px;
+    letter-spacing: 0.6px;
+    line-height: 30px;
+    font-weight: 400;
+    max-width: 100%;
+    margin-bottom: 20px;
+}
+.brand-logos img {
+    height: 40px;
+    margin-bottom: 10px;
+}
+.banner-text {
+    float: left;
+    width: 100%;
+    margin-top: 40px;
+    margin-bottom: 50px;
+}
+.banner-text h3 {
+    color: #404780;
+    font-size: 35px;
+    font-weight: 700;
+    line-height: 48px;
+    letter-spacing: 1px;
+    margin-bottom: 25px;
+}
+.banner-image img {
+    width: 100%;
+    max-width: 80%;
+    margin: auto;
+    display: block;
+}
+}
