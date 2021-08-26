@@ -1,7 +1,21 @@
 @extends('web.new.includes.master')
 @section('title', 'Select Professional')
 @section('content')
+<<<<<<< HEAD
 @php $totalAmount = 0; @endphp
+=======
+
+
+<style type="text/css">
+  input[type="radio"]{
+     display: none;
+  }
+  input:checked + .book-time-btn {
+  color: white;
+   background: #5D4E6D;
+}
+</style>
+>>>>>>> 06ee61fa9589336a53956d934c9fba308ebebca5
 <section class="pad-top-40 pad-bot-40 bg-pink">
    <div class="container">
       <div class="breadcrumb-custom2 m-b-40">
@@ -63,7 +77,8 @@
                                        @foreach($val->availability as $avail)
                                           @if(ucfirst($avail->week_day) == $day)
                                              @foreach($avail->slots as $slot)
-                                                <button class="book-time-btn"> {{date('h:i A', strtotime($slot->start_booking))}} </button>
+                                             <input type="radio" id="myCheck{{$slot->id}}" name="stickman[]" value="Body Fitness" tabindex="-1"> 
+                                             <label class="book-time-btn"  for="myCheck{{$slot->id}}" >{{date('h:i A', strtotime($slot->start_booking))}} </label>                        
                                              @endforeach
                                           @endif
                                        @endforeach
