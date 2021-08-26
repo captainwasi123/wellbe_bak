@@ -4,6 +4,7 @@
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="host" content="{{URL::to('/')}}">
+      <meta name="token" content="{{csrf_token()}}">
       <title> @yield('title') | Wellbe </title>
       @include('web.new.includes.style')
       @yield('addStyle')

@@ -1,3 +1,5 @@
+var ref = $('meta[name=host]').attr('content');
+
  $(document).ready(function(){
 
 
@@ -165,8 +167,10 @@ $(document).ready(function() {
 
 
 $(function() {
+  var dateToday = new Date();
   $( ".calendar" ).datepicker({
-    dateFormat: 'dd/mm/yy',
+    dateFormat: 'dd-mm-yy',
+    minDate: dateToday,
     firstDay: 1
   });
   
@@ -178,10 +182,30 @@ $(function() {
   
   
   $(".calendar").on("change",function(){
-    var $me = $(this),
-        $selected = $me.val(),
-        $parent = $me.parents('.date-picker');
-    $parent.find('.result').children('span').html($selected);
+    var me = $(this),
+        selected = me.val(),
+        parent = me.parents('.date-picker');
+        parent.find('.result').children('span').html(selected);
+        $('#professionalBlock').html('<img src="'+ref+'/public/assets/web/new/images/loader.gif"/>');
+        var token = $('meta[name=token]').attr('content');
+        var formData = {date:selected, _token:token}; //Array 
+        $('#bookingDate').html(selected);
+        setTimeout(function(){
+          $.ajax({
+              url : ref+"/treatments/booking/getProfessionals", // Url of backend (can be python, php, etc..)
+              type: "POST", // data type (can be get, post, put, delete)
+              data : formData, // data in json format
+              async : false, // enable or disable async (optional, but suggested as false if you need to populate data afterwards)
+              success: function(response, textStatus, jqXHR) {
+                $('#professionalBlock').html(response);
+              },
+              error: function (jqXHR, textStatus, errorThrown) {
+              console.log(jqXHR);
+                  console.log(textStatus);
+                  console.log(errorThrown);
+              }
+          });
+        }, 100);
   });
 });
 

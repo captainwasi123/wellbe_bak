@@ -13,3 +13,7 @@
 .feder-profile img {
     border-radius: 50%;
 }
+.date-picker .ui-state-disabled .ui-state-default {
+    background-color: #dedede;
+    color: #fff;
+}

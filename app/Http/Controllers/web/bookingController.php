@@ -51,4 +51,26 @@ class bookingController extends Controller
 
             return view('web.new.booking.response.profile', ['data' => $data]);
         }
+
+        function getProfessionals(Request $request){
+            $day = date('l', strtotime($request->date));
+            $services = array();
+            $cart = session()->get('cart');
+
+            foreach($cart['services'] as $val){
+                array_push($services, base64_decode($val['id']));
+            }
+            $data['day'] = $day;
+            $data['date'] = date('Y-m-d', strtotime($request->date));
+            $data['users'] = User::where('status', '1')
+                            ->whereHas('services', function($q) use ($services){
+                                return $q->whereIn('service_id', $services);
+                            })
+                            ->whereHas('availability', function($q) use ($day){
+                                return $q->where('week_day', $day);
+                            })
+                            ->get();
+
+            return view('web.new.booking.response.step1')->with($data);
+        }
 }

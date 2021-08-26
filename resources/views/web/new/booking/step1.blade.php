@@ -1,7 +1,7 @@
 @extends('web.new.includes.master')
 @section('title', 'Select Professional')
 @section('content')
-
+@php $totalAmount = 0; @endphp
 <section class="pad-top-40 pad-bot-40 bg-pink">
    <div class="container">
       <div class="breadcrumb-custom2 m-b-40">
@@ -25,7 +25,7 @@
                         </div>
                      </div>
                   </div>
-                     <div id="professionalBlock">
+                  <div id="professionalBlock">
                      <div class="bookings-trigger">
                         <ul class="nav nav-tabs no-border" role="tablist">
                            <li class="nav-item">
@@ -71,6 +71,13 @@
                                     <button class="book-now-btn1"> <i class="fa fa-angle-right"> </i> </button>
                                  </div>
                               @endforeach
+                              @if(count($users) == 0)
+                                 <div class="empty-bookings">
+                                    <img src="{{URL::to('/public/assets/web/new')}}/images/empty-booking.jpg">
+                                    <h4> Sorry, we dont have anybody available to fulfill this order. Try another date. </h4>
+                                    <p> Tip: If your order contains seperate types of treatments, you may need to split these out as many of our therapist are specialists. </p>
+                                 </div>
+                              @endif
                            </div>
                         </div>
                         <div class="tab-pane" id="tabs-2" role="tabpanel">
@@ -113,6 +120,7 @@
                            <h5>{{$val['quantity']}}x {{$val['title']}} </h5>
                            <p> <b class="col-green"> From ${{number_format($val['price'], 2)}} </b> {{$val['duration']}} minutes </p>
                         </div>
+                        @php $totalAmount = $totalAmount+($val['price']*$val['quantity']); @endphp
                      @endforeach
                      @if(count(Session::get('cart')) == 0)
                         <h4>No Items Found.</h4>
@@ -122,16 +130,22 @@
                   @endif
                   <div class="booking-details-item m-t-20">
                      <h6> <img src="{{URL::to('/public/assets/web/new')}}/images/booking-icon1.jpg"> Date & Time </h6>
-                     <h5> {{$date}} - 08:00 AM </h5>
+                     <h5> <span id="bookingDate">{{date('d-m-Y', strtotime($date))}}</span> - <span id="bookingTime"></span> </h5>
                   </div>
                   <div class="book-summary-instructions m-t-50">
-                     <h6> Total <b> $0.00 </b> </h6>
+                     <h6> Total <b> ${{number_format($totalAmount, 2)}} </b> </h6>
                   </div>
                   <div class="block-element">
                      <div class="row m-t-20 m-b-10">
-                        <div class="col-md-12" style="padding-left: 30px;padding-right: 30px;">
-                           <button class="submit-btn1 block-element1" style="padding-left: 0px;padding-right: 0px;"> Continue to Checkout </button>
-                        </div>
+                        <form method="post" action="{{route('treatments.booking.step2')}}">
+                           @csrf
+                           <input type="hidden" name="booking_date" id="booking_date" value="{{date('d-m-Y', strtotime($date))}}">
+                           <input type="hidden" name="booking_time" id="booking_time" value="">
+                           <input type="hidden" name="booking_prac" id="booking_prac" value="">
+                           <div class="col-md-12" style="padding-left: 30px;padding-right: 30px;">
+                              <button type="button" class="submit-btn1 block-element1" style="padding-left: 50px;padding-right: 50px;"> Continue to Checkout </button>
+                           </div>
+                        </form>
                      </div>
                   </div>
                </div>

@@ -48,8 +48,12 @@ use Illuminate\Support\Facades\Route;
 				Route::post('step_1', 'bookingController@step1Session')->name('treatments.booking.step1');
 				Route::get('step_1', 'bookingController@step1')->name('treatments.booking.step1');
 
+				Route::post('step_2', 'bookingController@step2Session')->name('treatments.booking.step2');
+				Route::get('step_2', 'bookingController@step2')->name('treatments.booking.step2');
+
 				//Professional
 				Route::get('profile/{id}', 'bookingController@viewProfile');
+				Route::post('getProfessionals', 'bookingController@getProfessionals');
 			});
 		});
 
