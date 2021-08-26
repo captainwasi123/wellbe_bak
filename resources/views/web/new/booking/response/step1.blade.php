@@ -35,7 +35,8 @@
                   @foreach($val->availability as $avail)
                      @if(ucfirst($avail->week_day) == $day)
                         @foreach($avail->slots as $slot)
-                           <button class="book-time-btn"> {{date('h:i A', strtotime($slot->start_booking))}} </button>
+                           <input type="radio" id="myCheck{{$slot->id}}" class="timeslot" name="timeslot" data-time="{{date('h:i A', strtotime($slot->start_booking))}}" data-prac="{{base64_encode($val->id)}}" tabindex="-1"> 
+                           <label class="book-time-btn"  for="myCheck{{$slot->id}}" >{{date('h:i A', strtotime($slot->start_booking))}} </label>  
                         @endforeach
                      @endif
                   @endforeach

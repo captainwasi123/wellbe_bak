@@ -190,6 +190,7 @@ $(function() {
         var token = $('meta[name=token]').attr('content');
         var formData = {date:selected, _token:token}; //Array 
         $('#bookingDate').html(selected);
+        $('#booking_date').val(selected);
         setTimeout(function(){
           $.ajax({
               url : ref+"/treatments/booking/getProfessionals", // Url of backend (can be python, php, etc..)

@@ -43,6 +43,35 @@ class bookingController extends Controller
         return view('web.new.booking.step1')->with($data);
     }
 
+
+    function step2Session(Request $request){
+        $data = $request->all();
+        $cart = session()->get('cart');
+        $cart['booking'] = [
+                "date"    => $data['booking_date'],
+                "time"    => $data['booking_time'],
+                "practitioner"    => $data['booking_prac'],
+        ];
+        session()->put('cart', $cart);
+
+        return redirect(route('treatments.booking.step2'));
+    }
+    function step2(){
+        $cart = session()->get('cart');
+        
+        $data['user'] = User::find(base64_decode($cart['booking']['practitioner']));
+        
+        return view('web.new.booking.step2')->with($data);
+    }
+
+    function instructions(Request $request){
+        $cart = session()->get('cart');
+        $cart['booking']["instruction"] = $request->instructions;
+        session()->put('cart', $cart);
+
+        return redirect()->back();
+    }
+
     //Professional Profile
         function viewProfile($id){
             $id = base64_decode($id);

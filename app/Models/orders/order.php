@@ -19,34 +19,33 @@ class order extends Model
     protected $table = 'tbl_order_info';
 
     public static function makeOrder(array $data){
-        $start_time = $data['start_time'];
+        $start_time = $data['booking']['time'];
         $accounts = array('sub_total' => 0,'total_amount' => 0,'gst' => 0,'pract_earning' => 0);
 
         $o = new order;
-        $o->pract_id = base64_decode($data['refid']);
+        $o->pract_id = base64_decode($data['booking']['practitioner']);
         $o->booker_id = Auth::id();
-        $o->start_at = date('Y-m-d', strtotime($data['booking_date']));
+        $o->start_at = date('Y-m-d', strtotime($data['booking']['date']));
         $o->status = '9';
         $o->save(); 
         $id = $o->id;
-        $c = count($data['service']);
 
-        for ($i=0; $i < $c; $i++) { 
+        foreach ($data['services'] as $val) { 
 
-            $ser = services::find($data['service'][$i]);
+            $ser = services::find(base64_decode($val['id']));
             $end_time = date('H:i:s',strtotime('+'.$ser->duration.' minutes',strtotime($start_time)));
             $d = new orderDetail;
             $d->order_id = $id;
-            $d->service_id = $data['service'][$i];
-            $d->qty = $data['qty'][$i];
-            $d->price = ($ser->price*$data['qty'][$i]);
-            $d->serve_date = date('Y-m-d', strtotime($data['booking_date']));
+            $d->service_id = base64_decode($val['id']);
+            $d->qty = $val['quantity'];
+            $d->price = ($ser->price*$val['quantity']);
+            $d->serve_date = date('Y-m-d', strtotime($data['booking']['date']));
             $d->start_time = $start_time;
             $d->end_time = $end_time;
             $d->save();
 
             //Calculating Subtotal
-            $accounts['sub_total'] = $accounts['sub_total']+($ser->price*$data['qty'][$i]);
+            $accounts['sub_total'] = $accounts['sub_total']+($ser->price*$val['quantity']);
         }
 
         //Calculating GST/Commission

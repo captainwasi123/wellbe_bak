@@ -1,21 +1,8 @@
 @extends('web.new.includes.master')
 @section('title', 'Select Professional')
 @section('content')
-<<<<<<< HEAD
 @php $totalAmount = 0; @endphp
-=======
 
-
-<style type="text/css">
-  input[type="radio"]{
-     display: none;
-  }
-  input:checked + .book-time-btn {
-  color: white;
-   background: #5D4E6D;
-}
-</style>
->>>>>>> 06ee61fa9589336a53956d934c9fba308ebebca5
 <section class="pad-top-40 pad-bot-40 bg-pink">
    <div class="container">
       <div class="breadcrumb-custom2 m-b-40">
@@ -77,13 +64,12 @@
                                        @foreach($val->availability as $avail)
                                           @if(ucfirst($avail->week_day) == $day)
                                              @foreach($avail->slots as $slot)
-                                             <input type="radio" id="myCheck{{$slot->id}}" name="stickman[]" value="Body Fitness" tabindex="-1"> 
-                                             <label class="book-time-btn"  for="myCheck{{$slot->id}}" >{{date('h:i A', strtotime($slot->start_booking))}} </label>                        
+                                                <input type="radio" id="myCheck{{$slot->id}}" class="timeslot" name="timeslot" data-time="{{date('h:i A', strtotime($slot->start_booking))}}" data-prac="{{base64_encode($val->id)}}" tabindex="-1"> 
+                                                <label class="book-time-btn"  for="myCheck{{$slot->id}}" >{{date('h:i A', strtotime($slot->start_booking))}} </label>                        
                                              @endforeach
                                           @endif
                                        @endforeach
                                     </div>
-                                    <button class="book-now-btn1"> <i class="fa fa-angle-right"> </i> </button>
                                  </div>
                               @endforeach
                               @if(count($users) == 0)
@@ -157,9 +143,15 @@
                            <input type="hidden" name="booking_date" id="booking_date" value="{{date('d-m-Y', strtotime($date))}}">
                            <input type="hidden" name="booking_time" id="booking_time" value="">
                            <input type="hidden" name="booking_prac" id="booking_prac" value="">
-                           <div class="col-md-12" style="padding-left: 30px;padding-right: 30px;">
-                              <button type="button" class="submit-btn1 block-element1" style="padding-left: 50px;padding-right: 50px;"> Continue to Checkout </button>
-                           </div>
+                           @if(Auth::check())
+                              <div class="col-md-12" style="padding-left: 30px;padding-right: 30px;">
+                                 <button type="button" class="submit-btn1 block-element1" id="checkout_btn" style="padding-left: 50px;padding-right: 50px;"> Continue to Checkout </button>
+                              </div>
+                           @else
+                              <div class="col-md-12" style="padding-left: 30px;padding-right: 30px;">
+                                 <a href="javascript:void(0)" class="submit-btn1 block-element1" style="padding-left: 50px;padding-right: 50px;" data-toggle="modal" data-target=".loginAuthModal"> Continue to Checkout </a>
+                              </div>
+                           @endif
                         </form>
                      </div>
                   </div>
@@ -202,6 +194,31 @@
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
             <div class="feder-profile" id="userProfileModalBody">
                
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+
+<div class="modal popup-1 fade loginAuthModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+   <div class="modal-dialog modal-lg" role="document" style="max-width: 550px;">
+      <div class="modal-content">
+         <div class="rounded-1 bg-white  ">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            <div class="card-form block-element text-center">
+               <div class="block-element card-form-head m-b-20 m-t-10">
+                  <h2 class="text-left">
+                  Login or Sign up  </h2>
+                  <p class="text-left"> You need to login or create a new account to continue with the booking process </p>
+               </div>
+               <div class="block-element">
+                  <div class="row m-b-10">
+                     <div class="col-md-12">
+                        <p>   <a href="{{URL::to('/login')}}" class="custom-anchor1 text-center" style="min-width: 230px;"> Login </a> </p>
+                        <p>  <a href="{{URL::to('/register')}}" class="custom-anchor2 text-center no-border" style="min-width: 230px;"> <b> Create Accounts </b> </a> </p>
+                     </div>
+                  </div>
+               </div>
             </div>
          </div>
       </div>

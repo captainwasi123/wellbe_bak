@@ -17,3 +17,13 @@
     background-color: #dedede;
     color: #fff;
 }
+.timeslot{
+    display: none;
+}
+.timeslot:checked + .book-time-btn {
+    color: white;
+    background: #5D4E6D;
+}
+.book-time-btn{
+    cursor: pointer;
+}

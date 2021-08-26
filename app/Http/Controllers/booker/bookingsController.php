@@ -32,8 +32,9 @@ class bookingsController extends Controller
         return view('booker.index', ['upcomming' => $upcomming, 'rating' => $rating]);
     }
 
-    function bookOrder(Request $request){
-        $data = $request->all();
+    function bookOrder(){
+        $data = session()->get('cart');
+        //dd($data);
         $id = order::makeOrder($data);
         session()->forget('cart');
         $ret_data = explode('|', $id);
@@ -50,7 +51,7 @@ class bookingsController extends Controller
         $data['mtp'] = MarketplaceSetting::latest()->first();
          \App\Helpers\CommonHelpers::send_email('NewBookingCustomer', $data, $order->booker->email, 'Booking Confirmation', $from_email = 'info@divsnpixel.com', $from_name = 'Wallbe');
          \App\Helpers\CommonHelpers::send_email('NewBookingPractitioner', $data, $order->practitioner->email, 'Booking Confirmation', $from_email = 'info@divsnpixel.com', $from_name = 'Wallbe');
-        return 'order';
+        return redirect(route('home'));
     }
 
     function upcomming_booking(){

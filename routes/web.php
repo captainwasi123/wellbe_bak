@@ -51,6 +51,8 @@ use Illuminate\Support\Facades\Route;
 				Route::post('step_2', 'bookingController@step2Session')->name('treatments.booking.step2');
 				Route::get('step_2', 'bookingController@step2')->name('treatments.booking.step2');
 
+				Route::post('instruction', 'bookingController@instructions')->name('treatments.booking.instruction');
+
 				//Professional
 				Route::get('profile/{id}', 'bookingController@viewProfile');
 				Route::post('getProfessionals', 'bookingController@getProfessionals');
@@ -185,7 +187,7 @@ use Illuminate\Support\Facades\Route;
 		Route::get('/share', 'shareController@index')->name('booker.share');
 
 		//Book an order
-		Route::post('/order/book', 'bookingsController@bookOrder')->name('booker.order');
+		Route::get('/order/book', 'bookingsController@bookOrder')->name('booker.order');
 		Route::get('/order/confirmation/{id}', 'bookingsController@confirmOrder');
 
 	});

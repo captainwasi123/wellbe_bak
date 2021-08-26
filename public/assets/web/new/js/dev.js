@@ -38,6 +38,17 @@ $(document).ready(function(){
 		  $('#userProfileModalBody').html( data );
 		});
 	});
+
+	$(document).on('change', '.timeslot', function(){
+		let time = $(this).data('time');
+		let prac = $(this).data('prac');
+
+		$('#bookingTime').html(time);
+		$('#booking_time').val(time);
+		$('#booking_prac').val(prac);
+
+		$("#checkout_btn").removeAttr("type");
+	});
 });
 
 
