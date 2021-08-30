@@ -27,3 +27,103 @@
 .book-time-btn{
     cursor: pointer;
 }
+
+.booking-features {
+ float: left;
+ width: 100%;
+ display: block;
+ margin-bottom: 0px !important;
+ }
+ .feature-box5 {
+ background: white;
+ padding: 20px 0px;
+ text-align: center;
+ border-radius: 10px;
+ height: 145px;
+ cursor: pointer;
+ transition: all 0.2s ease-in-out;
+ -webkit-transition: all 0.2s ease-in-out;
+ width: 100%;
+ float: left;
+ margin-right: 0px;
+ margin-left: 0px;
+ display: inline-block;
+ }
+ .featurebox-wrapper {
+ padding: 0px 6px;
+ }
+ .feature-box5:hover {
+ transform: scale(1.02);
+ -webkit-transform: scale(1.02);
+ }
+ .feature-box5 img {
+ margin: auto;
+ }
+ .booking-features::-webkit-scrollbar-track
+ {
+ background-color: #F5F5F5;
+ }
+ .booking-features::-webkit-scrollbar
+ {
+ width: 4px;
+ height: 6px;
+ background-color: white;
+ }
+ .booking-features::-webkit-scrollbar-thumb
+ {
+ background-color: silver;
+ }
+ .booking-features button.slick-arrow {
+ background: #5d4e6d;
+ color: white !important;
+ border-radius: 100%;
+ width: 25px;
+ height: 25px;
+ }
+ .booking-features button.slick-arrow::before {
+ color:white !important;
+ line-height: 28px !important;
+ }
+ .booking-features ul.slick-dots {
+ display: none !important;
+ }
+ @media screen and (max-width:1200px) and (min-width:993px) { 
+ .booking-features button.slick-next {
+ right: -10px !important;
+ z-index: 9999;
+ }
+ .booking-features button.slick-prev {
+ left: -10px !important;
+ z-index: 9999;
+ }
+ }
+ @media screen and (max-width:992px) and (min-width:767px) { 
+ .booking-features button.slick-next {
+ right: -10px !important;
+ z-index: 9999;
+ }
+ .booking-features button.slick-prev {
+ left: -10px !important;
+ z-index: 9999;
+ }
+ }
+ @media screen and (max-width:768px) and (min-width:520px) { 
+ .booking-features {
+ float: left;
+ width: 100%;
+ display: block;
+ margin-bottom: 0px !important;
+ padding: 0px 15px;
+ }
+ .booking-features button.slick-next {
+ right: -10px !important;
+ }
+ .booking-features button.slick-prev {
+ left: -10px !important;
+ }
+ }
+ @media screen and (max-width:519px) and (min-width:320px) { 
+ .feature-box5 {
+ margin: 0px 0px 0px 0px !important;
+ }
+ }

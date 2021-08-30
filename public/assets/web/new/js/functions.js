@@ -7,7 +7,7 @@ var ref = $('meta[name=host]').attr('content');
 
    	$('.navbar-handler').children("img").click(function(){
    		if(val1==0){
-   			$(this).attr("src","images/cross.png");
+   			$(this).attr("src",ref+"/public/assets/web/new/images/cross.png");
      		$('.navbar-custom').slideToggle();
 
      		val1 = 1;
@@ -15,7 +15,7 @@ var ref = $('meta[name=host]').attr('content');
      	}
      	else {
      		$('.navbar-custom').slideToggle();
-     		$(this).attr("src","images/hamburger.png");
+     		$(this).attr("src",ref+"/public/assets/web/new/images/hamburger.png");
      		val1 = 0;
 
      	}
@@ -210,3 +210,64 @@ $(function() {
   });
 });
 
+
+
+ $('.booking-features').slick({
+  dots: true,
+  infinite: true,
+  speed: 300,
+  slidesToShow:7,
+  slidesToScroll: 1,
+  autoplay: false,
+  focusOnSelect: true,
+  autoplaySpeed: 2000,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: true
+      }
+    },
+
+    {
+      breakpoint: 768,
+      settings: {
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: true
+      }
+    },
+
+    {
+      breakpoint: 700,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: true
+      }
+    },
+
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 1
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1
+      }
+    }
+    // You can unslick at a given breakpoint now by adding:
+    // settings: "unslick"
+    // instead of a settings object
+  ]
+});

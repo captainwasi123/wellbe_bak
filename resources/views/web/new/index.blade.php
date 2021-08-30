@@ -114,7 +114,7 @@
                     </div>
                  </div>
                  <div class="service-only-image">
-                    <img src="{{URL::to('/public/assets/web/new/')}}/images/massage-1.png" class="mobile-off">
+                    <img src="{{URL::to('/public/assets/web/new/')}}/images/massage-1.PNG" class="mobile-off">
                     <img src="{{URL::to('/public/assets/web/new/')}}/images/massage-mobile-image.jpg" class="mobile-onn">
                  </div>
               </div>
@@ -217,9 +217,7 @@
         <div class="testimonial-slider">
            <div>
               <div class="testimonial-box">
-                 <div class="testim-image">
-                    <img src="{{URL::to('/public/assets/web/new/')}}/images/user-1.png">
-                 </div>
+               <br>
                  <div class="testim-review">
                     <h6> <i class="fa fa-star col-blue"> </i> <i class="fa fa-star col-blue"> </i> <i class="fa fa-star col-blue"> </i> <i class="fa fa-star col-blue"> </i> <i class="fa fa-star col-silver"> </i>  </h6>
                     <h5> Paige A </h5>
@@ -229,9 +227,7 @@
            </div>
            <div>
               <div class="testimonial-box">
-                 <div class="testim-image">
-                    <img src="{{URL::to('/public/assets/web/new/')}}/images/user-2.png">
-                 </div>
+               <br>
                  <div class="testim-review">
                     <h6> <i class="fa fa-star col-blue"> </i> <i class="fa fa-star col-blue"> </i> <i class="fa fa-star col-blue"> </i> <i class="fa fa-star col-blue"> </i> <i class="fa fa-star col-silver"> </i>  </h6>
                     <h5> Hayden W </h5>
@@ -241,9 +237,7 @@
            </div>
            <div>
               <div class="testimonial-box">
-                 <div class="testim-image">
-                    <img src="{{URL::to('/public/assets/web/new/')}}/images/user-3.png">
-                 </div>
+               <br>
                  <div class="testim-review">
                     <h6> <i class="fa fa-star col-blue"> </i> <i class="fa fa-star col-blue"> </i> <i class="fa fa-star col-blue"> </i> <i class="fa fa-star col-blue"> </i> <i class="fa fa-star col-silver"> </i>  </h6>
                     <h5> Alex B </h5>
@@ -253,9 +247,7 @@
            </div>
            <div>
               <div class="testimonial-box">
-                 <div class="testim-image">
-                    <img src="{{URL::to('/public/assets/web/new/')}}/images/user-4.png">
-                 </div>
+               <br>
                  <div class="testim-review">
                     <h6> <i class="fa fa-star col-blue"> </i> <i class="fa fa-star col-blue"> </i> <i class="fa fa-star col-blue"> </i> <i class="fa fa-star col-blue"> </i> <i class="fa fa-star col-silver"> </i>  </h6>
                     <h5> Hayden W </h5>

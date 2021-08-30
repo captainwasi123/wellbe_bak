@@ -2194,14 +2194,17 @@ margin-left: 7px;
     max-height: 50px;
     background: white;
     position: relative;
- 
     transition: all 0.3s 0s ease-in-out;
+
 }
 .date-picker .input {
   width: 100%;
   height: 50px;
   font-size: 0;
   cursor: pointer;
+}
+.date-picker .input{
+    cursor: context-menu;
 }
 .date-picker .input .result, .date-picker .input button {
   display: inline-block;
@@ -2225,12 +2228,7 @@ margin-left: 7px;
   border: 0;
   font-size: 18px;
   padding: 0;
-}
-.date-picker .input button:hover {
-  background-color: #68768A;
-}
-.date-picker .input button:focus {
-  outline: 0;
+  cursor: context-menu !important;
 }
 .date-picker .calendar {
     position: relative;
@@ -2331,6 +2329,7 @@ margin-left: 7px;
 }
 .date-picker.open .input button {
   background: #68768A;
+  cursor: context-menu !important;
 }
 
 .date-picker .input .result {
@@ -2440,7 +2439,7 @@ margin-left: 7px;
     width: 300px;
     height: 50px;
     font-size: 0;
-    cursor: pointer;
+    cursor: context-menu;
     margin-bottom: 15px !important;
     position: absolute;
     right: 0px;

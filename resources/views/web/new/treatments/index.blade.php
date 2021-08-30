@@ -17,9 +17,11 @@
       <div class="container">
          <div class="booking-features">
             @foreach($categories as $key => $val)
-               <div class="feature-box5 filterCat {{empty($cat_name) && ($key == 0) ? 'active' : ''}} {{!empty($cat_name) && ($cat_name == $val->category) ? 'active' : ''}}" data-val="{{$val->category}}">
-                  <img src="{{URL::to($val->image)}}">
-                  <h4> {{$val->category}} </h4>
+               <div class="featurebox-wrapper">
+                  <div class="feature-box5 filterCat {{empty($cat_name) && ($key == 0) ? 'active' : ''}} {{!empty($cat_name) && ($cat_name == $val->category) ? 'active' : ''}}" data-val="{{$val->category}}">
+                     <img src="{{URL::to($val->image)}}">
+                     <h4> {{$val->category}} </h4>
+                  </div>
                </div>
             @endforeach
          </div>

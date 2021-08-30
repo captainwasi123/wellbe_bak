@@ -40,8 +40,8 @@
          </div>
       </div>
       <div class="footer-bottom">
-         <h4> <a href=""> <img src="{{URL::to('/public/assets/web/new/')}}/images/wellbe-logo.png"> </a> </h4>
-         <h6> <a href=""> <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-facebook.svg"> </a>  <a href=""> <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-instagram.svg"> </a> </h6>
+         <h4> <a > <img src="{{URL::to('/public/assets/web/new/')}}/images/wellbe-logo.png"> </a> </h4>
+         <h6> <a href="https://www.facebook.com/nzwellbe/" target="_blank"> <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-facebook.svg"> </a>  <a href="https://www.instagram.com/wellbe_nz/" target="_blank"> <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-instagram.svg"> </a> </h6>
       </div>
    </div>
 </footer>
