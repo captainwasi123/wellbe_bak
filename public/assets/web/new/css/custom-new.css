@@ -185,6 +185,12 @@ input[type=number] {
     margin-top: -135px;
     margin-right: 25px;
     width: 97%;
+    background-image: url(../images/service-bg-svg.svg);
+    background-size: 406px;
+    background-repeat: no-repeat;
+    background-position: top left;
+    padding-bottom: 50px;
+    background-position-y: 20px;
 }
 .service-only-image img {
     width: 100%;
@@ -477,7 +483,7 @@ img.service-img {
 .map-persons {
     float: left;
     width: 100%;
-    background-image: url(../images/map-bg.png);
+    background-image: url(../images/map-bg-svg.svg);
     background-size: auto 100%;
     background-repeat: no-repeat;
     background-position: center center;
@@ -546,11 +552,15 @@ img.service-img {
 
 
 
-
 .testim-review h6 {
     color: #053B5D;
     font-size: 15px;
     letter-spacing: -0.5px;
+    text-align: center;
+}
+.testim-review h6 img {
+    margin: auto !important;
+    display: inline-block !important;
 }
 .testim-image img {
     border-radius: 100%;
@@ -594,41 +604,41 @@ img.service-img {
 }
 
 .bg-1 {
-    background-image: url(../images/bg-1.jpg);
-    background-size: cover;
+    background-image: url(../images/vector-line1.svg);
+    background-size: 33% auto;
     background-repeat: no-repeat;
     background-position: bottom right;
+    background-color: #dbefe3;
 }
 
 .bg-2 {
-    background-image: url(../images/bg-2.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: top center;
+    background-image: url(../images/curve-line-svg.svg), url(../images/dots-left-svg2.svg), url(../images/dots-right-svg2.svg);
+    background-size: 48% auto, 150px, 150px;
+    background-repeat: no-repeat,no-repeat,no-repeat;
+    background-position: top left , bottom left, center right;
 }
 
 .bg-3 {
-    background-image: url(../images/bg-3.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: top center;
+    background-image: url(../images/dots-left-svg3.svg),url(../images/dots-right-svg3.svg);
+    background-size: 150px,220px;
+    background-repeat: no-repeat,no-repeat;
+    background-position: bottom left ,top right;
+    background-color: #fbece7;
 }
-
 .bg-4 {
-    background-image: url(../images/bg-4.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: top center;
+    background-image: url(../images/dots-left-svg.svg), url(../images/dots-right-svg.svg);
+    background-size: 130px,160px;
+    background-repeat: no-repeat,no-repeat;
+    background-position: center left ,center right;
 }
-
 .bg-5 {
-    background-image: url(../images/bg-5.jpg);
-    background-size: cover;
+    background-image: url(../images/vector-line1.svg);
+    background-size: 30%;
     background-repeat: no-repeat;
-    background-position: top center;
+    background-position: bottom left;
+    background-color: #dbefe3;
+    padding: 50px 0px !important;
 }
-
-
 
 .mobile-off {
     display: block;
@@ -893,11 +903,9 @@ section.banner-sec {
 
 .sec-head5 .service-only-image img {
     width: 100%;
-    max-width: 700px;
+    max-width: 280px;
     float: right;
 }
-
-
 
 .no-pad {
     padding:0px !important;
@@ -2477,7 +2485,17 @@ span.circle-1 {
     height: 90px;
 }
 
-
+.set a i {
+    position: absolute;
+    right: 0px;
+    top: 5px;
+    height: 40px;
+    width: 45px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 22px;
+    color: #b1b1b1;
+}
 
 
 
@@ -2501,6 +2519,17 @@ span.circle-1 {
 
 
 @media screen and (max-width:992px) and (min-width:768px) { 
+
+    .service-only-image {
+ 
+ 
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: top left;
+    padding-bottom: 50px;
+    background-position-y: 0px;
+    background-position-x: -100px;
+}
 .testimonial-slider button.slick-next {
     right: 42%;
 }
@@ -2628,9 +2657,37 @@ span.circle-1 {
     max-width: 100%;
     display: block;
 }
+.bg-4 {
+    background-image: url(../images/dots-left-svg.svg), url(../images/dots-right-svg.svg);
+    background-size: 120px,150px;
+    background-repeat: no-repeat,no-repeat;
+    background-position: top left ,bottom right;
+}
+.bg-2 {
+    background-image: url(../images/curve-line-svg.svg), url(../images/dots-left-svg2.svg), url(../images/dots-right-svg2.svg);
+    background-size: 48% auto, 150px, 150px;
+    background-repeat: no-repeat,no-repeat,no-repeat;
+    background-position: 0px 60px , bottom left, top right;
+}
 }
 
 @media screen and (max-width:767px) and (min-width:520px) { 
+
+    .service-only-image {
+    float: left;
+    max-width: 580px;
+    margin-top: -135px;
+    margin-right: 25px;
+    width: 97%;
+ 
+    background-size: 406px;
+    background-repeat: no-repeat;
+    background-position: top left;
+    padding-bottom: 50px;
+    background-position-y: 20px;
+}
+
+
 .work-service-box2 {
     text-align: left;
     padding: 0px;
@@ -2812,6 +2869,29 @@ img.shape-line1 , img.shape-line2 {
     vertical-align: top;
     margin: 0px 2% 0 2%;
 }
+.bg-1 {
+    background-size: 400px;
+}
+.bg-4 {
+    background-image: url(../images/dots-left-svg.svg), url(../images/dots-right-svg.svg);
+    background-size: 120px,150px;
+    background-repeat: no-repeat,no-repeat;
+    background-position: top left ,bottom right;
+}
+.bg-2 {
+    background-image: url(../images/curve-line-svg.svg), url(../images/dots-left-svg2.svg), url(../images/dots-right-svg2.svg);
+    background-size: 70% auto, 130px, 130px;
+    background-repeat: no-repeat,no-repeat,no-repeat;
+    background-position: 0px 70px , bottom left, top right;
+}
+.bg-3 {
+ 
+    background-size: 120px,150px;
+ 
+}
+section.banner-sec.bg-5 {
+    background-size: 500px !important;
+}
 }
 
 
@@ -2876,8 +2956,10 @@ img.shape-line1 , img.shape-line2 {
 .service-only-image {
     float: left;
     max-width: 100%;
-    margin-top: -220px;
+    margin-top: -100px;
     margin-right: 0px;
+    background-size: cover;
+    background-position-x: -100px;
 }
 .service-only-image img {
     width: 105%;
@@ -2942,7 +3024,7 @@ body .container {
 }
 section.banner-sec {
     padding: 30px 0px;
-    background-size: 800px;
+    background-size: 300px;
     background-color: #dbefe3;
 }
 section.banner-sec .container {
@@ -3198,6 +3280,26 @@ section.banner-sec.bg-5 {
     margin-bottom: 12px;
     font-weight: 500;
     padding: 0px 7px;
+}
+.bg-4 {
+    background-image: url(../images/dots-left-svg.svg), url(../images/dots-right-svg.svg);
+    background-size: 20%,28%;
+    background-repeat: no-repeat,no-repeat;
+    background-position: top left ,bottom right;
+}
+.bg-2 {
+    background-image: url(../images/curve-line-svg.svg), url(../images/dots-left-svg2.svg), url(../images/dots-right-svg2.svg);
+    background-size: 100% auto, 100px, 100px;
+    background-repeat: no-repeat,no-repeat,no-repeat;
+    background-position: 0px 180px , bottom left, top right;
+}
+.bg-3 {
+ 
+    background-size: 100px,120px;
+ 
+}
+section.banner-sec.bg-5 {
+    background-size: 300px !important;
 }
 }
 

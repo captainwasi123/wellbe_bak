@@ -114,8 +114,8 @@
                     </div>
                  </div>
                  <div class="service-only-image">
-                    <img src="{{URL::to('/public/assets/web/new/')}}/images/massage-1.PNG" class="mobile-off">
-                    <img src="{{URL::to('/public/assets/web/new/')}}/images/massage-mobile-image.jpg" class="mobile-onn">
+                    <img src="{{URL::to('/public/assets/web/new/')}}/images/massage-1.PNG">
+                    <!-- <img src="{{URL::to('/public/assets/web/new/')}}/images/massage-mobile-image.jpg" class="mobile-onn"> -->
                  </div>
               </div>
            </div>
@@ -219,7 +219,7 @@
               <div class="testimonial-box">
                <br>
                  <div class="testim-review">
-                    <h6> <i class="fa fa-star col-blue"> </i> <i class="fa fa-star col-blue"> </i> <i class="fa fa-star col-blue"> </i> <i class="fa fa-star col-blue"> </i> <i class="fa fa-star col-silver"> </i>  </h6>
+                    <h6>  <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> </h6>
                     <h5> Paige A </h5>
                     <p> Great service, therapists are always polite, professional and friendly. Very convenient - highly recommend. </p>
                  </div>
@@ -229,7 +229,7 @@
               <div class="testimonial-box">
                <br>
                  <div class="testim-review">
-                    <h6> <i class="fa fa-star col-blue"> </i> <i class="fa fa-star col-blue"> </i> <i class="fa fa-star col-blue"> </i> <i class="fa fa-star col-blue"> </i> <i class="fa fa-star col-silver"> </i>  </h6>
+                   <h6>  <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> </h6>
                     <h5> Hayden W </h5>
                     <p> Melanie was amazing. Couldn’t recommend highly enough. I have already booked another massage. </p>
                  </div>
@@ -239,7 +239,7 @@
               <div class="testimonial-box">
                <br>
                  <div class="testim-review">
-                    <h6> <i class="fa fa-star col-blue"> </i> <i class="fa fa-star col-blue"> </i> <i class="fa fa-star col-blue"> </i> <i class="fa fa-star col-blue"> </i> <i class="fa fa-star col-silver"> </i>  </h6>
+                    <h6>  <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> </h6>
                     <h5> Alex B </h5>
                     <p> Booked deep tissue massage for me and my husband. Jackson was very good - he worked through our knots and tense muscles for two hours. We enjoyed our massage! </p>
                  </div>
@@ -249,7 +249,7 @@
               <div class="testimonial-box">
                <br>
                  <div class="testim-review">
-                    <h6> <i class="fa fa-star col-blue"> </i> <i class="fa fa-star col-blue"> </i> <i class="fa fa-star col-blue"> </i> <i class="fa fa-star col-blue"> </i> <i class="fa fa-star col-silver"> </i>  </h6>
+                    <h6>  <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> </h6>
                     <h5> Hayden W </h5>
                     <p> Melanie was amazing. Couldn’t recommend highly enough. I have already booked another massage. </p>
                  </div>

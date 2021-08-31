@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
 //Website Routes
 
 	Route::namespace('web')->group(function(){

@@ -124,9 +124,9 @@
                   </div>
                   <div class="pro-massage">
                   </div>
-                  <div class="service-only-image">
-                     <img src="{{URL::to('/public/assets/web/new/')}}/images/pro-massage-1.jpg" class="mobile-off">
-                     <img src="{{URL::to('/public/assets/web/new/')}}/images/massage-mobile-image.jpg" class="mobile-onn">
+                  <div class="service-only-image girl-image5">
+                     <img src="{{URL::to('/public/assets/web/new/')}}/images/massage-1.png"  >
+ 
                   </div>
                </div>
             </div>
@@ -211,7 +211,7 @@
                      <img src="{{URL::to('/public/assets/web/new/')}}/images/user-1.png">
                   </div>
                   <div class="testim-review">
-                     <h6> <i class="fa fa-star col-blue"> </i> <i class="fa fa-star col-blue"> </i> <i class="fa fa-star col-blue"> </i> <i class="fa fa-star col-blue"> </i> <i class="fa fa-star col-silver"> </i>  </h6>
+                     <h6>  <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> </h6>
                      <h5> Natalie M </h5>
                      <p> The Wellbe portal is really simple to use. I can see all my upcoming bookings and communicate with  clients if I need to. I love that Wellbe takes most of the administration work away.  </p>
                   </div>
@@ -223,7 +223,7 @@
                      <img src="{{URL::to('/public/assets/web/new/')}}/images/user-2.png">
                   </div>
                   <div class="testim-review">
-                     <h6> <i class="fa fa-star col-blue"> </i> <i class="fa fa-star col-blue"> </i> <i class="fa fa-star col-blue"> </i> <i class="fa fa-star col-blue"> </i> <i class="fa fa-star col-silver"> </i>  </h6>
+                     <h6>  <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> </h6>
                      <h5> Casey H </h5>
                      <p> Wellbe takes away the effort of having to advertise my services and find new clients. All I need to do is show up for my bookings and I take home a lot more than I do in the salon. </p>
                   </div>
@@ -235,7 +235,7 @@
                      <img src="{{URL::to('/public/assets/web/new/')}}/images/user-3.png">
                   </div>
                   <div class="testim-review">
-                     <h6> <i class="fa fa-star col-blue"> </i> <i class="fa fa-star col-blue"> </i> <i class="fa fa-star col-blue"> </i> <i class="fa fa-star col-blue"> </i> <i class="fa fa-star col-silver"> </i>  </h6>
+                     <h6>  <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> </h6>
                      <h5> Monique M </h5>
                      <p> I love the flexibility Wellbe provides. I can work when I want, where I want - I have so much more time to spend with the kids! </p>
                   </div>
@@ -247,7 +247,7 @@
                      <img src="{{URL::to('/public/assets/web/new/')}}/images/user-4.png">
                   </div>
                   <div class="testim-review">
-                     <h6> <i class="fa fa-star col-blue"> </i> <i class="fa fa-star col-blue"> </i> <i class="fa fa-star col-blue"> </i> <i class="fa fa-star col-blue"> </i> <i class="fa fa-star col-silver"> </i>  </h6>
+                     <h6>  <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> </h6>
                      <h5> Hayden W </h5>
                      <p> Melanie was amazing. Couldn’t recommend highly enough. I have already booked another massage. </p>
                   </div>
