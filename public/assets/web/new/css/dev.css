@@ -127,3 +127,12 @@
  margin: 0px 0px 0px 0px !important;
  }
  }
+
+
+
+ .pac-container.pac-logo {
+    z-index: 999999;
+}
+.time-btn1[type="button"] {
+    background-color: #e6e6e6 !important;
+}

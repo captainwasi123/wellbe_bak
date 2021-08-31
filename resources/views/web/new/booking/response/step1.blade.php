@@ -1,9 +1,9 @@
 <div class="bookings-trigger">
    <ul class="nav nav-tabs no-border" role="tablist">
       <li class="nav-item">
-         <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab"> Anytime </a>
+         <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab"> Practitioners </a>
       </li>
-      <li class="nav-item">
+     <!--  <li class="nav-item">
          <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab"> Morning </a>
       </li>
       <li class="nav-item">
@@ -11,7 +11,7 @@
       </li>
       <li class="nav-item">
          <a class="nav-link " data-toggle="tab" href="#tabs-4" role="tab"> Evening </a>
-      </li>
+      </li> -->
    </ul>
 </div>
 <div class="tab-content">
@@ -53,7 +53,7 @@
          @endif
       </div>
    </div>
-   <div class="tab-pane" id="tabs-2" role="tabpanel">
+   <!-- <div class="tab-pane" id="tabs-2" role="tabpanel">
       <div class="empty-bookings">
          <img src="{{URL::to('/public/assets/web/new')}}/images/empty-booking.jpg">
          <h4> Sorry, we dont have anybody available to fulfill this order. Try another date. </h4>
@@ -73,5 +73,5 @@
          <h4> Sorry, we dont have anybody available to fulfill this order. Try another date. </h4>
          <p> Tip: If your order contains seperate types of treatments, you may need to split these out as many of our therapist are specialists. </p>
       </div>
-   </div>
+   </div> -->
 </div>
