@@ -8,7 +8,7 @@
       </div>
       <div class="navbar-custom">
          <div class="menu-item">
-            <a data-toggle="modal" data-target=".coming-soon-modal"> Treatments </a>
+            <a data-toggle="modal" data-target=".newsletterModal"> Treatments </a>
          </div>
          <div class="menu-item">
             <a data-toggle="modal" data-target=".coming-soon-modal"> About </a>

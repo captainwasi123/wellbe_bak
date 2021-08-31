@@ -1,7 +1,7 @@
 @extends('web.new.includes.master')
 @section('title', 'Treatments')
 @section('content')
-
+@php $totalPrice = 0; @endphp
  <!-- Page Content Section Starts Here -->
    <section class="bg-pink pad-top-40 pad-bot-40">
       <div class="container">
@@ -66,6 +66,7 @@
                            <p> <b class="col-green"> From ${{number_format($val['price'], 2)}} </b> {{$val['duration']}} minutes </p>
                            <a href="javascript:void(0)" class="item-edit1 col-red removeItemCart" data-id="{{$val['id']}}"> Remove </a>
                         </div>
+                        @php $totalPrice += ($val['price']*$val['quantity']); @endphp
                      @endforeach
                      @if(count(Session::get('cart')) == 0)
                         <h4>No Items Found.</h4>
@@ -80,7 +81,7 @@
                         <input type="hidden" name="lng" value="{{$_GET['long']}}">
                         <input type="hidden" name="place" value="{{$_GET['value']}}">
                         
-                        <button {{(empty(Session::get('cart')) || count(Session::get('cart.services')) == 0) ? 'type=button' : ''}} class="time-btn1 pro-btn"> Select Time </button>
+                        <button {{(empty(Session::get('cart')) || count(Session::get('cart.services')) == 0) ? 'type=button' : ''}} {{$totalPrice < 25 ? 'type=button' : ''}} class="time-btn1 pro-btn"> Select Time </button>
                      </form>
                   </div>
                   <div class="order-information">
