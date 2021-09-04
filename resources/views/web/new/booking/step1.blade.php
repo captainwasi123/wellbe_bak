@@ -215,7 +215,7 @@
                   <div class="row m-b-10">
                      <div class="col-md-12">
                         <p>   <a href="{{URL::to('/login')}}" class="custom-anchor1 text-center" style="min-width: 230px;"> Login </a> </p>
-                        <p>  <a href="{{URL::to('/register')}}" class="custom-anchor2 text-center no-border" style="min-width: 230px;"> <b> Create Accounts </b> </a> </p>
+                        <p>  <a href="{{URL::to('/register')}}" class="custom-anchor2 text-center no-border" style="min-width: 230px;"> <b> Create Account </b> </a> </p>
                      </div>
                   </div>
                </div>

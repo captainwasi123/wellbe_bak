@@ -12,6 +12,11 @@ class userService extends Model
     protected $table = 'tbl_user_services';
     public $timestamps = false;
 
+    public static function updateService(array $data){
+        $s = userService::find(base64_decode($data['service_id']));
+        $s->price = $data['price'];
+        $s->save();
+    }
 
     public function service(){
 

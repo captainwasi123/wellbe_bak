@@ -24,6 +24,8 @@ use Illuminate\Support\Facades\Route;
 		Route::get('/login', 'loginController@login');
 	    Route::post('/login', 'loginController@loginAttempt');
 		Route::get('/register', 'loginController@register');
+		Route::get('/register/pro', 'loginController@registerPro');
+		Route::post('/register', 'loginController@registerSubmit');
 
 
 
@@ -84,7 +86,6 @@ use Illuminate\Support\Facades\Route;
 		Route::post('/loginAttempt2', 'loginController@ajaxloginAttempt2');
 		Route::get('/logout', 'loginController@logout');
 		Route::get('/user-active/{id}','loginController@user_active')->name('user_active');
-		Route::post('/register', 'loginController@userRegister');
 
 
 // Practitioner
@@ -105,6 +106,8 @@ use Illuminate\Support\Facades\Route;
 
 			Route::get('/enable/{id}', 'servicesController@enableService');
 			Route::get('/disable/{id}', 'servicesController@disableService');
+
+			Route::post('/update', 'ServicesController@updateService')->name('practitioner.services.update');
 			
 
 			//Addons

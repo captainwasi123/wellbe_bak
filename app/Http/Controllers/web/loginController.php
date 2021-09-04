@@ -36,4 +36,29 @@ class loginController extends Controller
 
         return view('web.new.register');
     }
+    function registerPro(){
+
+        return view('web.new.registerPro');
+    }
+
+    function registerSubmit(Request $request){
+        $data = $request->all();
+        $u = User::where('email', $data['email'])->first();
+        if(empty($u->id)){
+
+            $user = User::newUser($data); $email['user'] = $user;
+            if($request->userType == 2 ){ 
+                $email_temp = 'CustomerActivation'; 
+                $msg = 'Thanks for joining the Wellbe Community. An activation email has been sent, please click the link in the email to activate your account.';
+            }else{
+                $email_temp = 'PractitionerActivation'; 
+                $msg = 'Thanks for joining the Wellbe Community. An activation email has been sent, please click the link in the email to activate your account.';
+            } 
+            $a = \App\Helpers\CommonHelpers::send_email($email_temp, $email, $request->email, 'Activate Your Wellbe Account', $from_email = 'info@divsnpixel.com', $from_name = 'Wallbe');
+            return redirect()->back()->with('success', $msg);
+        }else{
+
+            return redirect()->back()->with('error', 'Email already exist.');
+        }
+    }
 }

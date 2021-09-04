@@ -22,7 +22,7 @@
                         <img src="{{URL::to('/public/assets/web/new/')}}/images/wellbe-logo.png" width="150px">
                      </div>
                      <div class="login-heading m-b-40">
-                        <h3 class="text-left"> Create Account </h3>
+                        <h3 class="text-left"> Create a Practitioner Account </h3>
                         @if(session()->has('success'))
                             <div class="alert alert-success">
                                 {{ session()->get('success') }}
@@ -38,7 +38,7 @@
                         <form method="post" action="{{URL::to('/register')}}">
                            @csrf
 
-                          <input type="hidden" name="userType" value="2">
+                          <input type="hidden" name="userType" value="1">
                           <input type="hidden" class="form-control" name="status" value="0" required>
                            <div class="row">
                               <div class="col-md-6 col-lg-6 col-sm-6 col-12">
@@ -77,7 +77,6 @@
                         </form>
                      </div>
                      <div class="already-account m-t-40">
-                        <span class="col-black"> Want to become a Pro? <a href="{{URL::to('/register/pro')}}"> Sign up </a> </span><br><br>
                         <span class="col-black"> Already an user? <a href="{{URL::to('/login')}}"> Login </a> </span>
                      </div>
                      <div class="legal-links1">

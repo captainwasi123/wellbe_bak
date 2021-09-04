@@ -11,7 +11,7 @@
 </div>
 
 <div class="manicure-variants">
-   <h4> Variants/Add-ons <a href="javascript:void(0)" class="col-blue addAddons" data-id="{{base64_encode($data->id)}}"> Edit </a> </h4>
+   <h4> Variants/Add-ons <a href="javascript:void(0)" class="col-blue addAddons" data-id="{{base64_encode($data->id)}}"> Add </a> </h4>
    <table>
       <tbody>
         @foreach($data->addons_list as $val)

@@ -32,6 +32,7 @@ class bookingController extends Controller
         $data['day'] = $day;
         $data['date'] = date('Y-m-d');
         $data['users'] = User::where('status', '1')
+                        ->where('store_status', '1')
                         ->whereHas('services', function($q) use ($services){
                             return $q->whereIn('service_id', $services);
                         })
@@ -92,6 +93,7 @@ class bookingController extends Controller
             $data['day'] = $day;
             $data['date'] = date('Y-m-d', strtotime($request->date));
             $data['users'] = User::where('status', '1')
+                            ->where('store_status', '1')
                             ->whereHas('services', function($q) use ($services){
                                 return $q->whereIn('service_id', $services);
                             })

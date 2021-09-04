@@ -50,7 +50,7 @@
                         <a href="" class="col-red"> Forgot Password? </a>
                      </div>
                      <div class="already-account">
-                        <span class="col-black"> Don't have an account? <a href=""> Sign Up </a> </span>
+                        <span class="col-black"> Don't have an account? <a href="{{URL::to('/register')}}"> Sign Up </a> </span>
                      </div>
                      <div class="legal-links1">
                         <a href=""> Terms & Conditions </a>

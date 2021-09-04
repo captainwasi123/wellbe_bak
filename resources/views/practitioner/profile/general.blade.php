@@ -165,22 +165,24 @@
                <div class="form-field3">
                   <p> Store Page </p>
                   <div class="drop-options">
-                     <span> <input type="radio" name="" disabled> Disabled </span>
-                     <span> <input type="radio" name="" checked disabled> Enabled </span>
+                     <span> <input type="radio" name="store_status" value="1" {{$user_data->store_status == '1' ? 'checked' : ''}}> Enabled </span>
+                     <span> <input type="radio" name="store_status" value="0" {{$user_data->store_status == '0' ? 'checked' : ''}}> Disabled </span>
                   </div>
                </div>
-               <!-- <div class="form-field3">
-                  <p> Marketplace Comission </p>
-                  <input type="text" name="" readonly value="{{$gst->gst}}">
-               </div>
-               <div class="form-field3">
-                  <p> Account Type  </p>
-                  <div class="drop-options">
-                     <span> <input type="radio" name="" checked disabled> Standard </span>
-                     <span> <input type="radio" name="" disabled> Featured </span>
-                     <span> <input type="radio" name="" disabled> Partner </span>
+               @if(Session::has('user_type'))
+                  <div class="form-field3">
+                     <p> Marketplace Comission </p>
+                     <input type="text" name="" readonly value="{{$gst->gst}}">
                   </div>
-               </div> -->
+                  <div class="form-field3">
+                     <p> Account Type  </p>
+                     <div class="drop-options">
+                        <span> <input type="radio" name="" checked disabled> Standard </span>
+                        <span> <input type="radio" name="" disabled> Featured </span>
+                        <span> <input type="radio" name="" disabled> Partner </span>
+                     </div>
+                  </div>
+               @endif
             </div>
          </div>
       </div>

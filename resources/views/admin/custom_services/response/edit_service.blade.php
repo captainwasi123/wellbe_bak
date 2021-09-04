@@ -15,15 +15,11 @@
       <span class="static-tag1 col-black"> NZ$  </span>
    </div>
    <div class="form-field2">
-      <p> YOUR PAYOUT (AFTER GST/SERVICE FEES) <sup class="col-red">*</sup> </p>
-      <input type="number" step="any" placeholder="" name="final_price" value="{{$data->final_price}}" readonly>
-   </div>
-   <div class="form-field2">
       <p> DESCRIPTION </p>
       <textarea placeholder="Please enter description" rows="2" name="description">{{$data->description}}</textarea>
    </div>
    <div class="form-field2">
-      <p>LONG DESCRIPTION </p>
+      <p>PREPRATION </p>
       <textarea placeholder="Please enter description" name="long_description">{{$data->long_description}}</textarea>
    </div>
 

@@ -30,7 +30,8 @@ class servicesController extends Controller
 
     function updateService(Request $request){
         $data = $request->all();
-        services::updateService($data);
+        //dd($data);
+        userService::updateService($data);
 
         return redirect()->back()->with('success', 'Service Updated.');
     }
@@ -49,8 +50,9 @@ class servicesController extends Controller
         $id = base64_decode($id);
 
         $data = services::find($id);
+        $service = userService::where('user_id', Auth::id())->where('service_id', $id)->first();
 
-        return view('practitioner.services.response.detail_services', ['data' => $data]);
+        return view('practitioner.services.response.detail_services', ['data' => $data, 'service' => $service]);
     }
 
     function enableService($id){
@@ -77,8 +79,8 @@ class servicesController extends Controller
     	$id = base64_decode($id);
 
     	$data = services::find($id);
-
-    	return view('practitioner.services.response.edit_service', ['data' => $data, 'cat_id' => $id]);
+        $service = userService::where('user_id', Auth::id())->where('service_id', $id)->first();
+    	return view('practitioner.services.response.edit_service', ['data' => $data, 'cat_id' => $id, 'service' => $service]);
     }
 
 

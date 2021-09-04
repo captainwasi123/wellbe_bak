@@ -15,7 +15,7 @@
          <div class="row">
             <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
                <div class="box-type3 height-custom1" style="overflow-x: hidden;overflow-y: scroll;max-height: 600px;" id="service_block"><div class="cat-head">
-			   <h5 class="col-black"> Services (0) </h5>
+			   <h5 class="col-black"> Services ({{count($services)}}) </h5>
 			   <div class="action-buttons"> <a href="javascript:void()" class="fa fa-plus addService" data-id="{{$cat_id}}"></a> </div>
 			</div>
 			<div class="all-categories">
@@ -152,10 +152,6 @@
                            </div>
                         </div>   
                      </div>
-                  </div>
-
-                  <div class="block-element m-b-20">
-                  <a href="javascript:void(0)" class="col-blue addItemAddons"> Add more</a>
                   </div>
 
 

@@ -24,9 +24,9 @@
                   </ol>
                </div>
 
-                <div class="menu-item">
+              <!--   <div class="menu-item">
                   <a href="{{route('booker.share')}}"> <i class="fa fa-users"> </i> Refer a Friend </a>
-               </div>
+               </div> -->
 
             </div>
             <div class="sidebar-btn-fixed">

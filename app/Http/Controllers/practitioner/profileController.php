@@ -36,6 +36,7 @@ class profileController extends Controller
         $user->phone = $request->phone;
         $user->gender = $request->gender;
         $user->bio_description = $request->bio;
+        $user->store_status = $request->store_status;
         if($request->hasFile('profile_img')){
             $user_img =  \App\Helpers\CommonHelpers::uploadSingleFile($request->profile_img, 'public/upload/user_images/', 'png,gif,jpeg,jpg');
             $user->profile_img = $user_img;
