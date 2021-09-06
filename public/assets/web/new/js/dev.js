@@ -3,6 +3,13 @@ $(document).ready(function(){
 
 	var ref = $('meta[name=host]').attr('content');
 
+
+	setTimeout(function(){
+		$('.newsletterModal').modal('show');
+	}, 10000);
+
+
+
 	$(document).on('click', '.filterCat', function(){
 		var val = $(this).data('val');
 		insertParam('cat', val);

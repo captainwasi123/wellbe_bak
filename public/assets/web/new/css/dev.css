@@ -136,3 +136,14 @@
 .time-btn1[type="button"] {
     background-color: #e6e6e6 !important;
 }
+.response {
+    padding: 10px;
+    font-size: 25px;
+    font-weight: 800;
+}
+.response#mce-success-response {
+    color: #08c308;
+}
+.response#mce-error-response {
+    color: red;
+}
