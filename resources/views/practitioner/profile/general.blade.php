@@ -127,7 +127,7 @@
             <div class="block-element m-t-15 m-b-10" style="position: relative;">
                <h4 class="col-blue"> Store </h4>
                <div class="store-status">
-                  <span> Status: <b class="col-blue"> Active </b> </span>
+                  <span> Status: <b class="col-blue"> {{Auth::user()->status == '1' ? 'Acitve' : 'In-Active'}} </b> </span>
                </div>
             </div>
             <!-- <div class="form-field3">
@@ -162,26 +162,50 @@
                <input type="text" name="account_number" value="{{empty($user_data->users_payout_details) ? '' : $user_data->users_payout_details->bank_account_number}}" required>
             </div>
             <div class="bg-silver block-element m-t-20 m-b-20" style="padding:20px">
-               <div class="form-field3">
-                  <p> Store Page </p>
-                  <div class="drop-options">
-                     <span> <input type="radio" name="store_status" value="1" {{$user_data->store_status == '1' ? 'checked' : ''}}> Enabled </span>
-                     <span> <input type="radio" name="store_status" value="0" {{$user_data->store_status == '0' ? 'checked' : ''}}> Disabled </span>
-                  </div>
-               </div>
-               @if(Session::has('user_type'))
+               @if(Auth::user()->status == '1')
                   <div class="form-field3">
-                     <p> Marketplace Comission </p>
-                     <input type="text" name="" readonly value="{{$gst->gst}}">
-                  </div>
-                  <div class="form-field3">
-                     <p> Account Type  </p>
+                     <p> Store Page </p>
                      <div class="drop-options">
-                        <span> <input type="radio" name="" checked disabled> Standard </span>
-                        <span> <input type="radio" name="" disabled> Featured </span>
-                        <span> <input type="radio" name="" disabled> Partner </span>
+                        <span> <input type="radio" name="store_status" value="1" {{$user_data->store_status == '1' ? 'checked' : ''}}> Enabled </span>
+                        <span> <input type="radio" name="store_status" value="0" {{$user_data->store_status == '0' ? 'checked' : ''}}> Disabled </span>
                      </div>
                   </div>
+                  @if(Session::has('user_type'))
+                     <div class="form-field3">
+                        <p> Marketplace Comission </p>
+                        <input type="text" name="" readonly value="{{$gst->gst}}">
+                     </div>
+                     <div class="form-field3">
+                        <p> Account Type  </p>
+                        <div class="drop-options">
+                           <span> <input type="radio" name="" checked disabled> Standard </span>
+                           <span> <input type="radio" name="" disabled> Featured </span>
+                           <span> <input type="radio" name="" disabled> Partner </span>
+                        </div>
+                     </div>
+                  @endif
+               @else
+                  <div class="form-field3">
+                     <p> Store Page </p>
+                     <div class="drop-options">
+                        <span> <input type="radio" name="store_status" value="1" disabled> Enabled </span>
+                        <span> <input type="radio" name="store_status" value="0" disabled> Disabled </span>
+                     </div>
+                  </div>
+                  @if(Session::has('user_type'))
+                     <div class="form-field3">
+                        <p> Marketplace Comission </p>
+                        <input type="text" name="" readonly value="{{$gst->gst}}" disabled>
+                     </div>
+                     <div class="form-field3">
+                        <p> Account Type  </p>
+                        <div class="drop-options">
+                           <span> <input type="radio" name="" checked disabled> Standard </span>
+                           <span> <input type="radio" name="" disabled> Featured </span>
+                           <span> <input type="radio" name="" disabled> Partner </span>
+                        </div>
+                     </div>
+                  @endif
                @endif
             </div>
          </div>

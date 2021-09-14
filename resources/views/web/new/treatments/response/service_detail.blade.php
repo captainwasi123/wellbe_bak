@@ -47,7 +47,7 @@
          <form method="post" action="{{route('treatments.services.addToCart')}}">
             @csrf
             <input type="hidden" name="sid" value="{{base64_encode($data->id)}}">
-            <button class="submit-btn1 block-element1"> Book Now </button>
+            <button class="submit-btn1 block-element1"> Add to Cart </button>
          </form>
       </div>
    </div>

@@ -20,10 +20,16 @@ class loginController extends Controller
         $data = $request->all();
 
         if(Auth::attempt(['email' => $data['email'], 'password' => $data['password'], 'status' => '1'])){
-            if(Auth::user()->user_type == '1'){
-                return redirect(route('practitioner.dashboard'));
-            }else if(Auth::user()->user_type == '2'){
-                return redirect(route('booker.index'));
+            $cart = session()->get('cart');
+            dd(count($cart));
+            if(count($cart) > 0){
+                return redirect(route('treatments.booking.step1'));
+            }else{
+                if(Auth::user()->user_type == '1'){
+                    return redirect(route('practitioner.dashboard'));
+                }else if(Auth::user()->user_type == '2'){
+                    return redirect(route('booker.index'));
+                }
             }
 
         }else{

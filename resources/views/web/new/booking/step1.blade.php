@@ -19,7 +19,7 @@
                      <div class="calendar-book">
                         <div class="date-picker">
                            <div class="input">
-                              <div class="result">Select Date:<span></span></div>
+                              <div class="result"><span></span></div>
                               <button><i class="fa fa-calendar"></i></button>
                            </div>
                            <div class="calendar"></div>
@@ -107,7 +107,7 @@
                </div>
             </div>
             <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12 sec-wid-right">
-               <div class="summary-box2" style="background:#fcfcfc !important">
+               <div class="summary-box2" style="background:#fcfcfc !important" id="step1Summary">
                   <div class="book-summary-head">
                      <h3 class="text-center"> Summary  </h3>
                   </div>
@@ -154,6 +154,9 @@
                            @endif
                         </form>
                      </div>
+                  </div>
+                  <div class="order-information">
+                     <p> Your order must be a minimum of $25 for our mobile treatments </p>
                   </div>
                </div>
             </div>

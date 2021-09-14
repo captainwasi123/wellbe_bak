@@ -61,12 +61,12 @@
                            <div class="block-element m-b-20">
                               <p class="col-black form-label1"> Phone Number  </p>
                               <div class="input-group" style="display: block;">
-                                 <input type="number" class="form-control1 input-num" name="phone">
+                                 <input type="number" class="form-control1 input-num" name="phone" required>
                               </div>
                            </div>
                            <div class="block-element m-b-20">
                               <p class="col-black form-label1"> Password  </p>
-                              <input type="password" placeholder="Your Password" name="password" class="form-control1">
+                              <input type="password" placeholder="Your Password" name="password" class="form-control1" required>
                            </div>
                            <div class="block-element m-b-20">
                               <div class="checkbox-field1"> <input type="checkbox" name="terms_and_condition" required> By signing up I agree  to Wellbe Terms & Conditons and Privacy Policy </div>
@@ -77,6 +77,7 @@
                         </form>
                      </div>
                      <div class="already-account m-t-40">
+                        <span class="col-black"> Want to book services instead? <a href="{{URL::to('/register')}}"> Sign up </a> </span><br><br>
                         <span class="col-black"> Already an user? <a href="{{URL::to('/login')}}"> Login </a> </span>
                      </div>
                      <div class="legal-links1">

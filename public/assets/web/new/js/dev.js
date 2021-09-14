@@ -49,10 +49,13 @@ $(document).ready(function(){
 	$(document).on('change', '.timeslot', function(){
 		let time = $(this).data('time');
 		let prac = $(this).data('prac');
-
-		$('#bookingTime').html(time);
-		$('#booking_time').val(time);
-		$('#booking_prac').val(prac);
+		let date = $('#booking_date').val();
+		$('#step1Summary').html('<img src="'+ref+'/public/assets/web/new/images/loader.gif"/>');
+		$.post( ref+"/treatments/booking/step_1/summary", { 'id': prac, 'time': time, 'date': date, '_token': $('meta[name="token"]').attr('content') })
+		  .done(function( data ) {
+		    $('#step1Summary').html( data );
+		    //console.log(data);
+		  });
 
 		$("#checkout_btn").removeAttr("type");
 	});

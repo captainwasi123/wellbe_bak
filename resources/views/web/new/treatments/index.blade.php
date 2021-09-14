@@ -37,11 +37,11 @@
                   @foreach($services as $val)
                      <div class="col-md-6 col-lg-6 col-sm-6 col-12">
                         <div class="service-box5">
-                           <h3> {{$val->name}} </h3>
+                           <h3> {{$val->name}}</h3>
                            <p class="two_line"> 
                               {{$val->description}}
                            </p>
-                           <h6> <a href="javascript:void(0)" class="serviceDetails" data-id="{{base64_encode($val->id)}}"> Book Now </a> <span> From {{'$'.number_format($val->price, 2)}} </span> </h6>
+                           <h6> <a href="javascript:void(0)" class="serviceDetails" data-id="{{base64_encode($val->id)}}"> Book Now </a> <span> From {{empty($val->lowestPrice) ? '$'.number_format($val->price, 2) : '$'.number_format($val->lowestPrice->price, 2)}} </span> </h6>
                         </div>
                      </div>
                   @endforeach
@@ -81,11 +81,8 @@
                         <input type="hidden" name="lng" value="{{$_GET['long']}}">
                         <input type="hidden" name="place" value="{{$_GET['value']}}">
                         
-                        <button {{(empty(Session::get('cart')) || count(Session::get('cart.services')) == 0) ? 'type=button' : ''}} {{$totalPrice < 25 ? 'type=button' : ''}} class="time-btn1 pro-btn"> Select Time </button>
+                        <button  class="time-btn1 pro-btn"> Select Time </button>
                      </form>
-                  </div>
-                  <div class="order-information">
-                     <p> Your order must be a minimum of $25 for our mobile treatments </p>
                   </div>
                </div>
             </div>

@@ -3,7 +3,7 @@
 </div>
 <div class="manicure-text">
    <h5 class="col-black"> {{$data->name}} </h5>
-   <h6 class="col-blue"> NZ$ {{number_format($service->price, 2)}} </h6>
+   <h6 class="col-blue"> NZ$ {{empty($service->price) ? number_format($data->price, 2) : number_format($service->price, 2)}} </h6>
    <p> {{$data->description}} </p>
    <hr>
    <h5 class="col-black"> Preparation </h5>
