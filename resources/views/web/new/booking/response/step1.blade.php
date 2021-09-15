@@ -31,7 +31,7 @@
                      </b> 
                   </p>
                </div>
-               <div class="booking-persons-time">
+               <div class="booking-persons-time time-slider">
                   @foreach($val->availability as $avail)
                      @if(ucfirst($avail->week_day) == $day)
                         @foreach($avail->slots as $slot)
@@ -44,8 +44,10 @@
                               $end = date('H:i:s',strtotime('-'.$buffer.' minutes',strtotime($end)));
                            @endphp
                            @while($start <= $end)
+                           <div>
                               <input type="radio" id="myCheck{{$slot->id.$x}}" class="timeslot" name="timeslot" data-time="{{date('h:i A', strtotime($start))}}" data-prac="{{base64_encode($val->id)}}" tabindex="-1"> 
                               <label class="book-time-btn"  for="myCheck{{$slot->id.$x}}" >{{date('h:i A', strtotime($start))}}</label>
+                           </div>
                               @php $start = date('H:i:s',strtotime('+'.$duration.' minutes',strtotime($start))); $x++; @endphp
                            @endwhile 
                         @endforeach

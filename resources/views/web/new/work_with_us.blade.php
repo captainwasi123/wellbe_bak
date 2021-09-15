@@ -134,13 +134,13 @@
                <div class="row all-features">
                   <div class="col-md-4 col-lg-4 col-sm-4 col-12">
                      <div class="feature-box mob-text-center">
-                        <img src="{{URL::to('/public/assets/web/new/')}}/images/feature-icon1.jpg">
+                        <img src="{{URL::to('/public/assets/web/new/')}}/images/feature-icon1.svg">
                         <h5> Nails </h5>
                      </div>
                   </div>
                   <div class="col-md-4 col-lg-4 col-sm-4 col-12">
                      <div class="feature-box mob-text-center">
-                        <img src="{{URL::to('/public/assets/web/new/')}}/images/feature-icon2.jpg">
+                        <img src="{{URL::to('/public/assets/web/new/')}}/images/feature-icon2.svg">
                         <h5> Massage </h5>
                      </div>
                   </div>
@@ -170,7 +170,7 @@
                   </div>
                   <div class="col-md-4 col-lg-4 col-sm-4 col-12">
                      <div class="feature-box mob-text-center">
-                        <img src="{{URL::to('/public/assets/web/new/')}}/images/feature-icon7.jpg">
+                        <img src="{{URL::to('/public/assets/web/new/')}}/images/feature-icon7.svg">
                         <h5> Makeup </h5>
                      </div>
                   </div>
@@ -182,7 +182,7 @@
                   </div>
                   <div class="col-md-4 col-lg-4 col-sm-4 col-12">
                      <div class="feature-box mob-text-center">
-                        <img src="{{URL::to('/public/assets/web/new/')}}/images/feature-icon9.jpg">
+                        <img src="{{URL::to('/public/assets/web/new/')}}/images/feature-icon9.svg">
                         <h5> Brows </h5>
                      </div>
                   </div>

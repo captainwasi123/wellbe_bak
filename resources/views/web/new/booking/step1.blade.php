@@ -60,12 +60,14 @@
                                           </b> 
                                        </p>
                                     </div>
-                                    <div class="booking-persons-time">
+                                    <div class="booking-persons-time time-slider arrows">
                                        @foreach($val->availability as $avail)
                                           @if(ucfirst($avail->week_day) == $day)
                                              @foreach($avail->slots as $slot)
+                                                <div>
                                                 <input type="radio" id="myCheck{{$slot->id}}" class="timeslot" name="timeslot" data-time="{{date('h:i A', strtotime($slot->start_booking))}}" data-prac="{{base64_encode($val->id)}}" tabindex="-1"> 
-                                                <label class="book-time-btn"  for="myCheck{{$slot->id}}" >{{date('h:i A', strtotime($slot->start_booking))}} </label>                        
+                                                <label class="book-time-btn"  for="myCheck{{$slot->id}}" >{{date('h:i A', strtotime($slot->start_booking))}} </label>    
+                                                </div>                    
                                              @endforeach
                                           @endif
                                        @endforeach
