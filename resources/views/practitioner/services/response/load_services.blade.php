@@ -11,10 +11,10 @@
             <i class="fas fa-ellipsis-v"></i>
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-               <li><a href="javascript:void(0)" class="editService" data-id="{{base64_encode($val->id)}}">Edit</a></li>
                @if(empty($val->userSer->id))
                   <li><a href="javascript:void(0)" class="enableService" data-id="{{base64_encode($val->id)}}">Enable</a></li>
                @else
+                  <li><a href="javascript:void(0)" class="editService" data-id="{{base64_encode($val->id)}}">Edit</a></li>
                   <li><a href="javascript:void(0)" class="disableService" data-id="{{base64_encode($val->userSer->id)}}">Disable</a></li>
                @endif
             </ul>

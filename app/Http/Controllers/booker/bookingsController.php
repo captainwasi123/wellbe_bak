@@ -35,11 +35,15 @@ class bookingsController extends Controller
     function bookOrder(){
         $data = session()->get('cart');
         //dd($data);
-        $id = order::makeOrder($data);
-        session()->forget('cart');
-        $ret_data = explode('|', $id);
+        if(isset($data['services'])){
+            $id = order::makeOrder($data);
+            session()->forget('cart');
+            $ret_data = explode('|', $id);
 
-        return view('web.payments.stripe', ['id' => $ret_data[0], 'amount' => $ret_data[1]]);
+            return view('web.payments.stripe', ['id' => $ret_data[0], 'amount' => $ret_data[1]]);
+        }else{
+            return redirect('/');
+        }
     }
 
     function confirmOrder($id){

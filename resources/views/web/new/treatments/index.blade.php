@@ -80,8 +80,11 @@
                         <input type="hidden" name="lat" value="{{$_GET['lat']}}">
                         <input type="hidden" name="lng" value="{{$_GET['long']}}">
                         <input type="hidden" name="place" value="{{$_GET['value']}}">
-                        
-                        <button  class="time-btn1 pro-btn"> Select Time </button>
+                        @if(Session::get('cart') == null || count(Session::get('cart.services')) == 0)
+                           <button type="button"  class="time-btn1 pro-btn"> Select Time </button>
+                        @else
+                           <button  class="time-btn1 pro-btn"> Select Time </button>
+                        @endif
                      </form>
                   </div>
                </div>

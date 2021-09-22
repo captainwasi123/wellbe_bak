@@ -60,6 +60,33 @@ $(document).ready(function(){
 		});
 	});
 
+
+	//Addon Manage
+		$(document).on('click', '.enableAddon', function(){
+			var id = $(this).data('id');
+
+			if(confirm('Are you sure want to enable this?')){
+				window.location.href = ref+"/practitioner/service/addons/enable/"+id;
+			}	
+		});
+		$(document).on('click', '.disableAddon', function(){
+			var id = $(this).data('id');
+
+			if(confirm('Are you sure want to disable this?')){
+				window.location.href = ref+"/practitioner/service/addons/disable/"+id;
+			}	
+		});
+		$(document).on('click', '.editAddon', function(){
+			var id = $(this).data('id');
+
+			$('.editServiceAddonModal').modal('show');
+			$('#editServiceAddonModalBody').html('<img src="'+ref+'/public/assets/images/loaderr.gif">');
+
+			$.get( ref+"/practitioner/service/addons/edit/"+id, function( data ) {
+			  $('#editServiceAddonModalBody').html( data );
+			});
+		});
+
 	//Add Service Addons
 
 	$(document).on('click', '.addAddons', function(){

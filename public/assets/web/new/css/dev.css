@@ -142,8 +142,11 @@
     font-weight: 800;
 }
 .response#mce-success-response {
-    color: #08c308;
+    color: #5d4e6d;
 }
 .response#mce-error-response {
     color: red;
+}
+#checkout_btn[type=button] {
+    background: gray;
 }

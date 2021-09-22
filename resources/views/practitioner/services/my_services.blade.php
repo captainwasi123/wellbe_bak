@@ -93,6 +93,20 @@
       </div>
    </div>
 
+   <div class="modal fade modal-size2 editServiceAddonModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+      <div class="modal-dialog" role="document" style="max-width: 600px;">
+         <div class="modal-content">
+            <button type="button" class="close1" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span> </button>
+            <div class="custom-modal-head">
+               <h3> Edit Service Addon </h3>
+            </div>
+            <div class="custom-modal-data" id="editServiceAddonModalBody">
+               
+            </div>
+         </div>
+      </div>
+   </div>
+
 
 @endsection
 

@@ -10,6 +10,7 @@ use App\Models\orders\reviews;
 use App\Models\orders\cancel;
 use App\Models\User;
 use App\Models\MarketplaceSetting;
+use App\Models\userService;
 use Auth;
 
 class order extends Model
@@ -33,19 +34,23 @@ class order extends Model
         foreach ($data['services'] as $val) { 
 
             $ser = services::find(base64_decode($val['id']));
+            $userv = userService::where('service_id', base64_decode($val['id']))->where('user_id', base64_decode($data['booking']['practitioner']))->first();
+
+            $sprice = empty($userv->price) ? '0' : $userv->price;
+            $sprice = $sprice == 0 ? $ser->price : $sprice;
             $end_time = date('H:i:s',strtotime('+'.$ser->duration.' minutes',strtotime($start_time)));
             $d = new orderDetail;
             $d->order_id = $id;
             $d->service_id = base64_decode($val['id']);
             $d->qty = $val['quantity'];
-            $d->price = ($ser->price*$val['quantity']);
+            $d->price = ($sprice*$val['quantity']);
             $d->serve_date = date('Y-m-d', strtotime($data['booking']['date']));
             $d->start_time = $start_time;
             $d->end_time = $end_time;
             $d->save();
 
             //Calculating Subtotal
-            $accounts['sub_total'] = $accounts['sub_total']+($ser->price*$val['quantity']);
+            $accounts['sub_total'] = $accounts['sub_total']+($sprice*$val['quantity']);
         }
 
         //Calculating GST/Commission

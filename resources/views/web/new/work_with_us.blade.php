@@ -9,7 +9,7 @@
                <div class="banner-text">
                   <h3> Earn more on your terms. We’ll take care of the rest.  </h3>
                   <p> Join NZ’s No.1 wellness and beauty app and empower people to be their best selves at home and work. We’re looking for people all over New Zealand today.  </p>
-                  <a href="{{URL::to('/register')}}" class="custom-btn1"> Sign Up </a>
+                  <a href="{{URL::to('/register/pro')}}" class="custom-btn1"> Sign Up </a>
                </div>
             </div>
             <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12 order-lg2 order-md-2">
@@ -302,5 +302,24 @@
       </div>
    </section>
    <!-- FAQs Section Ends Here -->
+
+@endsection
+@section('addScript')
+
+<script type="text/javascript">
+   $(document).ready(function(){
+      'use strict'
+
+      
+      setTimeout(function(){
+         var newsletterAtt = getCookie("newsletterAtt");
+         if(newsletterAtt != 'Yes'){
+            $('.newsletterModal').modal('show');
+            setCookie("newsletterAtt","Yes",60);
+         }
+      }, 10000);
+   });
+
+</script>
 
 @endsection

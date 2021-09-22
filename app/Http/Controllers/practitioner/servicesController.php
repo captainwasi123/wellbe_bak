@@ -8,6 +8,7 @@ use App\Models\Categories;
 use App\Models\services\services;
 use App\Models\services\addons;
 use App\Models\userService;
+use App\Models\userAddon;
 use Auth;
 
 class servicesController extends Controller
@@ -92,5 +93,39 @@ class servicesController extends Controller
         addons::addAddon($data);
 
         return redirect()->back()->with('success', 'Addons Updated.');
+    }
+
+
+    function enableServiceAddon($id){
+        $id = base64_decode($id);
+
+        $data = new userAddon;
+        $data->user_id = Auth::id();
+        $data->addon_id = $id;
+        $data->save();
+
+        return redirect()->back()->with('success', 'Addon Enabled.');
+    }
+    function disableServiceAddon($id){
+        $id = base64_decode($id);
+
+        userAddon::destroy($id);
+
+        return redirect()->back()->with('success', 'Addon Disabled.');
+    }
+    function editServiceAddon($id){
+        $id = base64_decode($id);
+
+        $data = addons::find($id);
+        $addon = userAddon::where('user_id', Auth::id())->where('addon_id', $id)->first();
+        return view('practitioner.services.response.edit_service_addon', ['data' => $data, 'cat_id' => $id, 'addon' => $addon]);
+    }
+    function updateServiceAddon(Request $request){
+        $data = $request->all();
+        $ad = userAddon::find(base64_decode($data['addon_id']));
+        $ad->price = $data['price'];
+        $ad->save();
+
+        return redirect()->back()->with('success', 'Addon Updated.');
     }
 }

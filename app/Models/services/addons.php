@@ -5,6 +5,7 @@ namespace App\Models\services;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\services\addonsDetail;
+use App\Models\userAddon;
 use Auth;
 
 class addons extends Model
@@ -36,6 +37,11 @@ class addons extends Model
 
     public function addonsDetail(){
         return $this->hasMany(addonsDetail::class, 'addon_id', 'id');
+    }
+
+
+    public function userAdd(){
+        return $this->belongsTo(userAddon::class, 'id', 'addon_id')->where('user_id', Auth::id());
     }
 
 }

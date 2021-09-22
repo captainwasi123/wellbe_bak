@@ -30,12 +30,6 @@
                   <div class="booking-details-item">
                      <h6> <img src="{{URL::to('/public/assets/web/new')}}/images/booking-icon2.jpg"> Location </h6>
                      <h5> {{Session::get('cart.location.place')}} </h5>
-                       <a href="" class="book-edit1"> Edit <i class="fa fa-angle-right"> </i> </a>
-                  </div>
-                  <div class="booking-details-item">
-                     <h6> <img src="{{URL::to('/public/assets/web/new')}}/images/booking-icon3.jpg"> {{Auth::user()->first_name.' '.Auth::user()->last_name}} </h6>
-                     <h5> Male </h5>
-                       <a href="" class="book-edit1"> Edit <i class="fa fa-angle-right"> </i> </a>
                   </div>
                    <div class="book-summary-instructions m-b-10">
                      <h6> Booking Instructions </h6>
@@ -70,7 +64,7 @@
                      <a data-toggle="modal" data-target=".addInstructionModal"><h6> {{empty(Session::get('cart.booking.instruction')) ? 'Add' : 'Edit'}} Instructions </h6></a>
                   </div>
                   <div class="book-summary-instructions">
-                     <h6> Total <b> ${{number_format($totalAmount, 2)}} </b> </h6>
+                     <h6> Total <b> ${{number_format($totalAmount, 2)}} + GST </b> </h6>
                   </div>
                   <div class="block-element">
                      <div class="row m-t-20 m-b-10">

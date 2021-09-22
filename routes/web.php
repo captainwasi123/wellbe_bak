@@ -108,13 +108,19 @@ use Illuminate\Support\Facades\Route;
 			Route::get('/enable/{id}', 'servicesController@enableService');
 			Route::get('/disable/{id}', 'servicesController@disableService');
 
-			Route::post('/update', 'ServicesController@updateService')->name('practitioner.services.update');
+			Route::post('/update', 'servicesController@updateService')->name('practitioner.services.update');
 			
 
 			//Addons
 			Route::prefix('addons')->group(function(){
 
 				Route::post('/add', 'servicesController@addAddons')->name('practitioner.services.addons.add');
+
+				Route::get('/enable/{id}', 'servicesController@enableServiceAddon');
+				Route::get('/disable/{id}', 'servicesController@disableServiceAddon');
+				Route::get('/edit/{id}', 'servicesController@editServiceAddon');
+
+				Route::post('/update', 'servicesController@updateServiceAddon')->name('practitioner.services.addon.update');
 			});
 		});
 

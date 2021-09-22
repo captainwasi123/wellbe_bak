@@ -319,5 +319,18 @@
             $('#long').val(place.geometry['location'].lng());
          });
       }
+
+      $(document).ready(function(){
+         'use strict'
+
+         
+         setTimeout(function(){
+            var newsletterAtt = getCookie("newsletterAtt");
+            if(newsletterAtt != 'Yes'){
+               $('.newsletterModal').modal('show');
+               setCookie("newsletterAtt","Yes",60);
+            }
+         }, 10000);
+      });
   </script>
 @endsection
