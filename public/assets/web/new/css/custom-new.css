@@ -1,6 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Mulish:wght@200;300;400;500;600;700;800;900&display=swap');
 
 
+/*QuickSand Font*/
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+
+
+
+
 @font-face {
 font-family:quiche-light;
 src: url("../fonts/quiche-light.otf");
@@ -25,6 +32,12 @@ src: url("../fonts/quiche-bold.otf");
 font-family:quiche-black;
 src: url("../fonts/quiche-black.otf");
 }
+
+
+
+
+
+
 
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
@@ -266,7 +279,8 @@ body {
     letter-spacing: 1px;
     line-height: 45px;
     font-weight: normal;
-    font-family: quiche-regular;
+    font-family: 'Quicksand' !important;
+    font-weight: 500;
 }
 
 .sec-head4 p {
@@ -283,10 +297,10 @@ body {
 
 .work-service-box h4 {
     color: #404780;
-    font-weight: 500;
     font-size: 22px;
     letter-spacing: 0px;
-    font-family: 'quiche-medium';
+    font-family: 'Quicksand' !important;
+    font-weight: 600;
     margin-bottom: 13px;
 }
 
@@ -378,7 +392,8 @@ img.service-img {
     position: relative;
     border: none;
     box-shadow: 1px 1px 10px silver;
-    font-family: 'quiche-regular';
+    font-family: 'Quicksand' !important;
+    font-weight: 500;
     border-radius:7px;
 }
 .set {
@@ -410,7 +425,8 @@ img.service-img {
 }
 
 .footer-list3 h3 {
-    font-family: 'quiche-regular';
+    font-family: 'Quicksand' !important;
+    font-weight: 500;
     font-size: 22px;
     margin-bottom: 20px;
 }
@@ -465,7 +481,8 @@ img.service-img {
     font-size: 33px;
     letter-spacing: 0.6px;
     margin-bottom: 12px;
-    font-family: 'quiche-regular';
+    font-family: 'Quicksand' !important;
+    font-weight: 500;
     line-height: 45px;
 }
 
@@ -545,7 +562,8 @@ img.service-img {
 
 .testim-review h5 {
     color: #060606;
-    font-family: 'quiche-medium';
+    font-family: 'Quicksand' !important;
+    font-weight: 600;
     font-size: 22px;
     letter-spacing: 0.8px;
 }
@@ -724,8 +742,8 @@ background:#5D4E6D !important;
     line-height: 57px;
     letter-spacing: 1px;
     margin-bottom: 15px;
-    font-family: 'quiche-medium';
-    font-weight: normal;
+    font-family: 'Quicksand' !important;
+    font-weight: 600;
 }
 .banner-text form input {
     font-family: 'Mulish';
@@ -756,7 +774,8 @@ section.banner-sec {
 
 .feature-box h5 {
     color: #053C5E;
-    font-family: 'quiche-medium';
+    font-family: 'Quicksand' !important;
+    font-weight: 600;
     font-size: 22px;
     padding-left: 10px;
 }
@@ -802,7 +821,8 @@ section.banner-sec {
     color: #5D4E6D;
     font-size: 38px;
     letter-spacing: 1px;
-    font-family: 'quiche-medium';
+    font-family: 'Quicksand' !important;
+    font-weight: 600;
     margin-bottom: 20px;
 }
 
@@ -856,7 +876,8 @@ section.banner-sec {
     color: #5D4E6D;
     font-size: 38px;
     letter-spacing: 1px;
-    font-family: 'quiche-medium';
+    font-family: 'Quicksand' !important;
+    font-weight: 600;
     margin-bottom: 20px;
 }
 
@@ -938,7 +959,8 @@ section.banner-sec {
 }
 .account-activation h3 {
     color: #5D4E6D;
-    font-family: quiche-medium;
+   font-family: 'Quicksand' !important;
+    font-weight: 600;
     text-align: center;
     font-size: 25px;
     letter-spacing: 1px;
@@ -955,7 +977,8 @@ section.banner-sec {
 }
 .login-heading h3 {
     color: black;
-    font-family: quiche-medium;
+    font-family: 'Quicksand' !important;
+    font-weight: 600;
     text-align: center;
     font-size: 22px;
     letter-spacing: 1px;
@@ -1120,7 +1143,8 @@ color:#5D4E6D;
 }
 .booked-content h3 {
     color: #5D4E6D;
-    font-family: quiche-medium;
+   font-family: 'Quicksand' !important;
+    font-weight: 600;
     font-size: 26px;
     letter-spacing: 0.7px;
     line-height: 40px;
@@ -1177,7 +1201,8 @@ a.custom-anchor1:hover , a.custom-anchor2:hover {
 .card-form-head h3 {
     color: #0F2F64;
     font-size: 22px;
-    font-family: quiche-medium;
+    font-family: 'Quicksand' !important;
+    font-weight: 600;
     letter-spacing: 0.4px;
 }
 
@@ -1185,7 +1210,8 @@ a.custom-anchor1:hover , a.custom-anchor2:hover {
 .card-form-head h2 {
     color: #0F2F64;
     font-size: 25px;
-    font-family: quiche-medium;
+    font-family: 'Quicksand' !important;
+    font-weight: 600;
     letter-spacing: 0.4px;
 }
 
@@ -1272,7 +1298,8 @@ textarea.form-control1 {
 }
 
 .cart-single-item>div:nth-child(1) h4 {
-    font-family: 'quiche-regular';
+    font-family: 'Quicksand' !important;
+    font-weight: 500;
     letter-spacing: 0.6px;
     margin-bottom: 3px !important;
     font-size: 16px;
@@ -1592,7 +1619,8 @@ ul.list-style1 li i {
 .breadcrumb-custom2 a {
     color: #053C5E;
     font-size: 24px;
-    font-family: 'quiche-regular';
+    font-family: 'Quicksand' !important;
+    font-weight: 500;
     letter-spacing: 0.8px;
 }
 
@@ -1645,7 +1673,8 @@ ul.list-style1 li i {
 .book-summary-head h3 {
     color: #5D4E6D;
     font-size: 22px;
-    font-family: 'quiche-medium';
+    font-family: 'Quicksand' !important;
+    font-weight: 600;
     letter-spacing: 0.7px;
 }
 
@@ -1656,7 +1685,8 @@ ul.list-style1 li i {
 .book-summary-item h5 {
     color: #0F2F64;
     font-size: 18px;
-    font-family: 'quiche-regular';
+   font-family: 'Quicksand' !important;
+    font-weight: 500;
     letter-spacing: 0.4px;
 }
 
@@ -1887,7 +1917,8 @@ margin-left: 7px;
 .sec-head6 h3 {
     color: #053C5E;
     font-size: 28px;
-    font-family: 'quiche-medium';
+    font-family: 'Quicksand' !important;
+    font-weight: 600;
 }
 
 
@@ -1927,7 +1958,8 @@ margin-left: 7px;
 
 .feature-box5 h4 {
     color: #053C5E;
-    font-family: 'quiche-regular';
+    font-family: 'Quicksand' !important;
+    font-weight: 500;
     letter-spacing: 0.6px;
     font-size: 20px;
 }
@@ -1955,7 +1987,8 @@ margin-left: 7px;
     color: #0F2F64;
     font-size: 20px;
     margin: 0px 0px 15px 0px;
-    font-family: 'quiche-medium';
+    font-family: 'Quicksand' !important;
+    font-weight: 600;
 }
 
 
@@ -2103,7 +2136,8 @@ margin-left: 7px;
 }
 .empty-bookings h4 {
     color: #0F2F64;
-    font-family: 'quiche-medium';
+    font-family: 'Quicksand' !important;
+    font-weight: 600;
     font-size: 20px;
     letter-spacing: 1px;
     line-height: 32px;
@@ -2438,7 +2472,8 @@ margin-left: 7px;
 
 .calendar-booking-head h3 {
     color: #0F2F64;
-    font-family: 'quiche-medium';
+    font-family: 'Quicksand' !important;
+    font-weight: 600;
     font-size: 24px;
     letter-spacing: 1px;
     line-height: 30px;
@@ -2595,8 +2630,8 @@ span.circle-1 {
     line-height: 42px;
     letter-spacing: 1px;
     margin-bottom: 16px;
-    font-family: 'quiche-medium';
-    font-weight: normal;
+    font-family: 'Quicksand' !important;
+    font-weight: 600;
 }
 .banner-text p {
     margin-bottom: 15px;
@@ -3085,8 +3120,9 @@ section.banner-sec .container {
     line-height: 46px;
     letter-spacing: 1px;
     margin-bottom: 15px;
-    font-family: 'quiche-medium';
-    font-weight: normal;
+    font-family: 'Quicksand' !important;
+    font-weight: 600;
+ 
 }
 .mob-bg-pink {
     background:#fbece7 !important;
@@ -3101,7 +3137,8 @@ section.banner-sec .container {
 }
 .feature-box h5 {
     color: #053C5E;
-    font-family: 'quiche-medium';
+    font-family: 'Quicksand' !important;
+    font-weight: 600;
     font-size: 20px;
     padding-left: 10px;
 }
@@ -3116,7 +3153,8 @@ section.banner-sec .container {
     color: #5D4E6D;
     font-size: 32px;
     letter-spacing: 1px;
-    font-family: 'quiche-medium';
+    font-family: 'Quicksand' !important;
+    font-weight: 600;
     margin-bottom: 10px;
 }
 .thanks-content {
@@ -3129,7 +3167,8 @@ section.banner-sec .container {
     color: #5D4E6D;
     font-size: 34px;
     letter-spacing: 1px;
-    font-family: 'quiche-medium';
+    font-family: 'Quicksand' !important;
+    font-weight: 600;
     margin-bottom: 10px;
 }
 .banner-users {
@@ -3249,7 +3288,8 @@ section.banner-sec.bg-5 {
 .sec-head6 h3 {
     color: #053C5E;
     font-size: 24px;
-    font-family: 'quiche-medium';
+    font-family: 'Quicksand' !important;
+    font-weight: 600;
 }
 .item-edit1 {
     position: static;
@@ -3339,3 +3379,6 @@ section.banner-sec.bg-5 {
 }
 
 
+
+
+ 
