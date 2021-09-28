@@ -11,7 +11,7 @@
    </div>
    <div class="form-field2">
       <p> PRICE <sup class="col-red">*</sup> </p>
-      <input type="number" step="any" placeholder="" name="price" style="padding-left: 50px;" value="{{$service->price}}">
+      <input type="number" step="any" placeholder="" name="price" style="padding-left: 50px;" value="{{empty($service->price) ? $data->price : $service->price}}">
       <span class="static-tag1 col-black"> NZ$  </span>
    </div>
    <div class="form-field2">

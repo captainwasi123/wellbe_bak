@@ -2488,7 +2488,7 @@ margin-left: 7px;
     position: absolute;
     right: 0px;
     top: -70px;
-    z-index: 99999;
+    z-index: 999;
     margin: 0px !important;
     border-radius: 8px !important;
 }

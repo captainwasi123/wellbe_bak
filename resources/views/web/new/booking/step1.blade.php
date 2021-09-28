@@ -147,7 +147,7 @@
                      <h5> <span id="bookingDate">{{date('d-m-Y', strtotime($date))}}</span> - <span id="bookingTime"></span> </h5>
                   </div>
                   <div class="book-summary-instructions m-t-50">
-                     <h6> Total <b> ${{number_format($totalAmount, 2)}} </b> </h6>
+                     <h6> Total <b> ${{number_format($totalAmount, 2)}} <small>excl GST</small> </b> </h6>
                   </div>
                   <div class="block-element">
                      <div class="row m-t-20 m-b-10">

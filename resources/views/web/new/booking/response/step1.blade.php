@@ -54,7 +54,6 @@
                      @endif
                   @endforeach
                </div>
-               <button class="book-now-btn1"> <i class="fa fa-angle-right"> </i> </button>
             </div>
          @endforeach
          @if(count($users) == 0)

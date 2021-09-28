@@ -28,6 +28,7 @@ class order extends Model
         $o->booker_id = Auth::id();
         $o->start_at = date('Y-m-d', strtotime($data['booking']['date']));
         $o->status = '9';
+        $o->address = $data['location']['place'];
         $o->save(); 
         $id = $o->id;
 

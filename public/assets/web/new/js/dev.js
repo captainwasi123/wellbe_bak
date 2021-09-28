@@ -5,7 +5,6 @@ $(document).ready(function(){
 
 
 
-
 	$(document).on('click', '.filterCat', function(){
 		var val = $(this).data('val');
 		insertParam('cat', val);
