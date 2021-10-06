@@ -20,11 +20,7 @@
             <h5 class="col-blue"> {{empty($data->booker) ? 'Deleted User' : $data->booker->first_name.' '.$data->booker->last_name}} </h5>
             <h6 class="col-grey"> Customer Address  </h6>
             <h5 class="col-black">
-               {{empty($data->booker->user_address) ? '' : $data->booker->user_address->postcode.' - '}}
-               {{empty($data->booker->user_address) ? '' : $data->booker->user_address->street.', '}}
-               {{empty($data->booker->user_address) ? '' : $data->booker->user_address->city.', '}}
-               {{empty($data->booker->user_address) ? '' : $data->booker->user_address->state.', '}}
-               {{empty($data->booker->user_address->country) ? '' : $data->booker->user_address->country->country}}
+               {{empty($data->address) ? '' : $data->address}}
             </h5>
             @if($data->status == '3')
                <h6 class="col-grey"> Guest Rating  </h6>

@@ -9,6 +9,7 @@ use App\Models\orders\order;
 use App\Models\orders\cancel;
 use App\Models\orders\reviews;
 use App\Models\MarketplaceSetting;
+use Carbon\Carbon;
 
 
 class bookingsController extends Controller
@@ -16,7 +17,7 @@ class bookingsController extends Controller
     function index(){
         $curr = date('Y-m-d H:i:s');
         $upcomming = order::where('booker_id', Auth::id())
-                        ->where('start_at', '>=', $curr)
+                        ->whereDate('start_at', '>=', Carbon::now())
                         ->where('status', '1')
                         ->orderBy('start_at')
                         ->limit(12)
@@ -34,11 +35,12 @@ class bookingsController extends Controller
 
     function bookOrder(){
         $data = session()->get('cart');
-        //dd($data);
         if(isset($data['services'])){
             $id = order::makeOrder($data);
-            session()->forget('cart');
             $ret_data = explode('|', $id);
+            
+            //dd($id);
+            session()->forget('cart');
 
             return view('web.payments.stripe', ['id' => $ret_data[0], 'amount' => $ret_data[1]]);
         }else{
@@ -61,11 +63,11 @@ class bookingsController extends Controller
     function upcomming_booking(){
         $curr = date('Y-m-d H:i:s');
         $data = order::where('booker_id', Auth::id())
-                        ->where('start_at', '>=', $curr)
+                        ->whereDate('start_at', '>=', Carbon::now())
                         ->where('status', '1')
                         ->orderBy('start_at')
                         ->get();
-
+        //dd($data);
     	return view('booker.booking.upcomming', ['data' => $data]);
     }
 

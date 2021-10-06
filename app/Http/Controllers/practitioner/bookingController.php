@@ -8,6 +8,7 @@ use Auth;
 use App\Models\orders\order;
 use App\Models\orders\cancel;
 use App\Models\MarketplaceSetting;
+use Carbon\Carbon;
 
 class bookingController extends Controller
 {
@@ -16,7 +17,7 @@ class bookingController extends Controller
     function upcomming_booking(){
         $curr = date('Y-m-d H:i:s');
         $data = order::where('pract_id', Auth::id())
-                        ->where('start_at', '>=', $curr)
+                        ->whereDate('start_at', '>=', Carbon::now())
                         ->where('status', '1')
                         ->orderBy('start_at')
                         ->get();

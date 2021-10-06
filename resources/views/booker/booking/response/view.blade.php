@@ -20,11 +20,7 @@
             <h5 class="col-blue"> {{empty($data->practitioner) ? 'Deleted User' : $data->practitioner->first_name.' '.$data->practitioner->last_name}} </h5>
             <h6 class="col-grey"> Customer Address  </h6>
             <h5 class="col-black">
-               {{empty($data->practitioner->user_address) ? '' : $data->practitioner->user_address->postcode.' - '}}
-               {{empty($data->practitioner->user_address) ? '' : $data->practitioner->user_address->street.', '}}
-               {{empty($data->practitioner->user_address) ? '' : $data->practitioner->user_address->city.', '}}
-               {{empty($data->practitioner->user_address) ? '' : $data->practitioner->user_address->state.', '}}
-               {{empty($data->practitioner->user_address->country) ? '' : $data->practitioner->user_address->country->country}}
+               {{empty($data->address) ? '' : $data->address}}
             </h5>
 
          </div>

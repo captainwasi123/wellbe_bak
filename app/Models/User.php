@@ -11,6 +11,7 @@ use App\Models\orders\reviews;
 use App\Models\userService;
 use App\Models\UserGeofence;
 use App\Models\schedule\availability;
+use App\Models\orders\orderDetail;
 use App\Models\schedule\holidays;
 
 class User extends Authenticatable

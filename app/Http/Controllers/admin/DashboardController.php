@@ -16,13 +16,14 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session;
 use App\Models\Categories;
 use App\Models\userCategory;
+use Carbon\Carbon;
 
 class DashboardController extends Controller
 {
     function index(){
         Auth::guard('web')->logout();
         $curr = date('Y-m-d H:i:s');
-        $upcomming = order::where('start_at', '>=', $curr)
+        $upcomming = order::whereDate('start_at', '>=', Carbon::now())
                         ->where('status', '1')
                         ->orderBy('start_at')
                         ->limit(12)
@@ -41,7 +42,7 @@ class DashboardController extends Controller
 
     function upcomming(){
         $curr = date('Y-m-d H:i:s');
-        $data = order::where('start_at', '>=', $curr)
+        $data = order::whereDate('start_at', '>=', Carbon::now())
                         ->where('status', '1')
                         ->orderBy('start_at')
                         ->get();

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Auth;
 use App\Models\orders\order;
+use Carbon\Carbon;
 
 
 class practitionerController extends Controller
@@ -16,7 +17,7 @@ class practitionerController extends Controller
         $to = date('Y-m-d 23:59:59');
         $curr = date('Y-m-d H:i:s');
         $upcomming = order::where('pract_id', Auth::id())
-                        ->where('start_at', '>=', $curr)
+                        ->whereDate('start_at', '>=', Carbon::now())
                         ->where('status', '1')
                         ->orderBy('start_at')
                         ->limit(12)
