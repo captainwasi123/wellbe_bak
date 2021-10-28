@@ -118,9 +118,9 @@ width: 100% !important;
 width: 100%;
 }
 
-.fluid-on-mobile { 
+.fluid-on-mobile {
 width: 100% !important;
-height: auto !important; 
+height: auto !important;
 text-align:center;
 }
 
@@ -128,11 +128,11 @@ text-align:center;
 width: 100% !important;
 }
 
-.hide-on-mobile { 
-display:none !important; 
+.hide-on-mobile {
+display:none !important;
 width:0px !important;
-height:0px !important; 
-overflow:hidden; 
+height:0px !important;
+overflow:hidden;
 }
 }
 
@@ -186,11 +186,11 @@ display: none;
 }
 
 @media all and (max-width: 599px) {
-.hide-on-mobile { 
-display:none !important; 
+.hide-on-mobile {
+display:none !important;
 width:0px !important;
-height:0px !important; 
-overflow:hidden; 
+height:0px !important;
+overflow:hidden;
 }
 .main-container {
 width: 100% !important;
@@ -199,9 +199,9 @@ width: 100% !important;
 width: 100%;
 }
 
-.fluid-on-mobile { 
+.fluid-on-mobile {
 width: 100% !important;
-height: auto !important; 
+height: auto !important;
 text-align:center;
 }
 
@@ -712,7 +712,7 @@ width: 100% !important;
 <tr>
 
 <td valign="top" style="padding-top:10px;padding-bottom:5px;"><table cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td width="100%" align="center"><table cellpadding="0" cellspacing="0" border="0"><tr><td><!--[if true]><table cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td valign="top" style="padding:0;" width="32"><![endif]--><table cellpadding="0" cellspacing="0" border="0" align="left" style="width:32px;height:32px;" width="32" height="32"  ><tr><td align="center"><a href="https://www.facebook.com/" target="_blank"><img width="32" border="0" height="32" src="https://plugins.chamaileon.io/real-time-editor/latest/static/img/Facebook/fb-3-colorful.png" alt="facebook" /></a></td></tr></table><!--[if true]></td><td valign="top" style="padding:0;"
-width="20"><![endif]--><table cellpadding="0" cellspacing="0" border="0" align="left" style="width:20px;height:20px;" width="20" height="20" ><tr><td style="font-size:0px;line-height:0;mso-line-height-rule:exactly;">&nbsp;</td></tr></table><!--[if true]></td><td valign="top" style="padding:0;" width="32"><![endif]--><table cellpadding="0" cellspacing="0" border="0" align="left" style="width:32px;height:32px;" width="32" height="32"  ><tr><td align="center"><a href="https://www.instagram.com/" target="_blank"><img width="32" border="0" height="32" src="https://plugins.chamaileon.io/real-time-editor/latest/static/img/Instagram/ig-3-colorful.png" alt="instagram" /></a></td></tr></table><!--[if true]></td></tr></table><![endif]--></td></tr></table></td></tr></table>
+width="20"><![endif]--><table cellpadding="0" cellspacing="0" border="0" align="left" style="width:20px;height:20px;" width="20" height="20" ><tr><td style="font-size:0px;line-height:0;mso-line-height-rule:exactly;">&nbsp;</td></tr></table><!--[if true]></td><td valign="top" style="padding:0;" width="32"><![endif]--><table cellpadding="0" cellspacing="0" border="0" align="left" style="width:32px;height:32px;" width="32" height="32"  ><tr><td align="center"><a href="https://www.instagram.com/wellbe_nz/" target="_blank"><img width="32" border="0" height="32" src="https://plugins.chamaileon.io/real-time-editor/latest/static/img/Instagram/ig-3-colorful.png" alt="instagram" /></a></td></tr></table><!--[if true]></td></tr></table><![endif]--></td></tr></table></td></tr></table>
 </td>
 </tr>
 </table>

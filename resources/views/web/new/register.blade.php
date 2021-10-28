@@ -69,7 +69,11 @@
                               <input type="password" placeholder="Your Password" name="password" class="form-control1" required>
                            </div>
                            <div class="block-element m-b-20">
-                              <div class="checkbox-field1"> <input type="checkbox" name="terms_and_condition" required> By signing up I agree  to Wellbe Terms & Conditons and Privacy Policy </div>
+                            <p class="col-black form-label1">  Confirm Password  </p>
+                            <input type="password" placeholder="Confirm Password" name="confirmation_password" class="form-control1" required>
+                         </div>
+                           <div class="block-element m-b-20">
+                              <div class="checkbox-field1"> <input type="checkbox" name="terms_and_condition" required> By signing up I agree  to Wellbe Terms & Conditions and Privacy Policy </div>
                            </div>
                            <div class="block-element">
                               <button type="submit" class="submit-btn1"> Sign Up </button>

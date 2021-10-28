@@ -64,7 +64,7 @@ use Illuminate\Support\Facades\Route;
 
 	});
 
-                                           
+
 
 
 
@@ -74,13 +74,13 @@ use Illuminate\Support\Facades\Route;
 
 	//Services
 	Route::get('/user/services/{userid}/{cat_id}', 'webController@user_services');
-	
+
 	Route::post('/add_cart','webController@add_cart')->name('add_cart');
 	Route::get('/cart_update/{row_id}', 'webController@cart_update');
 
 	Route::get('/user/slots/{date}/{user_id}', 'webController@get_slots');
 
-//booking reminder route 
+//booking reminder route
 	Route::get('/booking-reminder', 'webController@booking_reminder')->name('booking.reminder');
 
 	// Authentication
@@ -109,7 +109,7 @@ use Illuminate\Support\Facades\Route;
 			Route::get('/disable/{id}', 'servicesController@disableService');
 
 			Route::post('/update', 'servicesController@updateService')->name('practitioner.services.update');
-			
+
 
 			//Addons
 			Route::prefix('addons')->group(function(){
@@ -136,7 +136,7 @@ use Illuminate\Support\Facades\Route;
 
 			Route::get('/', 'profileController@index')->name('practitioner.profile');
 			Route::post('/profile-save', 'profileController@profile_save')->name('practitioner.profile.save');
-            
+
             Route::post('/change-password', 'profileController@change_password')->name('practitioner.profile.change_password');
 
             Route::get('/geofences', 'profileController@geofences')->name('practitioner.geofences');
@@ -146,7 +146,7 @@ use Illuminate\Support\Facades\Route;
 		// Booking
 		Route::prefix('booking')->group(function(){
 
-			Route::get('/upcomming', 'bookingController@upcomming_booking')->name('practitioner.booking.upcomming');
+			Route::get('/upcoming', 'bookingController@upcomming_booking')->name('practitioner.booking.upcomming');
 			Route::get('/inprogress', 'bookingController@inprogress_booking')->name('practitioner.booking.inprogress');
 			Route::get('/completed', 'bookingController@completed_booking')->name('practitioner.booking.completed');
 			Route::get('/cancelled', 'bookingController@cancelled_booking')->name('practitioner.booking.cancelled');
@@ -177,7 +177,7 @@ use Illuminate\Support\Facades\Route;
 
 	Route::prefix('booker')->namespace('booker')->middleware('bookerAuth')->group(function(){
 		Route::get('/', 'bookingsController@index')->name('booker.index');
-		Route::get('/upcomming', 'bookingsController@upcomming_booking')->name('booker.upcomming_booking');
+		Route::get('/upcoming', 'bookingsController@upcomming_booking')->name('booker.upcomming_booking');
 		Route::get('/inprogress', 'bookingsController@inprogress_booking')->name('booker.inprogress_booking');
 		Route::get('/completed', 'bookingsController@completed_booking')->name('booker.completed_booking');
 		Route::get('/cancelled', 'bookingsController@cancelled_booking')->name('booker.cancelled_booking');
@@ -232,7 +232,7 @@ use Illuminate\Support\Facades\Route;
 	Route::prefix('admin')->middleware('adminAuth')->namespace('admin')->group(function () {
 
 	    Route::get('/', 'DashboardController@index')->name('admin.dashboard');
-	    Route::get('/upcomming', 'DashboardController@upcomming')->name('admin.upcomming');
+	    Route::get('/upcoming', 'DashboardController@upcomming')->name('admin.upcomming');
 	    Route::get('/inprogress', 'DashboardController@inprogress')->name('admin.inprogress');
 	    Route::get('/completed', 'DashboardController@completed')->name('admin.completed');
 	    Route::get('/cancelled', 'DashboardController@cancelled')->name('admin.cancelled');
@@ -273,18 +273,18 @@ use Illuminate\Support\Facades\Route;
 	    });
 
 		//services
-			
+
 			Route::get('/manage_services/{id}', 'ServicesController@manage_services')->name('admin.manage_services');
 
 			Route::prefix('services')->group(function(){
-				
+
 				Route::get('/detail/{id}', 'ServicesController@loadServiceDetail');
 				Route::get('/delete/{id}', 'ServicesController@deleteService');
 				Route::get('/edit/{id}', 'ServicesController@editService');
 
 				Route::get('/disable/{id}', 'ServicesController@disableService');
 				Route::get('/enable/{id}', 'ServicesController@enableService');
-				
+
 				//Add Service
 				Route::post('/add', 'ServicesController@addService')->name('admin.services.add');
 				Route::post('/update', 'ServicesController@updateService')->name('admin.services.update');

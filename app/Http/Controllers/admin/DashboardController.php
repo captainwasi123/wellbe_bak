@@ -80,7 +80,7 @@ class DashboardController extends Controller
         return view("admin.customers.customers", ['data' => $data]);
     }
 
-    
+
     //Practitioner
     function practitioners(){
         $data = User::where('user_type', '1')->get();
@@ -93,7 +93,7 @@ class DashboardController extends Controller
         $data->status = '2';
         $data->save();
 
-        return redirect()->back()->with('success', 'Practitioner Disabled.');    
+        return redirect()->back()->with('success', 'Practitioner Disabled.');
     }
 
     function assumePractitioners(Request $request){
@@ -102,7 +102,7 @@ class DashboardController extends Controller
         $data->status = '1';
         $data->save();
 
-        return redirect()->back()->with('success', 'Practitioner Assumed.');    
+        return redirect()->back()->with('success', 'Practitioner Activated');
     }
 
     function manageCategory($id){
@@ -207,19 +207,19 @@ class DashboardController extends Controller
 
     //Cancel
 
-    function bookingCancel(Request $request){ 
+    function bookingCancel(Request $request){
         $data = $request->all();
         $id = base64_decode(base64_decode($data['oid']));
         $des = $data['description'];
 
         cancel::cancellation($id, $des, '0');
-        
+
         $order = Order::with(['details','practitioner','booker'])->where('id',$id)->first();
-        $data['order'] = $order; 
+        $data['order'] = $order;
         $data['mtp'] = MarketplaceSetting::latest()->first();
         \App\Helpers\CommonHelpers::send_email('BookingCancellationCustomer_other', $data, $order->booker->email, 'Booking Cancellation', $from_email = 'info@divsnpixel.com', $from_name = 'Wallbe');
-        \App\Helpers\CommonHelpers::send_email('BookingCancellationPractitioner', $data, $order->practitioner->email, 'Booking Cancellation', $from_email = 'info@divsnpixel.com', $from_name = 'Wallbe');         
-        
+        \App\Helpers\CommonHelpers::send_email('BookingCancellationPractitioner', $data, $order->practitioner->email, 'Booking Cancellation', $from_email = 'info@divsnpixel.com', $from_name = 'Wallbe');
+
         return redirect()->back()->with('success', 'Order Cancelled.');
     }
 
@@ -283,9 +283,9 @@ class DashboardController extends Controller
     public function practitioners_portal(Request $request)
     {
        $id = base64_decode($request->id);
-       $user = User::find($id); 
-       Auth::login($user); 
+       $user = User::find($id);
+       Auth::login($user);
        Session::put('user_type', 'admin');
        return redirect(route('practitioner.dashboard'));
-    }  
+    }
 }

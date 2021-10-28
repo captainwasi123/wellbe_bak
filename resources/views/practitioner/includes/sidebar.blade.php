@@ -31,7 +31,7 @@
          </div> -->
       </div>
       <div class="sidebar-btn-fixed">
-         <a href="{{URL::to('/')}}" target="_blank"> <i class="fa fa-globe"> </i> View Website Page </a>
+         <a href="{{URL::to('/')}}" target="_blank"> <i class="fa fa-globe"> </i> Go to Wellbe </a>
       </div>
    </div>
 </section>
