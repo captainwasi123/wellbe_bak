@@ -52,18 +52,28 @@ class loginController extends Controller
         if(empty($u->id)){
 
             $user = User::newUser($data); $email['user'] = $user;
-            if($request->userType == 2 ){ 
-                $email_temp = 'CustomerActivation'; 
+            if($request->userType == 2 ){
+                $email_temp = 'CustomerActivation';
                 $msg = 'Thanks for joining the Wellbe Community. An activation email has been sent, please click the link in the email to activate your account.';
             }else{
-                $email_temp = 'PractitionerActivation'; 
+                $email_temp = 'PractitionerActivation';
                 $msg = 'Thanks for joining the Wellbe Community. An activation email has been sent, please click the link in the email to activate your account.';
-            } 
+            }
             $a = \App\Helpers\CommonHelpers::send_email($email_temp, $email, $request->email, 'Activate Your Wellbe Account', $from_email = 'info@divsnpixel.com', $from_name = 'Wallbe');
             return redirect()->back()->with('success', $msg);
         }else{
 
             return redirect()->back()->with('error', 'Sorry, an account already exists with that email address. Please try and login or reset your password.');
         }
+    }
+
+    function forgetpassword(){
+
+        return view('web.new.forgetpassword');
+    }
+
+    function resertpassword(){
+
+        return view('web.new.resertpassword');
     }
 }

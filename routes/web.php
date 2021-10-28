@@ -19,9 +19,13 @@ use Illuminate\Support\Facades\Route;
 		Route::get('/', 'webController@index')->name('home');
 		Route::get('/work_with_us', 'webController@workWithUs')->name('work_with_us');
 
-
+// 
 		//Authentication
 		Route::get('/login', 'loginController@login');
+		
+		Route::get('/forgotpassword', 'loginController@forgetpassword');
+		Route::get('/resertpassword', 'loginController@resertpassword');
+
 	    Route::post('/login', 'loginController@loginAttempt');
 		Route::get('/register', 'loginController@register');
 		Route::get('/register/pro', 'loginController@registerPro');

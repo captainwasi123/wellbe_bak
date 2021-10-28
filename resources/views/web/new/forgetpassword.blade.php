@@ -23,7 +23,7 @@
                         <img src="{{URL::to('/public/assets/web/new/')}}/images/wellbe-logo.png" width="150px">
                      </div>
                      <div class="login-heading m-b-40">
-                        <h3> Login </h3>
+                        <h3> Email Check </h3>
                      </div>
                      @if(session()->has('error'))
                         <div class="alert alert-danger">
@@ -37,20 +37,17 @@
                               <p class="col-black form-label1"> Email Address  </p>
                               <input type="email" placeholder="Email Address" name="email" class="form-control1" required>
                            </div>
-                           <div class="block-element m-b-20">
-                              <p class="col-black form-label1"> Password  </p>
-                              <input type="password" placeholder="Password" name="password" class="form-control1" required>
-                           </div>
+                           
                            <div class="block-element">
-                              <button type="submit" class="submit-btn1"> Login </button>
+                              <button type="submit" class="submit-btn1"> Submit </button>
                            </div>
                         </form>
                      </div>
                      <div class="forgot-pass1">
-                        <a href="{{URL::to('/forgotpassword')}}" class="col-red"> Forgot Password? </a>
+                       
                      </div>
                      <div class="already-account">
-                        <span class="col-black"> Don't have an account? <a href="{{URL::to('/register')}}"> Sign Up </a> </span>
+                        <span class="col-black">   <a href="{{URL::to('/login')}}"> Sign In </a> </span>
                      </div>
                      <div class="legal-links1">
                         <a href=""> Terms & Conditions </a>
