@@ -15,7 +15,7 @@
           <div class="col-sm-2 chat-options col-md-2 col-xs-2">
               <i class="far fa-window-minimize mr-2 mt-0" data-toggle="collapse" data-target="#chatContent"
                   aria-expanded="false" aria-controls="collapseOne" style="cursor: pointer;"></i>
-          
+
           </div>
       </div>
   </div>
@@ -34,7 +34,7 @@
                                       <span class="time_date">{{$chat->created_at->diffForHumans()}}</span>
                                   </div>
                               </div>
-                            @else  
+                            @else
                               <div class="incoming_msg">
                                   <div class="incoming_msg_img"> <img src="{{URL::to('/'.$chat->user->profile_img)}}" onerror="this.onerror=null;this.src='{{URL::to('/')}}/public/assets/images/user-placeholder.png';" alt="profile_img"> </div>
                                   <div class="received_msg">
@@ -50,7 +50,7 @@
                             <input type="hidden" id="empty" value="1">
                             <div class="empty_chat">
                               <img src="{{URL::to('/public/assets/images/no-message.png')}}">
-                              <h4>No Converstaion Found.</h4>
+                              <h4>No Conversation Found.</h4>
                             </div>
                           @endif
                       </div>

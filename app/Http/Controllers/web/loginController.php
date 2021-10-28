@@ -48,6 +48,7 @@ class loginController extends Controller
 
     function registerSubmit(Request $request){
         $data = $request->all();
+        if($data['password'] == $data['confirmation_password']){
         $u = User::where('email', $data['email'])->first();
         if(empty($u->id)){
 
@@ -65,6 +66,11 @@ class loginController extends Controller
 
             return redirect()->back()->with('error', 'Sorry, an account already exists with that email address. Please try and login or reset your password.');
         }
+    }else{
+
+        return redirect()->back()->with('error', 'Password does not matched.');
+    }
+
     }
 
     function forgetpassword(){

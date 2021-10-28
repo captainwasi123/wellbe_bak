@@ -34,15 +34,15 @@
                      <td> {{count($val->p_cancelled)}} </td>
                      <td> {{empty($val->p_revenue) ? '0' : '$'.number_format($val->p_revenue[0]->totalRevenue, 2)}} </td>
                      <td> - </td>
-                     <td>   
+                     <td>
                       <label class="switch">
-                        <input type="checkbox" class="switch-input disableUser" data-ref="{{base64_encode($val->id)}}" {{$val->status == '1' ? 'checked' : ''}}>
+                        <input type="checkbox"  class="switch-input disableUser" data-ref="{{base64_encode($val->id)}}" {{$val->status == '1' ? 'checked' : ''}}>
                         <span class="switch-label" data-on="On" data-off="Off"></span>
                         <span class="switch-handle"></span>
                       </label>
                       <a href="javascript:void(0)" class="manageCategory" data-id="{{base64_encode($val->id)}}">
                         <span class="fa fa-ellipsis-v"></span>
-                        </a> 
+                        </a>
                     </td>
                   </tr>
                 @endforeach
@@ -71,11 +71,11 @@
             <form method="post" action="{{route('admin.practitioners.disable')}}">
               {{csrf_field()}}
               <input type="hidden" name="pid" id="dpid">
-              <button type="submit" class="bg-blue col-white normal-btn rounded"> Yes </button> 
+              <button type="submit" class="bg-blue col-white normal-btn rounded"> Yes </button>
 
-              <span style="display: inline-block;margin:0px 10px"> or </span> 
+              <span style="display: inline-block;margin:0px 10px"> or </span>
 
-              <button type="reset" class="bg-silver col-black normal-btn rounded" data-dismiss="modal"> Cancel </button>
+              <button type="reset"  class="bg-silver col-black normal-btn rounded" data-dismiss="modal"> Cancel </button>
             </form>
          </div>
       </div>
@@ -88,18 +88,18 @@
             <div class="modal-content">
                <button type="button" class="close1" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span> </button>
                <div class="custom-modal-head">
-                  <h3> <img src="{{URL::to('/')}}/public/assets/images/red-cross.PNG" alt="red-cross-icon" width="35px"> Assume User </h3>
-                  <p class="col-grey text-left"> Are you sure you want to assume this user ? </p>
+                  <h3> <img src="{{URL::to('/')}}/public/assets/images/red-cross.PNG" alt="red-cross-icon" width="35px"> Activate Practitioner </h3>
+                  <p class="col-grey text-left"> Are you sure you would like to activate this practitioner account? </p>
                </div>
                <div class="custom-modal-data text-left">
                   <form method="post" action="{{route('admin.practitioners.assume')}}">
                     {{csrf_field()}}
                     <input type="hidden" name="pid" id="apid">
-                    <button type="submit" class="bg-blue col-white normal-btn rounded"> Yes </button> 
+                    <button type="submit"  class="bg-blue col-white normal-btn rounded"> Yes </button>
 
-                    <span style="display: inline-block;margin:0px 10px"> or </span> 
+                    <span style="display: inline-block;margin:0px 10px "> or </span>
 
-                    <button type="reset" class="bg-silver col-black normal-btn rounded" data-dismiss="modal"> Cancel </button>
+                    <button type="reset" onclick="window.location.reload();" class="bg-silver col-black normal-btn rounded " data-dismiss="modal"> Cancel </button>
                   </form>
                </div>
             </div>
@@ -116,7 +116,7 @@
             <h3> Manage Category </h3>
          </div>
          <div class="custom-modal-data" id="manageCategoryModalBody">
-            
+
          </div>
       </div>
    </div>

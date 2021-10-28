@@ -86,11 +86,11 @@ class User extends Authenticatable
     }
 
     //Services
-    
+
     public function services()
     {
         return $this->hasMany(userService::class,'user_id','id');
-    }    
+    }
 
 
     //orders
@@ -155,7 +155,7 @@ class User extends Authenticatable
     }
 
     //availability
-    
+
     public function availability()
     {
         return $this->hasMany(availability::class,'user_id','id');

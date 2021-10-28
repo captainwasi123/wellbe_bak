@@ -7,7 +7,7 @@
                <p> Name eius solet dolors ad, his eu omnes salutandi perrtinacia. </p>
                <ul>
                   <li> <a href=""> <i class="fab fa-facebook-f"> </i> </a> </li>
-                  <li> <a href=""> <i class="fab fa-instagram"> </i> </a> </li>
+                  <li> <a href="https://www.instagram.com/wellbe_nz/"> <i class="fab fa-instagram"> </i> </a> </li>
                </ul>
             </div>
          </div>

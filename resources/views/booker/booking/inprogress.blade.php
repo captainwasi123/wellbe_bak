@@ -1,5 +1,5 @@
 @extends('includes.master')
-@section('title', 'In-Porgress Bookings')
+@section('title', 'In Progress Bookings')
 
 @section('sidebar')@include('booker.includes.sidebar')@endsection
 @section('topbar')@include('booker.includes.topbar')@endsection
@@ -54,13 +54,13 @@
          <div class="modal-content">
             <button type="button" class="close1" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
             <div class="booking-modal-popup" id="orderViewContent">
-               
+
             </div>
          </div>
       </div>
    </div>
 
-   
+
     <div class="modal fade modal-size2 orderModalCancel" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
        <div class="modal-dialog" role="document" style="max-width: 600px;">
           <div class="modal-content">
