@@ -221,7 +221,7 @@
 				el[val === that.selected.getHour(true) ? 'addClass' : 'removeClass']('active');
 			});
 		},
-
+ 
 		setMinute : function (minute) {
 			if (typeof minute === 'undefined') throw new Error('Expecting a value.');
 

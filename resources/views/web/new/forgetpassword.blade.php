@@ -25,21 +25,26 @@
                      <div class="login-heading m-b-40">
                         <h3> Email Check </h3>
                      </div>
-                     @if(session()->has('error'))
+                     @if(session()->has('message'))
                         <div class="alert alert-danger">
-                           {{ session()->get('error') }}
+                           {{ session()->get('message') }}
                         </div>
                      @endif
                      <div class="login-form">
-                        <form method="post">
+                        {{--  <form method="post">  --}}
+                        <form action="{{ route('forget.password.post') }}" method="POST">
                            @csrf
                            <div class="block-element m-b-20">
                               <p class="col-black form-label1"> Email Address  </p>
-                              <input type="email" placeholder="Email Address" name="email" class="form-control1" required>
+
+                               <input type="text" id="email_address" placeholder="Email Address" class="form-control" name="email" required autofocus>
+                                  @if ($errors->has('email'))
+                                      <span class="text-danger">{{ $errors->first('email') }}</span>
+                                  @endif
                            </div>
                            
                            <div class="block-element">
-                              <button type="submit" class="submit-btn1"> Submit </button>
+                              <button type="submit" class="submit-btn1"> Send Password Reset Link </button>
                            </div>
                         </form>
                      </div>

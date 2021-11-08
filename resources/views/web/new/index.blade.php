@@ -11,6 +11,7 @@
               <div class="banner-text">
                  <h3> All your favourite treatments at home
                  </h3>
+                 
                  <p> Wellbe provides beauty & wellness services in the comfort of your home with therapists you can trust.  </p>
                  <form method="get" action="{{route('treatments.search')}}">
                     <input type="hidden" name="lat" id="lat">

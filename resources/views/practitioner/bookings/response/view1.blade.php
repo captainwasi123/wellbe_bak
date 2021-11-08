@@ -75,7 +75,7 @@
 <div class="row">
    <div class="col-md-6">
       <div class="booking-modal-text">
-         <h3> Details </h3>
+         <h3> Details   </h3>
          <p>Booking Status: 
             <strong>
                @switch($data->status)

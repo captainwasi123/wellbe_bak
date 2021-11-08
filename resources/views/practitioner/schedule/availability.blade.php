@@ -45,7 +45,7 @@
                                  <td>
                                     <input type="text" name="days[sunday][0][first_booking]" class="timepicker" value="9:00 PM">
                                  </td>
-                                 <td> Last Booking </td>
+                                 <td> Last Booking </td> 
                                  <td>
                                     <input type="text" name="days[sunday][0][last_booking]" class="timepicker" value="5:00 PM">
                                  </td>

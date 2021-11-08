@@ -50,7 +50,9 @@
 
                         <div class="book-summary-item">
                            <h5>{{$val['quantity']}}x {{$val['title']}} </h5>
-                           <p> <b class="col-green"> From ${{number_format($val['price'], 2)}} </b> {{$val['duration']}} minutes </p>
+                           <p> <b class="col-green"> 
+                           {{--  From ${{number_format($val['price'], 2)}}  --}}
+                            </b> {{$val['duration']}} minutes </p>
                         </div>
                         @php $totalAmount = $totalAmount+($val['price']*$val['quantity']); @endphp
                      @endforeach

@@ -22,17 +22,23 @@ use Illuminate\Support\Facades\Route;
 // 
 		//Authentication
 		Route::get('/login', 'loginController@login');
-		
-		Route::get('/forgotpassword', 'loginController@forgetpassword');
-		Route::get('/resertpassword', 'loginController@resertpassword');
-
 	    Route::post('/login', 'loginController@loginAttempt');
 		Route::get('/register', 'loginController@register');
 		Route::get('/register/pro', 'loginController@registerPro');
 		Route::post('/register', 'loginController@registerSubmit');
+		
+
+		// forget-password
+		// Route::get('/forgotpassword', 'loginController@forgetpassword');
+		// Route::get('/resertpassword', 'loginController@resertpassword');
+
+		Route::get('forget-password', 'loginController@showForgetPasswordForm')->name('forget.password.get');
+		Route::post('forget-password', 'loginController@submitForgetPasswordForm')->name('forget.password.post');
+		 Route::get('reset-password/{token}', 'loginController@showResetPasswordForm')->name('reset.password.get');
+		Route::post('reset-password', 'loginController@submitResetPasswordForm')->name('reset.password.post');
 
 
-
+ 
 		//Treatments
 		Route::prefix('treatments')->group(function(){
 			Route::get('/', 'treatmentController@treatments')->name('treatments');

@@ -47,7 +47,7 @@
                   </div>
 
                   <div class="category-message">
-                  <p> Want to offer a new service category? <a href="#" class="col-blue"> Contact us to let us know! </a> </p>
+                  <p> Want to offer a new service category? <a href="mailto:info@wellbe.co.nz" class="col-blue"> Contact us to let us know! </a> </p>
                   </div>
                </div>
             </div>

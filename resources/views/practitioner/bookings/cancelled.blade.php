@@ -30,8 +30,13 @@
                          <td> {{date('l, d M Y - h:i A', strtotime($val->start_at.' '.$val->details[0]->start_time))}}</td>
                          <td> #{{$val->id}} </td>
                          <td class="col-blue chat" data-ref="{{base64_encode(base64_encode($val->id))}}"> {{empty($val->booker) ? 'Deleted User' : $val->booker->first_name.' '.$val->booker->last_name}} <i class="fa fa-comments col-black"> </i> </td>
-                         <td> {{$val->payment_status == '1' ? 'Paid' : 'In-Escrow'}} </td>
-                         <td> NZ ${{number_format($val->pract_earning, 2)}} </td>
+                         {{--  <td> {{$val->payment_status == '1' ? 'Paid' : 'In-Escrow'}} </td>  --}}
+                         <td> {{$val->payment_status == '1' ? 'Paid' : '---'}} </td>
+
+                        <td>
+                           @php $com = ($val->sub_total/100)*$mtp->comission;@endphp
+                           NZ ${{number_format($val->sub_total-$com , 2)}}
+                        </td>
                          <td> <a href="javascript:void(0)" class="custom-btn1 orderModal" data-id="{{base64_encode($val->id)}}"> View  </a> </td>
                       </tr>
                     @endforeach
@@ -55,7 +60,7 @@
             <div class="modal-content">
                <button type="button" class="close1" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                <div class="booking-modal-popup" id="orderViewContent">
-                  
+
                </div>
             </div>
          </div>

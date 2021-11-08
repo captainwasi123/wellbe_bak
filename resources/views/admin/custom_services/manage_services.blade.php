@@ -82,7 +82,7 @@
                   </div>
                   <div class="form-field2">
                      <p> PRICE <sup class="col-red">*</sup> </p>
-                     <input type="number" step="any" placeholder="" name="price" style="padding-left: 50px;">
+                     <input type="number" step="any" placeholder="" name="price" style="padding-left: 50px;" required>
                      <span class="static-tag1 col-black"> NZ$  </span>
                   </div>
                   <div class="form-field2">

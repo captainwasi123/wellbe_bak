@@ -6,7 +6,7 @@
 @section('topbar')@include('admin.includes.topbar')@endsection
 
 @section("content")
-<div class="dashboard-wrapper">
+<div class="dashboard-wrapper" >
     <div class="box-type4">
     <div class="page-title">
        <h3 class="col-white"> Practitioners </h3>
@@ -59,7 +59,7 @@
 </div>
 
 <!-- Disable Modal -->
-<div class="modal fade modal-size2 disableUserModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+<div class="modal fade modal-size2 disableUserModal" onclick="window.location.reload();" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
    <div class="modal-dialog" role="document" style="max-width: 500px;">
       <div class="modal-content">
          <button type="button" class="close1" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span> </button>
@@ -83,12 +83,12 @@
 </div>
 
 <!-- Assume Modal -->
-<div class="modal fade modal-size2 assumeUserModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+<div class="modal fade modal-size2 assumeUserModal"  onclick="window.location.reload();" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
          <div class="modal-dialog" role="document" style="max-width: 500px;">
             <div class="modal-content">
                <button type="button" class="close1" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span> </button>
                <div class="custom-modal-head">
-                  <h3> <img src="{{URL::to('/')}}/public/assets/images/red-cross.PNG" alt="red-cross-icon" width="35px"> Activate Practitioner </h3>
+                  <h3> <img src="{{URL::to('/')}}/public/assets/images/red-cross.png" alt="red-cross-icon" width="35px"> Activate Practitioner </h3>
                   <p class="col-grey text-left"> Are you sure you would like to activate this practitioner account? </p>
                </div>
                <div class="custom-modal-data text-left">

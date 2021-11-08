@@ -78,7 +78,7 @@
                 <form class="text-right" method="post" action="{{route('admin.booking.cancel')}}">
                     {{csrf_field()}}
                     <input type="hidden" name="oid" id="oid">
-                    <textarea name="description" required>  </textarea>
+                    <textarea name="description" required></textarea>
                     <p class="col-grey text-left"> Are you sure you would like to cancel this booking? A notification will be sent to the booker to let them know </p>
                     <button class="bg-blue col-white normal-btn rounded"> Cancel Booking </button>
                 </form>

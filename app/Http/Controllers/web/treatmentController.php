@@ -10,7 +10,7 @@ use App\Models\User;
 use DB;
 
 class treatmentController extends Controller
-{
+{ 
     //
     function treatments(){
         $categories = Categories::where('status', '1')->get();

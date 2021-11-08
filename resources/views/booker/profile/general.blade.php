@@ -86,14 +86,14 @@
          </div>
 
 
-         <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
+         <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
          <div class="form-field3">
          <p> Post code </p>
          <input type="text" name="postcode" value="{{@$user_data->user_address->postcode}}">
          </div>
          </div>
 
-         <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
+         {{--  <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
          <div class="form-field3">
          <p> State </p>
          <input type="text" name="state" value="{{@$user_data->user_address->state}}">
@@ -110,7 +110,7 @@
             @endforeach
          </select>
          </div>
-         </div>
+         </div>  --}}
 
          </div>
 

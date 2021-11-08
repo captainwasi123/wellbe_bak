@@ -5,7 +5,7 @@
 @section('topbar')@include('practitioner.includes.topbar')@endsection
 
 @section('content')
-     
+
 <div class="dashboard-wrapper">
    <div class="box-type4">
       <div class="page-title">
@@ -41,7 +41,7 @@
                        No Bookings Found.
                      </td>
                    </tr>
-                 @endif               
+                 @endif
               </tbody>
             </table>
          </div>
@@ -104,7 +104,7 @@
           <div class="modal-content">
              <button type="button" class="close1" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
              <div class="booking-modal-popup" id="orderViewContent">
-                
+
              </div>
           </div>
        </div>
@@ -124,7 +124,7 @@
                 <form class="text-right" method="post" action="{{route('practitioner.booking.cancel')}}">
                     {{csrf_field()}}
                     <input type="hidden" name="oid" id="oid">
-                    <textarea name="description" required>  </textarea>
+                    <textarea name="description" required></textarea>
                     <p class="col-grey text-left"> Are you sure you would like to cancel this booking? A notification will be sent to the booker to let them know </p>
                     <button class="bg-blue col-white normal-btn rounded"> Cancel Booking </button>
                 </form>

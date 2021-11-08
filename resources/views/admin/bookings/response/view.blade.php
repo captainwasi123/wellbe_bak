@@ -12,7 +12,7 @@
          $timestamp1 = strtotime($data->start_at.' '.$data->details[0]->start_time);
          $timestamp2 = strtotime($data->cancel->created_at);
          $hours_gap = abs($timestamp2 - $timestamp1)/(60*60);
-         
+
          if($hours_gap > 24){
             $pract_percentage = 0;
             $cust_percentage = 100;
@@ -22,7 +22,7 @@
          }elseif($hours_gap < 2){
             $pract_percentage = 75;
             $cust_percentage = 0;
-         }  
+         }
       }
 
       $pract_dues = ($data->pract_earning/100)*$pract_percentage;
@@ -40,7 +40,7 @@
          <div class="booking-modal-text text-right">
             <h3> Total Amount  <b class="col-blue"> NZ ${{number_format($data->total_amount, 2)}} </b> </h3>
          </div>
-      </div>
+      </div> 
    </div>
 </div>
 <div class="booking-modal-content">
@@ -74,7 +74,7 @@
                <h6 class="col-grey"> Payout Bank: <strong class="col-blue">{{empty($data->practitioner->users_payout_details) ? 'NA' : $data->practitioner->users_payout_details->bank_account_name}}</strong></h6>
                <h6 class="col-grey"> Account Number:  </h6>
                <h5 class="col-blue"> {{empty($data->practitioner->users_payout_details) ? 'NA' : $data->practitioner->users_payout_details->bank_account_number}}</h5>
-               
+
                @if($pract_percentage > 0)
                   @if(empty($data->cancel->pract_due))
                      <div class="block-element text-right">
@@ -149,7 +149,7 @@
    <div class="col-md-6">
       <div class="booking-modal-text">
          <h3> Details </h3>
-         <p>Booking Status: 
+         <p>Booking Status:
             <strong>
                @switch($data->status)
                   @case('1')
@@ -183,7 +183,7 @@
          </p>
       </div>
    </div>
-   @foreach($data->details as $val)    
+   @foreach($data->details as $val)
       <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
          <div class="booking-detail-table">
             <table>
@@ -214,4 +214,4 @@
    <div class="block-element text-right">
       <a href="javascript:void(0)" class="normal-btn bg-blue col-white rounded orderCancel" data-ref="{{base64_encode(base64_encode($data->id))}}"> Cancel Booking </a>
    </div>
-@endif 
+@endif

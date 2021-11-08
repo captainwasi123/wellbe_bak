@@ -33,7 +33,11 @@
                          <td>
                            {{$val->payment_status == '1' ? 'Paid' : 'In-Escrow'}}
                          </td>
-                         <td> NZ ${{number_format($val->pract_earning, 2)}} </td>
+                     <td>
+                           @php $com = ($val->sub_total/100)*$mtp->comission;@endphp
+                           NZ ${{number_format($val->sub_total-$com , 2)}}
+                        </td>
+
                          <td> <a href="javascript:void(0)" class="custom-btn1 orderModal" data-id="{{base64_encode($val->id)}}"> View  </a> </td>
                       </tr>
                     @endforeach

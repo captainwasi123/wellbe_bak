@@ -32,7 +32,7 @@
                     <td> #{{$val->id}} </td>
                     <td class="col-blue"> {{empty($val->practitioner) ? 'Deleted User' : $val->practitioner->first_name.' '.$val->practitioner->last_name}}</td>
                     <td class="col-blue"> {{empty($val->booker) ? 'Deleted User' : $val->booker->first_name.' '.$val->booker->last_name}}</td>
-                    <td> {{$val->payment_status == '0' ? 'Yes' : 'No'}}  </td>
+                    <td> {{@$val->cancel->cust_due == '1' ? 'No' : 'Yes'}}  </td>
                     <td> --- </td>
                     <td> <a href="javascript:void(0)" class="custom-btn1 orderModal" data-id="{{base64_encode($val->id)}}"> View  </a> </td>
                  </tr>

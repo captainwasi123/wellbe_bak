@@ -314,7 +314,8 @@ width: 100% !important;
 <td align="center" style="padding:9px;">
 <span style="color:#ffffff !important;font-family:Cabin, sans-serif;font-size:16px;mso-line-height:exactly;line-height:25px;mso-text-raise:4px;letter-spacing: 0.03em;;">
 <font style="color:#ffffff;" class="button">
-<span><span class="mso-font-fix-arial">Contact Us</span></span>
+<a href="mailto:info@wellbe.co.nz" alt=""><span><span class="mso-font-fix-arial">Contact Us</span></span>
+</a>
 </font>
 </span>
 </td>

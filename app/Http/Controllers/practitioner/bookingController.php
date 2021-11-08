@@ -15,6 +15,7 @@ class bookingController extends Controller
 
 
     function upcomming_booking(){
+         $mtp = MarketplaceSetting::latest()->first();
         $curr = date('Y-m-d H:i:s');
         $data = order::where('pract_id', Auth::id())
                         ->whereDate('start_at', '>=', Carbon::now())
@@ -22,37 +23,42 @@ class bookingController extends Controller
                         ->orderBy('start_at')
                         ->get();
 
-    	return view('practitioner.bookings.upcomming', ['data' => $data]);
+       
+
+                        
+
+    	return view('practitioner.bookings.upcomming', ['data' => $data, 'mtp' => $mtp]);
     }
 
     function inprogress_booking(){
-
+        $mtp = MarketplaceSetting::latest()->first();
         $data = order::where('pract_id', Auth::id())
                         ->where('status', '2')
                         ->orderBy('start_at')
                         ->get();
 
-    	return view('practitioner.bookings.inprogress', ['data' => $data]);
+    	return view('practitioner.bookings.inprogress', ['data' => $data, 'mtp' => $mtp]);
     }
 
     function completed_booking(){
-
+        $mtp = MarketplaceSetting::latest()->first();
         $data = order::where('pract_id', Auth::id())
                         ->where('status', '3')
                         ->orderBy('start_at', 'desc')
                         ->get();
 
-    	return view('practitioner.bookings.completed', ['data' => $data]);
+    	return view('practitioner.bookings.completed', ['data' => $data, 'mtp' => $mtp]);
     }
 
     function cancelled_booking(){
-
+        $mtp = MarketplaceSetting::latest()->first();
         $data = order::where('pract_id', Auth::id())
                         ->where('status', '4')
                         ->orderBy('start_at', 'desc')
                         ->get();
+        
 
-    	return view('practitioner.bookings.cancelled', ['data' => $data]);
+    	return view('practitioner.bookings.cancelled', ['data' => $data, 'mtp' => $mtp]);
     }
 
 

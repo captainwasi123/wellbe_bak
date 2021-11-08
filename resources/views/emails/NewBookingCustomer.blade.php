@@ -711,7 +711,7 @@ width: 100% !important;
 <td valign="top" width="100%" style="line-height:1px;padding:0;font-size:0px;">&nbsp;</td>
 </tr>
 </table>
-<!--[if gte mso 9]></td><![endif]--><!--[if gte mso 9]><td valign="top" style="padding:0;width:510px;"><![endif]-->
+<!--[if gte mso 9]></td><![endif]--><!--[if gte mso 9]><td valign="top" style="padding:0;width:510px;"><![endif]--> 
 <table cellpadding="0" cellspacing="0" border="0" width="96.22641509433963%" class="col" align="left">
 <tr>
 <td valign="top" width="100%" style="padding:0;">

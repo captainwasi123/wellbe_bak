@@ -637,6 +637,47 @@ width: 100% !important;
 </tr>
 </table>
 
+
+<!--[if gte mso 9]></td><![endif]--><!--[if gte mso 9]><td valign="top" style="padding:0;width:14.999999999999995px;"><![endif]-->
+<table cellpadding="0" cellspacing="0" border="0" width="2.830188679245282%" height="0" class="col hide-on-mobile" style="min-width:14.999999999999995px;height:1px;"  align="left">
+<tr>
+<td valign="top" width="100%" style="line-height:1px;padding:0;font-size:0px;">&nbsp;</td>
+</tr>
+</table>
+<!--[if gte mso 9]></td><![endif]--><!--[if gte mso 9]><td valign="top" style="padding:0;width:510px;"><![endif]--> 
+<table cellpadding="0" cellspacing="0" border="0" width="96.22641509433963%" class="col" align="left">
+<tr>
+<td valign="top" width="100%" style="padding:0;">
+
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
+
+<td valign="top" style="padding-top:5px;padding-right:5px;padding-left:5px;"><div style="font-family:Cabin, sans-serif;font-size:18px;color:#5d4e6d;line-height:34px;text-align:left;"><p style="padding: 0; margin: 0;text-align: right;"><span class="mso-font-fix-arial">Includes GST: &#36;{{number_format($order->gst,2)}}</span></p>
+
+<p style="padding: 0; margin: 0;text-align: right;"><span class="mso-font-fix-arial"><strong>Total: &#36;{{number_format($order->total_amount,2)}}</strong></span></p>
+</div>
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+<!--[if gte mso 9]></td><![endif]--><!--[if gte mso 9]><td valign="top" style="padding:0;width:0px;"><![endif]-->
+<table cellpadding="0" cellspacing="0" border="0" width="0" height="5" class="col hide-on-desktop" style="min-width:0px;height:5px;"  align="left">
+<tr>
+<td valign="top" width="100%" style="line-height:1px;padding:0;font-size:0px;">&nbsp;</td>
+</tr>
+</table>
+<!--[if gte mso 9]></td><![endif]-->
+<!--[if gte mso 9]></tr></table><![endif]-->
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
 </td>
 </tr>
 </table>

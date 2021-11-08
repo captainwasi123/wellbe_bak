@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\services\services;
 use App\Models\userService;
+use App\Models\schedule\holidays;
 use DB;
 
 class bookingController extends Controller
@@ -32,6 +33,10 @@ class bookingController extends Controller
         foreach($cart['services'] as $val){
             array_push($services, base64_decode($val['id']));
         }
+
+        $hdate['date']=date('Y-m-d');
+        $holiday['holidays']=holidays::where('closed_date',$hdate['date'])->get();
+        // dd($holiday['holidays']);
         $data['day'] = $day;
         $data['date'] = date('Y-m-d');
         $data['users'] = User::where('status', '1')
@@ -41,6 +46,9 @@ class bookingController extends Controller
                         })
                         ->whereHas('availability', function($q) use ($day){
                             return $q->where('week_day', $day);
+                        })
+                        ->whereHas('holidays', function($q) use ($holiday){
+                            return $q->where('closed_date','!=',$holiday['holidays']);
                         })
                         ->get();
 
@@ -77,9 +85,9 @@ class bookingController extends Controller
     }
     function step2(){
         $cart = session()->get('cart');
-        
+
         $data['user'] = User::find(base64_decode($cart['booking']['practitioner']));
-        
+
         return view('web.new.booking.step2')->with($data);
     }
 
@@ -128,9 +136,12 @@ class bookingController extends Controller
                             ->whereHas('availability', function($q) use ($day){
                                 return $q->where('week_day', $day);
                             })
+                            ->whereHas('holidays', function($q) use ($data){
+                                return $q->where('closed_date','!=',$data['date']);
+                            })
                             ->get();
 
-            
+
 
             return view('web.new.booking.response.step1')->with($data);
         }

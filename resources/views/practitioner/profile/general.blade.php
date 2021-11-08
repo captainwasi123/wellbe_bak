@@ -141,11 +141,11 @@
             <div class="form-field3">
                <p> Service Radius <a href="{{route('practitioner.geofences')}}" style="margin-left: 10px;" class="bg-blue normal-btn pad-1 col-white rounded"> Show Service Radius </a>  </p>
             </div>
-            <div class="form-field3">
+            {{--  <div class="form-field3">
                <p> Minimum Booking Amount </p>
                <input type="text" name="minimum_booking_amount" value="{{empty($user_data->user_store) ? '' : $user_data->user_store->minimum_booking_amount}}" style="padding-left: 25px;" required>
                <b class="info-tag1 col-blue" style="display: inline-block; width: 20px; margin-top: -28px; vertical-align: top; margin-left: 8px;"> $ </b>
-            </div>
+            </div>  --}}
             <div class="form-field3">
                <p> Buffer Between Appointments (Minutes) </p>
                <input type="text" name="buffer_between_appointments" value="{{empty($user_data->user_store) ? '' : $user_data->user_store->buffer_between_appointments}}" required>

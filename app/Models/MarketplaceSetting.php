@@ -19,8 +19,8 @@ class MarketplaceSetting extends Model
 
     public static function deductCommission($amount){
     	$g = MarketplaceSetting::orderBy('id', 'desc')->first();
-    	$earning = ($amount/100)*$g->comission;
-    	$earning - $amount-$earning;
+    	$commission = ($amount/100)*$g->comission;
+    	$earning = $amount-$commission;
     	return $earning;
     }
 }

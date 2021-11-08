@@ -8,6 +8,10 @@
       <div class="breadcrumb-custom2 m-b-40">
          <a data-toggle="modal" data-target=".editBookingModal"> <i class="fa fa-angle-left"> </i> Select professional </a>
       </div>
+      
+
+   
+
       <div class="block-element">
          <div class="row">
             <div class="col-md-9 col-lg-9 col-sm-12 col-xs-12 sec-wid-left">
@@ -60,6 +64,7 @@
                                           </b> 
                                        </p>
                                     </div>
+                                    
                                     <div class="booking-persons-time time-slider arrows">
                                        @foreach($val->availability as $avail)
                                           @if(ucfirst($avail->week_day) == $day)
@@ -83,7 +88,9 @@
                                           @endif
                                        @endforeach
                                     </div>
+                                   
                                  </div>
+                                 
                               @endforeach
                               @if(count($users) == 0)
                                  <div class="empty-bookings">
@@ -132,7 +139,9 @@
 
                         <div class="book-summary-item">
                            <h5>{{$val['quantity']}}x {{$val['title']}} </h5>
-                           <p> <b class="col-green"> From ${{number_format($val['price'], 2)}} </b> {{$val['duration']}} minutes </p>
+                           <p> <b class="col-green"> 
+                           {{--  From ${{number_format($val['price'], 2)}}   --}}
+                           </b> {{$val['duration']}} minutes </p>
                         </div>
                         @php $totalAmount = $totalAmount+($val['price']*$val['quantity']); @endphp
                      @endforeach
@@ -175,6 +184,7 @@
             </div>
          </div>
       </div>
+     
    </div>
 </section>
 
