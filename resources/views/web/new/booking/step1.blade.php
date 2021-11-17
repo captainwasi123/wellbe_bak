@@ -30,6 +30,17 @@
                         </div>
                      </div>
                   </div>
+                  @php $duration = 0; @endphp
+                  @if(Session::get('cart') !== null)
+                     @foreach(Session::get('cart.services') as $val)
+                        @php $duration = $duration+($val['duration']*$val['quantity']); @endphp
+                     @endforeach
+                     @if(count(Session::get('cart')) == 0)
+                        @php $duration = 30; @endphp
+                     @endif
+                  @else
+                     @php $duration = 30; @endphp
+                  @endif
                   <div id="professionalBlock">
                      <div class="bookings-trigger">
                         <ul class="nav nav-tabs no-border" role="tablist">
@@ -70,10 +81,17 @@
                                           @if(ucfirst($avail->week_day) == $day)
                                              @foreach($avail->slots as $slot)
                                                 @php
-                                                   $x = 0;
-                                                   $duration = 30; 
-                                                   $buffer = 120; 
-                                                   $start = $slot->start_booking; 
+                                                   $x = 0; 
+                                                   $buffer = empty($val->user_store->buffer_between_appointments) ? 30 : $val->user_store->buffer_between_appointments; 
+                                                   if($date == date('Y-m-d')){
+                                                      $curr = date('H:i:s');
+                                                      $curr = date('H:i:s',strtotime('+1 hour',strtotime($curr)));
+                                                      $curr = date('H',strtotime($curr));
+                                                      $curr = $curr.':00:00';
+                                                      $start = $curr;
+                                                   }else{
+                                                      $start = $slot->start_booking;
+                                                   } 
                                                    $end = $slot->end_booking; 
                                                    $end = date('H:i:s',strtotime('-'.$buffer.' minutes',strtotime($end)));
                                                 @endphp
@@ -82,7 +100,7 @@
                                                    <input type="radio" id="myCheck{{$slot->id.$x}}" class="timeslot" name="timeslot" data-time="{{date('h:i A', strtotime($start))}}" data-prac="{{base64_encode($val->id)}}" tabindex="-1"> 
                                                    <label class="book-time-btn"  for="myCheck{{$slot->id.$x}}" >{{date('h:i A', strtotime($start))}}</label>
                                                 </div>
-                                                   @php $start = date('H:i:s',strtotime('+'.$duration.' minutes',strtotime($start))); $x++; @endphp
+                                                   @php $start = date('H:i:s',strtotime('+'.($duration+$buffer).' minutes',strtotime($start))); $x++; @endphp
                                                 @endwhile 
                                              @endforeach
                                           @endif

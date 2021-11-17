@@ -143,12 +143,10 @@ class bookingController extends Controller
                             ->whereHas('availability', function($q) use ($day){
                                 return $q->where('week_day', $day);
                             })
-                            ->whereHas('holidays', function($q) use ($data){
-                                return $q->where('closed_date','!=',$data['date']);
-                            })
                             ->get();
 
 
+            //return json_encode($userArr);
 
             return view('web.new.booking.response.step1')->with($data);
         }
