@@ -27,6 +27,17 @@ class bookingController extends Controller
     }
     function step1(){
         $day = date('l');
+        $cart = session()->get('cart');
+        $lat = $cart['location']['lat'];
+        $lng = $cart['location']['lng'];
+        // get average  query
+        $avg = DB::select('SELECT AVG(tbl_users_geofences.radious) as avg, tbl_users_geofences.*, ( 6371 * acos( cos( radians("'.$lat.'") ) * cos( radians(lat ) ) * cos( radians(lng ) - radians("'.$lng.'") ) + sin( radians("'.$lat.'") ) * sin( radians(lat ) ) ) ) AS distance FROM `tbl_users_geofences` WHERE ( 6371 * acos( cos( radians("'.$lat.'") ) * cos( radians(lat ) ) * cos( radians(lng ) - radians("'.$lng.'") ) + sin( radians("'.$lat.'") ) * sin( radians(lat ) ) ) ) < 50');
+
+        // get user ids
+        $users_ids = DB::select('SELECT tbl_users_geofences.*, ( 6371 * acos( cos( radians("'.$lat.'") ) * cos( radians(lat ) ) * cos( radians(lng ) - radians("'.$lng.'") ) + sin( radians("'.$lat.'") ) * sin( radians(lat ) ) ) ) AS distance FROM `tbl_users_geofences` WHERE ( 6371 * acos( cos( radians("'.$lat.'") ) * cos( radians(lat ) ) * cos( radians(lng ) - radians("'.$lng.'") ) + sin( radians("'.$lat.'") ) * sin( radians(lat ) ) ) ) <= "'.$avg[0]->avg.'"');
+
+        $userArr = \Arr::pluck($users_ids,'user_id');
+        
         $services = array();
         $unavailable = array();
         $cart = session()->get('cart');
@@ -50,6 +61,7 @@ class bookingController extends Controller
                         ->whereHas('availability', function($q) use ($day){
                             return $q->where('week_day', $day);
                         })
+                        ->whereIn('id', $userArr)
                         ->whereNotIn('id', $unavailable)
                         ->get();
 
