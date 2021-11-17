@@ -28,6 +28,7 @@ class bookingController extends Controller
     function step1(){
         $day = date('l');
         $services = array();
+        $unavailable = array();
         $cart = session()->get('cart');
 
         foreach($cart['services'] as $val){
@@ -35,8 +36,10 @@ class bookingController extends Controller
         }
 
         $hdate['date']=date('Y-m-d');
-        $holiday['holidays']=holidays::where('closed_date',$hdate['date'])->get();
-        // dd($holiday['holidays']);
+        $holidays=holidays::where('closed_date',$hdate['date'])->get();
+        foreach($holidays as $val){
+            array_push($unavailable, $val->user_id); 
+        }
         $data['day'] = $day;
         $data['date'] = date('Y-m-d');
         $data['users'] = User::where('status', '1')
@@ -47,9 +50,7 @@ class bookingController extends Controller
                         ->whereHas('availability', function($q) use ($day){
                             return $q->where('week_day', $day);
                         })
-                        ->whereHas('holidays', function($q) use ($holiday){
-                            return $q->where('closed_date','!=',$holiday['holidays']);
-                        })
+                        ->whereNotIn('id', $unavailable)
                         ->get();
 
         return view('web.new.booking.step1')->with($data);
@@ -111,6 +112,7 @@ class bookingController extends Controller
         function getProfessionals(Request $request){
             $day = date('l', strtotime($request->date));
             $services = array();
+            $unavailable = array();
             $cart = session()->get('cart');
             $lat = $cart['location']['lat'];
             $lng = $cart['location']['lng'];
@@ -127,9 +129,14 @@ class bookingController extends Controller
             }
             $data['day'] = $day;
             $data['date'] = date('Y-m-d', strtotime($request->date));
+            $holidays=holidays::where('closed_date',$data['date'])->get();
+            foreach($holidays as $val){
+                array_push($unavailable, $val->user_id); 
+            }
             $data['users'] = User::where('status', '1')
                             ->where('store_status', '1')
                             ->whereIn('id', $userArr)
+                            ->whereNotIn('id', $unavailable)
                             ->whereHas('services', function($q) use ($services){
                                 return $q->whereIn('service_id', $services);
                             })

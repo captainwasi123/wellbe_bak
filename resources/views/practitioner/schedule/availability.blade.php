@@ -43,11 +43,11 @@
                                  <td> Sunday </td>
                                  <td> First Booking </td>
                                  <td>
-                                    <input type="text" name="days[sunday][0][first_booking]" class="timepicker" value="9:00 PM">
+                                    <input type="text" name="days[sunday][0][first_booking]" data-id="sunday-0" class="timepicker checkTime" value="9:00 AM"  onchange="validateTime($(this).val(), 'sunday-0')">
                                  </td>
                                  <td> Last Booking </td> 
                                  <td>
-                                    <input type="text" name="days[sunday][0][last_booking]" class="timepicker" value="5:00 PM">
+                                    <input type="text" name="days[sunday][0][last_booking]" id="field-sunday-0" class="" value="05:00 PM" readonly>
                                  </td>
                                  <td> 
                                     <a href="javascript:void(0)" class="col-blue splitShift"  data-id="1" data-day="sunday"> 
@@ -67,11 +67,11 @@
                                     @endif
                                     <td> First Booking </td>
                                     <td>
-                                       <input type="text" name="days[sunday][{{$s}}][first_booking]" value="{{date('h:i A', strtotime($val->start_booking))}}" class="timepicker">
+                                       <input type="text" name="days[sunday][{{$s}}][first_booking]" data-id="" value="{{date('h:i A', strtotime($val->start_booking))}}" class="timepicker checkTime"  onchange="validateTime($(this).val(), 'sunday-{{$s}}')">
                                     </td>
                                     <td> Last Booking </td>
                                     <td>
-                                       <input type="text" name="days[sunday][{{$s}}][last_booking]" value="{{date('h:i A', strtotime($val->end_booking))}}" class="timepicker">
+                                       <input type="text" name="days[sunday][{{$s}}][last_booking]" value="{{date('h:i A', strtotime($val->end_booking))}}" id="field-sunday-{{$s}}" class="" readonly>
                                     </td>
                                     @if($s=='0')
                                        <td> 
@@ -97,11 +97,11 @@
                                  <td> Monday </td>
                                  <td> First Booking </td>
                                  <td>
-                                    <input type="text" name="days[monday][0][first_booking]" class="timepicker" value="9:00 AM">
+                                    <input type="text" name="days[monday][0][first_booking]" data-id="monday-0" class="timepicker checkTime" value="9:00 AM"   onchange="validateTime($(this).val(), 'monday-0')">
                                  </td>
                                  <td> Last Booking </td>
                                  <td>
-                                    <input type="text" name="days[monday][0][last_booking]" class="timepicker" value="5:00 PM">
+                                    <input type="text" name="days[monday][0][last_booking]" id="field-monday-0" class="" value="05:00 PM" readonly>
                                  </td>
                                  <td> 
                                     <a href="javascript:void(0)" class="col-blue splitShift"  data-id="1" data-day="monday"> 
@@ -121,11 +121,11 @@
                                     @endif
                                     <td> First Booking </td>
                                     <td>
-                                       <input type="text" name="days[monday][{{$s}}][first_booking]" value="{{date('h:i A', strtotime($val->start_booking))}}" class="timepicker">
+                                       <input type="text" name="days[monday][{{$s}}][first_booking]" data-id="monday-{{$s}}" value="{{date('h:i A', strtotime($val->start_booking))}}" class="timepicker checkTime"   onchange="validateTime($(this).val(), 'monday-{{$s}}')">
                                     </td>
                                     <td> Last Booking </td>
                                     <td>
-                                       <input type="text" name="days[monday][{{$s}}][last_booking]" value="{{date('h:i A', strtotime($val->end_booking))}}" class="timepicker">
+                                       <input type="text" name="days[monday][{{$s}}][last_booking]" id="field-monday-{{$s}}" value="{{date('h:i A', strtotime($val->end_booking))}}" class="" readonly>
                                     </td>
                                     @if($s=='0')
                                        <td> 
@@ -152,11 +152,11 @@
                                  <td> Tuesday </td>
                                  <td> First Booking </td>
                                  <td>
-                                    <input type="text" name="days[tuesday][0][first_booking]" class="timepicker" value="9:00 PM">
+                                    <input type="text" name="days[tuesday][0][first_booking]" data-id="tuesday-0" class="timepicker checkTime" value="9:00 AM"  onchange="validateTime($(this).val(), 'tuesday-0')">
                                  </td>
                                  <td> Last Booking </td>
                                  <td>
-                                    <input type="text" name="days[tuesday][0][last_booking]" class="timepicker" value="5:00 PM">
+                                    <input type="text" name="days[tuesday][0][last_booking]" id="field-tuesday-0" class="" value="05:00 PM" readonly>
                                  </td>
                                  <td> 
                                     <a href="javascript:void(0)" class="col-blue splitShift"  data-id="1" data-day="tuesday"> 
@@ -176,11 +176,11 @@
                                     @endif
                                     <td> First Booking </td>
                                     <td>
-                                       <input type="text" name="days[tuesday][{{$s}}][first_booking]" value="{{date('h:i A', strtotime($val->start_booking))}}" class="timepicker">
+                                       <input type="text" name="days[tuesday][{{$s}}][first_booking]" data-id="tuesday-{{$s}}" value="{{date('h:i A', strtotime($val->start_booking))}}" class="timepicker checkTime">
                                     </td>
                                     <td> Last Booking </td>
                                     <td>
-                                       <input type="text" name="days[tuesday][{{$s}}][last_booking]" value="{{date('h:i A', strtotime($val->end_booking))}}" class="timepicker">
+                                       <input type="text" name="days[tuesday][{{$s}}][last_booking]" id="field-tuesday-{{$s}}" value="{{date('h:i A', strtotime($val->end_booking))}}" class="" readonly>
                                     </td>
                                     @if($s=='0')
                                        <td> 
@@ -207,11 +207,11 @@
                                  <td> Wednesday </td>
                                  <td> First Booking </td>
                                  <td>
-                                    <input type="text" name="days[wednesday][0][first_booking]" class="timepicker" value="9:00 PM">
+                                    <input type="text" name="days[wednesday][0][first_booking]" data-id="wednesday-0" class="timepicker checkTime" value="9:00 AM"  onchange="validateTime($(this).val(), 'wednesday-0')">
                                  </td>
                                  <td> Last Booking </td>
                                  <td>
-                                    <input type="text" name="days[wednesday][0][last_booking]" class="timepicker" value="5:00 PM">
+                                    <input type="text" name="days[wednesday][0][last_booking]" id="field-wednesday-0" class="" value="05:00 PM" readonly>
                                  </td>
                                  <td> 
                                     <a href="javascript:void(0)" class="col-blue splitShift"  data-id="1" data-day="wednesday"> 
@@ -231,11 +231,11 @@
                                     @endif
                                     <td> First Booking </td>
                                     <td>
-                                       <input type="text" name="days[wednesday][{{$s}}][first_booking]" value="{{date('h:i A', strtotime($val->start_booking))}}" class="timepicker">
+                                       <input type="text" name="days[wednesday][{{$s}}][first_booking]" data-id="wednesday-{{$s}}" value="{{date('h:i A', strtotime($val->start_booking))}}" class="timepicker checkTime"  onchange="validateTime($(this).val(), 'wednesday-{{$s}}')">
                                     </td>
                                     <td> Last Booking </td>
                                     <td>
-                                       <input type="text" name="days[wednesday][{{$s}}][last_booking]" value="{{date('h:i A', strtotime($val->end_booking))}}" class="timepicker">
+                                       <input type="text" name="days[wednesday][{{$s}}][last_booking]" value="{{date('h:i A', strtotime($val->end_booking))}}" id="field-wednesday-{{$s}}" class="" readonly>
                                     </td>
                                     @if($s=='0')
                                        <td> 
@@ -261,11 +261,11 @@
                                  <td> Thursday </td>
                                  <td> First Booking </td>
                                  <td>
-                                    <input type="text" name="days[thursday][0][first_booking]" class="timepicker" value="9:00 PM">
+                                    <input type="text" name="days[thursday][0][first_booking]" data-id="thursday-0" class="timepicker checkTime" value="9:00 AM"  onchange="validateTime($(this).val(), 'thursday-0')">
                                  </td>
                                  <td> Last Booking </td>
                                  <td>
-                                    <input type="text" name="days[thursday][0][last_booking]" class="timepicker" value="5:00 PM">
+                                    <input type="text" name="days[thursday][0][last_booking]" id="field-thursday-0" class="" value="05:00 PM" readonly>
                                  </td>
                                  <td> 
                                     <a href="javascript:void(0)" class="col-blue splitShift"  data-id="1" data-day="thursday"> 
@@ -285,11 +285,11 @@
                                     @endif
                                     <td> First Booking </td>
                                     <td>
-                                       <input type="text" name="days[thursday][{{$s}}][first_booking]" value="{{date('h:i A', strtotime($val->start_booking))}}" class="timepicker">
+                                       <input type="text" name="days[thursday][{{$s}}][first_booking]" value="{{date('h:i A', strtotime($val->start_booking))}}" data-id="thursday-{{$s}}" class="timepicker checkTime"  onchange="validateTime($(this).val(), 'thursday-{{$s}}')">
                                     </td>
                                     <td> Last Booking </td>
                                     <td>
-                                       <input type="text" name="days[thursday][{{$s}}][last_booking]" value="{{date('h:i A', strtotime($val->end_booking))}}" class="timepicker">
+                                       <input type="text" name="days[thursday][{{$s}}][last_booking]" value="{{date('h:i A', strtotime($val->end_booking))}}" id="field-thursday-{{$s}}" class="" readonly>
                                     </td>
                                     @if($s=='0')
                                        <td> 
@@ -315,11 +315,11 @@
                                  <td> Friday </td>
                                  <td> First Booking </td>
                                  <td>
-                                    <input type="text" name="days[friday][0][first_booking]" class="timepicker" value="9:00 PM">
+                                    <input type="text" name="days[friday][0][first_booking]" data-id="friday-0" class="timepicker checkTime" value="9:00 AM"  onchange="validateTime($(this).val(), 'friday-0')">
                                  </td>
                                  <td> Last Booking </td>
                                  <td>
-                                    <input type="text" name="days[friday][0][last_booking]" class="timepicker" value="5:00 PM">
+                                    <input type="text" name="days[friday][0][last_booking]" id="field-friday-0" class="" value="05:00 PM" readonly>
                                  </td>
                                  <td> 
                                     <a href="javascript:void(0)" class="col-blue splitShift"  data-id="1" data-day="friday"> 
@@ -339,11 +339,11 @@
                                     @endif
                                     <td> First Booking </td>
                                     <td>
-                                       <input type="text" name="days[friday][{{$s}}][first_booking]" value="{{date('h:i A', strtotime($val->start_booking))}}" class="timepicker">
+                                       <input type="text" name="days[friday][{{$s}}][first_booking]" data-id="friday-{{$s}}" value="{{date('h:i A', strtotime($val->start_booking))}}" class="timepicker checkTime"  onchange="validateTime($(this).val(), 'friday-{{$s}}')">
                                     </td>
                                     <td> Last Booking </td>
                                     <td>
-                                       <input type="text" name="days[friday][{{$s}}][last_booking]" value="{{date('h:i A', strtotime($val->end_booking))}}" class="timepicker">
+                                       <input type="text" name="days[friday][{{$s}}][last_booking]" id="field-friday-{{$s}}" value="{{date('h:i A', strtotime($val->end_booking))}}" class="" readonly>
                                     </td>
                                     @if($s=='0')
                                        <td> 
@@ -369,11 +369,11 @@
                                  <td> Saturday </td>
                                  <td> First Booking </td>
                                  <td>
-                                    <input type="text" name="days[saturday][0][first_booking]" class="timepicker" value="9:00 PM">
+                                    <input type="text" name="days[saturday][0][first_booking]" data-id="saturday-0" class="timepicker checkTime" value="9:00 AM"  onchange="validateTime($(this).val(), 'saturday-0')">
                                  </td>
                                  <td> Last Booking </td>
                                  <td>
-                                    <input type="text" name="days[saturday][0][last_booking]" class="timepicker" value="5:00 PM">
+                                    <input type="text" name="days[saturday][0][last_booking]" id="field-saturday-0" class="" value="05:00 PM" readonly>
                                  </td>
                                  <td> 
                                     <a href="javascript:void(0)" class="col-blue splitShift"  data-id="1" data-day="saturday"> 
@@ -393,11 +393,11 @@
                                     @endif
                                     <td> First Booking </td>
                                     <td>
-                                       <input type="text" name="days[saturday][{{$s}}][first_booking]" value="{{date('h:i A', strtotime($val->start_booking))}}" class="timepicker">
+                                       <input type="text" name="days[saturday][{{$s}}][first_booking]" data-id="saturday-{{$s}}" value="{{date('h:i A', strtotime($val->start_booking))}}" class="timepicker checkTime"  onchange="validateTime($(this).val(), 'saturday-{{$s}}')">
                                     </td>
                                     <td> Last Booking </td>
                                     <td>
-                                       <input type="text" name="days[saturday][{{$s}}][last_booking]" value="{{date('h:i A', strtotime($val->end_booking))}}" class="timepicker">
+                                       <input type="text" name="days[saturday][{{$s}}][last_booking]" id="field-saturday-{{$s}}" value="{{date('h:i A', strtotime($val->end_booking))}}" class="" readonly>
                                     </td>
                                     @if($s=='0')
                                        <td> 
@@ -450,7 +450,19 @@
    <script src="{{URL::to('/')}}/public/assets/js/timepicker.js"> </script>
    <script type="text/javascript">
       $(document).ready(function(){
-       $('.timepicker').mdtimepicker(); //Initializes the time picker
+         'use strict'
+
+
+         $('.timepicker').mdtimepicker({
+            readOnly: true
+         });
+
      });
+
+      function validateTime(val, field){
+         $('#field-'+field).val(val);
+         $('#field-'+field).mdtimepicker({
+         });
+      }
    </script>
 @endsection
