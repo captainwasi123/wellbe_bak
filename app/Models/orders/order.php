@@ -29,10 +29,10 @@ class order extends Model
         $o->start_at = date('Y-m-d', strtotime($data['booking']['date']));
         $o->status = '9';
         $o->address = $data['location']['place'];
-        $o->save(); 
+        $o->save();
         $id = $o->id;
 
-        foreach ($data['services'] as $val) { 
+        foreach ($data['services'] as $val) {
 
             $ser = services::find(base64_decode($val['id']));
             $userv = userService::where('service_id', base64_decode($val['id']))->where('user_id', base64_decode($data['booking']['practitioner']))->first();

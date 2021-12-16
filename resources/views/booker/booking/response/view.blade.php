@@ -55,6 +55,7 @@
          <h3> Details  </h3>
          <p>Booking Status: 
             <strong>
+            
                @switch($data->status)
                   @case('1')
                      Upcoming
@@ -112,6 +113,7 @@
                      <td class="wd-40"> End Time: </td>
                      <td class="wd-60"> {{date('h:i A', strtotime($val->end_time))}} </td>
                   </tr>
+                 
                </tbody>
             </table>
          </div>

@@ -38,16 +38,16 @@
                    <form action="{{ route('reset.password.post') }}" method="POST">
                           @csrf
                           <input type="hidden" name="token" value="{{ $token }}">
-                          {{--  <input type="hidden" name="email" value="{{base64_encode($email)}}">  --}}
+                      
                         
                            
-                         <div class="block-element m-b-20">
+                         {{--  <div class="block-element m-b-20">
                               <p class="col-black form-label1"> Password  </p>
                               <input type="email" placeholder="Your email" id="email" class="form-control" name="email" required autofocus>
                                  @if ($errors->has('email'))
                                       <span class="text-danger">{{ $errors->first('email') }}</span>
                                   @endif
-                           </div>
+                           </div>  --}}
                      
                            <div class="block-element m-b-20">
                               <p class="col-black form-label1"> Password  </p>

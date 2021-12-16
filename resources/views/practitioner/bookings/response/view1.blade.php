@@ -24,15 +24,15 @@
             </h5>
             @if($data->status == '3')
                <h6 class="col-grey"> Guest Rating  </h6>
-               <h5 class="col-blue"> 
+               <h5 class="col-blue">
                   @if(empty($data->reviews))
                     N/A
                   @else
                     @php $rat = $data->reviews->rating; @endphp
                     <span>
-                      @for($i=1; $i<=5; $i++) 
+                      @for($i=1; $i<=5; $i++)
                         <i class="fa fa-star {{$i > $rat ? 'star-off' : 'star-onn'}}"> </i>
-                      @endfor  
+                      @endfor
                     </span>
                   @endif
                </h5>
@@ -76,7 +76,7 @@
    <div class="col-md-6">
       <div class="booking-modal-text">
          <h3> Details   </h3>
-         <p>Booking Status: 
+         <p>Booking Status:
             <strong>
                @switch($data->status)
                   @case('1')
@@ -110,7 +110,7 @@
          </p>
       </div>
    </div>
-   @foreach($data->details as $val)    
+   @foreach($data->details as $val)
       <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
          <div class="booking-detail-table">
             <table>
@@ -146,7 +146,7 @@
    <a href="javascript:void(0)" class="normal-btn bg-blue col-white rounded orderCancel" data-ref="{{base64_encode(base64_encode($data->id))}}"> Cancel Booking </a>
 @endif
 @if($data->status == '1')
-   <a href="javascript:void(0)" class="normal-btn bg-green col-white rounded orderStart" data-ref="{{base64_encode(base64_encode($data->id))}}"> Service time Start </a>
+   <a href="javascript:void(0)" class="normal-btn bg-green col-white rounded orderStart" data-ref="{{base64_encode(base64_encode($data->id))}}"> Start Booking </a>
 @endif
 @if($data->status == '2')
    <a href="javascript:void(0)" class="normal-btn bg-green col-white rounded orderComplete" data-ref="{{base64_encode(base64_encode($data->id))}}"> Booking Completed </a>

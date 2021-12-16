@@ -24,7 +24,7 @@ class practitionerController extends Controller
                         ->get();
 
         $job_stats = array(
-                        'pending' => order::where('pract_id', Auth::id())->where('status','1')->count(),
+                        'pending' => order::where('pract_id', Auth::id())->whereDate('start_at', '>=', Carbon::now())->where('status','1')->count(),
                         'completed' => order::where('pract_id', Auth::id())->where('status','3')->count(),
                         'cancelled' => order::where('pract_id', Auth::id())->where('status','4')->count()
                     );

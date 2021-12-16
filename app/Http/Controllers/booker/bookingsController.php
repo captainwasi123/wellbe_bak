@@ -38,8 +38,8 @@ class bookingsController extends Controller
         if(isset($data['services'])){
             $id = order::makeOrder($data);
             $ret_data = explode('|', $id);
-            
-            //dd($id);
+
+            //dd($id); 
             session()->forget('cart');
 
             return view('web.payments.stripe', ['id' => $ret_data[0], 'amount' => $ret_data[1]]);
@@ -121,10 +121,10 @@ class bookingsController extends Controller
 
         cancel::cancellation($id, $des, '1');
         $order = Order::with(['details','practitioner','booker'])->where('id',$id)->first();
-        $data['order'] = $order; 
+        $data['order'] = $order;
         $data['mtp'] = MarketplaceSetting::latest()->first();
         \App\Helpers\CommonHelpers::send_email('BookingCancellationCustomer_customer_cancelled', $data, $order->booker->email, 'Booking Cancellation', $from_email = 'info@divsnpixel.com', $from_name = 'Wallbe');
-        \App\Helpers\CommonHelpers::send_email('BookingCancellationPractitioner', $data, $order->practitioner->email, 'Booking Cancellation', $from_email = 'info@divsnpixel.com', $from_name = 'Wallbe');         
+        \App\Helpers\CommonHelpers::send_email('BookingCancellationPractitioner', $data, $order->practitioner->email, 'Booking Cancellation', $from_email = 'info@divsnpixel.com', $from_name = 'Wallbe');
         return redirect()->back()->with('success', 'Order Cancelled.');
     }
 
@@ -136,7 +136,7 @@ class bookingsController extends Controller
         $id = base64_decode($data['ref_id']);
         $prac = order::where('id', $id)->select('pract_id')->first();
         reviews::addReview($prac->pract_id, $data);
-        
+
         return redirect()->back()->with('success', 'Review Added.');
 
     }

@@ -47,7 +47,7 @@
                         </form>
                      </div>
                      <div class="forgot-pass1">
-                        <a href="{{URL::to('/forget-password')}}" class="col-red"> Forgot Password? </a>
+                        <a href="{{URL::to('/forget-password')}}" class="col-red"> Forgot Password </a>
                      </div>
                      <div class="already-account">
                         <span class="col-black"> Don't have an account? <a href="{{URL::to('/register')}}"> Sign Up </a> </span>

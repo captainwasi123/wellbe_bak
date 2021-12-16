@@ -40,7 +40,7 @@
          <div class="booking-modal-text text-right">
             <h3> Total Amount  <b class="col-blue"> NZ ${{number_format($data->total_amount, 2)}} </b> </h3>
          </div>
-      </div> 
+      </div>
    </div>
 </div>
 <div class="booking-modal-content">
@@ -59,17 +59,34 @@
             </h5>
 
             @if($data->status == '3')
-               <h6 class="col-grey"> Guest Rating  </h6>
-               <h5 class="col-blue"> - </h5>
-               <h6 class="col-grey"> Guest Review  </h6>
-               <h5 class="col-blue"> - </h5>
+            <h6 class="col-grey"> Guest Rating  </h6>
+            <h5 class="col-blue">
+               @if(empty($data->reviews))
+                 N/A
+               @else
+                 @php $rat = $data->reviews->rating; @endphp
+                 <span>
+                   @for($i=1; $i<=5; $i++)
+                     <i class="fa fa-star {{$i > $rat ? 'star-off' : 'star-onn'}}"> </i>
+                   @endfor
+                 </span>
+               @endif
+            </h5>
 
+            <h6 class="col-grey"> Guest Review  </h6>
+            <h5 class="col-blue">
+               @if(empty($data->reviews))
+                 N/A
+               @else
+                 {{$data->reviews->review}}
+               @endif
+            </h5>
                <h6 class="col-grey"> Practitioner Earning  </h6>
                <h5 class="col-blue"> NZ ${{number_format($data->pract_earning, 2)}} </h5>
             @endif
             @if($data->status == '4')
                <h5 class="border_bottom" style="padding-top: 8px;">Practitioner</h5>
-               <h6 class="col-grey"> Refund: <strong class="col-blue">{{$pract_percentage}}%</strong></h6>
+               <h6 class="col-grey"> Payment : <strong class="col-blue">{{$pract_percentage}}%</strong></h6>
                <h6 class="col-grey"> Payment Due: <strong class="col-blue">{{empty($data->cancel->pract_due) ? '$'.number_format($pract_dues, 2) : '$0.0'}}</strong></h6>
                <h6 class="col-grey"> Payout Bank: <strong class="col-blue">{{empty($data->practitioner->users_payout_details) ? 'NA' : $data->practitioner->users_payout_details->bank_account_name}}</strong></h6>
                <h6 class="col-grey"> Account Number:  </h6>
@@ -178,10 +195,21 @@
          <h3><br></h3>
          <p>Booking Date:
             <strong>
-               {{date('d-M-Y', strtotime($data->start_at))}}
+               {{date('F j, Y, g:i a', strtotime($data->start_at))}}
             </strong>
          </p>
+           <p>Cancellation Date:
+            <strong>
+               {{date('F j, Y, g:i a', strtotime(@$data->cancel->created_at))}}
+            </strong>
+         </p>
+            <p>Cancellation Reason:
+               <text>
+               {{@$data->cancel->reason}}
+               </text>
+         </p>
       </div>
+
    </div>
    @foreach($data->details as $val)
       <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
@@ -204,6 +232,7 @@
                      <td class="wd-40"> End Time: </td>
                      <td class="wd-60"> {{date('h:i A', strtotime($val->end_time))}} </td>
                   </tr>
+
                </tbody>
             </table>
          </div>

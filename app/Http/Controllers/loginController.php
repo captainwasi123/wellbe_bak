@@ -108,7 +108,8 @@ class loginController extends Controller
         if($data['password'] == $data['confirmation_password']){
             $u = User::where('email', $data['email'])->count();
             if($u == '0'){
-                $user = User::newUser($data); $email['user'] = $user;
+                $user = User::newUser($data); 
+                $email['user'] = $user;
                 if($request->userType == 2 ){ 
                     $email_temp = 'CustomerActivation'; 
                     $msg = 'Thanks for joining the Wellbe Community. An activation email has been sent, please click the link in the email to activate your account.';
@@ -124,7 +125,7 @@ class loginController extends Controller
             }
         }else{
             
-            return redirect()->back()->with('error', 'Password does not matched.');
+            return redirect()->back()->with('error', 'Passwords do not match.');
         }
 
     }

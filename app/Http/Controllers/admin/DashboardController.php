@@ -30,10 +30,12 @@ class DashboardController extends Controller
                         ->get();
         $data_count = array(
                         'practitioners' => User::where('user_type', '1')->count(),
-                        'upcomming' => order::where('status', '1')->count(),
+                        'upcomming' => order::where('status', '1')->whereDate('start_at', '>=', Carbon::now())->count(),
                         'completed' => order::where('status', '3')->count(),
                         'cancelled' => order::where('status', '4')->count(),
                     );
+
+                    // dd($data_count);
         /*$accounts = array(
                     ''
                 );*/
@@ -67,6 +69,7 @@ class DashboardController extends Controller
     }
 
     function cancelled(){
+        
         $data = order::where('status', '4')
                         ->orderBy('start_at')
                         ->get();
