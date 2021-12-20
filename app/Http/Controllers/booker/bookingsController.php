@@ -19,7 +19,7 @@ class bookingsController extends Controller
         $upcomming = order::where('booker_id', Auth::id())
                         ->whereDate('start_at', '>=', Carbon::now())
                         ->where('status', '1')
-                        ->orderBy('start_at')
+                        ->orderBy('created_at', 'desc')
                         ->limit(12)
                         ->get();
 
@@ -55,8 +55,8 @@ class bookingsController extends Controller
         $order = Order::with(['details','practitioner','booker'])->where('id',$id)->first();
         $data['order'] = $order;
         $data['mtp'] = MarketplaceSetting::latest()->first();
-         \App\Helpers\CommonHelpers::send_email('NewBookingCustomer', $data, $order->booker->email, 'Booking Confirmation', $from_email = 'info@divsnpixel.com', $from_name = 'Wallbe');
-         \App\Helpers\CommonHelpers::send_email('NewBookingPractitioner', $data, $order->practitioner->email, 'Booking Confirmation', $from_email = 'info@divsnpixel.com', $from_name = 'Wallbe');
+         \App\Helpers\CommonHelpers::send_email('NewBookingCustomer', $data, $order->booker->email, 'Booking Confirmation', $from_email = 'info@wellbe.co.nz', $from_name = 'Wellbe');
+         \App\Helpers\CommonHelpers::send_email('NewBookingPractitioner', $data, $order->practitioner->email, 'Booking Confirmation', $from_email = 'info@wellbe.co.nz', $from_name = 'Wellbe');
         return redirect(route('home'));
     }
 
@@ -65,7 +65,7 @@ class bookingsController extends Controller
         $data = order::where('booker_id', Auth::id())
                         ->whereDate('start_at', '>=', Carbon::now())
                         ->where('status', '1')
-                        ->orderBy('start_at')
+                        ->orderBy('created_at', 'desc')
                         ->get();
         //dd($data);
     	return view('booker.booking.upcomming', ['data' => $data]);
@@ -74,7 +74,7 @@ class bookingsController extends Controller
     function inprogress_booking(){
         $data = order::where('booker_id', Auth::id())
                         ->where('status', '2')
-                        ->orderBy('start_at')
+                        ->orderBy('created_at', 'desc')
                         ->get();
 
     	return view('booker.booking.inprogress', ['data' => $data]);
@@ -83,7 +83,7 @@ class bookingsController extends Controller
     function completed_booking(){
         $data = order::where('booker_id', Auth::id())
                         ->where('status', '3')
-                        ->orderBy('start_at', 'desc')
+                        ->orderBy('created_at', 'desc')
                         ->get();
 
     	return view('booker.booking.completed', ['data' => $data]);
@@ -92,7 +92,7 @@ class bookingsController extends Controller
     function cancelled_booking(){
         $data = order::where('booker_id', Auth::id())
                         ->where('status', '4')
-                        ->orderBy('start_at', 'desc')
+                        ->orderBy('created_at', 'desc')
                         ->get();
 
     	return view('booker.booking.cancelled', ['data' => $data]);
@@ -123,8 +123,8 @@ class bookingsController extends Controller
         $order = Order::with(['details','practitioner','booker'])->where('id',$id)->first();
         $data['order'] = $order;
         $data['mtp'] = MarketplaceSetting::latest()->first();
-        \App\Helpers\CommonHelpers::send_email('BookingCancellationCustomer_customer_cancelled', $data, $order->booker->email, 'Booking Cancellation', $from_email = 'info@divsnpixel.com', $from_name = 'Wallbe');
-        \App\Helpers\CommonHelpers::send_email('BookingCancellationPractitioner', $data, $order->practitioner->email, 'Booking Cancellation', $from_email = 'info@divsnpixel.com', $from_name = 'Wallbe');
+        \App\Helpers\CommonHelpers::send_email('BookingCancellationCustomer_customer_cancelled', $data, $order->booker->email, 'Booking Cancellation', $from_email = 'info@wellbe.co.nz', $from_name = 'Wellbe');
+        \App\Helpers\CommonHelpers::send_email('BookingCancellationPractitioner', $data, $order->practitioner->email, 'Booking Cancellation', $from_email = 'info@wellbe.co.nz', $from_name = 'Wellbe');
         return redirect()->back()->with('success', 'Order Cancelled.');
     }
 

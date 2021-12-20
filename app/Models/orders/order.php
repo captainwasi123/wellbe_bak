@@ -39,7 +39,7 @@ class order extends Model
 
             $sprice = empty($userv->price) ? '0' : $userv->price;
             $sprice = $sprice == 0 ? $ser->price : $sprice;
-            $end_time = date('H:i:s',strtotime('+'.$ser->duration.' minutes',strtotime($start_time)));
+            $end_time = date('H:i:s',strtotime('+'.($ser->duration*$val['quantity']).' minutes',strtotime($start_time)));
             $d = new orderDetail;
             $d->order_id = $id;
             $d->service_id = base64_decode($val['id']);

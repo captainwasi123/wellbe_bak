@@ -108,9 +108,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(reviews::class,'review_to','id');
     }
-    public function rating()
+    public function avgRating()
     {
-        return $this->reviews()->avg('rating');
+        return $this->reviews()
+          ->selectRaw('avg(rating) as aggregate');
     }
 
 

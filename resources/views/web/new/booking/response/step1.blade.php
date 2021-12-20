@@ -38,7 +38,7 @@
 
                      <b class="col-grey font-thin"> 
                         <i class="fa fa-star col-yellow"> </i> 
-                        {{empty($val->avgRating) ? '0.0' : $val->avgRating[0]->aggregate}} 
+                        {{empty($val->avgRating) ? '0.0' : number_format($val->avgRating[0]->aggregate, 1)}} 
                      </b> 
                   </p>
                </div>

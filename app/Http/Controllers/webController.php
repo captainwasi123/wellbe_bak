@@ -278,8 +278,8 @@ class webController extends Controller
 					'order' => $order_data,
 					'mtp' => $mtp,
 				);
-				\App\Helpers\CommonHelpers::send_email('BookingReminderCustomer', $data, $order_data->booker->email, 'Booking Reminder', $from_email = 'info@divsnpixel.com', $from_name = 'Wallbe');
-                \App\Helpers\CommonHelpers::send_email('BookingReminderPractitioner', $data, $order_data->practitioner->email, 'Booking Reminder', $from_email = 'info@divsnpixel.com', $from_name = 'Wallbe');   
+				\App\Helpers\CommonHelpers::send_email('BookingReminderCustomer', $data, $order_data->booker->email, 'Booking Reminder', $from_email = 'info@wellbe.co.nz', $from_name = 'Wellbe');
+                \App\Helpers\CommonHelpers::send_email('BookingReminderPractitioner', $data, $order_data->practitioner->email, 'Booking Reminder', $from_email = 'info@wellbe.co.nz', $from_name = 'Wellbe');   
 				DB::table('tbl_order_info')
                 ->where('id', $order_data->id)
                 ->update(['reminder_email' => 1]);

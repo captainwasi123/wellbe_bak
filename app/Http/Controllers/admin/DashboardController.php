@@ -25,7 +25,7 @@ class DashboardController extends Controller
         $curr = date('Y-m-d H:i:s');
         $upcomming = order::whereDate('start_at', '>=', Carbon::now())
                         ->where('status', '1')
-                        ->orderBy('start_at')
+                        ->orderBy('created_at', 'desc')
                         ->limit(12)
                         ->get();
         $data_count = array(
@@ -46,7 +46,7 @@ class DashboardController extends Controller
         $curr = date('Y-m-d H:i:s');
         $data = order::whereDate('start_at', '>=', Carbon::now())
                         ->where('status', '1')
-                        ->orderBy('start_at')
+                        ->orderBy('created_at', 'desc')
                         ->get();
 
         return view('admin.bookings.upcomming', ['data' => $data]);
@@ -54,7 +54,7 @@ class DashboardController extends Controller
 
     function inprogress(){
         $data = order::where('status', '2')
-                        ->orderBy('start_at')
+                        ->orderBy('created_at', 'desc')
                         ->get();
 
         return view('admin.bookings.inprogress', ['data' => $data]);
@@ -62,7 +62,7 @@ class DashboardController extends Controller
 
     function completed(){
         $data = order::where('status', '3')
-                        ->orderBy('start_at')
+                        ->orderBy('created_at', 'desc')
                         ->get();
 
         return view('admin.bookings.completed', ['data' => $data]);
@@ -71,7 +71,7 @@ class DashboardController extends Controller
     function cancelled(){
         
         $data = order::where('status', '4')
-                        ->orderBy('start_at')
+                        ->orderBy('created_at', 'desc')
                         ->get();
 
         return view('admin.bookings.cancelled', ['data' => $data]);
@@ -220,8 +220,8 @@ class DashboardController extends Controller
         $order = Order::with(['details','practitioner','booker'])->where('id',$id)->first();
         $data['order'] = $order;
         $data['mtp'] = MarketplaceSetting::latest()->first();
-        \App\Helpers\CommonHelpers::send_email('BookingCancellationCustomer_other', $data, $order->booker->email, 'Booking Cancellation', $from_email = 'info@divsnpixel.com', $from_name = 'Wallbe');
-        \App\Helpers\CommonHelpers::send_email('BookingCancellationPractitioner', $data, $order->practitioner->email, 'Booking Cancellation', $from_email = 'info@divsnpixel.com', $from_name = 'Wallbe');
+        \App\Helpers\CommonHelpers::send_email('BookingCancellationCustomer_other', $data, $order->booker->email, 'Booking Cancellation', $from_email = 'info@wellbe.co.nz', $from_name = 'Wellbe');
+        \App\Helpers\CommonHelpers::send_email('BookingCancellationPractitioner', $data, $order->practitioner->email, 'Booking Cancellation', $from_email = 'info@wellbe.co.nz', $from_name = 'Wellbe');
 
         return redirect()->back()->with('success', 'Order Cancelled.');
     }

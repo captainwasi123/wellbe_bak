@@ -83,9 +83,21 @@
          <h3><br></h3>
          <p>Booking Date:
             <strong>
-               {{date('d-M-Y', strtotime($data->start_at))}}
+               {{date('F j, Y, g:i a', strtotime($data->start_at.' '.$data->details[0]->start_time))}}
             </strong>
          </p>
+         @if($data->status == '4')
+           <p>Cancellation Date:
+               <strong>
+                  {{date('F j, Y, g:i a', strtotime(@$data->cancel->created_at))}}
+               </strong>
+            </p>
+               <p>Cancellation Reason:
+                  <text>
+                  {{@$data->cancel->reason}}
+                  </text>
+            </p>
+         @endif
       </div>
    </div>
    @foreach($data->details as $val)    

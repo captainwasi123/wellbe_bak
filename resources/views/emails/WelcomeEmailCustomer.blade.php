@@ -380,7 +380,7 @@ width: 100% !important;
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 <tr>
 
-<td valign="top" style="padding-top:10px;padding-right:10px;padding-left:10px;"><div style="font-family:Cabin, sans-serif;font-size:18px;color:#5d4e6d;line-height:25px;text-align:left;"><p style="padding: 0; margin: 0;text-align: center;"><span class="mso-font-fix-arial"><u>Massage</u></span></p>
+<td valign="top" style="padding-top:10px;padding-right:10px;padding-left:10px;"><div style="font-family:Cabin, sans-serif;font-size:18px;color:#5d4e6d;line-height:25px;text-align:left;"><a href="https://www.wellbe.co.nz/" target="_blank"><p style="padding: 0; margin: 0;text-align: center;"><span class="mso-font-fix-arial"><u>Massage</u></span></p></a>
 </div>
 </td>
 </tr>
@@ -415,7 +415,7 @@ width: 100% !important;
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 <tr>
 
-<td valign="top" style="padding-top:10px;padding-right:10px;padding-left:10px;"><div style="font-family:Cabin, sans-serif;font-size:18px;color:#5d4e6d;line-height:25px;text-align:left;"><p style="padding: 0; margin: 0;text-align: center;"><span class="mso-font-fix-arial"><u>Nails</u></span></p>
+<td valign="top" style="padding-top:10px;padding-right:10px;padding-left:10px;"><div style="font-family:Cabin, sans-serif;font-size:18px;color:#5d4e6d;line-height:25px;text-align:left;"><a href="https://www.wellbe.co.nz/" target="_blank"><p style="padding: 0; margin: 0;text-align: center;"><span class="mso-font-fix-arial"><u>Nails</u></span></p></a>
 </div>
 </td>
 </tr>
@@ -466,7 +466,7 @@ width: 100% !important;
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 <tr>
 
-<td valign="top" style="padding-top:5px;padding-right:10px;padding-left:10px;"><div style="font-family:Cabin, sans-serif;font-size:18px;color:#5d4e6d;line-height:25px;text-align:left;"><p style="padding: 0; margin: 0;text-align: center;"><span class="mso-font-fix-arial"><u>Hair</u></span></p>
+<td valign="top" style="padding-top:5px;padding-right:10px;padding-left:10px;"><div style="font-family:Cabin, sans-serif;font-size:18px;color:#5d4e6d;line-height:25px;text-align:left;"><a href="https://www.wellbe.co.nz/" target="_blank"><p style="padding: 0; margin: 0;text-align: center;"><span class="mso-font-fix-arial"><u>Hair</u></span></p></a>
 </div>
 </td>
 </tr>
@@ -501,7 +501,7 @@ width: 100% !important;
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 <tr>
 
-<td valign="top" style="padding-top:5px;padding-right:10px;padding-left:10px;"><div style="font-family:Cabin, sans-serif;font-size:18px;color:#5d4e6d;line-height:25px;text-align:left;"><p style="padding: 0; margin: 0;text-align: center;"><span class="mso-font-fix-arial"><u>Makeup</u></span></p>
+<td valign="top" style="padding-top:5px;padding-right:10px;padding-left:10px;"><div style="font-family:Cabin, sans-serif;font-size:18px;color:#5d4e6d;line-height:25px;text-align:left;"><a href="https://www.wellbe.co.nz/" target="_blank"><p style="padding: 0; margin: 0;text-align: center;"><span class="mso-font-fix-arial"><u>Makeup</u></span></p></a>
 </div>
 </td>
 </tr>
@@ -547,7 +547,7 @@ width: 100% !important;
 <td align="center" style="padding:9px;">
 <span style="color:#ffffff !important;font-family:Cabin, sans-serif;font-size:16px;mso-line-height:exactly;line-height:25px;mso-text-raise:4px;letter-spacing: 0.03em;;">
 <font style="color:#ffffff;" class="button">
-<span><span class="mso-font-fix-arial"><a href="{{route('treatments')}}">View All Services</a></span></span>
+<span><span class="mso-font-fix-arial"><a href="https://www.wellbe.co.nz/" target="_blank">View All Services</a></span></span>
 </font>
 </span>
 </td>

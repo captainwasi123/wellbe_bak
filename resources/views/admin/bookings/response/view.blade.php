@@ -12,7 +12,6 @@
          $timestamp1 = strtotime($data->start_at.' '.$data->details[0]->start_time);
          $timestamp2 = strtotime($data->cancel->created_at);
          $hours_gap = abs($timestamp2 - $timestamp1)/(60*60);
-
          if($hours_gap > 24){
             $pract_percentage = 0;
             $cust_percentage = 100;
@@ -51,11 +50,7 @@
             <h5 class="col-blue"> {{empty($data->booker) ? 'Deleted User' : $data->booker->first_name.' '.$data->booker->last_name}} </h5>
             <h6 class="col-grey"> Customer Address  </h6>
             <h5 class="col-black">
-               {{empty($data->booker->user_address) ? '' : $data->booker->user_address->postcode.' - '}}
-               {{empty($data->booker->user_address) ? '' : $data->booker->user_address->street.', '}}
-               {{empty($data->booker->user_address) ? '' : $data->booker->user_address->city.', '}}
-               {{empty($data->booker->user_address) ? '' : $data->booker->user_address->state.', '}}
-               {{empty($data->booker->user_address->country) ? '' : $data->booker->user_address->country->country}}
+               {{$data->address}}
             </h5>
 
             @if($data->status == '3')
@@ -195,9 +190,10 @@
          <h3><br></h3>
          <p>Booking Date:
             <strong>
-               {{date('F j, Y, g:i a', strtotime($data->start_at))}}
+               {{date('F j, Y, g:i a', strtotime($data->start_at.' '.$data->details[0]->start_time))}}
             </strong>
          </p>
+         @if($data->status == '4')
            <p>Cancellation Date:
             <strong>
                {{date('F j, Y, g:i a', strtotime(@$data->cancel->created_at))}}
@@ -208,6 +204,7 @@
                {{@$data->cancel->reason}}
                </text>
          </p>
+         @endif
       </div>
 
    </div>
@@ -219,6 +216,10 @@
                   <tr>
                      <td class="wd-40"> Product Name </td>
                      <td class="wd-60"> {{$val->service->name}}<br>{{$val->service->duration}} Mins </td>
+                  </tr>
+                  <tr>
+                     <td class="wd-40"> Quantity: </td>
+                     <td class="wd-60"> {{$val->qty}} </td>
                   </tr>
                   <tr>
                      <td class="wd-40"> Price: </td>

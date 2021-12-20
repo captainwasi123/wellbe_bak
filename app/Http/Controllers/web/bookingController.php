@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\services\services;
 use App\Models\userService;
 use App\Models\schedule\holidays;
+use App\Models\MarketplaceSetting;
 use DB;
 
 class bookingController extends Controller
@@ -65,6 +66,8 @@ class bookingController extends Controller
                         ->whereNotIn('id', $unavailable)
                         ->get();
 
+        $data['marketplace_data'] = MarketplaceSetting::latest()->first();
+
         return view('web.new.booking.step1')->with($data);
     }
     function step1Summary(Request $request){
@@ -80,6 +83,8 @@ class bookingController extends Controller
 
         session()->put('cart', $cart);
 
+        $data['marketplace_data'] = MarketplaceSetting::latest()->first();
+        
         return view('web.new.booking.response.summary')->with($data);
     }
 
@@ -101,6 +106,7 @@ class bookingController extends Controller
 
         $data['user'] = User::find(base64_decode($cart['booking']['practitioner']));
 
+        $data['marketplace_data'] = MarketplaceSetting::latest()->first();
         return view('web.new.booking.step2')->with($data);
     }
 
@@ -156,7 +162,6 @@ class bookingController extends Controller
                                 return $q->where('week_day', $day);
                             })
                             ->get();
-
 
             //return json_encode($userArr);
 

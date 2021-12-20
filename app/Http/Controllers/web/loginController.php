@@ -69,7 +69,7 @@ class loginController extends Controller
                 $email_temp = 'PractitionerActivation';
                 $msg = 'Thanks for joining the Wellbe Community. An activation email has been sent, please click the link in the email to activate your account.';
             }
-            $a = \App\Helpers\CommonHelpers::send_email($email_temp, $email, $request->email, 'Activate Your Wellbe Account', $from_email = 'info@divsnpixel.com', $from_name = 'Wallbe');
+            $a = \App\Helpers\CommonHelpers::send_email($email_temp, $email, $request->email, 'Activate Your Wellbe Account', $from_email = 'info@wellbe.co.nz', $from_name = 'Wellbe');
             return redirect()->back()->with('success', $msg);
         }else{
 

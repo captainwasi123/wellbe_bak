@@ -65,8 +65,12 @@
                   <div class="book-summary-instructions m-b-10">
                      <a data-toggle="modal" data-target=".addInstructionModal"><h6> {{empty(Session::get('cart.booking.instruction')) ? 'Add' : 'Edit'}} Instructions </h6></a>
                   </div>
+                  @php 
+                     $gst = $marketplace_data->gst;
+                     $gst_amount = ($totalAmount/100)*$gst;
+                  @endphp
                   <div class="book-summary-instructions">
-                     <h6> Total <b> ${{number_format($totalAmount, 2)}} + GST </b> </h6>
+                     <h6> Total <b> ${{number_format($totalAmount+$gst_amount, 2)}} <small>inc GST</small> </b> </h6>
                   </div>
                   <div class="block-element">
                      <div class="row m-t-20 m-b-10">

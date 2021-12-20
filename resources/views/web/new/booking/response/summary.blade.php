@@ -26,8 +26,12 @@
    <h6> <img src="{{URL::to('/public/assets/web/new')}}/images/booking-icon1.jpg"> Date & Time </h6>
    <h5> <span id="bookingDate">{{date('d-m-Y', strtotime($date))}}</span> - <span id="bookingTime">{{$time}}</span> </h5>
 </div>
+@php 
+   $gst = $marketplace_data->gst;
+   $gst_amount = ($totalAmount/100)*$gst;
+@endphp
 <div class="book-summary-instructions m-t-50">
-   <h6> Total <b> ${{number_format($totalAmount, 2)}} <small>excl GST</small> </b> </h6>
+   <h6> Total <b> ${{number_format($totalAmount+$gst_amount, 2)}} <small>inc GST</small> </b> </h6>
 </div>
 <div class="block-element">
    <div class="row m-t-20 m-b-10">

@@ -34,8 +34,29 @@
                          <td> {{$val->payment_status == '1' ? 'Paid' : '---'}} </td>
 
                         <td>
-                           @php $com = ($val->sub_total/100)*$mtp->comission;@endphp
-                           NZ ${{number_format($val->sub_total-$com , 2)}}
+                           @php
+                              $pract_percentage = 0;
+                              $pract_dues = 0;
+
+                              if($val->pract_id == $val->cancel->user_id){
+                                 $pract_percentage = 0;
+                              }else{
+                                 $timestamp1 = strtotime($val->start_at.' '.$val->details[0]->start_time);
+                                 $timestamp2 = strtotime($val->cancel->created_at);
+                                 $hours_gap = abs($timestamp2 - $timestamp1)/(60*60);
+
+                                 if($hours_gap > 24){
+                                    $pract_percentage = 0;
+                                 }elseif($hours_gap > 2 && $hours_gap <= 24){
+                                    $pract_percentage = 0;
+                                 }elseif($hours_gap < 2){
+                                    $pract_percentage = 75;
+                                 }
+                              }
+
+                              $pract_dues = ($val->pract_earning/100)*$pract_percentage;
+                           @endphp
+                           NZ {{empty($val->cancel->pract_due) ? '$'.number_format($pract_dues, 2) : '$0.0'}}
                         </td>
                          <td> <a href="javascript:void(0)" class="custom-btn1 orderModal" data-id="{{base64_encode($val->id)}}"> View  </a> </td>
                       </tr>

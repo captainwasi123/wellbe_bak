@@ -20,7 +20,7 @@ class bookingController extends Controller
         $data = order::where('pract_id', Auth::id())
                         ->whereDate('start_at', '>=', Carbon::now())
                         ->where('status', '1')
-                        ->orderBy('start_at')
+                        ->orderBy('created_at', 'desc')
                         ->get();
 
        
@@ -34,7 +34,7 @@ class bookingController extends Controller
         $mtp = MarketplaceSetting::latest()->first();
         $data = order::where('pract_id', Auth::id())
                         ->where('status', '2')
-                        ->orderBy('start_at')
+                        ->orderBy('created_at', 'desc')
                         ->get();
 
     	return view('practitioner.bookings.inprogress', ['data' => $data, 'mtp' => $mtp]);
@@ -44,7 +44,7 @@ class bookingController extends Controller
         $mtp = MarketplaceSetting::latest()->first();
         $data = order::where('pract_id', Auth::id())
                         ->where('status', '3')
-                        ->orderBy('start_at', 'desc')
+                        ->orderBy('created_at', 'desc')
                         ->get();
 
     	return view('practitioner.bookings.completed', ['data' => $data, 'mtp' => $mtp]);
@@ -54,7 +54,7 @@ class bookingController extends Controller
         $mtp = MarketplaceSetting::latest()->first();
         $data = order::where('pract_id', Auth::id())
                         ->where('status', '4')
-                        ->orderBy('start_at', 'desc')
+                        ->orderBy('created_at', 'desc')
                         ->get();
         
 
@@ -86,8 +86,8 @@ class bookingController extends Controller
         $order = Order::with(['details','practitioner','booker'])->where('id',$id)->first();
         $data['order'] = $order; 
         $data['mtp'] = MarketplaceSetting::latest()->first();
-        \App\Helpers\CommonHelpers::send_email('BookingCancellationCustomer_other', $data, $order->booker->email, 'Booking Cancellation', $from_email = 'info@divsnpixel.com', $from_name = 'Wallbe');
-        \App\Helpers\CommonHelpers::send_email('BookingCancellationPractitioner', $data, $order->practitioner->email, 'Booking Cancellation', $from_email = 'info@divsnpixel.com', $from_name = 'Wallbe');         
+        \App\Helpers\CommonHelpers::send_email('BookingCancellationCustomer_other', $data, $order->booker->email, 'Booking Cancellation', $from_email = 'info@wellbe.co.nz', $from_name = 'Wellbe');
+        \App\Helpers\CommonHelpers::send_email('BookingCancellationPractitioner', $data, $order->practitioner->email, 'Booking Cancellation', $from_email = 'info@wellbe.co.nz', $from_name = 'Wellbe');         
         
         return redirect()->back()->with('success', 'Order Cancelled.');
     }

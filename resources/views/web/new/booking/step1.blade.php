@@ -71,7 +71,7 @@
 
                                           <b class="col-grey font-thin"> 
                                              <i class="fa fa-star col-yellow"> </i> 
-                                             {{empty($val->avgRating) ? '0.0' : $val->avgRating[0]->aggregate}} 
+                                             {{empty($val->avgRating) ? '0.0' : number_format($val->avgRating[0]->aggregate, 1)}} 
                                           </b> 
                                        </p>
                                     </div>
@@ -85,10 +85,14 @@
                                                    $buffer = empty($val->user_store->buffer_between_appointments) ? 30 : $val->user_store->buffer_between_appointments; 
                                                    if($date == date('Y-m-d')){
                                                       $curr = date('H:i:s');
-                                                      $curr = date('H:i:s',strtotime('+1 hour',strtotime($curr)));
-                                                      $curr = date('H',strtotime($curr));
-                                                      $curr = $curr.':00:00';
-                                                      $start = $curr;
+                                                      if($curr > $slot->start_booking){
+                                                         $curr = date('H:i:s',strtotime('+1 hour',strtotime($curr)));
+                                                         $curr = date('H',strtotime($curr));
+                                                         $curr = $curr.':00:00';
+                                                         $start = $curr;
+                                                      }else{
+                                                         $start = $slot->start_booking;
+                                                      }
                                                    }else{
                                                       $start = $slot->start_booking;
                                                    } 
@@ -173,8 +177,12 @@
                      <h6> <img src="{{URL::to('/public/assets/web/new')}}/images/booking-icon1.jpg"> Date & Time </h6>
                      <h5> <span id="bookingDate">{{date('d-m-Y', strtotime($date))}}</span> - <span id="bookingTime"></span> </h5>
                   </div>
+                  @php 
+                     $gst = $marketplace_data->gst;
+                     $gst_amount = ($totalAmount/100)*$gst;
+                  @endphp
                   <div class="book-summary-instructions m-t-50">
-                     <h6> Total <b> ${{number_format($totalAmount, 2)}} <small>excl GST</small> </b> </h6>
+                     <h6> Total <b> ${{number_format($totalAmount+$gst_amount, 2)}} <small>inc GST</small> </b> </h6>
                   </div>
                   <div class="block-element">
                      <div class="row m-t-20 m-b-10">

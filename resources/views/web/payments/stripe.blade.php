@@ -50,8 +50,10 @@
                     <label>Please enter your card details</label>
                     <div id="card-element"></div>
                     <br>
-                    <div class="col-md-12" id="pybtn">
+                    <div class="col-md-12"  id="pybtn">
                       <button class="btn btn-primary btn-block">Pay ${{$amount}}</button>
+                    </div>
+                    <div class="col-md-12" id="epybtn">
                     </div>
                 </form>
             </div>
@@ -77,6 +79,8 @@
         form.addEventListener('submit', function(e){
             e.preventDefault();
             
+            document.getElementById("epybtn").innerHTML = "<img src='https://static.tildacdn.com/tild3637-3962-4434-b061-613661376165/loader.gif' width='150px' />";
+
             console.log('Createing Payment intent');
             fetch(url, {
                 method: 'POST',
@@ -98,19 +102,20 @@
                 )
                 .then(function(result){
                     if(result.error){
-                        document.getElementById("pybtn").innerHTML = '<div class="alert alert-danger"><strong>Error.!</strong> Payment Intents Confirmation failed.</div>';
+                        document.getElementById("epybtn").innerHTML = '<div class="alert alert-danger"><strong>Error.!</strong> Payment Intents Confirmation failed.</div>';
                         console.log(result.error.message);
                     }else{
                         var xhttp = new XMLHttpRequest();
                         xhttp.onreadystatechange = function() {
                             if (this.readyState == 4 && this.status == 200) {
                                 document.getElementById("pybtn").innerHTML = '<div class="alert alert-success"><strong>Payment Successful!</strong></div>';
+                                document.getElementById("epybtn").innerHTML = '';
                                 setTimeout(function(){
                                     window.location.href = "{{URL::to('/booker')}}";
                                 }, 200)
                                 console.log(JSON.stringify(result, null, 2));
                             }else{
-                                document.getElementById("pybtn").innerHTML = "<img src='https://static.tildacdn.com/tild3637-3962-4434-b061-613661376165/loader.gif' width='150px' />";
+                                document.getElementById("epybtn").innerHTML = "<img src='https://static.tildacdn.com/tild3637-3962-4434-b061-613661376165/loader.gif' width='150px' />";
                             }
                         };
                         xhttp.open("GET", "{{URL::to('/booker/order/confirmation/'.$id)}}", true);
