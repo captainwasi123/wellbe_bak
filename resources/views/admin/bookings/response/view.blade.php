@@ -69,7 +69,7 @@
                    @for($i=1; $i<=5; $i++)
                      <i class="fa fa-star {{$i > $rat ? 'star-off' : 'star-onn'}}"> </i>
                    @endfor
-                 </span>
+                 </span> 
                @endif
             </h5>
 

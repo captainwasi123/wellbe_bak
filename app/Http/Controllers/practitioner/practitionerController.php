@@ -10,7 +10,7 @@ use Carbon\Carbon;
 
 
 class practitionerController extends Controller
-{
+{ 
     
     function index(){
         $from = date('Y-m-d 00:00:01');
@@ -22,7 +22,7 @@ class practitionerController extends Controller
                         ->orderBy('start_at')
                         ->limit(12)
                         ->get();
-
+       
         $job_stats = array(
                         'pending' => order::where('pract_id', Auth::id())->whereDate('start_at', '>=', Carbon::now())->where('status','1')->count(),
                         'completed' => order::where('pract_id', Auth::id())->where('status','3')->count(),
@@ -31,11 +31,14 @@ class practitionerController extends Controller
 
         $revenue = array(
                     'today' => order::where('pract_id', Auth::id())->where('status', '3')
-                                        ->whereBetween('start_at', array($from, $to))
+                                        ->whereBetween('created_at', array($from, $to))
                                         ->sum('pract_earning'),
+                                    
                     'total' => order::where('pract_id', Auth::id())->where('status', '3')
                                         ->sum('pract_earning')
                 );
+               
+                
     	return view('practitioner.index', ['upcomming' => $upcomming, 'job_stats' => $job_stats, 'revenue' => $revenue]);
     }
 }
