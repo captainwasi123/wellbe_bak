@@ -1,3 +1,4 @@
+var timeList = [];
 $(document).ready(function(){
 
 	"use strict";
@@ -106,13 +107,50 @@ $(document).ready(function(){
 
 	//Schedule Spilt
 
+	$('#scheduleTime').submit(function(event) {
+	 	event.preventDefault(); 
+	 	
+	 	var $form = $(this);
+		var values = getFormData($form);
+	 	
+	 	var weekdays = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+	 	var invalidSlot = 0;
+	 	var invalidDay = '';
+	 	for (var j = 0; j < weekdays.length; j++) {
+	 		timeList = [];
+		 	for (var i = 0; i < 7; i++) {
+		 		var startTime = values['days['+weekdays[j]+']['+i+'][first_booking]'];
+		 		var endTime = values['days['+weekdays[j]+']['+i+'][last_booking]'];
+		 		if(startTime != null && endTime != null){
+		 			// console.log(startTime+' - '+endTime);
+		 			if (validate(startTime, endTime)){
+		 				timeList.push({
+					      startTime: startTime,
+					      endTime: endTime
+					    });
+		 			}else{
+		 				invalidSlot = 1;
+		 				invalidDay = weekdays[j];
+		 			}
+		 		}
+		 	}
+	 	}
+	 	if(invalidSlot == 0){
+	 		$(this).unbind('submit').submit();
+		}else{
+			alert('Timeslot confict on '+invalidDay);
+		}
+
+	});
+
+
 	$(document).on('click', '.splitShift', function(){
 		var parent_tr = $(this).parent().parent().parent();
 		let i = parseInt($(this).attr("data-id"));
+
 		$(this).attr('data-id', i+1);
 		var day = $(this).data('day');
-		$(parent_tr).append('<tr><td></td><td></td><td> First Booking </td><td><input type="text" data-id="'+day+'-'+i+'" name="days['+day+']['+i+'][first_booking]" class="timepicker checkTime" value="9:00 AM"></td><td> Last Booking </td><td><input type="text" name="days['+day+']['+i+'][last_booking]" id="field-'+day+'-'+i+'" class="timepicker" value="5:00 PM"></td><td> <a href="javascript:void(0)" class="col-red removeShift"> - Remove </a> </td>  </tr>');
-		$('.timepicker').mdtimepicker();
+		$(parent_tr).append('<tr><td></td><td></td><td> First Booking </td><td><input type="time" data-id="'+day+'-'+i+'" name="days['+day+']['+i+'][first_booking]" class="checkTime" value="09:00"></td><td> Last Booking </td><td><input type="time" name="days['+day+']['+i+'][last_booking]" id="field-'+day+'-'+i+'" class="" value="17:00"></td><td> <a href="javascript:void(0)" class="col-red removeShift"> - Remove </a> </td>  </tr>');
 	});
 
 
@@ -179,3 +217,32 @@ $(document).ready(function(){
 	});
 
 });
+
+
+
+function validate(sTime, eTime) {
+  if (+getDate(sTime) < +getDate(eTime)) {
+    var len = timeList.length;
+    return len>0?(+getDate(timeList[len - 1].endTime) < +getDate(sTime) ):true;
+  } else {
+    return false;
+  }
+}
+
+function getDate(time) {
+  var today = new Date();
+  var _t = time.split(":");
+  today.setHours(_t[0], _t[1], 0, 0);
+  return today;
+}
+
+function getFormData($form){
+    var unindexed_array = $form.serializeArray();
+    var indexed_array = {};
+
+    $.map(unindexed_array, function(n, i){
+        indexed_array[n['name']] = n['value'];
+    });
+
+    return indexed_array;
+}

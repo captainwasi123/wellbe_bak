@@ -14,7 +14,7 @@
       </li> -->
    </ul>
 </div>
-@php $duration = 0; @endphp
+@php $duration = 0; $bslot = 30; @endphp
 @if(Session::get('cart') !== null)
    @foreach(Session::get('cart.services') as $val)
       @php $duration = $duration+($val['duration']*$val['quantity']); @endphp
@@ -51,10 +51,14 @@
                               $buffer = empty($val->user_store->buffer_between_appointments) ? 30 : $val->user_store->buffer_between_appointments; 
                               if($date == date('Y-m-d')){
                                  $curr = date('H:i:s');
-                                 $curr = date('H:i:s',strtotime('+1 hour',strtotime($curr)));
-                                 $curr = date('H',strtotime($curr));
-                                 $curr = $curr.':00:00';
-                                 $start = $curr;
+                                 if($curr > $slot->start_booking){
+                                    $curr = date('H:i:s',strtotime('+1 hour',strtotime($curr)));
+                                    $curr = date('H',strtotime($curr));
+                                    $curr = $curr.':00:00';
+                                    $start = $curr;
+                                 }else{
+                                    $start = $slot->start_booking;
+                                 }
                               }else{
                                  $start = $slot->start_booking;
                               } 
@@ -62,11 +66,23 @@
                               $end = date('H:i:s',strtotime('-'.$buffer.' minutes',strtotime($end)));
                            @endphp
                            @while($start <= $end)
+                           @php $v = 1; @endphp
+                           @foreach($val->p_upcoming as $vup)
+                              @if($vup->start_at == date('Y-m-d'))
+                                 @foreach($vup->details as $vupd)
+                                    @if($start >= $vupd->start_time && $start <= $vupd->end_time)
+                                       @php $v = 0; @endphp
+                                    @endif
+                                 @endforeach
+                              @endif
+                           @endforeach
+                           @if($v == 1)
                            <div>
                               <input type="radio" id="myCheck{{$slot->id.$x}}" class="timeslot" name="timeslot" data-time="{{date('h:i A', strtotime($start))}}" data-prac="{{base64_encode($val->id)}}" tabindex="-1"> 
                               <label class="book-time-btn"  for="myCheck{{$slot->id.$x}}" >{{date('h:i A', strtotime($start))}}</label>
                            </div>
-                              @php $start = date('H:i:s',strtotime('+'.($duration+$buffer).' minutes',strtotime($start))); $x++; @endphp
+                           @endif
+                              @php $start = date('H:i:s',strtotime('+'.$bslot.' minutes',strtotime($start))); $x++; @endphp
                            @endwhile 
                         @endforeach
                      @endif

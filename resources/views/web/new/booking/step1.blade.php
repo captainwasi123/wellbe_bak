@@ -30,7 +30,7 @@
                         </div>
                      </div>
                   </div>
-                  @php $duration = 0; @endphp
+                  @php $duration = 0; $bslot = 30; @endphp
                   @if(Session::get('cart') !== null)
                      @foreach(Session::get('cart.services') as $val)
                         @php $duration = $duration+($val['duration']*$val['quantity']); @endphp
@@ -47,15 +47,6 @@
                            <li class="nav-item">
                               <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab"> Practitioners </a>
                            </li>
-                           <!-- <li class="nav-item">
-                              <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab"> Morning </a>
-                           </li>
-                           <li class="nav-item">
-                              <a class="nav-link " data-toggle="tab" href="#tabs-3" role="tab"> Afternoon </a>
-                           </li>
-                           <li class="nav-item">
-                              <a class="nav-link " data-toggle="tab" href="#tabs-4" role="tab"> Evening </a>
-                           </li> -->
                         </ul>
                      </div>
                      <div class="tab-content">
@@ -75,7 +66,6 @@
                                           </b> 
                                        </p>
                                     </div>
-                                    
                                     <div class="booking-persons-time time-slider arrows">
                                        @foreach($val->availability as $avail)
                                           @if(ucfirst($avail->week_day) == $day)
@@ -100,11 +90,23 @@
                                                    $end = date('H:i:s',strtotime('-'.$buffer.' minutes',strtotime($end)));
                                                 @endphp
                                                 @while($start <= $end)
-                                                <div>
-                                                   <input type="radio" id="myCheck{{$slot->id.$x}}" class="timeslot" name="timeslot" data-time="{{date('h:i A', strtotime($start))}}" data-prac="{{base64_encode($val->id)}}" tabindex="-1"> 
-                                                   <label class="book-time-btn"  for="myCheck{{$slot->id.$x}}" >{{date('h:i A', strtotime($start))}}</label>
-                                                </div>
-                                                   @php $start = date('H:i:s',strtotime('+'.($duration+$buffer).' minutes',strtotime($start))); $x++; @endphp
+                                                   @php $v = 1; @endphp
+                                                   @foreach($val->p_upcoming as $vup)
+                                                      @if($vup->start_at == date('Y-m-d'))
+                                                         @foreach($vup->details as $vupd)
+                                                            @if($start >= $vupd->start_time && $start <= $vupd->end_time)
+                                                               @php $v = 0; @endphp
+                                                            @endif
+                                                         @endforeach
+                                                      @endif
+                                                   @endforeach
+                                                   @if($v == 1)
+                                                   <div>
+                                                      <input type="radio" id="myCheck{{$slot->id.$x}}" class="timeslot" name="timeslot" data-time="{{date('h:i A', strtotime($start))}}" data-prac="{{base64_encode($val->id)}}" tabindex="-1"> 
+                                                      <label class="book-time-btn"  for="myCheck{{$slot->id.$x}}" >{{date('h:i A', strtotime($start))}}</label>
+                                                   </div>
+                                                   @endif
+                                                   @php $start = date('H:i:s',strtotime('+'.$bslot.' minutes',strtotime($start))); $x++; @endphp
                                                 @endwhile 
                                              @endforeach
                                           @endif
