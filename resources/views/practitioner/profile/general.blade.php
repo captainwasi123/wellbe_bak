@@ -17,10 +17,12 @@
    <div class="block-element pad-1">
       <div class="row">
          <div class="col-md-7 col-lg-7 col-sm-12 col-xs-12">
-            <div class="block-element m-t-15 m-b-10">
-               <h4 class="col-blue"> General </h4>
-            </div>
             <div class="row">
+              <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                <div class="block-element m-t-15 m-b-10">
+                   <h4 class="col-blue"> General </h4>
+                </div>
+              </div>
                <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                   <div class="form-field3 m-t-20">
                      <div class="form-group mb-3 profileImageBlock">
