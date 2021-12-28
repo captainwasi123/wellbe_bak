@@ -84,7 +84,7 @@ class loginController extends Controller
 
     function showForgetPasswordForm(){
 
-        return view('web.new.forgetPassword');
+        return view('web.new.forgetpassword');
     }
 
     function submitForgetPasswordForm(Request $request){
