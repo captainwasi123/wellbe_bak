@@ -10,7 +10,7 @@ use Auth;
 class Categories extends Model
 {
     use HasFactory;
-    protected $table = 'tbl_service_category';
+    protected $table = 'tbl_service_category'; 
 
 
 

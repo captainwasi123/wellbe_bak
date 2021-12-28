@@ -6,11 +6,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Auth;
-use DB; 
-use Carbon\Carbon; 
+use DB;
+use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Hash;
-use Mail; 
+use Mail;
 
 class loginController extends Controller
 {
@@ -41,7 +41,7 @@ class loginController extends Controller
         }
         else{
 
-            return redirect()->back()->with('error', 'Authentication Error.');
+            return redirect()->back()->with('error', 'Incorrect username or password.');
         }
     }
 
@@ -102,7 +102,7 @@ class loginController extends Controller
                 $token = Str::random(64);
 
                 DB::table('password_resets')->insert([
-                    'email' => $request->email, 
+                    'email' => $request->email,
                     'token' => $token,
                     'first_name' => $to_name,
                     'created_at' => Carbon::now()
@@ -116,25 +116,25 @@ class loginController extends Controller
         }
 
         return back()->with('message', 'We have e-mailed your password reset link!');
-       
+
     }
 
-    public function showResetPasswordForm($token) { 
+    public function showResetPasswordForm($token) {
 
         return view('web.new.forgetPasswordLink', ['token' => $token]);
      }
-     
+
 
      public function submitResetPasswordForm(Request $request)
     {
           $request->validate([
-           
+
               'password' => '|required_with:confirmation_password|same:confirmation_password',
               'confirmation_password' => 'required'
           ]);
           $updatePassword = DB::table('password_resets')
                               ->where([ 'token' => $request->token])->first();
-  
+
           if(!$updatePassword){
               return back()->withInput()->with('error', 'Invalid token!');
           }

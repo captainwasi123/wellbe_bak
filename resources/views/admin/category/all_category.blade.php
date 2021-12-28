@@ -16,7 +16,7 @@
         <div class="row">
 
                     @csrf
-                    <input type="hidden" name="id" value="{{@$edit_data->hashid}}">
+                    <input type="hidden" name="id" value="{{@$edit_data->id}}">
                     <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12"> <br>
                         <div class="form-field3">
                             <p> Category Name </p>
@@ -81,4 +81,4 @@
    {
     return confirm("Are you sure ?");
    }
-</script> 
+</script>

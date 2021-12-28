@@ -19,7 +19,7 @@ class AdminLoginController extends Controller
             return redirect(route('admin.dashboard'));
         }else{
 
-            return redirect()->back()->with('error', 'Authentication Error.');
+            return redirect()->back()->with('error', 'Incorrect username or password.');
         }
     }
 

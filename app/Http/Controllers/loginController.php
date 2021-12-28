@@ -34,7 +34,7 @@ class loginController extends Controller
 
         }else{
 
-            return redirect()->back()->with('error', 'Authentication Error.');
+            return redirect()->back()->with('error', 'Incorrect username or password.');
         }
     }
 
@@ -108,15 +108,15 @@ class loginController extends Controller
         if($data['password'] == $data['confirmation_password']){
             $u = User::where('email', $data['email'])->count();
             if($u == '0'){
-                $user = User::newUser($data); 
+                $user = User::newUser($data);
                 $email['user'] = $user;
-                if($request->userType == 2 ){ 
-                    $email_temp = 'CustomerActivation'; 
+                if($request->userType == 2 ){
+                    $email_temp = 'CustomerActivation';
                     $msg = 'Thanks for joining the Wellbe Community. An activation email has been sent, please click the link in the email to activate your account.';
                 }else{
-                    $email_temp = 'PractitionerActivation'; 
+                    $email_temp = 'PractitionerActivation';
                     $msg = 'Thanks for joining the Wellbe Community. An activation email has been sent, please click the link in the email to activate your account.';
-                } 
+                }
                 $a = \App\Helpers\CommonHelpers::send_email($email_temp, $email, $request->email, 'Activate Your Wellbe Account', $from_email = 'info@wellbe.co.nz', $from_name = 'Wellbe');
                 return redirect()->back()->with('success', $msg);
             }else{
@@ -124,7 +124,7 @@ class loginController extends Controller
                 return redirect()->back()->with('error', 'Sorry, we already have an account registered with that email address. Please try resetting your password.');
             }
         }else{
-            
+
             return redirect()->back()->with('error', 'Passwords do not match.');
         }
 
@@ -133,24 +133,24 @@ class loginController extends Controller
     {
         $id = base64_decode($request->id);
         $user = User::find($id);
-        
+
         $email['user'] = $user;
-        if($user->user_type == 2 ){ 
-            $email_temp = 'WelcomeEmailCustomer'; 
+        if($user->user_type == 2 ){
+            $email_temp = 'WelcomeEmailCustomer';
             $user->status = '1';
-            Auth::login($user); 
+            Auth::login($user);
             $url = redirect(route('booker.index'))->with('success', 'Your account has been verified');
         }else{
-            $email_temp = 'WelcomeEmailPractitioner'; 
+            $email_temp = 'WelcomeEmailPractitioner';
             $user->email_verify = '1';
             $url = redirect(route('home'))->with('success', 'Your account has been verified');
-        } 
+        }
         $user->save();
         \App\Helpers\CommonHelpers::send_email($email_temp, $email, $user->email, 'Welcome to Wellbe, '.$user->first_name.'!', $from_email = 'info@divsnpixel.com', $from_name = 'Wallbe');
         // DB::table('tbl_users_info')
         //         ->where('id', base64_decode($request->id))
         //         ->update(['status' => 1]);
-        return $url;        
+        return $url;
     }
     function logout(){
         Auth::logout();
