@@ -16,14 +16,14 @@
 </script>
   <style type="text/css">
     .stripe-logo {
-      width: 210px;
-      float: right;
-      margin-top: -15px;
+        width: 210px;
+        float: right;
+        margin-top: -15px;
     }
     .payment-logo {
-      width: 100px;
-      margin-top: -15px;
-      float: left;
+        width: 165px;
+        margin-top: 11px;
+        float: left;
     }
   </style>
 </head>
@@ -52,7 +52,8 @@
                     @csrf
                     <input type="hidden" name="amount" value="{{$amount}}">
                     <input type="hidden" name="orderId" value="{{$id}}">
-                    <label>Please enter your card details</label>
+                    <label>Please enter your card details below to complete your booking</label>
+                    <br><br>
                     <div id="card-element"></div>
                     <br>
                     <div class="col-md-12"  id="pybtn">

@@ -124,11 +124,11 @@
                                     @endif
                                     <td> First Booking </td>
                                     <td>
-                                       <input type="time" name="days[monday][{{$s}}][first_booking]" data-id="monday-{{$s}}" value="{{$val->start_booking}}" class=""   onchange="validateTime($(this).val(), 'monday-{{$s}}')">
+                                       <input type="time" name="days[monday][{{$s}}][first_booking]" data-id="monday-{{$s}}" value="{{$val->start_booking}}" class="">
                                     </td>
                                     <td> Last Booking </td>
                                     <td>
-                                       <input type="time" name="days[monday][{{$s}}][last_booking]" id="field-monday-{{$s}}" value="{{$val->end_booking}}" class="" readonly>
+                                       <input type="time" name="days[monday][{{$s}}][last_booking]" id="field-monday-{{$s}}" value="{{$val->end_booking}}" class="">
                                     </td>
                                     @if($s=='0')
                                        <td> 
@@ -155,7 +155,7 @@
                                  <td> Tuesday </td>
                                  <td> First Booking </td>
                                  <td>
-                                    <input type="time" name="days[tuesday][0][first_booking]" data-id="tuesday-0" class="" value="09:00"  onchange="validateTime($(this).val(), 'tuesday-0')">
+                                    <input type="time" name="days[tuesday][0][first_booking]" data-id="tuesday-0" class="" value="09:00">
                                  </td>
                                  <td> Last Booking </td>
                                  <td>

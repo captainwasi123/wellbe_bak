@@ -21,7 +21,6 @@ class loginController extends Controller
 
         if(Auth::attempt(['email' => $data['email'], 'password' => $data['password'], 'status' => '1'])){
             $cart = session()->get('cart');
-            dd(count($cart));
             if(count($cart) > 0){
                 return redirect(route('treatments.booking.step1'));
             }else{

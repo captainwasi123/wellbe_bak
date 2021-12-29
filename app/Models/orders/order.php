@@ -29,6 +29,7 @@ class order extends Model
         $o->start_at = date('Y-m-d', strtotime($data['booking']['date']));
         $o->status = '9';
         $o->address = $data['location']['place'];
+        $o->instructions = empty($data['booking']['instruction']) ? '' : $data['booking']['instruction'];
         $o->save();
         $id = $o->id;
 

@@ -40,14 +40,15 @@ class loginController extends Controller
 
         }
         elseif (Auth::attempt(['email' => $data['email'], 'password' => $data['password'], 'status' => '2'])) {
-
+            
+            session()->put('email', $data['email']);
             Auth::logout();
             return redirect()->back()->with('error', 'Your practitioner account is currently being verified and one of our onboarding specialists will be in touch with you shortly.');
         }
         
         else{
-            $crt =$request->session()->put('email');
-            dd($crt);
+            session()->put('email', $data['email']);
+            
             return redirect()->back()->with('error', 'Incorrect email or password.');
         }
     }

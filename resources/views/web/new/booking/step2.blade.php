@@ -19,7 +19,7 @@
                         <a href="javascript:void(0)" class="viewUserProfile" data-id="{{base64_encode($user->id)}}"> View Profile </a> 
                         <b class="col-grey font-thin"> 
                            <i class="fa fa-star col-yellow"> </i> 
-                           {{empty($user->avgRating) ? '0.0' : $user->avgRating[0]->aggregate}}
+                           {{empty($user->avgRating) ? '0.0' : number_format($user->avgRating[0]->aggregate, 1)}}
                         </b> 
                      </p>
                   </div>

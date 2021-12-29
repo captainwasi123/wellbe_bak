@@ -24,7 +24,7 @@
          }
       }
 
-      $pract_dues = ($data->pract_earning/100)*$pract_percentage;
+      $pract_dues = ($data->total_amount/100)*$pract_percentage;
       $cust_dues = ($data->total_amount/100)*$cust_percentage;
    @endphp
 @endif
