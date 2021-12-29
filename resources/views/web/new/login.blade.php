@@ -35,11 +35,11 @@
                            @csrf
                            <div class="block-element m-b-20">
                               <p class="col-black form-label1"> Email Address  </p>
-                              <input type="email" placeholder="Email Address" name="email" class="form-control1" required>
+                              <input type="email" placeholder="Email Address" name="email" class="form-control1" required >
                            </div>
                            <div class="block-element m-b-20">
                               <p class="col-black form-label1"> Password  </p>
-                              <input type="password" placeholder="Password" name="password" class="form-control1" required>
+                              <input type="password" placeholder="Password" name="password" class="form-control1" autocomplete="new-password"   required  >
                            </div>
                            <div class="block-element">
                               <button type="submit" class="submit-btn1"> Login </button>

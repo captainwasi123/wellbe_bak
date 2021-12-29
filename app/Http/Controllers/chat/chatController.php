@@ -40,7 +40,7 @@ class chatController extends Controller
         $emai_data['user'] = Auth::user();
         $emai_data['chat_msg'] = $data['message'];
         $emai_data['msg_time'] = $time;
-        \App\Helpers\CommonHelpers::send_email('NewMessage', $emai_data, Auth::user()->email, 'New Message Recieved', $from_email = 'info@divsnpixel.com', $from_name = 'Wallbe');
+        \App\Helpers\CommonHelpers::send_email('NewMessage', $emai_data, Auth::user()->email, 'New Message Recieved', $from_email = 'info@wellbe.co.nz', $from_name = 'Wallbe');
     	$data_re = array(
                 'status' => 200,
                 'message' => '<div class="outgoing_msg"><div class="sent_msg"><p>'.$data['message'].'</p><span class="time_date">'.$time->diffForHumans().'</span></div></div>',

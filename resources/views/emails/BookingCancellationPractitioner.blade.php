@@ -621,39 +621,7 @@ width: 100% !important;
 <tr>
 <td valign="top" width="100%" style="padding:0;">
 
-<table cellpadding="0" cellspacing="0" border="0" width="100%">
-<tr>
 
-<td valign="top">
-<table cellpadding="0" cellspacing="0" border="0" width="100%">
-<tr>
-
-<td valign="top">
-<table cellpadding="0" cellspacing="0" border="0" width="100%">
-<tr>
-
-<td valign="top" style="padding-top:5px;"><div style="font-family:Cabin, sans-serif;font-size:20px;color:#5d4e6d;line-height:27px;text-align:left;"><p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial"><strong>Item Name</strong></span></p>
-</div>
-</td>
-</tr>
-</table>
-
-<table cellpadding="0" cellspacing="0" border="0" width="100%">
-<tr>
-
-<td valign="top" style="padding-top:5px;padding-bottom:10px;"><div style="font-family:Cabin, sans-serif;font-size:15px;color:#5d4e6d;line-height:22px;text-align:left;"><p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial">Duration: X Minutes</span></p>
-</div>
-</td>
-</tr>
-</table>
-
-</td>
-</tr>
-</table>
-
-</td>
-</tr>
-</table>
 
 </td>
 </tr>
@@ -676,31 +644,6 @@ width: 100% !important;
 <tr>
 <td valign="top" width="47.963005602885886%">
 
-<table cellpadding="0" cellspacing="0" border="0" width="100%">
-<tr>
-
-<td valign="top" style="padding-top:5px;padding-bottom:10px;"><div style="font-family:Cabin, sans-serif;font-size:17px;color:#5d4e6d;line-height:24px;text-align:left;"><p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial">Quantity:&nbsp;</span></p>
-
-<p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial"><strong>1</strong></span></p>
-</div>
-</td>
-</tr>
-</table>
-
-</td>
-<td valign="top" width="3.883644178371327%">&nbsp;</td>
-<td valign="top" width="47.963005602885886%">
-
-<table cellpadding="0" cellspacing="0" border="0" width="100%">
-<tr>
-
-<td valign="top" style="padding-top:5px;padding-bottom:10px;"><div style="font-family:Cabin, sans-serif;font-size:17px;color:#5d4e6d;line-height:24px;text-align:left;"><p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial">Price:&nbsp;</span></p>
-
-<p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial">&#36;35.00</span></p>
-</div>
-</td>
-</tr>
-</table>
 
 </td>
 <td valign="top" width="0%">&nbsp;</td>

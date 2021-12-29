@@ -17,6 +17,8 @@
              <thead>
                 <tr>
                    <th> Name </th>
+                   <th> Email </th>
+
                    <th> Upcoming Bookings </th>
                    <th> Completed Bookings </th>
                    <th> Cancelled Bookings </th>
@@ -29,6 +31,7 @@
                 @foreach($data as $val)
                   <tr>
                      <td class="col-blue"> {{$val->first_name.' '.$val->last_name}} </td>
+                     <td> {{$val->email}} </td>
                      <td> {{count($val->b_upcoming)}} </td>
                      <td> {{count($val->b_completed)}} </td>
                      <td> {{count($val->b_cancelled)}} </td>

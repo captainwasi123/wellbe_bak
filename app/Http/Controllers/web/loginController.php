@@ -11,6 +11,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Hash;
 use Mail;
+use Session;
 
 class loginController extends Controller
 {
@@ -22,8 +23,10 @@ class loginController extends Controller
 
     function loginAttempt(Request $request){
         $data = $request->all();
-
+        
+ 
         if(Auth::attempt(['email' => $data['email'], 'password' => $data['password'], 'status' => '1'])){
+          
             $cart = session()->get('cart');
             if(!empty($cart['location']['lat'])){
                 return redirect(route('treatments.booking.step1'));
@@ -37,11 +40,15 @@ class loginController extends Controller
 
         }
         elseif (Auth::attempt(['email' => $data['email'], 'password' => $data['password'], 'status' => '2'])) {
+
+            Auth::logout();
             return redirect()->back()->with('error', 'Your practitioner account is currently being verified and one of our onboarding specialists will be in touch with you shortly.');
         }
+        
         else{
-
-            return redirect()->back()->with('error', 'Incorrect username or password.');
+            $crt =$request->session()->put('email');
+            dd($crt);
+            return redirect()->back()->with('error', 'Incorrect email or password.');
         }
     }
 
@@ -77,7 +84,7 @@ class loginController extends Controller
         }
     }else{
 
-        return redirect()->back()->with('error', 'Password do not matched.');
+        return redirect()->back()->with('error', 'Password do not match.');
     }
 
     }

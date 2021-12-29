@@ -35,7 +35,7 @@
         <div class="jumbotron text-center">
           <div class="row">
             <div class="col-md-6">
-              <img src="{{URL::to('/')}}/public/assets/web/images/logo.png" class="payment-logo">
+              <img src="{{URL::to('/')}}/public/assets/web/new/images/wellbe-logo.png" class="payment-logo">
             </div>
             <div class="col-md-6">
               <img src="{{URL::to('/')}}/public/assets/web/images/stripe.png" class="stripe-logo">
@@ -56,7 +56,7 @@
                     <div id="card-element"></div>
                     <br>
                     <div class="col-md-12"  id="pybtn">
-                      <button class="btn btn-primary btn-block">Pay ${{$amount}}</button>
+                      <button class="btn btn-primary btn-block">Pay ${{$amount}} NZD</button>
                     </div>
                     <div class="col-md-12" id="epybtn">
                     </div>
@@ -107,7 +107,7 @@
                 )
                 .then(function(result){
                     if(result.error){
-                        document.getElementById("epybtn").innerHTML = '<div class="alert alert-danger"><strong>Error.!</strong> Payment Intents Confirmation failed.</div>';
+                        document.getElementById("epybtn").innerHTML = '<div class="alert alert-danger"><strong>Error.!</strong> Your payment could not be completed.</div>';
                         console.log(result.error.message);
                     }else{
                         var xhttp = new XMLHttpRequest();
