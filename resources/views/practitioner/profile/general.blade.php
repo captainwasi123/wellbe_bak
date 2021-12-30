@@ -33,7 +33,15 @@
                         <!--  <span class="fas fa-pencil-alt" id="profilePicIcon"></span> -->
                          <input type="file" class="form-control" name="profile_img" id="imageUpload" style="display: none;" accept=".jpeg , .jpg">
                         <!-- <p> Profile Photo <input type="file" name="profile_img" class="bg-blue normal-btn col-white pad-1 rounded"></p> -->
+
                      </div>
+                        <div class="row">
+                          <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12">
+                              <div class="form-field4 m-b-30 text-right mob-text-left">
+                              <input type="submit" class="normal-btn bg-blue col-white rounded" value="Update Profile">
+                              </div>
+                          </div>
+                        </div>
                   </div>
                </div>
                <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
@@ -214,13 +222,6 @@
       </div>
    </div>
 </div>
-    <div class="row">
-        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-            <div class="form-field4 m-b-30 text-right mob-text-left">
-            <input type="submit" class="normal-btn bg-blue col-white rounded" value="Update Profile">
-            </div>
-        </div>
-    </div>
 </form>
 
 

@@ -1,50 +1,54 @@
-<div class="booking-modal-head">
-   <div class="row">
-      <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
-         <div class="booking-modal-text">
-            <h3> Booking Information: #{{$data->id}} </h3>
+<div class="row">
+   <div class="col-lg-12 col-md-12 col-sm-12">
+      <div class="booking-modal-head">
+         <div class="row">
+            <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+               <div class="booking-modal-text">
+                  <h3> Booking Information: #{{$data->id}} </h3>
+               </div>
+            </div>
+            <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+               <div class="booking-modal-text text-right">
+                  <h3> Total Amount  <b class="col-blue"> NZ ${{number_format($data->total_amount, 2)}} </b> </h3>
+               </div>
+            </div>
          </div>
       </div>
-      <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
-         <div class="booking-modal-text text-right">
-            <h3> Total Amount  <b class="col-blue"> NZ ${{number_format($data->total_amount, 2)}} </b> </h3>
-         </div>
-      </div>
-   </div>
-</div>
-<div class="booking-modal-content">
-   <div class="row">
-      <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
-         <div class="booking-modal-set1">
-            <h6 class="col-grey"> Practitioner  </h6>
-            <h5 class="col-blue"> {{empty($data->practitioner) ? 'Deleted User' : $data->practitioner->first_name.' '.$data->practitioner->last_name}} </h5>
-            <h6 class="col-grey"> Customer Address  </h6>
-            <h5 class="col-black">
-               {{empty($data->address) ? '' : $data->address}}
-            </h5>
+      <div class="booking-modal-content">
+         <div class="row">
+            <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+               <div class="booking-modal-set1">
+                  <h6 class="col-grey"> Practitioner  </h6>
+                  <h5 class="col-blue"> {{empty($data->practitioner) ? 'Deleted User' : $data->practitioner->first_name.' '.$data->practitioner->last_name}} </h5>
+                  <h6 class="col-grey"> Customer Address  </h6>
+                  <h5 class="col-black">
+                     {{empty($data->address) ? '' : $data->address}}
+                  </h5>
 
-         </div>
-      </div>
-      <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
-         <div class="booking-modal-set2">
-            <table>
-               <tbody>
-                  <tr>
-                     <td> Subtotal:  </td>
-                     <td> NZ ${{number_format($data->sub_total, 2)}} </td>
-                  </tr>
-                  <tr>
-                     <td> GST - {{$gst}}% </td>
-                     <td> NZ ${{number_format($data->gst, 2)}} </td>
-                  </tr>
-               </tbody>
-               <tfoot>
-                  <tr>
-                     <td> <b> Total Amount </b> </td>
-                     <td> <b class="col-blue"> NZ ${{number_format($data->total_amount, 2)}} </b> </td>
-                  </tr>
-               </tfoot>
-            </table>
+               </div>
+            </div>
+            <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+               <div class="booking-modal-set2">
+                  <table>
+                     <tbody>
+                        <tr>
+                           <td> Subtotal:  </td>
+                           <td> NZ ${{number_format($data->sub_total, 2)}} </td>
+                        </tr>
+                        <tr>
+                           <td> GST - {{$gst}}% </td>
+                           <td> NZ ${{number_format($data->gst, 2)}} </td>
+                        </tr>
+                     </tbody>
+                     <tfoot>
+                        <tr>
+                           <td> <b> Total Amount </b> </td>
+                           <td> <b class="col-blue"> NZ ${{number_format($data->total_amount, 2)}} </b> </td>
+                        </tr>
+                     </tfoot>
+                  </table>
+               </div>
+            </div>
          </div>
       </div>
    </div>
