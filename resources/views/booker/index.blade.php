@@ -85,7 +85,7 @@
                      @endif
                </div>
             </div>
-            <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+            {{--  <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
                <div class="box-type2">
                   <div class="page-title2">
                      <h3> Recent Messages </h3>
@@ -94,7 +94,7 @@
                    <h5 class="col-grey"> You have no messages </h5>
                    </div>
                </div>
-            </div>
+            </div>  --}}
          </div>
       </div>
    </div>

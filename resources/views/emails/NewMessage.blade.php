@@ -236,7 +236,7 @@ width: 100% !important;
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 <tr>
 
-<td valign="top" style="padding-top:10px;padding-right:10px;padding-bottom:15px;padding-left:10px;"><div style="font-family:Cabin, sans-serif;font-size:30px;color:#0e4464;line-height:35px;letter-spacing: 0.03em;text-align:left;"><p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial"><span style="font-size:24px;"><strong>New Message Recieved</strong></span></span></p>
+<td valign="top" style="padding-top:10px;padding-right:10px;padding-bottom:15px;padding-left:10px;"><div style="font-family:Cabin, sans-serif;font-size:30px;color:#0e4464;line-height:35px;letter-spacing: 0.03em;text-align:left;"><p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial"><span style="font-size:24px;"><strong>New Message Received</strong></span></span></p>
 </div>
 </td>
 </tr>
