@@ -8,6 +8,7 @@ use App\Models\orders\orderDetail;
 use App\Models\services\services;
 use App\Models\orders\reviews;
 use App\Models\orders\cancel;
+use App\Models\orders\chat;
 use App\Models\User;
 use App\Models\MarketplaceSetting;
 use App\Models\userService;
@@ -85,5 +86,9 @@ class order extends Model
     }
     public function cancel(){
         return $this->belongsTo(cancel::class, 'id', 'order_id');
+    }
+
+    public function unreadMessages(){
+        return $this->hasMany(chat::class, 'order_id', 'id')->where('view', '0')->where('user_id', '!=', Auth::id());
     }
 }

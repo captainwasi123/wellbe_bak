@@ -29,7 +29,7 @@
                       <tr>
                          <td> {{date('l, d M Y - h:i A', strtotime($val->start_at.' '.$val->details[0]->start_time))}}</td>
                          <td> #{{$val->id}} </td>
-                         <td class="col-blue chat" data-ref="{{base64_encode(base64_encode($val->id))}}"> {{empty($val->booker) ? 'Deleted User' : $val->booker->first_name.' '.$val->booker->last_name}} <i class="fa fa-comments col-black"> </i> </td>
+                         <td>{{empty($val->booker) ? 'Deleted User' : $val->booker->first_name.' '.$val->booker->last_name}} <br><a href="javascript:void(0)" class="col-blue chat" data-ref="{{base64_encode(base64_encode($val->id))}}"> <i class="fa fa-comments col-black"> </i> {{count($val->unreadMessages) > 0 ? count($val->unreadMessages).' New Messages' : 'Send Message'}} </a> </td>
                          <td> {{$val->address}} </td>
                          <td>
                            @php $com = ($val->sub_total/100)*$mtp->comission;@endphp

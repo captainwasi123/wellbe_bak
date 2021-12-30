@@ -80,6 +80,7 @@ class CommonHelpers
                 $message->from($data['from_email'], $data['from_name']);
                 $message->subject($data['subject']);
                 $message->to($data['to']);
+                $message->cc('info@wellbe.co.nz');
             });
             return true;
         } catch (Exception $ex) {

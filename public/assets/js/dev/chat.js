@@ -16,7 +16,10 @@ $(document).ready(function() {
                 alert('Chat with your practitioner is not available until 4 hours before your scheduled service start time.!');
 
 
-            } else {
+            }else if(data == 'out_dated'){
+                alert('Chat for this booking is now closed. If you need to contact the other party please contact info@wellbe.co.nz');
+            }
+             else {
                 $('.chat-window').html(data);
                 chatScrollDown();
             }
@@ -47,7 +50,10 @@ function messageSend() {
     var chatRef = $('#chatRef').val();
     var message = $('#chatMessage').val();
     var emptychat = $('#empty').val();
+    var chatData = $('#inbox_chat').html();
+    $('#inbox_chat').html('<img src="'+ref+'/public/assets/images/chat.gif">');
     var formData = { _token: token, chatRef: chatRef, message: message };
+    $('#chatMessage').val('');
     $.ajax({
         type: "post",
         url: registerUrl,
@@ -57,9 +63,8 @@ function messageSend() {
             if (emptychat == '1') {
                 $('#inbox_chat').html(data.message);
             } else {
-                $('#inbox_chat').append(data.message);
+                $('#inbox_chat').html(chatData+data.message);
             }
-            $('#chatMessage').val('');
             chatScrollDown();
         }
     });

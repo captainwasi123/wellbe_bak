@@ -28,7 +28,7 @@
                      <tr>
                         <td> {{date('l, d M Y - h:i A', strtotime($val->start_at.' '.$val->details[0]->start_time))}}</td>
                         <td> #{{$val->id}} </td>
-                        <td class="col-blue chat" data-ref="{{base64_encode(base64_encode($val->id))}}"> {{empty($val->practitioner) ? 'Deleted User' : $val->practitioner->first_name.' '.$val->practitioner->last_name}} <i class="fa fa-comments col-black"> </i> </td>
+                        <td>{{empty($val->practitioner) ? 'Deleted User' : $val->practitioner->first_name.' '.$val->practitioner->last_name}} <br><a href="javascript:void(0)" class="col-blue chat" data-ref="{{base64_encode(base64_encode($val->id))}}"> <i class="fa fa-comments col-black"> </i> {{count($val->unreadMessages) > 0 ? count($val->unreadMessages).' New Messages' : 'Send Message'}} </a> </td>
                         <td> {{$val->address}} </td>
                         <td> NZ - ${{number_format($val->total_amount, 2)}} </td>
                         <td> <a href="javascript:void(0)" class="custom-btn1 orderModal" data-id="{{base64_encode($val->id)}}"> View  </a> </td>
@@ -85,16 +85,6 @@
                      @endif
                </div>
             </div>
-            {{--  <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
-               <div class="box-type2">
-                  <div class="page-title2">
-                     <h3> Recent Messages </h3>
-                  </div>
-                   <div class="block-element pad-1">
-                   <h5 class="col-grey"> You have no messages </h5>
-                   </div>
-               </div>
-            </div>  --}}
          </div>
       </div>
    </div>

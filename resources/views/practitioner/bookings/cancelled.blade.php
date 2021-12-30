@@ -29,7 +29,7 @@
                       <tr>
                          <td> {{date('l, d M Y - h:i A', strtotime($val->start_at.' '.$val->details[0]->start_time))}}</td>
                          <td> #{{$val->id}} </td>
-                         <td class="col-blue" data-ref="{{base64_encode(base64_encode($val->id))}}"> {{empty($val->booker) ? 'Deleted User' : $val->booker->first_name.' '.$val->booker->last_name}} <i class="fa fa-comments col-black"> </i> </td>
+                         <td> {{empty($val->booker) ? 'Deleted User' : $val->booker->first_name.' '.$val->booker->last_name}} </td>
                          {{--  <td> {{$val->payment_status == '1' ? 'Paid' : 'In-Escrow'}} </td>  --}}
                          <td> {{$val->payment_status == '1' ? 'Paid' : '---'}} </td>
 
