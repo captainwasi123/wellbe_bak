@@ -190,6 +190,14 @@
             </strong>
          </p>
       </div>
+
+      <div class="booking-modal-text">
+         <p>Booking Instructions:<br>
+            <strong>
+               {{empty($data->instructions) ? 'N/A' : $data->instructions}}
+            </strong>
+         </p>
+      </div>
    </div>
    <div class="col-md-6">
       <div class="booking-modal-text">
@@ -212,7 +220,6 @@
          </p>
          @endif
       </div>
-
    </div>
    @foreach($data->details as $val)
       <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">

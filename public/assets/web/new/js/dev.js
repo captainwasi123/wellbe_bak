@@ -107,3 +107,29 @@ function getCookie(name) {
     }
     return null;
 }
+
+$('#treatmentForm').submit(function(event) {
+    event.preventDefault(); 
+    
+    var $form = $(this);
+    var values = getFormData($form);
+
+    if(values['lat'] == '' || values['long'] == ''){
+        alert('Please enter the valid address!');
+    }else{
+        $(this).unbind('submit').submit();
+    }
+
+});
+
+
+function getFormData($form){
+    var unindexed_array = $form.serializeArray();
+    var indexed_array = {};
+
+    $.map(unindexed_array, function(n, i){
+        indexed_array[n['name']] = n['value'];
+    });
+
+    return indexed_array;
+}

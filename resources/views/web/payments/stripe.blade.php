@@ -9,11 +9,6 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  <script type="text/javascript">
-  $(window).bind('beforeunload', function(){
-      return "Do you want to exit this page?";
-    });
-</script>
   <style type="text/css">
     .stripe-logo {
         width: 210px;
@@ -108,7 +103,7 @@
                 )
                 .then(function(result){
                     if(result.error){
-                        document.getElementById("epybtn").innerHTML = '<div class="alert alert-danger"><strong>Error.!</strong> Your payment could not be completed.</div>';
+                        document.getElementById("epybtn").innerHTML = '<div class="alert alert-danger"><strong>Please try again.</strong> Please check your card details and try again.</div>';
                         console.log(result.error.message);
                     }else{
                         var xhttp = new XMLHttpRequest();

@@ -13,7 +13,7 @@
                  </h3>
                  
                  <p> Wellbe provides beauty & wellness services in the comfort of your home with therapists you can trust.  </p>
-                 <form method="get" action="{{route('treatments.search')}}">
+                 <form method="get" id="treatmentForm" action="{{route('treatments.search')}}">
                     <input type="hidden" name="lat" id="lat">
                     <input type="hidden" name="long" id="long">
                     <i class="fa fa-search"> </i>

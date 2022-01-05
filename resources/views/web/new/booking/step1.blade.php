@@ -87,7 +87,7 @@
                                                       $start = $slot->start_booking;
                                                    } 
                                                    $end = $slot->end_booking; 
-                                                   $end = date('H:i:s',strtotime('-'.$buffer.' minutes',strtotime($end)));
+                                                   $end = date('H:i:s',strtotime($end));
                                                 @endphp
                                                 @php $bookingDuration = $duration+$buffer; @endphp
                                                 @while($start <= $end)
