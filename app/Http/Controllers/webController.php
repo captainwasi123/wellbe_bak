@@ -267,12 +267,12 @@ class webController extends Controller
 	//booking reminder function 
 	public function booking_reminder()
 	{
-		$time = time();
+		$time = strtotime(date('H:i:s'));
         $currnet_time = strtotime('-2 hours', $time);
 		$order = Order::with(['details','practitioner','booker'])->where('status',1)->where('reminder_email',0)->where('start_at',date('Y-m-d'))->get();
 		$mtp = MarketplaceSetting::latest()->first();
 		foreach($order as $order_data){ 
-			$date =	strtotime($order_data->start_at.' '.$order_data->details[0]->start_time);
+			$date =	strtotime($order_data->details[0]->start_time);
 			if($date >= $currnet_time){
 				$data = array(
 					'order' => $order_data,

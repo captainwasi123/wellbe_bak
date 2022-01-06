@@ -177,7 +177,7 @@ class treatmentController extends Controller
                     "category_id" => $product->category_id,
                     "category" => $product->cat->category,
                     "quantity" => 1,
-                    "price" => empty($product->lowestPrice) ? $product->price : $product->lowestPrice->price,
+                    "price" => empty($product->lowestPrice) || $product->lowestPrice->price == 0  ? $product->price : $product->lowestPrice->price,
                     "duration" => $product->duration
                 ]
             ];
@@ -200,7 +200,7 @@ class treatmentController extends Controller
                         "category_id" => $product->category_id,
                         "category" => $product->cat->category,
                         "quantity" => 1,
-                        "price" => empty($product->lowestPrice) ? $product->price : $product->lowestPrice->price,
+                        "price" => empty($product->lowestPrice) || $product->lowestPrice->price == 0 ? $product->price : $product->lowestPrice->price,
                         "duration" => $product->duration
             ];
             session()->put('cart', $cart);

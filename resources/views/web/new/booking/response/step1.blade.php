@@ -3,15 +3,6 @@
       <li class="nav-item">
          <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab"> Practitioners </a>
       </li>
-     <!--  <li class="nav-item">
-         <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab"> Morning </a>
-      </li>
-      <li class="nav-item">
-         <a class="nav-link " data-toggle="tab" href="#tabs-3" role="tab"> Afternoon </a>
-      </li>
-      <li class="nav-item">
-         <a class="nav-link " data-toggle="tab" href="#tabs-4" role="tab"> Evening </a>
-      </li> -->
    </ul>
 </div>
 @php $duration = 0; $bslot = 30; @endphp

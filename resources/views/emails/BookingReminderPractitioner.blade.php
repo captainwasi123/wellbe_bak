@@ -714,11 +714,11 @@ width: 100% !important;
 
 <td valign="top" style="padding-right:5px;padding-left:5px;"><div style="font-family:Cabin, sans-serif;font-size:18px;color:#5d4e6d;line-height:34px;text-align:left;"><p style="padding: 0; margin: 0;text-align: right;"><span class="mso-font-fix-arial">Total: &#36;{{number_format($order->total_amount,2)}}</span></p>
 
-<p style="padding: 0; margin: 0;text-align: right;"><span class="mso-font-fix-arial">GST: &#36;<?php $gst_price = ($mtp->gst  / 100) * $order->total_amount; echo number_format($gst_price,2); ?></span></p>
+<p style="padding: 0; margin: 0;text-align: right;"><span class="mso-font-fix-arial">GST: &#36;<?php $gst_price = ($order->total_amount  / 100) * $mtp->gst; echo number_format($gst_price,2); ?></span></p>
 
-<p style="padding: 0; margin: 0;text-align: right;"><span class="mso-font-fix-arial">Service Fees: &#36;<?php $fee = ($mtp->comission / 100) * $order->total_amount; echo number_format($fee,2); ?></span></p>
+<p style="padding: 0; margin: 0;text-align: right;"><span class="mso-font-fix-arial">Service Fees: &#36;<?php $fee = ($order->total_amount / 100) * $mtp->comission; echo number_format($fee,2); ?></span></p>
 
-<p style="padding: 0; margin: 0;text-align: right;"><span class="mso-font-fix-arial"><strong>Your Takehome: &#36;<?php $take_home = $order->total_amount-$gst_price-$fee; echo number_format($take_home,2) ?></strong></span></p>
+<p style="padding: 0; margin: 0;text-align: right;"><span class="mso-font-fix-arial"><strong>Your Takehome: &#36;<?php $take_home = $order->total_amount-($gst_price+$fee); echo number_format($take_home,2) ?></strong></span></p>
 </div>
 </td>
 </tr>

@@ -14,7 +14,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 //Website Routes
-
 	Route::namespace('web')->group(function(){
 		Route::get('/', 'webController@index')->name('home');
 		Route::get('/work_with_us', 'webController@workWithUs')->name('work_with_us');

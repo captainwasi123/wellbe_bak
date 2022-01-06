@@ -38,11 +38,11 @@
                <div class="row">
                   <div class="col-12">
                      <div class="block-element text-center">
-                        <form class="discover-form text-left" method="get" action="{{route('treatments.search')}}">
-                           <input type="hidden" name="lat" id="lat">
-                           <input type="hidden" name="long" id="long">
+                        <form class="discover-form text-left" method="get" id="mtreatmentForm" action="{{route('treatments.search')}}">
+                           <input type="hidden" name="lat" id="mlat">
+                           <input type="hidden" name="long" id="mlong">
                            <i class="fa fa-search"> </i>
-                           <input type="text" placeholder="Enter your address" id="pac-inputt" name="value" required>
+                           <input type="text" placeholder="Enter your address" id="mpac-inputt" name="value" required>
                            <button class="discover-btn2"> Discover </button>
                         </form>
                      </div>

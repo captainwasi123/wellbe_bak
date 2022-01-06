@@ -85,7 +85,7 @@
                   @if($data->status == '4')
                      <h5 class="border_bottom" style="padding-top: 8px;">Practitioner</h5>
                      <h6 class="col-grey"> Payment : <strong class="col-blue">{{$pract_percentage}}%</strong></h6>
-                     <h6 class="col-grey"> Payment Due: <strong class="col-blue">{{empty($data->cancel->pract_due) ? '$'.number_format($pract_dues, 2) : '$0.0'}}</strong></h6>
+                     <h6 class="col-grey"> Payment Due: <strong class="col-blue">{{'$'.number_format($pract_dues, 2)}}</strong></h6>
                      <h6 class="col-grey"> Payout Bank: <strong class="col-blue">{{empty($data->practitioner->users_payout_details) ? 'NA' : $data->practitioner->users_payout_details->bank_account_name}}</strong></h6>
                      <h6 class="col-grey"> Account Number:  </h6>
                      <h5 class="col-blue"> {{empty($data->practitioner->users_payout_details) ? 'NA' : $data->practitioner->users_payout_details->bank_account_number}}</h5>
@@ -143,7 +143,7 @@
                @elseif($data->status == '4')
                   <h5 class="border_bottom">Customer</h5>
                      <h6 class="col-grey"> <br><br>Refund: <strong class="col-blue">{{$cust_percentage}}%</strong></h6>
-                  <h6 class="col-grey"> Payment Due: <strong class="col-blue">{{empty($data->cancel->cust_due) ? '$'.number_format($cust_dues, 2) : '$0.0'}}</strong></h6>
+                  <h6 class="col-grey"> Payment Due: <strong class="col-blue">{{'$'.number_format($cust_dues, 2)}}</strong></h6>
                   <br>
                   @if($cust_percentage > 0)
                      @if(empty($data->cancel->cust_due))

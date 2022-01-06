@@ -17,4 +17,16 @@
             $('#long').val(place.geometry['location'].lng());
          });
       }
+
+      google.maps.event.addDomListener(window, 'load', initializee);
+      function initializee() {
+            var input = document.getElementById('mpac-inputt');
+            var autocomplete = new google.maps.places.Autocomplete(input);
+            autocomplete.addListener('place_changed', function () {
+            var place = autocomplete.getPlace();
+            // place variable will have all the information you are looking for.
+            $('#mlat').val(place.geometry['location'].lat());
+            $('#mlong').val(place.geometry['location'].lng());
+         });
+      }
   </script>

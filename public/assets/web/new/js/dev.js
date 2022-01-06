@@ -122,6 +122,20 @@ $('#treatmentForm').submit(function(event) {
 
 });
 
+$('#mtreatmentForm').submit(function(event) {
+    event.preventDefault(); 
+    
+    var $form = $(this);
+    var values = getFormData($form);
+
+    if(values['lat'] == '' || values['long'] == ''){
+        alert('Please enter the valid address!');
+    }else{
+        $(this).unbind('submit').submit();
+    }
+
+});
+
 
 function getFormData($form){
     var unindexed_array = $form.serializeArray();

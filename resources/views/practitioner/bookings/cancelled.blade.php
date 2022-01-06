@@ -56,7 +56,7 @@
 
                               $pract_dues = ($val->pract_earning/100)*$pract_percentage;
                            @endphp
-                           NZ {{empty($val->cancel->pract_due) ? '$'.number_format($pract_dues, 2) : '$0.0'}}
+                           NZ {{'$'.number_format($pract_dues, 2)}}
                         </td>
                          <td> <a href="javascript:void(0)" class="custom-btn1 orderModal" data-id="{{base64_encode($val->id)}}"> View  </a> </td>
                       </tr>

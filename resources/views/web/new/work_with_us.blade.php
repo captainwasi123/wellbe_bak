@@ -24,9 +24,13 @@
    <!-- How it Works Section Starts here -->
    <section class="pad-top-80 pad-bot-40 bg-4 ">
       <div class="container">
-         <div class="sec-head4 text-center">
-            <h4 class="col-blue"> Why work with Wellbe? </h4>
-            <p> We’re on a mission to empower beauty and health practitioners all over New Zealand. </p>
+         <div class="row">
+            <div class="col-md-12">
+               <div class="sec-head4 text-center">
+                  <h4 class="col-blue"> Why work with Wellbe? </h4>
+                  <p> We’re on a mission to empower beauty and health practitioners all over New Zealand. </p>
+               </div>
+            </div>
          </div>
          <div class="row">
             <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12">
