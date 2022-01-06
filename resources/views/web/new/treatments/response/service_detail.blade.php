@@ -1,9 +1,9 @@
-<div class="block-element card-form-head m-b-10 ">
+<div class="block-element card-form-head m-b-3 ">
    <h3 class="text-left"> {{$data->name}} </h3>
    <p> From {{empty($data->lowestPrice) ? '$'.number_format($data->price, 2) : '$'.number_format($data->lowestPrice->price, 2)}}  - Duration {{$data->duration}} Minutes </p>
 </div>
 <div class="block-element">
-   <div class="row m-t-30 m-b-10">
+   <div class="row m-t-3 m-b-2">
       <div class="col-md-12">
          <div class="panel-group wrap faq-panel" id="accordion" role="tablist" aria-multiselectable="true">
             <div class="panel">
