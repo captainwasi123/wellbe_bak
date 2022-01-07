@@ -73,7 +73,7 @@ class bookingController extends Controller
         foreach($cart['services'] as $val){
             $ser = services::find(base64_decode($val['id']));
             $rate = userService::where(['user_id' => base64_decode($data['id']), 'service_id' => base64_decode($val['id'])])->first();
-            $price = empty($rate->id) ? $ser->price : $rate->price;
+            $price = empty($rate->id) || $rate->price == 0 ? $ser->price : $rate->price;
 
             $cart['services'][base64_decode($val['id'])]['price'] = $price;
         }
