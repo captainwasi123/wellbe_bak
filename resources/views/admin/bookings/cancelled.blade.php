@@ -27,13 +27,53 @@
              </thead>
              <tbody>
                @foreach($data as $val)
+                  @php
+                     $pract_percentage = 0;
+                     $cust_percentage = 0;
+                     $pract_dues = 0;
+                     $cust_dues = 0;
+
+                     if($val->pract_id == $val->cancel->user_id){
+                        $pract_percentage = 0;
+                        $cust_percentage = 100;
+                     }else{
+                        $timestamp1 = strtotime($val->start_at.' '.$val->details[0]->start_time);
+                        $timestamp2 = strtotime($val->cancel->created_at);
+                        $hours_gap = abs($timestamp2 - $timestamp1)/(60*60);
+                        if($hours_gap > 24){
+                           $pract_percentage = 0;
+                           $cust_percentage = 100;
+                        }elseif($hours_gap > 2 && $hours_gap <= 24){
+                           $pract_percentage = 0;
+                           $cust_percentage = 75;
+                        }elseif($hours_gap < 2){
+                           $pract_percentage = 75;
+                           $cust_percentage = 0;
+                        }
+                     }
+
+                     $pract_dues = ($val->total_amount/100)*$pract_percentage;
+                     $cust_dues = ($val->total_amount/100)*$cust_percentage;
+                  @endphp
                  <tr>
                     <td> {{date('l, d M Y - h:i A', strtotime($val->start_at.' '.$val->details[0]->start_time))}}</td>
                     <td> #{{$val->id}} </td>
                     <td class="col-blue"> {{empty($val->practitioner) ? 'Deleted User' : $val->practitioner->first_name.' '.$val->practitioner->last_name}}</td>
                     <td class="col-blue"> {{empty($val->booker) ? 'Deleted User' : $val->booker->first_name.' '.$val->booker->last_name}}</td>
-                    <td> {{@$val->cancel->cust_due == '1' ? 'No' : 'Yes'}}  </td>
-                    <td> --- </td>
+                    <td>
+                        @if($val->cancel->cust_due == '1')
+                           No
+                        @else
+                           {{$cust_dues == 0 ? 'No' : 'Yes'}}
+                        @endif 
+                     </td>
+                    <td>
+                       @if($val->cancel->pract_due == '1')
+                           No
+                        @else
+                           {{$pract_dues == 0 ? 'No' : 'Yes'}}
+                        @endif 
+                    </td>
                     <td> <a href="javascript:void(0)" class="custom-btn1 orderModal" data-id="{{base64_encode($val->id)}}"> View  </a> </td>
                  </tr>
                @endforeach
