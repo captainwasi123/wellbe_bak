@@ -15,7 +15,7 @@ $(document).ready(function() {
         var id = $(this).data('id');
 
         $('.serviceDetailsModal').modal('show');
-        $('#serviceDetailsModalBody').html('<img src="' + ref + '/public/assets/web/new/images/loader.gif"/>');
+        $('#serviceDetailsModalBody').html('<img src="' + ref + '/public/assets/web/new/images/loaderr.gif"/>');
         $.get(ref + "/treatments/services/" + id, function(data) {
             $('#serviceDetailsModalBody').html(data);
         });
@@ -35,7 +35,7 @@ $(document).ready(function() {
         var id = $(this).data('id');
 
         $('.userProfileModal').modal('show');
-        $('#userProfileModalBody').html('<img src="' + ref + '/public/assets/web/new/images/loader.gif"/>');
+        $('#userProfileModalBody').html('<img src="' + ref + '/public/assets/web/new/images/loaderr.gif"/>');
         $.get(ref + "/treatments/booking/profile/" + id, function(data) {
             $('#userProfileModalBody').html(data);
         });
@@ -45,7 +45,7 @@ $(document).ready(function() {
         let time = $(this).data('time');
         let prac = $(this).data('prac');
         let date = $('#booking_date').val();
-        $('#step1Summary').html('<img src="' + ref + '/public/assets/web/new/images/loader.gif"/>');
+        $('#step1Summary').html('<img src="' + ref + '/public/assets/web/new/images/loaderr.gif"/>');
         $.post(ref + "/treatments/booking/step_1/summary", { 'id': prac, 'time': time, 'date': date, '_token': $('meta[name="token"]').attr('content') })
             .done(function(data) {
                 $('#step1Summary').html(data);
