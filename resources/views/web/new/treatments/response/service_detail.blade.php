@@ -1,4 +1,4 @@
-<div class="block-element card-form-head m-b-3 ">
+<div class="block-element card-form-head m-b-3">
    <h3 class="text-left"> {{$data->name}} </h3>
    <p> From {{empty($data->lowestPrice) || $data->lowestPrice->price == 0 ? '$'.number_format($data->price, 2) : '$'.number_format($data->lowestPrice->price, 2)}}  - Duration {{$data->duration}} Minutes </p>
 </div>

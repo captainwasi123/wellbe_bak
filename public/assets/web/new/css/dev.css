@@ -150,3 +150,12 @@
 #checkout_btn[type=button] {
     background: gray;
 }
+.banner-text div {
+    border-top: 5px solid #404780;
+    width: 57px;
+    float: left;
+    margin-top: -97px;
+}
+.banner-text h3 {
+    padding-left: 72px;
+}
