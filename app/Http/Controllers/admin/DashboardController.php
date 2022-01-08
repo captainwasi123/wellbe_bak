@@ -223,7 +223,7 @@ class DashboardController extends Controller
         $order = Order::with(['details','practitioner','booker'])->where('id',$id)->first();
         $data['order'] = $order;
         $data['mtp'] = MarketplaceSetting::latest()->first();
-        \App\Helpers\CommonHelpers::send_email('BookingCancellationCustomer_other', $data, $order->booker->email, 'Booking Cancellation', $from_email = 'info@wellbe.co.nz', $from_name = 'Wellbe');
+        \App\Helpers\CommonHelpers::send_email('BookingCancellationCustomer_customer_cancelled', $data, $order->booker->email, 'Booking Cancellation', $from_email = 'info@wellbe.co.nz', $from_name = 'Wellbe');
         \App\Helpers\CommonHelpers::send_email('BookingCancellationPractitioner', $data, $order->practitioner->email, 'Booking Cancellation', $from_email = 'info@wellbe.co.nz', $from_name = 'Wellbe');
 
         return redirect()->back()->with('success', 'Order Cancelled.');

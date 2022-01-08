@@ -49,8 +49,14 @@
                       <td> #{{$val->id}} </td>
                       <td class="col-blue"> {{empty($val->practitioner) ? 'Deleted User' : $val->practitioner->first_name.' '.$val->practitioner->last_name}}</td>
 
-                      <td> {{@$val->cancel->cust_due == '1' ? 'Paid' : '---'}} </td>
-                      <td> NZ $ {{@$val->cancel->cust_due == '1' ? number_format($cust_dues , 2) : '---'}} </td>
+                      <td> 
+                        @if($val->cancel->cust_due == '1')
+                           Paid
+                        @else
+                           {{$cust_dues == 0 ? 'No Refund' : 'In-Escrow'}}
+                        @endif 
+                     </td>
+                      <td> NZ ${{number_format($cust_dues , 2)}} </td>
 
                     
 

@@ -188,7 +188,7 @@ $(function() {
         selected = me.val(),
         parent = me.parents('.date-picker');
         parent.find('.result').children('span').html(selected);
-        $('#professionalBlock').html('<img src="'+ref+'/public/assets/web/new/images/loader.gif"/>');
+        $('#professionalBlock').html('<img src="'+ref+'/public/assets/web/new/images/loaderr.gif"/>');
         var token = $('meta[name=token]').attr('content');
         var formData = {date:selected, _token:token}; //Array 
         $('#bookingDate').html(selected);

@@ -10,7 +10,7 @@
       <input type="number" placeholder="0" name="duration" value="{{$data->duration}}" required="">
    </div>
    <div class="form-field2">
-      <p> PRICE <sup class="col-red">*</sup> </p>
+      <p> PRICE (EXCL GST) <sup class="col-red">*</sup> </p>
       <input type="number" step="any" placeholder="" name="price" style="padding-left: 50px;" value="{{$data->price}}">
       <span class="static-tag1 col-black"> NZ$  </span>
    </div>
