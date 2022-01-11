@@ -4,6 +4,15 @@ $(document).ready(function() {
     var ref = $('meta[name=host]').attr('content');
 
 
+    $(document).on('click', '.cart-btn1', function(){
+       var color = $( this ).css( "background-color" );
+       if (color == 'rgb(93, 78, 109)') {
+          $(this).html('Added');
+       }else{
+          $(this).html('Add');
+       }
+    });
+
 
     $(document).on('click', '.filterCat', function() {
         var val = $(this).data('val');
@@ -17,6 +26,14 @@ $(document).ready(function() {
         $('.serviceDetailsModal').modal('show');
         $('#serviceDetailsModalBody').html('<img src="' + ref + '/public/assets/web/new/images/loaderr.gif"/>');
         $.get(ref + "/treatments/services/" + id, function(data) {
+            $('#serviceDetailsModalBody').html(data);
+        });
+    });
+
+    $(document).on('click', '.addServiceToCart', function(){
+        var id = $(this).data('id');
+        $('#serviceDetailsModalBody').html('<img src="' + ref + '/public/assets/web/new/images/loaderr.gif"/>');
+        $.get(ref + "/treatments/services/addons/" + id, function(data) {
             $('#serviceDetailsModalBody').html(data);
         });
     });

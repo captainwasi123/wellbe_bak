@@ -150,3 +150,43 @@
 #checkout_btn[type=button] {
     background: gray;
 }
+
+
+.cart-btn1{
+    cursor: pointer;
+ }
+ .addon_checkbox{
+    opacity: 0;
+ }
+ .addon_checkbox:checked ~ label{
+     background: #FBECE7;
+     color: #053C5E;
+     padding: 8px 45px 8px 30px;
+     letter-spacing: 0.6px;
+     font-weight: 600;
+     border-radius: 30px;
+     position: relative;
+     border: 0;
+ }
+
+ .addon_checkbox:checked ~ label:before{
+    content: '\2713';
+     background-image: url(../images/tick-icon.png);
+     color: white;
+     position: absolute;
+     right: 14px;
+     top: 8px;
+     width: 22px;
+     height: 22px;
+     text-align: center;
+     font-size: 0px;
+     border-radius: 100%;
+     background-repeat: no-repeat;
+     background-position: center center;
+ }
+
+ .addonLabel {
+    float: right;
+    margin-top: -30px;
+    font-size: 12px;
+}

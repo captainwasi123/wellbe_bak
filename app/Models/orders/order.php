@@ -12,6 +12,7 @@ use App\Models\orders\chat;
 use App\Models\User;
 use App\Models\MarketplaceSetting;
 use App\Models\userService;
+use App\Models\orders\orderAddons;
 use Auth;
 
 class order extends Model
@@ -41,7 +42,15 @@ class order extends Model
 
             $sprice = empty($userv->price) ? '0' : $userv->price;
             $sprice = $sprice == 0 ? $ser->price : $sprice;
-            $end_time = date('H:i:s',strtotime('+'.($ser->duration*$val['quantity']).' minutes',strtotime($start_time)));
+
+            $aprice = 0;
+            $aduration = 0;
+            foreach($val['addons'] as $add){
+                $aprice = $aprice+$add['price'];
+                $aduration = $aduration+$add['duration'];
+            }
+
+            $end_time = date('H:i:s',strtotime('+'.(($ser->duration+$aduration)*$val['quantity']).' minutes',strtotime($start_time)));
             $d = new orderDetail;
             $d->order_id = $id;
             $d->service_id = base64_decode($val['id']);
@@ -52,8 +61,18 @@ class order extends Model
             $d->end_time = $end_time;
             $d->save();
 
+            foreach($val['addons'] as $add){
+                $ad = new orderAddons;
+                $ad->detail_id = $d->id;
+                $ad->addon_id = $add['id'];
+                $ad->price = $add['price'];
+                $ad->save();
+            }
+
+            $start_time = $end_time;
+
             //Calculating Subtotal
-            $accounts['sub_total'] = $accounts['sub_total']+($sprice*$val['quantity']);
+            $accounts['sub_total'] = $accounts['sub_total']+(($sprice + $aprice)*$val['quantity']);
         }
 
         //Calculating GST/Commission

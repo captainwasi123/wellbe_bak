@@ -18,7 +18,6 @@ use Illuminate\Support\Facades\Route;
 		Route::get('/', 'webController@index')->name('home');
 		Route::get('/work_with_us', 'webController@workWithUs')->name('work_with_us');
 
-//
 		//Authentication
 		Route::get('/login', 'loginController@login');
 	    Route::post('/login', 'loginController@loginAttempt');
@@ -49,6 +48,11 @@ use Illuminate\Support\Facades\Route;
 
 				Route::post('addToCart', 'treatmentController@addToCartService')->name('treatments.services.addToCart');
 				Route::get('removeItem/{id}', 'treatmentController@removeItemCart');
+
+				Route::prefix('addons')->group(function(){
+
+					Route::get('/{id}', 'treatmentController@serviceAddons');
+				});
 			});
 
 			Route::prefix('booking')->group(function(){
@@ -300,6 +304,13 @@ use Illuminate\Support\Facades\Route;
 				Route::prefix('addons')->group(function(){
 
 					Route::post('/add', 'ServicesController@addAddons')->name('admin.services.addons.add');
+					Route::post('/update', 'ServicesController@updateAddons')->name('admin.services.addons.update');
+
+					Route::get('/delete/{id}', 'ServicesController@deleteServiceAddon');
+					Route::get('/edit/{id}', 'ServicesController@editServiceAddon');
+
+					Route::get('/enable/{id}', 'ServicesController@enableServiceAddon');
+					Route::get('/disable/{id}', 'ServicesController@disableServiceAddon');
 				});
 			});
 

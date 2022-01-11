@@ -39,6 +39,9 @@ class addons extends Model
         return $this->hasMany(addonsDetail::class, 'addon_id', 'id');
     }
 
+    public function lowestPrice(){
+        return $this->belongsTo(userAddon::class, 'id', 'addon_id')->where('price', '!=', 0)->orderBy('price');
+    }
 
     public function userAdd(){
         return $this->belongsTo(userAddon::class, 'id', 'addon_id')->where('user_id', Auth::id());

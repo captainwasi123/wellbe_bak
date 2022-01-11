@@ -51,10 +51,16 @@
                         <div class="book-summary-item">
                            <h5>{{$val['quantity']}}x {{$val['title']}} </h5>
                            <p> <b class="col-green"> 
-                           {{--  From ${{number_format($val['price'], 2)}}  --}}
                             </b> {{$val['duration']}} minutes </p>
+                           @php $addonPrice = 0; @endphp
+                           @if(count($val['addons']) > 0)
+                              <span class="addonLabel"> {{count($val['addons'])}}x Addons </span>
+                              @foreach($val['addons'] as $adval)
+                                 @php $addonPrice = $addonPrice+$adval['price']; @endphp
+                              @endforeach
+                           @endif
                         </div>
-                        @php $totalAmount = $totalAmount+($val['price']*$val['quantity']); @endphp
+                        @php $totalAmount = $totalAmount+(($val['price']+$addonPrice)*$val['quantity']); @endphp
                      @endforeach
                      @if(count(Session::get('cart')) == 0)
                         <h4>No Items Found.</h4>

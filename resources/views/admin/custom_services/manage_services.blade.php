@@ -130,36 +130,57 @@
             <div class="custom-modal-data">
                <form method="post" action="{{route('admin.services.addons.add')}}">
                   {{csrf_field()}}
-                  <input type="hidden" name="service_id" id="service_id">
-                  <div class="form-field2">
-                     <p> VARIANTS/ADD-ON NAME <sup class="col-red">*</sup> </p>
-                     <input type="text" placeholder="Please enter name" name="addon_name">
-                  </div>
-
-                  <div id="addon_item_add">
-                     <div class="row">
-                        <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12"> 
+                  <div class="row">
+                     <div class="col-md-12">
+                           <input type="hidden" name="service_id" id="service_id">
                            <div class="form-field2">
-                              <p class="col-black">  Duration (Minutes) </p>
-                              <input type="text" placeholder="Enter type" name="duration[]" required>
+                              <p> VARIANTS/ADD-ON NAME <sup class="col-red">*</sup> </p>
+                              <input type="text" placeholder="Please enter name" name="addon_name" required>
                            </div>
-                        </div> 
-                        <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12"> 
-                           <div class="form-field2">
-                              <p class="col-black"> Price   </p>
-                              <input type="text" placeholder="Enter price" name="price[]" style="padding-left: 50px;" required>
-                              <span class="static-tag1 col-black"> NZ$  </span>
-                           </div>
-                        </div>   
                      </div>
                   </div>
-
+                  <div class="row">
+                     <div class="col-md-12">
+                        <div id="addon_item_add">
+                           <div class="row">
+                              <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12"> 
+                                 <div class="form-field2">
+                                    <p class="col-black">  Duration (Minutes) </p>
+                                    <input type="text" placeholder="Enter duration" name="duration[]" required>
+                                 </div>
+                              </div> 
+                              <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12"> 
+                                 <div class="form-field2">
+                                    <p class="col-black"> Price   </p>
+                                    <input type="text" placeholder="Enter price" name="price[]" style="padding-left: 50px;" required>
+                                    <span class="static-tag1 col-black"> NZ$  </span>
+                                 </div>
+                              </div>   
+                           </div>
+                        </div>
+                     </div>
+                  </div>
 
                   <div class="block-element submit-buttons mob-text-left text-right">
                      <button type="button" class="bg-silver  col-black normal-btn rounded" data-dismiss="modal" aria-label="Close"> Cancel  </button>
                      <button class="bg-blue col-white normal-btn rounded"> Add </button>
                   </div>
                </form>
+            </div>
+         </div>
+      </div>
+   </div>
+
+   <!-- Edit Service Addons -->
+   <div class="modal fade modal-size2 editAddonModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+      <div class="modal-dialog" role="document" style="max-width: 600px;">
+         <div class="modal-content">
+            <button type="button" class="close1" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span> </button>
+            <div class="custom-modal-head">
+               <h3> Edit Variant </h3>
+            </div>
+            <div class="custom-modal-data" id="addon_item_edit">
+               
             </div>
          </div>
       </div>

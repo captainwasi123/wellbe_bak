@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\services\services;
+use App\Models\services\addons;
 use App\Models\userService;
+use App\Models\userAddon;
 use App\Models\schedule\holidays;
 use App\Models\MarketplaceSetting;
 use DB;
@@ -76,6 +78,15 @@ class bookingController extends Controller
             $price = empty($rate->id) || $rate->price == 0 ? $ser->price : $rate->price;
 
             $cart['services'][base64_decode($val['id'])]['price'] = $price;
+
+            foreach($cart['services'][base64_decode($val['id'])]['addons'] as $key => $adval){
+                $add = addons::find($adval['id']);
+                $uadd = userAddon::where('user_id', base64_decode($data['id']))->where('addon_id', $adval['id'])->first();
+
+                $aprice = empty($uadd->id) || $uadd->price == 0 ? $add->addonsDetail[0]->price : $uadd->price;
+
+                $cart['services'][base64_decode($val['id'])]['addons'][$key]['price'] = $aprice;
+            }
         }
 
         session()->put('cart', $cart);

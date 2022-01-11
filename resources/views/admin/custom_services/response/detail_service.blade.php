@@ -16,13 +16,30 @@
       <tbody>
         @foreach($data->addons_list as $val)
          <tr>
-            <td> {{$val->name}} </td>
-            <td> NZ$ {{number_format($val->addonsDetail[0]->price, 2)}} </td>
+            <td class="nopadding">
+            <div class="cat-box1 addonsDetail {{$val->status == '1' ? 'disabled' : ''}}">
+                  <h5> {{$val->name}}  <small>(NZ ${{number_format($val->addonsDetail[0]->price, 2)}})</small></h5>
+                  <div class="dropdown">
+                     <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                     <i class="fas fa-ellipsis-v"></i>
+                     </button>
+                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li><a href="javascript:void(0)" class="deleteServiceAddon" data-id="{{base64_encode($val->id)}}">Delete</a></li>
+                        <li><a href="javascript:void(0)" class="editServiceAddon" data-id="{{base64_encode($val->id)}}">Edit</a></li>
+                        @if($val->status == '2')
+                           <li><a href="javascript:void(0)" data-id="{{base64_encode($val->id)}}" class="disableServiceAddon">Disable</a></li>
+                        @else
+                           <li><a href="javascript:void(0)" data-id="{{base64_encode($val->id)}}" class="enableServiceAddon">Enable</a></li>
+                        @endif
+                     </ul>
+                  </div>
+               </div>
+            </td>
          </tr>
          @endforeach
          @if(count($data->addons_list) == '0')
           <tr>
-              <td colspan="2">
+              <td>
                 No Addons Available.
               </td>
           </tr>

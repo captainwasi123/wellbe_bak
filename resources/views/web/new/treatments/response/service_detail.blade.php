@@ -46,11 +46,7 @@
          </div>
       </div>
       <div class="col-md-12" style="padding-left: 30px;padding-right: 30px;">
-         <form method="post" action="{{route('treatments.services.addToCart')}}">
-            @csrf
-            <input type="hidden" name="sid" value="{{base64_encode($data->id)}}">
-            <button class="submit-btn1 block-element1"> Add to Cart </button>
-         </form>
+            <button type="button" class="submit-btn1 block-element1 addServiceToCart" data-id="{{base64_encode($data->id)}}"> Add to Cart </button>
       </div>
    </div>
 </div>

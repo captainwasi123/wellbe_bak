@@ -192,6 +192,41 @@ $(document).ready(function() {
         $('.addAddonModal').modal('show');
     });
 
+    //Delete Service Addons
+    $(document).on('click', '.deleteServiceAddon', function() {
+        var id = $(this).data('id');
+
+        if (confirm('Are you sure want to delete this?')) {
+            window.location.href = ref + "/admin/services/addons/delete/" + id;
+        }
+    });
+
+    $(document).on('click', '.editServiceAddon', function() {
+        var id = $(this).data('id');
+        $.get(ref+'/admin/services/addons/edit/'+id, function(data){
+            $('#addon_item_edit').html(data);
+            $('.editAddonModal').modal('show');
+        });
+    });
+
+    //Enable Service Addons
+    $(document).on('click', '.enableServiceAddon', function() {
+        var id = $(this).data('id');
+
+        if (confirm('Are you sure want to enable this?')) {
+            window.location.href = ref + "/admin/services/addons/enable/" + id;
+        }
+    });
+
+    //Disable Service Addons
+    $(document).on('click', '.disableServiceAddon', function() {
+        var id = $(this).data('id');
+
+        if (confirm('Are you sure want to disable this?')) {
+            window.location.href = ref + "/admin/services/addons/disable/" + id;
+        }
+    });
+
 
     $(document).on('click', '.addItemAddons', function() {
         $('#addon_item_add').append('<div class="row"><div class="col-md-4 col-lg-4 col-sm-6 col-xs-12"> <div class="form-field2"><input type="text" placeholder="Enter type" name="duration[]" required></div></div> <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12"> <div class="form-field2"><input type="text" placeholder="Enter price" name="price[]" style="padding-left: 50px;" required><span class="static-tag1 col-black"> NZ$  </span></div></div> <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12"> <div class="form-field2"><a href="javascript:void(0)" class="pull-right col-black removeItemAddon" style="margin-top: 12px;"> <i class="fa fa-trash"> </i> </a></div></div>   </div>');

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Categories;
 use App\Models\services\services;
+use App\Models\services\addons;
 use App\Models\User;
 use DB;
 
@@ -161,11 +162,22 @@ class treatmentController extends Controller
 
     function addToCartService(Request $request){
         $data = $request->all();
-
+        $addons = array();
         $id = base64_decode($data['sid']);
         $product = services::where('id',$id)->where('status', '2')->first();
         if(!$product) {
             return redirect()->back()->with('error', 'Service Not Available');
+        }
+        if(!empty($data['addon_item'])){
+            foreach($data['addon_item'] as $val){
+                $ad = addons::find($val);
+                $aa = array(
+                    'id' => $ad->id,
+                    'price' => empty($ad->lowestPrice) ? number_format($ad->addonsDetail[0]->price, 2) : number_format($ad->lowestPrice->price, 2),
+                    'duration' => $ad->addonsDetail[0]->duration
+                );
+                array_push($addons, $aa);
+            }
         }
         $cart = session()->get('cart');
         
@@ -178,7 +190,8 @@ class treatmentController extends Controller
                     "category" => $product->cat->category,
                     "quantity" => 1,
                     "price" => empty($product->lowestPrice) || $product->lowestPrice->price == 0  ? $product->price : $product->lowestPrice->price,
-                    "duration" => $product->duration
+                    "duration" => $product->duration,
+                    "addons" => $addons
                 ]
             ];
         
@@ -190,6 +203,7 @@ class treatmentController extends Controller
         if(isset($cart['services'][$id])) {
             
             $cart['services'][$id]['quantity']++;
+            $cart['services'][$id]['addons'] = $addons;
             session()->put('cart', $cart);
 
             return redirect()->back()->with('success', 'Service Added.');
@@ -201,7 +215,8 @@ class treatmentController extends Controller
                         "category" => $product->cat->category,
                         "quantity" => 1,
                         "price" => empty($product->lowestPrice) || $product->lowestPrice->price == 0 ? $product->price : $product->lowestPrice->price,
-                        "duration" => $product->duration
+                        "duration" => $product->duration,
+                        "addons" => $addons
             ];
             session()->put('cart', $cart);
         
@@ -214,5 +229,16 @@ class treatmentController extends Controller
         session()->forget('cart.services.' . $id);
 
         return redirect()->back()->with('success', 'Service Removed.');
+    }
+
+
+    //Addons
+
+    function serviceAddons($id){
+        $id = base64_decode($id);
+        $data['service'] = services::find($id);
+        $data['addons'] = addons::where('service_id', $id)->where('status', '2')->orderBy('name')->get();
+
+        return view('web.new.treatments.response.addonItems')->with($data);
     }
 }

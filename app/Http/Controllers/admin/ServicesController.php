@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\services\services;
 use App\Models\services\addons;
+use App\Models\services\addonsDetail;
+use App\Models\userAddon;
 
 class ServicesController extends Controller
 {
@@ -118,5 +120,57 @@ class ServicesController extends Controller
       addons::addAddon($data);
 
       return redirect()->back()->with('success', 'Addons Updated.');
+   }
+
+   function deleteServiceAddon($id){
+      $id = base64_decode($id);
+
+      addons::destroy($id);
+      userAddon::where('addon_id', $id)->delete();
+
+      return redirect()->back()->with('success', 'Addon Deleted.');
+   }
+
+   function editServiceAddon($id){
+      $id = base64_decode($id);
+      $data = addons::find($id);
+
+      return view('admin.custom_services.response.edit_service_addon', ['data' => $data]);
+   }
+
+   function updateAddons(Request $request){
+      $data = $request->all();
+      //dd($data);
+      $aid = base64_decode($data['sa_id']);
+      $did = base64_decode($data['did']);
+      $a = addons::find($aid);
+      $a->name = $data['addon_name'];
+      $a->save();
+
+      $ua = addonsDetail::find($did);
+      $ua->duration = $data['duration'];
+      $ua->price = $data['price'];
+      $ua->save();
+
+      return redirect()->back()->with('success', 'Addons Updated.');
+   }
+
+   function enableServiceAddon($id){
+      $id = base64_decode($id);
+      $a = addons::find($id);
+      $a->status = '2';
+      $a->save();
+
+      return redirect()->back()->with('success', 'Addons Enabled.');
+   }
+
+   function disableServiceAddon($id){
+      $id = base64_decode($id);
+      $a = addons::find($id);
+      $a->status = '1';
+      $a->save();
+      userAddon::where('addon_id', $id)->delete();
+
+      return redirect()->back()->with('success', 'Addons Disabled.');
    }
 }

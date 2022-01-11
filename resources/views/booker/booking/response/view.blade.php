@@ -114,29 +114,40 @@
       </div>
    </div>
    @foreach($data->details as $val)    
-      <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+      <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
          <div class="booking-detail-table">
             <table>
                <tbody>
                   <tr>
-                     <td class="wd-40"> Product Name </td>
-                     <td class="wd-60"> {{$val->service->name}}<br>{{$val->service->duration}} Mins </td>
+                     <td> 
+                        <label>Start Time</label>  {{date('h:i A', strtotime($val->start_time))}} 
+                     </td>
+                     <td> 
+                        <label>End Time</label>  {{date('h:i A', strtotime($val->end_time))}} 
+                     </td>
                   </tr>
                   <tr>
-                     <td class="wd-40"> Quantity: </td>
-                     <td class="wd-60"> {{$val->qty}} </td>
+                     <td class="wd-40" colspan="2"> 
+                        <label>Product Name</label>{{$val->service->name}} 
+                        <small>{{$val->service->duration}} Mins</small> 
+                     </td>
+                     <td> <label>Quantity</label> {{$val->qty}}x </td>
+                     <td> <label>Price</label> NZ ${{number_format($val->price, 2)}} </td>
                   </tr>
                   <tr>
-                     <td class="wd-40"> Price: </td>
-                     <td class="wd-60"> NZ ${{number_format($val->price, 2)}} </td>
-                  </tr>
-                  <tr>
-                     <td class="wd-40"> Start Time: </td>
-                     <td class="wd-60"> {{date('h:i A', strtotime($val->start_time))}} </td>
-                  </tr>
-                  <tr>
-                     <td class="wd-40"> End Time: </td>
-                     <td class="wd-60"> {{date('h:i A', strtotime($val->end_time))}} </td>
+                     <td class="wd-40" colspan="4"> 
+                        <label>Addons</label>
+                        @foreach($val->addons as $ad)
+                           <div class="addonLabel">
+                              <span>{{empty($ad->addon->name) ? 'Deleted Addon' : $ad->addon->name}}</span><br>
+                              <span>{{empty($ad->addon->name) ? '' : $ad->addon->addonsDetail[0]->duration.' min'}}</span>
+                              <span>${{$ad->price}}</span>
+                           </div> 
+                        @endforeach
+                        @if(count($val->addons) == 0)
+                           N/A
+                        @endif
+                     </td>
                   </tr>
                  
                </tbody>

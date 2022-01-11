@@ -1156,7 +1156,7 @@ color:#5D4E6D;
 }
 
 
-a.custom-anchor1 {
+.custom-anchor1 {
     background: #5D4E6D;
     color: white;
     letter-spacing: 0.7px;
@@ -1183,7 +1183,7 @@ a.custom-anchor2 {
 }
 
 
-a.custom-anchor1:hover , a.custom-anchor2:hover {
+.custom-anchor1:hover , .custom-anchor2:hover {
     background:black !important;
     color:white !important;
 }

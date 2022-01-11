@@ -14,7 +14,9 @@ input[type="file"] {
 input , button , textarea , select {
     outline: none !important;
 }
-
+.nopadding {
+    padding: 0px !important;
+}
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -640,7 +642,7 @@ span.line-1 {
 .booking-detail-table table tbody tr td {
     color: black;
     font-size: 14px;
-    padding: 5px 40px 5px 0px;
+    padding: 5px 15px 5px 15px;
     letter-spacing: 0.4px;
 }
 .booking-detail-table {

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\orders\order;
 use App\Models\services\services;
+use App\Models\orders\orderAddons;
 
 class orderDetail extends Model
 {
@@ -20,5 +21,9 @@ class orderDetail extends Model
     }
     public function service(){
     	return $this->belongsTo(services::class, 'service_id');
+    }
+
+    public function addons(){
+        return $this->hasMany(orderAddons::class, 'detail_id', 'id');
     }
 }
