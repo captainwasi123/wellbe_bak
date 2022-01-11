@@ -11,7 +11,7 @@
             <a data-toggle="modal" data-target=".treatmentModal"> Treatments </a>
          </div>
          <div class="menu-item">
-            <a href="{{URL::to('/work_with_us')}}"> About </a>
+            <a href="{{URL::to('/ourStory')}}"> About </a>
          </div>
          <div class="menu-item">
             <a href="{{route('countact_us')}}"> Contact Us </a>
