@@ -15,8 +15,18 @@
                   <h3 class="col-blue"> Information </h3>
                   <ul>
                      <li> <a data-toggle="modal" data-target=".coming-soon-modal"> Legal </a> </li>
-                     <li> <a data-toggle="modal" data-target=".coming-soon-modal"> Privacy Policy </a> </li>
+                     <li> <a href="{{route('PrivacyPolicy')}}">  Privacy Policy </a> </li>
+                       <li> <a href="{{route('CookiePolicy')}}">  Cookie Policy </a> </li>
+                       <li> <a href="{{route('TermCondition')}}">  Term & Conditions </a> </li>
                      <li> <a data-toggle="modal" data-target=".coming-soon-modal"> Practitioner Help Center </a> </li>
+                     <li> <a data-toggle="modal" data-target=".coming-soon-modal"> Practitioner Agreements </a> </li>
+                     <li> <a data-toggle="modal" data-target=".coming-soon-modal"> Hygiene</a> </li>
+                     <li> <a data-toggle="modal" data-target=".coming-soon-modal"> Safety</a> </li>
+
+                     
+
+                     
+
                   </ul>
                </div>
             </div>
@@ -24,8 +34,8 @@
                <div class="footer-list3">
                   <h3 class="col-blue"> About Us </h3>
                   <ul>
-                     <li> <a data-toggle="modal" data-target=".coming-soon-modal"> Our Story </a> </li>
-                     <li> <a data-toggle="modal" data-target=".coming-soon-modal"> FAQ's </a> </li>
+                     <li> <a href="{{route('ourStory')}}"> Our Story </a> </li>
+                     <li> <a href="{{route('faq')}}"> FAQ's </a> </li>
                   </ul>
                </div>
             </div>
@@ -33,7 +43,7 @@
                <div class="footer-list3">
                   <h3 class="col-blue"> Need Help? </h3>
                   <ul>
-                     <li> <a data-toggle="modal" data-target=".coming-soon-modal"> Contact Us </a> </li>
+                     <li> <a  href="{{route('countact_us')}}"> Contact Us </a> </li>
                   </ul>
                </div>
             </div>

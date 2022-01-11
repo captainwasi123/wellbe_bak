@@ -17,6 +17,19 @@ use Illuminate\Support\Facades\Route;
 	Route::namespace('web')->group(function(){
 		Route::get('/', 'webController@index')->name('home');
 		Route::get('/work_with_us', 'webController@workWithUs')->name('work_with_us');
+        Route::get('/ourStory', 'webController@ourStory')->name('ourStory');
+        Route::get('/countact_us', 'webController@countactUs')->name('countact_us');
+		Route::post('/countact_us', 'webController@countactUsmail')->name('countact_us');
+        Route::get('/faq', 'webController@FAQ')->name('faq');
+        Route::get('/TermCondition', 'webController@TermCondition')->name('TermCondition');
+        Route::get('/PractitionerAgree', 'webController@PractitionerAgree')->name('PractitionerAgree');
+        Route::get('/PrivacyPolicy', 'webController@PrivacyPolicy')->name('PrivacyPolicy');
+        Route::get('/CookiePolicy', 'webController@CookiePolicy')->name('CookiePolicy');
+
+		
+
+		
+
 
 		//Authentication
 		Route::get('/login', 'loginController@login');
