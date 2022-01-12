@@ -173,6 +173,7 @@ class treatmentController extends Controller
                 $ad = addons::find($val);
                 $aa = array(
                     'id' => $ad->id,
+                    'name' => $ad->name,
                     'price' => empty($ad->lowestPrice) ? number_format($ad->addonsDetail[0]->price, 2) : number_format($ad->lowestPrice->price, 2),
                     'duration' => $ad->addonsDetail[0]->duration
                 );

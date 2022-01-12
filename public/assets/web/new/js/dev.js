@@ -5,10 +5,29 @@ $(document).ready(function() {
 
 
     $(document).on('click', '.cart-btn1', function(){
+       var totalAmount = parseFloat($('#totalAmountTray').val());
+       var totalDuration = parseFloat($('#totalDurationTray').val());
+       var currAmount = parseFloat($(this).data('price'));
+       var currDuration = parseFloat($(this).data('duration'));
+
        var color = $( this ).css( "background-color" );
        if (color == 'rgb(93, 78, 109)') {
+            var disAmount = totalAmount+currAmount;
+            var disDuration = totalDuration+currDuration;
+            $('#totalAmountTray').val(disAmount);
+            $('#totalAmountTrayDisplay').html("$"+disAmount);
+
+            $('#totalDurationTray').val(disDuration);
+            $('#totalDurationTrayDisplay').html(disDuration+" mins");
           $(this).html('Added');
        }else{
+            var disAmount = totalAmount-currAmount;
+            var disDuration = totalDuration-currDuration;
+            $('#totalAmountTray').val(disAmount);
+            $('#totalAmountTrayDisplay').html("$"+disAmount);
+
+            $('#totalDurationTray').val(disDuration);
+            $('#totalDurationTrayDisplay').html(disDuration+" mins");
           $(this).html('Add');
        }
     });

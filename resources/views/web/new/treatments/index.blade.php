@@ -7,7 +7,7 @@
       <div class="container">
          <div class="sec-head6">
             <h3> Choose Threatment Category </h3>
-            <p> With an ever growing list of services on offer, we’re always looking out for new talent. </p>
+            <p> Our mobile practitioners offer a wide range of luxurious treatments from the comfort of your own home. </p>
          </div>
       </div>
    </section>
@@ -63,10 +63,26 @@
 
                         <div class="book-summary-item">
                            <h5>{{$val['quantity']}}x {{$val['title']}} </h5>
-                           <p> <b class="col-green"> From ${{number_format($val['price'], 2)}} </b> {{$val['duration']}} minutes </p>
+                           @php $addonPrice = 0; $addonDuration = 0; @endphp
+                           @if(count($val['addons']) > 0)
+                              @foreach($val['addons'] as $key => $adval)
+                                 @php $addonPrice = $addonPrice+$adval['price']; @endphp
+                                 @php $addonDuration = $addonDuration+$adval['duration']; @endphp
+                              @endforeach
+                           @endif
+                           <p> <b class="col-green"> From ${{number_format(($val['price']+$addonPrice), 2)}} </b> {{$val['duration']+$addonDuration}} minutes </p>
+
+                           @if(count($val['addons']) > 0)
+                              <p class="addonLabelTreatment">
+                                 +
+                                 @foreach($val['addons'] as $key => $adval)
+                                    {{$key == 0 ? '' : ', '}}{{$adval['name']}}
+                                 @endforeach
+                              </p>
+                           @endif
                            <a href="javascript:void(0)" class="item-edit1 col-red removeItemCart" data-id="{{$val['id']}}"> Remove </a>
                         </div>
-                        @php $totalPrice += ($val['price']*$val['quantity']); @endphp
+                        @php $totalPrice += (($val['price']+$addonPrice)*$val['quantity']); @endphp
                      @endforeach
                      @if(count(Session::get('cart')) == 0)
                         <h4>No Items Found.</h4>

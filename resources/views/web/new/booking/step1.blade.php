@@ -176,11 +176,16 @@
                   </div>
                   @if(Session::get('cart') !== null)
                      @foreach(Session::get('cart.services') as $val)
-
+                        @php $addonDuration = 0; @endphp
+                        @if(count($val['addons']) > 0)
+                           @foreach($val['addons'] as $adval)
+                              @php $addonDuration = $addonDuration+$adval['duration']; @endphp
+                           @endforeach
+                        @endif
                         <div class="book-summary-item">
                            <h5>{{$val['quantity']}}x {{$val['title']}} </h5>
                            <p> <b class="col-green"> 
-                           </b> {{$val['duration']}} minutes </p>
+                           </b> {{$val['duration']+$addonDuration}} minutes </p>
                            @php $addonPrice = 0; @endphp
                            @if(count($val['addons']) > 0)
                               <span class="addonLabel"> {{count($val['addons'])}}x Addons </span>

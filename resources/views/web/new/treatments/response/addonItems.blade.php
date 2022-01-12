@@ -15,7 +15,7 @@
          </div>
          <div>
             <input type="checkbox" name="addon_item[]" value="{{$val->id}}" class="addon_checkbox" id="addon{{$val->id}}">
-            <label class="cart-btn1" for="addon{{$val->id}}"> Add </label>
+            <label class="cart-btn1" for="addon{{$val->id}}" data-price="{{empty($val->lowestPrice) ? $val->addonsDetail[0]->price : $val->lowestPrice->price}}" data-duration="{{$val->addonsDetail[0]->duration}}"> Add </label>
          </div>
       </div>
    @endforeach
@@ -26,8 +26,10 @@
    @endif
    <div class="cart-single-item m-t-30">
       <div>
-         <h4 class="col-blue m-0"> {{empty($service->lowestPrice) || $service->lowestPrice->price == 0 ? '$'.number_format($service->price, 2) : '$'.number_format($service->lowestPrice->price, 2)}} </h4>
-         <p class="m-0"> {{$service->duration}} mins </p>
+         <input type="hidden" id="totalAmountTray" value="{{empty($service->lowestPrice) || $service->lowestPrice->price == 0 ? $service->price : $service->lowestPrice->price}}">
+         <input type="hidden" id="totalDurationTray" value="{{$service->duration}}">
+         <h4 class="col-blue m-0" id="totalAmountTrayDisplay"> {{empty($service->lowestPrice) || $service->lowestPrice->price == 0 ? '$'.number_format($service->price) : '$'.number_format($service->lowestPrice->price)}} </h4>
+         <p class="m-0" id="totalDurationTrayDisplay"> {{$service->duration}} mins </p>
       </div>
       <div>
          <button type="submit" class="custom-anchor1"> Add to Booking </button>

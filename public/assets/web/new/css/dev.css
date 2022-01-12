@@ -190,7 +190,7 @@
     float: right;
     margin-top: -30px;
     font-size: 12px;
-=======
+}
 .banner-text div {
     border-top: 5px solid #404780;
     width: 57px;
@@ -199,5 +199,8 @@
 }
 .banner-text h3 {
     padding-left: 72px;
->>>>>>> a8767b05c4935a9fc13b25a6cf898cc80c2b581f
+}
+.addonLabelTreatment {
+    margin-top: -8px;
+    padding-right: 75px;
 }
