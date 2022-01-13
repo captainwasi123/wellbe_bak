@@ -541,7 +541,7 @@
             </ol>
         </div>
 
-       <b> If you’re a service provider using the Wellbe platform, please refer to the <a href="#">Practitioner Agreement</a>.</b>
+       <b> If you’re a service provider using the Wellbe platform, please refer to the <a href="{{route('PractitionerAgree')}}"> Practitioner Agreement</a>.</b>
 
 
 

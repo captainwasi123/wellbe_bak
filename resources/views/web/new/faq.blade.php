@@ -2,14 +2,27 @@
 @section('title', 'FAQ')
 @section('content')
 
-
+   <!-- Banner Section Starts Here -->
+   <section class="banner-sec  bg-5  ">
+      <div class="container">
+         <div class="row">
+            <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 order-lg-5 order-md-5">
+               <div class="banner-text sec-head4">
+                <center> <h4 class="col-blue"> Want to know more? </h4></center> 
+                  <center>
+                   <p> View some of our frequently asked questions.. </p>
+                    </center>
+               </div>
+            </div>
+         
+         </div>
+      </div>
+   </section>
+   <!-- Banner Section Ends Here -->
    <!-- FAQs Section Starts Here -->
    <section class="pad-top-60 pad-bot-60   bg-2">
       <div class="container">
-         <div class="sec-head4 text-center">
-            <h4 class="col-blue"> Want to know more? </h4>
-            <p> View some of our frequently asked questions.. </p>
-         </div>
+        
          <div class="faqs-all">
           <div class="set">
               <a >Who are the Wellbe professionals? <i class="fa fa-angle-right"></i>

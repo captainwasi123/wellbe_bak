@@ -17,8 +17,8 @@
                      <li> <a href="{{route('PrivacyPolicy')}}">  Privacy Policy </a> </li>
                        <li> <a href="{{route('CookiePolicy')}}">  Cookie Policy </a> </li>
                        <li> <a href="{{route('TermCondition')}}">  Term & Conditions </a> </li>
-                     <li> <a data-toggle="modal" data-target=".coming-soon-modal"> Practitioner Help Center </a> </li>
-                     <li> <a data-toggle="modal" data-target=".coming-soon-modal"> Practitioner Agreements </a> </li>
+                     
+                     <li> <a href="{{route('PractitionerAgree')}}"> Practitioner Agreements </a> </li>
 
                      
 
@@ -41,6 +41,7 @@
                   <h3 class="col-blue"> Need Help? </h3>
                   <ul>
                      <li> <a  href="{{route('countact_us')}}"> Contact Us </a> </li>
+                     <li><a data-toggle="modal" data-target=".coming-soon-modal"> Practitioner Help Center </a> </li>
                   </ul>
                </div>
             </div>
