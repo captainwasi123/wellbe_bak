@@ -50,15 +50,19 @@
 
                         <div class="book-summary-item">
                            <h5>{{$val['quantity']}}x {{$val['title']}} </h5>
-                           <p> <b class="col-green"> 
-                            </b> {{$val['duration']}} minutes </p>
-                           @php $addonPrice = 0; @endphp
+                           @php $addonPrice = 0;$addonDuration = 0; @endphp
                            @if(count($val['addons']) > 0)
-                              <span class="addonLabel"> {{count($val['addons'])}}x Addons </span>
-                              @foreach($val['addons'] as $adval)
-                                 @php $addonPrice = $addonPrice+$adval['price']; @endphp
-                              @endforeach
+                              <p class="addonLabelTreatment">
+                                 Includes
+                                 @foreach($val['addons'] as $key => $adval)
+                                    {{$key == 0 ? '' : ', '}}{{$adval['name']}}
+                                    @php $addonPrice = $addonPrice+$adval['price']; @endphp
+                                    @php $addonDuration = $addonDuration+$adval['duration']; @endphp
+                                 @endforeach
+                              </p>
                            @endif
+                           <p> <b class="col-green"> 
+                            </b> {{$val['duration']+$addonDuration}} minutes </p>
                         </div>
                         @php $totalAmount = $totalAmount+(($val['price']+$addonPrice)*$val['quantity']); @endphp
                      @endforeach

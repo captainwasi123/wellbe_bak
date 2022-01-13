@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use App\Models\orders\order;
 use App\Models\orders\reviews;
 use App\Models\userService;
+use App\Models\userAddon;
 use App\Models\UserGeofence;
 use App\Models\schedule\availability;
 use App\Models\orders\orderDetail;
@@ -90,6 +91,11 @@ class User extends Authenticatable
     public function services()
     {
         return $this->hasMany(userService::class,'user_id','id');
+    }
+
+    public function addons()
+    {
+        return $this->hasMany(userAddon::class,'user_id','id');
     }
 
 

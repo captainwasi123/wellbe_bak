@@ -6,7 +6,7 @@
    <section class="bg-pink pad-top-40 pad-bot-40">
       <div class="container">
          <div class="sec-head6">
-            <h3> Choose Threatment Category </h3>
+            <h3> Choose Treatment Category </h3>
             <p> Our mobile practitioners offer a wide range of luxurious treatments from the comfort of your own home. </p>
          </div>
       </div>
@@ -74,7 +74,7 @@
 
                            @if(count($val['addons']) > 0)
                               <p class="addonLabelTreatment">
-                                 +
+                                 Includes
                                  @foreach($val['addons'] as $key => $adval)
                                     {{$key == 0 ? '' : ', '}}{{$adval['name']}}
                                  @endforeach

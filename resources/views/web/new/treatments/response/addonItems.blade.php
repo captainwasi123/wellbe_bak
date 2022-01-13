@@ -28,7 +28,7 @@
       <div>
          <input type="hidden" id="totalAmountTray" value="{{empty($service->lowestPrice) || $service->lowestPrice->price == 0 ? $service->price : $service->lowestPrice->price}}">
          <input type="hidden" id="totalDurationTray" value="{{$service->duration}}">
-         <h4 class="col-blue m-0" id="totalAmountTrayDisplay"> {{empty($service->lowestPrice) || $service->lowestPrice->price == 0 ? '$'.number_format($service->price) : '$'.number_format($service->lowestPrice->price)}} </h4>
+         <h4 class="col-blue m-0" id="totalAmountTrayDisplay"> From: {{empty($service->lowestPrice) || $service->lowestPrice->price == 0 ? '$'.number_format($service->price) : '$'.number_format($service->lowestPrice->price)}} </h4>
          <p class="m-0" id="totalDurationTrayDisplay"> {{$service->duration}} mins </p>
       </div>
       <div>

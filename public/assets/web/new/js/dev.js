@@ -15,7 +15,7 @@ $(document).ready(function() {
             var disAmount = totalAmount+currAmount;
             var disDuration = totalDuration+currDuration;
             $('#totalAmountTray').val(disAmount);
-            $('#totalAmountTrayDisplay').html("$"+disAmount);
+            $('#totalAmountTrayDisplay').html("From: $"+disAmount);
 
             $('#totalDurationTray').val(disDuration);
             $('#totalDurationTrayDisplay').html(disDuration+" mins");
@@ -24,7 +24,7 @@ $(document).ready(function() {
             var disAmount = totalAmount-currAmount;
             var disDuration = totalDuration-currDuration;
             $('#totalAmountTray').val(disAmount);
-            $('#totalAmountTrayDisplay').html("$"+disAmount);
+            $('#totalAmountTrayDisplay').html("From: $"+disAmount);
 
             $('#totalDurationTray').val(disDuration);
             $('#totalDurationTrayDisplay').html(disDuration+" mins");

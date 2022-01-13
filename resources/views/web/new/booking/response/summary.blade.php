@@ -7,23 +7,21 @@
 </div>
 @if(Session::get('cart') !== null)
    @foreach(Session::get('cart.services') as $val)
-      @php $addonDuration = 0; @endphp
-      @if(count($val['addons']) > 0)
-         @foreach($val['addons'] as $adval)
-            @php $addonDuration = $addonDuration+$adval['duration']; @endphp
-         @endforeach
-      @endif
       <div class="book-summary-item">
          <h5>{{$val['quantity']}}x {{$val['title']}} </h5>
+         @php $addonPrice = 0;$addonDuration = 0; @endphp
+         @if(count($val['addons']) > 0)
+            <p class="addonLabelTreatment">
+               Includes
+               @foreach($val['addons'] as $key => $adval)
+                  {{$key == 0 ? '' : ', '}}{{$adval['name']}}
+                  @php $addonPrice = $addonPrice+$adval['price']; @endphp
+                  @php $addonDuration = $addonDuration+$adval['duration']; @endphp
+               @endforeach
+            </p>
+         @endif
          <p> <b class="col-green"> 
          </b> {{$val['duration']+$addonDuration}} minutes </p>
-         @php $addonPrice = 0; @endphp
-         @if(count($val['addons']) > 0)
-            <span class="addonLabel"> {{count($val['addons'])}}x Addons </span>
-            @foreach($val['addons'] as $adval)
-               @php $addonPrice = $addonPrice+$adval['price']; @endphp
-            @endforeach
-         @endif
       </div>
       @php $totalAmount = $totalAmount+(($val['price']+$addonPrice)*$val['quantity']); @endphp
    @endforeach

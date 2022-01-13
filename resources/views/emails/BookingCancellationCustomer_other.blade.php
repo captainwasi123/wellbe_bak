@@ -515,7 +515,14 @@ width: 100% !important;
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 <tr>
 
-<td valign="top" style="padding-top:5px;padding-bottom:10px;"><div style="font-family:Cabin, sans-serif;font-size:15px;color:#5d4e6d;line-height:22px;text-align:left;"><p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial">{{$order_details->service->name}} {{$order_details->service->duration}} Mins</span></p>
+<td valign="top" style="padding-top:5px;padding-bottom:10px;"><div style="font-family:Cabin, sans-serif;font-size:15px;color:#5d4e6d;line-height:22px;text-align:left;"><p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial">{{$order_details->service->name}} {{$order_details->service->duration}} Mins</span> <br>
+@if(count($order_details->addons) > 0)
+	Including 
+	@foreach($order_details->addons as $key => $ad)
+	   {{$key > 0 ? ', ' : ''}}{{@$ad->addon->name}} 
+	@endforeach
+@endif
+</p>
 </div>
 </td>
 </tr>

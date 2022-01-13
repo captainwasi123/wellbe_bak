@@ -40,11 +40,15 @@ class bookingController extends Controller
 
         $userArr = \Arr::pluck($users_ids,'user_id');
         $services = array();
+        $addons = array();
         $unavailable = array();
         $cart = session()->get('cart');
 
         foreach($cart['services'] as $val){
             array_push($services, base64_decode($val['id']));
+            foreach($val['addons'] as $vall){
+                array_push($addons, $vall['id']);
+            }
         }
 
         $hdate['date']=date('Y-m-d');
@@ -58,6 +62,9 @@ class bookingController extends Controller
                         ->where('store_status', '1')
                         ->whereHas('services', function($q) use ($services){
                             return $q->whereIn('service_id', $services);
+                        })
+                        ->whereHas('addons', function($q) use ($addons){
+                            return $q->whereIn('addon_id', $addons);
                         })
                         ->whereHas('availability', function($q) use ($day){
                             return $q->where('week_day', $day);
@@ -138,6 +145,7 @@ class bookingController extends Controller
         function getProfessionals(Request $request){
             $day = date('l', strtotime($request->date));
             $services = array();
+            $addons = array();
             $unavailable = array();
             $cart = session()->get('cart');
             $lat = $cart['location']['lat'];
@@ -152,6 +160,9 @@ class bookingController extends Controller
 
             foreach($cart['services'] as $val){
                 array_push($services, base64_decode($val['id']));
+                foreach($val['addons'] as $vall){
+                    array_push($addons, $vall['id']);
+                }
             }
             $data['day'] = $day;
             $data['date'] = date('Y-m-d', strtotime($request->date));
@@ -165,6 +176,9 @@ class bookingController extends Controller
                             ->whereNotIn('id', $unavailable)
                             ->whereHas('services', function($q) use ($services){
                                 return $q->whereIn('service_id', $services);
+                            })
+                            ->whereHas('addons', function($q) use ($addons){
+                                return $q->whereIn('addon_id', $addons);
                             })
                             ->whereHas('availability', function($q) use ($day){
                                 return $q->where('week_day', $day);
