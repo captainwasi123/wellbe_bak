@@ -1,5 +1,5 @@
 @extends('web.new.includes.master')
-@section('title', 'Cobtact Us')
+@section('title', 'Contact Us')
 @section('content')
 <!-- Banner Section Starts Here -->
    <section class="banner-sec  ">
@@ -56,7 +56,7 @@
                            </div>
                         
               
-                           <div class="block-element m-b-20">
+                           <div class="block-element m-b-20 col-md-12">
                               <p class="col-black form-label1"> Message  </p>
                               <textarea  type="text" name="messages" class="form-control1" autocomplete="off" required  > </textarea>
                            </div>

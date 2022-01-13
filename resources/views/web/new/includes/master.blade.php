@@ -6,6 +6,7 @@
       <meta name="host" content="{{URL::to('/')}}">
       <meta name="token" content="{{csrf_token()}}">
       <title> @yield('title') | Wellbe </title>
+      <link rel="icon" href="{{URL::to('/public/assets/web/new/images/favicon.png')}}" type="image/png" sizes="16x16">
       @include('web.new.includes.style')
       @yield('addStyle')
    </head>

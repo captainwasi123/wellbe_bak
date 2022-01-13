@@ -6,7 +6,7 @@
                <div class="footer-list3">
                   <h3 class="col-blue"> Book Now </h3>
                   <ul>
-                     <li> <a data-toggle="modal" data-target=".coming-soon-modal"> Treatments </a> </li>
+                     <li> <a data-toggle="modal" data-target=".treatmentModal"> Treatments </a> </li>
                   </ul>
                </div>
             </div>
@@ -14,14 +14,11 @@
                <div class="footer-list3">
                   <h3 class="col-blue"> Information </h3>
                   <ul>
-                     <li> <a data-toggle="modal" data-target=".coming-soon-modal"> Legal </a> </li>
                      <li> <a href="{{route('PrivacyPolicy')}}">  Privacy Policy </a> </li>
                        <li> <a href="{{route('CookiePolicy')}}">  Cookie Policy </a> </li>
                        <li> <a href="{{route('TermCondition')}}">  Term & Conditions </a> </li>
                      <li> <a data-toggle="modal" data-target=".coming-soon-modal"> Practitioner Help Center </a> </li>
                      <li> <a data-toggle="modal" data-target=".coming-soon-modal"> Practitioner Agreements </a> </li>
-                     <li> <a data-toggle="modal" data-target=".coming-soon-modal"> Hygiene</a> </li>
-                     <li> <a data-toggle="modal" data-target=".coming-soon-modal"> Safety</a> </li>
 
                      
 

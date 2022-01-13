@@ -5,6 +5,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="host" content="{{URL::to('/')}}">
       <title> @yield('title') | {{env('APP_NAME')}} </title>
+      <link rel="icon" href="{{URL::to('/public/assets/web/new/images/favicon.png')}}" type="image/png" sizes="16x16">
 
       @include('includes.style')
       @yield('additionalCSS')
