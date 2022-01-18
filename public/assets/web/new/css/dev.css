@@ -126,9 +126,26 @@
  .feature-box5 {
  margin: 0px 0px 0px 0px !important;
  }
+ a.pro-btn {
+    margin-left: 0px;
+}
+
+.service-box5 h6 {
+    width: 81%;
+
+}
+#checkout_btn {
+    padding: 10px 20px !important;
+}
+.submit-btn1.block-element1 {
+    padding: 10px 20px !important;
+}
  }
 
-
+.submit-btn1
+{
+    text-align: center !important;
+}
 
  .pac-container.pac-logo {
     z-index: 999999;
@@ -150,8 +167,6 @@
 #checkout_btn[type=button] {
     background: gray;
 }
-<<<<<<< HEAD
-
 
 .cart-btn1{
     cursor: pointer;
@@ -197,9 +212,9 @@
     float: left;
     margin-top: -97px;
 }
-.banner-text h3 {
+/*.banner-text h3 {
     padding-left: 72px;
-}
+}*/
 .addonLabelTreatment {
     margin-top: -8px;
     padding-right: 75px;
@@ -207,4 +222,8 @@
 .book-summary-item .addonLabelTreatment {
     margin-bottom: 0;
     padding: 0;
+}
+
+.slick-list {
+    padding: 15px 0px;
 }

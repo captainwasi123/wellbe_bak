@@ -13,8 +13,7 @@
                    <p> View some of our frequently asked questions.. </p>
                     </center>
                </div>
-            </div>
-         
+            </div>         
          </div>
       </div>
    </section>
@@ -118,7 +117,7 @@
 
             <div class="sec-head4 text-center">
             
-            <p> Can’t find the answer you are looking for? Check out our help centre or <a href="{{route('countact_us')}}">Contact Us</a> and we’ll be happy to help.</p>
+            <p> Can’t find the answer you are looking for? <a href="https://wellbeltd.zendesk.com/hc/en-us"> Check out our help centre</a> or <a href="{{route('countact_us')}}">contact us</a> and we’ll be happy to help.</p>
          </div>
          
       </div>

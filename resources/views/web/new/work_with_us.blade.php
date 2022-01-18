@@ -74,7 +74,7 @@
                   <h4 class="col-blue"> How do I join?</h4>
                   <p> Becoming a member of the Wellbe Community is simple. Create a free account and we’ll be in touch to discuss the onboarding process.</p>
                   <p> You’ll be selling your services in no time. </p>
-                  <a href="{{URL::to('/register')}}" class="custom-btn1"> Join Wellbe Today </a>
+                  <a href="{{URL::to('/register/pro')}}" class="custom-btn1"> Join Wellbe Today </a>
                </div>
             </div>
             <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12 order-lg-2">
@@ -123,7 +123,7 @@
                      <div>
                         <h4 class="col-blue"> What services can I offer? </h4>
                         <p class="m-b-20"> With an ever growing list of services on offer, we’re always looking out for new talent. </p>
-                        <a href="{{URL::to('/register')}}" class="custom-btn1"> Join Now </a>
+                        <a href="{{URL::to('/register/pro')}}" class="custom-btn1"> Join Now </a>
                      </div>
                   </div>
                   <div class="pro-massage">

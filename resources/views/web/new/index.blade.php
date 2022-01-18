@@ -115,7 +115,7 @@
                     <div>
                        <h4 class="col-blue"> The best services, whenever you need </h4>
                        <p class="m-b-20"> With an ever growing list of services on offer, our team are here to cater to your every wellbeing and beauty need. </p>
-                       <a data-toggle="modal" data-target=".coming-soon-modal" class="custom-btn1"> All Services </a>
+                       <a data-toggle="modal" data-target=".treatmentModal" class="custom-btn1"> All Services </a>
                     </div>
                  </div>
                  <div class="service-only-image">
@@ -173,7 +173,7 @@
               <div class="professional-text">
                  <h4 class="col-blue"> The best talent from all over New Zealand </h4>
                  <p> Each and every one of our professionals is qualified and insured. Vetted and tested by us, rated and reviewed by you.   </p>
-                 <a data-toggle="modal" data-target=".coming-soon-modal" class="custom-btn1"> Find a Professional </a>
+                 <a data-toggle="modal" data-target=".treatmentModal" class="custom-btn1"> Find a Professional </a>
               </div>
            </div>
            <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12 order-lg-1">

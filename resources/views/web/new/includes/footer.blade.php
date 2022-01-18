@@ -14,16 +14,10 @@
                <div class="footer-list3">
                   <h3 class="col-blue"> Information </h3>
                   <ul>
-                     <li> <a href="{{route('PrivacyPolicy')}}">  Privacy Policy </a> </li>
-                       <li> <a href="{{route('CookiePolicy')}}">  Cookie Policy </a> </li>
-                       <li> <a href="{{route('TermCondition')}}">  Term & Conditions </a> </li>
-                     
-                     <li> <a href="{{route('PractitionerAgree')}}"> Practitioner Agreements </a> </li>
-
-                     
-
-                     
-
+                     <li> <a href="{{route('PrivacyPolicy')}}"> Privacy Policy </a> </li>
+                     <li> <a href="{{route('CookiePolicy')}}"> Cookie Policy </a> </li>
+                     <li> <a href="{{route('TermCondition')}}"> Term & Conditions </a> </li>                    
+                     <li> <a href="{{route('PractitionerAgree')}}"> Practitioner Agreement </a> </li>
                   </ul>
                </div>
             </div>
@@ -40,8 +34,9 @@
                <div class="footer-list3">
                   <h3 class="col-blue"> Need Help? </h3>
                   <ul>
-                     <li> <a  href="{{route('countact_us')}}"> Contact Us </a> </li>
-                     <li><a data-toggle="modal" data-target=".coming-soon-modal"> Practitioner Help Center </a> </li>
+                     <li><a href="{{route('countact_us')}}"> Contact Us </a> </li>
+                     <li><a href="https://wellbeltd.zendesk.com/hc/en-us/categories/4414866106521-Practitioners"> Practitioner Help Center </a> </li>
+                     <!-- <li><a data-toggle="modal" data-target=".coming-soon-modal"> Practitioner Help Center </a> </li> -->
                   </ul>
                </div>
             </div>

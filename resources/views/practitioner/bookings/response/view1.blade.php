@@ -137,7 +137,7 @@
    </div>
    @foreach($data->details as $val)
       <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-         <div class="booking-detail-table">
+         <div class="booking-detail-table" style="overflow: auto;">
             <table>
                <tbody>
                   <tr>
@@ -178,7 +178,7 @@
       </div>
    @endforeach
 </div>
-<div class="block-element text-right">
+<div class="block-element text-right booking-btn-custom">
 @if($data->status == '1' || $data->status == '2')
    <a href="javascript:void(0)" class="normal-btn bg-blue col-white rounded orderCancel" data-ref="{{base64_encode(base64_encode($data->id))}}"> Cancel Booking </a>
 @endif

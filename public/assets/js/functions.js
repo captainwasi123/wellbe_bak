@@ -1,3 +1,4 @@
+var ref = $('meta[name=host]').attr('content');
  $(document).ready(function(){
 
 
@@ -6,7 +7,7 @@
  	$('.menu-hamburger').children("img").click(function(){
 
  		if(val1==0){
- 			$(this).attr("src","images/cross.png")
+ 			$(this).attr("src",ref+"/public/assets/images/cross.png")
  		$('.sidebar-menu').slideToggle()
 
  		val1 = 1;
@@ -14,7 +15,7 @@
  	}
  	else {
  		$('.sidebar-menu').slideToggle()
- 		$(this).attr("src","images/hamburger.png")
+ 		$(this).attr("src",ref+"/public/assets/images/hamburger.png")
  		val1 = 0;
 
  	}

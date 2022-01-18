@@ -2,7 +2,9 @@
    <div class="sidebar-custom">
       <div class="sidebar-logo">
          <a href=""> Wellbe </a>
-         <button class="menu-hamburger"> <img alt="hamburger" src="{{URL::to('/')}}/public/assets/images/hamburger.png"> </button>
+         <button class="menu-hamburger">
+            <img alt="hamburger" src="{{URL::to('/')}}/public/assets/images/hamburger.png">
+         </button>
       </div>
       <div class="sidebar-menu">
          <div class="menu-item">

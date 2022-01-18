@@ -3,6 +3,7 @@
    <head>
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="icon" href="{{URL::to('/public/assets/web/new/images/favicon.png')}}" type="image/png" sizes="16x16">
       <title> Sign Up | Wellbe </title>
       @include('web.new.includes.style')
    </head>
@@ -85,8 +86,8 @@
                         <span class="col-black"> Already an user? <a href="{{URL::to('/login')}}"> Login </a> </span>
                      </div>
                      <div class="legal-links1">
-                        <a href=""> Terms & Conditions </a>
-                        <a href=""> Privacy Policy </a>
+                        <a href="{{URL::to('/PractitionerAgree')}}"> Terms & Conditions </a>
+                        <a href="{{URL::to('/PrivacyPolicy')}}"> Privacy Policy </a>
                      </div>
                   </div>
                </div>

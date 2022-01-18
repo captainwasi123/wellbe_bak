@@ -3,6 +3,7 @@
    <head>
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="icon" href="{{URL::to('/public/assets/web/new/images/favicon.png')}}" type="image/png" sizes="16x16">
       <title> Sign Up | Wellbe </title>
       @include('web.new.includes.style')
    </head>
@@ -13,13 +14,15 @@
             <div class="row">
                <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12 no-pad">
                   <div class="login-image">
-                     <img src="{{URL::to('/public/assets/web/new/')}}/images/signup-image.png">
+                    <img src="{{URL::to('/public/assets/web/new/')}}/images/signup-image.png">
                   </div>
                </div>
                <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12 no-pad">
                   <div class="login-wrapper">
                      <div class="block-element1 text-center m-b-40">
-                        <img src="{{URL::to('/public/assets/web/new/')}}/images/wellbe-logo.png" width="150px">
+                        <a href="{{route('home')}}">
+                          <img src="{{URL::to('/public/assets/web/new/')}}/images/wellbe-logo.png" width="150px">
+                        </a>
                      </div>
                      <div class="login-heading m-b-40">
                         <h3 class="text-left"> Create Account </h3>
@@ -85,8 +88,8 @@
                         <span class="col-black"> Already an user? <a href="{{URL::to('/login')}}"> Login </a> </span>
                      </div>
                      <div class="legal-links1">
-                        <a href=""> Terms & Conditions </a>
-                        <a href=""> Privacy Policy </a>
+                        <a href="{{URL::to('/TermCondition')}}"> Terms & Conditions </a>
+                        <a href="{{URL::to('/PrivacyPolicy')}}"> Privacy Policy </a>
                      </div>
                   </div>
                </div>
