@@ -7,9 +7,14 @@
     /* Always set the map height explicitly to define the size of the div
      * element that contains the map. */
     #map {
-      height: 100%;
+      height: 600px;
     }
-
+    @media screen and (max-width: 480px) {
+      #map {
+        height: 400px;
+        margin-top: 20px;
+      }
+    }
   </style>
 @section('content')
 
@@ -40,7 +45,6 @@
                 <div class="block-element submit-buttons text-right">
                   <a href="{{route('practitioner.profile')}}" class="normal-btn rounded bg-silver col-black pad-1"> Back  </a>
                 <button class="normal-btn rounded bg-blue col-white pad-1"> Save  </button>
-                <div style="height: 250px;"></div>
                 </div>
                 </form>
              </div>

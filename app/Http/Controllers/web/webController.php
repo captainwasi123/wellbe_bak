@@ -29,7 +29,6 @@ class webController extends Controller
 
     function countactUs(){
 
-
         return view('web.new.countact_us');
     }
 
@@ -50,10 +49,10 @@ class webController extends Controller
                
        
              
-               Mail::send('web.mail.contactmail', $data, function($message)  {
-                $message->to('shaheedkhan336@gmail.com')
-                ->subject("Enquiry Form");
-                $message->from("noreplywellbe@info.com", 'Wellbe');
+               Mail::send('emails.query', $data, function($message)  {
+                $message->to('info@wellbe.co.nz')
+                ->subject("Query From Wellbe.co.nz");
+                $message->from("noreply@wellbe.co.nz", 'Wellbe');
                 });
             return redirect()->back()->with('success', 'Your query  has been sent successfully');
        
