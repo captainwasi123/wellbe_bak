@@ -305,6 +305,10 @@
                  </p>
               </div>
            </div>
+
+            <div class="sec-head4 text-center">
+               <p> Can’t find the answer you are looking for? <a href="https://wellbeltd.zendesk.com/hc/en-us"> Check out our help centre</a> or <a href="{{route('countact_us')}}">contact us</a> and we’ll be happy to help.</p>
+            </div>
         </div>
      </div>
   </section>
