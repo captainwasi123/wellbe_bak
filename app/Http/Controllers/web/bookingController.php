@@ -44,10 +44,12 @@ class bookingController extends Controller
         $unavailable = array();
         $cart = session()->get('cart');
 
+        $advalidate = 0;
         foreach($cart['services'] as $val){
             array_push($services, base64_decode($val['id']));
             foreach($val['addons'] as $vall){
                 array_push($addons, $vall['id']);
+                $advalidate = 1;
             }
         }
 
@@ -63,8 +65,10 @@ class bookingController extends Controller
                         ->whereHas('services', function($q) use ($services){
                             return $q->whereIn('service_id', $services);
                         })
-                        ->whereHas('addons', function($q) use ($addons){
-                            return $q->whereIn('addon_id', $addons);
+                        ->when($advalidate != 0, function($qe) use ($addons)){
+                            return $qe->whereHas('addons', function($q) use ($addons){
+                                return $q->whereIn('addon_id', $addons);
+                            });
                         })
                         ->whereHas('availability', function($q) use ($day){
                             return $q->where('week_day', $day);
@@ -158,10 +162,12 @@ class bookingController extends Controller
 
             $userArr = \Arr::pluck($users_ids,'user_id');
 
+            $advalidate = 0;
             foreach($cart['services'] as $val){
                 array_push($services, base64_decode($val['id']));
                 foreach($val['addons'] as $vall){
                     array_push($addons, $vall['id']);
+                    $advalidate = 1;
                 }
             }
             $data['day'] = $day;
@@ -177,8 +183,10 @@ class bookingController extends Controller
                             ->whereHas('services', function($q) use ($services){
                                 return $q->whereIn('service_id', $services);
                             })
-                            ->whereHas('addons', function($q) use ($addons){
-                                return $q->whereIn('addon_id', $addons);
+                            ->when($advalidate != 0, function($qe) use ($addons)){
+                                return $qe->whereHas('addons', function($q) use ($addons){
+                                    return $q->whereIn('addon_id', $addons);
+                                });
                             })
                             ->whereHas('availability', function($q) use ($day){
                                 return $q->where('week_day', $day);
