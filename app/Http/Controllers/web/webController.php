@@ -50,7 +50,7 @@ class webController extends Controller
        
              
                Mail::send('emails.query', $data, function($message)  {
-                $message->to('queries@wellbe.co.nz')
+                $message->to('jarrodahearn93@gmail.com')
                 ->subject("Query From Wellbe.co.nz");
                 $message->from("noreply@wellbe.co.nz", 'Wellbe');
                 });
