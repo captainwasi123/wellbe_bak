@@ -65,7 +65,7 @@ class bookingController extends Controller
                         ->whereHas('services', function($q) use ($services){
                             return $q->whereIn('service_id', $services);
                         })
-                        ->when($advalidate != 0, function($qe) use ($addons)){
+                        ->when($advalidate != 0, function($qe) use ($addons){
                             return $qe->whereHas('addons', function($q) use ($addons){
                                 return $q->whereIn('addon_id', $addons);
                             });
@@ -183,7 +183,7 @@ class bookingController extends Controller
                             ->whereHas('services', function($q) use ($services){
                                 return $q->whereIn('service_id', $services);
                             })
-                            ->when($advalidate != 0, function($qe) use ($addons)){
+                            ->when($advalidate != 0, function($qe) use ($addons){
                                 return $qe->whereHas('addons', function($q) use ($addons){
                                     return $q->whereIn('addon_id', $addons);
                                 });
