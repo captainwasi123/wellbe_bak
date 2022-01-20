@@ -20,7 +20,9 @@
                <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12 no-pad">
                   <div class="login-wrapper">
                      <div class="block-element1 text-center m-b-40">
-                        <img src="{{URL::to('/public/assets/web/new/')}}/images/wellbe-logo.png" width="150px">
+                        <a href="{{route('home')}}">
+                           <img src="{{URL::to('/public/assets/web/new/')}}/images/wellbe-logo.png" width="150px">
+                        </a>
                      </div>
                      <div class="login-heading m-b-40">
                         <h3 class="text-left"> Create a Practitioner Account </h3>
