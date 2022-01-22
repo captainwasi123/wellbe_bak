@@ -12,7 +12,7 @@
          $timestamp1 = strtotime($data->start_at.' '.$data->details[0]->start_time);
          $timestamp2 = strtotime($data->cancel->created_at);
          $hours_gap = abs($timestamp2 - $timestamp1)/(60*60);
-         if(date('Y-m-d H:i:s', strtotime($data->start_at.' '.$data->details[0]->start_time) <= date('Y-m-d H:i:s', strtotime($data->cancel->created_at)){
+         if(date('Y-m-d H:i:s', strtotime($data->start_at.' '.$data->details[0]->start_time)) <= date('Y-m-d H:i:s', strtotime($data->cancel->created_at))){
             $pract_percentage = 75;
             $cust_percentage = 0;
          }else{
