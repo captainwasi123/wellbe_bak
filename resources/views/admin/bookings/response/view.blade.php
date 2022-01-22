@@ -12,7 +12,7 @@
          $timestamp1 = strtotime($data->start_at.' '.$data->details[0]->start_time);
          $timestamp2 = strtotime($data->cancel->created_at);
          $hours_gap = abs($timestamp2 - $timestamp1)/(60*60);
-         echo $hours_gap; die;
+         //echo $hours_gap; die;
          if($hours_gap > 24){
             $pract_percentage = 0;
             $cust_percentage = 100;
