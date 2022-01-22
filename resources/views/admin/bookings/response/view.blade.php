@@ -12,16 +12,20 @@
          $timestamp1 = strtotime($data->start_at.' '.$data->details[0]->start_time);
          $timestamp2 = strtotime($data->cancel->created_at);
          $hours_gap = abs($timestamp2 - $timestamp1)/(60*60);
-         echo $data->start_at.' '.$data->details[0]->start_time.' ------------ '.$data->cancel->created_at; die;
-         if($hours_gap > 24){
-            $pract_percentage = 0;
-            $cust_percentage = 100;
-         }elseif($hours_gap > 2 && $hours_gap <= 24){
-            $pract_percentage = 0;
-            $cust_percentage = 75;
-         }elseif($hours_gap < 2){
+         if(date('Y-m-d H:i:s', strtotime($data->start_at.' '.$data->details[0]->start_time) <= date('Y-m-d H:i:s', strtotime($data->cancel->created_at)){
             $pract_percentage = 75;
             $cust_percentage = 0;
+         }else{
+            if($hours_gap > 24){
+               $pract_percentage = 0;
+               $cust_percentage = 100;
+            }elseif($hours_gap > 2 && $hours_gap <= 24){
+               $pract_percentage = 0;
+               $cust_percentage = 75;
+            }elseif($hours_gap < 2){
+               $pract_percentage = 75;
+               $cust_percentage = 0;
+            }
          }
       }
 
