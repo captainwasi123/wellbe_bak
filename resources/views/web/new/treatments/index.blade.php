@@ -41,7 +41,7 @@
                            <p class="two_line"> 
                               {{$val->description}}
                            </p>
-                           <h6> <a href="javascript:void(0)" class="serviceDetails" data-id="{{base64_encode($val->id)}}"> Book Now </a> <span> From {{empty($val->lowestPrice) || $val->lowestPrice->price == 0 ? '$'.number_format($val->price, 2) : '$'.number_format($val->lowestPrice->price, 2)}} </span> </h6>
+                           <h6> <a href="javascript:void(0)" class="serviceDetails" data-id="{{base64_encode($val->id)}}"> Book Now </a> <span> From {{empty($val->lowestPrice) || $val->lowestPrice->price > $val->price ? '$'.number_format($val->price, 2) : '$'.number_format($val->lowestPrice->price, 2)}} </span> </h6>
                         </div>
                      </div>
                   @endforeach
