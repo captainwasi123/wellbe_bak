@@ -85,7 +85,7 @@
                                              @php $v = 0; $st= 1; @endphp
                                           @endif
 
-                                          @if($endDuration > $vupd->start_time && $endDuration <= $endDuration2)
+                                          @if($endDuration > $vupd->start_time && $endDuration < $endDuration2)
                                              @php $v = 0; $st =2; @endphp
                                           @endif
 
