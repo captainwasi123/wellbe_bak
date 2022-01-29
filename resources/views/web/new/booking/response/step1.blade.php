@@ -76,13 +76,13 @@
                                  @foreach($val->p_upcoming as $vup)
                                     @if($vup->start_at == $date)
                                        @foreach($vup->details as $vupd)
-                                          @if($start >= $vupd->start_time && $start <= $vupd->end_time)
-                                             @php $v = 0; @endphp
-                                          @endif
                                           @php 
                                              $endDuration = date('H:i:s',strtotime('+'.$bookingDuration.' minutes',strtotime($start))); 
                                              $endDuration2 = date('H:i:s',strtotime('+'.$buffer.' minutes',strtotime($vupd->end_time))); 
                                           @endphp
+                                          @if($start >= $vupd->start_time && $start <= $endDuration2)
+                                             @php $v = 0; @endphp
+                                          @endif
 
                                           @if($endDuration >= $vupd->start_time && $endDuration <= $endDuration2)
                                              @php $v = 0; @endphp
