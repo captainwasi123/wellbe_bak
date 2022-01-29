@@ -138,6 +138,7 @@
                                                       </div>
                                                       @endif
                                                       @php $start = date('H:i:s',strtotime('+'.$bslot.' minutes',strtotime($start))); $x++; @endphp
+                                                      {{$start}}
                                                    @endwhile 
                                                 @endforeach
                                              @endif
