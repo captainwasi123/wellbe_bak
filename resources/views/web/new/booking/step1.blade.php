@@ -109,7 +109,7 @@
                                                       @foreach($val->p_upcoming as $vup)
                                                          @if($vup->start_at == date('Y-m-d'))
                                                             @foreach($vup->details as $vupd)
-                                                               @if($start > $vupd->start_time && $start < $vupd->end_time)
+                                                               @if($start >= $vupd->start_time && $start <= $vupd->end_time)
                                                                   @php $v = 0; @endphp
                                                                @endif
                                                                
