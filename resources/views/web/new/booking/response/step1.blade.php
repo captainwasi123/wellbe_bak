@@ -89,6 +89,10 @@
                                              @php $v = 0; $st =2; @endphp
                                           @endif
 
+                                          @if(($vupd->start_time >= $start && $vupd->start_time <= $endDuration) && ($endDuration2 >= $start && $endDuration2 <= $endDuration))
+                                             @php $v = 0; $st =2; @endphp 
+                                          @endif
+
                                        @endforeach
                                     @endif
                                  @endforeach
