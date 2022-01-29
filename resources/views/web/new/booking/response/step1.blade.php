@@ -76,7 +76,7 @@
                                  @foreach($val->p_upcoming as $vup)
                                     @if($vup->start_at == $date)
                                        @foreach($vup->details as $vupd)
-                                          @if($start > $vupd->start_time && $start < $vupd->end_time)
+                                          @if($start >= $vupd->start_time && $start < $vupd->end_time)
                                              @php $v = 0; @endphp
                                           @endif
                                           @php 
@@ -100,7 +100,7 @@
                                  @if($v == 1)
                                     <div>
                                        <input type="radio" id="myCheck{{$slot->id.$x}}" class="timeslot" name="timeslot" data-time="{{date('h:i A', strtotime($start))}}" data-prac="{{base64_encode($val->id)}}" tabindex="-1"> 
-                                       <label class="book-time-btn"  for="myCheck{{$slot->id.$x}}" >{{date('h:i A', strtotime($start))}} {{$buffer}}</label>
+                                       <label class="book-time-btn"  for="myCheck{{$slot->id.$x}}" >{{date('h:i A', strtotime($start))}} {{$bookingDuration}}</label>
                                     </div>
                                  @endif
                                  @php $start = date('H:i:s',strtotime('+'.$bslot.' minutes',strtotime($start))); $x++; @endphp
