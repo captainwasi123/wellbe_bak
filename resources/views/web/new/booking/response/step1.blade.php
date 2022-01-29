@@ -53,7 +53,7 @@
                            @foreach($avail->slots as $slot)
                               @php
                                  $x = 0; 
-                                 $buffer = empty($val->user_store->buffer_between_appointments) ? 30 : $val->user_store->buffer_between_appointments; 
+                                 $buffer = empty($val->user_store->buffer_between_appointments) && $val->user_store->buffer_between_appointments != 0 ? 30 : $val->user_store->buffer_between_appointments; 
                                  if($date == date('Y-m-d')){
                                     $curr = date('H:i:s');
                                     if($curr > $slot->start_booking){
