@@ -84,7 +84,7 @@
                                              $endDuration2 = date('H:i:s',strtotime('+'.$buffer.' minutes',strtotime($vupd->end_time))); 
                                           @endphp
 
-                                          @if($endDuration >= $vupd->start_time && $endDuration < $endDuration2)
+                                          @if($endDuration >= $vupd->start_time && $endDuration <= $endDuration2)
                                              @php $v = 0; @endphp
                                           @endif
 
