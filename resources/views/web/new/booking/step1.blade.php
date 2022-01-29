@@ -119,7 +119,7 @@
                                                                   @php $v = 0; @endphp
                                                                @endif
 
-                                                               @if($endDuration >= $vupd->start_time && $endDuration <= $endDuration2)
+                                                               @if($endDuration > $vupd->start_time && $endDuration <= $endDuration2)
                                                                   @php $v = 0; @endphp
                                                                @endif
                                                             @endforeach
@@ -135,11 +135,6 @@
                                                       <div>
                                                          <input type="radio" id="myCheck{{$slot->id.$x}}" class="timeslot" name="timeslot" data-time="{{date('h:i A', strtotime($start))}}" data-prac="{{base64_encode($val->id)}}" tabindex="-1"> 
                                                          <label class="book-time-btn"  for="myCheck{{$slot->id.$x}}" >{{date('h:i A', strtotime($start))}}</label>
-                                                      </div>
-                                                      @else
-                                                      <div>
-                                                         <input type="radio" id="myCheck{{$slot->id.$x}}" class="timeslot" name="timeslot" data-time="{{date('h:i A', strtotime($start))}}" data-prac="{{base64_encode($val->id)}}" tabindex="-1"> 
-                                                         <label class="book-time-btn"  for="myCheck{{$slot->id.$x}}" >{{date('h:i A', strtotime($start))}}- D</label>
                                                       </div>
                                                       @endif
                                                       @php $start = date('H:i:s',strtotime('+'.$bslot.' minutes',strtotime($start))); $x++; @endphp
