@@ -80,7 +80,7 @@
                                              $endDuration = date('H:i:s',strtotime('+'.$bookingDuration.' minutes',strtotime($start))); 
                                              $endDuration2 = date('H:i:s',strtotime('+'.$buffer.' minutes',strtotime($vupd->end_time))); 
                                           @endphp
-                                          @if($start >= $vupd->start_time && $start <= $endDuration2)
+                                          @if($start >= $vupd->start_time && $start < $endDuration2)
                                              @php $v = 0; @endphp
                                           @endif
 
