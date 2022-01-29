@@ -76,7 +76,7 @@
                                  @foreach($val->p_upcoming as $vup)
                                     @if($vup->start_at == $date)
                                        @foreach($vup->details as $vupd)
-                                          @if($start >= $vupd->start_time && $start < $vupd->end_time)
+                                          @if($start > $vupd->start_time && $start < $vupd->end_time)
                                              @php $v = 0; @endphp
                                           @endif
                                           @php 
@@ -84,7 +84,7 @@
                                              $endDuration2 = date('H:i:s',strtotime('+'.$buffer.' minutes',strtotime($vupd->end_time))); 
                                           @endphp
 
-                                          @if($endDuration >= $vupd->start_time && $endDuration <= $endDuration2)
+                                          @if($endDuration > $vupd->start_time && $endDuration < $endDuration2)
                                              @php $v = 0; @endphp
                                           @endif
 
