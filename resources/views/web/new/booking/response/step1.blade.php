@@ -72,7 +72,8 @@
                               @endphp
                               @php $bookingDuration = $duration+$buffer; @endphp
                               @while($start <= $end)
-                                 @php $v = 1; @endphp
+                                 @php $v = 1; $st = 0; @endphp
+
                                  @foreach($val->p_upcoming as $vup)
                                     @if($vup->start_at == $date)
                                        @foreach($vup->details as $vupd)
@@ -81,11 +82,11 @@
                                              $endDuration2 = date('H:i:s',strtotime('+'.$buffer.' minutes',strtotime($vupd->end_time))); 
                                           @endphp
                                           @if($start >= $vupd->start_time && $start < $endDuration2)
-                                             @php $v = 0; @endphp
+                                             @php $v = 0; $st= 1; @endphp
                                           @endif
 
                                           @if($endDuration >= $vupd->start_time && $endDuration <= $endDuration2)
-                                             @php $v = 0; @endphp
+                                             @php $v = 0; $st =2; @endphp
                                           @endif
 
                                        @endforeach
@@ -95,7 +96,7 @@
                                     $endDuration = date('H:i:s',strtotime('+'.$bookingDuration.' minutes',strtotime($start)));
                                  @endphp
                                  @if($endDuration > $end)
-                                    @php $v = 0; @endphp
+                                    @php $v = 0; $st = 3; @endphp
                                  @endif
                                  @if($v == 1)
                                     <div>
@@ -105,7 +106,7 @@
                                     @else
                                     <div>
                                        <input type="radio" id="myCheck{{$slot->id.$x}}" class="timeslot" name="timeslot" data-time="{{date('h:i A', strtotime($start))}}" data-prac="{{base64_encode($val->id)}}" tabindex="-1"> 
-                                       <label class="book-time-btn"  for="myCheck{{$slot->id.$x}}" >{{date('h:i A', strtotime($start))}}- D</label>
+                                       <label class="book-time-btn"  for="myCheck{{$slot->id.$x}}" >{{date('h:i A', strtotime($start))}}- {{$st}}</label>
                                     </div>
                                  @endif
                                  @php $start = date('H:i:s',strtotime('+'.$bslot.' minutes',strtotime($start))); $x++; @endphp
