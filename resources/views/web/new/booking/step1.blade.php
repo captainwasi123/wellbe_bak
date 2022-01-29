@@ -54,7 +54,7 @@
                            <div class="all-bookings">
                               @php $ucount = 0; @endphp
                               @foreach($users as $val)
-                                 @php $uvalid = 1; $duration = empty($val->user_store->buffer_between_appointments) ? 30 : $val->user_store->buffer_between_appointments; @endphp
+                                 @php $uvalid = 1;  @endphp
                                  @foreach(Session::get('cart.services') as $sval)
                                     @php $usvalid = 0; @endphp
                                     @foreach($val->services as $usval)
