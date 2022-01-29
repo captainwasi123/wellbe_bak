@@ -94,7 +94,7 @@
                                  @php 
                                     $endDuration = date('H:i:s',strtotime('+'.$bookingDuration.' minutes',strtotime($start)));
                                  @endphp
-                                 @if($endDuration >= $end)
+                                 @if($endDuration > $end)
                                     @php $v = 0; @endphp
                                  @endif
                                  @if($v == 1)
