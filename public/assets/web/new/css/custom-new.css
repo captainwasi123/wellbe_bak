@@ -2566,7 +2566,9 @@ span.circle-1 {
     right: -20px;
     z-index: 99;
 }
-
+.slick-arrow {
+    top: 33px;
+}
 
 
 /*Queries for Other Devices*/
