@@ -153,7 +153,7 @@
             </div>  --}}
             <div class="form-field3">
                <p> Buffer Between Appointments (Minutes) </p>
-               <input type="text" name="buffer_between_appointments" value="{{empty($user_data->user_store) ? '' : $user_data->user_store->buffer_between_appointments}}" required>
+               <input type="number" name="buffer_between_appointments" value="{{empty($user_data->user_store) ? '' : $user_data->user_store->buffer_between_appointments}}" required>
             </div>
             <div class="block-element m-t-15 m-b-10">
                <h4 class="col-blue"> Payout Details </h4>

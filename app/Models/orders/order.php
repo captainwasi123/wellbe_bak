@@ -36,43 +36,44 @@ class order extends Model
         $id = $o->id;
 
         foreach ($data['services'] as $val) {
+            foreach($val as $it){
+                $ser = services::find(base64_decode($it['id']));
+                $userv = userService::where('service_id', base64_decode($it['id']))->where('user_id', base64_decode($data['booking']['practitioner']))->first();
 
-            $ser = services::find(base64_decode($val['id']));
-            $userv = userService::where('service_id', base64_decode($val['id']))->where('user_id', base64_decode($data['booking']['practitioner']))->first();
+                $sprice = empty($userv->price) ? '0' : $userv->price;
+                $sprice = $sprice == 0 ? $ser->price : $sprice;
 
-            $sprice = empty($userv->price) ? '0' : $userv->price;
-            $sprice = $sprice == 0 ? $ser->price : $sprice;
+                $aprice = 0;
+                $aduration = 0;
+                foreach($it['addons'] as $add){
+                    $aprice = $aprice+$add['price'];
+                    $aduration = $aduration+$add['duration'];
+                }
 
-            $aprice = 0;
-            $aduration = 0;
-            foreach($val['addons'] as $add){
-                $aprice = $aprice+$add['price'];
-                $aduration = $aduration+$add['duration'];
+                $end_time = date('H:i:s',strtotime('+'.(($ser->duration+$aduration)*$it['quantity']).' minutes',strtotime($start_time)));
+                $d = new orderDetail;
+                $d->order_id = $id;
+                $d->service_id = base64_decode($it['id']);
+                $d->qty = $it['quantity'];
+                $d->price = ($sprice*$it['quantity']);
+                $d->serve_date = date('Y-m-d', strtotime($data['booking']['date']));
+                $d->start_time = $start_time;
+                $d->end_time = $end_time;
+                $d->save();
+
+                foreach($it['addons'] as $add){
+                    $ad = new orderAddons;
+                    $ad->detail_id = $d->id;
+                    $ad->addon_id = $add['id'];
+                    $ad->price = $add['price'];
+                    $ad->save();
+                }
+
+                $start_time = $end_time;
+
+                //Calculating Subtotal
+                $accounts['sub_total'] = $accounts['sub_total']+(($sprice + $aprice)*$it['quantity']);
             }
-
-            $end_time = date('H:i:s',strtotime('+'.(($ser->duration+$aduration)*$val['quantity']).' minutes',strtotime($start_time)));
-            $d = new orderDetail;
-            $d->order_id = $id;
-            $d->service_id = base64_decode($val['id']);
-            $d->qty = $val['quantity'];
-            $d->price = ($sprice*$val['quantity']);
-            $d->serve_date = date('Y-m-d', strtotime($data['booking']['date']));
-            $d->start_time = $start_time;
-            $d->end_time = $end_time;
-            $d->save();
-
-            foreach($val['addons'] as $add){
-                $ad = new orderAddons;
-                $ad->detail_id = $d->id;
-                $ad->addon_id = $add['id'];
-                $ad->price = $add['price'];
-                $ad->save();
-            }
-
-            $start_time = $end_time;
-
-            //Calculating Subtotal
-            $accounts['sub_total'] = $accounts['sub_total']+(($sprice + $aprice)*$val['quantity']);
         }
 
         //Calculating GST/Commission

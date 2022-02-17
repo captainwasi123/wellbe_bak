@@ -8,7 +8,9 @@
 @php $duration = 0; $bslot = 30; @endphp
 @if(Session::get('cart') !== null)
    @foreach(Session::get('cart.services') as $val)
-      @php $duration = $duration+($val['duration']*$val['quantity']); @endphp
+      @foreach($val as $it)
+         @php $duration = $duration+($it['duration']*$it['quantity']); @endphp
+      @endforeach
    @endforeach
    @if(count(Session::get('cart')) == 0)
       @php $duration = 30; @endphp
@@ -23,15 +25,17 @@
          @foreach($users as $val)
             @php $uvalid = 1; @endphp
             @foreach(Session::get('cart.services') as $sval)
-               @php $usvalid = 0; @endphp
-               @foreach($val->services as $usval)
-                  @if(base64_decode($sval['id']) == $usval->service_id)
-                     @php $usvalid = 1; @endphp
+               @foreach($sval as $sit)
+                  @php $usvalid = 0; @endphp
+                  @foreach($val->services as $usval)
+                     @if(base64_decode($sit['id']) == $usval->service_id)
+                        @php $usvalid = 1; @endphp
+                     @endif
+                  @endforeach
+                  @if($usvalid == 0)
+                     @php $uvalid = 0; @endphp
                   @endif
                @endforeach
-               @if($usvalid == 0)
-                  @php $uvalid = 0; @endphp
-               @endif
             @endforeach
             @if($uvalid == 1)
                <div class="booking-practices">

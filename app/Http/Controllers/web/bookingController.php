@@ -46,10 +46,12 @@ class bookingController extends Controller
 
         $advalidate = 0;
         foreach($cart['services'] as $val){
-            array_push($services, base64_decode($val['id']));
-            foreach($val['addons'] as $vall){
-                array_push($addons, $vall['id']);
-                $advalidate = 1;
+            foreach($val as $it){
+                array_push($services, base64_decode($it['id']));
+                foreach($it['addons'] as $vall){
+                    array_push($addons, $vall['id']);
+                    $advalidate = 1;
+                }
             }
         }
 
@@ -84,19 +86,21 @@ class bookingController extends Controller
         $data = $request->all();
         $cart = session()->get('cart');
         foreach($cart['services'] as $val){
-            $ser = services::find(base64_decode($val['id']));
-            $rate = userService::where(['user_id' => base64_decode($data['id']), 'service_id' => base64_decode($val['id'])])->first();
-            $price = empty($rate->id) || $rate->price == 0 ? $ser->price : $rate->price;
+            foreach($val as $mkey => $it){
+                $ser = services::find(base64_decode($it['id']));
+                $rate = userService::where(['user_id' => base64_decode($data['id']), 'service_id' => base64_decode($it['id'])])->first();
+                $price = empty($rate->id) || $rate->price == 0 ? $ser->price : $rate->price;
 
-            $cart['services'][base64_decode($val['id'])]['price'] = $price;
+                $cart['services'][base64_decode($it['id'])][$mkey]['price'] = $price;
 
-            foreach($cart['services'][base64_decode($val['id'])]['addons'] as $key => $adval){
-                $add = addons::find($adval['id']);
-                $uadd = userAddon::where('user_id', base64_decode($data['id']))->where('addon_id', $adval['id'])->first();
+                foreach($it['addons'] as $key => $adval){
+                    $add = addons::find($adval['id']);
+                    $uadd = userAddon::where('user_id', base64_decode($data['id']))->where('addon_id', $adval['id'])->first();
 
-                $aprice = empty($uadd->id) || $uadd->price == 0 ? $add->addonsDetail[0]->price : $uadd->price;
+                    $aprice = empty($uadd->id) || $uadd->price == 0 ? $add->addonsDetail[0]->price : $uadd->price;
 
-                $cart['services'][base64_decode($val['id'])]['addons'][$key]['price'] = $aprice;
+                    $cart['services'][base64_decode($it['id'])][$mkey]['addons'][$key]['price'] = $aprice;
+                }
             }
         }
 
@@ -164,10 +168,12 @@ class bookingController extends Controller
 
             $advalidate = 0;
             foreach($cart['services'] as $val){
-                array_push($services, base64_decode($val['id']));
-                foreach($val['addons'] as $vall){
-                    array_push($addons, $vall['id']);
-                    $advalidate = 1;
+                foreach($val as $it){
+                    array_push($services, base64_decode($it['id']));
+                    foreach($it['addons'] as $vall){
+                        array_push($addons, $vall['id']);
+                        $advalidate = 1;
+                    }
                 }
             }
             $data['day'] = $day;

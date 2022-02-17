@@ -60,29 +60,30 @@
                   </div>
                   @if(Session::get('cart') !== null)
                      @foreach(Session::get('cart.services') as $val)
-
-                        <div class="book-summary-item">
-                           <h5>{{$val['quantity']}}x {{$val['title']}} </h5>
-                           @php $addonPrice = 0; $addonDuration = 0; @endphp
-                           @if(count($val['addons']) > 0)
-                              @foreach($val['addons'] as $key => $adval)
-                                 @php $addonPrice = $addonPrice+$adval['price']; @endphp
-                                 @php $addonDuration = $addonDuration+$adval['duration']; @endphp
-                              @endforeach
-                           @endif
-                           <p> <b class="col-green"> From ${{number_format(($val['price']+$addonPrice), 2)}} </b> {{$val['duration']+$addonDuration}} minutes </p>
-
-                           @if(count($val['addons']) > 0)
-                              <p class="addonLabelTreatment">
-                                 Includes
-                                 @foreach($val['addons'] as $key => $adval)
-                                    {{$key == 0 ? '' : ', '}}{{$adval['name']}}
+                        @foreach($val as $it)
+                           <div class="book-summary-item">
+                              <h5>{{$it['title']}} </h5>
+                              @php $addonPrice = 0; $addonDuration = 0; @endphp
+                              @if(count($it['addons']) > 0)
+                                 @foreach($it['addons'] as $key => $adval)
+                                    @php $addonPrice = $addonPrice+$adval['price']; @endphp
+                                    @php $addonDuration = $addonDuration+$adval['duration']; @endphp
                                  @endforeach
-                              </p>
-                           @endif
-                           <a href="javascript:void(0)" class="item-edit1 col-red removeItemCart" data-id="{{$val['id']}}"> Remove </a>
-                        </div>
-                        @php $totalPrice += (($val['price']+$addonPrice)*$val['quantity']); @endphp
+                              @endif
+                              <p> <b class="col-green"> From ${{number_format(($it['price']+$addonPrice), 2)}} </b> {{$it['duration']+$addonDuration}} minutes </p>
+
+                              @if(count($it['addons']) > 0)
+                                 <p class="addonLabelTreatment">
+                                    Includes
+                                    @foreach($it['addons'] as $key => $adval)
+                                       {{$key == 0 ? '' : ', '}}{{$adval['name']}}
+                                    @endforeach
+                                 </p>
+                              @endif
+                              <a href="javascript:void(0)" class="item-edit1 col-red removeItemCart" data-id="{{$it['id']}}"> Remove </a>
+                           </div>
+                           @php $totalPrice += (($it['price']+$addonPrice)*$it['quantity']); @endphp
+                        @endforeach
                      @endforeach
                      @if(count(Session::get('cart')) == 0)
                         <h4>No Items Found.</h4>

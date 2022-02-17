@@ -9,17 +9,20 @@ use App\Models\services\services;
 use App\Models\services\addons;
 use App\Models\User;
 use DB;
+use Session;
 
 class treatmentController extends Controller
 { 
     //
     function treatments(){
+        
         $categories = Categories::where('status', '1')->get();
         $users = User::where('user_type', '1')->limit(6)->get();
         return view('web.new.treatments.index', ['categories' => $categories, 'users' => $users, 'selected' => 'all']);
     }
     public function treatments_search(Request $request)
     {   
+        //dd(Session::get('cart.services'));
         //session()->flush('cart');
         /*$cart = session()->get('cart');
         dd($cart);*/
@@ -185,14 +188,16 @@ class treatmentController extends Controller
         if(!$cart) {
             $cart['services'] = [
                 $id => [
-                    "id"    => base64_encode($product->id),
-                    "title" => $product->name,
-                    "category_id" => $product->category_id,
-                    "category" => $product->cat->category,
-                    "quantity" => 1,
-                    "price" => empty($product->lowestPrice) || $product->lowestPrice->price > $product->price  ? $product->price : $product->lowestPrice->price,
-                    "duration" => $product->duration,
-                    "addons" => $addons
+                    [
+                        "id"    => base64_encode($product->id),
+                        "title" => $product->name,
+                        "category_id" => $product->category_id,
+                        "category" => $product->cat->category,
+                        "quantity" => 1,
+                        "price" => empty($product->lowestPrice) || $product->lowestPrice->price > $product->price  ? $product->price : $product->lowestPrice->price,
+                        "duration" => $product->duration,
+                        "addons" => $addons
+                    ]
                 ]
             ];
         
@@ -201,15 +206,15 @@ class treatmentController extends Controller
             return redirect()->back()->with('success', 'Service Added.');
         }
         
-        if(isset($cart['services'][$id])) {
+        /*if(isset($cart['services'][$id])) {
             
             $cart['services'][$id]['quantity']++;
             $cart['services'][$id]['addons'] = $addons;
             session()->put('cart', $cart);
 
             return redirect()->back()->with('success', 'Service Added.');
-        }else{
-            $cart['services'][$id] = [
+        }else{*/
+            $cart['services'][$id][] = [
                         "id"    => base64_encode($product->id),
                         "title" => $product->name,
                         "category_id" => $product->category_id,
@@ -222,7 +227,7 @@ class treatmentController extends Controller
             session()->put('cart', $cart);
         
             return redirect()->back()->with('success', 'Service Added.');
-        }
+        /*}*/
     }
 
     function removeItemCart($id){

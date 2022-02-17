@@ -282,7 +282,7 @@ $(function() {
 function timeSlider(){
 
    $('.time-slider').slick({
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 300,
     slidesToShow:6,

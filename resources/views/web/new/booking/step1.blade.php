@@ -33,7 +33,9 @@
                   @php $duration = 0; $bslot = 30; @endphp
                   @if(Session::get('cart') !== null)
                      @foreach(Session::get('cart.services') as $val)
-                        @php $duration = $duration+($val['duration']*$val['quantity']); @endphp
+                        @foreach($val as $it)
+                           @php $duration = $duration+($it['duration']*$it['quantity']); @endphp
+                        @endforeach
                      @endforeach
                      @if(count(Session::get('cart')) == 0)
                         @php $duration = 30; @endphp
@@ -56,15 +58,17 @@
                               @foreach($users as $val)
                                  @php $uvalid = 1;  @endphp
                                  @foreach(Session::get('cart.services') as $sval)
-                                    @php $usvalid = 0; @endphp
-                                    @foreach($val->services as $usval)
-                                       @if(base64_decode($sval['id']) == $usval->service_id)
-                                          @php $usvalid = 1; @endphp
+                                    @foreach($sval as $sit)
+                                       @php $usvalid = 0; @endphp
+                                       @foreach($val->services as $usval)
+                                          @if(base64_decode($sit['id']) == $usval->service_id)
+                                             @php $usvalid = 1; @endphp
+                                          @endif
+                                       @endforeach
+                                       @if($usvalid == 0)
+                                          @php $uvalid = 0; @endphp
                                        @endif
                                     @endforeach
-                                    @if($usvalid == 0)
-                                       @php $uvalid = 0; @endphp
-                                    @endif
                                  @endforeach
                                  @if($uvalid == 1)
                                     <div class="booking-practices">
@@ -196,23 +200,25 @@
                   </div>
                   @if(Session::get('cart') !== null)
                      @foreach(Session::get('cart.services') as $val)
-                        <div class="book-summary-item">
-                           <h5>{{$val['quantity']}}x {{$val['title']}} </h5>
-                           @php $addonPrice = 0;$addonDuration = 0; @endphp
-                           @if(count($val['addons']) > 0)
-                              <p class="addonLabelTreatment">
-                                 Includes
-                                 @foreach($val['addons'] as $key => $adval)
-                                    {{$key == 0 ? '' : ', '}}{{$adval['name']}}
-                                    @php $addonPrice = $addonPrice+$adval['price']; @endphp
-                                    @php $addonDuration = $addonDuration+$adval['duration']; @endphp
-                                 @endforeach
-                              </p>
-                           @endif
-                           <p> <b class="col-green"> 
-                           </b> {{$val['duration']+$addonDuration}} minutes </p>
-                        </div>
-                        @php $totalAmount = $totalAmount+(($val['price']+$addonPrice)*$val['quantity']); @endphp
+                        @foreach($val as $it)
+                           <div class="book-summary-item">
+                              <h5>{{$it['title']}} </h5>
+                              @php $addonPrice = 0;$addonDuration = 0; @endphp
+                              @if(count($it['addons']) > 0)
+                                 <p class="addonLabelTreatment">
+                                    Includes
+                                    @foreach($it['addons'] as $key => $adval)
+                                       {{$key == 0 ? '' : ', '}}{{$adval['name']}}
+                                       @php $addonPrice = $addonPrice+$adval['price']; @endphp
+                                       @php $addonDuration = $addonDuration+$adval['duration']; @endphp
+                                    @endforeach
+                                 </p>
+                              @endif
+                              <p> <b class="col-green"> 
+                              </b> {{$it['duration']+$addonDuration}} minutes </p>
+                           </div>
+                           @php $totalAmount = $totalAmount+(($it['price']+$addonPrice)*$it['quantity']); @endphp
+                        @endforeach
                      @endforeach
                      @if(count(Session::get('cart')) == 0)
                         <h4>No Items Found.</h4>

@@ -33,7 +33,6 @@
                      <div>
                      <div class="banner-text">
                         <h3> Shaking up the industry </h3>
-                        <div></div>
                         </div>
                      </div>
                   </div>
