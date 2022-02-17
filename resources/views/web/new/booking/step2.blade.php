@@ -74,7 +74,7 @@
                      <h4>No Items Found.</h4>
                   @endif
                   <div class="book-summary-instructions m-b-10">
-                     <a data-toggle="modal" data-target=".addInstructionModal"><h6> {{empty(Session::get('cart.booking.instruction')) ? 'Add' : 'Edit'}} Instructions </h6></a>
+                     <a data-toggle="modal" data-target=".addInstructionModal"><h6 style="font-weight: 700;text-decoration: underline;"> {{empty(Session::get('cart.booking.instruction')) ? 'Add' : 'Edit'}} Instructions </h6></a>
                   </div>
                   @php 
                      $gst = $marketplace_data->gst;
