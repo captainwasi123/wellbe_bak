@@ -16,9 +16,7 @@ class treatmentController extends Controller
     //
     function treatments(){
         
-        $categories = Categories::where('status', '1')->get();
-        $users = User::where('user_type', '1')->limit(6)->get();
-        return view('web.new.treatments.index', ['categories' => $categories, 'users' => $users, 'selected' => 'all']);
+        return redirect('/');
     }
     public function treatments_search(Request $request)
     {   
