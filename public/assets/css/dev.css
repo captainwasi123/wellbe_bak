@@ -1,3 +1,11 @@
+.btn-default {
+    background-color: white;
+    font-weight: 600;
+}
+.btn-default:hover {
+    background-color: black;
+    color: #fff;
+}
 .cat-box1 {
 	cursor:pointer;
 }

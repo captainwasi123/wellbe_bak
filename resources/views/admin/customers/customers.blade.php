@@ -10,6 +10,7 @@
     <div class="box-type4">
     <div class="page-title">
        <h3 class="col-white"> Customers </h3>
+       <a href="javascript:void(0)" class="btn btn-default pull-right" data-href="{{route('admin.customers.export')}}" id="exportCustomer" style="margin-top: -46px;">Export</a>
     </div>
     <div class="box-type1">
        <div class="table-overlay table-type1">
@@ -50,4 +51,16 @@
        </div>
     </div>
 </div>
+@endsection
+@section('additionalJS')
+   <script type="text/javascript">
+      $(document).ready(function(){
+         'use strict'
+
+         $(document).on('click', '#exportCustomer', function(){
+            let url = $(this).data('href');
+            window.location.href = url;
+         });
+      });
+   </script>
 @endsection

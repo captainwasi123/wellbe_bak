@@ -82,6 +82,51 @@ class DashboardController extends Controller
 
         return view("admin.customers.customers", ['data' => $data]);
     }
+    function customersExport(Request $request){
+        $date = date('d-M-Y__h-i-A');
+        $fileName = 'Customers_'.$date.'.csv';
+        $data = User::where('user_type', '2')->get();
+
+        $headers = array(
+            "Content-type"        => "text/csv",
+            "Content-Disposition" => "attachment; filename=$fileName",
+            "Pragma"              => "no-cache",
+            "Cache-Control"       => "must-revalidate, post-check=0, pre-check=0",
+            "Expires"             => "0"
+        );
+
+        $Heading = array('Wellbe Customers Data | CSV');
+        $columns = array('First Name', 'Last Name', 'Email', 'Phone Number', 'Street', 'Suburb', 'City', 'Postcode', 'Newsletter', 'Upcomming Bookings', 'Completed Bookings', 'Cancelled Bookings', 'Revenue Generated');
+
+        $callback = function() use($data, $columns, $Heading) {
+            $file = fopen('php://output', 'w');
+            fputcsv($file, $Heading);
+            fputcsv($file, array('-'));
+            fputcsv($file, $columns);
+
+            foreach ($data as $val) {
+                $row['First Name']          = $val->first_name;
+                $row['Last Name']           = $val->last_name;
+                $row['Email']               = $val->email;
+                $row['Phone Number']        = $val->phone;
+                $row['Street']              = @$val->user_address->street;
+                $row['Suburb']              = @$val->user_address->suburb;
+                $row['City']                = @$val->user_address->city;
+                $row['Postcode']            = @$val->user_address->postcode;
+                $row['Newsletter']          = $val->newsletter == '0' ? 'NO' : 'YES';
+                $row['Upcomming Bookings']  = count($val->b_upcoming);
+                $row['Completed Bookings']  = count($val->b_completed);
+                $row['Cancelled Bookings']  = count($val->b_cancelled);
+                $row['Revenue Generated']   = empty($val->b_revenue) ? '0' : '$'.number_format($val->b_revenue[0]->totalRevenue, 2);
+
+                fputcsv($file, array($row['First Name'], $row['Last Name'], $row['Email'], $row['Phone Number'], $row['Street'],$row['Suburb'],$row['City'],$row['Postcode'],$row['Newsletter'],$row['Upcomming Bookings'],$row['Completed Bookings'],$row['Cancelled Bookings'],$row['Revenue Generated']));
+            }
+
+            fclose($file);
+        };
+
+        return response()->stream($callback, 200, $headers);
+    }
 
 
     //Practitioner

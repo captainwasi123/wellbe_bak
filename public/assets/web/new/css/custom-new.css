@@ -1190,7 +1190,7 @@ a.custom-anchor2 {
 
 
 .rounded-1 {
-    border-radius: 10px;
+    border-radius: 20px;
 }
 
 .rounded-2 {
@@ -1248,8 +1248,7 @@ textarea.form-control1 {
     font-weight: 700;
     font-size: 23px;
     letter-spacing: 0.8px;
-    border-bottom: 1px solid #e0e0e0;
-    padding-bottom: 18px;
+    padding-bottom: 0px;
 }
 
 .feder-profile p {
@@ -1258,9 +1257,53 @@ textarea.form-control1 {
     line-height: 26px;
     letter-spacing: 0.5px;
 }
-
- 
-
+.nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover {
+    border: 0;
+    color: #564E6D !important;
+    border-bottom: 1px solid;
+}
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    color: #564E6D;
+    border: 0;
+    font-weight: 800;
+    border-bottom: 2px solid;
+} 
+.nav-link {
+    color: #564E6D;
+    padding: 5px 10px !important;
+}
+.nav-tabs .nav-link {
+     border: 0; 
+     border-top-left-radius: 0rem; 
+     border-top-right-radius: 0rem; 
+}
+.feder-profile .tab-pane {
+    padding: 13px 0px;
+}
+.reviews_item .fa-star {
+    color: #d3d3d3;
+}
+.fa-star.checked {
+  color: orange !important;
+}
+.reviews_item {
+    border-bottom: 1px solid #e6e6e6;
+    padding: 10px 0px 10px 0px;
+}
+.reviews_item h4 {
+    color: #564E6D;
+    margin: 0;
+}
+.reviews_item span {
+    font-size: 12px;
+}
+.reviews_item p {
+    line-height: 20px;
+    font-weight: 800;
+}
+.reviews_item label {
+    color: #05c788;
+}
 .cart-extras-head h5 {
     color: grey;
     letter-spacing: 0.6px;

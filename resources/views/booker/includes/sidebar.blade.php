@@ -1,7 +1,7 @@
  <section class="sidebar-left">
          <div class="sidebar-custom">
             <div class="sidebar-logo">
-               <a href="{{route('booker.index')}}"> Wellbe </a>
+               <a href="{{route('booker.index')}}"> <img alt="logo" src="{{URL::to('/public/assets/web/new/')}}/images/wellbe-logo.png" style="height: 50px;"> </a>
                <button class="menu-hamburger"> <img alt="hamburger" src="{{URL::to('/')}}/public/assets/images/hamburger.png"> </button>
             </div>
             <div class="sidebar-menu">

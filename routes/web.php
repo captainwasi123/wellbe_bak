@@ -282,6 +282,7 @@ use Illuminate\Support\Facades\Route;
 		Route::get('/view/{id}', 'DashboardController@bookingView1');
 
 	    Route::get('/customers', 'DashboardController@customers')->name('admin.customers');
+	    Route::get('/customersExport', 'DashboardController@customersExport')->name('admin.customers.export');
 
 	    //Practitioner
 	    Route::prefix('practitioners')->group(function(){
