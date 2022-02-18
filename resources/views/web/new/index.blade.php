@@ -11,6 +11,7 @@
               <div class="banner-text">
                  <h3> All your favourite treatments at home
                  </h3>
+                 <a href="" data-toggle="modal" data-target=".safe-treatment-popup">New Popup</a>
                  
                  <p> Wellbe provides beauty & wellness services in the comfort of your home with therapists you can trust.  </p>
                  <form method="get" id="treatmentForm" action="{{route('treatments.search')}}">
