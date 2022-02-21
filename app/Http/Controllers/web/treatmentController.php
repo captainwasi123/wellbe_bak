@@ -96,7 +96,7 @@ class treatmentController extends Controller
         return \Arr::pluck($users_ids,'user_id');
     }
     function treatmentsCategory($category){
-        if(empty($category)){
+        if($category == 'booking'){
             return redirect('/');
         }else{
             $cat = category::where('category', $category)->first();
