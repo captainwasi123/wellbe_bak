@@ -1,8 +1,8 @@
-.btn-default {
+.page-title .btn-default {
     background-color: white;
     font-weight: 600;
 }
-.btn-default:hover {
+.page-title .btn-default:hover {
     background-color: black;
     color: #fff;
 }

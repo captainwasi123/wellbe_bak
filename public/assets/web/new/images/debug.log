@@ -1,2 +1,10 @@
 [0218/183753.432:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
 [0218/184321.385:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
+[0218/191445.877:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
+[0218/213917.580:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
+[0218/221144.828:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
+[0218/221435.747:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
+[0218/232457.667:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
+[0218/232541.770:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
+[0218/232617.133:WARNING:dns_config_service_win.cc(668)] Failed to read DnsConfig.
+[0219/003827.822:ERROR:browser_gpu_channel_host_factory.cc(139)] Failed to launch GPU process.

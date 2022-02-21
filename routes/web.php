@@ -288,6 +288,7 @@ use Illuminate\Support\Facades\Route;
 	    Route::prefix('practitioners')->group(function(){
 
 	    	Route::get('/', 'DashboardController@practitioners')->name('admin.practitioners');
+	    	Route::get('/export', 'DashboardController@practitionersExport')->name('admin.practitioners.export');
 	    	Route::post('/disable', 'DashboardController@disablePractitioners')->name('admin.practitioners.disable');
 	    	Route::post('/assume', 'DashboardController@assumePractitioners')->name('admin.practitioners.assume');
 			Route::get('/portal/{id}', 'DashboardController@practitioners_portal')->name('admin.practitioners.portal');

@@ -10,6 +10,7 @@
     <div class="box-type4">
     <div class="page-title">
        <h3 class="col-white"> Practitioners </h3>
+       <a href="javascript:void(0)" class="btn btn-default pull-right" data-href="{{route('admin.practitioners.export')}}" id="exportPractitioner" style="margin-top: -46px;">Export</a>
     </div>
     <div class="box-type1">
        <div class="table-overlay table-type1">
@@ -125,4 +126,14 @@
 @endsection
 @section('additionalJS')
    <script src="{{URL::to('/')}}/public/assets/js/dev/admin.js"> </script>
+   <script type="text/javascript">
+      $(document).ready(function(){
+         'use strict'
+
+         $(document).on('click', '#exportPractitioner', function(){
+            let url = $(this).data('href');
+            window.location.href = url;
+         });
+      });
+   </script>
 @endsection

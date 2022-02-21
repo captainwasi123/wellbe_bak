@@ -19,7 +19,6 @@
                 <tr>
                    <th> Name </th>
                    <th> Email </th>
-
                    <th> Upcoming Bookings </th>
                    <th> Completed Bookings </th>
                    <th> Cancelled Bookings </th>

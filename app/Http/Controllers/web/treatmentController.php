@@ -95,14 +95,18 @@ class treatmentController extends Controller
         return \Arr::pluck($users_ids,'user_id');
     }
     function treatmentsCategory($category){
-        $cat = category::where('category', $category)->first();
-        $categories = category::where('status', '1')->get();
-        $users = User::where('user_type', '1')
-                ->whereHas('services', function($q) use ($cat){
-                    $q->where('category_id', $cat->id);
-                })
-                ->limit(6)->get();
-        return view('web.treatments', ['categories' => $categories, 'users' => $users, 'selected' => $cat->id, 'cat_name' => $cat->category]);
+        if(empty($category)){
+            return redirect('/');
+        }else{
+            $cat = category::where('category', $category)->first();
+            $categories = category::where('status', '1')->get();
+            $users = User::where('user_type', '1')
+                    ->whereHas('services', function($q) use ($cat){
+                        $q->where('category_id', $cat->id);
+                    })
+                    ->limit(6)->get();
+            return view('web.treatments', ['categories' => $categories, 'users' => $users, 'selected' => $cat->id, 'cat_name' => $cat->category]);
+        }
     }
 
     function professionalProfile($id){ 

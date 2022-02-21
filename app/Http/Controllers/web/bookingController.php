@@ -126,11 +126,14 @@ class bookingController extends Controller
     }
     function step2(){
         $cart = session()->get('cart');
+        if(empty($cart['booking']['practitioner'])){
+            return redirect('/');
+        }else{
+            $data['user'] = User::find(base64_decode($cart['booking']['practitioner']));
 
-        $data['user'] = User::find(base64_decode($cart['booking']['practitioner']));
-
-        $data['marketplace_data'] = MarketplaceSetting::latest()->first();
-        return view('web.new.booking.step2')->with($data);
+            $data['marketplace_data'] = MarketplaceSetting::latest()->first();
+            return view('web.new.booking.step2')->with($data);
+        }
     }
 
     function instructions(Request $request){

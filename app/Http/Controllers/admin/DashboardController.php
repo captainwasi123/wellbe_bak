@@ -86,7 +86,6 @@ class DashboardController extends Controller
         $date = date('d-M-Y__h-i-A');
         $fileName = 'Customers_'.$date.'.csv';
         $data = User::where('user_type', '2')->get();
-
         $headers = array(
             "Content-type"        => "text/csv",
             "Content-Disposition" => "attachment; filename=$fileName",
@@ -138,6 +137,63 @@ class DashboardController extends Controller
 
         return view("admin.practitioners.practitioners", ['data' => $data]);
     }
+
+    function practitionersExport(Request $request){
+        $date = date('d-M-Y__h-i-A');
+        $fileName = 'Practitioners_'.$date.'.csv';
+        $data = User::where('user_type', '1')->get();
+        $mtp = MarketplaceSetting::latest()->first();
+
+        $headers = array(
+            "Content-type"        => "text/csv",
+            "Content-Disposition" => "attachment; filename=$fileName",
+            "Pragma"              => "no-cache",
+            "Cache-Control"       => "must-revalidate, post-check=0, pre-check=0",
+            "Expires"             => "0"
+        );
+
+        $Heading = array('Wellbe Practitioners Data | CSV');
+        $columns = array('First Name', 'Last Name', 'Email', 'Phone Number','Gender', 'Bio', 'Buffer Period', 'Bank Account Name', 'Bank Account Number', 'Marketplace Commission', 'Street', 'Suburb', 'City', 'Postcode', 'Newsletter', 'Upcomming Bookings', 'Completed Bookings', 'Cancelled Bookings', 'Revenue Generated', 'Commission Paid', 'Status');
+
+        $callback = function() use($data, $columns, $Heading, $mtp) {
+            $file = fopen('php://output', 'w');
+            fputcsv($file, $Heading);
+            fputcsv($file, array('-'));
+            fputcsv($file, $columns);
+
+            foreach ($data as $val) {
+                $row['First Name']              = $val->first_name;
+                $row['Last Name']               = $val->last_name;
+                $row['Email']                   = $val->email;
+                $row['Phone Number']            = $val->phone;
+                $row['Gender']                  = $val->gender;
+                $row['Bio']                     = $val->bio_description;
+                $row['Buffer Period']           = @$val->user_store->buffer_between_appointments;
+                $row['Bank Account Name']       = @$val->users_payout_details->bank_account_name;
+                $row['Bank Account Number']     = @$val->users_payout_details->bank_account_number;
+                $row['Marketplace Commission']  = $mtp->comission.' %';
+                $row['Street']              = @$val->user_address->street;
+                $row['Suburb']              = @$val->user_address->suburb;
+                $row['City']                = @$val->user_address->city;
+                $row['Postcode']            = @$val->user_address->postcode;
+                $row['Newsletter']          = $val->newsletter == '0' ? 'NO' : 'YES';
+                $row['Upcomming Bookings']  = count($val->p_upcoming);
+                $row['Completed Bookings']  = count($val->p_completed);
+                $row['Cancelled Bookings']  = count($val->p_cancelled);
+                $row['Revenue Generated']   = empty($val->p_revenue) ? '0' : '$'.number_format($val->p_revenue[0]->totalRevenue, 2);
+                $row['Commission Paid']     = '-';
+                $row['Status']              = $val->status == '1' ? 'Active' : 'Disabled';
+
+                fputcsv($file, array($row['First Name'], $row['Last Name'], $row['Email'], $row['Phone Number'], $row['Gender'], $row['Bio'], $row['Buffer Period'], $row['Bank Account Name'], $row['Bank Account Number'], $row['Marketplace Commission'], $row['Street'],$row['Suburb'],$row['City'],$row['Postcode'],$row['Newsletter'],$row['Upcomming Bookings'],$row['Completed Bookings'],$row['Cancelled Bookings'],$row['Revenue Generated'], $row['Commission Paid'],$row['Status']));
+            }
+
+            fclose($file);
+        };
+
+        return response()->stream($callback, 200, $headers);
+    }
+
+
     function disablePractitioners(Request $request){
         $id = base64_decode($request->get('pid'));
         $data = User::find($id);

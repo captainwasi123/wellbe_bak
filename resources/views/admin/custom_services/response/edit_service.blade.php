@@ -15,6 +15,16 @@
       <span class="static-tag1 col-black"> NZ$  </span>
    </div>
    <div class="form-field2">
+      <p> WEBSITE SALE PRICE (INC GST) <sup class="col-red">*</sup> </p>
+      <input type="number" step="any" placeholder="" id="addServiceSalePrice" style="padding-left: 50px;" disabled>
+      <span class="static-tag1 col-black"> NZ$  </span>
+   </div>
+   <div class="form-field2">
+      <p> YOUR TAKEHOME (AFTER GST & FEES) <sup class="col-red">*</sup> </p>
+      <input type="number" step="any" placeholder="" id="addServiceTakehomePrice" style="padding-left: 50px;" disabled>
+      <span class="static-tag1 col-black"> NZ$  </span>
+   </div>
+   <div class="form-field2">
       <p> DESCRIPTION </p>
       <textarea placeholder="Please enter description" rows="2" name="description">{{$data->description}}</textarea>
    </div>

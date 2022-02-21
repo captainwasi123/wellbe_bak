@@ -8,6 +8,7 @@ use App\Models\services\services;
 use App\Models\services\addons;
 use App\Models\services\addonsDetail;
 use App\Models\userAddon;
+use App\Models\MarketplaceSetting;
 
 class ServicesController extends Controller
 {
@@ -44,7 +45,8 @@ class ServicesController extends Controller
 		$data = array(
     		'title' => 'Manage Services',
 			'cat_id' => $request->id,
-			'services' => services::where('category_id', base64_decode($request->id))->where('status', '!=', '3')->get()
+			'services' => services::where('category_id', base64_decode($request->id))->where('status', '!=', '3')->get(),
+         'mtp' => MarketplaceSetting::latest()->first(),
     		);
        return view("admin.custom_services.manage_services")->with($data);
 	}
@@ -68,10 +70,10 @@ class ServicesController extends Controller
 
    function editService($id){
     	$id = base64_decode($id);
-
+      $mtp = MarketplaceSetting::latest()->first();
     	$data = services::find($id);
 
-    	return view('admin.custom_services.response.edit_service', ['data' => $data, 'cat_id' => $id]);
+    	return view('admin.custom_services.response.edit_service', ['data' => $data, 'cat_id' => $id, 'mtp' => $mtp]);
    }
 
 

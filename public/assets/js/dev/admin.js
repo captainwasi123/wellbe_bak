@@ -47,6 +47,18 @@ $(document).ready(function() {
     });
 
 
+    //Services
+
+    $(document).on('keyup', '#addServicePrice', function(){
+        var price = parseFloat($(this).val());
+        var gst = parseFloat($('#mtp_gst').val());
+        var com = parseFloat($('#mtp_com').val());
+        var sale = ((price/100)*gst)+price;
+        var com = price-((price/100)*com);
+
+        $('#addServiceSalePrice').val(sale);
+        $('#addServiceTakehomePrice').val(com);
+    });
 
 
 

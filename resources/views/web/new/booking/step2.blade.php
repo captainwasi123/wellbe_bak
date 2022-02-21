@@ -86,7 +86,7 @@
                   <div class="block-element">
                      <div class="row m-t-20 m-b-10">
                         <div class="col-md-12" style="padding-left: 30px;padding-right: 30px;">
-                           <a href="{{route('booker.order')}}" class="submit-btn1 block-element1"> Pay Now </a>
+                           <a href="javascript:void(0)" data-toggle="modal" data-target=".safe-treatment-popup" class="submit-btn1 block-element1"> Pay Now </a>
                         </div>
                      </div>
                   </div>
@@ -169,4 +169,44 @@
    </div>
 </div>
 
+
+<div class="modal popup-1 fade safe-treatment-popup" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+   <div class="modal-dialog modal-lg modal-dialog2" role="document" style="max-width: 700px;">
+      <div class="modal-content">
+         <div class="safe-treatment">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            <div class="row">
+               <div class="col-md-6 col-lg-6 col-sm-6 col-12 order-lg-2 order-md-2 order-sm-2">
+                  <div style="padding-right: 10px;">
+                     <img src="{{URL::to('/public/assets/web/')}}/images/image.png" width="100%">   
+                  </div>
+               </div>
+               <div class="col-md-6 col-lg-6 col-sm-6 col-12 order-lg-1 order-md-1 order-sm-1">
+                  <div class="safe-treatment-text">
+                     <h4> Safer Treatments at home </h4>
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-md-12 col-lg-12 col-sm-12 col-12">
+                  <div class="safe-treatment-text1" style="">
+                     <p>We are taking every precaution in line with Government guidance to ensure treatments can be carried out safely and the Wellbe community is protected.</p>
+                  </div>
+                  <div class="safe-treatment-text2">
+                     <hr>
+                     <p>Vaccine Passes-All lients must provide evidence of a valid Covid 19 waccine passport before the the treatment begins. If a pass cannot be provided, the booking will be concelled with no refund.</p>
+                     <p>PPE - Therapists are required to wear a face covering for the duration of bookings in line wth government guidance</p>
+                     <p>Hygiene - Therapists will sanitise their hands before and after the treatment. </p>
+                     <p>Ventilation - Clients should provide a station for your therapist to set up with good ventilation, ideally near a window. </p>
+                  </div>
+                  <div class="safe-treatment-text3" style="">
+                     <a class="custom-btn1" href="{{route('booker.order')}}" style="background: #5D4E6D; width: 100%;"> Accept & Continue </a>
+                     <p>By continuing your accept our updated <a href="{{URL::to('/TermCondition')}}" target="_blank"><b>Terms & Conditions</b></a></p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
 @endsection
