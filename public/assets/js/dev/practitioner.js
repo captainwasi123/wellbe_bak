@@ -31,6 +31,18 @@ $(document).ready(function(){
 		});
 	});
 
+
+  $(document).on('keyup', '#editServicePrice', function(){
+      var price = parseFloat($(this).val());
+      var gst = parseFloat($('#mtp_gst').val());
+      var com = parseFloat($('#mtp_com').val());
+      var sale = ((price/100)*gst)+price;
+      var com = price-((price/100)*com);
+
+      $('#editServiceSalePrice').val(sale);
+      $('#editServiceTakehomePrice').val(com);
+  });
+  
 	// Delete Service
 
 	$(document).on('click', '.enableService', function(){

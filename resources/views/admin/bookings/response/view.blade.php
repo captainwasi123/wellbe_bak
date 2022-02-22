@@ -1,35 +1,8 @@
 @if($data->status == '4')
    @php
-      $pract_percentage = 0;
-      $cust_percentage = 0;
-      $pract_dues = 0;
-      $cust_dues = 0;
-
-      if($data->pract_id == $data->cancel->user_id){
-         $pract_percentage = 0;
-         $cust_percentage = 100;
-      }else{
-         $timestamp1 = strtotime($data->start_at.' '.$data->details[0]->start_time);
-         $timestamp2 = strtotime($data->cancel->created_at);
-         $hours_gap = abs($timestamp2 - $timestamp1)/(60*60);
-         if(date('Y-m-d H:i:s', strtotime($data->start_at.' '.$data->details[0]->start_time)) <= date('Y-m-d H:i:s', strtotime($data->cancel->created_at))){
-            $pract_percentage = 75;
-            $cust_percentage = 0;
-         }else{
-            if($hours_gap > 24){
-               $pract_percentage = 0;
-               $cust_percentage = 100;
-            }elseif($hours_gap > 2 && $hours_gap <= 24){
-               $pract_percentage = 0;
-               $cust_percentage = 75;
-            }elseif($hours_gap < 2){
-               $pract_percentage = 75;
-               $cust_percentage = 0;
-            }
-         }
-      }
-
-
+      $pract_percentage = $data->cancel->pract_per;
+      $cust_percentage = $data->cancel->cust_per;
+      
       $pract_dues = ($data->total_amount/100)*$pract_percentage;
       $cust_dues = ($data->total_amount/100)*$cust_percentage;
    @endphp
@@ -90,7 +63,25 @@
                   @endif
                   @if($data->status == '4')
                      <h5 class="border_bottom" style="padding-top: 8px;">Practitioner</h5>
-                     <h6 class="col-grey"> Payment : <strong class="col-blue">{{$pract_percentage}}%</strong></h6>
+                     <h6 class="col-grey"> Payment :
+                        <div class="practAmountBlock defaultPractAmountBlock">
+                           <strong class="col-blue">{{$pract_percentage}}%</strong>
+                           &nbsp;&nbsp;
+                           @if($pract_percentage > 0)
+                              @if(empty($data->cancel->pract_due))
+                                 <a href="javascript:void(0)" class="practAmountEdit">Edit</a>
+                              @endif
+                           @endif
+                        </div>
+                        <div class="practAmountBlock editPractAmountBlock" style="display:none;">
+                           <form action="{{route('admin.practAmount.edit')}}" method="post">
+                              @csrf
+                              <input type="hidden" name="oid" value="{{base64_encode($data->id)}}">
+                              <input type="number" class="practAmountField" min="0" max="{{100-$cust_percentage}}" value="{{$pract_percentage}}" name="practAmount" required>
+                              <button>Save</button>
+                           </form>
+                        </div>
+                     </h6>
                      <h6 class="col-grey"> Payment Due: <strong class="col-blue">{{'$'.number_format($pract_dues, 2)}}</strong></h6>
                      <h6 class="col-grey"> Payout Bank: <strong class="col-blue">{{empty($data->practitioner->users_payout_details) ? 'NA' : $data->practitioner->users_payout_details->bank_account_name}}</strong></h6>
                      <h6 class="col-grey"> Account Number:  </h6>
@@ -133,7 +124,25 @@
                </div>
 
                @if($data->status == '3')
-                  <h6 class="col-grey"> <br><br>Payment Due: <strong class="col-blue">{{empty($data->paid_status) ? '$'.number_format($data->pract_earning, 2) : '$0.0'}}</strong></h6>
+                  <h6 class="col-grey"> 
+                     <br><br>Commission Rate:
+                     <div class="comBlock defaultComBlock">
+                        <strong class="col-blue">{{$data->comission}}%</strong>
+                        &nbsp;&nbsp;
+                        @if($data->payment_status == '0')
+                           <a href="javascript:void(0)" class="comEdit">Edit</a>
+                        @endif
+                     </div>
+                     <div class="comBlock editComBlock" style="display:none;">
+                        <form action="{{route('admin.comission.edit')}}" method="post">
+                           @csrf
+                           <input type="hidden" name="oid" value="{{base64_encode($data->id)}}">
+                           <input type="number" class="comField" min="0" max="100" value="{{$data->comission}}" name="comission" required>
+                           <button>Save</button>
+                        </form>
+                     </div>
+                  </h6>
+                  <h6 class="col-grey"> Payment Due: <strong class="col-blue">{{empty($data->paid_status) ? '$'.number_format($data->pract_earning, 2) : '$0.0'}}</strong></h6>
                   <h6 class="col-grey"> Payout Bank: <strong class="col-blue">{{empty($data->practitioner->users_payout_details) ? 'NA' : $data->practitioner->users_payout_details->bank_account_name}}</strong></h6>
                   <h6 class="col-grey"> Account Number:  </h6>
                   <h5 class="col-blue"> {{empty($data->practitioner->users_payout_details) ? 'NA' : $data->practitioner->users_payout_details->bank_account_number}}</h5>
@@ -148,7 +157,25 @@
                   @endif
                @elseif($data->status == '4')
                   <h5 class="border_bottom">Customer</h5>
-                     <h6 class="col-grey"> <br><br>Refund: <strong class="col-blue">{{$cust_percentage}}%</strong></h6>
+                  <h6 class="col-grey"> <br><br>Refund:
+                     <div class="custAmountBlock defaultCustAmountBlock">
+                        <strong class="col-blue">{{$cust_percentage}}%</strong>
+                        &nbsp;&nbsp;
+                        @if($cust_percentage > 0)
+                           @if(empty($data->cancel->cust_due))
+                              <a href="javascript:void(0)" class="custAmountEdit">Edit</a>
+                           @endif
+                        @endif
+                     </div>
+                     <div class="custAmountBlock editCustAmountBlock" style="display:none;">
+                        <form action="{{route('admin.custAmount.edit')}}" method="post">
+                           @csrf
+                           <input type="hidden" name="oid" value="{{base64_encode($data->id)}}">
+                           <input type="number" class="custAmountField" min="0" max="{{100-$pract_percentage}}" value="{{$cust_percentage}}" name="custAmount" required>
+                           <button>Save</button>
+                        </form>
+                     </div>
+                  </h6>
                   <h6 class="col-grey"> Payment Due: <strong class="col-blue">{{'$'.number_format($cust_dues, 2)}}</strong></h6>
                   <br>
                   @if($cust_percentage > 0)

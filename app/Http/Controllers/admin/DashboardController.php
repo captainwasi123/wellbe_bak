@@ -67,6 +67,50 @@ class DashboardController extends Controller
 
         return view('admin.bookings.completed', ['data' => $data]);
     }
+    function completedExport(Request $request){
+        $date = date('d-M-Y__h-i-A');
+        $fileName = 'Completed_Booking_'.$date.'.csv';
+        $data = order::where('status', '3')
+                        ->orderBy('created_at', 'desc')
+                        ->get();
+        $headers = array(
+            "Content-type"        => "text/csv",
+            "Content-Disposition" => "attachment; filename=$fileName",
+            "Pragma"              => "no-cache",
+            "Cache-Control"       => "must-revalidate, post-check=0, pre-check=0",
+            "Expires"             => "0"
+        );
+
+        $Heading = array('Wellbe Completed Bookings Data | CSV');
+        $columns = array('Date', 'Booking ID', 'Booker Name', 'Subtotal', 'GST Amount', 'Total Charge', 'Marked as Paid', 'Payment Due', 'Practitioner Name', 'Practitioner Bank Acount Name', 'Practitioner Bank Account Number');
+
+        $callback = function() use($data, $columns, $Heading) {
+            $file = fopen('php://output', 'w');
+            fputcsv($file, $Heading);
+            fputcsv($file, array('-'));
+            fputcsv($file, $columns);
+
+            foreach ($data as $val) {
+                $row['Date']                                = date('l, d M Y - h:i A', strtotime($val->start_at.' '.$val->details[0]->start_time));
+                $row['Booking ID']                          = '#'.$val->id;
+                $row['Booker Name']                         = @$val->booker->first_name.' '.@$val->booker->last_name;
+                $row['Subtotal']                            = $val->sub_total;
+                $row['GST Amount']                          = $val->gst;
+                $row['Total Charge']                        = $val->total_amount;
+                $row['Marked as Paid']                      = $val->payment_status == '0' ? 'No' : 'Yes';
+                $row['Payment Due']                         = $val->payment_status == '0' ? '$'.number_format($val->pract_earning, 2) : '$0.0';
+                $row['Practitioner Name']                   = @$val->practitioner->first_name.' '.@$val->practitioner->last_name;
+                $row['Practitioner Bank Acount Name']       = @$val->practitioner->users_payout_details->bank_account_name;
+                $row['Practitioner Bank Account Number']    = @$val->practitioner->users_payout_details->bank_account_number;
+
+                fputcsv($file, array($row));
+            }
+
+            fclose($file);
+        };
+
+        return response()->stream($callback, 200, $headers);
+    }
 
     function cancelled(){
         
@@ -75,6 +119,60 @@ class DashboardController extends Controller
                         ->get();
 
         return view('admin.bookings.cancelled', ['data' => $data]);
+    }
+    function cancelledExport(Request $request){
+        $date = date('d-M-Y__h-i-A');
+        $fileName = 'Cancelled_Booking_'.$date.'.csv';
+        $data = order::where('status', '4')
+                        ->orderBy('created_at', 'desc')
+                        ->get();
+        $headers = array(
+            "Content-type"        => "text/csv",
+            "Content-Disposition" => "attachment; filename=$fileName",
+            "Pragma"              => "no-cache",
+            "Cache-Control"       => "must-revalidate, post-check=0, pre-check=0",
+            "Expires"             => "0"
+        );
+
+        $Heading = array('Wellbe Cancelled Bookings Data | CSV');
+        $columns = array('Booking Date','Cancellation Date', 'Cancellation Reason',  'Booking ID', 'Booker Name', 'Subtotal', 'GST Amount', 'Total Charge', 'Marked as Paid', 'Payment Due', 'Practitioner Name', 'Practitioner Bank Acount Name', 'Practitioner Bank Account Number', 'Refund Percentage', 'Refund Amount', 'Total Refund Amount');
+
+        $callback = function() use($data, $columns, $Heading) {
+            $file = fopen('php://output', 'w');
+            fputcsv($file, $Heading);
+            fputcsv($file, array('-'));
+            fputcsv($file, $columns);
+
+            foreach ($data as $val) {
+                $pract_percentage = $val->cancel->pract_per;
+                $cust_percentage = $val->cancel->cust_per;
+                $pract_dues = ($val->total_amount/100)*$pract_percentage;
+                $cust_dues = ($val->total_amount/100)*$cust_percentage;
+
+                $row['Booking Date']                        = date('l, d M Y - h:i A', strtotime($val->start_at.' '.$val->details[0]->start_time));
+                $row['Cancellation Date']                   = date('l, d M Y - h:i A', strtotime(@$val->cancel->created_at));
+                $row['Cancellation Reason']                 = @$val->cancel->reason;
+                $row['Booking ID']                          = '#'.$val->id;
+                $row['Booker Name']                         = @$val->booker->first_name.' '.@$val->booker->last_name;
+                $row['Subtotal']                            = $val->sub_total;
+                $row['GST Amount']                          = $val->gst;
+                $row['Total Charge']                        = $val->total_amount;
+                $row['Marked as Paid']                      = $val->payment_status == '0' ? 'No' : 'Yes';
+                $row['Payment Due']                         = $pract_dues;
+                $row['Practitioner Name']                   = @$val->practitioner->first_name.' '.@$val->practitioner->last_name;
+                $row['Practitioner Bank Acount Name']       = @$val->practitioner->users_payout_details->bank_account_name;
+                $row['Practitioner Bank Account Number']    = @$val->practitioner->users_payout_details->bank_account_number;
+                $row['Refund Percentage']                   = $cust_percentage.'%';
+                $row['Refund Amount']                       = $cust_dues;
+                $row['Total Refund Amount']                 = $cust_dues+$pract_dues;
+
+                fputcsv($file, $row);
+            }
+
+            fclose($file);
+        };
+
+        return response()->stream($callback, 200, $headers);
     }
 
     function customers(){
@@ -308,9 +406,36 @@ class DashboardController extends Controller
 
         $gst = MarketplaceSetting::latest()->first();
 
-        return view('admin.bookings.response.view', ['data' => $data, 'gst' => $gst->gst]);
+        return view('admin.bookings.response.view', ['data' => $data, 'gst' => $gst->gst, 'commission' => $gst->comission]);
     }
 
+    function comissionEdit(Request $request){
+        $data = $request->all();
+        $o = order::find(base64_decode($data['oid']));
+        $o->comission = $data['comission'];
+        $o->pract_earning = $o->sub_total - (($o->sub_total/100)*$data['comission']);
+        $o->save();
+
+        return redirect()->back()->with('success','Commission Updated | Order#: '.$o->id);
+    }
+
+    function practAmountEdit(Request $request){
+        $data = $request->all();
+        $o = cancel::where('order_id', base64_decode($data['oid']))->first();
+        $o->pract_per = $data['practAmount'];
+        $o->save();
+
+        return redirect()->back()->with('success','Practitioner Due Percentage Updated | Order#: '.base64_decode($data['oid']));
+    }
+
+    function custAmountEdit(Request $request){
+        $data = $request->all();
+        $o = cancel::where('order_id', base64_decode($data['oid']))->first();
+        $o->cust_per = $data['custAmount'];
+        $o->save();
+
+        return redirect()->back()->with('success','Booker Refund Percentage Updated | Order#: '.base64_decode($data['oid']));
+    }
 
     //Cancel
 

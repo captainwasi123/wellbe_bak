@@ -25,6 +25,20 @@ $(document).ready(function() {
         $('#oid').val(id);
     });
 
+    $(document).on('click', '.comEdit', function(){
+        $('.defaultComBlock').css({display: 'none'});
+        $('.editComBlock').css({display: 'block'});
+    });
+
+    $(document).on('click', '.practAmountEdit', function(){
+        $('.defaultPractAmountBlock').css({display: 'none'});
+        $('.editPractAmountBlock').css({display: 'block'});
+    });
+
+    $(document).on('click', '.custAmountEdit', function(){
+        $('.defaultCustAmountBlock').css({display: 'none'});
+        $('.editCustAmountBlock').css({display: 'block'});
+    });
 
 
     //Practitioner
@@ -58,6 +72,18 @@ $(document).ready(function() {
 
         $('#addServiceSalePrice').val(sale);
         $('#addServiceTakehomePrice').val(com);
+    });
+
+
+    $(document).on('keyup', '#editServicePrice', function(){
+        var price = parseFloat($(this).val());
+        var gst = parseFloat($('#mtp_gst').val());
+        var com = parseFloat($('#mtp_com').val());
+        var sale = ((price/100)*gst)+price;
+        var com = price-((price/100)*com);
+
+        $('#editServiceSalePrice').val(sale);
+        $('#editServiceTakehomePrice').val(com);
     });
 
 

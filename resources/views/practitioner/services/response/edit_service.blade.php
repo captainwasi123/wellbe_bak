@@ -9,9 +9,20 @@
       <p> SERVICE DURATION (IN MINUTES) <sup class="col-red">*</sup> </p>
       <input type="number" placeholder="0" name="duration" value="{{$data->duration}}" disabled>
    </div>
+   @php $pr = empty($service->price) ? $data->price : $service->price; @endphp
    <div class="form-field2">
       <p> PRICE (EXCL GST) <sup class="col-red">*</sup> </p>
-      <input type="number" step="any" placeholder="" name="price" style="padding-left: 50px;" value="{{empty($service->price) ? $data->price : $service->price}}">
+      <input type="number" step="any" placeholder="" name="price" id="editServicePrice" style="padding-left: 50px;" value="{{$pr}}">
+      <span class="static-tag1 col-black"> NZ$  </span>
+   </div>
+   <div class="form-field2">
+      <p> WEBSITE SALE PRICE (INC GST) <sup class="col-red">*</sup> </p>
+      <input type="number" step="any" placeholder="" id="editServiceSalePrice" style="padding-left: 50px;" value="{{(($pr/100)*$mtp->gst)+$pr}}" disabled>
+      <span class="static-tag1 col-black"> NZ$  </span>
+   </div>
+   <div class="form-field2">
+      <p> YOUR TAKEHOME (AFTER GST & FEES) <sup class="col-red">*</sup> </p>
+      <input type="number" step="any" placeholder="" id="editServiceTakehomePrice" style="padding-left: 50px;" value="{{$pr-(($pr/100)*$mtp->comission)}}" disabled>
       <span class="static-tag1 col-black"> NZ$  </span>
    </div>
    <div class="form-field2">

@@ -78,6 +78,8 @@
   </div>
 
 
+  <input type="hidden" id="mtp_gst" value="{{$data['mtp']->comission}}">
+  <input type="hidden" id="mtp_com" value="{{$data['mtp']->gst}}">
   <!-- Edit Service -->
   <div class="modal fade modal-size2 editServiceModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
       <div class="modal-dialog" role="document" style="max-width: 600px;">

@@ -11,17 +11,17 @@
    </div>
    <div class="form-field2">
       <p> PRICE (EXCL GST) <sup class="col-red">*</sup> </p>
-      <input type="number" step="any" placeholder="" name="price" style="padding-left: 50px;" value="{{$data->price}}">
+      <input type="number" step="any" placeholder="" name="price" id="editServicePrice" style="padding-left: 50px;" value="{{$data->price}}">
       <span class="static-tag1 col-black"> NZ$  </span>
    </div>
    <div class="form-field2">
       <p> WEBSITE SALE PRICE (INC GST) <sup class="col-red">*</sup> </p>
-      <input type="number" step="any" placeholder="" id="addServiceSalePrice" style="padding-left: 50px;" disabled>
+      <input type="number" step="any" placeholder="" id="editServiceSalePrice" style="padding-left: 50px;" value="{{(($data->price/100)*$mtp->gst)+$data->price}}" disabled>
       <span class="static-tag1 col-black"> NZ$  </span>
    </div>
    <div class="form-field2">
       <p> YOUR TAKEHOME (AFTER GST & FEES) <sup class="col-red">*</sup> </p>
-      <input type="number" step="any" placeholder="" id="addServiceTakehomePrice" style="padding-left: 50px;" disabled>
+      <input type="number" step="any" placeholder="" id="editServiceTakehomePrice" style="padding-left: 50px;" value="{{$data->price-(($data->price/100)*$mtp->comission)}}" disabled>
       <span class="static-tag1 col-black"> NZ$  </span>
    </div>
    <div class="form-field2">
