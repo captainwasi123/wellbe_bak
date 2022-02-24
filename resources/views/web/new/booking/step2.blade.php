@@ -182,7 +182,7 @@
                </div>
                <div class="col-md-6 col-lg-6 col-sm-6 col-12 order-lg-1 order-md-1 order-sm-1">
                   <div class="safe-treatment-text">
-                     <h4> Safer Treatments at home </h4>
+                     <h4> Safer treatments at home </h4>
                   </div>
                </div>
             </div>
@@ -193,8 +193,8 @@
                   </div>
                   <div class="safe-treatment-text2">
                      <hr>
-                     <p>Vaccine Passes-All lients must provide evidence of a valid Covid 19 waccine passport before the the treatment begins. If a pass cannot be provided, the booking will be concelled with no refund.</p>
-                     <p>PPE - Therapists are required to wear a face covering for the duration of bookings in line wth government guidance</p>
+                     <p>Vaccine Passes - All clients must provide evidence of a valid Covid 19 vaccine passport before the treatment begins. If a pass cannot be provided, the booking will be cancelled with no refund.</p>
+                     <p>PPE - Therapists are required to wear a face-covering for the duration of bookings in line with government guidance.</p>
                      <p>Hygiene - Therapists will sanitise their hands before and after the treatment. </p>
                      <p>Ventilation - Clients should provide a station for your therapist to set up with good ventilation, ideally near a window. </p>
                   </div>

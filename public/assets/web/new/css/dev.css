@@ -232,6 +232,7 @@
 .safe-treatment {
     background: #fbece7;
     border-radius: 10px;
+    overflow: hidden;
 }
 .safe-treatment-text h4 {
     color: #5D4E6D;
