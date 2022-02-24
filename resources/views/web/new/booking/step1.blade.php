@@ -44,13 +44,28 @@
                      @php $duration = 30; @endphp
                   @endif
                   <div id="professionalBlock">
-                     <div class="bookings-trigger">
-                        <ul class="nav nav-tabs no-border" role="tablist">
-                           <li class="nav-item">
-                              <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab"> Practitioners </a>
-                           </li>
-                        </ul>
+                     <div class="row">
+                        <div class="col-lg-6 col-md-6 col-6">
+                           <div class="bookings-trigger">
+                              <ul class="nav nav-tabs no-border" role="tablist">
+                                 <li class="nav-item">
+                                    <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab"> Practitioners </a>
+                                 </li>
+                              </ul>
+                           </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-6">
+                             <div class="dropdown custom-sort">
+                                 <a href="#" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                 Sort <i class="fa fa-chevron-down"></i></a>
+                                    <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#">Random</a>
+                                    <a class="dropdown-item" href="#">Top Rated</a>
+                                    </div>
+                              </div>
+                        </div>                        
                      </div>
+                     
                      <div class="tab-content">
                         <div class="tab-pane active" id="tabs-1" role="tabpanel">
                            <div class="all-bookings">

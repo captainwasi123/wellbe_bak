@@ -235,7 +235,7 @@
 }
 .safe-treatment-text h4 {
     color: #5D4E6D;
-    font-size: 32px;
+    font-size: 30px;
     letter-spacing: 1px;
     font-family: 'Quicksand' !important;
     font-weight: 600;
@@ -245,25 +245,25 @@
 .safe-treatment-text1 p {
     font-family: 'MULISH';
     color: white;
-    font-size: 15px;
+    font-size: 14px;
     letter-spacing: 0.3px;
     line-height: 25px;
     margin: 0px !important; 
     background: #5D4E6D;
-    padding: 20px 20px;
+    padding: 10px 20px;
 }
 .safe-treatment-text2 {
     background: #f8f8fa;
-    padding: 20px 20px;
+    padding: 10px 20px;
 }
 .safe-treatment-text p , .safe-treatment-text2 p{
     font-family: 'MULISH';
     color: black;
-    font-size: 15px;
+    font-size: 14px;
     letter-spacing: 0.3px;
     line-height: 25px;
     margin: 0px !important;
-    padding: 10px 0px;
+    padding: 5px 0px;
     background: #f8f8fa;
 }
 .safe-treatment-text hr {
@@ -275,11 +275,41 @@
 .safe-treatment-text3 {
     background: #fff;
     text-align: center;
-    padding: 25px 20px 10px 20px;
+    padding: 10px 20px 3px 20px;
 }
 .safe-treatment-text3 p {
-    padding: 15px 0px 0px 0px;
+    padding: 10px 0px 0px 0px;
 }
 .modal-dialog2 {
-    top: 60%;
+    top: 45%;
 } 
+a.custom-btn1 {
+    font-size: 14px !important;
+}
+.safe-sec-1 img {
+    width: 70%;
+    float: right;
+    padding-right: 30px;
+}
+.custom-sort {
+    float: right;
+}
+.custom-sort a {
+    background: white !important;
+    color: #5d4e6d !important;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+}
+.custom-sort a:hover , .custom-sort a:active , .custom-sort a:focus {
+    background: #5d4e6d !important;
+    color: white !important;
+    box-shadow: none !important;
+}
+.dropdown-menu.show {
+    right: 0px !important;
+    left: auto !important;
+}
+.dropdown-menu {
+    min-width: 140px !important;
+}
