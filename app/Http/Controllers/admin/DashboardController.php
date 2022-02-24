@@ -67,6 +67,16 @@ class DashboardController extends Controller
 
         return view('admin.bookings.completed', ['data' => $data]);
     }
+    function completedMark(Request $request){
+        $data = $request->all();
+        order::whereIn('id', $data['ids'])->update(['payment_status' => $data['status']]);
+
+        return 'done';
+    }
+
+    function completedMarked(){
+        return redirect()->back()->with('success', 'Payment Status Updated.');
+    }
     function completedExport(Request $request){
         $date = date('d-M-Y__h-i-A');
         $fileName = 'Completed_Booking_'.$date.'.csv';
@@ -135,7 +145,7 @@ class DashboardController extends Controller
         );
 
         $Heading = array('Wellbe Cancelled Bookings Data | CSV');
-        $columns = array('Booking Date','Cancellation Date', 'Cancellation Reason',  'Booking ID', 'Booker Name', 'Subtotal', 'GST Amount', 'Total Charge', 'Marked as Paid', 'Payment Due', 'Practitioner Name', 'Practitioner Bank Acount Name', 'Practitioner Bank Account Number', 'Refund Percentage', 'Refund Amount', 'Total Refund Amount');
+        $columns = array('Booking Date','Cancellation Date', 'Cancellation Reason',  'Booking ID', 'Booker Name', 'Subtotal', 'GST Amount', 'Total Charge', 'Marked as Paid','Payment Percentage', 'Payment Due', 'Practitioner Name', 'Practitioner Bank Acount Name', 'Practitioner Bank Account Number', 'Refund Percentage', 'Refund Amount', 'Total Refund Amount');
 
         $callback = function() use($data, $columns, $Heading) {
             $file = fopen('php://output', 'w');
@@ -158,6 +168,7 @@ class DashboardController extends Controller
                 $row['GST Amount']                          = $val->gst;
                 $row['Total Charge']                        = $val->total_amount;
                 $row['Marked as Paid']                      = $val->payment_status == '0' ? 'No' : 'Yes';
+                $row['Payment Percentage']                  = $pract_percentage.'%';
                 $row['Payment Due']                         = $pract_dues;
                 $row['Practitioner Name']                   = @$val->practitioner->first_name.' '.@$val->practitioner->last_name;
                 $row['Practitioner Bank Acount Name']       = @$val->practitioner->users_payout_details->bank_account_name;
@@ -251,7 +262,7 @@ class DashboardController extends Controller
         );
 
         $Heading = array('Wellbe Practitioners Data | CSV');
-        $columns = array('First Name', 'Last Name', 'Email', 'Phone Number','Gender', 'Bio', 'Buffer Period', 'Bank Account Name', 'Bank Account Number', 'Marketplace Commission', 'Street', 'Suburb', 'City', 'Postcode', 'Newsletter', 'Upcomming Bookings', 'Completed Bookings', 'Cancelled Bookings', 'Revenue Generated', 'Commission Paid', 'Status');
+        $columns = array('First Name', 'Last Name', 'Email', 'Phone Number','Gender', 'Bio', 'Buffer Period', 'Bank Account Name', 'Bank Account Number', 'Marketplace Commission', 'Street', 'Suburb', 'City', 'Postcode', 'Newsletter', 'Upcomming Bookings', 'Completed Bookings', 'Cancelled Bookings', 'Revenue Generated','Store Page', 'Commission Paid', 'Status');
 
         $callback = function() use($data, $columns, $Heading, $mtp) {
             $file = fopen('php://output', 'w');
@@ -279,10 +290,16 @@ class DashboardController extends Controller
                 $row['Completed Bookings']  = count($val->p_completed);
                 $row['Cancelled Bookings']  = count($val->p_cancelled);
                 $row['Revenue Generated']   = empty($val->p_revenue) ? '0' : '$'.number_format($val->p_revenue[0]->totalRevenue, 2);
-                $row['Commission Paid']     = '-';
+                $row['Store Page'] = $val->store_status == '1' ? 'Enabled' : 'Disabled';
+                $comPaid = 0;
+                foreach($val->p_completed as $pc){
+                    $cpaid = ($pc->sub_total/100)*$pc->comission;
+                    $comPaid = $comPaid+$cpaid;
+                }
+                $row['Commission Paid']     = '$'.$comPaid;
                 $row['Status']              = $val->status == '1' ? 'Active' : 'Disabled';
 
-                fputcsv($file, array($row['First Name'], $row['Last Name'], $row['Email'], $row['Phone Number'], $row['Gender'], $row['Bio'], $row['Buffer Period'], $row['Bank Account Name'], $row['Bank Account Number'], $row['Marketplace Commission'], $row['Street'],$row['Suburb'],$row['City'],$row['Postcode'],$row['Newsletter'],$row['Upcomming Bookings'],$row['Completed Bookings'],$row['Cancelled Bookings'],$row['Revenue Generated'], $row['Commission Paid'],$row['Status']));
+                fputcsv($file, $row);
             }
 
             fclose($file);
@@ -423,18 +440,10 @@ class DashboardController extends Controller
         $data = $request->all();
         $o = cancel::where('order_id', base64_decode($data['oid']))->first();
         $o->pract_per = $data['practAmount'];
-        $o->save();
-
-        return redirect()->back()->with('success','Practitioner Due Percentage Updated | Order#: '.base64_decode($data['oid']));
-    }
-
-    function custAmountEdit(Request $request){
-        $data = $request->all();
-        $o = cancel::where('order_id', base64_decode($data['oid']))->first();
         $o->cust_per = $data['custAmount'];
         $o->save();
 
-        return redirect()->back()->with('success','Booker Refund Percentage Updated | Order#: '.base64_decode($data['oid']));
+        return json_encode(array('status' => 200,'message'=>'Percentage Updated', 'data' => $data));
     }
 
     //Cancel

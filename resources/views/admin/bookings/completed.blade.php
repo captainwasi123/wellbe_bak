@@ -10,14 +10,19 @@
     <div class="box-type4">
       <div class="page-title">
          <h3 class="col-white"> Completed Bookings </h3>
-         <a href="javascript:void(0)" class="btn btn-default pull-right" data-href="{{route('admin.completed.export')}}" id="exportCompleteBooking" style="margin-top: -46px;">Export</a>
+         <div class="pull-right" style="margin-top: -46px;">
+            <a href="javascript:void(0)" class="btn btn-default" data-href="{{route('admin.completed.export')}}" id="exportCompleteBooking">Export</a>
+            <a href="javascript:void(0)" class="btn btn-default color-black" data-href="{{route('admin.completed.export')}}" id="bulkMarkCompleted">Mark as Paid</a>
+            <a href="javascript:void(0)" class="btn btn-default color-black" data-href="{{route('admin.completed.export')}}" id="bulkUnmarkCompleted">Unmark as Paid</a>
+         </div>
       </div>
+      <input type="hidden" id="token" value="{{csrf_token()}}">
       <div class="box-type1">
          <div class="table-overlay table-type1">
             <table>
                <thead>
                   <tr>
-                     <th> Date / Time </th>
+                     <th colspan="2"> Date / Time </th>
                      <th> Booking ID </th>
                      <th> Practitioner </th>
                      <th> Booker </th>
@@ -30,7 +35,12 @@
                <tbody>
                    @foreach($data as $val)
                       <tr>
-                        <td> {{date('l, d M Y - h:i A', strtotime($val->start_at.' '.$val->details[0]->start_time))}}</td>
+                        <td>
+                           <input type="checkbox" name="orderIds" value="{{$val->id}}">
+                        </td>
+                        <td> 
+                           {{date('l, d M Y - h:i A', strtotime($val->start_at.' '.$val->details[0]->start_time))}}
+                        </td>
                         <td> #{{$val->id}} </td>
                         <td class="col-blue"> {{empty($val->practitioner) ? 'Deleted User' : $val->practitioner->first_name.' '.$val->practitioner->last_name}}</td>
                         <td class="col-blue"> {{empty($val->booker) ? 'Deleted User' : $val->booker->first_name.' '.$val->booker->last_name}}</td>

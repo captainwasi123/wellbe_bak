@@ -591,6 +591,10 @@ span.line-1 {
     letter-spacing: 0.4px;
     margin-bottom: 5px;
     margin-top: 0px;
+    display: flex;
+}
+.refundH {
+    display: flex;
 }
 .booking-modal-set1 h5 {
     font-weight: 500;

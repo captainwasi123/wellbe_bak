@@ -263,9 +263,11 @@ use Illuminate\Support\Facades\Route;
 	    Route::get('/cancelled', 'DashboardController@cancelled')->name('admin.cancelled');
 	    Route::get('/cancelled/export', 'DashboardController@cancelledExport')->name('admin.cancelled.export');
 
+	    Route::post('/completed/mark', 'DashboardController@completedMark');
+	    Route::get('/completed/marked', 'DashboardController@completedMarked');
+
 		Route::post('/comissionEdit', 'DashboardController@comissionEdit')->name('admin.comission.edit');
-		Route::post('/practAmountEdit', 'DashboardController@practAmountEdit')->name('admin.practAmount.edit');
-		Route::post('/custAmountEdit', 'DashboardController@custAmountEdit')->name('admin.custAmount.edit');
+		Route::post('/practAmountEdit', 'DashboardController@practAmountEdit');
 
 	    Route::get('/booking/markaspaid/{id}', 'DashboardController@bookingMarkasPaid');
 	    Route::get('/booking/unmarkaspaid/{id}', 'DashboardController@bookingUnmarkasPaid');

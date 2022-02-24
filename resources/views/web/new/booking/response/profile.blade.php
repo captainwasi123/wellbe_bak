@@ -17,7 +17,7 @@
     <div class="tab-pane fade" id="reviews">
         @php $r = 0; @endphp
         @foreach($data->reviews as $val)
-            @if($r <= 10)
+            @if($r <= 5)
                 <div class="reviews_item">
                     <h4>{{$val->booker->first_name.' '.$val->booker->last_name[0]}}.</h4>
                     <span>{{date('d M Y', strtotime($val->created_at))}}</span>

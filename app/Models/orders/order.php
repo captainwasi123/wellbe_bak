@@ -81,8 +81,10 @@ class order extends Model
         $accounts['gst'] = MarketplaceSetting::getGST($accounts['sub_total']);
         $accounts['total_amount'] = $accounts['sub_total']+$accounts['gst'];
         $accounts['pract_earning'] = MarketplaceSetting::deductCommission($accounts['sub_total']);
+        $mtp = MarketplaceSetting::latest()->first();
 
         $o->sub_total = $accounts['sub_total'];
+        $o->comission = $mtp->comission;
         $o->gst = $accounts['gst'];
         $o->total_amount = $accounts['total_amount'];
         $o->pract_earning = $accounts['pract_earning'];
