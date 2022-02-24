@@ -169,15 +169,14 @@
    </div>
 </div>
 
-
 <div class="modal popup-1 fade safe-treatment-popup" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-   <div class="modal-dialog modal-lg modal-dialog2" role="document" style="max-width: 700px;">
+   <div class="modal-dialog modal-lg modal-dialog2" role="document" style="max-width: 650px;">
       <div class="modal-content">
          <div class="safe-treatment">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
             <div class="row">
                <div class="col-md-6 col-lg-6 col-sm-6 col-12 order-lg-2 order-md-2 order-sm-2">
-                  <div style="padding-right: 10px;">
+                  <div class="safe-sec-1">
                      <img src="{{URL::to('/public/assets/web/')}}/images/image.png" width="100%">   
                   </div>
                </div>
