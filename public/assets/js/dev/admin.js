@@ -30,14 +30,67 @@ $(document).ready(function() {
         $('.editComBlock').css({display: 'block'});
     });
 
-    $(document).on('click', '.practAmountEdit', function(){
+    $(document).on('click', '.amountEdit', function(){
         $('.defaultPractAmountBlock').css({display: 'none'});
         $('.editPractAmountBlock').css({display: 'block'});
-    });
-
-    $(document).on('click', '.custAmountEdit', function(){
         $('.defaultCustAmountBlock').css({display: 'none'});
         $('.editCustAmountBlock').css({display: 'block'});
+    });
+
+    $(document).on('click', '.saveAmountPercentage', function(){
+        var id = $('#orderId').val();
+        var token = $('#token').val();
+        var practAmount = parseInt($('#practAmount').val());
+        var custAmount = parseInt($('#custAmount').val());
+        if((practAmount+custAmount) <= 100){
+            var data = {_token: token, oid: id, practAmount: practAmount, custAmount:custAmount};
+            $.post(ref+'/admin/practAmountEdit', data, function(response) {
+                $('#practAmount').val(response.data.practAmount);
+                $('#custAmount').val(response.data.custAmount);
+                $('.defaultPractAmountBlock strong').html(response.data.practAmount+'%');
+                $('.defaultCustAmountBlock strong').html(response.data.custAmount+'%');
+
+                $('.defaultPractAmountBlock').css({display: 'block'});
+                $('.editPractAmountBlock').css({display: 'none'});
+                $('.defaultCustAmountBlock').css({display: 'block'});
+                $('.editCustAmountBlock').css({display: 'none'});
+
+            }, 'json');
+        }else{
+            alert('Payment percentages cannot exceed 100% of the booking amount.');
+        }
+    });
+
+    $(document).on('click','#bulkMarkCompleted', function() {
+        var array = [];
+        $("input:checkbox[name=orderIds]:checked").each(function() {
+            array.push($(this).val());
+        });
+        var token = $('#token').val();
+        $.ajax({
+           type: "POST",
+           data: {_token: token,status:'1', ids:array},
+           url: ref+'/admin/completed/mark',
+           success: function(msg){
+            window.location.href = ref+'/admin/completed/marked';
+           }
+        });
+    });
+
+    $(document).on('click','#bulkUnmarkCompleted', function() {
+        var array = [];
+        $("input:checkbox[name=orderIds]:checked").each(function() {
+            array.push($(this).val());
+        });
+        var token = $('#token').val();
+        $.ajax({
+           type: "POST",
+           data: {_token: token,status:'0', ids:array},
+           url: ref+'/admin/completed/mark',
+           success: function(msg){
+            window.location.href = ref+'/admin/completed/marked';
+           }
+        });
     });
 
 

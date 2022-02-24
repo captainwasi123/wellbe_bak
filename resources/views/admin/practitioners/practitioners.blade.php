@@ -34,7 +34,14 @@
                      <td> {{count($val->p_completed)}} </td>
                      <td> {{count($val->p_cancelled)}} </td>
                      <td> {{empty($val->p_revenue) ? '0' : '$'.number_format($val->p_revenue[0]->totalRevenue, 2)}} </td>
-                     <td> - </td>
+                     @php
+                        $comPaid = 0;
+                         foreach($val->p_completed as $pc){
+                             $cpaid = ($pc->sub_total/100)*$pc->comission;
+                             $comPaid = $comPaid+$cpaid;
+                         }
+                     @endphp
+                     <td> {{'$'.$comPaid}} </td>
                      <td>
                       <label class="switch">
                         <input type="checkbox"  class="switch-input disableUser" data-ref="{{base64_encode($val->id)}}" {{$val->status == '1' ? 'checked' : ''}}>

@@ -24,6 +24,9 @@
             </div>
          </div>
       </div>
+
+      <input type="hidden" id="orderId" value="{{base64_encode($data->id)}}">
+      <input type="hidden" id="token" value="{{csrf_token()}}">
       <div class="booking-modal-content">
          <div class="row">
             <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
@@ -67,19 +70,12 @@
                         <div class="practAmountBlock defaultPractAmountBlock">
                            <strong class="col-blue">{{$pract_percentage}}%</strong>
                            &nbsp;&nbsp;
-                           @if($pract_percentage > 0)
                               @if(empty($data->cancel->pract_due))
-                                 <a href="javascript:void(0)" class="practAmountEdit">Edit</a>
+                                 <a href="javascript:void(0)" class="amountEdit">Edit</a>
                               @endif
-                           @endif
                         </div>
                         <div class="practAmountBlock editPractAmountBlock" style="display:none;">
-                           <form action="{{route('admin.practAmount.edit')}}" method="post">
-                              @csrf
-                              <input type="hidden" name="oid" value="{{base64_encode($data->id)}}">
-                              <input type="number" class="practAmountField" min="0" max="{{100-$cust_percentage}}" value="{{$pract_percentage}}" name="practAmount" required>
-                              <button>Save</button>
-                           </form>
+                              <input type="number" class="practAmountField" min="0" max="100" value="{{$pract_percentage}}" id="practAmount" required>
                         </div>
                      </h6>
                      <h6 class="col-grey"> Payment Due: <strong class="col-blue">{{'$'.number_format($pract_dues, 2)}}</strong></h6>
@@ -124,7 +120,7 @@
                </div>
 
                @if($data->status == '3')
-                  <h6 class="col-grey"> 
+                  <h6 class="col-grey "> 
                      <br><br>Commission Rate:
                      <div class="comBlock defaultComBlock">
                         <strong class="col-blue">{{$data->comission}}%</strong>
@@ -157,23 +153,19 @@
                   @endif
                @elseif($data->status == '4')
                   <h5 class="border_bottom">Customer</h5>
-                  <h6 class="col-grey"> <br><br>Refund:
+                  <h6 class="col-grey refundH"> <br><br>Refund:
                      <div class="custAmountBlock defaultCustAmountBlock">
+                        <br><br>
                         <strong class="col-blue">{{$cust_percentage}}%</strong>
                         &nbsp;&nbsp;
-                        @if($cust_percentage > 0)
                            @if(empty($data->cancel->cust_due))
-                              <a href="javascript:void(0)" class="custAmountEdit">Edit</a>
+                              <a href="javascript:void(0)" class="amountEdit">Edit</a>
                            @endif
-                        @endif
                      </div>
                      <div class="custAmountBlock editCustAmountBlock" style="display:none;">
-                        <form action="{{route('admin.custAmount.edit')}}" method="post">
-                           @csrf
-                           <input type="hidden" name="oid" value="{{base64_encode($data->id)}}">
-                           <input type="number" class="custAmountField" min="0" max="{{100-$pract_percentage}}" value="{{$cust_percentage}}" name="custAmount" required>
-                           <button>Save</button>
-                        </form>
+                        <br><br>
+                        <input type="number" class="custAmountField" min="0" max="100" value="{{$cust_percentage}}" id="custAmount" required>
+                        <button type="button" class="saveAmountPercentage">Save</button>
                      </div>
                   </h6>
                   <h6 class="col-grey"> Payment Due: <strong class="col-blue">{{'$'.number_format($cust_dues, 2)}}</strong></h6>
