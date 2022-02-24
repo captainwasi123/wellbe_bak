@@ -2604,12 +2604,12 @@ span.circle-1 {
 }
 
 .time-slider button.slick-prev.slick-arrow {
-    left: -20px;
+    left: -23px;
     z-index: 99 ;
 }
 
 .time-slider button.slick-next.slick-arrow {
-    right: -20px;
+    right: -23px;
     z-index: 99;
 }
 .slick-arrow {

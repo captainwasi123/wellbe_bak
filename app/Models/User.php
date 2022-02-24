@@ -112,7 +112,7 @@ class User extends Authenticatable
     //Rating
     public function reviews()
     {
-        return $this->hasMany(reviews::class,'review_to','id');
+        return $this->hasMany(reviews::class,'review_to','id')->orderBy('created_at', 'desc');
     }
     public function avgRating()
     {

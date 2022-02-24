@@ -288,12 +288,6 @@ class webController extends Controller
                 ->update(['reminder_email' => 1]);
 			}
 		}
-		
-		
-        $data['order'] = $order;
-        $data['mtp'] = MarketplaceSetting::latest()->first();
-        // \App\Helpers\CommonHelpers::send_email('NewBookingCustomer', $data, $order->booker->email, 'Booking Confirmation', $from_email = 'info@divsnpixel.com', $from_name = 'Wallbe');
-        // \App\Helpers\CommonHelpers::send_email('NewBookingPractitioner', $data, $order->practitioner->email, 'Booking Confirmation', $from_email = 'info@divsnpixel.com', $from_name = 'Wallbe');
         
 	}
 }

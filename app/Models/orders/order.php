@@ -32,6 +32,7 @@ class order extends Model
         $o->status = '9';
         $o->address = $data['location']['place'];
         $o->instructions = empty($data['booking']['instruction']) ? '' : $data['booking']['instruction'];
+        $o->created_at = date('Y-m-d H:i:s');
         $o->save();
         $id = $o->id;
 
