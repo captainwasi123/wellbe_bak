@@ -82,7 +82,7 @@
  }
  .booking-features button.slick-arrow::before {
  color:white !important;
- line-height: 28px !important;
+ line-height: 25px !important;
  }
  .booking-features ul.slick-dots {
  display: none !important;

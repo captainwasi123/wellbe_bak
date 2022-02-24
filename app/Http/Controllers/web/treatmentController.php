@@ -96,10 +96,10 @@ class treatmentController extends Controller
         return \Arr::pluck($users_ids,'user_id');
     }
     function treatmentsCategory($category){
-        if($category == 'booking'){
+        $cat = category::where('category', $category)->first();
+        if(empty($cat->id)){
             return redirect('/');
         }else{
-            $cat = category::where('category', $category)->first();
             $categories = category::where('status', '1')->get();
             $users = User::where('user_type', '1')
                     ->whereHas('services', function($q) use ($cat){
