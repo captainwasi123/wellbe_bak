@@ -60,7 +60,7 @@
                                  Sort <i class="fa fa-chevron-down"></i></a>
                                     <div class="dropdown-menu">
                                     <a class="dropdown-item" href="#">Random</a>
-                                    <a class="dropdown-item" href="#">Top Rated</a>
+                                    <a class="dropdown-item active" href="#">Top Rated</a>
                                     </div>
                               </div>
                         </div>                        

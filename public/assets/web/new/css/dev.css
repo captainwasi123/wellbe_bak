@@ -295,15 +295,14 @@ a.custom-btn1 {
     float: right;
 }
 .custom-sort a {
-    background: white !important;
+    background: #FCFCFC !important;
     color: #5d4e6d !important;
     border: none;
     font-size: 16px;
     font-weight: 600;
 }
 .custom-sort a:hover , .custom-sort a:active , .custom-sort a:focus {
-    background: #5d4e6d !important;
-    color: white !important;
+    background: #FCFCFC !important;
     box-shadow: none !important;
 }
 .dropdown-menu.show {
@@ -312,4 +311,8 @@ a.custom-btn1 {
 }
 .dropdown-menu {
     min-width: 140px !important;
+}
+.custom-sort a.active {
+    background: #5d4e6d !important;
+    color: white !important; 
 }
