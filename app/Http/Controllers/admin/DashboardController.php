@@ -103,7 +103,7 @@ class DashboardController extends Controller
                 $row['Practitioner Bank Acount Name']       = @$val->practitioner->users_payout_details->bank_account_name;
                 $row['Practitioner Bank Account Number']    = @$val->practitioner->users_payout_details->bank_account_number;
 
-                fputcsv($file, array($row));
+                fputcsv($file, $row);
             }
 
             fclose($file);
