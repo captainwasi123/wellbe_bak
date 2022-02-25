@@ -7,14 +7,14 @@
       <div class="col-md-12">
          <div class="panel-group wrap faq-panel" id="accordion" role="tablist" aria-multiselectable="true">
             <div class="panel">
-               <div class="panel-heading active" role="tab" id="headingTwo">
+               <div class="panel-heading" role="tab" id="headingTwo">
                   <h4 class="panel-title">
                      <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                      Description
                      </a>
                   </h4>
                </div>
-               <div id="collapseTwo" class="panel-collapse collapse show" role="tabpanel" aria-labelledby="headingTwo">
+               <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                   <div class="panel-body">
                      {{$data->description}}
                   </div>
@@ -22,7 +22,7 @@
             </div>
             <!-- end of panel -->
             <div class="panel">
-               <div class="panel-heading active" role="tab" id="headingThree">
+               <div class="panel-heading" role="tab" id="headingThree">
                   <h4 class="panel-title">
                      <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                      Preparation

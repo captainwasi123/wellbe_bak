@@ -268,6 +268,7 @@ use Illuminate\Support\Facades\Route;
 	    Route::get('/completed/marked', 'DashboardController@completedMarked');
 
 		Route::post('/comissionEdit', 'DashboardController@comissionEdit')->name('admin.comission.edit');
+		Route::post('/refundEdit', 'DashboardController@refundEdit')->name('admin.refund.edit');
 		Route::post('/practAmountEdit', 'DashboardController@practAmountEdit');
 
 	    Route::get('/booking/markaspaid/{id}', 'DashboardController@bookingMarkasPaid');

@@ -30,6 +30,11 @@ $(document).ready(function() {
         $('.editComBlock').css({display: 'block'});
     });
 
+    $(document).on('click', '.refundEdit', function(){
+        $('.defaultRefundBlock').css({display: 'none'});
+        $('.editRefundBlock').css({display: 'block'});
+    });
+
     $(document).on('click', '.amountEdit', function(){
         $('.defaultPractAmountBlock').css({display: 'none'});
         $('.editPractAmountBlock').css({display: 'block'});

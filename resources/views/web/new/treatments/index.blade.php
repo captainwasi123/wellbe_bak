@@ -36,7 +36,7 @@
                <div class="row">
                   @foreach($services as $val)
                      <div class="col-md-6 col-lg-6 col-sm-6 col-12">
-                        <div class="service-box5">
+                        <div class="service-box5 serviceDetails" data-id="{{base64_encode($val->id)}}">
                            <h3> {{$val->name}}</h3>
                            <p class="two_line"> 
                               {{$val->description}}
@@ -51,7 +51,7 @@
                </div>
             </div>
             <div class="col-md-4 col-lg-4 col-sm-12 col-12">
-               <div class="summary-box2" style="padding-top: 0px;">
+               <div class="summary-box2" style="padding-top: 0px;" id="yourBooking">
                   <div class="book-summary-head" style="margin-bottom: 10px !important">
                      <h3 class="text-center"> Your Booking  </h3>
                   </div>
@@ -100,7 +100,7 @@
                         @if(Session::get('cart') == null || count(Session::get('cart.services')) == 0)
                            <button type="button"  class="time-btn1 pro-btn"> Select Time </button>
                         @else
-                           <button  class="time-btn1 pro-btn"> Select Time </button>
+                           <button  class="time-btn1 pro-btn"> Select Date/Time </button>
                         @endif
                      </form>
                   </div>
@@ -125,4 +125,14 @@
          </div>
       </div>
    </div>
+
+@if(session()->has('success'))
+   <script type="text/javascript">
+      $(document).ready(function(){
+         if ($(window).width() <= 480) {
+            $(window).scrollTop($('#yourBooking').offset().top);
+         }
+      });
+   </script>
+@endif
 @endsection

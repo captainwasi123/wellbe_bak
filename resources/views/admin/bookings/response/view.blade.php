@@ -61,8 +61,25 @@
                        {{$data->reviews->review}}
                      @endif
                   </h5>
-                     <h6 class="col-grey"> Practitioner Earning  </h6>
-                     <h5 class="col-blue"> NZ ${{number_format($data->pract_earning, 2)}} </h5>
+                  <h6 class="col-grey"> Practitioner Earning  </h6>
+                  <h5 class="col-blue"> NZ ${{number_format($data->pract_earning, 2)}} </h5>
+
+                  <h6 class="col-grey ">Refund Amount:
+                     <div class="refundBlock defaultRefundBlock">
+                        <br>
+                        <strong class="col-blue">NZ ${{number_format($data->refund_amount, 2)}}</strong>
+                        &nbsp;&nbsp;
+                        <a href="javascript:void(0)" class="refundEdit">Edit</a>
+                     </div>
+                     <div class="refundBlock editRefundBlock" style="display:none; margin-top: 23px;">
+                        <form action="{{route('admin.refund.edit')}}" method="post">
+                           @csrf
+                           <input type="hidden" name="oid" value="{{base64_encode($data->id)}}">
+                           <input type="number" class="refundField" step="any" min="0" max="{{$data->total_amount-$data->pract_earning}}" value="{{$data->refund_amount}}" name="refundAmount" required>
+                           <button>Save</button>
+                        </form>
+                     </div>
+                  </h6>
                   @endif
                   @if($data->status == '4')
                      <h5 class="border_bottom" style="padding-top: 8px;">Practitioner</h5>

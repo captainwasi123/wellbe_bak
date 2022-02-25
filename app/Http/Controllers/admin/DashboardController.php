@@ -92,7 +92,7 @@ class DashboardController extends Controller
         );
 
         $Heading = array('Wellbe Completed Bookings Data | CSV');
-        $columns = array('Date', 'Booking ID', 'Booker Name', 'Subtotal', 'GST Amount', 'Total Charge', 'Marked as Paid', 'Payment Due', 'Practitioner Name', 'Practitioner Bank Acount Name', 'Practitioner Bank Account Number');
+        $columns = array('Date', 'Booking ID', 'Booker Name', 'Subtotal', 'GST Amount', 'Total Charge', 'Marked as Paid', 'Payment Due', 'Practitioner Name', 'Practitioner Bank Acount Name', 'Practitioner Bank Account Number', 'Refund Amount');
 
         $callback = function() use($data, $columns, $Heading) {
             $file = fopen('php://output', 'w');
@@ -112,6 +112,7 @@ class DashboardController extends Controller
                 $row['Practitioner Name']                   = @$val->practitioner->first_name.' '.@$val->practitioner->last_name;
                 $row['Practitioner Bank Acount Name']       = @$val->practitioner->users_payout_details->bank_account_name;
                 $row['Practitioner Bank Account Number']    = @$val->practitioner->users_payout_details->bank_account_number;
+                $row['Refund Amount']                       = $val->refund_amount;
 
                 fputcsv($file, $row);
             }
@@ -434,6 +435,15 @@ class DashboardController extends Controller
         $o->save();
 
         return redirect()->back()->with('success','Commission Updated | Order#: '.$o->id);
+    }
+
+    function refundEdit(Request $request){
+        $data = $request->all();
+        $o = order::find(base64_decode($data['oid']));
+        $o->refund_amount = $data['refundAmount'];
+        $o->save();
+
+        return redirect()->back()->with('success','Refund Amount Updated | Order#: '.$o->id);
     }
 
     function practAmountEdit(Request $request){
