@@ -54,13 +54,14 @@
                               </ul>
                            </div>
                         </div>
+                        @php $sort = Session::get('sorting'); @endphp
                         <div class="col-lg-6 col-md-6 col-6">
                              <div class="dropdown custom-sort">
                                  <a href="#" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                                  Sort <i class="fa fa-chevron-down"></i></a>
                                     <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Random</a>
-                                    <a class="dropdown-item active" href="#">Top Rated</a>
+                                    <a class="dropdown-item {{empty($sort) ? 'active' : ''}} {{!empty($sort) && $sort == '0' ? 'active' : ''}}" href="{{route('sorting', '0')}}">Random</a>
+                                    <a class="dropdown-item {{!empty($sort) && $sort == '1' ? 'active' : ''}}" href="{{route('sorting', '1')}}">Top Rated</a>
                                     </div>
                               </div>
                         </div>                        

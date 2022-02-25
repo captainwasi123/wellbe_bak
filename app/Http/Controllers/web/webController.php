@@ -5,6 +5,7 @@ namespace App\Http\Controllers\web;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Mail;
+use Session;
 
 class webController extends Controller
 {
@@ -91,6 +92,11 @@ class webController extends Controller
         return view('web.new.CookiePolicy');
     }
     
+    function sorting($status){
+        Session::put('sorting', $status);
+
+        return redirect()->back();
+    }
    
 
 }

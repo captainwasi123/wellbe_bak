@@ -26,6 +26,7 @@ use Illuminate\Support\Facades\Route;
         Route::get('/PrivacyPolicy', 'webController@PrivacyPolicy')->name('PrivacyPolicy');
         Route::get('/CookiePolicy', 'webController@CookiePolicy')->name('CookiePolicy');
 
+        Route::get('/sorting/{status}', 'webController@sorting')->name('sorting');
 		
 
 		

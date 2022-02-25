@@ -12,6 +12,7 @@ use App\Models\userAddon;
 use App\Models\schedule\holidays;
 use App\Models\MarketplaceSetting;
 use DB;
+use Session;
 
 class bookingController extends Controller
 {
@@ -60,6 +61,7 @@ class bookingController extends Controller
         foreach($holidays as $val){
             array_push($unavailable, $val->user_id); 
         }
+        $sort = Session::get('sorting');
         $data['day'] = $day;
         $data['date'] = date('Y-m-d');
         $data['users'] = User::where('status', '1')
@@ -75,9 +77,13 @@ class bookingController extends Controller
                         ->whereHas('availability', function($q) use ($day){
                             return $q->where('week_day', $day);
                         })
+                        ->when(!empty($sort) && $sort == '1', function($q){
+                            return $q->withAvg('reviews', 'rating')->orderBy('reviews_avg_rating', 'desc');
+                        })
                         ->whereIn('id', $userArr)
                         ->whereNotIn('id', $unavailable)
                         ->get();
+                        //dd($data['users']);
         $data['marketplace_data'] = MarketplaceSetting::latest()->first();
 
         return view('web.new.booking.step1')->with($data);
@@ -179,6 +185,7 @@ class bookingController extends Controller
                     }
                 }
             }
+            $sort = Session::get('sorting');
             $data['day'] = $day;
             $data['date'] = date('Y-m-d', strtotime($request->date));
             $holidays=holidays::where('closed_date',$data['date'])->get();
@@ -199,6 +206,9 @@ class bookingController extends Controller
                             })
                             ->whereHas('availability', function($q) use ($day){
                                 return $q->where('week_day', $day);
+                            })
+                            ->when(!empty($sort) && $sort == '1', function($q){
+                                return $q->withAvg('reviews', 'rating')->orderBy('reviews_avg_rating', 'desc');
                             })
                             ->get();
 

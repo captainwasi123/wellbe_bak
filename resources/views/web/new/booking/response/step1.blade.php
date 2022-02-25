@@ -1,9 +1,24 @@
-<div class="bookings-trigger">
-   <ul class="nav nav-tabs no-border" role="tablist">
-      <li class="nav-item">
-         <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab"> Practitioners </a>
-      </li>
-   </ul>
+<div class="row">
+   <div class="col-lg-6 col-md-6 col-6">
+      <div class="bookings-trigger">
+         <ul class="nav nav-tabs no-border" role="tablist">
+            <li class="nav-item">
+               <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab"> Practitioners </a>
+            </li>
+         </ul>
+      </div>
+   </div>
+   @php $sort = Session::get('sorting'); @endphp
+   <div class="col-lg-6 col-md-6 col-6">
+     <div class="dropdown custom-sort">
+         <a href="#" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+         Sort <i class="fa fa-chevron-down"></i></a>
+            <div class="dropdown-menu">
+            <a class="dropdown-item {{empty($sort) ? 'active' : ''}} {{!empty($sort) && $sort == '0' ? 'active' : ''}}" href="{{route('sorting', '0')}}">Random</a>
+            <a class="dropdown-item {{!empty($sort) && $sort == '1' ? 'active' : ''}}" href="{{route('sorting', '1')}}">Top Rated</a>
+            </div>
+      </div>
+   </div>                   
 </div>
 @php $duration = 0; $bslot = 30; @endphp
 @if(Session::get('cart') !== null)
