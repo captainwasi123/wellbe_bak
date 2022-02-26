@@ -119,7 +119,8 @@ class servicesController extends Controller
 
         $data = addons::find($id);
         $addon = userAddon::where('user_id', Auth::id())->where('addon_id', $id)->first();
-        return view('practitioner.services.response.edit_service_addon', ['data' => $data, 'cat_id' => $id, 'addon' => $addon]);
+        $mtp = MarketplaceSetting::latest()->first();
+        return view('practitioner.services.response.edit_service_addon', ['data' => $data, 'cat_id' => $id, 'addon' => $addon, 'mtp' => $mtp]);
     }
     function updateServiceAddon(Request $request){
         $data = $request->all();

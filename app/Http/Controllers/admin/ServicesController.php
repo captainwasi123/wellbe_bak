@@ -127,7 +127,9 @@ class ServicesController extends Controller
    function deleteServiceAddon($id){
       $id = base64_decode($id);
 
-      addons::destroy($id);
+      $data = addons::find($id);
+      $data->status = '3';
+      $data->save();
       userAddon::where('addon_id', $id)->delete();
 
       return redirect()->back()->with('success', 'Addon Deleted.');
@@ -136,8 +138,9 @@ class ServicesController extends Controller
    function editServiceAddon($id){
       $id = base64_decode($id);
       $data = addons::find($id);
+      $mtp = MarketplaceSetting::latest()->first();
 
-      return view('admin.custom_services.response.edit_service_addon', ['data' => $data]);
+      return view('admin.custom_services.response.edit_service_addon', ['data' => $data, 'mtp' => $mtp]);
    }
 
    function updateAddons(Request $request){

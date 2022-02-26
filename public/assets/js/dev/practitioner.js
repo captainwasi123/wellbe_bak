@@ -43,6 +43,17 @@ $(document).ready(function(){
       $('#editServiceTakehomePrice').val(com);
   });
   
+  $(document).on('keyup', '#editAddonPrice', function(){
+      var price = parseFloat($(this).val());
+      var gst = parseFloat($('#mtp_gst').val());
+      var com = parseFloat($('#mtp_com').val());
+      var sale = ((price/100)*gst)+price;
+      var com = price-((price/100)*com);
+
+      $('#editAddonSalePrice').val(sale);
+      $('#editAddonTakeHome').val(com);
+  });
+  
 	// Delete Service
 
 	$(document).on('click', '.enableService', function(){
