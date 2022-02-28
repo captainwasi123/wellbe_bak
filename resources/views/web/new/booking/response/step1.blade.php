@@ -46,6 +46,22 @@
                      @if(base64_decode($sit['id']) == $usval->service_id)
                         @php $usvalid = 1; @endphp
                      @endif
+
+                     @php $addvalid1 = 1; @endphp
+                     @foreach($sit['addons'] as $saval)
+                        @php $addvalid2 = 0; @endphp
+                        @foreach($val->addons as $usaval)
+                           @if($usaval->addon_id == $saval['id'])
+                              @php $addvalid2 = 1; @endphp
+                           @endif
+                        @endforeach
+                        @if($addvalid2 == 0)
+                           @php $addvalid1 = 0; @endphp
+                        @endif
+                     @endforeach
+                     @if($addvalid1 == 0)
+                        @php $uvalid = 0; @endphp
+                     @endif
                   @endforeach
                   @if($usvalid == 0)
                      @php $uvalid = 0; @endphp
