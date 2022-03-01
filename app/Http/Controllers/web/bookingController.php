@@ -234,7 +234,7 @@ class bookingController extends Controller
 
                         foreach($it['addons'] as $key => $adval){
                             $add = addons::find($adval['id']);
-                            $uadd = userAddon::where('user_id', $val)->where('addon_id', $adval['id'])->first();
+                            $uadd = userAddon::where('user_id', $user)->where('addon_id', $adval['id'])->first();
 
                             $aprice = empty($uadd->id) || $uadd->price == 0 ? $add->addonsDetail[0]->price : $uadd->price;
 
