@@ -1860,8 +1860,8 @@ ul.list-style1 li i {
     align-items: center;
 }
 
-.booking-details-person img {
-    width: 80px;
+.booking-details-person .dp {
+    width: 85px;
     position: absolute;
     left: 0px;
     top: 0px;

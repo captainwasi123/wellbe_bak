@@ -83,6 +83,8 @@ use Illuminate\Support\Facades\Route;
 				//Professional
 				Route::get('profile/{id}', 'bookingController@viewProfile');
 				Route::post('getProfessionals', 'bookingController@getProfessionals');
+
+				Route::post('getProfessionalsPrice', 'bookingController@getProfessionalsPrice')->name('treatments.booking.getProfessionalsPrice');
 			});
 		});
 

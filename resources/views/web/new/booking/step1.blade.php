@@ -6,10 +6,10 @@
 <section class="pad-top-40 pad-bot-40 bg-pink">
    <div class="container">
       <div class="breadcrumb-custom2 m-b-40">
-         <a data-toggle="modal" data-target=".editBookingModal"> <i class="fa fa-angle-left"> </i> Select professional </a>
+         <a data-toggle="modal" data-target=".editBookingModal"> <i class="fa fa-angle-left"> </i> Back </a>
       </div>
       
-
+      <input type="hidden" name="_token" id="token" value="{{csrf_token()}}">
    
 
       <div class="block-element">
@@ -18,7 +18,7 @@
                <div class="booking-details-wrapper m-b-30" style="background:#fcfcfc !important">
                   <div class="calendar-booking">
                      <div class="calendar-booking-head">
-                        <h3> Schedule </h3>
+                        <h3> Select Your Professional </h3>
                      </div>
                      <div class="calendar-book">
                         <div class="date-picker">
@@ -35,6 +35,9 @@
                      @foreach(Session::get('cart.services') as $val)
                         @foreach($val as $it)
                            @php $duration = $duration+($it['duration']*$it['quantity']); @endphp
+                           @foreach($it['addons'] as $ait)
+                              @php $duration = $duration+$ait['duration']; @endphp
+                           @endforeach
                         @endforeach
                      @endforeach
                      @if(count(Session::get('cart')) == 0)
@@ -80,6 +83,22 @@
                                           @if(base64_decode($sit['id']) == $usval->service_id)
                                              @php $usvalid = 1; @endphp
                                           @endif
+
+                                          @php $addvalid1 = 1; @endphp
+                                          @foreach($sit['addons'] as $saval)
+                                             @php $addvalid2 = 0; @endphp
+                                             @foreach($val->addons as $usaval)
+                                                @if($usaval->addon_id == $saval['id'])
+                                                   @php $addvalid2 = 1; @endphp
+                                                @endif
+                                             @endforeach
+                                             @if($addvalid2 == 0)
+                                                @php $addvalid1 = 0; @endphp
+                                             @endif
+                                          @endforeach
+                                          @if($addvalid1 == 0)
+                                             @php $uvalid = 0; @endphp
+                                          @endif
                                        @endforeach
                                        @if($usvalid == 0)
                                           @php $uvalid = 0; @endphp
@@ -89,15 +108,18 @@
                                  @if($uvalid == 1)
                                     <div class="booking-practices">
                                        <div class="booking-details-person">
-                                          <img src="{{URL::to('/')}}/{{$val->profile_img}}" onerror="this.onerror=null;this.src='{{URL::to('/')}}/public/assets/images/user-placeholder.png';">
+                                          <input type="hidden" name="userIds" value="{{$val->id}}">
+                                          <img src="{{URL::to('/')}}/{{$val->profile_img}}" onerror="this.onerror=null;this.src='{{URL::to('/')}}/public/assets/images/user-placeholder.png';" class="dp">
                                           <h5> {{$val->first_name.' '.$val->last_name}} </h5>
                                           <p> 
                                              <a href="javascript:void(0)" class="viewUserProfile" data-id="{{base64_encode($val->id)}}"> View Profile </a> 
-
                                              <b class="col-grey font-thin"> 
                                                 <i class="fa fa-star col-yellow"> </i> 
                                                 {{empty($val->avgRating) ? '0.0' : number_format($val->avgRating[0]->aggregate, 1)}} 
                                              </b> 
+                                          </p>
+                                          <p class="practPrice" id="practPriceTray-{{$val->id}}">
+                                             <img src="{{URL::to('/public/assets/images/priceLoader.gif')}}">
                                           </p>
                                        </div>
                                        <div class="booking-persons-time time-slider arrows">
@@ -349,4 +371,21 @@
 @endsection
 @section('addScript')
    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+   <script type="text/javascript">
+      $(document).ready(function(){
+         'use strict'
+         var userIds = [];
+         var token = $('#token').val();
+         $("input:hidden[name=userIds]").each(function(){
+             userIds.push($(this).val());
+         });
+         setTimeout(function(){
+            $.post( "{{route('treatments.booking.getProfessionalsPrice')}}", {_token: token, userIds: userIds}, function( data ) {
+               data.forEach(function(item) {
+                  $('#practPriceTray-'+item.id).html('$'+item.price+' Inc GST');
+               });
+            }, 'json');
+         }, 500);
+      });
+   </script>
 @endsection

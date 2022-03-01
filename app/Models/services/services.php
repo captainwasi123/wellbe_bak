@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\services\addons;
 use App\Models\userService;
 use App\Models\Categories;
+use App\Models\userAddon;
 use Auth;
 
 class services extends Model

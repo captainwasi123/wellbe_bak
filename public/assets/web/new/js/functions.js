@@ -202,6 +202,7 @@ $(function() {
               success: function(response, textStatus, jqXHR) {
                 $('#professionalBlock').html(response);
                 timeSlider();
+                getPractitionerPrice();
               },
               error: function (jqXHR, textStatus, errorThrown) {
               console.log(jqXHR);
@@ -213,7 +214,20 @@ $(function() {
   });
 });
 
-
+function getPractitionerPrice(){
+  var userIds = [];
+   var token = $('#token').val();
+   $("input:hidden[name=userIds]").each(function(){
+       userIds.push($(this).val());
+   });
+   setTimeout(function(){
+      $.post( ref+'/treatments/booking/getProfessionalsPrice', {_token: token, userIds: userIds}, function( data ) {
+         data.forEach(function(item) {
+            $('#practPriceTray-'+item.id).html('$'+item.price+' Inc GST');
+         });
+      }, 'json');
+   }, 500);
+}
 
  $('.booking-features').slick({
   dots: true,

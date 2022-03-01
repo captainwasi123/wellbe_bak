@@ -13,7 +13,7 @@
             <div class="col-md-9 col-lg-9 col-sm-12 col-xs-12 sec-wid-left">
                <div class="booking-details-wrapper m-b-30">
                   <div class="booking-details-person">
-                     <img src="{{URL::to('/')}}/{{$user->profile_img}}" onerror="this.onerror=null;this.src='{{URL::to('/')}}/public/assets/images/user-placeholder.png';">
+                     <img src="{{URL::to('/')}}/{{$user->profile_img}}" onerror="this.onerror=null;this.src='{{URL::to('/')}}/public/assets/images/user-placeholder.png';" class="dp">
                      <h5> {{$user->first_name.' '.$user->last_name}} </h5>
                      <p> 
                         <a href="javascript:void(0)" class="viewUserProfile" data-id="{{base64_encode($user->id)}}"> View Profile </a> 
