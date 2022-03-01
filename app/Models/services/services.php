@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\services\addons;
 use App\Models\userService;
 use App\Models\Categories;
+use App\Models\userAddon;
 use Auth;
 
 class services extends Model
@@ -42,7 +43,7 @@ class services extends Model
 
 
     public function addons_list(){
-        return $this->hasMany(addons::class, 'service_id', 'id');
+        return $this->hasMany(addons::class, 'service_id', 'id')->where('status','!=', '3');
     }
 
     public function practitioner(){

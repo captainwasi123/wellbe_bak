@@ -36,12 +36,12 @@
                <div class="row">
                   @foreach($services as $val)
                      <div class="col-md-6 col-lg-6 col-sm-6 col-12">
-                        <div class="service-box5">
+                        <div class="service-box5 serviceDetails" data-id="{{base64_encode($val->id)}}">
                            <h3> {{$val->name}}</h3>
                            <p class="two_line"> 
                               {{$val->description}}
                            </p>
-                           <h6> <a href="javascript:void(0)" class="serviceDetails" data-id="{{base64_encode($val->id)}}"> Book Now </a> <span> From {{empty($val->lowestPrice) || $val->lowestPrice->price == 0 ? '$'.number_format($val->price, 2) : '$'.number_format($val->lowestPrice->price, 2)}} </span> </h6>
+                           <h6> <a href="javascript:void(0)" class="serviceDetails" data-id="{{base64_encode($val->id)}}"> Book Now </a> <span> From {{empty($val->lowestPrice) || $val->lowestPrice->price > $val->price ? '$'.number_format($val->price, 2) : '$'.number_format($val->lowestPrice->price, 2)}} </span> </h6>
                         </div>
                      </div>
                   @endforeach
@@ -51,7 +51,7 @@
                </div>
             </div>
             <div class="col-md-4 col-lg-4 col-sm-12 col-12">
-               <div class="summary-box2" style="padding-top: 0px;">
+               <div class="summary-box2" style="padding-top: 0px;" id="yourBooking">
                   <div class="book-summary-head" style="margin-bottom: 10px !important">
                      <h3 class="text-center"> Your Booking  </h3>
                   </div>
@@ -60,29 +60,30 @@
                   </div>
                   @if(Session::get('cart') !== null)
                      @foreach(Session::get('cart.services') as $val)
-
-                        <div class="book-summary-item">
-                           <h5>{{$val['quantity']}}x {{$val['title']}} </h5>
-                           @php $addonPrice = 0; $addonDuration = 0; @endphp
-                           @if(count($val['addons']) > 0)
-                              @foreach($val['addons'] as $key => $adval)
-                                 @php $addonPrice = $addonPrice+$adval['price']; @endphp
-                                 @php $addonDuration = $addonDuration+$adval['duration']; @endphp
-                              @endforeach
-                           @endif
-                           <p> <b class="col-green"> From ${{number_format(($val['price']+$addonPrice), 2)}} </b> {{$val['duration']+$addonDuration}} minutes </p>
-
-                           @if(count($val['addons']) > 0)
-                              <p class="addonLabelTreatment">
-                                 Includes
-                                 @foreach($val['addons'] as $key => $adval)
-                                    {{$key == 0 ? '' : ', '}}{{$adval['name']}}
+                        @foreach($val as $it)
+                           <div class="book-summary-item">
+                              <h5>{{$it['title']}} </h5>
+                              @php $addonPrice = 0; $addonDuration = 0; @endphp
+                              @if(count($it['addons']) > 0)
+                                 @foreach($it['addons'] as $key => $adval)
+                                    @php $addonPrice = $addonPrice+$adval['price']; @endphp
+                                    @php $addonDuration = $addonDuration+$adval['duration']; @endphp
                                  @endforeach
-                              </p>
-                           @endif
-                           <a href="javascript:void(0)" class="item-edit1 col-red removeItemCart" data-id="{{$val['id']}}"> Remove </a>
-                        </div>
-                        @php $totalPrice += (($val['price']+$addonPrice)*$val['quantity']); @endphp
+                              @endif
+                              <p> <b class="col-green"> From ${{number_format(($it['price']+$addonPrice), 2)}} </b> {{$it['duration']+$addonDuration}} minutes </p>
+
+                              @if(count($it['addons']) > 0)
+                                 <p class="addonLabelTreatment">
+                                    Includes
+                                    @foreach($it['addons'] as $key => $adval)
+                                       {{$key == 0 ? '' : ', '}}{{$adval['name']}}
+                                    @endforeach
+                                 </p>
+                              @endif
+                              <a href="javascript:void(0)" class="item-edit1 col-red removeItemCart" data-id="{{$it['id']}}"> Remove </a>
+                           </div>
+                           @php $totalPrice += (($it['price']+$addonPrice)*$it['quantity']); @endphp
+                        @endforeach
                      @endforeach
                      @if(count(Session::get('cart')) == 0)
                         <h4>No Items Found.</h4>
@@ -99,7 +100,7 @@
                         @if(Session::get('cart') == null || count(Session::get('cart.services')) == 0)
                            <button type="button"  class="time-btn1 pro-btn"> Select Time </button>
                         @else
-                           <button  class="time-btn1 pro-btn"> Select Time </button>
+                           <button  class="time-btn1 pro-btn"> Select Date/Time </button>
                         @endif
                      </form>
                   </div>
@@ -124,4 +125,14 @@
          </div>
       </div>
    </div>
+
+@if(session()->has('success'))
+   <script type="text/javascript">
+      $(document).ready(function(){
+         if ($(window).width() <= 480) {
+            $(window).scrollTop($('#yourBooking').offset().top);
+         }
+      });
+   </script>
+@endif
 @endsection

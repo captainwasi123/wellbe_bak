@@ -18,14 +18,15 @@ use Illuminate\Support\Facades\Route;
 		Route::get('/', 'webController@index')->name('home');
 		Route::get('/work_with_us', 'webController@workWithUs')->name('work_with_us');
         Route::get('/ourStory', 'webController@ourStory')->name('ourStory');
-        Route::get('/countact_us', 'webController@countactUs')->name('countact_us');
-		Route::post('/countact_us', 'webController@countactUsmail')->name('countact_us');
+        Route::get('/contact_us', 'webController@countactUs')->name('countact_us');
+		Route::post('/contact_us', 'webController@countactUsmail')->name('countact_us');
         Route::get('/faq', 'webController@FAQ')->name('faq');
         Route::get('/TermCondition', 'webController@TermCondition')->name('TermCondition');
         Route::get('/PractitionerAgree', 'webController@PractitionerAgree')->name('PractitionerAgree');
         Route::get('/PrivacyPolicy', 'webController@PrivacyPolicy')->name('PrivacyPolicy');
         Route::get('/CookiePolicy', 'webController@CookiePolicy')->name('CookiePolicy');
 
+        Route::get('/sorting/{status}', 'webController@sorting')->name('sorting');
 		
 
 		
@@ -82,6 +83,8 @@ use Illuminate\Support\Facades\Route;
 				//Professional
 				Route::get('profile/{id}', 'bookingController@viewProfile');
 				Route::post('getProfessionals', 'bookingController@getProfessionals');
+
+				Route::post('getProfessionalsPrice', 'bookingController@getProfessionalsPrice')->name('treatments.booking.getProfessionalsPrice');
 			});
 		});
 
@@ -259,7 +262,16 @@ use Illuminate\Support\Facades\Route;
 	    Route::get('/upcoming', 'DashboardController@upcomming')->name('admin.upcomming');
 	    Route::get('/inprogress', 'DashboardController@inprogress')->name('admin.inprogress');
 	    Route::get('/completed', 'DashboardController@completed')->name('admin.completed');
+	    Route::get('/completed/export', 'DashboardController@completedExport')->name('admin.completed.export');
 	    Route::get('/cancelled', 'DashboardController@cancelled')->name('admin.cancelled');
+	    Route::get('/cancelled/export', 'DashboardController@cancelledExport')->name('admin.cancelled.export');
+
+	    Route::post('/completed/mark', 'DashboardController@completedMark');
+	    Route::get('/completed/marked', 'DashboardController@completedMarked');
+
+		Route::post('/comissionEdit', 'DashboardController@comissionEdit')->name('admin.comission.edit');
+		Route::post('/refundEdit', 'DashboardController@refundEdit')->name('admin.refund.edit');
+		Route::post('/practAmountEdit', 'DashboardController@practAmountEdit');
 
 	    Route::get('/booking/markaspaid/{id}', 'DashboardController@bookingMarkasPaid');
 	    Route::get('/booking/unmarkaspaid/{id}', 'DashboardController@bookingUnmarkasPaid');
@@ -282,11 +294,13 @@ use Illuminate\Support\Facades\Route;
 		Route::get('/view/{id}', 'DashboardController@bookingView1');
 
 	    Route::get('/customers', 'DashboardController@customers')->name('admin.customers');
+	    Route::get('/customersExport', 'DashboardController@customersExport')->name('admin.customers.export');
 
 	    //Practitioner
 	    Route::prefix('practitioners')->group(function(){
 
 	    	Route::get('/', 'DashboardController@practitioners')->name('admin.practitioners');
+	    	Route::get('/export', 'DashboardController@practitionersExport')->name('admin.practitioners.export');
 	    	Route::post('/disable', 'DashboardController@disablePractitioners')->name('admin.practitioners.disable');
 	    	Route::post('/assume', 'DashboardController@assumePractitioners')->name('admin.practitioners.assume');
 			Route::get('/portal/{id}', 'DashboardController@practitioners_portal')->name('admin.practitioners.portal');

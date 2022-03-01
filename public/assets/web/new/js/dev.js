@@ -90,6 +90,13 @@ $(document).ready(function() {
 
         $("#checkout_btn").removeAttr("type");
     });
+
+
+    //Profile Tabs
+    $(document).on('click', '.nav-tabs .nav-link', function(e){
+        e.preventDefault();
+        $(this).tab("show");
+    })
 });
 
 

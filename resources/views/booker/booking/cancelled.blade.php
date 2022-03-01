@@ -25,23 +25,7 @@
                <tbody>
                  @foreach($data as $val)
                      @php
-                        $cust_percentage = 0;
-                        $cust_dues = 0;
-
-                        if($val->pract_id == $val->cancel->user_id){
-                           $cust_percentage = 100;
-                        }else{
-                           $timestamp1 = strtotime($val->start_at.' '.$val->details[0]->start_time);
-                           $timestamp2 = strtotime($val->cancel->created_at);
-                           $hours_gap = abs($timestamp2 - $timestamp1)/(60*60);
-                           if($hours_gap > 24){
-                              $cust_percentage = 100;
-                           }elseif($hours_gap > 2 && $hours_gap <= 24){
-                              $cust_percentage = 75;
-                           }elseif($hours_gap < 2){
-                              $cust_percentage = 0;
-                           }
-                        }
+                        $cust_percentage = $val->cancel->cust_per;
                         $cust_dues = ($val->total_amount/100)*$cust_percentage;
                      @endphp
                    <tr>

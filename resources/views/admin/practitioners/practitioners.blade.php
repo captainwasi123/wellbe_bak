@@ -10,6 +10,7 @@
     <div class="box-type4">
     <div class="page-title">
        <h3 class="col-white"> Practitioners </h3>
+       <a href="javascript:void(0)" class="btn btn-default pull-right" data-href="{{route('admin.practitioners.export')}}" id="exportPractitioner" style="margin-top: -46px;">Export</a>
     </div>
     <div class="box-type1">
        <div class="table-overlay table-type1">
@@ -33,7 +34,14 @@
                      <td> {{count($val->p_completed)}} </td>
                      <td> {{count($val->p_cancelled)}} </td>
                      <td> {{empty($val->p_revenue) ? '0' : '$'.number_format($val->p_revenue[0]->totalRevenue, 2)}} </td>
-                     <td> - </td>
+                     @php
+                        $comPaid = 0;
+                         foreach($val->p_completed as $pc){
+                             $cpaid = ($pc->sub_total/100)*$pc->comission;
+                             $comPaid = $comPaid+$cpaid;
+                         }
+                     @endphp
+                     <td> {{'$'.$comPaid}} </td>
                      <td>
                       <label class="switch">
                         <input type="checkbox"  class="switch-input disableUser" data-ref="{{base64_encode($val->id)}}" {{$val->status == '1' ? 'checked' : ''}}>
@@ -125,4 +133,14 @@
 @endsection
 @section('additionalJS')
    <script src="{{URL::to('/')}}/public/assets/js/dev/admin.js"> </script>
+   <script type="text/javascript">
+      $(document).ready(function(){
+         'use strict'
+
+         $(document).on('click', '#exportPractitioner', function(){
+            let url = $(this).data('href');
+            window.location.href = url;
+         });
+      });
+   </script>
 @endsection

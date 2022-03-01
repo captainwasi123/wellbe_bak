@@ -82,7 +82,7 @@
  }
  .booking-features button.slick-arrow::before {
  color:white !important;
- line-height: 28px !important;
+ line-height: 25px !important;
  }
  .booking-features ul.slick-dots {
  display: none !important;
@@ -126,9 +126,26 @@
  .feature-box5 {
  margin: 0px 0px 0px 0px !important;
  }
+ a.pro-btn {
+    margin-left: 0px;
+}
+
+.service-box5 h6 {
+    width: 81%;
+
+}
+#checkout_btn {
+    padding: 10px 20px !important;
+}
+.submit-btn1.block-element1 {
+    padding: 10px 20px !important;
+}
  }
 
-
+.submit-btn1
+{
+    text-align: center !important;
+}
 
  .pac-container.pac-logo {
     z-index: 999999;
@@ -150,8 +167,6 @@
 #checkout_btn[type=button] {
     background: gray;
 }
-<<<<<<< HEAD
-
 
 .cart-btn1{
     cursor: pointer;
@@ -197,9 +212,9 @@
     float: left;
     margin-top: -97px;
 }
-.banner-text h3 {
+/*.banner-text h3 {
     padding-left: 72px;
-}
+}*/
 .addonLabelTreatment {
     margin-top: -8px;
     padding-right: 75px;
@@ -207,4 +222,106 @@
 .book-summary-item .addonLabelTreatment {
     margin-bottom: 0;
     padding: 0;
+}
+
+.slick-list {
+    padding: 15px 0px;
+    padding-left: 5px;
+}
+
+.safe-treatment {
+    background: #fbece7;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.safe-treatment-text h4 {
+    color: #5D4E6D;
+    font-size: 30px;
+    letter-spacing: 1px;
+    font-family: 'Quicksand' !important;
+    font-weight: 600;
+    padding: 20px 20px;
+    margin: 0px !important;
+}
+.safe-treatment-text1 p {
+    font-family: 'MULISH';
+    color: white;
+    font-size: 14px;
+    letter-spacing: 0.3px;
+    line-height: 25px;
+    margin: 0px !important; 
+    background: #5D4E6D;
+    padding: 10px 20px;
+}
+.safe-treatment-text2 {
+    background: #f8f8fa;
+    padding: 10px 20px;
+}
+.safe-treatment-text p , .safe-treatment-text2 p{
+    font-family: 'MULISH';
+    color: black;
+    font-size: 14px;
+    letter-spacing: 0.3px;
+    line-height: 25px;
+    margin: 0px !important;
+    padding: 5px 0px;
+    background: #f8f8fa;
+}
+.safe-treatment-text hr {
+    margin: 0px;
+    height: 1px;
+    background: #80808014;
+    margin-bottom: 10px;
+}
+.safe-treatment-text3 {
+    background: #fff;
+    text-align: center;
+    padding: 10px 20px 3px 20px;
+}
+.safe-treatment-text3 p {
+    padding: 10px 0px 0px 0px;
+}
+.modal-dialog2 {
+    top: 45%;
+} 
+a.custom-btn1 {
+    font-size: 14px !important;
+}
+.safe-sec-1 img {
+    width: 70%;
+    float: right;
+    padding-right: 30px;
+}
+.custom-sort {
+    float: right;
+}
+.custom-sort a {
+    background: #FCFCFC !important;
+    color: #5d4e6d !important;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+}
+.custom-sort a:hover , .custom-sort a:active , .custom-sort a:focus {
+    background: #FCFCFC !important;
+    box-shadow: none !important;
+}
+.dropdown-menu.show {
+    right: 0px !important;
+    left: auto !important;
+}
+.dropdown-menu {
+    min-width: 140px !important;
+}
+.custom-sort a.active {
+    background: #5d4e6d !important;
+    color: white !important; 
+}
+.practPrice {
+    color: #1975ff;
+    font-weight: 700;
+    margin-top: -10px;
+}
+.practPrice img {
+    height: 25px;
 }

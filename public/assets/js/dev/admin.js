@@ -26,6 +26,101 @@ $(document).ready(function() {
     });
 
 
+    $(document).on('keyup', '#addAddonPrice', function(){
+        var price = parseFloat($(this).val());
+        var gst = parseFloat($('#mtp_gst').val());
+        var com = parseFloat($('#mtp_com').val());
+        var sale = ((price/100)*gst)+price;
+        var com = price-((price/100)*com);
+
+        $('#addAddonSalePrice').val(sale);
+        $('#addAddonTakeHome').val(com);
+    });
+
+    $(document).on('keyup', '#editAddonPrice', function(){
+        var price = parseFloat($(this).val());
+        var gst = parseFloat($('#mtp_gst').val());
+        var com = parseFloat($('#mtp_com').val());
+        var sale = ((price/100)*gst)+price;
+        var com = price-((price/100)*com);
+
+        $('#editAddonSalePrice').val(sale);
+        $('#editAddonTakeHome').val(com);
+    });
+
+    $(document).on('click', '.comEdit', function(){
+        $('.defaultComBlock').css({display: 'none'});
+        $('.editComBlock').css({display: 'block'});
+    });
+
+    $(document).on('click', '.refundEdit', function(){
+        $('.defaultRefundBlock').css({display: 'none'});
+        $('.editRefundBlock').css({display: 'block'});
+    });
+
+    $(document).on('click', '.amountEdit', function(){
+        $('.defaultPractAmountBlock').css({display: 'none'});
+        $('.editPractAmountBlock').css({display: 'block'});
+        $('.defaultCustAmountBlock').css({display: 'none'});
+        $('.editCustAmountBlock').css({display: 'block'});
+    });
+
+    $(document).on('click', '.saveAmountPercentage', function(){
+        var id = $('#orderId').val();
+        var token = $('#token').val();
+        var practAmount = parseInt($('#practAmount').val());
+        var custAmount = parseInt($('#custAmount').val());
+        if((practAmount+custAmount) <= 100){
+            var data = {_token: token, oid: id, practAmount: practAmount, custAmount:custAmount};
+            $.post(ref+'/admin/practAmountEdit', data, function(response) {
+                $('#practAmount').val(response.data.practAmount);
+                $('#custAmount').val(response.data.custAmount);
+                $('.defaultPractAmountBlock strong').html(response.data.practAmount+'%');
+                $('.defaultCustAmountBlock strong').html(response.data.custAmount+'%');
+
+                $('.defaultPractAmountBlock').css({display: 'block'});
+                $('.editPractAmountBlock').css({display: 'none'});
+                $('.defaultCustAmountBlock').css({display: 'block'});
+                $('.editCustAmountBlock').css({display: 'none'});
+
+            }, 'json');
+        }else{
+            alert('Payment percentages cannot exceed 100% of the booking amount.');
+        }
+    });
+
+    $(document).on('click','#bulkMarkCompleted', function() {
+        var array = [];
+        $("input:checkbox[name=orderIds]:checked").each(function() {
+            array.push($(this).val());
+        });
+        var token = $('#token').val();
+        $.ajax({
+           type: "POST",
+           data: {_token: token,status:'1', ids:array},
+           url: ref+'/admin/completed/mark',
+           success: function(msg){
+            window.location.href = ref+'/admin/completed/marked';
+           }
+        });
+    });
+
+    $(document).on('click','#bulkUnmarkCompleted', function() {
+        var array = [];
+        $("input:checkbox[name=orderIds]:checked").each(function() {
+            array.push($(this).val());
+        });
+        var token = $('#token').val();
+        $.ajax({
+           type: "POST",
+           data: {_token: token,status:'0', ids:array},
+           url: ref+'/admin/completed/mark',
+           success: function(msg){
+            window.location.href = ref+'/admin/completed/marked';
+           }
+        });
+    });
+
 
     //Practitioner
 
@@ -47,6 +142,30 @@ $(document).ready(function() {
     });
 
 
+    //Services
+
+    $(document).on('keyup', '#addServicePrice', function(){
+        var price = parseFloat($(this).val());
+        var gst = parseFloat($('#mtp_gst').val());
+        var com = parseFloat($('#mtp_com').val());
+        var sale = ((price/100)*gst)+price;
+        var com = price-((price/100)*com);
+
+        $('#addServiceSalePrice').val(sale);
+        $('#addServiceTakehomePrice').val(com);
+    });
+
+
+    $(document).on('keyup', '#editServicePrice', function(){
+        var price = parseFloat($(this).val());
+        var gst = parseFloat($('#mtp_gst').val());
+        var com = parseFloat($('#mtp_com').val());
+        var sale = ((price/100)*gst)+price;
+        var com = price-((price/100)*com);
+
+        $('#editServiceSalePrice').val(sale);
+        $('#editServiceTakehomePrice').val(com);
+    });
 
 
 

@@ -16,7 +16,7 @@
             <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
                <div class="box-type3 height-custom1" style="overflow-x: hidden;overflow-y: scroll;max-height: 600px;" id="service_block"><div class="cat-head">
 			   <h5 class="col-black"> Services ({{count($services)}}) </h5>
-			   <div class="action-buttons"> <a href="javascript:void()" class="fa fa-plus addService" data-id="{{$cat_id}}"></a> </div>
+			   <div class="action-buttons"> <a href="javascript:void(0)" class="fa fa-plus addService" data-id="{{$cat_id}}"></a> </div>
 			</div>
 			<div class="all-categories">
             @foreach($services as $val)
@@ -59,7 +59,8 @@
    </div>
   </div>
 
-
+  <input type="hidden" id="mtp_gst" value="{{$mtp->comission}}">
+  <input type="hidden" id="mtp_com" value="{{$mtp->gst}}">
   <!-- Add Service -->
   <div class="modal fade modal-size2 addServiceModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
       <div class="modal-dialog" role="document" style="max-width: 600px;">
@@ -82,7 +83,17 @@
                   </div>
                   <div class="form-field2">
                      <p> PRICE <sup class="col-red">*</sup> </p>
-                     <input type="number" step="any" placeholder="" name="price" style="padding-left: 50px;" required>
+                     <input type="number" step="any" placeholder="" id="addServicePrice" name="price" style="padding-left: 50px;" required>
+                     <span class="static-tag1 col-black"> NZ$  </span>
+                  </div>
+                  <div class="form-field2">
+                     <p> WEBSITE SALE PRICE (INC GST) <sup class="col-red">*</sup> </p>
+                     <input type="number" step="any" placeholder="" id="addServiceSalePrice" style="padding-left: 50px;" disabled>
+                     <span class="static-tag1 col-black"> NZ$  </span>
+                  </div>
+                  <div class="form-field2">
+                     <p> YOUR TAKEHOME (AFTER GST & FEES) <sup class="col-red">*</sup> </p>
+                     <input type="number" step="any" placeholder="" id="addServiceTakehomePrice" style="padding-left: 50px;" disabled>
                      <span class="static-tag1 col-black"> NZ$  </span>
                   </div>
                   <div class="form-field2">
@@ -131,28 +142,42 @@
                <form method="post" action="{{route('admin.services.addons.add')}}">
                   {{csrf_field()}}
                   <div class="row">
-                     <div class="col-md-12">
+                     <div class="col-md-8">
                            <input type="hidden" name="service_id" id="service_id">
                            <div class="form-field2">
                               <p> VARIANTS/ADD-ON NAME <sup class="col-red">*</sup> </p>
                               <input type="text" placeholder="Please enter name" name="addon_name" required>
                            </div>
                      </div>
+                     <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12"> 
+                        <div class="form-field2">
+                           <p class="col-black">  Duration (Minutes) </p>
+                           <input type="text" placeholder="Enter duration" name="duration[]" required>
+                        </div>
+                     </div>
                   </div>
                   <div class="row">
                      <div class="col-md-12">
                         <div id="addon_item_add">
-                           <div class="row">
+                           <div class="row"> 
                               <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12"> 
                                  <div class="form-field2">
-                                    <p class="col-black">  Duration (Minutes) </p>
-                                    <input type="text" placeholder="Enter duration" name="duration[]" required>
+                                    <p class="col-black"> Price   </p>
+                                    <input type="text" placeholder="Enter price" id="addAddonPrice" name="price[]" style="padding-left: 50px;" required>
+                                    <span class="static-tag1 col-black"> NZ$  </span>
                                  </div>
                               </div> 
                               <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12"> 
                                  <div class="form-field2">
-                                    <p class="col-black"> Price   </p>
-                                    <input type="text" placeholder="Enter price" name="price[]" style="padding-left: 50px;" required>
+                                    <p class="col-black"> Website Sale Price  </p>
+                                    <input type="text" placeholder="(Inc GST)" id="addAddonSalePrice" style="padding-left: 50px;" disabled>
+                                    <span class="static-tag1 col-black"> NZ$  </span>
+                                 </div>
+                              </div> 
+                              <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12"> 
+                                 <div class="form-field2">
+                                    <p class="col-black"> Your Takehome </p>
+                                    <input type="text" placeholder="(After GST and Fees)" id="addAddonTakeHome" style="padding-left: 50px;" disabled>
                                     <span class="static-tag1 col-black"> NZ$  </span>
                                  </div>
                               </div>   

@@ -13,7 +13,7 @@
             <div class="col-md-9 col-lg-9 col-sm-12 col-xs-12 sec-wid-left">
                <div class="booking-details-wrapper m-b-30">
                   <div class="booking-details-person">
-                     <img src="{{URL::to('/')}}/{{$user->profile_img}}" onerror="this.onerror=null;this.src='{{URL::to('/')}}/public/assets/images/user-placeholder.png';">
+                     <img src="{{URL::to('/')}}/{{$user->profile_img}}" onerror="this.onerror=null;this.src='{{URL::to('/')}}/public/assets/images/user-placeholder.png';" class="dp">
                      <h5> {{$user->first_name.' '.$user->last_name}} </h5>
                      <p> 
                         <a href="javascript:void(0)" class="viewUserProfile" data-id="{{base64_encode($user->id)}}"> View Profile </a> 
@@ -47,24 +47,25 @@
                   </div>
                   @if(Session::get('cart') !== null)
                      @foreach(Session::get('cart.services') as $val)
-
-                        <div class="book-summary-item">
-                           <h5>{{$val['quantity']}}x {{$val['title']}} </h5>
-                           @php $addonPrice = 0;$addonDuration = 0; @endphp
-                           @if(count($val['addons']) > 0)
-                              <p class="addonLabelTreatment">
-                                 Includes
-                                 @foreach($val['addons'] as $key => $adval)
-                                    {{$key == 0 ? '' : ', '}}{{$adval['name']}}
-                                    @php $addonPrice = $addonPrice+$adval['price']; @endphp
-                                    @php $addonDuration = $addonDuration+$adval['duration']; @endphp
-                                 @endforeach
-                              </p>
-                           @endif
-                           <p> <b class="col-green"> 
-                            </b> {{$val['duration']+$addonDuration}} minutes </p>
-                        </div>
-                        @php $totalAmount = $totalAmount+(($val['price']+$addonPrice)*$val['quantity']); @endphp
+                        @foreach($val as $it)
+                           <div class="book-summary-item">
+                              <h5>{{$it['title']}} </h5>
+                              @php $addonPrice = 0;$addonDuration = 0; @endphp
+                              @if(count($it['addons']) > 0)
+                                 <p class="addonLabelTreatment">
+                                    Includes
+                                    @foreach($it['addons'] as $key => $adval)
+                                       {{$key == 0 ? '' : ', '}}{{$adval['name']}}
+                                       @php $addonPrice = $addonPrice+$adval['price']; @endphp
+                                       @php $addonDuration = $addonDuration+$adval['duration']; @endphp
+                                    @endforeach
+                                 </p>
+                              @endif
+                              <p> <b class="col-green"> 
+                               </b> {{$it['duration']+$addonDuration}} minutes </p>
+                           </div>
+                           @php $totalAmount = $totalAmount+(($it['price']+$addonPrice)*$it['quantity']); @endphp
+                        @endforeach
                      @endforeach
                      @if(count(Session::get('cart')) == 0)
                         <h4>No Items Found.</h4>
@@ -73,7 +74,7 @@
                      <h4>No Items Found.</h4>
                   @endif
                   <div class="book-summary-instructions m-b-10">
-                     <a data-toggle="modal" data-target=".addInstructionModal"><h6> {{empty(Session::get('cart.booking.instruction')) ? 'Add' : 'Edit'}} Instructions </h6></a>
+                     <a data-toggle="modal" data-target=".addInstructionModal"><h6 style="font-weight: 700;text-decoration: underline;"> {{empty(Session::get('cart.booking.instruction')) ? 'Add' : 'Edit'}} Instructions </h6></a>
                   </div>
                   @php 
                      $gst = $marketplace_data->gst;
@@ -85,7 +86,7 @@
                   <div class="block-element">
                      <div class="row m-t-20 m-b-10">
                         <div class="col-md-12" style="padding-left: 30px;padding-right: 30px;">
-                           <a href="{{route('booker.order')}}" class="submit-btn1 block-element1"> Pay Now </a>
+                           <a href="javascript:void(0)" data-toggle="modal" data-target=".safe-treatment-popup" class="submit-btn1 block-element1"> Pay Now </a>
                         </div>
                      </div>
                   </div>
@@ -168,4 +169,43 @@
    </div>
 </div>
 
+<div class="modal popup-1 fade safe-treatment-popup" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+   <div class="modal-dialog modal-lg modal-dialog2" role="document" style="max-width: 650px;">
+      <div class="modal-content">
+         <div class="safe-treatment">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            <div class="row">
+               <div class="col-md-6 col-lg-6 col-sm-6 col-12 order-lg-2 order-md-2 order-sm-2">
+                  <div class="safe-sec-1">
+                     <img src="{{URL::to('/public/assets/web/')}}/images/image.png" width="100%">   
+                  </div>
+               </div>
+               <div class="col-md-6 col-lg-6 col-sm-6 col-12 order-lg-1 order-md-1 order-sm-1">
+                  <div class="safe-treatment-text">
+                     <h4> Safer treatments at home </h4>
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-md-12 col-lg-12 col-sm-12 col-12">
+                  <div class="safe-treatment-text1" style="">
+                     <p>We are taking every precaution in line with Government guidance to ensure treatments can be carried out safely and the Wellbe community is protected.</p>
+                  </div>
+                  <div class="safe-treatment-text2">
+                     <hr>
+                     <p>Vaccine Passes - All clients must provide evidence of a valid Covid 19 vaccine passport before the treatment begins. If a pass cannot be provided, the booking will be cancelled with no refund.</p>
+                     <p>PPE - Therapists are required to wear a face-covering for the duration of bookings in line with government guidance.</p>
+                     <p>Hygiene - Therapists will sanitise their hands before and after the treatment. </p>
+                     <p>Ventilation - Clients should provide a station for your therapist to set up with good ventilation, ideally near a window. </p>
+                  </div>
+                  <div class="safe-treatment-text3" style="">
+                     <a class="custom-btn1" href="{{route('booker.order')}}" style="background: #5D4E6D; width: 100%;"> Accept & Continue </a>
+                     <p>By continuing your accept our updated <a href="{{URL::to('/TermCondition')}}" target="_blank"><b>Terms & Conditions</b></a></p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
 @endsection

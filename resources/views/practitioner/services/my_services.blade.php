@@ -19,7 +19,7 @@
       <div class=""></div>
       <div class="block-element pad-1 m-t-20">
          <div class="row">
-            <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
+            <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12 service-box-custom">
                <div class="box-type3 height-custom1" style="overflow:visible;" style="position: relative;">
                   <div class="cat-head">
                      <h5 class="col-black"> Category ({{count($data['category'])}}) </h5>
@@ -51,8 +51,8 @@
                   </div>
                </div>
             </div>
-            <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
-               <div class="box-type3 height-custom1" style="overflow-x: hidden;overflow-y: scroll;max-height: 600px;" id="service_block">
+            <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12 service-box-custom">
+               <div class="box-type3 height-custom1 " style="overflow-x: hidden;overflow-y: scroll;max-height: 600px;" id="service_block">
                   <div class="cat-head">
                      <h5 class="col-black"> Services</h5>
                      <div class="action-buttons"> </div>
@@ -62,7 +62,7 @@
                   </div>
                </div>
             </div>
-            <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
+            <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12 service-box-custom">
                <div class="box-type3 height-custom1" style="overflow-x: hidden;overflow-y: scroll;max-height: 600px;" id="service_detail_block">
                   <div class="cat-head">
                      <h5 class="col-black"> Services Details </h5>
@@ -78,6 +78,8 @@
   </div>
 
 
+  <input type="hidden" id="mtp_gst" value="{{$data['mtp']->comission}}">
+  <input type="hidden" id="mtp_com" value="{{$data['mtp']->gst}}">
   <!-- Edit Service -->
   <div class="modal fade modal-size2 editServiceModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
       <div class="modal-dialog" role="document" style="max-width: 600px;">

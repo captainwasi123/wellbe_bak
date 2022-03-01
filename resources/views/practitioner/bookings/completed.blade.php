@@ -34,7 +34,7 @@
                            {{$val->payment_status == '1' ? 'Paid' : 'In-Escrow'}}
                          </td>
                      <td>
-                           @php $com = ($val->sub_total/100)*$mtp->comission;@endphp
+                           @php $com = ($val->sub_total/100)*$val->comission;@endphp
                            NZ ${{number_format($val->sub_total-$com , 2)}}
                         </td>
 

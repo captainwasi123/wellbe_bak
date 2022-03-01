@@ -8,8 +8,11 @@
   <script>
       google.maps.event.addDomListener(window, 'load', initialize);
       function initialize() {
+            var options = {
+              componentRestrictions: {country: "nz"}
+            };
             var input = document.getElementById('pac-inputt');
-            var autocomplete = new google.maps.places.Autocomplete(input);
+            var autocomplete = new google.maps.places.Autocomplete(input, options);
             autocomplete.addListener('place_changed', function () {
             var place = autocomplete.getPlace();
             // place variable will have all the information you are looking for.
@@ -20,8 +23,11 @@
 
       google.maps.event.addDomListener(window, 'load', initializee);
       function initializee() {
+            var options = {
+              componentRestrictions: {country: "nz"}
+            };
             var input = document.getElementById('mpac-inputt');
-            var autocomplete = new google.maps.places.Autocomplete(input);
+            var autocomplete = new google.maps.places.Autocomplete(input, options);
             autocomplete.addListener('place_changed', function () {
             var place = autocomplete.getPlace();
             // place variable will have all the information you are looking for.

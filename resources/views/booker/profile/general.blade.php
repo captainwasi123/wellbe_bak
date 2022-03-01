@@ -18,10 +18,15 @@
          <div class="row">
 
          <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-         <div class="block-element m-t-15 m-b-10">
+ <!--         <div class="block-element m-t-15 m-b-10">
          <h4 class="col-blue"> General </h4>
-         </div>
+         </div> -->
          <div class="row">
+            <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                 <div class="block-element m-t-15 m-b-10">
+                 <h4 class="col-blue"> General </h4>
+                 </div>
+            </div>
 
          <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
          <div class="form-field3">
@@ -58,11 +63,16 @@
 
          </div>
 
-         <div class="block-element">
+         <!-- <div class="block-element">
          <h4 class="col-blue"> Address </h4>
-         </div>
+         </div> -->
 
          <div class="row m-b-20">
+            <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                <div class="block-element">
+                 <h4 class="col-blue"> Address </h4>
+                 </div>
+            </div>
 
           <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
          <div class="form-field3">
@@ -132,17 +142,22 @@
 
 
 
-           <div class="box-type4">
+        <div class="box-type4">
          <div class="page-title">
             <h3 class="col-white"> Marketing </h3>
          </div>
          <div class="block-element pad-1">
          <div class="row">
          <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-         <div class="block-element m-t-15 m-b-10">
+         <!-- <div class="block-element m-t-15 m-b-10">
          <h4 class="col-blue"> Newsletter </h4>
-         </div>
+         </div> -->
          <div class="row">
+            <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                 <div class="block-element m-t-15 m-b-10">
+                 <h4 class="col-blue"> Newsletter </h4>
+                 </div>
+            </div>
 
          <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
          <div class="form-field4 m-b-30">
@@ -151,17 +166,18 @@
          </div>
          </div>
          </div>
-         </div>
-         </div>
-      </div>
 
-      <div class="row">
         <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
             <div class="form-field4 m-b-30 text-right mob-text-left">
                <input type="submit" class="normal-btn bg-blue col-white rounded" value="Update Profile">
             </div>
           </div>
+  
+         </div>
+         </div>
       </div>
+
+     
     </form>
 
 

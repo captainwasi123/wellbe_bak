@@ -12,6 +12,7 @@ use App\Models\userAddon;
 use App\Models\schedule\holidays;
 use App\Models\MarketplaceSetting;
 use DB;
+use Session;
 
 class bookingController extends Controller
 {
@@ -44,10 +45,14 @@ class bookingController extends Controller
         $unavailable = array();
         $cart = session()->get('cart');
 
+        $advalidate = 0;
         foreach($cart['services'] as $val){
-            array_push($services, base64_decode($val['id']));
-            foreach($val['addons'] as $vall){
-                array_push($addons, $vall['id']);
+            foreach($val as $it){
+                array_push($services, base64_decode($it['id']));
+                foreach($it['addons'] as $vall){
+                    array_push($addons, $vall['id']);
+                    $advalidate = 1;
+                }
             }
         }
 
@@ -56,6 +61,7 @@ class bookingController extends Controller
         foreach($holidays as $val){
             array_push($unavailable, $val->user_id);
         }
+        $sort = Session::get('sorting');
         $data['day'] = $day;
         $data['date'] = date('Y-m-d');
         $data['users'] = User::where('status', '1')
@@ -63,15 +69,21 @@ class bookingController extends Controller
                         ->whereHas('services', function($q) use ($services){
                             return $q->whereIn('service_id', $services);
                         })
-                        ->whereHas('addons', function($q) use ($addons){
-                            return $q->whereIn('addon_id', $addons);
+                        ->when($advalidate != 0, function($qe) use ($addons){
+                            return $qe->whereHas('addons', function($q) use ($addons){
+                                return $q->whereIn('addon_id', $addons);
+                            });
                         })
                         ->whereHas('availability', function($q) use ($day){
                             return $q->where('week_day', $day);
                         })
+                        ->when(!empty($sort) && $sort == '1', function($q){
+                            return $q->withAvg('reviews', 'rating')->orderBy('reviews_avg_rating', 'desc');
+                        })
                         ->whereIn('id', $userArr)
                         ->whereNotIn('id', $unavailable)
                         ->get();
+                        //dd($data['users']);
         $data['marketplace_data'] = MarketplaceSetting::latest()->first();
 
         return view('web.new.booking.step1')->with($data);
@@ -80,19 +92,21 @@ class bookingController extends Controller
         $data = $request->all();
         $cart = session()->get('cart');
         foreach($cart['services'] as $val){
-            $ser = services::find(base64_decode($val['id']));
-            $rate = userService::where(['user_id' => base64_decode($data['id']), 'service_id' => base64_decode($val['id'])])->first();
-            $price = empty($rate->id) || $rate->price == 0 ? $ser->price : $rate->price;
+            foreach($val as $mkey => $it){
+                $ser = services::find(base64_decode($it['id']));
+                $rate = userService::where(['user_id' => base64_decode($data['id']), 'service_id' => base64_decode($it['id'])])->first();
+                $price = empty($rate->id) || $rate->price == 0 ? $ser->price : $rate->price;
 
-            $cart['services'][base64_decode($val['id'])]['price'] = $price;
+                $cart['services'][base64_decode($it['id'])][$mkey]['price'] = $price;
 
-            foreach($cart['services'][base64_decode($val['id'])]['addons'] as $key => $adval){
-                $add = addons::find($adval['id']);
-                $uadd = userAddon::where('user_id', base64_decode($data['id']))->where('addon_id', $adval['id'])->first();
+                foreach($it['addons'] as $key => $adval){
+                    $add = addons::find($adval['id']);
+                    $uadd = userAddon::where('user_id', base64_decode($data['id']))->where('addon_id', $adval['id'])->first();
 
-                $aprice = empty($uadd->id) || $uadd->price == 0 ? $add->addonsDetail[0]->price : $uadd->price;
+                    $aprice = empty($uadd->id) || $uadd->price == 0 ? $add->addonsDetail[0]->price : $uadd->price;
 
-                $cart['services'][base64_decode($val['id'])]['addons'][$key]['price'] = $aprice;
+                    $cart['services'][base64_decode($it['id'])][$mkey]['addons'][$key]['price'] = $aprice;
+                }
             }
         }
 
@@ -118,11 +132,14 @@ class bookingController extends Controller
     }
     function step2(){
         $cart = session()->get('cart');
+        if(empty($cart['booking']['practitioner'])){
+            return redirect('/');
+        }else{
+            $data['user'] = User::find(base64_decode($cart['booking']['practitioner']));
 
-        $data['user'] = User::find(base64_decode($cart['booking']['practitioner']));
-
-        $data['marketplace_data'] = MarketplaceSetting::latest()->first();
-        return view('web.new.booking.step2')->with($data);
+            $data['marketplace_data'] = MarketplaceSetting::latest()->first();
+            return view('web.new.booking.step2')->with($data);
+        }
     }
 
     function instructions(Request $request){
@@ -158,12 +175,17 @@ class bookingController extends Controller
 
             $userArr = \Arr::pluck($users_ids,'user_id');
 
+            $advalidate = 0;
             foreach($cart['services'] as $val){
-                array_push($services, base64_decode($val['id']));
-                foreach($val['addons'] as $vall){
-                    array_push($addons, $vall['id']);
+                foreach($val as $it){
+                    array_push($services, base64_decode($it['id']));
+                    foreach($it['addons'] as $vall){
+                        array_push($addons, $vall['id']);
+                        $advalidate = 1;
+                    }
                 }
             }
+            $sort = Session::get('sorting');
             $data['day'] = $day;
             $data['date'] = date('Y-m-d', strtotime($request->date));
             $holidays=holidays::where('closed_date',$data['date'])->get();
@@ -177,16 +199,53 @@ class bookingController extends Controller
                             ->whereHas('services', function($q) use ($services){
                                 return $q->whereIn('service_id', $services);
                             })
-                            ->whereHas('addons', function($q) use ($addons){
-                                return $q->whereIn('addon_id', $addons);
+                            ->when($advalidate != 0, function($qe) use ($addons){
+                                return $qe->whereHas('addons', function($q) use ($addons){
+                                    return $q->whereIn('addon_id', $addons);
+                                });
                             })
                             ->whereHas('availability', function($q) use ($day){
                                 return $q->where('week_day', $day);
+                            })
+                            ->when(!empty($sort) && $sort == '1', function($q){
+                                return $q->withAvg('reviews', 'rating')->orderBy('reviews_avg_rating', 'desc');
                             })
                             ->get();
 
             //return json_encode($userArr);
 
             return view('web.new.booking.response.step1')->with($data);
+        }
+
+        function getProfessionalsPrice(Request $request){
+            $data = $request->all();
+            $mtp = MarketplaceSetting::latest()->first();
+            $cart = session()->get('cart');
+            $userPrice = array();
+            foreach($data['userIds'] as $user){
+                $inprice = 0;
+                foreach($cart['services'] as $val){
+                    foreach($val as $mkey => $it){
+                        $ser = services::find(base64_decode($it['id']));
+                        $rate = userService::where(['user_id' => $user, 'service_id' => base64_decode($it['id'])])->first();
+                        $price = empty($rate->id) || $rate->price == 0 ? $ser->price : $rate->price;
+
+                        $inprice = $inprice+$price;
+
+                        foreach($it['addons'] as $key => $adval){
+                            $add = addons::find($adval['id']);
+                            $uadd = userAddon::where('user_id', $user)->where('addon_id', $adval['id'])->first();
+
+                            $aprice = empty($uadd->id) || $uadd->price == 0 ? $add->addonsDetail[0]->price : $uadd->price;
+
+                            $inprice = $inprice+$aprice;
+                        }
+                    }
+                }
+                $inprice = (($inprice/100)*$mtp->gst)+$inprice;
+                array_push($userPrice, array('id' => $user, 'price' => number_format($inprice, 2)));
+            }
+
+            return json_encode($userPrice);
         }
 }

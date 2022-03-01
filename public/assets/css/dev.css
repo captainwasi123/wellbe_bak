@@ -1,3 +1,11 @@
+.page-title .btn-default {
+    background-color: white;
+    font-weight: 600;
+}
+.page-title .btn-default:hover {
+    background-color: black;
+    color: #fff;
+}
 .cat-box1 {
 	cursor:pointer;
 }
@@ -87,7 +95,7 @@ span > i.fa-star{
     font-weight: normal;
 }
 .booking-detail-table td {
-    font-size: 16px !important;
+    font-size: 14px !important;
     font-weight: 700;
     border-right: 1px solid #e6e6e6;
 }
@@ -114,4 +122,163 @@ span > i.fa-star{
     float: left;
     font-size: 12px;
     font-weight: normal;
+}
+/*
+.pad-1 {
+    padding-bottom: 20px;
+}
+*/.height-custom1 {
+    min-height: 100%;
+}
+.category-message {
+    position: relative;
+}
+.all-categories {
+    z-index: 99;
+    position: relative;
+}
+
+.service-rad-btn {
+    margin-left: 10px;
+}
+.service-box-custom {
+    margin-bottom: 20px;
+}
+
+ @media screen and (max-width:768px) and (min-width:520px) {  
+    .booking-btn-custom a {
+    padding: 10px 14px;
+    font-size: 12px;
+}
+
+ }
+
+@media screen and (max-width:519px) and (min-width:320px) { 
+.user-dropdown {
+    float: right;
+}
+.booking-detail-table table tbody tr td {
+    padding: 5px 12px 5px 12px;
+}
+/*.pad-1 {
+    padding-bottom: 20px;
+}*/
+.category-message {
+    position: relative;
+    float: none;
+}
+
+.height-custom1 {
+    min-height: 100%;
+}
+.service-rad-btn {
+    margin-left: 10px;
+    padding: 10px 10px;
+}
+/*.orderCancel {
+    padding: 10px 25px;
+}
+
+.orderStart {
+     padding: 10px 25px;
+}*/
+.booking-btn-custom a {
+    padding: 10px 10px;
+    font-size: 12px;
+}
+.booking-btn-custom {
+    text-align: center !important;
+}
+
+.booking-detail-table {
+    border: 1px solid #e6e6e6;
+    padding: 12px 0px;
+}
+
+}
+
+.comBlock {
+    width: 100px;
+    margin-left: 160px;
+    margin-top: -20px;
+}
+.editComBlock .comField {
+    width: 80px;
+    height: 22px;
+}
+.editComBlock button {
+    margin-left: 10px;
+    border: 0;
+    background: none;
+    color: #007bff;
+    font-weight: 600;
+}
+.editComBlock form {
+    display: inline-flex;
+}
+
+.amountBlock {
+    width: 100px;
+    margin-left: 80px;
+    margin-top: -16px;
+}
+.editPractAmountBlock .practAmountField {
+    width: 80px;
+    height: 22px;
+}
+.editPractAmountBlock button {
+    margin-left: 10px;
+    border: 0;
+    background: none;
+    color: #007bff;
+    font-weight: 600;
+}
+.editPractAmountBlock form {
+    display: inline-flex;
+}
+
+.editCustAmountBlock .custAmountField {
+    width: 80px;
+    height: 22px;
+}
+.editCustAmountBlock button {
+    margin-left: 10px;
+    border: 0;
+    background: none;
+    color: #007bff;
+    font-weight: 600;
+}
+.editCustAmountBlock form {
+    display: inline-flex;
+}
+
+.btn.color-black {
+    background-color: #000 !important;
+    color: #fff !important;
+}
+.btn.color-black:hover {
+    background-color: #fff !important;
+    color: #000 !important;
+}
+
+/* Refund */
+
+.refundBlock {
+    width: 130px;
+    margin-left: -117px;
+    margin-top: 4px;
+}
+.editRefundBlock .refundField {
+    width: 80px;
+    height: 22px;
+}
+.editRefundBlock button {
+    margin-left: 10px;
+    border: 0;
+    background: none;
+    color: #007bff;
+    font-weight: 600;
+}
+.editRefundBlock form {
+    display: inline-flex;
 }

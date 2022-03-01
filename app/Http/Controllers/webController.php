@@ -273,7 +273,10 @@ class webController extends Controller
 		$mtp = MarketplaceSetting::latest()->first();
 		foreach($order as $order_data){ 
 			$date =	strtotime($order_data->details[0]->start_time);
-			if($date >= $currnet_time){
+			$t1 = strtotime(date('Y-m-d').' '.$order_data->details[0]->start_time);
+			$t2 = strtotime($order_data->created_at);
+			$diff = $t1 - $t2;
+			if($date >= $currnet_time && $diff > 7200){
 				$data = array(
 					'order' => $order_data,
 					'mtp' => $mtp,
@@ -285,12 +288,6 @@ class webController extends Controller
                 ->update(['reminder_email' => 1]);
 			}
 		}
-		
-		
-        $data['order'] = $order;
-        $data['mtp'] = MarketplaceSetting::latest()->first();
-        // \App\Helpers\CommonHelpers::send_email('NewBookingCustomer', $data, $order->booker->email, 'Booking Confirmation', $from_email = 'info@divsnpixel.com', $from_name = 'Wallbe');
-        // \App\Helpers\CommonHelpers::send_email('NewBookingPractitioner', $data, $order->practitioner->email, 'Booking Confirmation', $from_email = 'info@divsnpixel.com', $from_name = 'Wallbe');
         
 	}
 }

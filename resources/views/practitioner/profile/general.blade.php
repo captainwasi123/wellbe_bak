@@ -35,13 +35,7 @@
                         <!-- <p> Profile Photo <input type="file" name="profile_img" class="bg-blue normal-btn col-white pad-1 rounded"></p> -->
 
                      </div>
-                        <div class="row">
-                          <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12">
-                              <div class="form-field4 m-b-30 text-right mob-text-left">
-                              <input type="submit" class="normal-btn bg-blue col-white rounded" value="Update Profile">
-                              </div>
-                          </div>
-                        </div>
+                    
                   </div>
                </div>
                <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
@@ -83,12 +77,13 @@
                      <p> Bio/Your Experience </p>
                      <input type="text"  name="bio" value="{{$user_data->bio_description}}">
                   </div>
+                  <div class="block-element">
+                    <h4 class="col-blue"> Address </h4>
+                  </div>
                </div>
-
-            <div class="block-element">
-               <h4 class="col-blue"> Address </h4>
-            </div>
-            <div class="row m-b-20">
+<!-- 
+            
+            <div class="row m-b-20"> -->
                <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                   <div class="form-field3">
                      <p> Street </p>
@@ -132,7 +127,7 @@
                </div> -->
             </div>
          </div>
-      </div>
+  
          <div class="col-md-5 col-lg-5 col-sm-12 col-xs-12">
             <div class="block-element m-t-15 m-b-10" style="position: relative;">
                <h4 class="col-blue"> Store </h4>
@@ -149,7 +144,7 @@
                </div>
             </div> -->
             <div class="form-field3">
-               <p> Service Radius <a href="{{route('practitioner.geofences')}}" style="margin-left: 10px;" class="bg-blue normal-btn pad-1 col-white rounded"> Show Service Radius </a>  </p>
+               <p> Service Radius <a href="{{route('practitioner.geofences')}}" class="bg-blue normal-btn pad-1 col-white rounded service-rad-btn"> Show Service Radius </a>  </p>
             </div>
             {{--  <div class="form-field3">
                <p> Minimum Booking Amount </p>
@@ -158,7 +153,7 @@
             </div>  --}}
             <div class="form-field3">
                <p> Buffer Between Appointments (Minutes) </p>
-               <input type="text" name="buffer_between_appointments" value="{{empty($user_data->user_store) ? '' : $user_data->user_store->buffer_between_appointments}}" required>
+               <input type="number" name="buffer_between_appointments" value="{{empty($user_data->user_store) ? '' : $user_data->user_store->buffer_between_appointments}}" required>
             </div>
             <div class="block-element m-t-15 m-b-10">
                <h4 class="col-blue"> Payout Details </h4>
@@ -218,6 +213,11 @@
                   @endif
                @endif
             </div>
+
+            <div class="form-field4 m-b-30 text-right mob-text-left">
+              <input type="submit" class="normal-btn bg-blue col-white rounded" value="Update Profile">
+            </div>            
+          
          </div>
       </div>
    </div>

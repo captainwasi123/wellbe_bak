@@ -9,6 +9,7 @@ use App\Models\services\services;
 use App\Models\services\addons;
 use App\Models\userService;
 use App\Models\userAddon;
+use App\Models\MarketplaceSetting;
 use Auth;
 
 class servicesController extends Controller
@@ -16,7 +17,7 @@ class servicesController extends Controller
     function index(){
     	$data = array();
     	$data['category'] = Categories::where('status', '1')->get();
-
+        $data['mtp'] = MarketplaceSetting::latest()->first();
     	return view('practitioner.services.my_services', ['data' => $data]);
     }
 
@@ -78,10 +79,10 @@ class servicesController extends Controller
 
     function editService($id){
     	$id = base64_decode($id);
-
+        $mtp = MarketplaceSetting::latest()->first();
     	$data = services::find($id);
         $service = userService::where('user_id', Auth::id())->where('service_id', $id)->first();
-    	return view('practitioner.services.response.edit_service', ['data' => $data, 'cat_id' => $id, 'service' => $service]);
+    	return view('practitioner.services.response.edit_service', ['data' => $data, 'cat_id' => $id, 'service' => $service, 'mtp' => $mtp]);
     }
 
 
@@ -118,7 +119,8 @@ class servicesController extends Controller
 
         $data = addons::find($id);
         $addon = userAddon::where('user_id', Auth::id())->where('addon_id', $id)->first();
-        return view('practitioner.services.response.edit_service_addon', ['data' => $data, 'cat_id' => $id, 'addon' => $addon]);
+        $mtp = MarketplaceSetting::latest()->first();
+        return view('practitioner.services.response.edit_service_addon', ['data' => $data, 'cat_id' => $id, 'addon' => $addon, 'mtp' => $mtp]);
     }
     function updateServiceAddon(Request $request){
         $data = $request->all();

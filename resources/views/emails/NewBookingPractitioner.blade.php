@@ -723,9 +723,6 @@ width: 100% !important;
 
 	<p style="padding: 0; margin: 0;text-align: right;"><span class="mso-font-fix-arial">Includes GST: &#36;{{number_format($order->gst,2)}}</span></p>
 
-	<p style="padding: 0; margin: 0;text-align: right;"><span class="mso-font-fix-arial">Service Fees: &#36;{{number_format($order->total_amount - ($order->pract_earning+$order->gst),2)}}</span></p>
-
-<p style="padding: 0; margin: 0;text-align: right;"><span class="mso-font-fix-arial"><strong>Your Takehome: &#36;{{number_format($order->pract_earning,2)}}</strong></span></p>
 </div>
 </td>
 </tr>

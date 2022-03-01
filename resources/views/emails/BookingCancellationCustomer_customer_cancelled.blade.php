@@ -747,7 +747,7 @@ width: 100% !important;
 
 <p style="padding: 0; margin: 0;text-align:center;">&nbsp;</p>
 
-<p style="padding: 0; margin: 0;text-align:center;"><span class="mso-font-fix-arial">See our </span><span class="mso-font-fix-arial"><a href="https://wellbe.co.nz/cancellation-policy" target="_blank" style="color: #00c0e7 !important; text-decoration: underline !important;"><font style=" color:#00c0e7;">cancellation policy</font></a></span><span class="mso-font-fix-arial"> for more information.</span></p>
+<p style="padding: 0; margin: 0;text-align:center;"><span class="mso-font-fix-arial">See our </span><span class="mso-font-fix-arial"><a href="https://wellbeltd.zendesk.com/hc/en-us/articles/4415380990873" target="_blank" style="color: #00c0e7 !important; text-decoration: underline !important;"><font style=" color:#00c0e7;">cancellation policy</font></a></span><span class="mso-font-fix-arial"> for more information.</span></p>
 
 <p style="padding: 0; margin: 0;text-align:center;">&nbsp;</p>
 
