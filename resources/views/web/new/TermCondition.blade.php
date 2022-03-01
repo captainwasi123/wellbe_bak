@@ -325,7 +325,7 @@
          <h4 class="" ><b>
            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  In these Terms:
             </b> </h4></div>
-         <div>
+         <div class="sec-head4">
        <p> Wellbe or we or us means Get Wellbe Pty Ltd ACN 611 428 927.</p>
 
        <p> Booking means a confirmed booking for the provision of the treatment which has been processed and communicated to the practitioners.</p>
