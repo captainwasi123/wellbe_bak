@@ -27,8 +27,8 @@
          <div class="row">
             <div class="col-md-12">
                <div class="sec-head4 text-center">
-                  <h4 class="col-blue"> Why work with Wellbe? </h4>
-                  <p> We’re on a mission to empower beauty and health practitioners all over New Zealand. </p>
+                  <h4 class="col-blue"> What is Wellbe? </h4>
+                  <p> Wellbe connects the best practitioners directly to clients all over New Zealand provide a range of personal care and wellness services in their homes, hotels, office. No phone calls, cash payments, or stress to deal with. Simply sign up, and we’ll start sending clients your way! </p>
                </div>
             </div>
          </div>
@@ -37,23 +37,23 @@
                <div class="work-service-box">
                  <span class="circle-1">   <img class="work-img" src="{{URL::to('/public/assets/web/new/')}}/images/location-icon1.svg"> </span>
                   <img class="shape-line1" src="{{URL::to('/public/assets/web/new/')}}/images/shape-line1.png">
-                  <h4> Set your territory </h4>
-                  <p>  Our advanced geo-mapping tools ensure you’ll only be working in areas you choose for your convenience. </p>
+                  <h4> How does it work? </h4>
+                  <p>  Clients simply make their booking online via the Wellbe website – and get matched instantly with one of the available practitioners in their area, who receive all the information they need to complete the job. Practitioners can manage their bookings via our Wellbe portal - which allows them to set their own working days/hours, select the treatments they offer, set prices, communicate with clients, and more. </p>
                </div>
             </div>
             <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12">
                <div class="work-service-box works-service-box3">
                  <span class="circle-1">   <img class="work-img" src="{{URL::to('/public/assets/web/new/')}}/images/location-icon4.jpg"> </span>
                   <img class="shape-line2" src="{{URL::to('/public/assets/web/new/')}}/images/shape-line2.png">
-                  <h4> Control your own schedule </h4>
-                  <p>  Our tool lets you set your own schedule to provide you with freedom and flexibility. </p>
+                  <h4> Do I need my own insurance? </h4>
+                  <p>  All practitioners must have an insurance policy to offer treatments on Wellbe. This ensures (if required) that you can pay compensation for unintended and unexpected personal injury and property damage that might arise from your products or services. We’ve put together these guidelines to enable new and existing Wellbe professionals to choose the insurance cover that provides you with adequate protection and meets Wellbe's requirements. </p>
                </div>
             </div>
             <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12">
                <div class="work-service-box">
                    <span class="circle-1"> <img class="work-img" src="{{URL::to('/public/assets/web/new/')}}/images/location-icon5.jpg"> </span>
-                  <h4> Maximise your earnings </h4>
-                  <p> Set your own prices for services. Wellbe will only take a small service fee for bookings processed, you keep the rest!  </p>
+                  <h4> What experience and equipment do I need? </h4>
+                  <p> Wellbe prides itself on connecting high-quality, vetted, and fully trained practitioners to our customers. As such, when coming onboard all practitioners on Wellbe must be able to provide the following documents before they start taking bookings.  </p>
                </div>
             </div>
          </div>
@@ -71,8 +71,8 @@
          <div class="row">
             <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12 order-lg-1">
                <div class="professional-text">
-                  <h4 class="col-blue"> How do I join?</h4>
-                  <p> Becoming a member of the Wellbe Community is simple. Create a free account and we’ll be in touch to discuss the onboarding process.</p>
+                  <h4 class="col-blue"> How much will I be paid? </h4>
+                  <p> Wellbe allows you to set your own prices for services you want to offer. Unlike traditional salons, where the practitioners may take home as little as 25%, practitioner earnings for a Wellbe booking is 70% of the total bookings amount. The rest is split between 15% for GST (so you don’t have to pay it), and a 15% commission to Wellbe to cover the costs of running our platform and marketing our services. </p>
                   <p> You’ll be selling your services in no time. </p>
                   <a href="{{URL::to('/register/pro')}}" class="custom-btn1"> Join Wellbe Today </a>
                </div>
@@ -266,39 +266,39 @@
                <a > What is Wellbe? <i class="fa fa-angle-right"></i>
                </a>
                <div class="content">
-                  <p> We carefully screen and approve each professional. They are all professionally trained and incredibly talented. Every professional that works with us is fully qualified and insured for the services they offer. We collect regular feedback to ensure you consistently receive a five star experience.
+                  <p> Wellbe connects the best practitioners directly to clients all over New Zealand provide a range of personal care and wellness services in their homes, hotels, office. No phone calls, cash payments, or stress to deal with. Simply sign up, and we’ll start sending clients your way!
                   </p>
                </div>
             </div>
             <div class="set">
-               <a > What documents do I need? <i class="fa fa-angle-right"></i>
+               <a > How does it work? <i class="fa fa-angle-right"></i>
                </a>
                <div class="content">
-                  <p> We carefully screen and approve each professional. They are all professionally trained and incredibly talented. Every professional that works with us is fully qualified and insured for the services they offer. We collect regular feedback to ensure you consistently receive a five star experience.
+                  <p> Clients simply make their booking online via the Wellbe website – and get matched instantly with one of the available practitioners in their area, who receive all the information they need to complete the job. Practitioners can manage their bookings via our Wellbe portal - which allows them to set their own working days/hours, select the treatments they offer, set prices, communicate with clients, and more.
                   </p>
                </div>
             </div>
             <div class="set">
-               <a > Do I need my own equipment or insurance? <i class="fa fa-angle-right"></i>
+               <a > Do I need my own insurance? <i class="fa fa-angle-right"></i>
                </a>
                <div class="content">
-                  <p> We carefully screen and approve each professional. They are all professionally trained and incredibly talented. Every professional that works with us is fully qualified and insured for the services they offer. We collect regular feedback to ensure you consistently receive a five star experience.
+                  <p> All practitioners must have an insurance policy to offer treatments on Wellbe. This ensures (if required) that you can pay compensation for unintended and unexpected personal injury and property damage that might arise from your products or services. We’ve put together these guidelines to enable new and existing Wellbe professionals to choose the insurance cover that provides you with adequate protection and meets Wellbe's requirements.
                   </p>
                </div>
             </div>
             <div class="set">
-               <a > Do I have to wear a uniform? <i class="fa fa-angle-right"></i>
+               <a > What experience and equipment do I need? <i class="fa fa-angle-right"></i>
                </a>
                <div class="content">
-                  <p> We carefully screen and approve each professional. They are all professionally trained and incredibly talented. Every professional that works with us is fully qualified and insured for the services they offer. We collect regular feedback to ensure you consistently receive a five star experience.
+                  <p> Wellbe prides itself on connecting high-quality, vetted, and fully trained practitioners to our customers. As such, when coming onboard all practitioners on Wellbe must be able to provide the following documents before they start taking bookings.
                   </p>
                </div>
             </div>
             <div class="set">
-               <a > How do I manage my bookings? <i class="fa fa-angle-right"></i>
+               <a > How much will I be paid? <i class="fa fa-angle-right"></i>
                </a>
                <div class="content">
-                  <p> We carefully screen and approve each professional. They are all professionally trained and incredibly talented. Every professional that works with us is fully qualified and insured for the services they offer. We collect regular feedback to ensure you consistently receive a five star experience.
+                  <p> Wellbe allows you to set your own prices for services you want to offer. Unlike traditional salons, where the practitioners may take home as little as 25%, practitioner earnings for a Wellbe booking is 70% of the total bookings amount. The rest is split between 15% for GST (so you don’t have to pay it), and a 15% commission to Wellbe to cover the costs of running our platform and marketing our services.
                   </p>
                </div>
             </div>

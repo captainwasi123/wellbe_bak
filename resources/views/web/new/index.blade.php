@@ -277,7 +277,7 @@
               <a >Who are the Wellbe professionals? <i class="fa fa-angle-right"></i>
               </a>
               <div class="content">
-                 <p> We carefully screen and approve each professional. They are all professionally trained and incredibly talented. Every professional that works with us is fully qualified and insured for the services they offer. We collect regular feedback to ensure you consistently receive a five star experience.
+                 <p> We carefully screen and approve each of our practitioners. They are all professionally trained and incredibly talented. Every practitioner that works with us is fully qualified and insured for the services they offer. We collect regular feedback to ensure you consistently receive a five star experience.
                  </p>
               </div>
            </div>
@@ -285,23 +285,23 @@
               <a > Do I need to provide anything for the treatment? <i class="fa fa-angle-right"></i>
               </a>
               <div class="content">
-                 <p> We carefully screen and approve each professional. They are all professionally trained and incredibly talented. Every professional that works with us is fully qualified and insured for the services they offer. We collect regular feedback to ensure you consistently receive a five star experience.
+                 <p> No, your mobile practitioner will provide everything you need for the treatment including treatment beds (if required) and towels/sheets. In some instances, they may need access to running water or an electricity socket but we will let you know beforehand if this is the case.
                  </p>
               </div>
            </div>
            <div class="set">
-              <a > When can I book for? <i class="fa fa-angle-right"></i>
+              <a > When and where can I book for? <i class="fa fa-angle-right"></i>
               </a>
               <div class="content">
-                 <p> We carefully screen and approve each professional. They are all professionally trained and incredibly talented. Every professional that works with us is fully qualified and insured for the services they offer. We collect regular feedback to ensure you consistently receive a five star experience.
+                 <p> We have practitioners available all across New Zealand from 7am to 10pm most days, and we’re adding more to our network every week. If you cannot see any practitioners in your area yet, be sure to check back soon!
                  </p>
               </div>
            </div>
            <div class="set">
-              <a > What if I need to make changes? <i class="fa fa-angle-right"></i>
+              <a > What if I need to make changes to my booking? <i class="fa fa-angle-right"></i>
               </a>
               <div class="content">
-                 <p> We carefully screen and approve each professional. They are all professionally trained and incredibly talented. Every professional that works with us is fully qualified and insured for the services they offer. We collect regular feedback to ensure you consistently receive a five star experience.
+                 <p> Once your booking has been made, you’ll be able to manage it within the Wellbe portal. Our portal allows you to contact your practitioner directly via messenger. You can also self cancel with no fee up to 24 hours before the booking start date - in case you change your mind or want to book a different treatment or change your date/time.
                  </p>
               </div>
            </div>
