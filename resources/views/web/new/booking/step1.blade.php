@@ -9,7 +9,7 @@
          <a data-toggle="modal" data-target=".editBookingModal"> <i class="fa fa-angle-left"> </i> Back </a>
       </div>
       
-
+      <input type="hidden" name="_token" id="token" value="{{csrf_token()}}">
    
 
       <div class="block-element">
@@ -35,6 +35,9 @@
                      @foreach(Session::get('cart.services') as $val)
                         @foreach($val as $it)
                            @php $duration = $duration+($it['duration']*$it['quantity']); @endphp
+                           @foreach($it['addons'] as $ait)
+                              @php $duration = $duration+$ait['duration']; @endphp
+                           @endforeach
                         @endforeach
                      @endforeach
                      @if(count(Session::get('cart')) == 0)
@@ -105,7 +108,8 @@
                                  @if($uvalid == 1)
                                     <div class="booking-practices">
                                        <div class="booking-details-person">
-                                          <img src="{{URL::to('/')}}/{{$val->profile_img}}" onerror="this.onerror=null;this.src='{{URL::to('/')}}/public/assets/images/user-placeholder.png';">
+                                          <input type="hidden" name="userIds" value="{{$val->id}}">
+                                          <img src="{{URL::to('/')}}/{{$val->profile_img}}" onerror="this.onerror=null;this.src='{{URL::to('/')}}/public/assets/images/user-placeholder.png';" class="dp">
                                           <h5> {{$val->first_name.' '.$val->last_name}} </h5>
                                           <p> 
                                              <a href="javascript:void(0)" class="viewUserProfile" data-id="{{base64_encode($val->id)}}"> View Profile </a> 
@@ -114,7 +118,9 @@
                                                 {{empty($val->avgRating) ? '0.0' : number_format($val->avgRating[0]->aggregate, 1)}} 
                                              </b> 
                                           </p>
-                                          <!-- <p class="practPrice">$100 Inc GST</p> -->
+                                          <p class="practPrice" id="practPriceTray-{{$val->id}}">
+                                             <img src="{{URL::to('/public/assets/images/priceLoader.gif')}}">
+                                          </p>
                                        </div>
                                        <div class="booking-persons-time time-slider arrows">
                                           @foreach($val->availability as $avail)
@@ -365,4 +371,21 @@
 @endsection
 @section('addScript')
    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+   <script type="text/javascript">
+      $(document).ready(function(){
+         'use strict'
+         var userIds = [];
+         var token = $('#token').val();
+         $("input:hidden[name=userIds]").each(function(){
+             userIds.push($(this).val());
+         });
+         setTimeout(function(){
+            $.post( "{{route('treatments.booking.getProfessionalsPrice')}}", {_token: token, userIds: userIds}, function( data ) {
+               data.forEach(function(item) {
+                  $('#practPriceTray-'+item.id).html('$'+item.price+' Inc GST');
+               });
+            }, 'json');
+         }, 500);
+      });
+   </script>
 @endsection

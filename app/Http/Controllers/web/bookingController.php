@@ -216,4 +216,36 @@ class bookingController extends Controller
 
             return view('web.new.booking.response.step1')->with($data);
         }
+
+        function getProfessionalsPrice(Request $request){
+            $data = $request->all();
+            $mtp = MarketplaceSetting::latest()->first();
+            $cart = session()->get('cart');
+            $userPrice = array();
+            foreach($data['userIds'] as $user){
+                $inprice = 0;
+                foreach($cart['services'] as $val){
+                    foreach($val as $mkey => $it){
+                        $ser = services::find(base64_decode($it['id']));
+                        $rate = userService::where(['user_id' => $user, 'service_id' => base64_decode($it['id'])])->first();
+                        $price = empty($rate->id) || $rate->price == 0 ? $ser->price : $rate->price;
+
+                        $inprice = $inprice+$price;
+
+                        foreach($it['addons'] as $key => $adval){
+                            $add = addons::find($adval['id']);
+                            $uadd = userAddon::where('user_id', $val)->where('addon_id', $adval['id'])->first();
+
+                            $aprice = empty($uadd->id) || $uadd->price == 0 ? $add->addonsDetail[0]->price : $uadd->price;
+
+                            $inprice = $inprice+$aprice;
+                        }
+                    }
+                }
+                $inprice = (($inprice/100)*$mtp->gst)+$inprice;
+                array_push($userPrice, array('id' => $user, 'price' => number_format($inprice, 2)));
+            }
+
+            return json_encode($userPrice);
+        }
 }

@@ -25,6 +25,9 @@
    @foreach(Session::get('cart.services') as $val)
       @foreach($val as $it)
          @php $duration = $duration+($it['duration']*$it['quantity']); @endphp
+         @foreach($it['addons'] as $ait)
+            @php $duration = $duration+$ait['duration']; @endphp
+         @endforeach
       @endforeach
    @endforeach
    @if(count(Session::get('cart')) == 0)
@@ -71,7 +74,8 @@
             @if($uvalid == 1)
                <div class="booking-practices">
                   <div class="booking-details-person">
-                     <img src="{{URL::to('/')}}/{{$val->profile_img}}" onerror="this.onerror=null;this.src='{{URL::to('/')}}/public/assets/images/user-placeholder.png';">
+                     <input type="hidden" name="userIds" value="{{$val->id}}">
+                     <img src="{{URL::to('/')}}/{{$val->profile_img}}" onerror="this.onerror=null;this.src='{{URL::to('/')}}/public/assets/images/user-placeholder.png';" class="dp">
                      <h5> {{$val->first_name.' '.$val->last_name}} </h5>
                      <p> 
                         <a href="javascript:void(0)" class="viewUserProfile" data-id="{{base64_encode($val->id)}}"> View Profile </a> 
@@ -80,6 +84,9 @@
                            <i class="fa fa-star col-yellow"> </i> 
                            {{empty($val->avgRating) ? '0.0' : number_format($val->avgRating[0]->aggregate, 1)}} 
                         </b> 
+                     </p>
+                     <p class="practPrice" id="practPriceTray-{{$val->id}}">
+                        <img src="{{URL::to('/public/assets/images/priceLoader.gif')}}">
                      </p>
                   </div>
                   <div class="booking-persons-time time-slider">
