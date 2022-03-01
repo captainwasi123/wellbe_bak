@@ -122,7 +122,7 @@ class loginController extends Controller
 
                 return redirect()->back()->with('error', 'Sorry, we already have an account registered with that email address. Please try resetting your password.');
             }
-        }else{
+        }else{ 
 
             return redirect()->back()->with('error', 'Passwords do not match.');
         }

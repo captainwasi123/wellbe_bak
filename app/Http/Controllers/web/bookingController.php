@@ -54,7 +54,7 @@ class bookingController extends Controller
         $hdate['date']=date('Y-m-d');
         $holidays=holidays::where('closed_date',$hdate['date'])->get();
         foreach($holidays as $val){
-            array_push($unavailable, $val->user_id); 
+            array_push($unavailable, $val->user_id);
         }
         $data['day'] = $day;
         $data['date'] = date('Y-m-d');
@@ -99,7 +99,7 @@ class bookingController extends Controller
         session()->put('cart', $cart);
 
         $data['marketplace_data'] = MarketplaceSetting::latest()->first();
-        
+
         return view('web.new.booking.response.summary')->with($data);
     }
 
@@ -168,7 +168,7 @@ class bookingController extends Controller
             $data['date'] = date('Y-m-d', strtotime($request->date));
             $holidays=holidays::where('closed_date',$data['date'])->get();
             foreach($holidays as $val){
-                array_push($unavailable, $val->user_id); 
+                array_push($unavailable, $val->user_id);
             }
             $data['users'] = User::where('status', '1')
                             ->where('store_status', '1')
