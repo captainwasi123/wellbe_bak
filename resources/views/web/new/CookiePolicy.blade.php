@@ -18,19 +18,19 @@
 
    <section class="pad-top-60 pad-bot-60   bg-8">
       <div class="container">
-         <div class=" sec-head4">
+         <div class="sec-head4">
 
             <p> Our website uses cookies. A cookie is a small text file that is stored on your computer, tablet, or phone when you visit a website. These cookies allow us to distinguish you from other users of our website. This helps us to provide you with a good experience when you browse our website and also allows us to improve our website. </p>
-            <br>
+            
             <p>There are two main types of cookies:</p>
-            <br>
+            
             <ul>
                <li> Session cookies - These are deleted when you finish browsing a website and are not stored on your computer longer than this. </li>
                <li> Persistent cookies - These are stored on your computer after you have finished using a website so that the website provider can remember your preferences the next time you use it. </li>
             </ul>
-            <br>
+            
             <p> Cookies can be set by the website you have browsed, ie the website displayed in the uniform resource locator (URL) window. These are called first-party cookies. Third-party cookies are set by a website other than the one you are browsing. </p>
-            <br>
+            
             <p> To find out more about cookies, including how to see what cookies have been set and how to manage and delete them, visit www.allaboutcookies.org. </p>
          </div>
 
@@ -40,7 +40,7 @@
          </div>
 
 
-         <div>
+         <div class="sec-head4">
             <ul>
                <li> To estimate our audience size and usage pattern; </li>
                <li> To store information about your preferences, and so allow us to customise our site according to your individual interests; </li>
