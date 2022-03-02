@@ -282,3 +282,7 @@ span > i.fa-star{
 .editRefundBlock form {
     display: inline-flex;
 }
+input[readonly] {
+    cursor: default;
+    background-color: #fafafa;
+}

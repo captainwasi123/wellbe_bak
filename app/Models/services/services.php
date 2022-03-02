@@ -55,7 +55,9 @@ class services extends Model
         return $this->belongsTo(userService::class, 'id', 'service_id')->where('user_id', Auth::id());
     }
     public function lowestPrice(){
-        return $this->belongsTo(userService::class, 'id', 'service_id')->where('price', '!=', 0)->orderBy('price');
+        return $this->belongsTo(userService::class, 'id', 'service_id')
+            ->where('price', '!=', 0)
+            ->orderBy('price');
     }
     public function cat(){
         return $this->belongsTo(Categories::class, 'category_id');
