@@ -1,6 +1,11 @@
+@php 
+   $sprice = empty($data->lowestPrice)  ? $data->price : $data->lowestPrice->price; 
+   $sgst = ($sprice/100)*$mtp->gst;
+   $stotal = $sprice+$sgst;
+@endphp
 <div class="block-element card-form-head m-b-3">
    <h3 class="text-left"> {{$data->name}} </h3>
-   <p> From {{empty($data->lowestPrice)  ? '$'.number_format($data->price, 2) : '$'.number_format($data->lowestPrice->price, 2)}}  - Duration {{$data->duration}} Minutes </p>
+   <p> From {{'$'.number_format($stotal, 2)}}  - Duration {{$data->duration}} Minutes </p>
 </div>
 <div class="block-element">
    <div class="row m-t-3 m-b-2">

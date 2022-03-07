@@ -12,7 +12,7 @@
    @php $pr = empty($service->price) ? $data->price : $service->price; @endphp
    <div class="form-field2">
       <p> PRICE (EXCL GST) <sup class="col-red">*</sup> </p>
-      <input type="number" step="any" placeholder="" name="price" id="editServicePrice" style="padding-left: 50px;" value="{{$pr}}">
+      <input type="number" step=".01" placeholder="" name="price" id="editServicePrice" style="padding-left: 50px;" value="{{$pr}}">
       <span class="static-tag1 col-black"> NZ$  </span>
    </div>
    <div class="form-field2">

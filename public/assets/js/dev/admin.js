@@ -33,8 +33,8 @@ $(document).ready(function() {
         var sale = ((price/100)*gst)+price;
         var com = price-((price/100)*com);
 
-        $('#addAddonSalePrice').val(sale);
-        $('#addAddonTakeHome').val(com);
+        $('#addAddonSalePrice').val(sale.toFixed(2));
+        $('#addAddonTakeHome').val(com.toFixed(2));
     });
 
     $(document).on('keyup', '#editAddonPrice', function(){
@@ -44,8 +44,8 @@ $(document).ready(function() {
         var sale = ((price/100)*gst)+price;
         var com = price-((price/100)*com);
 
-        $('#editAddonSalePrice').val(sale);
-        $('#editAddonTakeHome').val(com);
+        $('#editAddonSalePrice').val(sale.toFixed(2));
+        $('#editAddonTakeHome').val(com.toFixed(2));
     });
 
     $(document).on('click', '.comEdit', function(){

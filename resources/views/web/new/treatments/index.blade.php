@@ -35,13 +35,18 @@
             <div class="col-md-8 col-lg-8 col-sm-12 col-12">
                <div class="row">
                   @foreach($services as $val)
+                     @php 
+                        $sprice = empty($val->lowestPrice)  ? $val->price : $val->lowestPrice->price; 
+                        $sgst = ($sprice/100)*$mtp->gst;
+                        $stotal = $sprice+$sgst;
+                     @endphp
                      <div class="col-md-6 col-lg-6 col-sm-6 col-12">
                         <div class="service-box5 serviceDetails" data-id="{{base64_encode($val->id)}}">
                            <h3> {{$val->name}}</h3>
                            <p class="two_line"> 
                               {{$val->description}}
                            </p>
-                           <h6> <a href="javascript:void(0)" class="serviceDetails" data-id="{{base64_encode($val->id)}}"> Book Now </a> <span> From {{empty($val->lowestPrice)  ? '$'.number_format($val->price, 2) : '$'.number_format($val->lowestPrice->price, 2)}} </span> </h6>
+                           <h6> <a href="javascript:void(0)" class="serviceDetails" data-id="{{base64_encode($val->id)}}"> Book Now </a> <span> From {{'$'.number_format($stotal, 2)}} </span> </h6>
                         </div>
                      </div>
                   @endforeach
@@ -70,7 +75,12 @@
                                     @php $addonDuration = $addonDuration+$adval['duration']; @endphp
                                  @endforeach
                               @endif
-                              <p> <b class="col-green"> From ${{number_format(($it['price']+$addonPrice), 2)}} </b> {{$it['duration']+$addonDuration}} minutes </p>
+                              @php 
+                                 $sprice = $it['price']+$addonPrice; 
+                                 $sgst = ($sprice/100)*$mtp->gst;
+                                 $stotal = $sprice+$sgst;
+                              @endphp
+                              <p> <b class="col-green"> From ${{number_format($stotal, 2)}} </b> {{$it['duration']+$addonDuration}} minutes </p>
 
                               @if(count($it['addons']) > 0)
                                  <p class="addonLabelTreatment">

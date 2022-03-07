@@ -35,7 +35,7 @@
                            @if(empty($val->userAdd))
                               <li><a href="javascript:void(0)" class="enableAddon" data-id="{{base64_encode($val->id)}}">Enable</a></li>
                            @else
-                              <li><a href="javascript:void(0)" class="editAddon" data-id="{{base64_encode($val->id)}}">Edit</a></li>
+                              <li><a href="javascript:void(0)" class="editAddon" data-id="{{base64_encode($val->id)}}">View</a></li>
                               <li><a href="javascript:void(0)" class="disableAddon" data-id="{{base64_encode($val->userAdd->id)}}">Disable</a></li>
                            @endif
                         </ul>

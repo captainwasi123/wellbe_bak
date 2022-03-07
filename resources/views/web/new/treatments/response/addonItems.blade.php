@@ -8,14 +8,19 @@
       <h5 > EXTRAS </h5>
    </div>
    @foreach($addons as $val)
+      @php 
+         $asprice = $val->addonsDetail[0]->price; 
+         $asgst = ($asprice/100)*$mtp->gst;
+         $astotal = $asprice+$asgst;
+      @endphp
       <div class="cart-single-item">
          <div>
             <h4 class="col-blue m-0"> Add {{$val->name}} </h4>
-            <p class="m-0"> +${{empty($val->lowestPrice) ? number_format($val->addonsDetail[0]->price, 2) : number_format($val->lowestPrice->price, 2)}}</p>
+            <p class="m-0"> +${{number_format($astotal, 2)}}</p>
          </div>
          <div>
             <input type="checkbox" name="addon_item[]" value="{{$val->id}}" class="addon_checkbox" id="addon{{$val->id}}">
-            <label class="cart-btn1" for="addon{{$val->id}}" data-price="{{empty($val->lowestPrice) ? $val->addonsDetail[0]->price : $val->lowestPrice->price}}" data-duration="{{$val->addonsDetail[0]->duration}}"> Add </label>
+            <label class="cart-btn1" for="addon{{$val->id}}" data-price="{{$astotal}}" data-duration="{{$val->addonsDetail[0]->duration}}"> Add </label>
          </div>
       </div>
    @endforeach
@@ -24,11 +29,16 @@
          <p>No Addons Available.</p>
       </div>
    @endif
+   @php 
+      $sprice = empty($service->lowestPrice) ? $service->price : $service->lowestPrice->price; 
+      $sgst = ($sprice/100)*$mtp->gst;
+      $stotal = $sprice+$sgst;
+   @endphp
    <div class="cart-single-item m-t-30">
       <div>
-         <input type="hidden" id="totalAmountTray" value="{{empty($service->lowestPrice) || $service->lowestPrice->price == 0 ? $service->price : $service->lowestPrice->price}}">
+         <input type="hidden" id="totalAmountTray" value="{{number_format($stotal, 2)}}">
          <input type="hidden" id="totalDurationTray" value="{{$service->duration}}">
-         <h4 class="col-blue m-0" id="totalAmountTrayDisplay"> From: {{empty($service->lowestPrice) ? '$'.number_format($service->price) : '$'.number_format($service->lowestPrice->price)}} </h4>
+         <h4 class="col-blue m-0" id="totalAmountTrayDisplay"> From: {{'$'.number_format($stotal, 2)}} </h4>
          <p class="m-0" id="totalDurationTrayDisplay"> {{$service->duration}} mins </p>
       </div>
       <div>

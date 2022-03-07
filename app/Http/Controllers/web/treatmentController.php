@@ -9,6 +9,7 @@ use App\Models\services\services;
 use App\Models\services\category;
 use App\Models\services\addons;
 use App\Models\User;
+use App\Models\MarketplaceSetting;
 use DB;
 use Session;
 
@@ -31,51 +32,11 @@ class treatmentController extends Controller
         $cat_id = empty($cat->id) ? '1' : $cat->id;
         $cat_name = empty($cat->category) ? '' : $cat->category;
 
-      /*  $users = User::select(DB::raw('tbl_users_info.*'))
-                    ->when($category != '0', function($qq) use ($cat){
-                        $qq->whereHas('services', function($q) use ($cat){
-                            $q->where('category_id', $cat->id);
-                        });
-                    })
-                    //->join('tbl_users_geofences','tbl_users_geofences.user_id','=','tbl_users_info.id')
-                    ->join('tbl_users_store_info','tbl_users_store_info.user_id','=','tbl_users_info.id')
-                    ->leftJoin('tbl_review_info','tbl_review_info.review_to','=','tbl_users_info.id')
-                    ->where('user_type', '1')
-                    ->whereIn('tbl_users_info.id',$users_ids);
-                    if (isset($request->price)) {
-                        $users = $users->whereBetween('tbl_users_store_info.minimum_booking_amount',$price);
-                    }
-                    if(isset($request->rating) && $rating[0] == 0) {
-                        $users = $users->orWhere('tbl_review_info.rating',$rating[1]);
-                    }else if (isset($request->rating)){
-                        $users = $users->whereBetween('tbl_review_info.rating',$rating);
-                    }
-                    if(isset($request->filter) && $request->filter != 'all'){  
-                        $filter = $request->filter; 
-                        if(strpos($filter,',')){
-                            $filter_array = explode(',', $request->filter); $days = [];
-                            foreach($filter_array as $val){ $days[] = date('l',strtotime($val)); $date[] = $val; }
-                            $users = $users->whereHas('availability', function($q) use ($days){
-                                $q->whereIn('tbl_user_availability_info.week_day',$days)->where('availability_status',1);
-                            })->whereHas('holidays', function($hq) use ($date){
-                                $hq->whereNotIn('tbl_user_holidays_info.closed_date', $date);
-                            });
-                        }else{
-                            $users = $users->whereHas('availability', function($q) use ($filter){
-                                $q->where('tbl_user_availability_info.week_day', date('l',strtotime($filter)))->where('availability_status',1);
-                            })->whereHas('holidays', function($hq) use ($filter){
-                                $hq->where('tbl_user_holidays_info.closed_date','!=', $filter);
-                            });
-                        }
-                        
-                    }
-                    $users = $users->limit(6)
-                    ->groupBy('id')
-                    ->get();*/
-
         $categories = Categories::where('status', '1')->get();
+        $mtp = MarketplaceSetting::latest()->first();
         $data = array(
             'categories' => $categories,
+            'mtp' => $mtp,
             'services' => services::where('category_id', $cat_id)->where('status', '2')->get(),
             'cat_name' => $cat_name,
             'lat' => $request->lat,
@@ -162,8 +123,9 @@ class treatmentController extends Controller
     function serviceDetails($id){
         $id = base64_decode($id);
         $data = services::find($id);
+        $mtp = MarketplaceSetting::latest()->first();
 
-        return view('web.new.treatments.response.service_detail', ['data' => $data]);
+        return view('web.new.treatments.response.service_detail', ['data' => $data, 'mtp' => $mtp]);
     }
 
     function addToCartService(Request $request){
@@ -180,7 +142,7 @@ class treatmentController extends Controller
                 $aa = array(
                     'id' => $ad->id,
                     'name' => $ad->name,
-                    'price' => empty($ad->lowestPrice) ? number_format($ad->addonsDetail[0]->price, 2) : number_format($ad->lowestPrice->price, 2),
+                    'price' => number_format($ad->addonsDetail[0]->price, 2),
                     'duration' => $ad->addonsDetail[0]->duration
                 );
                 array_push($addons, $aa);
@@ -247,6 +209,7 @@ class treatmentController extends Controller
         $id = base64_decode($id);
         $data['service'] = services::find($id);
         $data['addons'] = addons::where('service_id', $id)->where('status', '2')->orderBy('name')->get();
+        $data['mtp'] = MarketplaceSetting::latest()->first();
 
         return view('web.new.treatments.response.addonItems')->with($data);
     }

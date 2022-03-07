@@ -100,7 +100,7 @@
          <div class="modal-content">
             <button type="button" class="close1" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span> </button>
             <div class="custom-modal-head">
-               <h3> Edit Service Addon </h3>
+               <h3> View Service Addon </h3>
             </div>
             <div class="custom-modal-data" id="editServiceAddonModalBody">
                

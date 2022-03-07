@@ -14,8 +14,8 @@ $(document).ready(function() {
        if (color == 'rgb(93, 78, 109)') {
             var disAmount = totalAmount+currAmount;
             var disDuration = totalDuration+currDuration;
-            $('#totalAmountTray').val(disAmount);
-            $('#totalAmountTrayDisplay').html("From: $"+disAmount);
+            $('#totalAmountTray').val(disAmount.toFixed(2));
+            $('#totalAmountTrayDisplay').html("From: $"+disAmount.toFixed(2));
 
             $('#totalDurationTray').val(disDuration);
             $('#totalDurationTrayDisplay').html(disDuration+" mins");
@@ -23,8 +23,8 @@ $(document).ready(function() {
        }else{
             var disAmount = totalAmount-currAmount;
             var disDuration = totalDuration-currDuration;
-            $('#totalAmountTray').val(disAmount);
-            $('#totalAmountTrayDisplay').html("From: $"+disAmount);
+            $('#totalAmountTray').val(disAmount.toFixed(2));
+            $('#totalAmountTrayDisplay').html("From: $"+disAmount.toFixed(2));
 
             $('#totalDurationTray').val(disDuration);
             $('#totalDurationTrayDisplay').html(disDuration+" mins");
