@@ -295,6 +295,17 @@ body {
     font-family: 'Mulish';
     padding-top: 10px;
 }
+.sec-head4 ol {
+    max-width: 100%;
+    margin: auto;
+    color: #6C6C6C;
+    font-size: 17px;
+    letter-spacing: 0.7px;
+    line-height: 28px;
+    font-weight: 400;
+    font-family: 'Mulish';
+    padding-top: 10px;
+}
 
 .sec-head4 p {
     max-width: 100%;

@@ -270,12 +270,6 @@
             
             <p> You agree that Our Terms for all purposes, shall be governed by and construed in accordance with New Zealand law. Please email <a href="">info@wellbe.co.nz</a> for any other enquiries. </p>
          </div>
-
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 280110fd6a36fc93f9d820e6aba4abbe35a66faf
   </div>
 
 
