@@ -281,6 +281,19 @@ body {
     font-weight: normal;
     font-family: 'Quicksand' !important;
     font-weight: 500;
+    padding-top: 10px;
+}
+
+.sec-head4 ul {
+    max-width: 100%;
+    margin: auto;
+    color: #6C6C6C;
+    font-size: 17px;
+    letter-spacing: 0.7px;
+    line-height: 28px;
+    font-weight: 400;
+    font-family: 'Mulish';
+    padding-top: 10px;
 }
 
 .sec-head4 p {
@@ -292,6 +305,7 @@ body {
     line-height: 28px;
     font-weight: 400;
     font-family: 'Mulish';
+    padding-top: 10px;
 }
 
 
@@ -354,7 +368,7 @@ img.shape-line2 {
 .sec-head4 {
     float: left;
     width: 100%;
-    margin-bottom: 50px;
+    /*margin-bottom: 50px;*/
 }
 
 a.custom-btn1 {
