@@ -27,6 +27,7 @@
          @else
             <div class="menu-buttons">
                <a href="{{URL::to('/login')}}" class="login-btn"> Log In </a>
+               <a href="{{URL::to('/register')}}" class="login-btn"> Sign Up </a>
                <a href="{{route('work_with_us')}}" class="pro-btn"> Work With Us </a>
             </div>
          @endif

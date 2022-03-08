@@ -14,7 +14,7 @@
             <div class="row">
                <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12 no-pad">
                   <div class="login-image">
-                     <img src="{{URL::to('/public/assets/web/new/')}}/images/signup-image.png">
+                     <img src="{{URL::to('/public/assets/web/new/')}}/images/signup-image2.png">
                   </div>
                </div>
                <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12 no-pad">
@@ -85,7 +85,7 @@
                      </div>
                      <div class="already-account m-t-40">
                         <span class="col-black"> Want to book services instead? <a href="{{URL::to('/register')}}"> Sign up </a> </span><br><br>
-                        <span class="col-black"> Already an user? <a href="{{URL::to('/login')}}"> Login </a> </span>
+                        <span class="col-black"> Already a user? <a href="{{URL::to('/login')}}"> Login </a> </span>
                      </div>
                      <div class="legal-links1">
                         <a href="{{URL::to('/PractitionerAgree')}}"> Terms & Conditions </a>

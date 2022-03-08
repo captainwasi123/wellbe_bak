@@ -249,7 +249,6 @@ body {
     font-size: 15px;
     margin-top: 18px;
     color: white;
-    margin-left: 15px;
 }
 
 .logo {
@@ -1976,6 +1975,14 @@ margin-left: 7px;
     letter-spacing: 0.6px;
 }
 
+.faq_link {
+    background-color: transparent !important;
+    box-shadow: none !important;
+    display: inline !important;
+    padding: 0 !important;
+    color: #ffffff !important;
+    font-size: 16px !important;
+}
 
 .sec-head6 {
     float: left;
@@ -1998,7 +2005,6 @@ margin-left: 7px;
     color: grey;
     font-size: 16px;
     letter-spacing: 0.4px;
-    max-width: 400px;
 }
 
 

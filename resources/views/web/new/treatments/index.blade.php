@@ -6,7 +6,7 @@
    <section class="bg-pink pad-top-40 pad-bot-40">
       <div class="container">
          <div class="sec-head6">
-            <h3> Choose Treatment Category </h3>
+            <h3> Select Your Treatment </h3>
             <p> Our mobile practitioners offer a wide range of luxurious treatments from the comfort of your own home. </p>
          </div>
       </div>
