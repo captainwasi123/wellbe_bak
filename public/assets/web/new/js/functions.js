@@ -1,4 +1,5 @@
 var ref = $('meta[name=host]').attr('content');
+var datetime = $('meta[name=datetime]').attr('content');
 
  $(document).ready(function(){
 
@@ -169,7 +170,7 @@ $(document).ready(function() {
 
 
 $(function() {
-  var dateToday = new Date();
+  var dateToday = new Date(datetime);
   $( ".calendar" ).datepicker({
     dateFormat: 'dd-mm-yy',
     minDate: dateToday,

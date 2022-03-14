@@ -4,6 +4,7 @@
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="host" content="{{URL::to('/')}}">
+      <meta name="datetime" content="{{date('Y-m-d H:i:s')}}">
       <meta name="token" content="{{csrf_token()}}">
       <title> @yield('title') | Wellbe </title>
       <link rel="icon" href="{{URL::to('/public/assets/web/new/images/favicon.png')}}" type="image/png" sizes="16x16">

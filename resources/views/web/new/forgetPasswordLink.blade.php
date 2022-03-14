@@ -14,7 +14,7 @@
             <div class="row">
                <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12 no-pad">
                   <div class="login-image">
-                     <img src="{{URL::to('/public/assets/web/new/')}}/images/signup-image.png">
+                     <img src="{{URL::to('/public/assets/web/new/')}}/images/signup-image2.png">
                   </div>
                </div>
                <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12 no-pad">
@@ -25,7 +25,7 @@
                         </a>
                      </div>
                      <div class="login-heading m-b-40">
-                        <h3 class="text-left"> Resert Your Password </h3>
+                        <h3 class="text-left"> Reset Your Password </h3>
                         @if(session()->has('success'))
                             <div class="alert alert-success">
                                 {{ session()->get('success') }}
@@ -70,7 +70,7 @@
                          </div>
                          
                            <div class="block-element">
-                              <button type="submit" class="submit-btn1"> Resert Password </button>
+                              <button type="submit" class="submit-btn1"> Reset Password </button>
                            </div>
                         </form>
                      </div>

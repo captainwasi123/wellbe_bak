@@ -45,14 +45,14 @@
             <div class="col-md-12">
                 <form id="payment-form">
                     @csrf
-                    <input type="hidden" name="amount" value="{{$amount}}">
+                    <input type="hidden" name="amount" value="{{number_format((float)$amount, 2, '.', '')}}">
                     <input type="hidden" name="orderId" value="{{$id}}">
                     <label>Please enter your card details below to complete your booking</label>
                     <br><br>
                     <div id="card-element"></div>
                     <br>
                     <div class="col-md-12"  id="pybtn">
-                      <button class="btn btn-primary btn-block">Pay ${{$amount}} NZD</button>
+                      <button class="btn btn-primary btn-block">Pay ${{number_format($amount, 2)}} NZD</button>
                     </div>
                     <div class="col-md-12" id="epybtn">
                     </div>

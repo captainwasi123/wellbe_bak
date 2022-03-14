@@ -57,6 +57,10 @@ class services extends Model
     public function lowestPrice(){
         return $this->belongsTo(userService::class, 'id', 'service_id')
             ->where('price', '!=', 0)
+            ->whereHas('user', function($q){
+                return $q->where('status', '1')
+                        ->where('store_status', '1');
+            })
             ->orderBy('price');
     }
     public function cat(){

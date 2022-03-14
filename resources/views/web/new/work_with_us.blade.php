@@ -138,56 +138,56 @@
                <div class="row all-features">
                   <div class="col-md-4 col-lg-4 col-sm-4 col-12">
                      <div class="feature-box mob-text-center">
-                        <img src="{{URL::to('/public/assets/web/new/')}}/images/feature-icon1.svg">
+                        <img src="{{URL::to('/public/assets/web/new/')}}/images/new-categories/Nails.png">
                         <h5> Nails </h5>
                      </div>
                   </div>
                   <div class="col-md-4 col-lg-4 col-sm-4 col-12">
                      <div class="feature-box mob-text-center">
-                        <img src="{{URL::to('/public/assets/web/new/')}}/images/feature-icon2.svg">
+                        <img src="{{URL::to('/public/assets/web/new/')}}/images/new-categories/Massage.png">
                         <h5> Massage </h5>
                      </div>
                   </div>
                   <div class="col-md-4 col-lg-4 col-sm-4 col-12">
                      <div class="feature-box mob-text-center">
-                        <img src="{{URL::to('/public/assets/web/new/')}}/images/feature-icon3.jpg">
+                        <img src="{{URL::to('/public/assets/web/new/')}}/images/new-categories/Hair.png">
                         <h5> Hair </h5>
                      </div>
                   </div>
                   <div class="col-md-4 col-lg-4 col-sm-4 col-12">
                      <div class="feature-box mob-text-center">
-                        <img src="{{URL::to('/public/assets/web/new/')}}/images/feature-icon4.jpg">
+                        <img src="{{URL::to('/public/assets/web/new/')}}/images/new-categories/Fitness.png">
                         <h5> Fitness </h5>
                      </div>
                   </div>
                   <div class="col-md-4 col-lg-4 col-sm-4 col-12">
                      <div class="feature-box mob-text-center">
-                        <img src="{{URL::to('/public/assets/web/new/')}}/images/feature-icon5.jpg">
+                        <img src="{{URL::to('/public/assets/web/new/')}}/images/new-categories/Tanning.png">
                         <h5> Tanning </h5>
                      </div>
                   </div>
                   <div class="col-md-4 col-lg-4 col-sm-4 col-12">
                      <div class="feature-box mob-text-center">
-                        <img src="{{URL::to('/public/assets/web/new/')}}/images/feature-icon6.jpg">
+                        <img src="{{URL::to('/public/assets/web/new/')}}/images/new-categories/Facials.png">
                         <h5> Facials </h5>
                      </div>
                   </div>
                   <div class="col-md-4 col-lg-4 col-sm-4 col-12">
                      <div class="feature-box mob-text-center">
-                        <img src="{{URL::to('/public/assets/web/new/')}}/images/feature-icon7.svg">
+                        <img src="{{URL::to('/public/assets/web/new/')}}/images/new-categories/Make-Up.png">
                         <h5> Makeup </h5>
                      </div>
                   </div>
                   <div class="col-md-4 col-lg-4 col-sm-4 col-12">
                      <div class="feature-box mob-text-center">
-                        <img src="{{URL::to('/public/assets/web/new/')}}/images/feature-icon8.jpg">
+                        <img src="{{URL::to('/public/assets/web/new/')}}/images/new-categories/Lashes.png">
                         <h5> Lashes </h5>
                      </div>
                   </div>
                   <div class="col-md-4 col-lg-4 col-sm-4 col-12">
                      <div class="feature-box mob-text-center">
-                        <img src="{{URL::to('/public/assets/web/new/')}}/images/feature-icon9.svg">
-                        <h5> Brows </h5>
+                        <img src="{{URL::to('/public/assets/web/new/')}}/images/new-categories/Yoga.png">
+                        <h5> Yoga </h5>
                      </div>
                   </div>
                </div>
@@ -214,8 +214,8 @@
                <br>
                  <div class="testim-review">
                     <h6>  <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> </h6>
-                    <h5> Paige A </h5>
-                    <p> Great service, therapists are always polite, professional and friendly. Very convenient - highly recommend. </p>
+                    <h5> Sarah A </h5>
+                    <p> Working with Wellbe has been excellent. I have two young children so being able to set my own hours is very important. Wellbe provides me with a lot of flexibility. </p>
                  </div>
               </div>
            </div>
@@ -224,8 +224,8 @@
                <br>
                  <div class="testim-review">
                    <h6>  <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> </h6>
-                    <h5> Hayden W </h5>
-                    <p> Melanie was amazing. Couldn’t recommend highly enough. I have already booked another massage. </p>
+                    <h5> Holly W </h5>
+                    <p> I moved out of the beauty industry a few years ago to pursue a corporate job. I’m happy I can keep using my skills as a beauty therapist to earn some extra money when it’s convenient for me. The Wellbe team have been very supportive in helping me get set up. </p>
                  </div>
               </div>
            </div>
@@ -234,18 +234,8 @@
                <br>
                  <div class="testim-review">
                     <h6>  <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> </h6>
-                    <h5> Alex B </h5>
-                    <p> Booked deep tissue massage for me and my husband. Jackson was very good - he worked through our knots and tense muscles for two hours. We enjoyed our massage! </p>
-                 </div>
-              </div>
-           </div>
-           <div>
-              <div class="testimonial-box">
-               <br>
-                 <div class="testim-review">
-                    <h6>  <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> </h6>
-                    <h5> Hayden W </h5>
-                    <p> Melanie was amazing. Couldn’t recommend highly enough. I have already booked another massage. </p>
+                    <h5> Taylor S </h5>
+                    <p> I have been delivering home treatments for a while, but have had trouble finding new clients outside of my network. Wellbe takes care of that for me. I also don’t have to take care of payments/administration which is a hugh benefit! </p>
                  </div>
               </div>
            </div>

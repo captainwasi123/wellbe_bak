@@ -75,7 +75,7 @@
         <div class="row">
            <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12">
               <div class="work-service-box">
-                <span class="circle-1">  <img class="work-img" src="{{URL::to('/public/assets/web/new/')}}/images/location-icon1.svg"> </span>
+                <span class="circle-1">  <img class="work-img" src="{{URL::to('/public/assets/web/new/')}}/images/how1.png"> </span>
                  <img class="shape-line1" src="{{URL::to('/public/assets/web/new/')}}/images/shape-line1.png">
                  <h4> Select your location </h4>
                  <p>  Your home, an office, or a hotel - we connect you to the best professionals available in your location! </p>
@@ -83,7 +83,7 @@
            </div>
            <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12">
               <div class="work-service-box works-service-box3">
-                 <span class="circle-1">  <img class="work-img" src="{{URL::to('/public/assets/web/new/')}}/images/location-icon2.svg"> </span>
+                 <span class="circle-1">  <img class="work-img" src="{{URL::to('/public/assets/web/new/')}}/images/how2.png"> </span>
                  <img class="shape-line2" src="{{URL::to('/public/assets/web/new/')}}/images/shape-line2.png">
                  <h4> Choose your treatment </h4>
                  <p>  Choose from a range of services and select your preferred professional after reading their reviews. </p>
@@ -91,7 +91,7 @@
            </div>
            <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12">
               <div class="work-service-box">
-                 <span class="circle-1">  <img class="work-img" src="{{URL::to('/public/assets/web/new/')}}/images/location-icon3.svg"> </span>
+                 <span class="circle-1">  <img class="work-img" src="{{URL::to('/public/assets/web/new/')}}/images/how3.png"> </span>
                  <h4> Sit back and relax </h4>
                  <p> Select a date/time and your professional will be on their way.  </p>
               </div>
@@ -128,28 +128,28 @@
               <div class="row service-parents m-t-50">
                  <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
                     <div class="work-service-box work-service-box2">
-                       <img class="service-img" src="{{URL::to('/public/assets/web/new/')}}/images/service-icon5.svg">
+                       <img class="service-img" src="{{URL::to('/public/assets/web/new/')}}/images/new-categories/Nails.png">
                        <h4> Nails </h4>
                        <p>  Treat yo’self with popular nail treatments, our experts bring the salon to you. </p>
                     </div>
                  </div>
                  <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
                     <div class="work-service-box work-service-box2">
-                       <img class="service-img" src="{{URL::to('/public/assets/web/new/')}}/images/service-icon6.svg">
+                       <img class="service-img" src="{{URL::to('/public/assets/web/new/')}}/images/new-categories/Massage.png">
                        <h4> Massage </h4>
                        <p>  Relaxation, deep tissue or sports massage are the ultimate way to rejuvenate your body. </p>
                     </div>
                  </div>
                  <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
                     <div class="work-service-box work-service-box2">
-                       <img class="service-img" src="{{URL::to('/public/assets/web/new/')}}/images/service-icon7.svg">
+                       <img class="service-img" src="{{URL::to('/public/assets/web/new/')}}/images/new-categories/Lashes.png">
                        <h4> Brows & Lashes </h4>
                        <p>  Shape and define your eyes with our brow and lash treatments.  </p>
                     </div>
                  </div>
                  <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
                     <div class="work-service-box work-service-box2">
-                       <img class="service-img" src="{{URL::to('/public/assets/web/new/')}}/images/service-icon8.svg">
+                       <img class="service-img" src="{{URL::to('/public/assets/web/new/')}}/images/new-categories/Make-Up.png">
                        <h4> Make Up </h4>
                        <p>  No matter the occasion, our make up artists are experts at day-time, evening and wedding looks. </p>
                     </div>
@@ -225,8 +225,8 @@
                <br>
                  <div class="testim-review">
                     <h6>  <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> </h6>
-                    <h5> Paige A </h5>
-                    <p> Great service, therapists are always polite, professional and friendly. Very convenient - highly recommend. </p>
+                    <h5> Sarah A </h5>
+                    <p> Working with Wellbe has been excellent. I have two young children so being able to set my own hours is very important. Wellbe provides me with a lot of flexibility. </p>
                  </div>
               </div>
            </div>
@@ -235,8 +235,8 @@
                <br>
                  <div class="testim-review">
                    <h6>  <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> </h6>
-                    <h5> Hayden W </h5>
-                    <p> Melanie was amazing. Couldn’t recommend highly enough. I have already booked another massage. </p>
+                    <h5> Holly W </h5>
+                    <p> I moved out of the beauty industry a few years ago to pursue a corporate job. I’m happy I can keep using my skills as a beauty therapist to earn some extra money when it’s convenient for me. The Wellbe team have been very supportive in helping me get set up. </p>
                  </div>
               </div>
            </div>
@@ -245,18 +245,8 @@
                <br>
                  <div class="testim-review">
                     <h6>  <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> </h6>
-                    <h5> Alex B </h5>
-                    <p> Booked deep tissue massage for me and my husband. Jackson was very good - he worked through our knots and tense muscles for two hours. We enjoyed our massage! </p>
-                 </div>
-              </div>
-           </div>
-           <div>
-              <div class="testimonial-box">
-               <br>
-                 <div class="testim-review">
-                    <h6>  <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> <img src="{{URL::to('/public/assets/web/new/')}}/images/icon-star.svg"> </h6>
-                    <h5> Hayden W </h5>
-                    <p> Melanie was amazing. Couldn’t recommend highly enough. I have already booked another massage. </p>
+                    <h5> Taylor S </h5>
+                    <p> I have been delivering home treatments for a while, but have had trouble finding new clients outside of my network. Wellbe takes care of that for me. I also don’t have to take care of payments/administration which is a hugh benefit! </p>
                  </div>
               </div>
            </div>
@@ -270,7 +260,7 @@
      <div class="container">
         <div class="sec-head4 text-center">
            <h4 class="col-blue"> Want to know more? </h4>
-           <p> View some of our frequently asked questions.. </p>
+           <p class="pad-bot-20"> View some of our frequently asked questions.. </p>
         </div>
         <div class="faqs-all">
            <div class="set">

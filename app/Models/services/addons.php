@@ -40,7 +40,13 @@ class addons extends Model
     }
 
     public function lowestPrice(){
-        return $this->belongsTo(userAddon::class, 'id', 'addon_id')->where('price', '!=', 0)->orderBy('price');
+        return $this->belongsTo(userAddon::class, 'id', 'addon_id')
+                    ->where('price', '!=', 0)
+                    ->whereHas('user', function($q){
+                        return $q->where('status', '1')
+                                    ->where('store_status', '1');
+                    })
+                    ->orderBy('price');
     }
 
     public function userAdd(){

@@ -630,8 +630,13 @@ width: 100% !important;
 <tr>
 
 <td valign="top" style="padding-top:5px;padding-bottom:10px;"><div style="font-family:Cabin, sans-serif;font-size:17px;color:#5d4e6d;line-height:24px;text-align:left;"><p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial">Price:&nbsp;</span></p>
-
-<p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial">&#36;{{number_format($order_details->price,2)}}</span></p>
+@php
+	$totala = $order_details->price;
+@endphp
+@foreach($order_details->addons as $key => $ad)
+   @php $totala = $totala+$ad->price @endphp 
+@endforeach
+<p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial">&#36;{{number_format($totala,2)}}</span></p>
 </div>
 </td>
 </tr>

@@ -32,16 +32,7 @@
                            <div class="cat-box1 viewService" data-id="{{base64_encode($val->id)}}">
                         @endif
                         <h5> {{$val->category}}  </h5>
-                        @if(!empty($val->userCat->id))
-                           <div class="dropdown">
-                              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                              <i class="fas fa-ellipsis-v"></i>
-                              </button>
-                              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                 <li><a href="javascript:void(0)" class="disableService" data-id="{{base64_encode($val->id)}}">Disable</a></li>
-                              </ul>
-                           </div>
-                        @endif
+                        
                      </div>
                      @endforeach
                   </div>

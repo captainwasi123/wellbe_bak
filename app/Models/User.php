@@ -10,6 +10,7 @@ use App\Models\orders\order;
 use App\Models\orders\reviews;
 use App\Models\userService;
 use App\Models\userAddon;
+use App\Models\userCategory;
 use App\Models\UserGeofence;
 use App\Models\schedule\availability;
 use App\Models\orders\orderDetail;
@@ -91,6 +92,11 @@ class User extends Authenticatable
     public function services()
     {
         return $this->hasMany(userService::class,'user_id','id');
+    }
+
+    public function userCategory()
+    {
+        return $this->hasMany(userCategory::class,'user_id','id');
     }
 
     public function addons()

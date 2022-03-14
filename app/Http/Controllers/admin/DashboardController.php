@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session;
 use App\Models\Categories;
 use App\Models\userCategory;
+use App\Models\userService;
 use Carbon\Carbon;
 
 class DashboardController extends Controller
@@ -146,7 +147,7 @@ class DashboardController extends Controller
         );
 
         $Heading = array('Wellbe Cancelled Bookings Data | CSV');
-        $columns = array('Booking Date','Cancellation Date', 'Cancellation Reason',  'Booking ID', 'Booker Name', 'Subtotal', 'GST Amount', 'Total Charge', 'Marked as Paid','Payment Percentage', 'Payment Due', 'Practitioner Name', 'Practitioner Bank Acount Name', 'Practitioner Bank Account Number', 'Refund Percentage', 'Refund Amount', 'Total Refund Amount');
+        $columns = array('Booking Date','Cancellation Date', 'Cancellation Reason',  'Booking ID', 'Booker Name', 'Subtotal', 'GST Amount', 'Total Charge', 'Marked as Paid - Practitioner', 'Marked as Paid - Customer','Payment Percentage', 'Payment Due', 'Practitioner Name', 'Practitioner Bank Acount Name', 'Practitioner Bank Account Number', 'Refund Percentage', 'Refund Amount', 'Total Refund Amount');
 
         $callback = function() use($data, $columns, $Heading) {
             $file = fopen('php://output', 'w');
@@ -160,23 +161,24 @@ class DashboardController extends Controller
                 $pract_dues = ($val->total_amount/100)*$pract_percentage;
                 $cust_dues = ($val->total_amount/100)*$cust_percentage;
 
-                $row['Booking Date']                        = date('l, d M Y - h:i A', strtotime($val->start_at.' '.$val->details[0]->start_time));
-                $row['Cancellation Date']                   = date('l, d M Y - h:i A', strtotime(@$val->cancel->created_at));
-                $row['Cancellation Reason']                 = @$val->cancel->reason;
-                $row['Booking ID']                          = '#'.$val->id;
-                $row['Booker Name']                         = @$val->booker->first_name.' '.@$val->booker->last_name;
-                $row['Subtotal']                            = $val->sub_total;
-                $row['GST Amount']                          = $val->gst;
-                $row['Total Charge']                        = $val->total_amount;
-                $row['Marked as Paid']                      = $val->payment_status == '0' ? 'No' : 'Yes';
-                $row['Payment Percentage']                  = $pract_percentage.'%';
-                $row['Payment Due']                         = $pract_dues;
-                $row['Practitioner Name']                   = @$val->practitioner->first_name.' '.@$val->practitioner->last_name;
-                $row['Practitioner Bank Acount Name']       = @$val->practitioner->users_payout_details->bank_account_name;
-                $row['Practitioner Bank Account Number']    = @$val->practitioner->users_payout_details->bank_account_number;
-                $row['Refund Percentage']                   = $cust_percentage.'%';
-                $row['Refund Amount']                       = $cust_dues;
-                $row['Total Refund Amount']                 = $cust_dues+$pract_dues;
+                $row['Booking Date']                      = date('l, d M Y - h:i A', strtotime($val->start_at.' '.$val->details[0]->start_time));
+                $row['Cancellation Date']                 = date('l, d M Y - h:i A', strtotime(@$val->cancel->created_at));
+                $row['Cancellation Reason']               = @$val->cancel->reason;
+                $row['Booking ID']                        = '#'.$val->id;
+                $row['Booker Name']                       = @$val->booker->first_name.' '.@$val->booker->last_name;
+                $row['Subtotal']                          = $val->sub_total;
+                $row['GST Amount']                        = $val->gst;
+                $row['Total Charge']                      = $val->total_amount;
+                $row['Marked as Paid - Practitioner']     = empty($val->cancel->pract_due) ? 'No' : 'Yes';
+                $row['Marked as Paid - Customer']         = empty($val->cancel->cust_due) ? 'No' : 'Yes';
+                $row['Payment Percentage']                = $pract_percentage.'%';
+                $row['Payment Due']                       = $pract_dues;
+                $row['Practitioner Name']                 = @$val->practitioner->first_name.' '.@$val->practitioner->last_name;
+                $row['Practitioner Bank Acount Name']     = @$val->practitioner->users_payout_details->bank_account_name;
+                $row['Practitioner Bank Account Number']  = @$val->practitioner->users_payout_details->bank_account_number;
+                $row['Refund Percentage']                 = $cust_percentage.'%';
+                $row['Refund Amount']                     = $cust_dues;
+                $row['Total Refund Amount']               = $cust_dues+$pract_dues;
 
                 fputcsv($file, $row);
             }
@@ -338,8 +340,21 @@ class DashboardController extends Controller
     }
     function manageCategoryUpdate(Request $request){
         $data = $request->all();
+        $cat_arr = empty($data['cat_id']) ? array() : $data['cat_id'];
+        $dc = array();
+        $ac = userCategory::where('user_id', base64_decode($data['uid']))->get();
+        foreach($ac as $val){
+            if(!in_array(base64_encode($val->category_id),$cat_arr)){
+                array_push($dc, $val->category_id);
+            }
+        }
         userCategory::where('user_id', base64_decode($data['uid']))->delete();
-        foreach($data['cat_id'] as $val){
+        userService::whereHas('service', function($q) use ($dc){
+            return $q->whereHas('cat', function($qq) use ($dc){
+                return $qq->whereIn('id', $dc);
+            });
+        })->delete();
+        foreach($cat_arr as $val){
             $c = new userCategory;
             $c->user_id = base64_decode($data['uid']);
             $c->category_id = base64_decode($val);

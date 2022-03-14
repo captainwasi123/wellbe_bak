@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\services\addons;
+use App\Models\User;
 
 class userAddon extends Model
 {
@@ -23,4 +24,9 @@ class userAddon extends Model
 
         return $this->belongsTo(addons::class, 'addon_id');
     } 
+
+    public function user(){
+
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

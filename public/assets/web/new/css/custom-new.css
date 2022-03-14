@@ -2160,7 +2160,7 @@ margin-left: 7px;
 .item-edit1 {
     position: absolute;
     right: 0px;
-    bottom: 13px;
+    top: 42px;
  
     font-size: 15px;
     background: none;
@@ -2585,7 +2585,8 @@ span.circle-1 img {
     padding: 0px;
     box-shadow: none;
     border-radius: 0px;
-    height: 50px;
+    height: 62px;
+    margin-top: -5px !important;
 }
 
 

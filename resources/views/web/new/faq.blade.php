@@ -51,7 +51,7 @@
               <a > What happens when I make a booking?<i class="fa fa-angle-right"></i>
               </a>
               <div class="content">
-                 <p> Once your booking has been made, it will be sent to your practitioner. You will also receive a booking confirmation form via email. If you forgot to add special instructions when making your booking, you can contact your practitioners directly and safely using our direct in-app chat functions to pass on any special requirements or questions you might have. Your practitioner may also reach out to you (you will receive an email from our secure chat) if they require any additional information. You’ll also receive a reminder email two hours before your booking is due to start.
+                 <p> Once your booking has been made, it will be sent to your practitioner. You will also receive a booking confirmation form via email. If you forgot to add special instructions when making your booking, you can contact your practitioners directly and safely using our direct <a class="faq_link" style="color: #70a3ff !important;" href="https://wellbeltd.zendesk.com/hc/en-us/articles/4453108727065-Send-and-view-messages-for-my-bookings" >in-app chat functions</a> to pass on any special requirements or questions you might have. Your practitioner may also reach out to you (you will receive an email from our secure chat) if they require any additional information. You’ll also receive a reminder email two hours before your booking is due to start.
                  </p>
               </div>
            </div>
@@ -60,7 +60,7 @@
                <a > Can I contact my practitioner directly? <i class="fa fa-angle-right"></i>
                </a>
                <div class="content">
-                  <p> Wellbe allows you to easily contact your practitioners directly and safely using our direct in-app chat functions. You can send messages to practitioners within 4 hours of the booking start time, and for up to 24 hours after the booking has been marked as completed (e.g. in case they left something at your premises or you need post-treatment instructions clarified).
+                  <p> Wellbe allows you to easily contact your practitioners directly and safely using our direct <a class="faq_link" style="color: #70a3ff !important;" href="https://wellbeltd.zendesk.com/hc/en-us/articles/4453108727065-Send-and-view-messages-for-my-bookings" >in-app chat functions</a>. You can send messages to practitioners within 4 hours of the booking start time, and for up to 24 hours after the booking has been marked as completed (e.g. in case they left something at your premises or you need post-treatment instructions clarified).
                   </p>
                </div>
             </div>
@@ -69,7 +69,7 @@
                <a > What should I do to prepare for a treatment? <i class="fa fa-angle-right"></i>
                </a>
                <div class="content">
-                  <p> We ask that you make sure you have sufficient room for your treatment to take place. If you forgot to add special instructions when making your booking, you can contact your practitioners directly and safely using our direct in-app chat functions to pass on any special requirements or questions you might have. Aside from that, sit back and relax!
+                  <p> We ask that you make sure you have sufficient room for your treatment to take place. If you forgot to add special instructions when making your booking, you can contact your practitioners directly and safely using our direct <a class="faq_link" style="color: #70a3ff !important;" href="https://wellbeltd.zendesk.com/hc/en-us/articles/4453108727065-Send-and-view-messages-for-my-bookings" >in-app chat functions</a> to pass on any special requirements or questions you might have. Aside from that, sit back and relax!
                   </p>
                </div>
             </div>
@@ -78,7 +78,7 @@
                <a > What if I am running late?<i class="fa fa-angle-right"></i>
                </a>
                <div class="content">
-                  <p> If you are running late, we suggest letting your practitioner know using our direct in-app chat functions. If they don’t have any immediate bookings after your one, they may be able to adjust their availability to accommodate.
+                  <p> If you are running late, we suggest letting your practitioner know using our direct <a class="faq_link" style="color: #70a3ff !important;" href="https://wellbeltd.zendesk.com/hc/en-us/articles/4453108727065-Send-and-view-messages-for-my-bookings" >in-app chat functions</a>. If they don’t have any immediate bookings after your one, they may be able to adjust their availability to accommodate.
                   </p>
                </div>
             </div>
@@ -96,7 +96,7 @@
                <a > What are the booking cancellation terms? <i class="fa fa-angle-right"></i>
                </a>
                <div class="content">
-                  <p> We understand that plans can change. Depending on the progress of the booking, different options are available. Our cancellation policy has been designed to protect and compensate both practitioners and customers and cover the costs involved in the event of a cancellation close to the booking start time.
+                  <p> We understand that plans can change. Depending on the progress of the booking, different options are available. Our <a class="faq_link" style="color: #70a3ff !important;" href="https://wellbeltd.zendesk.com/hc/en-us/articles/4415380990873-Client-cancellation-policy" >cancellation policy</a> has been designed to protect and compensate both practitioners and customers and cover the costs involved in the event of a cancellation close to the booking start time.
                   </p>
                </div>
             </div>
@@ -105,7 +105,7 @@
                <a > How do I cancel my booking? <i class="fa fa-angle-right"></i>
                </a>
                <div class="content">
-                  <p> You can easily cancel your booking using the Wellbe portal by following these instructions. Make sure you familiarise yourself with our cancellation policies before cancelling your bookings.
+                  <p> You can easily cancel your booking using the Wellbe portal by following <a class="faq_link" style="color: #70a3ff !important;" href="https://wellbeltd.zendesk.com/hc/en-us/articles/4415624960025" >these instructions</a>. Make sure you familiarise yourself with our <a class="faq_link" style="color: #70a3ff !important;" href="https://wellbeltd.zendesk.com/hc/en-us/articles/4415380990873-Client-cancellation-policies" >cancellation policies</a> before cancelling your bookings.
                   </p>
                </div>
             </div>
@@ -114,7 +114,7 @@
                <a > What are your health and safety policies regarding Covid-19? <i class="fa fa-angle-right"></i>
                </a>
                <div class="content">
-                  <p> We are taking every precaution in line with government guidance to ensure treatments can be carried out safely while NZ is at ‘Red’. All practitioners who are delivering treatments will be fully vaccinated, as long as the government guidance requires it. Clients must provide evidence of vaccine certificates before treatments begin. Practitioners will wear a face covering for the duration of the booking.
+                  <p> We are taking every precaution in line with <a class="faq_link" style="color: #70a3ff !important;" href="https://covid19.govt.nz/traffic-lights/life-at-red/shopping-and-services-at-red/close-proximity-businesses-at-red/" >government guidance</a> to ensure treatments can be carried out safely while NZ is at ‘Red’. All practitioners who are delivering treatments will be fully vaccinated, as long as the government guidance requires it. Clients must provide evidence of vaccine certificates before treatments begin. Practitioners will wear a face covering for the duration of the booking.
                   </p>
                </div>
             </div>
