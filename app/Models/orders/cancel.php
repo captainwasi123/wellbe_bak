@@ -26,6 +26,7 @@ class cancel extends Model
     	}else{
     		$c->is_admin = '1';
     	}
+      $c->created_at = date('Y-m-d H:i:s');
     	$c->save();
 
         $pract_percentage = 0;

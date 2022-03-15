@@ -38,6 +38,7 @@ use Illuminate\Support\Facades\Route;
 		Route::get('/register', 'loginController@register');
 		Route::get('/register/pro', 'loginController@registerPro');
 		Route::post('/register', 'loginController@registerSubmit');
+		Route::get('/thanks', 'loginController@thanks')->name('thanks');
 
 
 

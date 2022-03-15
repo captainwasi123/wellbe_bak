@@ -39,13 +39,18 @@ class loginController extends Controller
             }
 
         }
+        elseif (Auth::attempt(['email' => $data['email'], 'password' => $data['password'], 'status' => '0'])) {
+            
+            session()->put('email', $data['email']);
+            Auth::logout();
+            return redirect()->back()->with('error', 'Your practitioner account is currently being verified and one of our onboarding specialists will be in touch with you shortly.');
+        }
         elseif (Auth::attempt(['email' => $data['email'], 'password' => $data['password'], 'status' => '2'])) {
             
             session()->put('email', $data['email']);
             Auth::logout();
             return redirect()->back()->with('error', 'Your practitioner account is currently being verified and one of our onboarding specialists will be in touch with you shortly.');
         }
-        
         else{
             session()->put('email', $data['email']);
             
@@ -78,7 +83,11 @@ class loginController extends Controller
                     $msg = 'Thanks for joining the Wellbe Community. An activation email has been sent, please click the link in the email to activate your account.';
                 }
                 $a = \App\Helpers\CommonHelpers::send_email($email_temp, $email, $request->email, 'Activate Your Wellbe Account', $from_email = 'info@wellbe.co.nz', $from_name = 'Wellbe');
-                return redirect()->back()->with('success', $msg);
+                if($email_temp == 'PractitionerActivation'){
+                    return redirect(route('thanks'));
+                }else{
+                    return redirect()->back()->with('success', $msg);
+                }
             }else{
 
                 return redirect()->back()->with('error', 'Sorry, an account already exists with that email address. Please try and login or reset your password.');
@@ -117,6 +126,7 @@ class loginController extends Controller
 
                 Mail::send('emails.forgetPassword', ['token' => $token,'first_name' => $to_name] , function($message) use($request,$to_name){
                     $message->to($request->email);
+                    $message->cc('info@wellbe.co.nz');
                     $message->subject('Reset Password');
                 });
 
@@ -151,4 +161,8 @@ class loginController extends Controller
           return redirect('login')->with('message', 'Your password has been changed!');
 
       }
+    function thanks(){
+
+        return view('web.new.thanks');
+    }
 }

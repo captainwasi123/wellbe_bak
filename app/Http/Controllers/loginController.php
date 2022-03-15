@@ -138,7 +138,7 @@ class loginController extends Controller
             $email_temp = 'WelcomeEmailCustomer';
             $user->status = '1';
             Auth::login($user);
-            $url = redirect(route('booker.index'))->with('success', 'Your account has been verified');
+            $url = redirect(route('booker.index'))->with('active', 'Your account has been verified.');
         }else{
             $email_temp = 'WelcomeEmailPractitioner';
             $user->email_verify = '1';

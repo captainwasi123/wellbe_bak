@@ -409,7 +409,7 @@ width: 100% !important;
 
 <td valign="top" style="padding:5px;"><div style="font-family:Cabin, sans-serif;font-size:17px;color:#5d4e6d;line-height:25px;letter-spacing: 0.03em;text-align:left;"><p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial">FROM:&nbsp;</span></p>
 
-<p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial"><strong>{{@$order->booker->first_name}} {{@$order->booker->last_name}}</strong></span></p>
+<p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial"><strong>{{$user->first_name}} {{$user->last_name}}</strong></span></p>
 </div>
 </td>
 </tr>

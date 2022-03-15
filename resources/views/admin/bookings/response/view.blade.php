@@ -276,10 +276,16 @@
                         <label>End Time</label>  {{date('h:i A', strtotime($val->end_time))}} 
                      </td>
                   </tr>
+                  @php 
+                     $timeFirst  = strtotime($val->start_time);
+                     $timeSecond = strtotime($val->end_time);
+                     $differenceInSeconds = $timeSecond - $timeFirst;
+                     $duration = $differenceInSeconds/60;
+                  @endphp
                   <tr>
                      <td class="wd-40" colspan="2"> 
                         <label>Product Name</label>{{$val->service->name}} 
-                        <small>{{$val->service->duration}} Mins</small> 
+                        <small>{{$duration}} Mins</small> 
                      </td>
                      <td> <label>Quantity</label> {{$val->qty}}x </td>
                      <td> <label>Price</label> NZ ${{number_format($val->price, 2)}} </td>
@@ -290,7 +296,7 @@
                         @foreach($val->addons as $ad)
                            <div class="addonLabel">
                               <span>{{empty($ad->addon->name) ? 'Deleted Addon' : $ad->addon->name}}</span><br>
-                              <span>{{empty($ad->addon->name) ? '' : $ad->addon->addonsDetail[0]->duration.' min'}}</span>
+                              <span></span>
                               <span>${{$ad->price}}</span>
                            </div> 
                         @endforeach

@@ -35,7 +35,7 @@
          <div class="row">
             <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12">
                <div class="work-service-box">
-                 <span class="circle-1">   <img class="work-img" src="{{URL::to('/public/assets/web/new/')}}/images/location-icon1.svg"> </span>
+                 <span class="circle-1">   <img class="work-img" src="{{URL::to('/public/assets/web/new/')}}/images/why1.png"> </span>
                   <img class="shape-line1" src="{{URL::to('/public/assets/web/new/')}}/images/shape-line1.png">
                   <h4> Set your territory </h4>
                   <p>  Our advanced geo-mapping tools ensure you’ll only be working in areas you choose for your convenience. </p>
@@ -43,7 +43,7 @@
             </div>
             <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12">
                <div class="work-service-box works-service-box3">
-                 <span class="circle-1">   <img class="work-img" src="{{URL::to('/public/assets/web/new/')}}/images/location-icon4.jpg"> </span>
+                 <span class="circle-1">   <img class="work-img" src="{{URL::to('/public/assets/web/new/')}}/images/why2.png"> </span>
                   <img class="shape-line2" src="{{URL::to('/public/assets/web/new/')}}/images/shape-line2.png">
                   <h4> Control your own schedule </h4>
                   <p>  Our tool lets you set your own schedule to provide you with freedom and flexibility. </p>
@@ -51,7 +51,7 @@
             </div>
             <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12">
                <div class="work-service-box">
-                   <span class="circle-1"> <img class="work-img" src="{{URL::to('/public/assets/web/new/')}}/images/location-icon5.jpg"> </span>
+                   <span class="circle-1"> <img class="work-img" src="{{URL::to('/public/assets/web/new/')}}/images/why3.png"> </span>
                   <h4> Maximise your earnings </h4>
                   <p> Set your own prices for services. Wellbe will only take a small service fee for bookings processed, you keep the rest!  </p>
                </div>

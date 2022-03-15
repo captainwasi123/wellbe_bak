@@ -18,6 +18,7 @@ class chat extends Model
     	$c->order_id = base64_decode(base64_decode($data['chatRef']));
     	$c->user_id = Auth::id();
     	$c->message = $data['message'];
+        $c->created_at = date('Y-m-d H:i:s');
     	$c->save();
 
     	return $c->created_at;

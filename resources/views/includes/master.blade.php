@@ -32,6 +32,18 @@
                 {{ session()->get('error') }}
             </div>
             </div>
+        @elseif(session()->has('active'))
+            @php $cart = session()->get('cart'); @endphp
+            <div class="custom-alert">
+            <div class="alert alert-success">
+                {{ session()->get('active') }} 
+                @if(!empty($cart['location']['lat']))
+                    <a href="{{route('treatments.booking.step1')}}">Return to the cart to complete your order</a>
+                @else
+                    <a href="{{route('home')}}">Create a new booking</a>
+                @endif
+            </div>
+            </div>
         @endif
         @if(session()->has('practitioner_service_success'))
         <div class="custom-alert">

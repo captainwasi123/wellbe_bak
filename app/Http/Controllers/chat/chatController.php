@@ -44,6 +44,7 @@ class chatController extends Controller
         $check = chat::where('order_id', base64_decode(base64_decode($data['chatRef'])))->orderBy('created_at', 'desc')->first();
     	$order = order::with(['booker'])->find(base64_decode(base64_decode($data['chatRef'])));
     	$rec_id = Auth::user()->user_type == '1' ? base64_encode($order->booker_id) : base64_encode($order->pract_id);
+        $rec_email = Auth::user()->user_type == '1' ? $order->booker->email : $order->practitioner->email;
     	$time = chat::newChat($data);
         $emai_data['order'] = $order;
         $emai_data['user'] = Auth::user();
@@ -60,7 +61,7 @@ class chatController extends Controller
             $mailsent = 1;
         }
         if($mailsent == 1){
-            \App\Helpers\CommonHelpers::send_email('NewMessage', $emai_data, Auth::user()->email, 'New Message Received', $from_email = 'info@wellbe.co.nz', $from_name = 'Wellbe');
+            \App\Helpers\CommonHelpers::send_email('NewMessage', $emai_data, $rec_email, 'New Message Received', $from_email = 'info@wellbe.co.nz', $from_name = 'Wellbe');
         }
     	$data_re = array(
                 'status' => 200,
