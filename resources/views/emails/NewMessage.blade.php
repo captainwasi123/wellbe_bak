@@ -245,7 +245,7 @@ width: 100% !important;
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 <tr>
 
-<td valign="top" style="padding:10px;"><div style="font-family:Cabin, sans-serif;font-size:18px;color:#0e4464;line-height:20px;letter-spacing: 0.03em;text-align:left;"><p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial">Hi {{$user->first_name}},</span></p>
+<td valign="top" style="padding:10px;"><div style="font-family:Cabin, sans-serif;font-size:18px;color:#0e4464;line-height:20px;letter-spacing: 0.03em;text-align:left;"><p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial">Hi {{$rec_name}},</span></p>
 
 <p style="padding: 0; margin: 0;">&nbsp;</p>
 

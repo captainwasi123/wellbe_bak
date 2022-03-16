@@ -54,19 +54,19 @@
          <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
             <div class="box-type2">
                <div class="page-title2">
-                  <h3> Revenue </h3>
+                  <h3> Commission </h3>
                </div>
 
                <div class="sales-set2">
                   <div class="row">
                      <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
 
-                        <h6> Today </h6>
+                        <h6> Today`s Bookigs </h6>
                         <h4 class="col-blue"> NZ$ {{number_format($revenue['today'], 2)}}  </h4>
                      </div>
                      <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
 
-                        <h6> Total </h6>
+                        <h6> Completed Bookings </h6>
                         <h4 class="col-blue"> NZ$ {{number_format($revenue['total'], 2)}}  </h4>
                      </div>
                   </div>

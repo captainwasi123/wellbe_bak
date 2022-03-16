@@ -45,11 +45,13 @@ class chatController extends Controller
     	$order = order::with(['booker'])->find(base64_decode(base64_decode($data['chatRef'])));
     	$rec_id = Auth::user()->user_type == '1' ? base64_encode($order->booker_id) : base64_encode($order->pract_id);
         $rec_email = Auth::user()->user_type == '1' ? $order->booker->email : $order->practitioner->email;
+        $rec_name = Auth::user()->user_type == '1' ? $order->booker->first_name : $order->practitioner->first_name;
     	$time = chat::newChat($data);
         $emai_data['order'] = $order;
         $emai_data['user'] = Auth::user();
         $emai_data['chat_msg'] = $data['message'];
         $emai_data['msg_time'] = $time;
+        $emai_data['rec_name'] = $rec_name;
 
         $mailsent = 0;
         if(!empty($check->id)){

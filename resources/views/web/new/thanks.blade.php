@@ -26,18 +26,18 @@
                         </a>
                      </div>
                      <div class="login-heading m-b-40">
-                        <h3> Thanks for activating your account! </h3>
+                        <h3> Thanks for signing up! </h3>
                      </div>
                      <br><br>
                      <div class="alert alert-danger">
-                        Your practitioner account is currently being verified and one of our onboarding specialists will be in touch with you shortly. You will be able to login to Wellbe once our onboarding team have verified your details.
+                        We’ve sent you an account verification link. Please click the link in your email to verify your account. Once verified, one of our onboarding specialists will be in touch as soon as possible to enable your login so that you can access Wellbe.
                      </div>
                      <br><br><br><br>
                      <div class="forgot-pass1">
                         <a href="{{route('home')}}" class="submit-btn1"> Return to Home </a>
                      </div>
                      <div class="legal-links1">
-                        <a href="{{URL::to('/TermCondition')}}"> Terms & Conditions </a>
+                        <a href="{{URL::to('/PractitionerAgree')}}"> Terms & Conditions </a>
                         <a href="{{URL::to('/PrivacyPolicy')}}"> Privacy Policy </a>
                      </div>
                   </div>

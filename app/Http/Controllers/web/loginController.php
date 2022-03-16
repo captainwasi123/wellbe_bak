@@ -42,8 +42,14 @@ class loginController extends Controller
         elseif (Auth::attempt(['email' => $data['email'], 'password' => $data['password'], 'status' => '0'])) {
             
             session()->put('email', $data['email']);
+            $msg = '';
+            if(Auth::user()->user_type == '1'){
+                $msg = 'Your practitioner account is currently being verified and one of our onboarding specialists will be in touch with you shortly.';
+            }else{
+                $msg = 'Your account has not been activated. Please click on the link in your account activation email before logging in. If you cannot find your activation link, please follow the reset your password process.';
+            }
             Auth::logout();
-            return redirect()->back()->with('error', 'Your practitioner account is currently being verified and one of our onboarding specialists will be in touch with you shortly.');
+            return redirect()->back()->with('error', $msg);
         }
         elseif (Auth::attempt(['email' => $data['email'], 'password' => $data['password'], 'status' => '2'])) {
             
@@ -158,7 +164,7 @@ class loginController extends Controller
           $user = User::where('email', $updatePassword->email)->update(['password' => Hash::make($request->password)]);
                   DB::table('password_resets')->where(['email'=> $updatePassword->email])->delete();
 
-          return redirect('login')->with('message', 'Your password has been changed!');
+          return redirect('login')->with('message', 'Password reset successfully. Please login using your new credentials');
 
       }
     function thanks(){

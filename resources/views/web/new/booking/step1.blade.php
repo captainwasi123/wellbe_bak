@@ -319,7 +319,7 @@
                <div class="block-element">
                   <div class="row m-b-10">
                      <div class="col-md-12">
-                        <p>   <a href="javascript:history.back()" class="custom-anchor1 text-center" style="min-width: 230px;"> Edit My Booking </a> </p>
+                        <p>   <a href="{{route('treatments.search')}}?lat={{Session::get('cart.location.lat')}}&long={{Session::get('cart.location.lng')}}&value={{Session::get('cart.location.place')}}" class="custom-anchor1 text-center" style="min-width: 230px;"> Edit My Booking </a> </p>
                         <p>  <a data-dismiss="modal" aria-label="Close" class="custom-anchor2 text-center no-border" style="min-width: 230px;"> <b> Cancel </b> </a> </p>
                      </div>
                   </div>
