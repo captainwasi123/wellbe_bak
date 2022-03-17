@@ -12,17 +12,19 @@
    @php $pr = empty($service->price) ? $data->price : $service->price; @endphp
    <div class="form-field2">
       <p> PRICE (EXCL GST) <sup class="col-red">*</sup> </p>
-      <input type="number" step=".01" placeholder="" name="price" id="editServicePrice" style="padding-left: 50px;" value="{{$pr}}">
+      <input type="number" step="any" placeholder="" name="price" id="editServicePrice" style="padding-left: 50px;" value="{{number_format((float)$pr, 2, '.', '')}}">
       <span class="static-tag1 col-black"> NZ$  </span>
    </div>
    <div class="form-field2">
+      @php $webpr = (($pr/100)*$mtp->gst)+$pr; @endphp
       <p> WEBSITE SALE PRICE (INC GST) <sup class="col-red">*</sup> </p>
-      <input type="number" step="any" placeholder="" id="editServiceSalePrice" style="padding-left: 50px;" value="{{(($pr/100)*$mtp->gst)+$pr}}" disabled>
+      <input type="number" step="any" placeholder="" id="editServiceSalePrice" style="padding-left: 50px;" value="{{number_format((float)$webpr, 2, '.', '')}}" disabled>
       <span class="static-tag1 col-black"> NZ$  </span>
    </div>
    <div class="form-field2">
+      @php $homepr = $pr-(($pr/100)*$mtp->comission); @endphp
       <p> YOUR TAKEHOME (AFTER GST & FEES) <sup class="col-red">*</sup> </p>
-      <input type="number" step="any" placeholder="" id="editServiceTakehomePrice" style="padding-left: 50px;" value="{{$pr-(($pr/100)*$mtp->comission)}}" disabled>
+      <input type="number" step="any" placeholder="" id="editServiceTakehomePrice" style="padding-left: 50px;" value="{{number_format((float)$homepr, 2, '.', '')}}" disabled>
       <span class="static-tag1 col-black"> NZ$  </span>
    </div>
    <div class="form-field2">

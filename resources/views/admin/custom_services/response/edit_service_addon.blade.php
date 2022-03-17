@@ -23,21 +23,23 @@
                <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12"> 
                   <div class="form-field2">
                      <p class="col-black"> Price   </p>
-                     <input type="text" placeholder="Enter price" id="editAddonPrice" name="price" value="{{$data->addonsDetail[0]->price}}" style="padding-left: 50px;" required>
+                     <input type="text" placeholder="Enter price" id="editAddonPrice" name="price" value="{{number_format((float)$data->addonsDetail[0]->price, 2, '.', '')}}" style="padding-left: 50px;" required>
                      <span class="static-tag1 col-black"> NZ$  </span>
                   </div>
                </div> 
                <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12"> 
+                  @php $webpr = (($data->addonsDetail[0]->price/100)*$mtp->gst)+$data->addonsDetail[0]->price; @endphp
                   <div class="form-field2">
                      <p class="col-black"> Website Sale Price  </p>
-                     <input type="text" placeholder="(Inc GST)" id="editAddonSalePrice" value="{{(($data->addonsDetail[0]->price/100)*$mtp->gst)+$data->addonsDetail[0]->price}}" style="padding-left: 50px;" disabled>
+                     <input type="text" placeholder="(Inc GST)" id="editAddonSalePrice" value="{{number_format((float)$webpr, 2, '.', '')}}" style="padding-left: 50px;" disabled>
                      <span class="static-tag1 col-black"> NZ$  </span>
                   </div>
                </div> 
                <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12"> 
+                  @php $homepr = $data->addonsDetail[0]->price-(($data->addonsDetail[0]->price/100)*$mtp->comission); @endphp
                   <div class="form-field2">
                      <p class="col-black"> Your Takehome </p>
-                     <input type="text" placeholder="(After GST and Fees)" value="{{$data->addonsDetail[0]->price-(($data->addonsDetail[0]->price/100)*$mtp->comission)}}" id="editAddonTakeHome" style="padding-left: 50px;" disabled>
+                     <input type="text" placeholder="(After GST and Fees)" value="{{number_format((float)$homepr, 2, '.', '')}}" id="editAddonTakeHome" style="padding-left: 50px;" disabled>
                      <span class="static-tag1 col-black"> NZ$  </span>
                   </div>
                </div>  

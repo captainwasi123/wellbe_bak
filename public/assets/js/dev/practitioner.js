@@ -34,24 +34,38 @@ $(document).ready(function(){
 
   $(document).on('keyup', '#editServicePrice', function(){
       var price = parseFloat($(this).val());
-      var gst = parseFloat($('#mtp_gst').val());
-      var com = parseFloat($('#mtp_com').val());
-      var sale = ((price/100)*gst)+price;
-      var com = price-((price/100)*com);
+      var str = price;
+      if(CountDecimalDigits(str) > 3){
+          str = str.toString();
+          str = str.slice(0, (str.indexOf(".")) + 3);
+          $(this).val(str);
+      }else{
+	      var gst = parseFloat($('#mtp_gst').val());
+	      var com = parseFloat($('#mtp_com').val());
+	      var sale = ((price/100)*gst)+price;
+	      var com = price-((price/100)*com);
 
-      $('#editServiceSalePrice').val(sale.toFixed(2));
-      $('#editServiceTakehomePrice').val(com.toFixed(2));
+	      $('#editServiceSalePrice').val(sale.toFixed(2));
+	      $('#editServiceTakehomePrice').val(com.toFixed(2));
+	    }
   });
   
   $(document).on('keyup', '#editAddonPrice', function(){
       var price = parseFloat($(this).val());
-      var gst = parseFloat($('#mtp_gst').val());
-      var com = parseFloat($('#mtp_com').val());
-      var sale = ((price/100)*gst)+price;
-      var com = price-((price/100)*com);
+      var str = price;
+      if(CountDecimalDigits(str) > 3){
+          str = str.toString();
+          str = str.slice(0, (str.indexOf(".")) + 3);
+          $(this).val(str);
+      }else{
+	      var gst = parseFloat($('#mtp_gst').val());
+	      var com = parseFloat($('#mtp_com').val());
+	      var sale = ((price/100)*gst)+price;
+	      var com = price-((price/100)*com);
 
-      $('#editAddonSalePrice').val(sale.toFixed(2));
-      $('#editAddonTakeHome').val(com.toFixed(2));
+	      $('#editAddonSalePrice').val(sale.toFixed(2));
+	      $('#editAddonTakeHome').val(com.toFixed(2));
+	    }
   });
   
 	// Delete Service
@@ -268,4 +282,11 @@ function getFormData($form){
     });
 
     return indexed_array;
+}
+
+function CountDecimalDigits(number)
+{
+  var char_array = number.toString().split(""); // split every single char
+  var not_decimal = char_array.lastIndexOf(".");
+  return (not_decimal<0)?0:char_array.length - not_decimal;
 }
