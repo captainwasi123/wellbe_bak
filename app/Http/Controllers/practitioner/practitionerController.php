@@ -17,7 +17,6 @@ class practitionerController extends Controller
         $to = date('Y-m-d 23:59:59');
         $curr = date('Y-m-d H:i:s');
         $upcomming = order::where('pract_id', Auth::id())
-                        ->whereDate('start_at', '>=', Carbon::now())
                         ->where('status', '1')
                         ->orderBy('start_at')
                         ->limit(12)

@@ -17,7 +17,6 @@ class bookingsController extends Controller
     function index(){
         $curr = date('Y-m-d H:i:s');
         $upcomming = order::where('booker_id', Auth::id())
-                        ->whereDate('start_at', '>=', Carbon::now())
                         ->where('status', '1')
                         ->orderBy('created_at', 'desc')
                         ->limit(12)
@@ -63,7 +62,6 @@ class bookingsController extends Controller
     function upcomming_booking(){
         $curr = date('Y-m-d H:i:s');
         $data = order::where('booker_id', Auth::id())
-                        ->whereDate('start_at', '>=', Carbon::now())
                         ->where('status', '1')
                         ->orderBy('created_at', 'desc')
                         ->get();

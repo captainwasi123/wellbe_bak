@@ -33,6 +33,11 @@
                            {{ session()->get('error') }}
                         </div>
                      @endif
+                     @if(session()->has('error_act'))
+                        <div class="alert alert-danger">
+                           {{ session()->get('error_act') }} If you cannot find your activation link, <a href="{{route('resend.mail')}}">click here to resend.</a>
+                        </div>
+                     @endif
                      @if(session()->has('message'))
                         <div class="alert alert-success">
                            {{ session()->get('message') }}

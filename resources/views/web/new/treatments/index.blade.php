@@ -80,7 +80,7 @@
                                  $sgst = ($sprice/100)*$mtp->gst;
                                  $stotal = $sprice+$sgst;
                               @endphp
-                              <p> <b class="col-green"> From ${{number_format($stotal, 2)}} </b> {{$it['duration']+$addonDuration}} minutes </p>
+                              <p> <b class="col-green"> From ${{number_format($stotal, 2)}} <a href="javascript:void(0)" class="price-info-icon" data-toggle="modal" data-target=".priceTooltipModal" title="Info"><i class="fa fa-info-circle"></i></a> &nbsp; </b> {{$it['duration']+$addonDuration}} minutes </p>
 
                               @if(count($it['addons']) > 0)
                                  <p class="addonLabelTreatment">
@@ -136,6 +136,23 @@
       </div>
    </div>
 
+   <div class="modal popup-1 fade priceTooltipModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+      <div class="modal-dialog modal-lg" role="document" style="max-width: 550px;">
+         <div class="modal-content">
+            <div class="rounded-1 bg-white  ">
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+               <div class="card-form block-element">
+                  <h4>Notice !</h4>
+                  <p>
+                     This is the lowest price we can find across our practitioner network. <br>
+                     The final price may vary depending on your choice of practitioner and their availability.
+                  </p>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+
 @if(session()->has('success'))
    <script type="text/javascript">
       $(document).ready(function(){
@@ -145,4 +162,11 @@
       });
    </script>
 @endif
+@endsection
+@section('addScript')
+   <script type="text/javascript">
+      $(document).ready(function(){
+         $('[data-toggle="tooltip"]').tooltip();
+      });
+   </script>
 @endsection

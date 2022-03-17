@@ -15,6 +15,7 @@
                 <li> <a href="{{route("admin.inprogress")}}"> <b> . </b> In Progress </a></li>
                 <li> <a href="{{route("admin.completed")}}"> <b> . </b> Completed </a></li>
                 <li> <a href="{{route("admin.cancelled")}}"> <b> . </b> Cancelled </a></li>
+                <li> <a href="{{route("admin.incomplete")}}"> <b> . </b> Incomplete </a></li>
              </ol>
           </div>
           <div class="menu-item">

@@ -57,6 +57,7 @@ class Kernel extends HttpKernel
         'adminAuth' => \App\Http\Middleware\adminAuth::class,
         'practAuth' => \App\Http\Middleware\PractitionerAuth::class,
         'bookerAuth' => \App\Http\Middleware\BookerAuth::class,
+        'bookingCheck' => \App\Http\Middleware\bookingCheck::class,
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,

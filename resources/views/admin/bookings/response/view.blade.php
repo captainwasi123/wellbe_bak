@@ -228,6 +228,10 @@
                      Cancelled
                      @break
 
+                  @case('9')
+                     Incomplete
+                     @break
+
                @endswitch
             </strong>
          </p>
@@ -246,7 +250,7 @@
          <h3><br></h3>
          <p>Booking Date:
             <strong>
-               {{date('F j, Y, g:i a', strtotime($data->start_at.' '.$data->details[0]->start_time))}}
+               {{date('F j, Y, g:i a', strtotime($data->start_at.' '.@$data->details[0]->start_time))}}
             </strong>
          </p>
          @if($data->status == '4')

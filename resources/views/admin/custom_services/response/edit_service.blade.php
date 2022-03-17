@@ -11,7 +11,7 @@
    </div>
    <div class="form-field2">
       <p> PRICE (EXCL GST) <sup class="col-red">*</sup> </p>
-      <input type="number" step="any" placeholder="" name="price" id="editServicePrice" style="padding-left: 50px;" value="{{$data->price}}">
+      <input type="number" step=".01" placeholder="" name="price" id="editServicePrice" style="padding-left: 50px;" value="{{$data->price}}">
       <span class="static-tag1 col-black"> NZ$  </span>
    </div>
    <div class="form-field2">

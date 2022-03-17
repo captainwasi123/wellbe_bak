@@ -39,6 +39,7 @@ use Illuminate\Support\Facades\Route;
 		Route::get('/register/pro', 'loginController@registerPro');
 		Route::post('/register', 'loginController@registerSubmit');
 		Route::get('/thanks', 'loginController@thanks')->name('thanks');
+		Route::get('/resendMail', 'loginController@resendMail')->name('resend.mail');
 
 
 
@@ -203,6 +204,13 @@ use Illuminate\Support\Facades\Route;
 
 //Booker
 
+	Route::prefix('booker')->namespace('booker')->middleware('bookingCheck')->group(function(){
+
+		//Book an order
+		Route::get('/order/book', 'bookingsController@bookOrder')->name('booker.order');
+		Route::get('/order/confirmation/{id}', 'bookingsController@confirmOrder');
+	});
+
 	Route::prefix('booker')->namespace('booker')->middleware('bookerAuth')->group(function(){
 		Route::get('/', 'bookingsController@index')->name('booker.index');
 		Route::get('/upcoming', 'bookingsController@upcomming_booking')->name('booker.upcomming_booking');
@@ -223,9 +231,6 @@ use Illuminate\Support\Facades\Route;
 
 		Route::get('/share', 'shareController@index')->name('booker.share');
 
-		//Book an order
-		Route::get('/order/book', 'bookingsController@bookOrder')->name('booker.order');
-		Route::get('/order/confirmation/{id}', 'bookingsController@confirmOrder');
 
 	});
 
@@ -265,7 +270,9 @@ use Illuminate\Support\Facades\Route;
 	    Route::get('/completed', 'DashboardController@completed')->name('admin.completed');
 	    Route::get('/completed/export', 'DashboardController@completedExport')->name('admin.completed.export');
 	    Route::get('/cancelled', 'DashboardController@cancelled')->name('admin.cancelled');
-	    Route::get('/cancelled/export', 'DashboardController@cancelledExport')->name('admin.cancelled.export');
+	    Route::get('/cancelled/export', 'DashboardController@cancelledExport')->name('admin.incomplete.export');
+	    Route::get('/incomplete', 'DashboardController@incomplete')->name('admin.incomplete');
+	    Route::get('/incomplete/export', 'DashboardController@incompleteExport')->name('admin.incomplete.export');
 
 	    Route::post('/completed/mark', 'DashboardController@completedMark');
 	    Route::get('/completed/marked', 'DashboardController@completedMarked');

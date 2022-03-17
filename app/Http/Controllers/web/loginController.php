@@ -45,11 +45,15 @@ class loginController extends Controller
             $msg = '';
             if(Auth::user()->user_type == '1'){
                 $msg = 'Your practitioner account is currently being verified and one of our onboarding specialists will be in touch with you shortly.';
+                
+                Auth::logout();
+                return redirect()->back()->with('error', $msg);
             }else{
-                $msg = 'Your account has not been activated. Please click on the link in your account activation email before logging in. If you cannot find your activation link, please follow the reset your password process.';
+                $msg = 'Your account has not been activated. Please click on the link in your account activation email before logging in.';
+
+                Auth::logout();
+                return redirect()->back()->with('error_act', $msg);
             }
-            Auth::logout();
-            return redirect()->back()->with('error', $msg);
         }
         elseif (Auth::attempt(['email' => $data['email'], 'password' => $data['password'], 'status' => '2'])) {
             
@@ -170,5 +174,26 @@ class loginController extends Controller
     function thanks(){
 
         return view('web.new.thanks');
+    }
+
+    function resendMail(){
+        $uemail = session()->get('email');
+        $u = User::where('email', $uemail)->first();
+        if(!empty($u->id)){
+
+            $email['user'] = $u;
+            if($u->userType == 2 ){
+                $email_temp = 'CustomerActivation';
+            }else{
+                $email_temp = 'PractitionerActivation';
+            }
+            $a = \App\Helpers\CommonHelpers::send_email($email_temp, $email, $uemail, 'Activate Your Wellbe Account', $from_email = 'info@wellbe.co.nz', $from_name = 'Wellbe');
+            
+            return redirect()->back()->with('message', 'Activation Email sent successfully.');
+            
+        }else{
+
+            return redirect()->back()->with('error', 'User Not Found.');
+        }
     }
 }

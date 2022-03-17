@@ -61,7 +61,7 @@
                   <div class="row">
                      <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
 
-                        <h6> Today`s Bookigs </h6>
+                        <h6> Today`s Bookings </h6>
                         <h4 class="col-blue"> NZ$ {{number_format($revenue['today'], 2)}}  </h4>
                      </div>
                      <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">

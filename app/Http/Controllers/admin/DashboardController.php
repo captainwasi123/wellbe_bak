@@ -24,8 +24,7 @@ class DashboardController extends Controller
     function index(){
         Auth::guard('web')->logout();
         $curr = date('Y-m-d H:i:s');
-        $upcomming = order::whereDate('start_at', '>=', Carbon::now())
-                        ->where('status', '1')
+        $upcomming = order::where('status', '1')
                         ->orderBy('created_at', 'desc')
                         ->limit(12)
                         ->get();
@@ -45,8 +44,7 @@ class DashboardController extends Controller
 
     function upcomming(){
         $curr = date('Y-m-d H:i:s');
-        $data = order::whereDate('start_at', '>=', Carbon::now())
-                        ->where('status', '1')
+        $data = order::where('status', '1')
                         ->orderBy('created_at', 'desc')
                         ->get();
 
@@ -93,7 +91,7 @@ class DashboardController extends Controller
         );
 
         $Heading = array('Wellbe Completed Bookings Data | CSV');
-        $columns = array('Date', 'Booking ID', 'Booker Name', 'Subtotal', 'GST Amount', 'Total Charge', 'Marked as Paid', 'Payment Due', 'Practitioner Name', 'Practitioner Bank Acount Name', 'Practitioner Bank Account Number', 'Refund Amount');
+        $columns = array('Date', 'Booking ID', 'Booker Name', 'Subtotal', 'GST Amount', 'Total Charge','Practitioner Earning', 'Marked as Paid', 'Payment Due', 'Practitioner Name', 'Practitioner Bank Acount Name', 'Practitioner Bank Account Number', 'Refund Amount');
 
         $callback = function() use($data, $columns, $Heading) {
             $file = fopen('php://output', 'w');
@@ -108,6 +106,7 @@ class DashboardController extends Controller
                 $row['Subtotal']                            = $val->sub_total;
                 $row['GST Amount']                          = $val->gst;
                 $row['Total Charge']                        = $val->total_amount;
+                $row['Practitioner Earning']                = $val->pract_earning;
                 $row['Marked as Paid']                      = $val->payment_status == '0' ? 'No' : 'Yes';
                 $row['Payment Due']                         = $val->payment_status == '0' ? '$'.number_format($val->pract_earning, 2) : '$0.0';
                 $row['Practitioner Name']                   = @$val->practitioner->first_name.' '.@$val->practitioner->last_name;
@@ -179,6 +178,52 @@ class DashboardController extends Controller
                 $row['Refund Percentage']                 = $cust_percentage.'%';
                 $row['Refund Amount']                     = $cust_dues;
                 $row['Total Refund Amount']               = $cust_dues+$pract_dues;
+
+                fputcsv($file, $row);
+            }
+
+            fclose($file);
+        };
+
+        return response()->stream($callback, 200, $headers);
+    }
+
+    function incomplete(){
+        $data['orders'] = order::where('status', '9')
+                       ->orderBy('created_at', 'desc')
+                       ->get();
+        return view('admin.bookings.incomplete')->with($data);
+    }
+    function incompleteExport(Request $request){
+        $date = date('d-M-Y__h-i-A');
+        $fileName = 'Incomplete_Booking_'.$date.'.csv';
+        $data = order::where('status', '9')
+                        ->orderBy('created_at', 'desc')
+                        ->get();
+        $headers = array(
+            "Content-type"        => "text/csv",
+            "Content-Disposition" => "attachment; filename=$fileName",
+            "Pragma"              => "no-cache",
+            "Cache-Control"       => "must-revalidate, post-check=0, pre-check=0",
+            "Expires"             => "0"
+        );
+
+        $Heading = array('Wellbe Incomplete Bookings Data | CSV');
+        $columns = array('Date', 'Booking ID','Practitioner Name', 'Booker Name', 'Address', 'Charge');
+
+        $callback = function() use($data, $columns, $Heading) {
+            $file = fopen('php://output', 'w');
+            fputcsv($file, $Heading);
+            fputcsv($file, array('-'));
+            fputcsv($file, $columns);
+
+            foreach ($data as $val) {
+                $row['Date']                                = date('l, d M Y - h:i A', strtotime($val->start_at.' '.@$val->details[0]->start_time));
+                $row['Booking ID']                          = '#'.$val->id;
+                $row['Practitioner Name']                   = @$val->practitioner->first_name.' '.@$val->practitioner->last_name;
+                $row['Booker Name']                         = @$val->booker->first_name.' '.@$val->booker->last_name;
+                $row['Address']                             = $val->address;
+                $row['Charge']                        = $val->total_amount;
 
                 fputcsv($file, $row);
             }
@@ -265,7 +310,7 @@ class DashboardController extends Controller
         );
 
         $Heading = array('Wellbe Practitioners Data | CSV');
-        $columns = array('First Name', 'Last Name', 'Email', 'Phone Number','Gender', 'Bio', 'Buffer Period', 'Bank Account Name', 'Bank Account Number', 'Marketplace Commission', 'Street', 'Suburb', 'City', 'Postcode', 'Newsletter', 'Upcomming Bookings', 'Completed Bookings', 'Cancelled Bookings', 'Revenue Generated','Store Page', 'Commission Paid', 'Status');
+        $columns = array('First Name', 'Last Name', 'Email', 'Phone Number','Gender', 'Bio', 'Buffer Period', 'Bank Account Name', 'Bank Account Number', 'Marketplace Commission', 'Street', 'Suburb', 'City', 'Postcode', 'Newsletter', 'Upcomming Bookings', 'Completed Bookings', 'Cancelled Bookings', 'Revenue Generated','Store Page', 'Status');
 
         $callback = function() use($data, $columns, $Heading, $mtp) {
             $file = fopen('php://output', 'w');
@@ -294,12 +339,6 @@ class DashboardController extends Controller
                 $row['Cancelled Bookings']  = count($val->p_cancelled);
                 $row['Revenue Generated']   = empty($val->p_revenue) ? '0' : '$'.number_format($val->p_revenue[0]->totalRevenue, 2);
                 $row['Store Page'] = $val->store_status == '1' ? 'Enabled' : 'Disabled';
-                $comPaid = 0;
-                foreach($val->p_completed as $pc){
-                    $cpaid = ($pc->sub_total/100)*$pc->comission;
-                    $comPaid = $comPaid+$cpaid;
-                }
-                $row['Commission Paid']     = '$'.$comPaid;
                 $row['Status']              = $val->status == '1' ? 'Active' : 'Disabled';
 
                 fputcsv($file, $row);
@@ -349,11 +388,12 @@ class DashboardController extends Controller
             }
         }
         userCategory::where('user_id', base64_decode($data['uid']))->delete();
-        userService::whereHas('service', function($q) use ($dc){
-            return $q->whereHas('cat', function($qq) use ($dc){
-                return $qq->whereIn('id', $dc);
-            });
-        })->delete();
+        userService::where('user_id', base64_decode($data['uid']))
+            ->whereHas('service', function($q) use ($dc){
+                return $q->whereHas('cat', function($qq) use ($dc){
+                    return $qq->whereIn('id', $dc);
+                });
+            })->delete();
         foreach($cat_arr as $val){
             $c = new userCategory;
             $c->user_id = base64_decode($data['uid']);
