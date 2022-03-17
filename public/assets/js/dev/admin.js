@@ -151,8 +151,8 @@ $(document).ready(function() {
         var sale = ((price/100)*gst)+price;
         var com = price-((price/100)*com);
 
-        $('#addServiceSalePrice').val(sale);
-        $('#addServiceTakehomePrice').val(com);
+        $('#addServiceSalePrice').val(sale.toFixed(2));
+        $('#addServiceTakehomePrice').val(com.toFixed(2));
     });
 
 
@@ -163,8 +163,8 @@ $(document).ready(function() {
         var sale = ((price/100)*gst)+price;
         var com = price-((price/100)*com);
 
-        $('#editServiceSalePrice').val(sale);
-        $('#editServiceTakehomePrice').val(com);
+        $('#editServiceSalePrice').val(sale.toFixed(2));
+        $('#editServiceTakehomePrice').val(com.toFixed(2));
     });
 
 
