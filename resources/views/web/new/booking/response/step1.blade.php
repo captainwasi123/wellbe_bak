@@ -159,7 +159,11 @@
                                        <label class="book-time-btn"  for="myCheck{{$slot->id.$x}}" >{{date('h:i A', strtotime($start))}}</label>
                                     </div>
                                  @endif
-                                 @php $start = date('H:i:s',strtotime('+'.$bslot.' minutes',strtotime($start))); $x++; @endphp
+                                 @php 
+                                    $start = date('H:i:s',strtotime('+'.$bslot.' minutes',strtotime($start))); 
+                                    $x++; 
+                                    $start_date = date('Y-m-d H:i:s', strtotime('+'.$bslot.' minutes',strtotime($start_date)));
+                                 @endphp
                               @endwhile 
                            @endforeach
                         @endif
