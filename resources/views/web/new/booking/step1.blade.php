@@ -123,6 +123,7 @@
                                           </p>
                                        </div>
                                        <div class="booking-persons-time time-slider arrows">
+                                          @php $curr_date = date('Y-m-d') @endphp
                                           @foreach($val->availability as $avail)
                                              @if(ucfirst($avail->week_day) == $day)
                                                 @foreach($avail->slots as $slot)

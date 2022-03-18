@@ -270,7 +270,7 @@ use Illuminate\Support\Facades\Route;
 	    Route::get('/completed', 'DashboardController@completed')->name('admin.completed');
 	    Route::get('/completed/export', 'DashboardController@completedExport')->name('admin.completed.export');
 	    Route::get('/cancelled', 'DashboardController@cancelled')->name('admin.cancelled');
-	    Route::get('/cancelled/export', 'DashboardController@cancelledExport')->name('admin.incomplete.export');
+	    Route::get('/cancelled/export', 'DashboardController@cancelledExport')->name('admin.cancelled.export');
 	    Route::get('/incomplete', 'DashboardController@incomplete')->name('admin.incomplete');
 	    Route::get('/incomplete/export', 'DashboardController@incompleteExport')->name('admin.incomplete.export');
 

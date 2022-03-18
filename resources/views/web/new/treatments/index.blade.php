@@ -142,7 +142,7 @@
             <div class="rounded-1 bg-white  ">
                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                <div class="card-form block-element">
-                  <h4>Notice !</h4>
+                  <h4>How is pricing determined?</h4>
                   <p>
                      This is the lowest price we can find across our practitioner network. <br>
                      The final price may vary depending on your choice of practitioner and their availability.

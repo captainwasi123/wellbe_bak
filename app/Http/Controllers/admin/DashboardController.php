@@ -209,7 +209,7 @@ class DashboardController extends Controller
         );
 
         $Heading = array('Wellbe Incomplete Bookings Data | CSV');
-        $columns = array('Date', 'Booking ID','Practitioner Name', 'Booker Name', 'Address', 'Charge');
+        $columns = array('Date', 'Booking ID','Practitioner Name', 'Booker Name', 'Booker Email', 'Address', 'Charge');
 
         $callback = function() use($data, $columns, $Heading) {
             $file = fopen('php://output', 'w');
@@ -222,6 +222,7 @@ class DashboardController extends Controller
                 $row['Booking ID']                          = '#'.$val->id;
                 $row['Practitioner Name']                   = @$val->practitioner->first_name.' '.@$val->practitioner->last_name;
                 $row['Booker Name']                         = @$val->booker->first_name.' '.@$val->booker->last_name;
+                $row['Booker Email']                        = @$val->booker->email;
                 $row['Address']                             = $val->address;
                 $row['Charge']                        = $val->total_amount;
 
