@@ -90,6 +90,7 @@
                      </p>
                   </div>
                   <div class="booking-persons-time time-slider">
+                     @php $curr_date = $date @endphp
                      @foreach($val->availability as $avail)
                         @if(ucfirst($avail->week_day) == $day)
                            @foreach($avail->slots as $slot)
@@ -103,11 +104,14 @@
                                        $curr = date('H',strtotime($curr));
                                        $curr = $curr.':00:00';
                                        $start = $curr;
+                                       $start_date = date('Y-m-d H:i:s', strtotime($curr_date.' '.$curr));
                                     }else{
                                        $start = $slot->start_booking;
+                                       $start_date = date('Y-m-d H:i:s', strtotime($curr_date.' '.$start));
                                     }
                                  }else{
                                     $start = $slot->start_booking;
+                                    $start_date = date('Y-m-d H:i:s', strtotime($curr_date.' '.$start));
                                  } 
                                  $end = $slot->end_booking; 
                                  $end = date('H:i:s',strtotime($end));
@@ -140,7 +144,12 @@
                                  @endforeach
                                  @php 
                                     $endDuration = date('H:i:s',strtotime('+'.$bookingDuration.' minutes',strtotime($start)));
+
+                                    $endDurationdd = date('Y-m-d H:i:s',strtotime('+'.$bookingDuration.' minutes',strtotime($start_date))); 
                                  @endphp
+                                 @if($curr_date != date('Y-m-d', strtotime($endDurationdd)))
+                                    @php $v = 0;  @endphp
+                                 @endif
                                  @if($endDuration > $end)
                                     @php $v = 0; $st = 3; @endphp
                                  @endif

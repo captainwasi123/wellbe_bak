@@ -137,11 +137,14 @@
                                                             $curr = date('H',strtotime($curr));
                                                             $curr = $curr.':00:00';
                                                             $start = $curr;
+                                                            $start_date = date('Y-m-d H:i:s', strtotime($curr_date.' '.$curr));
                                                          }else{
                                                             $start = $slot->start_booking;
+                                                            $start_date = date('Y-m-d H:i:s', strtotime($curr_date.' '.$start));
                                                          }
                                                       }else{
                                                          $start = $slot->start_booking;
+                                                         $start_date = date('Y-m-d H:i:s', strtotime($curr_date.' '.$start));
                                                       } 
                                                       $end = $slot->end_booking; 
                                                       $end = date('H:i:s',strtotime($end));
@@ -156,6 +159,7 @@
                                                                @php 
                                                                   $endDuration = date('H:i:s',strtotime('+'.$bookingDuration.' minutes',strtotime($start))); 
                                                                   $endDuration2 = date('H:i:s',strtotime('+'.$buffer.' minutes',strtotime($vupd->end_time))); 
+
                                                                @endphp
 
                                                                @if($start >= $vupd->start_time && $start < $endDuration2)
@@ -174,7 +178,12 @@
                                                       @endforeach
                                                       @php 
                                                          $endDuration = date('H:i:s',strtotime('+'.$bookingDuration.' minutes',strtotime($start)));
+
+                                                         $endDurationdd = date('Y-m-d H:i:s',strtotime('+'.$bookingDuration.' minutes',strtotime($start_date))); 
                                                       @endphp
+                                                      @if($curr_date != date('Y-m-d', strtotime($endDurationdd)))
+                                                         @php $v = 0;  @endphp
+                                                      @endif
                                                       @if($endDuration > $end)
                                                          @php $v = 0; @endphp
                                                       @endif
@@ -184,7 +193,11 @@
                                                          <label class="book-time-btn"  for="myCheck{{$slot->id.$x}}" >{{date('h:i A', strtotime($start))}}</label>
                                                       </div>
                                                       @endif
-                                                      @php $start = date('H:i:s',strtotime('+'.$bslot.' minutes',strtotime($start))); $x++; @endphp
+                                                      @php 
+                                                         $start = date('H:i:s',strtotime('+'.$bslot.' minutes',strtotime($start))); 
+                                                         $x++; 
+                                                         $start_date = date('Y-m-d H:i:s', strtotime('+'.$bslot.' minutes',strtotime($start_date)));
+                                                      @endphp
                                                    @endwhile 
                                                 @endforeach
                                              @endif
