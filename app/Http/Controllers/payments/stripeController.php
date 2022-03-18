@@ -14,6 +14,7 @@ class stripeController extends Controller
           env('STRIPE_PRIVATE_KEY')
         );
         $charge_amount = $request->get('amount')*100;
+        $charge_amount = intval($charge_amount);
         $paymentIntent = \Stripe\PaymentIntent::create([
           'amount' => $charge_amount,
           'currency' => 'usd'
