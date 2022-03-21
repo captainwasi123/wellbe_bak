@@ -283,10 +283,10 @@ class DashboardController extends Controller
 
 
     //Practitioner
-    function practitioners(){
+    function practitioners(){/*
         order::whereDate('start_at', '<', Carbon::now())
                         ->where('status', '1')
-                        ->update(['status' => '6']);
+                        ->update(['status' => '6']);*/
         $data = User::where('user_type', '1')->get();
 
         return view("admin.practitioners.practitioners", ['data' => $data]);

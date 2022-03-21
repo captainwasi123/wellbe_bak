@@ -268,7 +268,7 @@ class webController extends Controller
 	public function booking_reminder()
 	{
 		$time = strtotime(date('Y-m-d H:i:s'));
-        $currnet_time = strtotime('-2 hours', $time);
+        $currnet_time = strtotime('+2 hours', $time);
 		$order = order::with(['details','practitioner','booker'])->where('status',1)->where('reminder_email',0)->where('start_at',date('Y-m-d'))->get();
 		$mtp = MarketplaceSetting::latest()->first();
 		foreach($order as $order_data){ 
@@ -276,13 +276,15 @@ class webController extends Controller
 			$t1 = strtotime(date('Y-m-d').' '.$order_data->details[0]->start_time);
 			$t2 = strtotime($order_data->created_at);
 			$diff = $t1 - $t2;
-			if($date >= $currnet_time && $diff > 7200){
+			if($date <= $currnet_time && $diff > 7200){
 				$data = array(
 					'order' => $order_data,
 					'mtp' => $mtp,
 				);
+				
 				\App\Helpers\CommonHelpers::send_email('BookingReminderCustomer', $data, $order_data->booker->email, 'Booking Reminder', $from_email = 'info@wellbe.co.nz', $from_name = 'Wellbe');
-                \App\Helpers\CommonHelpers::send_email('BookingReminderPractitioner', $data, $order_data->practitioner->email, 'Booking Reminder', $from_email = 'info@wellbe.co.nz', $from_name = 'Wellbe');   
+                \App\Helpers\CommonHelpers::send_email('BookingReminderPractitioner', $data, $order_data->practitioner->email, 'Booking Reminder', $from_email = 'info@wellbe.co.nz', $from_name = 'Wellbe');  
+
 				DB::table('tbl_order_info')
                 ->where('id', $order_data->id)
                 ->update(['reminder_email' => 1]);
