@@ -399,8 +399,8 @@ a.custom-btn1 {
 
 img.service-img {
     margin: 0px;
-    height: 80px;
-    height: auto;
+    width: 110px;
+    height: 110px;
     margin-left: -5px;
 }
 .set a {
@@ -2586,17 +2586,20 @@ span.circle-1 img {
     box-shadow: none;
     border-radius: 0px;
     height: 62px;
-    margin-top: -5px !important;
+    margin-top: 0px !important;
 }
-
+.feature-box img {
+    height: 120px;
+    width: 120px;
+}
 
 span.circle-1 {
     display: inline-block;
     border-radius: 100%;
     box-shadow: 1px 1px 15px #e2e2e2;
     padding: 18px;
-    width: 90px;
-    height: 90px;
+    width: 100px;
+    height: 95px;
 }
 
 .set a i {

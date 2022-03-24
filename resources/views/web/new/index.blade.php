@@ -150,7 +150,7 @@
                  </div>
                  <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
                     <div class="work-service-box work-service-box2">
-                       <img class="service-img" src="{{URL::to('/public/assets/web/new/')}}/images/new-categories/Make-Up.png">
+                       <img class="service-img" src="{{URL::to('/public/assets/web/new/')}}/images/new-categories/Makeup.png">
                        <h4> Make Up </h4>
                        <p>  No matter the occasion, our make up artists are experts at day-time, evening and wedding looks. </p>
                     </div>

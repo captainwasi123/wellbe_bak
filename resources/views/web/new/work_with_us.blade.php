@@ -175,7 +175,7 @@
                   </div>
                   <div class="col-md-4 col-lg-4 col-sm-4 col-12">
                      <div class="feature-box mob-text-center">
-                        <img src="{{URL::to('/public/assets/web/new/')}}/images/new-categories/Make-Up.png">
+                        <img src="{{URL::to('/public/assets/web/new/')}}/images/new-categories/Makeup.png">
                         <h5> Makeup </h5>
                      </div>
                   </div>
