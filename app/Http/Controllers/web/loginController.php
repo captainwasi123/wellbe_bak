@@ -182,11 +182,8 @@ class loginController extends Controller
         if(!empty($u->id)){
 
             $email['user'] = $u;
-            if($u->userType == 2 ){
-                $email_temp = 'CustomerActivation';
-            }else{
-                $email_temp = 'PractitionerActivation';
-            }
+            $email_temp = 'CustomerActivation';
+            
             $a = \App\Helpers\CommonHelpers::send_email($email_temp, $email, $uemail, 'Activate Your Wellbe Account', $from_email = 'info@wellbe.co.nz', $from_name = 'Wellbe');
             
             return redirect()->back()->with('message', 'Activation Email sent successfully.');

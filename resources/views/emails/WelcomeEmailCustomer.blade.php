@@ -634,7 +634,7 @@ width: 100% !important;
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 <tr>
 
-<td valign="top" style="padding-top:5px;padding-right:10px;padding-bottom:5px;padding-left:10px;"><div style="font-family:Cabin, sans-serif;font-size:18px;color:#0e4464;line-height:25px;letter-spacing: 0.03em;text-align:left;"><p style="padding: 0; margin: 0;text-align: center;"><span class="mso-font-fix-arial">You can book on the go, track your orders and chat with your Wellbe practioner&nbsp;before and after bookings directly for our portal.</span></p>
+<td valign="top" style="padding-top:5px;padding-right:10px;padding-bottom:5px;padding-left:10px;"><div style="font-family:Cabin, sans-serif;font-size:18px;color:#0e4464;line-height:25px;letter-spacing: 0.03em;text-align:left;"><p style="padding: 0; margin: 0;text-align: center;"><span class="mso-font-fix-arial">You can book on the go, track your orders, and chat directly with your practitioner directly from the Wellbe Portal.</span></p>
 </div>
 </td>
 </tr>
