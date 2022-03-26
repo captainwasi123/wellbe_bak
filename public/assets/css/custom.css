@@ -252,6 +252,7 @@ ol.sub-menu li a b {
 }
 .user-dropdown button img {
     width: 40px;
+    height: 40px;
     border-radius: 100%;
     margin-left: 10px;
     position: absolute;

@@ -40,9 +40,10 @@
 @php 
    $gst = $marketplace_data->gst;
    $gst_amount = ($totalAmount/100)*$gst;
+   $famount = $gst_amount+$totalAmount;
 @endphp
 <div class="book-summary-instructions m-t-50">
-   <h6> Total <b> ${{number_format($totalAmount+$gst_amount, 2)}} <small>inc GST</small> </b> </h6>
+   <h6> Total <b> ${{number_format($famount, 2)}} <small>inc GST</small> </b> </h6>
 </div>
 <div class="block-element">
    <div class="row m-t-20 m-b-10">
@@ -53,7 +54,7 @@
          <input type="hidden" name="booking_prac" id="booking_prac" value="{{$id}}">
          @if(Auth::check())
             <div class="col-md-12" style="padding-left: 30px;padding-right: 30px;">
-               <button {{(empty(Session::get('cart')) || count(Session::get('cart.services')) == 0) ? 'type=button'.' id=checkout_btn' : ''}} {{$totalAmount < 25 ? 'type=button'.' id=checkout_btn' : ''}} class="submit-btn1 block-element1" style="padding-left: 50px;padding-right: 50px;"> Continue to Checkout </button>
+               <button {{(empty(Session::get('cart')) || count(Session::get('cart.services')) == 0) ? 'type=button'.' id=checkout_btn' : ''}} {{$famount < 25 ? 'type=button'.' id=checkout_btn' : ''}} class="submit-btn1 block-element1" style="padding-left: 50px;padding-right: 50px;"> Continue to Checkout </button>
             </div>
          @else
             <div class="col-md-12" style="padding-left: 30px;padding-right: 30px;">
