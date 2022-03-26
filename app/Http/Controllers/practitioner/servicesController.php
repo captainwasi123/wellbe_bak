@@ -59,10 +59,11 @@ class servicesController extends Controller
 
     function enableService($id){
     	$id = base64_decode($id);
-
+        $ser = services::find($id);
     	$data = new userService;
     	$data->user_id = Auth::id();
         $data->service_id = $id;
+        $data->price = $ser->price;
     	$data->save();
 
     	return redirect()->back()->with('success', 'Service Enabled.');
