@@ -80,7 +80,10 @@ $(document).ready(function() {
     $(document).on('change', '.timeslot', function() {
         let time = $(this).data('time');
         let prac = $(this).data('prac');
-        let date = $('#booking_date').val();
+        let date = $('#booking_date_preview').val();
+        $('#bookingDate').html(date);
+        $('#booking_date').val(date);
+
         $('#step1Summary').html('<img src="' + ref + '/public/assets/web/new/images/loaderr.gif"/>');
         $.post(ref + "/treatments/booking/step_1/summary", { 'id': prac, 'time': time, 'date': date, '_token': $('meta[name="token"]').attr('content') })
             .done(function(data) {

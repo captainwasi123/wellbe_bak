@@ -274,7 +274,7 @@ width: 100% !important;
 
 <p style="padding: 0; margin: 0;">&nbsp;</p>
 
-<p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial">You'll recieve a full refund within the next 48 hours.</span></p>
+<p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial">You'll receive a full refund within the next 48 hours.</span></p>
 </div>
 </td>
 </tr>

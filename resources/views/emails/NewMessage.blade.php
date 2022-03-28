@@ -357,7 +357,7 @@ width: 100% !important;
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 <tr>
 
-<td valign="top" style="padding:10px;"><div style="font-family:Cabin, sans-serif;font-size:17px;color:#5d4e6d;line-height:25px;letter-spacing: 0.03em;text-align:left;"><p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial">Message Recieved: </span><span class="mso-font-fix-arial"><strong>{{date('l, d M Y - h:i A', strtotime($msg_time))}}</strong></span></p>
+<td valign="top" style="padding:10px;"><div style="font-family:Cabin, sans-serif;font-size:17px;color:#5d4e6d;line-height:25px;letter-spacing: 0.03em;text-align:left;"><p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial">Message Received: </span><span class="mso-font-fix-arial"><strong>{{date('l, d M Y - h:i A', strtotime($msg_time))}}</strong></span></p>
 </div>
 </td>
 </tr>

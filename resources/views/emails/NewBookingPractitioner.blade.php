@@ -270,7 +270,7 @@ width: 100% !important;
 
 <p style="padding: 0; margin: 0;">&nbsp;</p>
 
-<p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial">You've recieved a new booking.</span></p>
+<p style="padding: 0; margin: 0;"><span class="mso-font-fix-arial">You've received a new booking.</span></p>
 
 <p style="padding: 0; margin: 0;">&nbsp;</p>
 

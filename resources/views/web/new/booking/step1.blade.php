@@ -325,6 +325,7 @@
    </div>
 </section>
 
+<input type="hidden" id="booking_date_preview" value="{{date('d-m-Y', strtotime($date))}}">
 
 <div class="modal popup-1 fade editBookingModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
    <div class="modal-dialog modal-lg" role="document" style="max-width: 550px;">

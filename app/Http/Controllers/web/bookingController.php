@@ -120,15 +120,19 @@ class bookingController extends Controller
 
     function step2Session(Request $request){
         $data = $request->all();
-        $cart = session()->get('cart');
-        $cart['booking'] = [
-                "date"    => $data['booking_date'],
-                "time"    => $data['booking_time'],
-                "practitioner"    => $data['booking_prac'],
-        ];
-        session()->put('cart', $cart);
+        if(empty($data['booking_time'])){
+            return redirect()->back();
+        }else{
+            $cart = session()->get('cart');
+            $cart['booking'] = [
+                    "date"    => $data['booking_date'],
+                    "time"    => $data['booking_time'],
+                    "practitioner"    => $data['booking_prac'],
+            ];
+            session()->put('cart', $cart);
 
-        return redirect(route('treatments.booking.step2'));
+            return redirect(route('treatments.booking.step2'));
+        }
     }
     function step2(){
         $cart = session()->get('cart');
