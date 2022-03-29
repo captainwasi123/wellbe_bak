@@ -1879,7 +1879,7 @@ ul.list-style1 li i {
     margin-bottom: 20px;
     position: relative;
     padding-bottom: 32px;
-    padding-left: 100px;
+    /*padding-left: 100px;*/
     min-height: 100px;
     align-items: center;
 }

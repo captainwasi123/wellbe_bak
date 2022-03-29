@@ -113,7 +113,15 @@
                                           <div class="booking-practices">
                                              <div class="booking-details-person">
                                                 <input type="hidden" name="userIds" value="{{$val->id}}">
-                                                <img src="{{URL::to('/')}}/{{$val->profile_img}}" onerror="this.onerror=null;this.src='{{URL::to('/')}}/public/assets/images/user-placeholder.png';" class="dp">
+                                                <!-- <img src="{{URL::to('/')}}/{{$val->profile_img}}" onerror="this.onerror=null;this.src='{{URL::to('/')}}/public/assets/images/user-placeholder.png';" class="dp"> -->
+
+                                                <div class="practitioners-box1">    
+                                                    <div class="img box" style="padding:0; width: inherit; height: inherit;">
+                                                        <img src="{{URL::to('/')}}/{{$val->profile_img}}" onerror="this.onerror=null;this.src='{{URL::to('/')}}/public/assets/images/user-placeholder.png';" class="dp landscape" />
+                                                    </div>
+                                                </div>
+
+
                                                 <h5> {{$val->first_name.' '.$val->last_name}} </h5>
                                                 <p> 
                                                    <a href="javascript:void(0)" class="viewUserProfile" data-id="{{base64_encode($val->id)}}"> View Profile </a> 

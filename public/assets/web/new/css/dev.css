@@ -328,3 +328,40 @@ a.custom-btn1 {
 .price-info-icon{
     color: #5d4e6d;
 }
+
+
+
+
+
+.practitioners-box1 {
+    width:85px;
+    height:85px;
+    margin: 5px;
+    background: black;
+    float: left;
+    margin-right: 20px !important;
+}
+
+.landscape {
+  width: auto;
+  height: 100%;
+}
+
+.landscape2 {
+  width:100%;
+}
+
+.img.box img {
+    position: absolute;
+    top: -100%;
+    right: -100%;
+    bottom: -100%;
+    left: -100%;
+    margin: auto;
+}
+
+.box {
+  position: relative;
+  overflow: hidden;
+}
+
