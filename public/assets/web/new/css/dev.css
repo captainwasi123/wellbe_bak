@@ -140,6 +140,11 @@
 .submit-btn1.block-element1 {
     padding: 10px 20px !important;
 }
+.booking-details-person h5 {
+    font-size: 14px;
+    margin-top: 5px;
+}
+
  }
 
 .submit-btn1
@@ -329,39 +334,13 @@ a.custom-btn1 {
     color: #5d4e6d;
 }
 
-
-
-
-
-.practitioners-box1 {
-    width:85px;
-    height:85px;
-    margin: 5px;
-    background: black;
-    float: left;
-    margin-right: 20px !important;
+#content {
+  width: 100px;
+  height: 95px;
 }
 
-.landscape {
-  width: auto;
-  height: 100%;
+#myImage {
+   object-fit: cover;
+   width: auto;
+   height: 100%;
 }
-
-.landscape2 {
-  width:100%;
-}
-
-.img.box img {
-    position: absolute;
-    top: -100%;
-    right: -100%;
-    bottom: -100%;
-    left: -100%;
-    margin: auto;
-}
-
-.box {
-  position: relative;
-  overflow: hidden;
-}
-
