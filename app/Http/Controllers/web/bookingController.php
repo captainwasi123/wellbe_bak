@@ -32,61 +32,66 @@ class bookingController extends Controller
     function step1(){
         $day = date('l');
         $cart = session()->get('cart');
-        $lat = $cart['location']['lat'];
-        $lng = $cart['location']['lng'];
-        // get average  query
-        $avg = DB::select('SELECT AVG(tbl_users_geofences.radious) as avg, tbl_users_geofences.*, ( 6371 * acos( cos( radians("'.$lat.'") ) * cos( radians(lat ) ) * cos( radians(lng ) - radians("'.$lng.'") ) + sin( radians("'.$lat.'") ) * sin( radians(lat ) ) ) ) AS distance FROM `tbl_users_geofences` WHERE ( 6371 * acos( cos( radians("'.$lat.'") ) * cos( radians(lat ) ) * cos( radians(lng ) - radians("'.$lng.'") ) + sin( radians("'.$lat.'") ) * sin( radians(lat ) ) ) ) < 50');
-        // get user ids
-        $users_ids = DB::select('SELECT tbl_users_geofences.*, ( 6371 * acos( cos( radians("'.$lat.'") ) * cos( radians(lat ) ) * cos( radians(lng ) - radians("'.$lng.'") ) + sin( radians("'.$lat.'") ) * sin( radians(lat ) ) ) ) AS distance FROM `tbl_users_geofences` WHERE ( 6371 * acos( cos( radians("'.$lat.'") ) * cos( radians(lat ) ) * cos( radians(lng ) - radians("'.$lng.'") ) + sin( radians("'.$lat.'") ) * sin( radians(lat ) ) ) ) <= "'.$avg[0]->avg.'"');
+        if(empty($cart['location']['lat'])){
 
-        $userArr = \Arr::pluck($users_ids,'user_id');
-        $services = array();
-        $addons = array();
-        $unavailable = array();
-        $cart = session()->get('cart');
+            return redirect('/');
+        }else{
+            $lat = $cart['location']['lat'];
+            $lng = $cart['location']['lng'];
+            // get average  query
+            $avg = DB::select('SELECT AVG(tbl_users_geofences.radious) as avg, tbl_users_geofences.*, ( 6371 * acos( cos( radians("'.$lat.'") ) * cos( radians(lat ) ) * cos( radians(lng ) - radians("'.$lng.'") ) + sin( radians("'.$lat.'") ) * sin( radians(lat ) ) ) ) AS distance FROM `tbl_users_geofences` WHERE ( 6371 * acos( cos( radians("'.$lat.'") ) * cos( radians(lat ) ) * cos( radians(lng ) - radians("'.$lng.'") ) + sin( radians("'.$lat.'") ) * sin( radians(lat ) ) ) ) < 50');
+            // get user ids
+            $users_ids = DB::select('SELECT tbl_users_geofences.*, ( 6371 * acos( cos( radians("'.$lat.'") ) * cos( radians(lat ) ) * cos( radians(lng ) - radians("'.$lng.'") ) + sin( radians("'.$lat.'") ) * sin( radians(lat ) ) ) ) AS distance FROM `tbl_users_geofences` WHERE ( 6371 * acos( cos( radians("'.$lat.'") ) * cos( radians(lat ) ) * cos( radians(lng ) - radians("'.$lng.'") ) + sin( radians("'.$lat.'") ) * sin( radians(lat ) ) ) ) <= "'.$avg[0]->avg.'"');
 
-        $advalidate = 0;
-        foreach($cart['services'] as $val){
-            foreach($val as $it){
-                array_push($services, base64_decode($it['id']));
-                foreach($it['addons'] as $vall){
-                    array_push($addons, $vall['id']);
-                    $advalidate = 1;
+            $userArr = \Arr::pluck($users_ids,'user_id');
+            $services = array();
+            $addons = array();
+            $unavailable = array();
+            $cart = session()->get('cart');
+
+            $advalidate = 0;
+            foreach($cart['services'] as $val){
+                foreach($val as $it){
+                    array_push($services, base64_decode($it['id']));
+                    foreach($it['addons'] as $vall){
+                        array_push($addons, $vall['id']);
+                        $advalidate = 1;
+                    }
                 }
             }
-        }
 
-        $hdate['date']=date('Y-m-d');
-        $holidays=holidays::where('closed_date',$hdate['date'])->get();
-        foreach($holidays as $val){
-            array_push($unavailable, $val->user_id);
-        }
-        $sort = Session::get('sorting');
-        $data['day'] = $day;
-        $data['date'] = date('Y-m-d');
-        $data['users'] = User::where('status', '1')
-                        ->where('store_status', '1')
-                        ->whereHas('services', function($q) use ($services){
-                            return $q->whereIn('service_id', $services);
-                        })
-                        ->when($advalidate != 0, function($qe) use ($addons){
-                            return $qe->whereHas('addons', function($q) use ($addons){
-                                return $q->whereIn('addon_id', $addons);
-                            });
-                        })
-                        ->whereHas('availability', function($q) use ($day){
-                            return $q->where('week_day', $day);
-                        })
-                        ->when(!empty($sort) && $sort == '1', function($q){
-                            return $q->withAvg('reviews', 'rating')->orderBy('reviews_avg_rating', 'desc');
-                        })
-                        ->whereIn('id', $userArr)
-                        ->whereNotIn('id', $unavailable)
-                        ->get();
-                        //dd($data['users']);
-        $data['marketplace_data'] = MarketplaceSetting::latest()->first();
+            $hdate['date']=date('Y-m-d');
+            $holidays=holidays::where('closed_date',$hdate['date'])->get();
+            foreach($holidays as $val){
+                array_push($unavailable, $val->user_id);
+            }
+            $sort = Session::get('sorting');
+            $data['day'] = $day;
+            $data['date'] = date('Y-m-d');
+            $data['users'] = User::where('status', '1')
+                            ->where('store_status', '1')
+                            ->whereHas('services', function($q) use ($services){
+                                return $q->whereIn('service_id', $services);
+                            })
+                            ->when($advalidate != 0, function($qe) use ($addons){
+                                return $qe->whereHas('addons', function($q) use ($addons){
+                                    return $q->whereIn('addon_id', $addons);
+                                });
+                            })
+                            ->whereHas('availability', function($q) use ($day){
+                                return $q->where('week_day', $day);
+                            })
+                            ->when(!empty($sort) && $sort == '1', function($q){
+                                return $q->withAvg('reviews', 'rating')->orderBy('reviews_avg_rating', 'desc');
+                            })
+                            ->whereIn('id', $userArr)
+                            ->whereNotIn('id', $unavailable)
+                            ->get();
+                            //dd($data['users']);
+            $data['marketplace_data'] = MarketplaceSetting::latest()->first();
 
-        return view('web.new.booking.step1')->with($data);
+            return view('web.new.booking.step1')->with($data);
+        }
     }
     function step1Summary(Request $request){
         $data = $request->all();
