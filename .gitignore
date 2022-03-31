@@ -3,8 +3,8 @@
 /public/upload
 /storage/*.key
 /vendor
-.env
 .htaccess
+.env
 .env.backup
 .phpunit.result.cache
 docker-compose.override.yml
