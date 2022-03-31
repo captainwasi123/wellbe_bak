@@ -2826,6 +2826,9 @@ span.circle-1 {
 
 @media screen and (max-width:767px) and (min-width:520px) { 
 
+    .login-image{
+        display: none;
+    }
     .service-only-image {
     float: left;
     max-width: 580px;
@@ -3047,9 +3050,18 @@ section.banner-sec.bg-5 {
 }
 }
 
+@media screen and (max-width:320px) { 
+    .login-image{
+        display: none;
+    }
+}
 
 /*Mobile Devices*/
 @media screen and (max-width:519px) and (min-width:320px) { 
+
+    .login-image{
+        display: none;
+    }
 .work-service-box2 {
     text-align: center;
 }

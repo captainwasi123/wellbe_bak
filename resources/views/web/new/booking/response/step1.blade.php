@@ -74,20 +74,27 @@
             @if($uvalid == 1)
                <div class="booking-practices">
                   <div class="booking-details-person">
-                     <input type="hidden" name="userIds" value="{{$val->id}}">
-                     <img src="{{URL::to('/')}}/{{$val->profile_img}}" onerror="this.onerror=null;this.src='{{URL::to('/')}}/public/assets/images/user-placeholder.png';" class="dp">
-                     <h5> {{$val->first_name.' '.$val->last_name}} </h5>
-                     <p> 
-                        <a href="javascript:void(0)" class="viewUserProfile" data-id="{{base64_encode($val->id)}}"> View Profile </a> 
-
-                        <b class="col-grey font-thin"> 
-                           <i class="fa fa-star col-yellow"> </i> 
-                           {{empty($val->avgRating) ? '0.0' : number_format($val->avgRating[0]->aggregate, 1)}} 
-                        </b> 
-                     </p>
-                     <p class="practPrice" id="practPriceTray-{{$val->id}}">
-                        <img src="{{URL::to('/public/assets/images/priceLoader.gif')}}">
-                     </p>
+                     <div class="row">
+                        <div class="col-lg-2 col-md-2 col-5">
+                           <input type="hidden" name="userIds" value="{{$val->id}}">
+                           <div id="content">
+                              <img id="myImage" src="{{URL::to('/')}}/{{$val->profile_img}}" onerror="this.onerror=null;this.src='{{URL::to('/')}}/public/assets/images/user-placeholder.png';">
+                           </div>
+                        </div>
+                        <div class="col-lg-7 col-md-7 col-7">
+                           <h5> {{$val->first_name.' '.$val->last_name}} </h5>
+                           <p> 
+                              <a href="javascript:void(0)" class="viewUserProfile" data-id="{{base64_encode($val->id)}}"> View Profile </a> 
+                              <b class="col-grey font-thin"> 
+                                 <i class="fa fa-star col-yellow"> </i> 
+                                 {{empty($val->avgRating) ? '0.0' : number_format($val->avgRating[0]->aggregate, 1)}} 
+                              </b> 
+                           </p>
+                           <p class="practPrice" id="practPriceTray-{{$val->id}}">
+                              <img src="{{URL::to('/public/assets/images/priceLoader.gif')}}">
+                           </p>
+                        </div>                                                   
+                     </div>                                              
                   </div>
                   <div class="booking-persons-time time-slider">
                      @php $curr_date = $date @endphp

@@ -116,7 +116,7 @@
                                                    <div class="col-lg-2 col-md-2 col-5">
                                                       <input type="hidden" name="userIds" value="{{$val->id}}">
                                                       <div id="content">
-                                                         <img id="myImage" src="{{URL::to('/')}}/{{$val->profile_img}}">
+                                                         <img id="myImage" src="{{URL::to('/')}}/{{$val->profile_img}}" onerror="this.onerror=null;this.src='{{URL::to('/')}}/public/assets/images/user-placeholder.png';">
                                                       </div>
                                                    </div>
                                                    <div class="col-lg-7 col-md-7 col-7">
@@ -132,9 +132,7 @@
                                                          <img src="{{URL::to('/public/assets/images/priceLoader.gif')}}">
                                                       </p>
                                                    </div>                                                   
-                                                </div>
-                                                <!-- <input type="hidden" name="userIds" value="{{$val->id}}"> -->
-                                                <!-- <img src="{{URL::to('/')}}/{{$val->profile_img}}" onerror="this.onerror=null;this.src='{{URL::to('/')}}/public/assets/images/user-placeholder.png';" class="dp"> -->                                                
+                                                </div>                                              
                                              </div>
                                              <div class="booking-persons-time time-slider arrows">
                                                 @php $curr_date = date('Y-m-d') @endphp

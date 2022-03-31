@@ -344,3 +344,7 @@ a.custom-btn1 {
    width: auto;
    height: 100%;
 }
+
+.slick-next {
+    right: -32px !important;
+}

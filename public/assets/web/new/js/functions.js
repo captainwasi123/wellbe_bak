@@ -238,8 +238,9 @@ function getPractitionerPrice(){
   slidesToShow:7,
   slidesToScroll: 1,
   autoplay: false,
-  focusOnSelect: true,
+  focusOnSelect: false,
   autoplaySpeed: 2000,
+  swipeToSlide: true,
   responsive: [
     {
       breakpoint: 1024,
