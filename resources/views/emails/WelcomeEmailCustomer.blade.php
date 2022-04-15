@@ -546,7 +546,7 @@ width: 100% !important;
 <td align="center" style="padding:9px;">
 <span style="color:#ffffff !important;font-family:Cabin, sans-serif;font-size:16px;mso-line-height:exactly;line-height:25px;mso-text-raise:4px;letter-spacing: 0.03em;;">
 <font style="color:#ffffff;" class="button">
-<span><span class="mso-font-fix-arial"><a href="https://www.wellbe.co.nz/" target="_blank">View All Services</a></span></span>
+<span><span class="mso-font-fix-arial"><a href="{{URL::to('/')}}" target="_blank">View All Services</a></span></span>
 </font>
 </span>
 </td>
@@ -564,7 +564,7 @@ width: 100% !important;
 
 <span style="color:#ffffff !important;font-family:Cabin, sans-serif;font-size:16px;mso-line-height:exactly;line-height:25px;mso-text-raise:4px;letter-spacing: 0.03em;;">
 <font style="color:#ffffff;" class="button">
-<span><span class="mso-font-fix-arial"><a href=""></a> View All Services</span></span>
+<span><span class="mso-font-fix-arial"><a href="{{URL::to('/')}}"></a> View All Services</span></span>
 </font>
 </span>
 </td>
@@ -664,12 +664,13 @@ width: 100% !important;
 <tr>
 
 <td align="center" style="padding:9px;">
-
-<span style="color:#ffffff !important;font-family:Cabin, sans-serif;font-size:16px;mso-line-height:exactly;line-height:25px;mso-text-raise:4px;letter-spacing: 0.03em;;">
-<font style="color:#ffffff;" class="button">
-<span><span class="mso-font-fix-arial">Manage My Bookings</span></span>
-</font>
-</span>
+<a href="{{route('booker.index')}}">
+	<span style="color:#ffffff !important;font-family:Cabin, sans-serif;font-size:16px;mso-line-height:exactly;line-height:25px;mso-text-raise:4px;letter-spacing: 0.03em;;">
+	<font style="color:#ffffff;" class="button">
+	<span><span class="mso-font-fix-arial">Manage My Bookings</span></span>
+	</font>
+	</span>
+</a>
 </td>
 </tr>
 </table>
