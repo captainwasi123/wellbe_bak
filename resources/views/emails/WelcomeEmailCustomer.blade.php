@@ -561,12 +561,13 @@ width: 100% !important;
 <tr>
 
 <td align="center" style="padding:9px;">
-
+<a href="{{URL::to('/')}}">
 <span style="color:#ffffff !important;font-family:Cabin, sans-serif;font-size:16px;mso-line-height:exactly;line-height:25px;mso-text-raise:4px;letter-spacing: 0.03em;;">
 <font style="color:#ffffff;" class="button">
-<span><span class="mso-font-fix-arial"><a href="{{URL::to('/')}}"> View All Services</a></span></span>
+<span><span class="mso-font-fix-arial"> View All Services</span></span>
 </font>
 </span>
+</a>
 </td>
 </tr>
 </table>
