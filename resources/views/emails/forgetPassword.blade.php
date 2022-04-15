@@ -267,18 +267,18 @@ width: 100% !important;
 
 <span style="color:#ffffff !important;font-family:Cabin, sans-serif;font-size:17px;mso-line-height:exactly;line-height:25px;mso-text-raise:4px;letter-spacing: normal;">
 <font style="color:#ffffff;" class="button">
-<span><span class="mso-font-fix-arial"><a href="{{ route('reset.password.get', $token)}}" style="color:#fff">Activate My Account</a></span></span>
+<span><span class="mso-font-fix-arial"><a href="{{ route('reset.password.get', $token)}}" style="color:#fff">Reset My Password</a></span></span>
 </font>
 </span>
 </a>
 </td>
-<td align="center" style="padding-top:9px;padding-right:20px;padding-bottom:9px;padding-left:20px;">
+<!-- <td align="center" style="padding-top:9px;padding-right:20px;padding-bottom:9px;padding-left:20px;">
 <span style="color:#ffffff !important;font-family:Cabin, sans-serif;font-size:17px;mso-line-height:exactly;line-height:25px;mso-text-raise:4px;letter-spacing: normal;">
 <font style="color:#ffffff;" class="button">
 <a href="{{ route('reset.password.get', $token)}}">Reset My Password</a>
 </font>
 </span>
-</td>
+</td> -->
 </tr>
 </table>
 
