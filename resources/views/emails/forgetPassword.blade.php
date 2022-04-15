@@ -255,8 +255,6 @@ width: 100% !important;
 <tr>
 
 <td valign="top" align="center" style="padding-top:20px;padding-right:10px;padding-bottom:20px;padding-left:10px;">
-<!--[if !mso]><!-- -->
-<a href="www.wellbe.co.nz" target="_blank" style="display:inline-block; text-decoration:none;" class="fluid-on-mobile">
 <span>
 
 <table cellpadding="0" cellspacing="0" border="0" bgcolor="#5d4e6d" style="border-radius:2px;border-collapse:separate !important;background-color:#5d4e6d;" class="fluid-on-mobile">
@@ -280,7 +278,6 @@ width: 100% !important;
 </table>
 
 </span>
-</a>
 <!--<![endif]-->
 <div style="display:none; mso-hide: none;">
 
