@@ -267,37 +267,11 @@ width: 100% !important;
 </font>
 </span>
 </td>
-<!-- <td align="center" style="padding-top:9px;padding-right:20px;padding-bottom:9px;padding-left:20px;">
-<span style="color:#ffffff !important;font-family:Cabin, sans-serif;font-size:17px;mso-line-height:exactly;line-height:25px;mso-text-raise:4px;letter-spacing: normal;">
-<font style="color:#ffffff;" class="button">
-<a href="{{ route('reset.password.get', $token)}}">Reset My Password</a>
-</font>
-</span>
-</td> -->
 </tr>
 </table>
 
 </span>
-<!--<![endif]-->
-<div style="display:none; mso-hide: none;">
 
-<table cellpadding="0" cellspacing="0" border="0" bgcolor="#5d4e6d" style="border-radius:2px;border-collapse:separate !important;background-color:#5d4e6d;" class="fluid-on-mobile">
-<tr>
-
-<td align="center" style="padding-top:9px;padding-right:20px;padding-bottom:9px;padding-left:20px;">
-<a href="www.wellbe.co.nz" target="_blank" style="color:#ffffff !important;font-family:Cabin, sans-serif;font-size:17px;mso-line-height:exactly;line-height:25px;mso-text-raise:4px;letter-spacing: normal;text-decoration:none;text-align:center;">
-
-<span style="color:#ffffff !important;font-family:Cabin, sans-serif;font-size:17px;mso-line-height:exactly;line-height:25px;mso-text-raise:4px;letter-spacing: normal;">
-<font style="color:#ffffff;" class="button">
-
-</font>
-</span>
-</a>
-</td>
-</tr>
-</table>
-
-</div>
 </td>
 </tr>
 </table>
