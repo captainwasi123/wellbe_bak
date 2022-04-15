@@ -538,7 +538,6 @@ width: 100% !important;
 
 <td valign="top" align="center" style="padding:20px;">
 <!--[if !mso]><!-- -->
-<a href="" target="_blank" style="display:inline-block; text-decoration:none;" class="fluid-on-mobile">
 <span>
 
 <table cellpadding="0" cellspacing="0" border="0" bgcolor="#5d4e6d" style="border-radius:5px;border-collapse:separate !important;background-color:#5d4e6d;" class="fluid-on-mobile">
@@ -555,7 +554,6 @@ width: 100% !important;
 </table>
 
 </span>
-</a>
 <!--<![endif]-->
 <div style="display:none; mso-hide: none;">
 
@@ -563,14 +561,12 @@ width: 100% !important;
 <tr>
 
 <td align="center" style="padding:9px;">
-<a href="" target="_blank" style="color:#ffffff !important;font-family:Cabin, sans-serif;font-size:16px;mso-line-height:exactly;line-height:25px;mso-text-raise:4px;letter-spacing: 0.03em;;text-decoration:none;text-align:center;">
 
 <span style="color:#ffffff !important;font-family:Cabin, sans-serif;font-size:16px;mso-line-height:exactly;line-height:25px;mso-text-raise:4px;letter-spacing: 0.03em;;">
 <font style="color:#ffffff;" class="button">
 <span><span class="mso-font-fix-arial"><a href=""></a> View All Services</span></span>
 </font>
 </span>
-</a>
 </td>
 </tr>
 </table>
@@ -645,7 +641,6 @@ width: 100% !important;
 
 <td valign="top" align="center" style="padding:20px;">
 <!--[if !mso]><!-- -->
-<a href="" target="_blank" style="display:inline-block; text-decoration:none;" class="fluid-on-mobile">
 <span>
 
 <table cellpadding="0" cellspacing="0" border="0" bgcolor="#5d4e6d" style="border-radius:5px;border-collapse:separate !important;background-color:#5d4e6d;" class="fluid-on-mobile">
@@ -662,7 +657,6 @@ width: 100% !important;
 </table>
 
 </span>
-</a>
 <!--<![endif]-->
 <div style="display:none; mso-hide: none;">
 
@@ -670,14 +664,12 @@ width: 100% !important;
 <tr>
 
 <td align="center" style="padding:9px;">
-<a href="" target="_blank" style="color:#ffffff !important;font-family:Cabin, sans-serif;font-size:16px;mso-line-height:exactly;line-height:25px;mso-text-raise:4px;letter-spacing: 0.03em;;text-decoration:none;text-align:center;">
 
 <span style="color:#ffffff !important;font-family:Cabin, sans-serif;font-size:16px;mso-line-height:exactly;line-height:25px;mso-text-raise:4px;letter-spacing: 0.03em;;">
 <font style="color:#ffffff;" class="button">
 <span><span class="mso-font-fix-arial">Manage My Bookings</span></span>
 </font>
 </span>
-</a>
 </td>
 </tr>
 </table>
