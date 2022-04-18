@@ -170,7 +170,8 @@ $(document).ready(function() {
 
 
 $(function() {
-  var dateToday = new Date(datetime);
+  var dateToday = new Date(datetime.replace(/-/g, "/"));
+  dateToday.toUTCString();
   $( ".calendar" ).datepicker({
     dateFormat: 'dd-mm-yy',
     minDate: dateToday,
