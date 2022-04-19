@@ -135,85 +135,87 @@
                                                 </div>                                              
                                              </div>
                                              <div class="booking-persons-time time-slider arrows">
-                                                @php $curr_date = date('Y-m-d') @endphp
-                                                @foreach($val->availability as $avail)
-                                                   @if(ucfirst($avail->week_day) == $day)
-                                                      @foreach($avail->slots as $slot)
-                                                         @php
-                                                            $x = 0; 
-                                                            $buffer = empty($val->user_store) ? 30 : $val->user_store->buffer_between_appointments;
-                                                            if($date == date('Y-m-d')){
-                                                               $curr = date('H:i:s');
-                                                               if($curr > $slot->start_booking){
-                                                                  $curr = date('H:i:s',strtotime('+1 hour',strtotime($curr)));
-                                                                  $curr = date('H',strtotime($curr));
-                                                                  $curr = $curr.':00:00';
-                                                                  $start = $curr;
-                                                                  $start_date = date('Y-m-d H:i:s', strtotime($curr_date.' '.$curr));
+                                                @php $curr_date = date('Y-m-d'); $curr_time = date('H:i:s'); @endphp
+                                                @if($curr_time < '23:00:00')
+                                                   @foreach($val->availability as $avail)
+                                                      @if(ucfirst($avail->week_day) == $day)
+                                                         @foreach($avail->slots as $slot)
+                                                            @php
+                                                               $x = 0; 
+                                                               $buffer = empty($val->user_store) ? 30 : $val->user_store->buffer_between_appointments;
+                                                               if($date == date('Y-m-d')){
+                                                                  $curr = date('H:i:s');
+                                                                  if($curr > $slot->start_booking){
+                                                                     $curr = date('H:i:s',strtotime('+1 hour',strtotime($curr)));
+                                                                     $curr = date('H',strtotime($curr));
+                                                                     $curr = $curr.':00:00';
+                                                                     $start = $curr;
+                                                                     $start_date = date('Y-m-d H:i:s', strtotime($curr_date.' '.$curr));
+                                                                  }else{
+                                                                     $start = $slot->start_booking;
+                                                                     $start_date = date('Y-m-d H:i:s', strtotime($curr_date.' '.$start));
+                                                                  }
                                                                }else{
                                                                   $start = $slot->start_booking;
                                                                   $start_date = date('Y-m-d H:i:s', strtotime($curr_date.' '.$start));
-                                                               }
-                                                            }else{
-                                                               $start = $slot->start_booking;
-                                                               $start_date = date('Y-m-d H:i:s', strtotime($curr_date.' '.$start));
-                                                            } 
-                                                            $end = $slot->end_booking; 
-                                                            $end = date('H:i:s',strtotime($end));
-                                                         @endphp
-                                                         @php $bookingDuration = $duration+$buffer; @endphp
-                                                         @while($start <= $end)
-                                                            @php $v = 1; @endphp
-                                                            @foreach($val->p_upcoming as $vup)
-                                                               @if($vup->start_at == date('Y-m-d'))
-                                                                  @foreach($vup->details as $vupd)
-                                                                     
-                                                                     @php 
-                                                                        $endDuration = date('H:i:s',strtotime('+'.$bookingDuration.' minutes',strtotime($start))); 
-                                                                        $endDuration2 = date('H:i:s',strtotime('+'.$buffer.' minutes',strtotime($vupd->end_time))); 
+                                                               } 
+                                                               $end = $slot->end_booking; 
+                                                               $end = date('H:i:s',strtotime($end));
+                                                            @endphp
+                                                            @php $bookingDuration = $duration+$buffer; @endphp
+                                                            @while($start <= $end)
+                                                               @php $v = 1; @endphp
+                                                               @foreach($val->p_upcoming as $vup)
+                                                                  @if($vup->start_at == date('Y-m-d'))
+                                                                     @foreach($vup->details as $vupd)
+                                                                        
+                                                                        @php 
+                                                                           $endDuration = date('H:i:s',strtotime('+'.$bookingDuration.' minutes',strtotime($start))); 
+                                                                           $endDuration2 = date('H:i:s',strtotime('+'.$buffer.' minutes',strtotime($vupd->end_time))); 
 
-                                                                     @endphp
+                                                                        @endphp
 
-                                                                     @if($start >= $vupd->start_time && $start < $endDuration2)
-                                                                        @php $v = 0; @endphp
-                                                                     @endif
+                                                                        @if($start >= $vupd->start_time && $start < $endDuration2)
+                                                                           @php $v = 0; @endphp
+                                                                        @endif
 
-                                                                     @if($endDuration > $vupd->start_time && $endDuration < $endDuration2)
-                                                                        @php $v = 0; @endphp
-                                                                     @endif
+                                                                        @if($endDuration > $vupd->start_time && $endDuration < $endDuration2)
+                                                                           @php $v = 0; @endphp
+                                                                        @endif
 
-                                                                     @if(($vupd->start_time >= $start && $vupd->start_time <= $endDuration) && ($endDuration2 >= $start && $endDuration2 <= $endDuration))
-                                                                        @php $v = 0; $st =2; @endphp 
-                                                                     @endif
-                                                                  @endforeach
+                                                                        @if(($vupd->start_time >= $start && $vupd->start_time <= $endDuration) && ($endDuration2 >= $start && $endDuration2 <= $endDuration))
+                                                                           @php $v = 0; $st =2; @endphp 
+                                                                        @endif
+                                                                     @endforeach
+                                                                  @endif
+                                                               @endforeach
+                                                               @php 
+                                                                  $endDuration = date('H:i:s',strtotime('+'.$bookingDuration.' minutes',strtotime($start)));
+
+                                                                  $endDurationdd = date('Y-m-d H:i:s',strtotime('+'.$bookingDuration.' minutes',strtotime($start_date))); 
+                                                               @endphp
+                                                               @if($curr_date != date('Y-m-d', strtotime($endDurationdd)))
+                                                                  @php $v = 0;  @endphp
                                                                @endif
-                                                            @endforeach
-                                                            @php 
-                                                               $endDuration = date('H:i:s',strtotime('+'.$bookingDuration.' minutes',strtotime($start)));
-
-                                                               $endDurationdd = date('Y-m-d H:i:s',strtotime('+'.$bookingDuration.' minutes',strtotime($start_date))); 
-                                                            @endphp
-                                                            @if($curr_date != date('Y-m-d', strtotime($endDurationdd)))
-                                                               @php $v = 0;  @endphp
-                                                            @endif
-                                                            @if($endDuration > $end)
-                                                               @php $v = 0; @endphp
-                                                            @endif
-                                                            @if($v == 1)
-                                                            <div>
-                                                               <input type="radio" id="myCheck{{$slot->id.$x}}" class="timeslot" name="timeslot" data-time="{{date('h:i A', strtotime($start))}}" data-prac="{{base64_encode($val->id)}}" tabindex="-1"> 
-                                                               <label class="book-time-btn"  for="myCheck{{$slot->id.$x}}" >{{date('h:i A', strtotime($start))}}</label>
-                                                            </div>
-                                                            @endif
-                                                            @php 
-                                                               $start = date('H:i:s',strtotime('+'.$bslot.' minutes',strtotime($start))); 
-                                                               $x++; 
-                                                               $start_date = date('Y-m-d H:i:s', strtotime('+'.$bslot.' minutes',strtotime($start_date)));
-                                                            @endphp
-                                                         @endwhile 
-                                                      @endforeach
-                                                   @endif
-                                                @endforeach
+                                                               @if($endDuration > $end)
+                                                                  @php $v = 0; @endphp
+                                                               @endif
+                                                               @if($v == 1)
+                                                               <div>
+                                                                  <input type="radio" id="myCheck{{$slot->id.$x}}" class="timeslot" name="timeslot" data-time="{{date('h:i A', strtotime($start))}}" data-prac="{{base64_encode($val->id)}}" tabindex="-1"> 
+                                                                  <label class="book-time-btn"  for="myCheck{{$slot->id.$x}}" >{{date('h:i A', strtotime($start))}}</label>
+                                                               </div>
+                                                               @endif
+                                                               @php 
+                                                                  $start = date('H:i:s',strtotime('+'.$bslot.' minutes',strtotime($start))); 
+                                                                  $x++; 
+                                                                  $start_date = date('Y-m-d H:i:s', strtotime('+'.$bslot.' minutes',strtotime($start_date)));
+                                                               @endphp
+                                                            @endwhile 
+                                                         @endforeach
+                                                      @endif
+                                                   @endforeach
+                                                @endif
                                              </div>
                                             
                                           </div>
