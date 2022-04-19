@@ -97,8 +97,11 @@
                      </div>                                              
                   </div>
                   <div class="booking-persons-time time-slider">
-                     @php $curr_date = $date;  $curr_time = date('H:i:s'); @endphp
-                     @if($curr_time < '23:00:00' && $curr_date == date('Y-m-d'))
+                     @php $curr_date = $date;  $curr_time = date('H:i:s'); $tst = 0; @endphp
+                     @if($curr_date == date('Y-m-d') && $curr_time >= '23:00:00')
+                        @php $tst = 1; @endphp
+                     @endif
+                     @if($tst == 0)
                         @foreach($val->availability as $avail)
                            @if(ucfirst($avail->week_day) == $day)
                               @foreach($avail->slots as $slot)
