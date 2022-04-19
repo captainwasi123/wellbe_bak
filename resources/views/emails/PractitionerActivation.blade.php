@@ -256,8 +256,7 @@ width: 100% !important;
 <tr>
 
 <td valign="top" align="center" style="padding-top:20px;padding-right:10px;padding-bottom:20px;padding-left:10px;">
-<!--[if !mso]><!-- -->
-<a href="www.wellbe.co.nz" target="_blank" style="display:inline-block; text-decoration:none;" class="fluid-on-mobile">
+
 <span>
 
 <table cellpadding="0" cellspacing="0" border="0" bgcolor="#5d4e6d" style="border-radius:2px;border-collapse:separate !important;background-color:#5d4e6d;" class="fluid-on-mobile">
@@ -274,7 +273,6 @@ width: 100% !important;
 </table>
 
 </span>
-</a>
 <!--<![endif]-->
 <div style="display:none; mso-hide: none;">
 
@@ -282,14 +280,12 @@ width: 100% !important;
 <tr>
 
 <td align="center" style="padding-top:9px;padding-right:20px;padding-bottom:9px;padding-left:20px;">
-<a href="www.wellbe.co.nz" target="_blank" style="color:#ffffff !important;font-family:Cabin, sans-serif;font-size:17px;mso-line-height:exactly;line-height:25px;mso-text-raise:4px;letter-spacing: normal;text-decoration:none;text-align:center;">
 
 <span style="color:#ffffff !important;font-family:Cabin, sans-serif;font-size:17px;mso-line-height:exactly;line-height:25px;mso-text-raise:4px;letter-spacing: normal;">
 <font style="color:#ffffff;" class="button">
 <span><span class="mso-font-fix-arial"><a href="{{route('user_active',base64_encode($user->id))}}" style="color:#fff">Activate My Account</a></span></span>
 </font>
 </span>
-</a>
 </td>
 </tr>
 </table>
