@@ -17,7 +17,7 @@ class stripeController extends Controller
         $charge_amount = intval($charge_amount);
         $paymentIntent = \Stripe\PaymentIntent::create([
           'amount' => $charge_amount,
-          'currency' => 'usd'
+          'currency' => 'nzd'
         ]);
         
         return response()->json($paymentIntent);
