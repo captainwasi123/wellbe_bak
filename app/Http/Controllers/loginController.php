@@ -146,9 +146,6 @@ class loginController extends Controller
         }
         $user->save();
         \App\Helpers\CommonHelpers::send_email($email_temp, $email, $user->email, 'Welcome to Wellbe, '.$user->first_name.'!', $from_email = 'info@wellbe.co.nz', $from_name = 'Wellbe');
-        // DB::table('tbl_users_info')
-        //         ->where('id', base64_decode($request->id))
-        //         ->update(['status' => 1]);
         return $url;
     }
     function logout(){

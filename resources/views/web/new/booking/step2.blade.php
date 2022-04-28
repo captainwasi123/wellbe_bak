@@ -13,15 +13,23 @@
             <div class="col-md-9 col-lg-9 col-sm-12 col-xs-12 sec-wid-left">
                <div class="booking-details-wrapper m-b-30">
                   <div class="booking-details-person">
-                     <img src="{{URL::to('/')}}/{{$user->profile_img}}" onerror="this.onerror=null;this.src='{{URL::to('/')}}/public/assets/images/user-placeholder.png';" class="dp">
-                     <h5> {{$user->first_name.' '.$user->last_name}} </h5>
-                     <p> 
-                        <a href="javascript:void(0)" class="viewUserProfile" data-id="{{base64_encode($user->id)}}"> View Profile </a> 
-                        <b class="col-grey font-thin"> 
-                           <i class="fa fa-star col-yellow"> </i> 
-                           {{empty($user->avgRating) ? '0.0' : number_format($user->avgRating[0]->aggregate, 1)}}
-                        </b> 
-                     </p>
+                     <div class="row">
+                        <div class="col-lg-2 col-md-2 col-5">
+                           <div id="content">
+                              <img id="myImage" src="{{URL::to('/')}}/{{$user->profile_img}}" onerror="this.onerror=null;this.src='{{URL::to('/')}}/public/assets/images/user-placeholder.png';">
+                           </div>
+                        </div>
+                        <div class="col-lg-7 col-md-7 col-7">
+                           <h5> {{$user->first_name.' '.$user->last_name}} </h5>
+                           <p> 
+                              <a href="javascript:void(0)" class="viewUserProfile" data-id="{{base64_encode($user->id)}}"> View Profile </a> 
+                              <b class="col-grey font-thin"> 
+                                 <i class="fa fa-star col-yellow"> </i> 
+                                 {{empty($user->avgRating) ? '0.0' : number_format($user->avgRating[0]->aggregate, 1)}} 
+                              </b> 
+                           </p>
+                        </div>                                                   
+                     </div>                                              
                   </div>
                   <div class="booking-details-item">
                      <h6> <img src="{{URL::to('/public/assets/web/new')}}/images/booking-icon1.jpg"> Date & Time </h6>
