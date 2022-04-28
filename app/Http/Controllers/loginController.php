@@ -145,7 +145,7 @@ class loginController extends Controller
             $url = redirect(route('home'))->with('success', 'Your account has been verified');
         }
         $user->save();
-        \App\Helpers\CommonHelpers::send_email($email_temp, $email, $user->email, 'Welcome to Wellbe, '.$user->first_name.'!', $from_email = 'info@wellbe.co.nz', $from_name = 'Wellbe');
+        \App\Helpers\CommonHelpers::send_email($email_temp, $email, $user->email, 'Welcome to Wellbeee, '.$user->first_name.'!', $from_email = 'info@wellbe.co.nz', $from_name = 'Wellbe');
         return $url;
     }
     function logout(){
