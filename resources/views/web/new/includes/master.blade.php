@@ -10,6 +10,15 @@
       <link rel="icon" href="{{URL::to('/public/assets/web/new/images/favicon.png')}}" type="image/png" sizes="16x16">
       @include('web.new.includes.style')
       @yield('addStyle')
+      <!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-K1DWWJM393"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-K1DWWJM393');
+      </script>
    </head>
    <body>
       <!-- Header Section Starts Here -->
