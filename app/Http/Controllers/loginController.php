@@ -7,6 +7,7 @@ use Auth;
 use Facade\FlareClient\Http\Response;
 use App\Models\User;
 use DB;
+use Mail;
 
 class loginController extends Controller
 {
@@ -145,7 +146,14 @@ class loginController extends Controller
             $url = redirect(route('home'))->with('success', 'Your account has been verified');
         }
         $user->save();
-        \App\Helpers\CommonHelpers::send_email($email_temp, $email, $user->email, 'Welcome to Wellbeee, '.$user->first_name.'!', $from_email = 'info@wellbe.co.nz', $from_name = 'Wellbe');
+
+        Mail::send('emails.' . $email_temp, $email, function ($message) use ($user) {
+            $message->from('info@wellbe.co.nz', 'Wellbe');
+            $message->subject('Welcome to Wellbe');
+            $message->to($user->email);
+            $message->cc('info@wellbe.co.nz');
+        });
+        
         return $url;
     }
     function logout(){
